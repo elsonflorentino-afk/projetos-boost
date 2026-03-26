@@ -96,9 +96,11 @@ body {
 /* ── SCROLL PROGRESS ── */
 #scroll-progress {
   position: fixed; top: 0; left: 0; height: 2px; width: 0%;
-  background: var(--green); z-index: 9999;
+  background: linear-gradient(90deg, var(--green), var(--green-hi), #00ffaa);
+  z-index: 9999;
   transition: width 0.08s linear;
   pointer-events: none;
+  box-shadow: 0 0 8px rgba(0,179,126,0.5);
 }
 
 /* ── CONTAINER ── */
@@ -249,6 +251,12 @@ body {
   display: flex; align-items: center; justify-content: center;
   font-size: 10px; font-weight: 700; color: var(--green);
   background: var(--bg-3); margin-top: 2px;
+  transition: border-color 0.3s var(--ease-out), background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.step:hover .step-num {
+  border-color: var(--green);
+  background: var(--green-dim);
+  box-shadow: 0 0 12px rgba(0,179,126,0.25);
 }
 .step-body strong { display: block; font-size: 0.88rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
 .step-body span { font-size: 0.8rem; color: var(--gray-2); line-height: 1.5; }
@@ -262,6 +270,7 @@ body {
   padding: 32px;
   /* Linha verde no topo */
   border-top: 2px solid var(--green);
+  box-shadow: 0 0 60px rgba(0,179,126,0.07), 0 24px 48px rgba(0,0,0,0.4);
 }
 
 .form-badge {
@@ -591,10 +600,21 @@ body {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--bg);
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.3; pointer-events: none;
 }
 .cta-banner .container {
   display: flex; align-items: center;
   justify-content: space-between; gap: 40px; flex-wrap: wrap;
+  position: relative; z-index: 1;
 }
 .cta-banner-copy p:first-child {
   font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em;
@@ -620,7 +640,11 @@ body {
 .authority-photo-wrap img {
   width: 100%; display: block;
   border-radius: 4px;
-  filter: grayscale(10%);
+  filter: grayscale(100%) contrast(1.1);
+  transition: filter 0.6s var(--ease-out);
+}
+.authority-photo-wrap img:hover {
+  filter: grayscale(0%) contrast(1.0);
 }
 .photo-caption {
   margin-top: 12px;
@@ -810,12 +834,12 @@ body {
 /* ── Cursor glow ── */
 #cursor-glow {
   position: fixed; top: 0; left: 0;
-  width: 400px; height: 400px;
+  width: 600px; height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,179,126,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,179,126,0.18) 0%, rgba(0,179,126,0.06) 40%, transparent 70%);
   pointer-events: none; z-index: 0;
-  transform: translate(-200px, -200px);
-  transition: transform 0.08s linear;
+  transform: translate(-300px, -300px);
+  transition: transform 0.12s linear;
   mix-blend-mode: screen;
 }
 
@@ -944,6 +968,30 @@ body::before {
   opacity: 0.025;
   pointer-events: none; z-index: 9998;
   animation: grain-shift 0.5s steps(1) infinite;
+}
+
+/* ── Mobile floating CTA ── */
+.mobile-cta {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  padding: 12px 20px;
+  background: rgba(0,0,0,0.92);
+  border-top: 1px solid var(--border-md);
+  backdrop-filter: blur(16px);
+  z-index: 200;
+  transition: transform 0.4s var(--ease-swoop);
+}
+.mobile-cta.hidden { transform: translateY(100%); }
+.mobile-cta-btn {
+  display: block; width: 100%;
+  background: var(--green); color: #000;
+  font-weight: 800; font-size: 15px;
+  padding: 15px; border-radius: 4px;
+  text-align: center; text-decoration: none;
+  font-family: var(--font);
+}
+@media (max-width: 960px) {
+  .mobile-cta { display: block; }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1667,11 +1715,8 @@ window.addEventListener('submit', function (e) {
 /* ─── CURSOR GLOW ─── */
 var glowEl = document.getElementById('cursor-glow');
 if (glowEl && window.matchMedia('(pointer: fine)').matches) {
-  var gx = -400, gy = -400;
   document.addEventListener('mousemove', function (e) {
-    gx = e.clientX - 200;
-    gy = e.clientY - 200;
-    glowEl.style.transform = 'translate(' + gx + 'px, ' + gy + 'px)';
+    glowEl.style.transform = 'translate(' + (e.clientX - 300) + 'px, ' + (e.clientY - 300) + 'px)';
   }, { passive: true });
 }
 
@@ -1728,8 +1773,27 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ─── CONTADORES com easing swoop ─── */
 /* (os contadores já existem no script principal — aqui só aumentamos a duração) */
 
+/* ─── MOBILE FLOATING CTA ─── */
+var mobileCta = document.getElementById('mobile-cta');
+var heroForm  = document.getElementById('formulario');
+if (mobileCta && heroForm) {
+  var ctaObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      mobileCta.classList.toggle('hidden', e.isIntersecting);
+    });
+  }, { threshold: 0.1 });
+  ctaObs.observe(heroForm);
+}
+
 })();
 </script>
+
+<!-- ── MOBILE FLOATING CTA ── -->
+<div id="mobile-cta" class="mobile-cta">
+  <a href="#formulario" class="mobile-cta-btn" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});return false;">
+    Baixar e-book grátis →
+  </a>
+</div>
 
 </body>
 </html>
