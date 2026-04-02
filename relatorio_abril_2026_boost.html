@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard Abril 2026 — Boost Research</title>
+<style>
+:root{
+  --bg0:#0a0a0a;--bg1:#141414;--bg2:#1c1c1c;--bg3:#242424;
+  --text1:#f0f0f0;--text2:#a0a0a0;--text3:#666;
+  --border:rgba(255,255,255,.08);
+  --teal:#1dd1a1;--yellow:#f59e0b;--blue:#3b82f6;
+  --red:#ef4444;--green:#10b981;--accent:#8b5cf6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg0);color:var(--text1);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;line-height:1.5}
+nav{background:var(--bg1);border-bottom:1px solid var(--border);padding:0 20px;display:flex;gap:4px;overflow-x:auto;position:sticky;top:0;z-index:100}
+.tb{background:none;border:none;color:var(--text2);padding:14px 16px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;font-size:13px;transition:.2s}
+.tb:hover{color:var(--text1)}
+.tb.on{color:var(--teal);border-bottom-color:var(--teal)}
+.page{display:none;padding:20px;max-width:1200px;margin:0 auto}
+.page.on{display:block}
+header{background:var(--bg1);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:700;color:var(--teal)}
+.subtitle{font-size:12px;color:var(--text3)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.kpi{background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.kpi.ak{border-color:rgba(247,147,26,.3);background:rgba(247,147,26,.05)}
+.kpi.gk{border-color:rgba(29,209,161,.3);background:rgba(29,209,161,.05)}
+.kpi.bk{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.05)}
+.kl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.kv{font-size:26px;font-weight:700;line-height:1}
+.ks{font-size:11px;color:var(--text2);margin-top:3px}
+.box{background:var(--bg1);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:16px}
+.bx-title{font-size:13px;font-weight:600;margin-bottom:12px;color:var(--text1)}
+.bx-title small{font-weight:400;color:var(--text3);font-size:11px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;color:var(--text3);font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:6px 8px;border-bottom:1px solid var(--border)}
+td{padding:8px;border-bottom:1px solid rgba(255,255,255,.04);font-size:12px}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.02)}
+.nr{text-align:right}
+.g{color:var(--teal)}
+.w{color:var(--yellow)}
+.r{color:var(--red)}
+.grp-hdr{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);padding:12px 0 8px;border-bottom:1px solid var(--border);margin-bottom:12px}
+.ins{padding:10px 12px;border-radius:6px;font-size:12px;margin-top:8px}
+.ins-g{background:rgba(29,209,161,.08);border-left:3px solid var(--teal)}
+.ins-b{background:rgba(59,130,246,.08);border-left:3px solid var(--blue)}
+.ins-o{background:rgba(247,147,26,.08);border-left:3px solid var(--yellow)}
+.mv{display:flex;gap:12px;padding:12px 0;border-left:3px solid var(--teal);padding-left:14px;margin-bottom:8px}
+.mv-w{flex:0 0 60px;font-size:11px;font-weight:700;color:var(--teal)}
+.updated{font-size:10px;color:var(--text3);text-align:right;margin-top:8px}
+@media(max-width:640px){.g2{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">Boost Research</div>
+    <div class="subtitle">Dashboard de Performance · Abril 2026</div>
+  </div>
+  <div style="font-size:11px;color:var(--text3);text-align:right">
+    Atualizado automaticamente<br>02/04/2026 às 00:13
+  </div>
+</header>
+
+<nav>
+  <button class="tb on" onclick="go('geral',this)">📊 Resumo Geral</button>
+  <button class="tb" onclick="go('semana',this)">📅 Evolução Semanal</button>
+  <button class="tb" onclick="go('criativos',this)">🎨 Criativos</button>
+  <button class="tb" onclick="go('leads',this)">👥 Perfil dos Leads</button>
+</nav>
+
+<!-- ── GERAL ─────────────────────────────────────────────── -->
+<div id="p-geral" class="page on">
+
+  <div class="kpis">
+    <div class="kpi ak"><div class="kl">Investimento</div><div class="kv">R$0</div><div class="ks">Abril 2026 · todas as campanhas</div></div>
+    <div class="kpi "><div class="kl">Impressões</div><div class="kv">0</div><div class="ks">Total de visualizações</div></div>
+    <div class="kpi "><div class="kl">Cliques</div><div class="kv">0</div><div class="ks">CTR médio 0%</div></div>
+    <div class="kpi gk"><div class="kl">Leads Meta</div><div class="kv">0</div><div class="ks">Form + LP via campanhas</div></div>
+    <div class="kpi bk"><div class="kl">Leads LP C4</div><div class="kv">0</div><div class="ks">Qualificados via LP Análise</div></div>
+    <div class="kpi "><div class="kl">Leads LP IR</div><div class="kv">0</div><div class="ks">LP IR Cripto 2026</div></div>
+    <div class="kpi ak"><div class="kl">CPL Médio</div><div class="kv">R$0</div><div class="ks">Custo por lead · Meta Ads</div></div>
+  </div>
+
+  <div class="box">
+    <div class="bx-title">💰 Investimento e Leads por Grupo de Campanha</div>
+    <table>
+      <thead><tr><th>Grupo</th><th class="nr">Investimento</th><th class="nr">Leads</th><th class="nr">CPL</th></tr></thead>
+      <tbody><tr style="font-weight:700;border-top:1px solid var(--border)">
+          <td>TOTAL</td>
+          <td class="nr">R$0</td>
+          <td class="nr">0</td>
+          <td class="nr">R$0</td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    <div class="bx-title">📈 Tendência de Leads por Semana</div>
+    <div style="font-size:28px;letter-spacing:4px;color:var(--teal);margin:8px 0"></div>
+    <div style="font-size:11px;color:var(--text3)">Cada símbolo = 1 semana · escala relativa ao pico do mês</div>
+  </div>
+
+  <p class="updated">Dados via Meta Ads API v19.0 · Gerado automaticamente em 02/04/2026 às 00:13</p>
+</div>
+
+<!-- ── SEMANA ─────────────────────────────────────────────── -->
+<div id="p-semana" class="page">
+
+  <div class="kpis">
+    <div class="kpi ak"><div class="kl">Investimento</div><div class="kv">R$0</div><div class="ks">Abril 2026</div></div>
+    <div class="kpi gk"><div class="kl">Total de Leads</div><div class="kv">0</div><div class="ks">Meta Ads · mês completo</div></div>
+    <div class="kpi bk"><div class="kl">CPL Médio</div><div class="kv">R$0</div><div class="ks">Custo por lead</div></div>
+    <div class="kpi "><div class="kl">CTR Médio</div><div class="kv">0%</div><div class="ks">Taxa de cliques geral</div></div>
+  </div>
+
+  <div class="box">
+    <div class="bx-title">📅 Métricas Semanais — Análise Automática</div>
+    <div style="overflow-x:auto"><table>
+      <thead><tr>
+        <th>Semana</th><th class="nr">Investimento</th><th class="nr">Impressões</th>
+        <th class="nr">Cliques</th><th class="nr">Leads</th><th class="nr">CTR</th>
+        <th class="nr">CPL</th><th>Análise</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <p style="font-size:10px;color:var(--text3);margin-top:8px">
+      * Variações calculadas automaticamente semana a semana · Fonte: Meta Ads API
+    </p>
+  </div>
+</div>
+
+<!-- ── CRIATIVOS ──────────────────────────────────────────── -->
+<div id="p-criativos" class="page">
+
+  <div class="kpis">
+    <div class="kpi "><div class="kl">Total Criativos Ativos</div><div class="kv">0</div><div class="ks">com investimento no mês</div></div>
+    <div class="kpi gk"><div class="kl">Melhor CPL</div><div class="kv">R$0</div><div class="ks">menor custo por lead</div></div>
+    <div class="kpi ak"><div class="kl">Líder em Leads</div><div class="kv">0</div><div class="ks"></div></div>
+  </div>
+
+  <div class="box">
+    <div class="bx-title">🏆 Top Criativos — Leads e CPL</div>
+    <div class="ins ins-b" style="margin-bottom:12px">💡 Sem dados de criativos disponíveis.</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px"></div>
+  </div>
+
+  <div class="box">
+    <div class="bx-title">📊 Ranking Completo</div>
+    <table>
+      <thead><tr>
+        <th>#</th><th>Criativo</th><th>Campanha</th>
+        <th class="nr">Spend</th><th class="nr">Leads</th>
+        <th class="nr">CPL</th><th class="nr">CTR</th>
+      </tr></thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ── LEADS ──────────────────────────────────────────────── -->
+<div id="p-leads" class="page">
+
+  <div class="kpis">
+    <div class="kpi ak"><div class="kl">Leads Meta (Form)</div><div class="kv">0</div><div class="ks">via formulário instantâneo</div></div>
+    <div class="kpi gk"><div class="kl">Leads LP Análise</div><div class="kv">0</div><div class="ks">lp_mentoria_boost · qualif. completa</div></div>
+    <div class="kpi bk"><div class="kl">Leads LP IR Cripto</div><div class="kv">0</div><div class="ks">lp_ir_cripto · qualif. completa</div></div>
+    <div class="kpi gk"><div class="kl">Qualificados ≥R$50k</div><div class="kv">0</div><div class="ks">0% dos que investem em cripto</div></div>
+  </div>
+
+  <div class="g2">
+    <div class="box">
+      <div class="bx-title">₿ Patrimônio em Cripto — LP Análise <small>0 que investem em cripto · campo condicional obrigatório</small></div>
+      <p style="color:var(--text3);font-size:12px">Sem dados de qualificação disponíveis.</p>
+      <p style="font-size:10px;color:var(--text2);margin-top:10px">
+        📌 Campo só exibido para quem responde "sim" que investe em cripto · todos os campos exibidos são obrigatórios
+      </p>
+    </div>
+    <div class="box">
+      <div class="bx-title">📊 Resumo de Qualificação — LP C4</div>
+      <div style="margin-top:8px">
+        <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--text2)">Total leads LP C4</span>
+          <span style="color:var(--text1);font-weight:600">0</span>
+        </div><div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--text2)">Investem em cripto</span>
+          <span style="color:var(--text1);font-weight:600">0</span>
+        </div><div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--text2)">Não investem em cripto</span>
+          <span style="color:var(--text1);font-weight:600">0</span>
+        </div><div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--text2)">Investem no tradicional</span>
+          <span style="color:var(--text1);font-weight:600">0</span>
+        </div><div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--text2)">Qualificados ≥R$50k cripto</span>
+          <span style="color:var(--text1);font-weight:600">0</span>
+        </div><div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)">
+          <span style="color:var(--text2)">Qualificados ≥R$50k trad</span>
+          <span style="color:var(--text1);font-weight:600">0</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function go(name, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
+  document.querySelectorAll('.tb').forEach(b => b.classList.remove('on'));
+  document.getElementById('p-' + name).classList.add('on');
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>
