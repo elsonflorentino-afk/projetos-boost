@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boost Research — Relatório Março 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg: #0a0a14;
+  --bg2: #12121f;
+  --bg3: #1a1a2e;
+  --green: #00B37E;
+  --green-dim: rgba(0,179,126,0.15);
+  --red: #ef4444;
+  --yellow: #f59e0b;
+  --blue: #3b82f6;
+  --white: #ffffff;
+  --gray: #a0a0c0;
+  --gray-dim: #555577;
+  --font: 'Inter', -apple-system, sans-serif;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font);
+  overflow-x: hidden;
+}
+
+/* ═══ SLIDE SYSTEM ═══ */
+.slide {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  position: relative;
+  border-bottom: 1px solid var(--bg3);
+}
+
+.slide-content {
+  max-width: 1100px;
+  width: 100%;
+}
+
+.slide-number {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 0.7rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.slide-tab {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--green-dim);
+  color: var(--green);
+  border: 1px solid rgba(0,179,126,0.3);
+  margin-bottom: 20px;
+}
+
+/* ═══ TYPOGRAPHY ═══ */
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: var(--gray);
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+.big-number {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.big-label {
+  font-size: 0.85rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 8px;
+}
+
+/* ═══ SPEAKER NOTES ═══ */
+.speaker-note {
+  background: var(--bg2);
+  border-left: 3px solid var(--green);
+  border-radius: 0 12px 12px 0;
+  padding: 24px 28px;
+  margin-top: 32px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--gray);
+  font-style: italic;
+}
+
+.speaker-note strong {
+  color: var(--white);
+  font-style: normal;
+}
+
+.speaker-note .highlight {
+  color: var(--green);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ═══ GRID / CARDS ═══ */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 28px 0;
+}
+
+.metric-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+}
+
+.metric-card .value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.metric-card .label {
+  font-size: 0.72rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin: 24px 0;
+}
+
+.col-card {
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.col-card h4 {
+  font-size: 0.8rem;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+/* ═══ TABLE ═══ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.88rem;
+}
+
+th {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--bg3);
+  color: var(--gray);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 8px 8px 0 0;
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--bg3);
+}
+
+/* ═══ TIMELINE ═══ */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+  margin: 24px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--bg3);
+}
+
+.tl-item {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 3px solid var(--bg);
+}
+
+.tl-week {
+  font-size: 0.75rem;
+  color: var(--green);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.tl-title {
+  font-weight: 700;
+  margin: 4px 0;
+}
+
+.tl-detail {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+/* ═══ BADGES ═══ */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-green { background: rgba(0,179,126,0.15); color: var(--green); }
+.badge-yellow { background: rgba(245,158,11,0.15); color: var(--yellow); }
+.badge-red { background: rgba(239,68,68,0.15); color: var(--red); }
+.badge-blue { background: rgba(59,130,246,0.15); color: var(--blue); }
+
+/* ═══ PROGRESS BAR ═══ */
+.progress-bar {
+  width: 100%;
+  height: 32px;
+  background: var(--bg3);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  margin: 16px 0;
+}
+
+.progress-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.03em;
+}
+
+/* ═══ COMPARISON ═══ */
+.vs-box {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 24px 0;
+}
+
+.vs-side {
+  flex: 1;
+  background: var(--bg2);
+  border: 1px solid var(--bg3);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+}
+
+.vs-divider {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--gray-dim);
+}
+
+/* ═══ RANKING ═══ */
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--bg3);
+}
+
+.rank-medal {
+  font-size: 2rem;
+  width: 48px;
+  text-align: center;
+}
+
+.rank-info { flex: 1; }
+
+.rank-name {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.rank-detail {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.rank-value {
+  text-align: right;
+  font-weight: 800;
+  font-size: 1.3rem;
+}
+
+/* ═══ FOOTER / NAV ═══ */
+.slide-nav {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  z-index: 100;
+}
+
+.slide-nav a {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gray-dim);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.slide-nav a:hover {
+  background: var(--green);
+  transform: scale(1.3);
+}
+
+.brand-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  font-size: 0.7rem;
+  color: var(--gray-dim);
+  letter-spacing: 0.06em;
+}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-content > * {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.slide-content > *:nth-child(2) { animation-delay: 0.1s; }
+.slide-content > *:nth-child(3) { animation-delay: 0.2s; }
+.slide-content > *:nth-child(4) { animation-delay: 0.3s; }
+.slide-content > *:nth-child(5) { animation-delay: 0.4s; }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .slide { padding: 40px 20px; }
+  .two-col { grid-template-columns: 1fr; }
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .vs-box { flex-direction: column; }
+  .vs-divider { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="slide-nav">
+  <a href="#s0" title="Capa"></a>
+  <a href="#s1" title="Visão Geral"></a>
+  <a href="#s2" title="Evolução"></a>
+  <a href="#s3" title="C4"></a>
+  <a href="#s4" title="IR Cripto"></a>
+  <a href="#s5" title="Leads"></a>
+  <a href="#s6" title="Criativos"></a>
+  <a href="#s7" title="Melhorias"></a>
+  <a href="#s8" title="Abril"></a>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 0 — CAPA
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s0" style="background: linear-gradient(135deg, #0a0a14 0%, #12121f 50%, #0d1a15 100%);">
+  <div class="slide-content" style="text-align:center;">
+    <p style="color:var(--green);font-size:0.85rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:24px;">Boost Research</p>
+    <h1 style="font-size:clamp(2.5rem,6vw,4.5rem);">Relatório de<br>Performance</h1>
+    <p style="font-size:clamp(1.5rem,3vw,2.5rem);font-weight:300;color:var(--gray);margin-top:8px;">Março 2026</p>
+    <div style="margin-top:48px;">
+      <div style="display:inline-flex;gap:40px;padding:24px 40px;background:var(--bg2);border-radius:16px;border:1px solid var(--bg3);">
+        <div><span style="font-size:1.8rem;font-weight:900;">R$47k</span><br><span style="font-size:0.7rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;">investidos</span></div>
+        <div style="width:1px;background:var(--bg3);"></div>
+        <div><span style="font-size:1.8rem;font-weight:900;">856</span><br><span style="font-size:0.7rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;">leads</span></div>
+        <div style="width:1px;background:var(--bg3);"></div>
+        <div><span style="font-size:1.8rem;font-weight:900;color:var(--green);">1.9%</span><br><span style="font-size:0.7rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;">CTR (meta: 1.5%)</span></div>
+      </div>
+    </div>
+
+    <div class="speaker-note" style="text-align:left;max-width:800px;margin:40px auto 0;">
+      "Março foi o mês mais importante da história de mídia da Boost. Não só pelo volume — <strong>856 leads</strong> — mas pelo que construímos por baixo: rastreamento completo, qualificação automática e uma estrutura que muda como o comercial vai receber leads a partir de agora."
+    </div>
+  </div>
+  <div class="brand-footer">META ADS · TODAS AS CAMPANHAS</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 1 — VISÃO GERAL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s1">
+  <div class="slide-number">01 / 08</div>
+  <div class="slide-content">
+    <span class="slide-tab">Visão Geral</span>
+    <h2>O mês em números</h2>
+
+    <div class="metric-grid">
+      <div class="metric-card">
+        <div class="value">R$47.096</div>
+        <div class="label">Investimento</div>
+      </div>
+      <div class="metric-card">
+        <div class="value">856</div>
+        <div class="label">Leads capturados</div>
+      </div>
+      <div class="metric-card">
+        <div class="value">R$55</div>
+        <div class="label">CPL médio</div>
+      </div>
+      <div class="metric-card">
+        <div class="value" style="color:var(--green);">1.9%</div>
+        <div class="label">CTR (meta: 1.5%)</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:32px;">3 destaques</h3>
+    <div class="metric-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="col-card">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--green);">R$11</div>
+        <div class="big-label">CPL IR Cripto</div>
+        <p style="font-size:0.85rem;color:var(--gray);margin-top:12px;">O menor CPL da história da Boost Research</p>
+      </div>
+      <div class="col-card">
+        <div style="font-size:2.5rem;font-weight:900;">3,4x</div>
+        <div class="big-label">LP vs Form</div>
+        <p style="font-size:0.85rem;color:var(--gray);margin-top:12px;">LP qualifica 3,4 vezes mais que o formulário nativo</p>
+      </div>
+      <div class="col-card">
+        <div style="font-size:2.5rem;font-weight:900;">856</div>
+        <div class="big-label">Maior base</div>
+        <p style="font-size:0.85rem;color:var(--gray);margin-top:12px;">Maior base de leads que a Boost já construiu em 1 mês</p>
+      </div>
+    </div>
+
+    <div class="speaker-note">
+      "O destaque: nosso CTR ficou em <span class="highlight">1.9%</span> — a meta era 1.5%. Os criativos estão parando o scroll. O desafio agora é converter esse clique em lead qualificado pelo menor custo possível.<br><br>
+      Três coisas pra guardar: IR Cripto a <strong>R$11 por lead</strong>. LP qualifica <strong>3,4x mais</strong> que o form. E <strong>856 leads</strong> é a maior base que a Boost já teve em um mês."
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 2 — EVOLUÇÃO SEMANAL
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s2">
+  <div class="slide-number">02 / 08</div>
+  <div class="slide-content">
+    <span class="slide-tab">Evolução Semanal</span>
+    <h2>A história do mês,<br>semana a semana</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-week">S1 · 01-07/mar</div>
+        <div class="tl-title">Arranque forte</div>
+        <div class="tl-detail">CPL R$38 · CTR 2.0% — Reels + form nativo dominando</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">S2 · 08-14/mar</div>
+        <div class="tl-title">Integração RD Station</div>
+        <div class="tl-detail">CPL R$40 · WhatsApp indisponível, início da integração RD — fim da planilha manual</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">S3 · 15-21/mar</div>
+        <div class="tl-title">LPs no ar</div>
+        <div class="tl-detail">CPL R$65 · LP Análise + LP IR Cripto lançadas — mais fricção, muito mais qualificação</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">S4 · 22-28/mar</div>
+        <div class="tl-title">C4 lançada</div>
+        <div class="tl-detail">CPL R$103 · Rastreamento completo ativado — fase de aprendizado do algoritmo</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">S5 · 29-31/mar</div>
+        <div class="tl-title">Fechamento</div>
+        <div class="tl-detail">CPL R$131 · Apenas 3 dias · IR Cripto compensou com CPL R$11</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);border:1px solid var(--bg3);border-radius:12px;padding:20px 24px;margin-top:8px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:0.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;">CTR ao longo do mês</span>
+        <span class="badge badge-green">Acima da meta em todas as semanas</span>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:16px;align-items:flex-end;height:80px;">
+        <div style="flex:1;text-align:center;"><div style="background:var(--green);height:80px;border-radius:6px;"></div><div style="font-size:0.7rem;color:var(--gray);margin-top:4px;">S1 · 2.0%</div></div>
+        <div style="flex:1;text-align:center;"><div style="background:var(--green);height:80px;border-radius:6px;"></div><div style="font-size:0.7rem;color:var(--gray);margin-top:4px;">S2 · 2.0%</div></div>
+        <div style="flex:1;text-align:center;"><div style="background:var(--green);height:80px;border-radius:6px;"></div><div style="font-size:0.7rem;color:var(--gray);margin-top:4px;">S3 · 2.0%</div></div>
+        <div style="flex:1;text-align:center;"><div style="background:var(--green);height:64px;border-radius:6px;"></div><div style="font-size:0.7rem;color:var(--gray);margin-top:4px;">S4 · 1.6%</div></div>
+        <div style="flex:1;text-align:center;"><div style="background:rgba(0,179,126,0.6);height:60px;border-radius:6px;"></div><div style="font-size:0.7rem;color:var(--gray);margin-top:4px;">S5 · 1.5%</div></div>
+      </div>
+      <div style="border-top:1px dashed var(--yellow);margin-top:-20px;position:relative;"><span style="position:absolute;right:0;top:-16px;font-size:0.65rem;color:var(--yellow);">META 1.5%</span></div>
+    </div>
+
+    <div class="speaker-note">
+      "O CPL subiu ao longo do mês — e é esperado. Saímos de form nativo (barato, sem qualificação) para LP com formulário completo (mais caro, lead pronto pro comercial). O CTR ficou <span class="highlight">acima da meta de 1.5% em todas as semanas</span>. O gargalo não é atração — é conversão."
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 3 — CAMPANHA C4
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s3">
+  <div class="slide-number">03 / 08</div>
+  <div class="slide-content">
+    <span class="slide-tab">Campanha C4</span>
+    <h2>O novo motor de<br>captação qualificada</h2>
+    <p class="subtitle">Foco em investidores com patrimônio ≥R$50k via LP com formulário completo</p>
+
+    <div class="metric-grid" style="margin-top:32px;">
+      <div class="metric-card"><div class="value">R$8.217</div><div class="label">Investimento (10 dias)</div></div>
+      <div class="metric-card"><div class="value">46</div><div class="label">Leads</div></div>
+      <div class="metric-card"><div class="value" style="color:var(--yellow);">R$179</div><div class="label">CPL (fase de aprendizado)</div></div>
+      <div class="metric-card"><div class="value">52%</div><div class="label">Qualificados ≥R$50k</div></div>
+    </div>
+
+    <div class="two-col" style="margin-top:24px;">
+      <div class="col-card">
+        <h4>O que funciona</h4>
+        <div class="rank-item" style="border:none;padding:8px 0;">
+          <div><span class="badge badge-green">R$152</span></div>
+          <div class="rank-info"><div class="rank-name">Carrossel BOOST-BROAD</div><div class="rank-detail">14 leads — melhor volume da LP</div></div>
+        </div>
+        <div class="rank-item" style="border:none;padding:8px 0;">
+          <div><span class="badge badge-green">R$67</span></div>
+          <div class="rank-info"><div class="rank-name">Form Nativo</div><div class="rank-detail">7 leads — eficiente, sem qualificação</div></div>
+        </div>
+      </div>
+      <div class="col-card">
+        <h4>O que corrigimos</h4>
+        <div class="rank-item" style="border:none;padding:8px 0;">
+          <div><span class="badge badge-red">15 MB</span></div>
+          <div class="rank-info"><div class="rank-name">Foto na LP pesava 15 megabytes</div><div class="rank-detail">Otimizamos para 74 KB — PageSpeed: 63 → 96</div></div>
+        </div>
+        <div class="rank-item" style="border:none;padding:8px 0;">
+          <div><span class="badge badge-yellow">Observar</span></div>
+          <div class="rank-info"><div class="rank-name">AF-TRAD Carrossel: CPL R$453</div><div class="rank-detail">Monitorando 48h antes de pausar</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="speaker-note">
+      "A C4 é a campanha mais importante. O CPL de R$179 é alto, mas é <strong>fase de aprendizado</strong> — os primeiros 50 leads custam mais. O dado que importa: <span class="highlight">52% dos leads têm patrimônio acima de R$50 mil</span>. São leads prontos pro comercial.<br><br>
+      A LP tinha uma foto de <strong>15 megabytes</strong>. Otimizamos para 74 KB — o PageSpeed subiu de 63 para 96. Isso deve impactar o CPL em abril."
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 4 — IR CRIPTO
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s4">
+  <div class="slide-number">04 / 08</div>
+  <div class="slide-content">
+    <span class="slide-tab">IR Cripto 2026</span>
+    <h2>A campanha mais eficiente<br>da história da Boost</h2>
+
+    <div style="display:flex;align-items:center;gap:48px;margin:40px 0;">
+      <div>
+        <div class="big-number" style="color:var(--green);">R$11</div>
+        <div class="big-label">Custo por lead</div>
+      </div>
+      <div style="width:1px;height:80px;background:var(--bg3);"></div>
+      <div>
+        <div class="big-number">R$319</div>
+        <div class="big-label">Investimento total</div>
+      </div>
+      <div style="width:1px;height:80px;background:var(--bg3);"></div>
+      <div>
+        <div class="big-number">28</div>
+        <div class="big-label">Leads gerados</div>
+      </div>
+    </div>
+
+    <h3>Top 3 Criativos</h3>
+    <div class="rank-item">
+      <div class="rank-medal">🥇</div>
+      <div class="rank-info"><div class="rank-name">Feed Reengajamento (V1D)</div><div class="rank-detail">Público que já visitou a LP nos últimos 30 dias</div></div>
+      <div class="rank-value" style="color:var(--green);">R$3,50<br><span style="font-size:0.7rem;color:var(--gray);font-weight:400;">CPL · CTR 3.23%</span></div>
+    </div>
+    <div class="rank-item">
+      <div class="rank-medal">🥈</div>
+      <div class="rank-info"><div class="rank-name">Feed Frio (V1A)</div><div class="rank-detail">Público novo via Advantage+</div></div>
+      <div class="rank-value">R$5,10<br><span style="font-size:0.7rem;color:var(--gray);font-weight:400;">CPL · CTR 4.23%</span></div>
+    </div>
+    <div class="rank-item">
+      <div class="rank-medal">🥉</div>
+      <div class="rank-info"><div class="rank-name">Stories Ebook Form (V1C)</div><div class="rank-detail">Form nativo em Stories</div></div>
+      <div class="rank-value">R$14,70<br><span style="font-size:0.7rem;color:var(--gray);font-weight:400;">CPL · CTR 1.56%</span></div>
+    </div>
+
+    <div class="speaker-note">
+      "Investimos <strong>trezentos e dezenove reais</strong> e geramos 28 leads. CPL de R$11. O melhor criativo trouxe leads a <span class="highlight">R$3,50</span>.<br><br>
+      Por que funciona? <strong>Urgência real</strong> — prazo do IR 31 de maio. <strong>Fricção zero</strong> — e-book gratuito. <strong>Dor concreta</strong> — '75% de multa' e 'A Receita Federal já sabe'.<br><br>
+      Minha recomendação: <strong>escalar agora</strong>. Com R$2-3k por mês, podemos gerar 200 a 300 leads a CPL abaixo de R$15."
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 5 — PERFIL DOS LEADS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s5">
+  <div class="slide-number">05 / 08</div>
+  <div class="slide-content">
+    <span class="slide-tab">Perfil dos Leads</span>
+    <h2>Não basta gerar lead.<br>Precisa qualificar.</h2>
+
+    <h3>856 leads · 3 fontes · qualidades diferentes</h3>
+
+    <div class="progress-bar">
+      <div class="progress-segment" style="width:91.2%;background:var(--yellow);">Form Nativo · 781 (91%)</div>
+      <div class="progress-segment" style="width:5.5%;background:var(--green);">LP · 47</div>
+      <div class="progress-segment" style="width:3.3%;background:#10b981;">IR · 28</div>
+    </div>
+
+    <table style="margin-top:24px;">
+      <tr><th>Fonte</th><th>Leads</th><th>CPL</th><th>Qualificação ≥R$50k</th><th>CPL Qualificado</th></tr>
+      <tr><td>Form Nativo Meta</td><td>781</td><td>R$41</td><td>16,4%</td><td>R$250</td></tr>
+      <tr><td style="color:var(--green);font-weight:700;">LP Análise (C4)</td><td>47</td><td>R$179</td><td style="color:var(--green);font-weight:700;">52%</td><td>R$344</td></tr>
+      <tr><td>LP IR Cripto</td><td>28</td><td>R$11</td><td>A medir</td><td>A medir</td></tr>
+    </table>
+
+    <div class="vs-box">
+      <div class="vs-side">
+        <div style="font-size:0.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;">Form Nativo</div>
+        <div style="font-size:2.5rem;font-weight:900;margin:12px 0;">16,4%</div>
+        <div style="font-size:0.85rem;color:var(--gray);">Qualificados ≥R$50k</div>
+      </div>
+      <div class="vs-divider">→</div>
+      <div class="vs-side" style="border-color:var(--green);">
+        <div style="font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.06em;">Landing Page</div>
+        <div style="font-size:2.5rem;font-weight:900;color:var(--green);margin:12px 0;">52%</div>
+        <div style="font-size:0.85rem;color:var(--gray);">Qualificados ≥R$50k</div>
+      </div>
+    </div>
+
+    <div class="speaker-note">
+      "Essa é a aba mais estratégica. A LP custa mais por lead, mas entrega <span class="highlight">3,4 vezes mais leads qualificados</span>. 52% dos leads da LP têm patrimônio acima de R$50 mil em cripto — contra 16% do form nativo.<br><br>
+      Em abril, com o quiz de diagnóstico patrimonial, teremos uma quarta fonte — mais barata que o form, com qualificação automática por perfil cambial."
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 6 — MELHORES CRIATIVOS
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s6">
+  <div class="slide-number">06 / 08</div>
+  <div class="slide-content">
+    <span class="slide-tab">Melhores Criativos</span>
+    <h2>Volume, eficiência<br>e atração</h2>
+
+    <div class="metric-grid" style="grid-template-columns:repeat(3,1fr);margin-top:32px;">
+      <div class="col-card" style="text-align:center;">
+        <div style="font-size:0.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;">Maior volume</div>
+        <div style="font-size:2rem;font-weight:900;">309</div>
+        <div style="font-size:0.85rem;color:var(--gray);margin-top:4px;">leads</div>
+        <div style="margin-top:16px;font-weight:600;">Reels MORNO+QUENTE</div>
+        <div style="font-size:0.85rem;color:var(--gray);margin-top:4px;">CPL R$41 · Form nativo</div>
+      </div>
+      <div class="col-card" style="text-align:center;">
+        <div style="font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;">Melhor CPL</div>
+        <div style="font-size:2rem;font-weight:900;color:var(--green);">R$3,50</div>
+        <div style="font-size:0.85rem;color:var(--gray);margin-top:4px;">por lead</div>
+        <div style="margin-top:16px;font-weight:600;">IR Cripto V1D</div>
+        <div style="font-size:0.85rem;color:var(--gray);margin-top:4px;">Reengajamento 30d</div>
+      </div>
+      <div class="col-card" style="text-align:center;">
+        <div style="font-size:0.75rem;color:var(--blue);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;">Melhor CTR</div>
+        <div style="font-size:2rem;font-weight:900;color:var(--blue);">4.23%</div>
+        <div style="font-size:0.85rem;color:var(--gray);margin-top:4px;">quase 3x a meta</div>
+        <div style="margin-top:16px;font-weight:600;">IR Cripto V1A</div>
+        <div style="font-size:0.85rem;color:var(--gray);margin-top:4px;">Feed Frio · Advantage+</div>
+      </div>
+    </div>
+
+    <div class="speaker-note">
+      "Três destaques rápidos. <strong>Volume:</strong> Reels com 309 leads a R$41 — a máquina da Boost. <strong>Eficiência:</strong> reengajamento a R$3,50 — todo visitante que não converteu precisa de retargeting. <strong>Atração:</strong> CTR de <span class="highlight">4.23%</span>, três vezes a meta. O headline '75% de multa' funciona."
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 7 — MELHORIAS & TRACKING
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s7">
+  <div class="slide-number">07 / 08</div>
+  <div class="slide-content">
+    <span class="slide-tab">Infraestrutura</span>
+    <h2>De planilha manual<br>para automação</h2>
+
+    <div class="vs-box" style="margin:32px 0;">
+      <div class="vs-side">
+        <div style="font-size:0.75rem;color:var(--red);text-transform:uppercase;letter-spacing:0.06em;">Antes (fevereiro)</div>
+        <div style="margin-top:16px;text-align:left;font-size:0.9rem;color:var(--gray);line-height:1.8;">
+          Planilha manual<br>↓<br>Triagem humana<br>↓<br>Repasse ao comercial
+        </div>
+      </div>
+      <div class="vs-divider">→</div>
+      <div class="vs-side" style="border-color:var(--green);">
+        <div style="font-size:0.75rem;color:var(--green);text-transform:uppercase;letter-spacing:0.06em;">A partir de abril</div>
+        <div style="margin-top:16px;text-align:left;font-size:0.9rem;line-height:1.8;">
+          Lead entra<br>↓<br>Chatbot qualifica (SDR)<br>↓<br>Comercial recebe <strong style="color:var(--green);">qualificado</strong>
+        </div>
+      </div>
+    </div>
+
+    <h3>O que foi construído em março</h3>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-week">Semana 2</div><div class="tl-title">Integração RD Station</div><div class="tl-detail">Fim da planilha manual</div></div>
+      <div class="tl-item"><div class="tl-week">Semana 3</div><div class="tl-title">LPs com formulário inteligente</div><div class="tl-detail">Campos condicionais de patrimônio cripto + tradicional</div></div>
+      <div class="tl-item"><div class="tl-week">Semana 4</div><div class="tl-title">C4 com tracking end-to-end</div><div class="tl-detail">UTM → criativo → perfil do lead no RD Station</div></div>
+    </div>
+
+    <div style="display:flex;gap:16px;margin-top:24px;">
+      <div style="flex:1;padding:16px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--green);"><span style="font-size:0.8rem;">Chatbot RD Conversas</span><br><span class="badge badge-green" style="margin-top:8px;">Pronto ✓</span></div>
+      <div style="flex:1;padding:16px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--green);"><span style="font-size:0.8rem;">Fluxo SDR automatizado</span><br><span class="badge badge-green" style="margin-top:8px;">Pronto ✓</span></div>
+      <div style="flex:1;padding:16px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--yellow);"><span style="font-size:0.8rem;">Webhook → comercial</span><br><span class="badge badge-yellow" style="margin-top:8px;">Suporte RD</span></div>
+      <div style="flex:1;padding:16px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--green);"><span style="font-size:0.8rem;">sGTM + Meta CAPI</span><br><span class="badge badge-green" style="margin-top:8px;">Ativo ✓</span></div>
+    </div>
+
+    <div class="speaker-note">
+      "Essa é a conquista mais importante de março. <strong>Não é um número — é uma infraestrutura.</strong><br><br>
+      O chatbot está pronto. O fluxo de qualificação está pronto. Estamos esperando o suporte do RD Station liberar o webhook. Em abril, o tracking server-side com <strong>Meta CAPI</strong> já está ativo — os eventos são enviados direto do servidor, sem depender do navegador."
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SLIDE 8 — ABRIL (FECHAMENTO)
+     ═══════════════════════════════════════════════════════════ -->
+<section class="slide" id="s8" style="background: linear-gradient(135deg, #0a0a14 0%, #0d1a15 100%);">
+  <div class="slide-number">08 / 08</div>
+  <div class="slide-content" style="text-align:center;">
+    <span class="slide-tab">O que vem em abril</span>
+    <h2 style="font-size:clamp(2rem,4vw,3rem);">Escalar o que funciona.<br>Renovar o que cansou.<br>Automatizar o resto.</h2>
+
+    <div class="metric-grid" style="grid-template-columns:repeat(3,1fr);margin-top:40px;text-align:left;">
+      <div class="col-card">
+        <div style="font-size:2rem;margin-bottom:8px;">📈</div>
+        <h4>Escalar</h4>
+        <p style="font-size:0.9rem;color:var(--gray);line-height:1.6;">IR Cripto de R$319 para R$2-3k/mês<br>Quiz Patrimônio: R$5k, CPL ≤R$15<br>200-300 leads novos por campanha</p>
+      </div>
+      <div class="col-card">
+        <div style="font-size:2rem;margin-bottom:8px;">🎨</div>
+        <h4>Renovar</h4>
+        <p style="font-size:0.9rem;color:var(--gray);line-height:1.6;">Criativos C4 com novos ângulos<br>Regulamentação BC, ano eleitoral<br>Copy @vera com framework completo</p>
+      </div>
+      <div class="col-card">
+        <div style="font-size:2rem;margin-bottom:8px;">🤖</div>
+        <h4>Automatizar</h4>
+        <p style="font-size:0.9rem;color:var(--gray);line-height:1.6;">100% dos leads qualificados via chatbot<br>Cruzamento criativo × perfil<br>Decisão de mídia por qualidade</p>
+      </div>
+    </div>
+
+    <div class="speaker-note" style="text-align:left;max-width:800px;margin:40px auto 0;">
+      "Resumindo março em três frases:<br><br>
+      Construímos a <strong>maior base de leads da história da Boost</strong>: 856 leads, CTR acima da meta.<br><br>
+      Montamos a <strong>infraestrutura de tracking e qualificação</strong> que faltava: rastreamento completo, LP com campos inteligentes, automação de SDR.<br><br>
+      Identificamos o que funciona: IR Cripto a <span class="highlight">R$11</span>, LP que qualifica <span class="highlight">3,4x mais</span>, e reengajamento a <span class="highlight">R$3,50 por lead</span>.<br><br>
+      Em abril, o foco é: escalar, renovar e automatizar. <strong>Os números vão falar.</strong>"
+    </div>
+
+    <div style="margin-top:48px;color:var(--gray-dim);font-size:0.8rem;">
+      Boost Research · Performance Report · Março 2026<br>
+      Dashboard: elsonflorentino-afk.github.io/projetos-boost/relatorio_marco_2026_boost.html
+    </div>
+  </div>
+  <div class="brand-footer">BOOST RESEARCH · MARÇO 2026</div>
+</section>
+
+</body>
+</html>
