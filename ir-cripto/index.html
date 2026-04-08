@@ -47,8 +47,20 @@ src="https://www.facebook.com/tr?id=1062572485162288&ev=PageView&noscript=1"
 <style>
 /* ═══════════════════════════════════════════════════════════
    PRECISION BLACK — Design System v3
-   Referências: Epic.net · Apple iPhone · Dropbox Brand · Scott Snyder
+   Referências: Epic.net · Apple iPhone · Dropbox Brand · Scott Snyder · Aura.build
    ═══════════════════════════════════════════════════════════ */
+
+/* ── CSS Houdini @property — anima ângulo do conic-gradient ── */
+@property --form-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@property --form-shine {
+  syntax: '<color>';
+  initial-value: rgba(255,255,255,0);
+  inherits: false;
+}
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -261,37 +273,113 @@ body {
 .step-body strong { display: block; font-size: 0.88rem; font-weight: 700; color: var(--white); margin-bottom: 2px; }
 .step-body span { font-size: 0.8rem; color: var(--gray-2); line-height: 1.5; }
 
-/* ── FORM CARD ── */
-.hero-form {
-  position: sticky; top: 80px;
-  background: var(--bg-3);
-  border: 1px solid var(--border-md);
-  border-radius: 4px;
-  padding: 32px;
-  /* Linha verde no topo */
-  border-top: 2px solid var(--green);
-  box-shadow: 0 0 60px rgba(0,179,126,0.07), 0 24px 48px rgba(0,0,0,0.4);
+/* ════════════════════════════════════════════════════
+   FORM CARD — Aura.build technique
+   Conic-gradient border + Aurora interna + 6-layer shadow
+   ════════════════════════════════════════════════════ */
+
+/* Keyframes exclusivos do form */
+@keyframes form-border-spin {
+  to { --form-angle: 360deg; }
+}
+@keyframes aurora-drift {
+  0%   { background-position: 0% 0%; }
+  33%  { background-position: 100% 50%; }
+  66%  { background-position: 50% 100%; }
+  100% { background-position: 0% 0%; }
+}
+@keyframes badge-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  35%       { transform: translateY(-5px) rotate(-4deg); }
+  70%       { transform: translateY(-2px) rotate(3deg); }
+}
+@keyframes btn-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes form-pulse-glow {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
 }
 
+/* ── Borda animada via conic-gradient (técnica Aura.build) ── */
+.hero-form {
+  position: sticky; top: 80px;
+  border-radius: 8px;
+  padding: 32px;
+  /* padding-box = fundo sólido / border-box = borda animada */
+  background:
+    linear-gradient(var(--bg-3), var(--bg-3)) padding-box,
+    conic-gradient(
+      from var(--form-angle),
+      transparent 0deg,
+      rgba(0,179,126,0) 70deg,
+      rgba(0,179,126,0.9) 95deg,
+      rgba(255,255,255,0.55) 110deg,
+      rgba(0,201,141,0.95) 130deg,
+      rgba(0,179,126,0.4) 160deg,
+      transparent 200deg,
+      transparent 360deg
+    ) border-box;
+  border: 1px solid transparent;
+  animation: form-border-spin 6s linear infinite;
+  /* 6 camadas de sombra — técnica aura.build */
+  box-shadow:
+    0 0 0 1px rgba(0,179,126,0.06),
+    0 2px 4px rgba(0,0,0,0.12),
+    0 8px 16px rgba(0,0,0,0.18),
+    0 24px 40px rgba(0,0,0,0.28),
+    0 48px 80px rgba(0,0,0,0.38),
+    0 0 60px rgba(0,179,126,0.10);
+  position: relative; overflow: hidden;
+}
+
+/* ── Aurora: camada de gradiente flutuante interna ── */
+.form-aurora {
+  position: absolute; inset: -40px;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(0,179,126,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%, rgba(0,255,160,0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 90%, rgba(0,179,126,0.07) 0%, transparent 50%);
+  background-size: 200% 200%;
+  animation: aurora-drift 10s ease-in-out infinite;
+  pointer-events: none; z-index: 0;
+  border-radius: 8px;
+}
+
+/* Garante que todo conteúdo interno fique acima da aurora */
+.hero-form > *:not(.form-aurora) { position: relative; z-index: 1; }
+
+/* ── Badge com ícone flutuante ── */
 .form-badge {
   display: flex; align-items: center; gap: 12px;
   padding: 14px 16px; margin-bottom: 24px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  border-left: 2px solid var(--green);
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(0,179,126,0.2);
+  border-radius: 6px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
-.form-badge-icon { font-size: 1.6rem; flex-shrink: 0; }
+.form-badge-icon {
+  font-size: 1.6rem; flex-shrink: 0;
+  animation: badge-float 4s ease-in-out infinite;
+  display: inline-block;
+}
 .form-badge-text strong {
   display: block; font-size: 12px; font-weight: 700; color: var(--white);
   margin-bottom: 2px;
 }
 .form-badge-text span { font-size: 11px; color: var(--gray-2); }
 
+/* ── Dots com animação de pulso sequencial ── */
 .form-dots { display: flex; gap: 4px; margin-bottom: 20px; }
 .form-dots span {
-  flex: 1; height: 2px; background: var(--green); border-radius: 0;
+  flex: 1; height: 2px; border-radius: 0;
+  background: linear-gradient(90deg, var(--green), var(--green-hi));
+  animation: form-pulse-glow 2s ease-in-out infinite;
 }
+.form-dots span:nth-child(2) { animation-delay: 0.3s; }
+.form-dots span:nth-child(3) { animation-delay: 0.6s; }
 
 .hero-form h3 {
   font-size: 1.1rem; font-weight: 700; color: var(--white);
@@ -310,42 +398,58 @@ body {
 }
 .f-group input {
   width: 100%;
-  background: var(--bg-card);
+  background: rgba(0,0,0,0.5);
   border: 1px solid var(--border-md);
   color: var(--white);
   border-radius: 4px;
   padding: 12px 14px;
   font-size: 14px; font-family: var(--font); font-weight: 400;
   outline: none;
-  transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+  transition: border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), background 0.25s;
+  backdrop-filter: blur(4px);
 }
 .f-group input::placeholder { color: var(--gray-3); }
 .f-group input:focus {
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px var(--green-dim);
+  border-color: rgba(0,179,126,0.7);
+  background: rgba(0,179,126,0.04);
+  box-shadow: 0 0 0 3px rgba(0,179,126,0.12), inset 0 0 12px rgba(0,179,126,0.04);
 }
 
+/* ── Botão com shimmer de gradiente animado ── */
 .btn-submit {
   display: block; width: 100%;
-  background: var(--green); color: #000;
   border: none; font-weight: 800; font-size: 14px;
   padding: 15px; border-radius: 4px;
   cursor: pointer; font-family: var(--font);
-  letter-spacing: 0.01em; margin-top: 8px;
-  transition: background 0.2s var(--ease-out), transform 0.1s;
+  letter-spacing: 0.02em; margin-top: 8px;
   position: relative; overflow: hidden;
+  color: #000;
+  /* Gradiente animado inspirado em aura.build shiny-cta */
+  background: linear-gradient(
+    110deg,
+    #00B37E 0%,
+    #00C98D 25%,
+    #00ffaa 50%,
+    #00C98D 75%,
+    #00B37E 100%
+  );
+  background-size: 200% auto;
+  animation: btn-shimmer 3s linear infinite;
+  transition: transform 0.1s, box-shadow 0.2s var(--ease-out);
+  box-shadow: 0 0 20px rgba(0,179,126,0.25), 0 4px 16px rgba(0,0,0,0.3);
 }
-.btn-submit::after {
+.btn-submit::before {
   content: '';
-  position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.6s var(--ease-out);
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, transparent 100%);
+  pointer-events: none; border-radius: 4px;
 }
-.btn-submit:hover { background: var(--green-hi); }
-.btn-submit:hover::after { left: 140%; }
-.btn-submit:active { transform: scale(0.99); }
-.btn-submit:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-submit:hover {
+  box-shadow: 0 0 32px rgba(0,179,126,0.45), 0 8px 24px rgba(0,0,0,0.4);
+  transform: translateY(-1px);
+}
+.btn-submit:active { transform: scale(0.99) translateY(0); }
+.btn-submit:disabled { opacity: 0.45; cursor: not-allowed; animation: none; }
 
 .form-micro {
   font-size: 10px; color: var(--gray-2); text-align: center;
@@ -439,15 +543,35 @@ body {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
   background: var(--border); margin-top: 48px;
   border: 1px solid var(--border);
+  perspective: 1200px;
 }
 .problem-item {
   background: var(--bg);
   padding: 32px;
   font-size: 0.95rem; color: var(--gray-1); line-height: 1.75;
-  transition: background 0.2s var(--ease-out);
+  /* Tilt JS controla o transform — transição de saída (mouseleave) */
+  transition: box-shadow 0.4s var(--ease-out), background 0.3s var(--ease-out), z-index 0s;
   position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 1;
 }
-.problem-item:hover { background: var(--bg-2); }
+.problem-item:hover {
+  background: var(--bg-2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,179,126,0.22);
+  z-index: 10;
+}
+/* Specular highlight segue o cursor via CSS var --mx/--my */
+.problem-item .tilt-glare {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255,255,255,0.07) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+  border-radius: inherit;
+}
+.problem-item:hover .tilt-glare { opacity: 1; }
+
 .problem-item::before {
   content: attr(data-n);
   display: block;
@@ -481,12 +605,30 @@ body {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; background: var(--border-md);
   border: 1px solid var(--border-md); margin-top: 48px;
+  perspective: 1400px;
 }
 .risk-card {
   background: var(--bg-3); padding: 32px 28px;
-  transition: background 0.2s var(--ease-out);
+  transition: box-shadow 0.4s var(--ease-out), background 0.3s var(--ease-out), z-index 0s;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  z-index: 1;
 }
-.risk-card:hover { background: var(--bg-card); }
+.risk-card:hover {
+  background: var(--bg-card);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.75), 0 0 0 1px rgba(0,179,126,0.24);
+  z-index: 10;
+}
+.risk-card .tilt-glare {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255,255,255,0.07) 0%, transparent 55%);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease-out);
+  border-radius: inherit;
+}
+.risk-card:hover .tilt-glare { opacity: 1; }
 .risk-card .r-num {
   font-size: 10px; font-weight: 700; color: var(--green);
   letter-spacing: 0.14em; text-transform: uppercase;
@@ -746,13 +888,26 @@ body {
   font-size: 0.95rem; color: var(--gray-2); line-height: 1.75; margin-bottom: 32px;
 }
 
-.brand-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.brand-stats {
+  display: flex; gap: 0; flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 24px;
+}
+.brand-stat {
+  padding-right: 32px;
+  margin-right: 32px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.brand-stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
 .brand-stat .bs-num {
   font-size: 2rem; font-weight: 800; letter-spacing: -0.04em;
   color: var(--white); line-height: 1;
 }
 .brand-stat .bs-num em { font-style: normal; color: var(--green); }
-.brand-stat .bs-label { font-size: 11px; color: var(--gray-2); margin-top: 4px; }
+.brand-stat--accent .bs-num em {
+  font-size: 2rem; letter-spacing: -0.04em; color: var(--green);
+}
+.brand-stat .bs-label { font-size: 11px; color: var(--gray-2); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
 
 /* ════════════════════════════════
    CTA FINAL
@@ -834,11 +989,11 @@ body {
 /* ── Cursor glow ── */
 #cursor-glow {
   position: fixed; top: 0; left: 0;
-  width: 600px; height: 600px;
+  width: 500px; height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,179,126,0.18) 0%, rgba(0,179,126,0.06) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,179,126,0.09) 0%, rgba(0,179,126,0.03) 50%, transparent 70%);
   pointer-events: none; z-index: 0;
-  transform: translate(-300px, -300px);
+  transform: translate(-250px, -250px);
   transition: transform 0.12s linear;
   mix-blend-mode: screen;
 }
@@ -931,24 +1086,7 @@ body {
 }
 .chapter-item:hover::after { opacity: 1; transform: translateX(0); }
 
-/* ── Card glow on hover ── */
-.risk-card {
-  position: relative;
-  transition: background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-}
-.risk-card:hover {
-  background: var(--bg-card);
-  box-shadow: inset 0 0 0 1px rgba(0,179,126,0.15);
-}
-
-/* ── Problem item glow on hover ── */
-.problem-item {
-  transition: background 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
-}
-.problem-item:hover {
-  background: var(--bg-2);
-  box-shadow: inset 0 0 0 1px rgba(0,179,126,0.1);
-}
+/* Cards 3D — hover definido nos blocos de layout acima */
 
 /* ── Grain texture overlay ── */
 @keyframes grain-shift {
@@ -1047,7 +1185,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a class="nav-logo" href="#">
       <img src="https://s3.amazonaws.com/plugcrm-app/69a1cc3e5a0b690013d94fe3/instance_file/69bc7d48d81f8b00269a7336.jpg" alt="Boost Research">
     </a>
-    <a href="#formulario" class="nav-cta" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});return false;">
+    <a href="#formulario" class="nav-cta" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'navbar_cta',cta_text:'Baixar e-book gratuito'});return false;">
       Baixar e-book gratuito
     </a>
   </div>
@@ -1091,8 +1229,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="t-label">Capítulos</span>
         </div>
         <div class="hero-trust-item">
-          <span class="t-val">+10</span>
-          <span class="t-label">Anos de mercado</span>
+          <span class="t-val">31/05</span>
+          <span class="t-label">Prazo IR</span>
         </div>
       </div>
 
@@ -1124,6 +1262,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- FORMULÁRIO -->
     <div class="hero-form reveal reveal-d1" id="formulario">
+      <!-- Aurora background layer -->
+      <div class="form-aurora"></div>
+
       <div class="form-badge">
         <span class="form-badge-icon">📘</span>
         <div class="form-badge-text">
@@ -1215,7 +1356,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="stats-bar">
   <div class="container">
     <div class="stat-cell reveal">
-      <div class="stat-num"><span class="counter" data-target="10" data-prefix="+" data-suffix=" anos">+10 anos</span></div>
+      <div class="stat-num"><span class="counter" data-target="10" data-prefix="+">10</span><span class="stat-accent"> anos</span></div>
       <p class="stat-desc">de acompanhamento do mercado cripto — dois ciclos completos de alta e baixa</p>
     </div>
     <div class="stat-cell reveal reveal-d1">
@@ -1237,15 +1378,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="problem-grid">
       <div class="problem-item reveal" data-n="Erro 01">
+        <div class="tilt-glare"></div>
         Você tem Bitcoin, Ethereum ou altcoins declarados como "saldo em conta" — sem saber que cada ativo tem <strong>código e grupo específico</strong> no programa da Receita.
       </div>
       <div class="problem-item reveal reveal-d1" data-n="Erro 02">
+        <div class="tilt-glare"></div>
         Você vendeu cripto em algum mês e não emitiu o DARF até o último dia útil do mês seguinte — sem saber que a <strong>multa por atraso é de 0,33% ao dia</strong>, mais 1% por mês.
       </div>
       <div class="problem-item reveal reveal-d2" data-n="Erro 03">
+        <div class="tilt-glare"></div>
         Você recebeu rendimentos de staking, yield farming ou cashback em exchange — e não sabe se isso é <strong>rendimento tributável, ganho de capital ou não tributável.</strong>
       </div>
       <div class="problem-item reveal reveal-d3" data-n="Erro 04">
+        <div class="tilt-glare"></div>
         Você tem cripto em Binance, Coinbase ou Kraken — e não sabe que <strong>posição acima de US$1.000 exige declaração como bem no exterior</strong>, com regras diferentes da Receita.
       </div>
     </div>
@@ -1268,16 +1413,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="risk-grid">
       <div class="risk-card reveal">
+        <div class="tilt-glare"></div>
         <div class="r-num">Fato 01</div>
         <div class="r-title">A IN 1888 obriga exchanges a reportar.</div>
         <div class="r-body">Toda exchange com CNPJ no Brasil é obrigada a informar à Receita Federal todas as operações — incluindo nome, CPF, valor e tipo de ativo. Se você transacionou, a Receita provavelmente já tem os dados. Declarar certo não é opcional.</div>
       </div>
       <div class="risk-card reveal reveal-d1">
+        <div class="tilt-glare"></div>
         <div class="r-num">Fato 02</div>
         <div class="r-title">Multa por omissão: <strong>75% a 150%</strong> do imposto.</div>
         <div class="r-body">Omissão de rendimentos resulta em multa de 75% sobre o imposto não pago — podendo chegar a 150% em caso de fraude. Isso sem contar juros de mora (Selic + 1%). Uma declaração errada pode custar muito mais do que qualquer ganho não declarado.</div>
       </div>
       <div class="risk-card reveal reveal-d2">
+        <div class="tilt-glare"></div>
         <div class="r-num">Fato 03</div>
         <div class="r-title">Prazo: <strong>31 de maio.</strong> Sem prorrogação.</div>
         <div class="r-body">O programa da Receita abre em março e fecha em 31 de maio. Declaração fora do prazo gera multa mínima de R$165,74, podendo chegar a 20% do imposto devido. Quem se prepara antes evita a correria — e o erro.</div>
@@ -1378,7 +1526,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="cta-inline reveal">
-      <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});return false;" class="btn-primary">
+      <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'mid_cta',cta_text:'Baixar o e-book gratuito agora'});return false;" class="btn-primary">
         Baixar o e-book gratuito agora →
       </a>
       <p style="font-size:11px;color:var(--gray-2);margin-top:10px;">Gratuito. Sem spam. Entrega imediata no e-mail.</p>
@@ -1394,7 +1542,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p>Declare cripto em 2026 com o mesmo rigor que aplica no resto do patrimônio.</p>
       <p>E-book gratuito — 6 capítulos, checklist e exemplos práticos. Curadoria: André Franco.</p>
     </div>
-    <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});return false;"
+    <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'banner_cta',cta_text:'Quero o e-book gratuito'});return false;"
        class="btn-primary reveal reveal-d1">
       Quero o e-book gratuito →
     </a>
@@ -1459,16 +1607,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="brand-copy reveal reveal-d1">
         <div class="b-rule"></div>
-        <h2>A maior casa de análise de<br><em>criptoativos do Brasil</em></h2>
-        <p>Fundada por André Franco, a Boost Research entrega análise fundamentada sobre ativos digitais e macroeconomia — com método de research institucional e histórico que atravessa mais de um ciclo completo de mercado.</p>
+        <h2>A casa de análise cripto com a maior<br><em>experiência de mercado</em></h2>
+        <p>André Franco acompanha cripto desde 2016 — dois ciclos completos de alta e baixa, com o mesmo método, o mesmo analista. A Boost Research não nasceu no bull market. Nasceu dentro do mercado e permanece aqui, independente de onde o preço está.</p>
         <div class="brand-stats">
           <div class="brand-stat">
-            <div class="bs-num"><em>+</em><span class="counter" data-target="10">10</span></div>
-            <div class="bs-label">anos de mercado</div>
+            <div class="bs-num"><em>+</em><span class="counter" data-target="10">10</span><span class="bs-accent"> anos</span></div>
+            <div class="bs-label">no mercado cripto</div>
           </div>
           <div class="brand-stat">
             <div class="bs-num"><span class="counter" data-target="2">2</span></div>
             <div class="bs-label">ciclos completos</div>
+          </div>
+          <div class="brand-stat brand-stat--accent">
+            <div class="bs-num"><em>zero</em></div>
+            <div class="bs-label">comissão de exchange</div>
           </div>
         </div>
       </div>
@@ -1487,7 +1639,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="s-sub">Baixe agora o e-book da Boost Research e entre na declaração sabendo exatamente o que declarar, como calcular e como se proteger de multas.</p>
       </div>
       <div class="cta-final-btn-wrap reveal reveal-d1">
-        <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});return false;"
+        <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'final_cta',cta_text:'Baixar o e-book gratuito agora'});return false;"
            class="btn-primary" style="padding: 18px 48px; font-size: 1rem;">
           Baixar o e-book gratuito agora →
         </a>
@@ -1617,11 +1769,18 @@ function getUTM(key) {
   if (c) return c;
   try { return sessionStorage.getItem('boost_utm_' + key) || ''; } catch (e) { return ''; }
 }
+function getUTMOrDefault(key) {
+  var v = getUTM(key);
+  if (v) return v;
+  if (key === 'source') return 'direct';
+  if (key === 'medium') return 'none';
+  return '';
+}
 
 function fillUTMs() {
   ['source','medium','campaign','content','term'].forEach(function (k) {
     var el = document.getElementById('f-utm-' + k);
-    if (el) el.value = getCookie('boost_utm_' + k);
+    if (el) el.value = getUTMOrDefault(k);
   });
 }
 document.addEventListener('DOMContentLoaded', fillUTMs);
@@ -1632,22 +1791,20 @@ document.addEventListener('DOMContentLoaded', function () {
   var wpp = document.getElementById('f-whatsapp');
   if (!wpp) return;
 
-  wpp.addEventListener('focus', function () {
-    if (!this.value) this.value = '+55 ';
-  });
+  var mobileHidden = document.getElementById('f-mobile-phone');
 
   wpp.addEventListener('input', function () {
-    var digits = this.value.replace(/\D/g, '');
-    if (!digits.startsWith('55')) digits = '55' + digits;
-    digits = digits.slice(0, 13);
-    var ddd    = digits.slice(2, 4);
-    var parte1 = digits.slice(4, 9);
-    var parte2 = digits.slice(9, 13);
-    var v = '+55';
-    if (ddd)    v += ' (' + ddd + ')';
+    var digits = this.value.replace(/\D/g, '').slice(0, 11);
+    var ddd    = digits.slice(0, 2);
+    var parte1 = digits.slice(2, 7);
+    var parte2 = digits.slice(7, 11);
+    var v = '';
+    if (ddd)    v = '(' + ddd + ')';
     if (parte1) v += ' ' + parte1;
     if (parte2) v += '-' + parte2;
     this.value = v;
+    /* Mantém mobile_phone sempre atualizado — RD lê no click, não no submit */
+    if (mobileHidden) mobileHidden.value = digits.length >= 10 ? '+55' + digits : '';
   });
 });
 
@@ -1681,7 +1838,14 @@ window.addEventListener('submit', function (e) {
   }
 
   /* Popula mobile_phone (+55XXXXXXXXXXX) antes do RD ler o form */
-  document.getElementById('f-mobile-phone').value = '+' + wppRaw.replace(/\D/g, '');
+  var wppDigits = wppRaw.replace(/\D/g, '');
+  if (wppDigits.length < 10) {
+    e.preventDefault();
+    errEl.textContent = 'WhatsApp inválido. Digite DDD + número.';
+    errEl.style.display = 'block';
+    return;
+  }
+  document.getElementById('f-mobile-phone').value = '+55' + wppDigits;
 
   btnEl.disabled = true;
   btnEl.textContent = 'Enviando...';
@@ -1716,7 +1880,7 @@ window.addEventListener('submit', function (e) {
 var glowEl = document.getElementById('cursor-glow');
 if (glowEl && window.matchMedia('(pointer: fine)').matches) {
   document.addEventListener('mousemove', function (e) {
-    glowEl.style.transform = 'translate(' + (e.clientX - 300) + 'px, ' + (e.clientY - 300) + 'px)';
+    glowEl.style.transform = 'translate(' + (e.clientX - 250) + 'px, ' + (e.clientY - 250) + 'px)';
   }, { passive: true });
 }
 
@@ -1773,6 +1937,40 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ─── CONTADORES com easing swoop ─── */
 /* (os contadores já existem no script principal — aqui só aumentamos a duração) */
 
+/* ─── TILT 3D CARDS ─── */
+(function () {
+  var TILT_MAX_X = 8;   /* graus rotação vertical */
+  var TILT_MAX_Y = 10;  /* graus rotação horizontal */
+  var LIFT_Z    = 22;   /* px elevação no eixo Z */
+
+  function applyTilt(card) {
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var x = (e.clientX - rect.left)  / rect.width;   /* 0..1 */
+      var y = (e.clientY - rect.top)   / rect.height;  /* 0..1 */
+
+      var rotX = -((y - 0.5) * 2 * TILT_MAX_X).toFixed(2);
+      var rotY = ( (x - 0.5) * 2 * TILT_MAX_Y).toFixed(2);
+
+      card.style.transition = 'box-shadow 0.4s, background 0.3s, z-index 0s';
+      card.style.transform  =
+        'perspective(900px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale(1.03) translateZ(' + LIFT_Z + 'px)';
+
+      /* Move o specular highlight */
+      card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+    });
+
+    card.addEventListener('mouseleave', function () {
+      /* Snap back suave */
+      card.style.transition = 'transform 0.55s cubic-bezier(.2,1,.3,1), box-shadow 0.4s, background 0.3s, z-index 0s';
+      card.style.transform  = 'perspective(900px) rotateX(0deg) rotateY(0deg) scale(1) translateZ(0px)';
+    });
+  }
+
+  document.querySelectorAll('.problem-item, .risk-card').forEach(applyTilt);
+}());
+
 /* ─── MOBILE FLOATING CTA ─── */
 var mobileCta = document.getElementById('mobile-cta');
 var heroForm  = document.getElementById('formulario');
@@ -1790,10 +1988,69 @@ if (mobileCta && heroForm) {
 
 <!-- ── MOBILE FLOATING CTA ── -->
 <div id="mobile-cta" class="mobile-cta">
-  <a href="#formulario" class="mobile-cta-btn" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});return false;">
+  <a href="#formulario" class="mobile-cta-btn" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'mobile_cta',cta_text:'Baixar e-book grátis'});return false;">
     Baixar e-book grátis →
   </a>
 </div>
+
+<!-- ── WHATSAPP FLOATING BUTTON ── -->
+<style>
+.btn-wa-float-ir {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #000;
+  font-weight: 800;
+  font-size: 0.9rem;
+  font-family: var(--font-sans, sans-serif);
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}
+.btn-wa-float-ir.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.btn-wa-float-ir:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.55);
+}
+@media (max-width: 600px) {
+  .btn-wa-float-ir .wa-label { display: none; }
+  .btn-wa-float-ir { padding: 14px; border-radius: 50%; bottom: 80px; }
+}
+</style>
+
+<a href="https://wa.me/5521965622891?text=Olá%2C%20vim%20pela%20LP%20de%20IR%20Cripto%20e%20gostaria%20de%20falar%20com%20a%20equipe%20Boost%20Research"
+   target="_blank"
+   rel="noopener"
+   id="btn-wa-float-ir"
+   class="btn-wa-float-ir"
+   onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',cta_id:'floating_wa',section:'global'});">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#000"/>
+    <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.773.467 3.476 1.354 4.977L2 22l5.178-1.354A10.003 10.003 0 0012.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.29a8.283 8.283 0 01-4.218-1.157l-.302-.18-3.073.805.82-2.994-.197-.31A8.286 8.286 0 013.71 12.004C3.71 7.42 7.42 3.71 12.004 3.71c4.58 0 8.286 3.71 8.286 8.294 0 4.584-3.706 8.286-8.286 8.286z" fill="#000"/>
+  </svg>
+  <span class="wa-label">Falar com a Boost Research</span>
+</a>
+<script>
+(function() {
+  var waBtn = document.getElementById('btn-wa-float-ir');
+  if (!waBtn) return;
+  window.addEventListener('scroll', function() {
+    waBtn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+})();
+</script>
 
 </body>
 </html>

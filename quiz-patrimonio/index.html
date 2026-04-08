@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quanto do seu patrimônio está protegido? | Boost Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K2HT6HBX');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1062572485162288');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel -->
+    <style>
+        :root {
+            --bg-primary: #000000;
+            --bg-card: #0A0A14;
+            --bg-input: #0D1020;
+            --bg-hover: #0D1020;
+            --accent: #00B37E;
+            --accent-hover: #00C98D;
+            --text-primary: #FFFFFF;
+            --text-secondary: #7878A0;
+            --text-muted: #3E3E58;
+            --gold: #E8B731;
+            --red: #FF4444;
+            --border: #1C1C1C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 24px 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .screen.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .screen.fade-in {
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .screen.fade-out {
+            animation: fadeOut 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-12px); }
+        }
+
+        /* ===== LANDING ===== */
+        .landing-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 18px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
+        }
+
+        .landing-title {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.2;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+        }
+
+        .landing-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .landing-features {
+            width: 100%;
+            margin-bottom: 32px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .feature-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 18px;
+        }
+
+        .landing-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 32px;
+            width: 100%;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            color: var(--bg-primary);
+            flex-shrink: 0;
+        }
+
+        .author-info {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .author-info strong {
+            color: var(--text-primary);
+            font-size: 14px;
+            font-weight: 700;
+            display: block;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.25s ease, transform 0.15s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 14px 32px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.25s ease;
+            margin-top: 12px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-container {
+            width: 100%;
+            margin-bottom: 28px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--gold));
+            border-radius: 2px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== QUESTIONS ===== */
+        .question-number {
+            font-size: 12px;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+        }
+
+        .question-text {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.35;
+            text-align: center;
+            margin-bottom: 28px;
+            letter-spacing: -0.03em;
+        }
+
+        .options-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 16px 18px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+            line-height: 1.5;
+        }
+
+        .option-btn:hover {
+            border-color: var(--accent);
+            background: var(--bg-hover);
+        }
+
+        .option-btn.selected {
+            border-color: var(--accent);
+            background: rgba(0, 179, 126, 0.1);
+        }
+
+        /* ===== LEAD CAPTURE ===== */
+        .lead-title {
+            font-size: 24px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+
+        .lead-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .form-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .form-input {
+            width: 100%;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 14px 16px;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.2s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+        }
+
+        .form-input.error {
+            border-color: var(--red);
+        }
+
+        .form-error {
+            font-size: 12px;
+            color: var(--red);
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-required {
+            font-size: 11px;
+            color: var(--red);
+            font-weight: 400;
+            margin-left: 2px;
+        }
+
+        .lead-privacy {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        /* ===== RESULT ===== */
+        .result-badge {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 16px;
+        }
+
+        .result-badge.exposto { background: rgba(255, 68, 68, 0.15); color: var(--red); border: 1px solid var(--red); }
+        .result-badge.parcial { background: rgba(232, 183, 49, 0.15); color: var(--gold); border: 1px solid var(--gold); }
+        .result-badge.equilibrada { background: rgba(0, 179, 126, 0.15); color: var(--accent); border: 1px solid var(--accent); }
+
+        .result-title {
+            font-size: 26px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 6px;
+            letter-spacing: -0.03em;
+        }
+
+        .result-score {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .result-meter {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-meter-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .result-meter-fill.exposto { background: linear-gradient(90deg, var(--red), #FF6666); }
+        .result-meter-fill.parcial { background: linear-gradient(90deg, var(--gold), #F0CC5B); }
+        .result-meter-fill.equilibrada { background: linear-gradient(90deg, var(--accent), var(--accent-hover)); }
+
+        .result-diagnosis {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .result-diagnosis h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .result-diagnosis p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .result-mentorship {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .result-mentorship h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .result-mentorship p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .result-recommendations {
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .result-recommendations h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .recommendation-item {
+            display: flex;
+            gap: 12px;
+            padding: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
+        .rec-number {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        .rec-text {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .result-cta-box {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .result-cta-box h3 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+        }
+
+        .result-cta-box p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .green-box {
+            width: 100%;
+            background: rgba(0, 179, 126, 0.08);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 16px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .green-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .green-box a:hover {
+            text-decoration: underline;
+        }
+
+        .boost-footer {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+
+        .disclaimer {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* ===== SHARE ===== */
+        .share-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .share-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .share-btn:hover {
+            border-color: var(--accent);
+        }
+
+        /* ===== LOADING ===== */
+        .loading-spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 16px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 600px) {
+            .screen {
+                max-width: 520px;
+                padding: 40px 32px;
+            }
+
+            .landing-title {
+                font-size: 34px;
+            }
+
+            .question-text {
+                font-size: 22px;
+            }
+
+            .option-btn {
+                font-size: 15px;
+                padding: 18px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HT6HBX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ===== TELA 1: LANDING ===== -->
+<div id="screen-landing" class="screen active fade-in">
+    <div class="landing-badge">Quiz gratuito</div>
+    <h1 class="landing-title">
+        Quanto do seu patrimônio está <span style="color:#E8B731">protegido</span> da desvalorização do real?
+    </h1>
+    <p class="landing-subtitle">
+        O real perdeu mais de 30% em 3 anos. Ano eleitoral 2026 adiciona risco fiscal. Em 5 perguntas, descubra seu grau de exposição e o que os investidores mais preparados estão fazendo.
+    </p>
+    <div class="landing-features">
+        <div class="feature-item">
+            <div class="feature-icon">&#9998;</div>
+            <span>5 perguntas</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">&#128202;</div>
+            <span>Diagnóstico de exposição cambial</span>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">&#128274;</div>
+            <span>100% gratuito</span>
+        </div>
+    </div>
+    <div class="landing-author">
+        <div class="author-avatar">AF</div>
+        <div class="author-info">
+            <strong>André Franco</strong>
+            Analista de criptoativos desde 2017. Fundador da Boost Research.
+        </div>
+    </div>
+    <button class="btn-primary" onclick="startQuiz()">Começar o Quiz</button>
+</div>
+
+<!-- ===== TELA 2: PERGUNTAS ===== -->
+<div id="screen-questions" class="screen">
+    <div class="progress-container">
+        <div class="progress-info">
+            <span id="progress-label">Pergunta 1 de 6</span>
+            <span id="progress-percent">17%</span>
+        </div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 17%"></div>
+        </div>
+    </div>
+    <div class="question-number" id="question-number">Pergunta 1</div>
+    <h2 class="question-text" id="question-text"></h2>
+    <div class="options-container" id="options-container"></div>
+</div>
+
+<!-- ===== TELA 3: CAPTURA DE LEAD ===== -->
+<div id="screen-lead" class="screen">
+    <div class="feature-icon" style="width:56px;height:56px;font-size:28px;margin-bottom:20px;border-color:var(--accent)">&#128232;</div>
+    <h2 class="lead-title">Seu diagnóstico está pronto!</h2>
+    <p class="lead-subtitle">Preencha abaixo para receber o resultado completo com recomendações personalizadas de proteção patrimonial.</p>
+    <div class="form-group">
+        <label class="form-label" for="lead-name">Nome</label>
+        <input type="text" id="lead-name" class="form-input" placeholder="Seu nome" autocomplete="given-name">
+        <div class="form-error" id="error-name">Informe seu nome</div>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="lead-email">E-mail</label>
+        <input type="email" id="lead-email" class="form-input" placeholder="seu@email.com" autocomplete="email">
+        <div class="form-error" id="error-email">Informe um e-mail válido</div>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="lead-whatsapp">WhatsApp <span class="form-required">*</span></label>
+        <input type="tel" id="lead-whatsapp" class="form-input" placeholder="(11) 99999-9999" autocomplete="tel">
+        <div class="form-error" id="error-whatsapp">Informe seu WhatsApp para receber o diagnóstico</div>
+    </div>
+    <div class="loading-spinner" id="lead-spinner"></div>
+    <button class="btn-primary" id="btn-submit" onclick="submitLead()">Ver Meu Diagnóstico</button>
+    <p class="lead-privacy">Seus dados estão seguros. Não enviamos spam.</p>
+</div>
+
+<!-- ===== TELA 4: RESULTADO ===== -->
+<div id="screen-result" class="screen">
+    <div class="result-badge" id="result-badge"></div>
+    <h2 class="result-title" id="result-title"></h2>
+    <p class="result-score" id="result-score"></p>
+    <div class="result-meter">
+        <div class="result-meter-fill" id="result-meter-fill" style="width:0%"></div>
+    </div>
+    <div class="result-diagnosis" id="result-diagnosis"></div>
+    <div class="result-mentorship" id="result-mentorship"></div>
+    <div class="result-recommendations" id="result-recommendations">
+        <h3>Suas 3 recomendações</h3>
+        <div id="recommendations-list"></div>
+    </div>
+    <div class="result-cta-box" id="result-cta-box"></div>
+    <div class="share-row">
+        <button class="share-btn" onclick="shareWhatsApp()">Compartilhar</button>
+        <button class="share-btn" onclick="retakeQuiz()">Refazer Quiz</button>
+    </div>
+    <div class="green-box" id="green-box">
+        Quer uma análise personalizada do seu patrimônio? <a href="https://wa.me/5521965622891?text=Quero%20uma%20análise%20personalizada%20do%20meu%20patrimônio" target="_blank">Fale com a equipe da Boost Research pelo WhatsApp.</a>
+    </div>
+    <div class="boost-footer">BOOST RESEARCH</div>
+    <p class="disclaimer">Este quiz tem caráter educacional. Não é recomendação de investimento.</p>
+</div>
+
+<script>
+// ===== DADOS DO QUIZ =====
+const questions = [
+    {
+        id: 1,
+        text: "Qual percentual do seu patrimônio investido está em ativos denominados em reais (renda fixa, ações brasileiras, fundos locais)?",
+        options: [
+            { text: "Mais de 90%", points: 0 },
+            { text: "Entre 70% e 90%", points: 1 },
+            { text: "Entre 40% e 70%", points: 2 },
+            { text: "Menos de 40%, já tenho exposição internacional significativa", points: 3 }
+        ]
+    },
+    {
+        id: 2,
+        text: "Você tem alguma forma de exposição ao dólar ou a ativos dolarizados?",
+        options: [
+            { text: "Não, tudo em reais", points: 0 },
+            { text: "Tenho um pouco em fundos cambiais ou BDRs", points: 1 },
+            { text: "Tenho parte em investimentos internacionais (ETFs, ações no exterior)", points: 2 },
+            { text: "Tenho exposição diversificada: cripto, investimentos no exterior e/ou stablecoins", points: 3 }
+        ]
+    },
+    {
+        id: 3,
+        text: "Qual é o seu horizonte de investimento para a maior parte do seu patrimônio?",
+        options: [
+            { text: "Curto prazo, menos de 1 ano", points: 0 },
+            { text: "1 a 3 anos", points: 1 },
+            { text: "3 a 5 anos", points: 2 },
+            { text: "Mais de 5 anos, penso em construção de patrimônio de longo prazo", points: 3 }
+        ]
+    },
+    {
+        id: 4,
+        text: "Você já considerou Bitcoin ou stablecoins como forma de proteção patrimonial?",
+        options: [
+            { text: "Nunca, acho arriscado demais", points: 0 },
+            { text: "Já ouvi falar mas nunca investi", points: 1 },
+            { text: "Tenho uma pequena posição como teste", points: 2 },
+            { text: "Sim, tenho alocação estratégica em Bitcoin e/ou stablecoins como proteção cambial", points: 3 }
+        ]
+    },
+    {
+        id: 5,
+        text: "Como você avalia o cenário macroeconômico do Brasil para os próximos 2-3 anos?",
+        options: [
+            { text: "Não acompanho, confio que vai melhorar", points: 0 },
+            { text: "Tenho preocupações mas não sei como me proteger", points: 1 },
+            { text: "Estou atento aos riscos fiscais e busco diversificar", points: 2 },
+            { text: "Monitoro ativamente: dívida pública, política monetária e risco cambial, e ajusto meu portfólio", points: 3 }
+        ]
+    },
+    {
+        id: 6,
+        text: "Pensando no valor total do seu patrimônio investido, em qual faixa se encaixa?",
+        options: [
+            { text: "Até R$ 50 mil", points: 1 },
+            { text: "R$ 50 mil a R$ 200 mil", points: 2 },
+            { text: "R$ 200 mil a R$ 1 milhão", points: 2 },
+            { text: "Acima de R$ 1 milhão", points: 3 }
+        ]
+    }
+];
+
+// ===== PERFIS DE RESULTADO =====
+const profiles = {
+    exposto: {
+        name: "Patrimônio Exposto",
+        class: "exposto",
+        range: "0 a 6 pontos",
+        diagnosis: `<h3>Seu diagnóstico</h3>
+<p>Seu patrimônio está significativamente exposto à desvalorização do real. Com mais de 90% em ativos brasileiros e sem proteção cambial, cada ponto percentual de desvalorização do real reduz diretamente o poder de compra do seu patrimônio em dólar. Nos últimos 3 anos, isso significou uma perda real de mais de 30% para quem não se protegeu.</p>`,
+        mentorship: `<h3>Mentoria Boost Research</h3>
+<p>Essa exposição precisa de correção estruturada. A mentoria da Boost Research cria um plano de diversificação e proteção cambial personalizado, incluindo cripto, stablecoins e investimentos internacionais, com acompanhamento do André Franco.</p>`,
+        recommendations: [
+            "Comece a diversificar HOJE: mesmo 10% em ativos dolarizados já reduz significativamente o risco.",
+            "Considere stablecoins (USDT/USDC) como forma simples de dolarização.",
+            "Estude ETFs internacionais ou BDRs como complemento."
+        ],
+        cta_primary: "Falar com a equipe sobre proteção",
+        cta_primary_link: "https://wa.me/5521965622891?text=Fiz%20o%20quiz%20de%20proteção%20patrimonial%20e%20quero%20falar%20sobre%20proteção",
+        cta_secondary: "Assinar Decode (newsletter gratuita)",
+        cta_secondary_link: "https://oandrefrancobr.com.br/decode-crypto/"
+    },
+    parcial: {
+        name: "Parcialmente Protegido",
+        class: "parcial",
+        range: "7 a 12 pontos",
+        diagnosis: `<h3>Seu diagnóstico</h3>
+<p>Você já tem alguma consciência do risco cambial, mas sua proteção ainda é parcial. Parte do seu patrimônio está exposta e, em um cenário de crise fiscal ou eleitoral, essa parcela pode sofrer desvalorização significativa. O bom é que você já começou a diversificar — falta completar o trabalho.</p>`,
+        mentorship: `<h3>Mentoria Boost Research</h3>
+<p>Você tem a mentalidade certa, falta o framework completo. A mentoria da Boost Research monta a estratégia de proteção patrimonial ideal para o seu perfil, combinando cripto, renda fixa digital e exposição internacional.</p>`,
+        recommendations: [
+            "Aumente gradualmente a exposição a ativos dolarizados para pelo menos 30% do portfólio.",
+            "Avalie Bitcoin como reserva de valor de longo prazo — a assimetria de retorno é única.",
+            "Monte uma reserva em stablecoins equivalente a 3-6 meses de gastos."
+        ],
+        cta_primary: "Quero completar minha proteção",
+        cta_primary_link: "https://wa.me/5521965622891?text=Fiz%20o%20quiz%20de%20proteção%20patrimonial%20e%20quero%20completar%20minha%20proteção",
+        cta_secondary: "Assinar Decode (newsletter gratuita)",
+        cta_secondary_link: "https://oandrefrancobr.com.br/decode-crypto/"
+    },
+    equilibrada: {
+        name: "Carteira Equilibrada",
+        class: "equilibrada",
+        range: "13 a 18 pontos",
+        diagnosis: `<h3>Seu diagnóstico</h3>
+<p>Seu patrimônio está bem protegido. Você já tem diversificação cambial significativa, entende os riscos macro e tem alocação estratégica em ativos que protegem contra a desvalorização do real. Poucos investidores brasileiros chegam nesse nível de preparo.</p>`,
+        mentorship: `<h3>Mentoria Boost Research</h3>
+<p>Proteção você já tem. O próximo passo é maximizar retorno dentro dessa estrutura sólida. A mentoria da Boost Research oferece análise de ciclo, teses de investimento e timing para otimizar sua alocação cripto.</p>`,
+        recommendations: [
+            "Refine a alocação cripto: considere teses de alta assimetria (DeFi, RWA, infraestrutura).",
+            "Revise trimestralmente a proporção BRL vs dolarizado.",
+            "Acompanhe dados on-chain para timing de ciclo e rebalanceamento."
+        ],
+        cta_primary: "Conhecer a mentoria — maximizar retorno",
+        cta_primary_link: "https://wa.me/5521965622891?text=Fiz%20o%20quiz%20de%20proteção%20patrimonial%20e%20quero%20conhecer%20a%20mentoria",
+        cta_secondary: "Assinar Decode (newsletter gratuita)",
+        cta_secondary_link: "https://oandrefrancobr.com.br/decode-crypto/"
+    }
+};
+
+// ===== STATE =====
+let currentQuestion = 0;
+let answers = [];
+let totalScore = 0;
+
+// ===== FUNCTIONS =====
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => {
+        s.classList.remove('active', 'fade-in');
+    });
+    const target = document.getElementById(id);
+    target.classList.add('active');
+    requestAnimationFrame(() => {
+        target.classList.add('fade-in');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startQuiz() {
+    currentQuestion = 0;
+    answers = [];
+    totalScore = 0;
+    showScreen('screen-questions');
+    renderQuestion();
+}
+
+function renderQuestion() {
+    const q = questions[currentQuestion];
+    const pct = ((currentQuestion + 1) / questions.length) * 100;
+
+    document.getElementById('progress-label').textContent = `Pergunta ${currentQuestion + 1} de ${questions.length}`;
+    document.getElementById('progress-percent').textContent = `${Math.round(pct)}%`;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('question-number').textContent = `Pergunta ${currentQuestion + 1}`;
+    document.getElementById('question-text').textContent = q.text;
+
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+
+    q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt.text;
+        btn.onclick = () => selectOption(idx, opt.points, btn);
+        container.appendChild(btn);
+    });
+
+    // Fade in effect
+    const screen = document.getElementById('screen-questions');
+    screen.classList.remove('fade-in');
+    requestAnimationFrame(() => {
+        screen.classList.add('fade-in');
+    });
+}
+
+function selectOption(idx, points, btn) {
+    // Visual feedback
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+
+    // Store answer
+    answers[currentQuestion] = {
+        questionId: questions[currentQuestion].id,
+        selectedIndex: idx,
+        selectedText: questions[currentQuestion].options[idx].text,
+        points: points
+    };
+    totalScore = answers.reduce((sum, a) => sum + (a ? a.points : 0), 0);
+
+    // Auto-advance after brief delay
+    setTimeout(() => {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            renderQuestion();
+        } else {
+            showScreen('screen-lead');
+        }
+    }, 350);
+}
+
+function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function formatWhatsApp(value) {
+    const digits = value.replace(/\D/g, '');
+    if (digits.length <= 2) return `(${digits}`;
+    if (digits.length <= 7) return `(${digits.slice(0,2)}) ${digits.slice(2)}`;
+    return `(${digits.slice(0,2)}) ${digits.slice(2,7)}-${digits.slice(7,11)}`;
+}
+
+// Auto-format WhatsApp input
+document.getElementById('lead-whatsapp').addEventListener('input', function(e) {
+    const cursor = e.target.selectionStart;
+    const formatted = formatWhatsApp(e.target.value);
+    e.target.value = formatted;
+});
+
+function submitLead() {
+    const name = document.getElementById('lead-name').value.trim();
+    const email = document.getElementById('lead-email').value.trim();
+    const whatsapp = document.getElementById('lead-whatsapp').value.trim();
+
+    let valid = true;
+
+    // Reset errors
+    document.querySelectorAll('.form-error').forEach(e => e.style.display = 'none');
+    document.querySelectorAll('.form-input').forEach(i => i.classList.remove('error'));
+
+    if (!name) {
+        document.getElementById('error-name').style.display = 'block';
+        document.getElementById('lead-name').classList.add('error');
+        valid = false;
+    }
+
+    if (!email || !validateEmail(email)) {
+        document.getElementById('error-email').style.display = 'block';
+        document.getElementById('lead-email').classList.add('error');
+        valid = false;
+    }
+
+    // WhatsApp is REQUIRED
+    const whatsappDigits = whatsapp.replace(/\D/g, '');
+    if (!whatsapp || whatsappDigits.length < 10) {
+        document.getElementById('error-whatsapp').style.display = 'block';
+        document.getElementById('lead-whatsapp').classList.add('error');
+        valid = false;
+    }
+
+    if (!valid) return;
+
+    // Show loading
+    document.getElementById('lead-spinner').style.display = 'block';
+    document.getElementById('btn-submit').style.display = 'none';
+
+    // Determine profile
+    const profile = getProfile(totalScore);
+
+    // mobile_phone: +55 + apenas dígitos (padrão RD Station)
+    var mobilePhone = '+55' + whatsappDigits;
+
+    // UTM — lê cookies boost_utm_* com fallback direct/none
+    function getCookie(name) {
+        var v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+        return v ? decodeURIComponent(v.pop()) : '';
+    }
+    function getUTM(key) { return getCookie('boost_utm_' + key); }
+
+    // Salvar UTMs da URL atual nos cookies (30 dias)
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k) {
+            var v = params.get(k);
+            if (v) {
+                var d = new Date(); d.setTime(d.getTime() + 30*24*60*60*1000);
+                document.cookie = 'boost_' + k + '=' + encodeURIComponent(v) + '; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+            }
+        });
+    })();
+
+    // Tag por perfil do quiz
+    var profileTagMap = {
+        'exposto':    'quiz-exposto',
+        'parcial':    'quiz-parcial',
+        'equilibrada': 'quiz-equilibrado'
+    };
+
+    // RD Station Conversions API
+    var rdPayload = {
+        event_type: 'CONVERSION',
+        event_family: 'CDP',
+        payload: {
+            conversion_identifier: 'quiz-patrimonio',
+            name: name,
+            email: email,
+            mobile_phone: mobilePhone,
+            tags: ['quiz-patrimonio', profileTagMap[profile.class]],
+            traffic_source:   getUTM('source')   || 'direct',
+            traffic_medium:   getUTM('medium')   || 'none',
+            traffic_campaign: getUTM('campaign') || undefined,
+            traffic_value:    getUTM('content')  || undefined,
+            traffic_term:     getUTM('term')     || undefined
+        }
+    };
+
+    fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'accept': 'application/json' },
+        body: JSON.stringify(rdPayload)
+    })
+    .then(function(r) {
+        return r.text().then(function(body) {
+            if (!r.ok) throw new Error('HTTP ' + r.status + ': ' + body);
+        });
+    })
+    .then(function() {
+        if (typeof fbq === 'function') fbq('track', 'Lead');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'generate_lead', form_id: 'quiz_patrimonio' });
+        showResult(profile);
+    })
+    .catch(function(err) {
+        console.error('RD Station erro:', err.message);
+        showResult(profile); // mostra resultado mesmo se RD falhar
+    });
+}
+
+function getProfile(score) {
+    if (score <= 6) return profiles.exposto;
+    if (score <= 12) return profiles.parcial;
+    return profiles.equilibrada;
+}
+
+function showResult(profile) {
+    document.getElementById('result-badge').textContent = profile.name;
+    document.getElementById('result-badge').className = 'result-badge ' + profile.class;
+    document.getElementById('result-title').textContent = profile.name;
+    document.getElementById('result-score').textContent = `${totalScore} de 18 pontos`;
+
+    const meterFill = document.getElementById('result-meter-fill');
+    meterFill.className = 'result-meter-fill ' + profile.class;
+
+    document.getElementById('result-diagnosis').innerHTML = profile.diagnosis;
+    document.getElementById('result-mentorship').innerHTML = profile.mentorship;
+
+    const recList = document.getElementById('recommendations-list');
+    recList.innerHTML = '';
+    profile.recommendations.forEach((rec, i) => {
+        recList.innerHTML += `
+            <div class="recommendation-item">
+                <div class="rec-number">${i + 1}</div>
+                <div class="rec-text">${rec}</div>
+            </div>`;
+    });
+
+    document.getElementById('result-cta-box').innerHTML = `
+        <h3>Próximo passo</h3>
+        <a href="${profile.cta_primary_link}" target="_blank">
+            <button class="btn-primary" style="margin-bottom:8px">${profile.cta_primary}</button>
+        </a>
+        <a href="${profile.cta_secondary_link}" target="_blank">
+            <button class="btn-secondary">${profile.cta_secondary}</button>
+        </a>`;
+
+    showScreen('screen-result');
+
+    // Animate meter
+    setTimeout(() => {
+        meterFill.style.width = Math.round((totalScore / 18) * 100) + '%';
+    }, 200);
+}
+
+function shareWhatsApp() {
+    const profile = getProfile(totalScore);
+    const text = encodeURIComponent(`Fiz o diagnóstico de proteção patrimonial do André Franco (Boost Research) e fiquei no perfil ${profile.name}. Descubra o seu em 2 minutos: ${window.location.href}`);
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+}
+
+function retakeQuiz() {
+    startQuiz();
+}
+</script>
+</body>
+</html>
