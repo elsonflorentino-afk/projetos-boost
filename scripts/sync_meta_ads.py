@@ -178,21 +178,52 @@ def sync_campaigns(days, only_active):
     until = datetime.now().strftime("%Y-%m-%d")
     time_range = json.dumps({"since": since, "until": until})
 
-    # Lista campanhas
-    params = {
-        "fields": "id,name,status,effective_status,objective,daily_budget,lifetime_budget,start_time",
-        "limit": 100,
-    }
-    if only_active:
-        params["effective_status"] = json.dumps(["ACTIVE"])
+    # ABORDAGEM INSIGHTS-FIRST:
+    # Em vez de listar todas as 1500+ campanhas e filtrar, pedimos direto
+    # os insights agregados por campaign no período. Isso retorna SOMENTE
+    # campanhas que tiveram gasto/atividade no período (geralmente 15-30).
+    print(f"Buscando insights account level ({since} → {until})...")
+    insights_data = meta_get_paginated(f"{META_ACCOUNT}/insights", {
+        "level": "campaign",
+        "time_range": time_range,
+        "fields": "campaign_id,campaign_name,spend,impressions,clicks,actions,ctr",
+        "limit": 500,
+    }, max_pages=10)
 
-    all_campaigns = meta_get_paginated(f"{META_ACCOUNT}/campaigns", params)
-    print(f"📊 Campaigns raw: {len(all_campaigns)}")
+    # Mapa campaign_id → insights
+    campaign_insights = {i.get("campaign_id"): i for i in insights_data}
+    campaign_ids = list(campaign_insights.keys())
+    print(f"📊 Campanhas com atividade em {days}d: {len(campaign_ids)}")
 
-    # Filtra só relevantes
-    campaigns = [c for c in all_campaigns if is_relevant_campaign(c)]
-    print(f"📊 Campaigns relevantes (lead/conversão/tagged BR|BOOST): {len(campaigns)}")
-    print(f"📊 Filtradas fora: {len(all_campaigns) - len(campaigns)}")
+    if not campaign_ids:
+        return [], []
+
+    # Busca metadata das campanhas ativas (objective, budget, etc)
+    # em batch via ?ids=X,Y,Z
+    campaigns_meta = {}
+    for i in range(0, len(campaign_ids), 50):
+        batch_ids = ",".join(campaign_ids[i:i+50])
+        try:
+            data = meta_get("", {
+                "ids": batch_ids,
+                "fields": "id,name,status,effective_status,objective,daily_budget,lifetime_budget,start_time",
+            })
+            campaigns_meta.update(data)
+        except Exception as e:
+            print(f"    ⚠ metadata batch error: {e}")
+
+    # Aplica filtro only_active se pedido
+    all_campaigns = []
+    for cid in campaign_ids:
+        meta = campaigns_meta.get(cid)
+        if not meta:
+            continue
+        if only_active and meta.get("effective_status") != "ACTIVE":
+            continue
+        all_campaigns.append(meta)
+
+    campaigns = all_campaigns
+    print(f"📊 Campaigns após filtro only_active={only_active}: {len(campaigns)}")
 
     camp_rows = []
     ad_rows = []
@@ -202,18 +233,8 @@ def sync_campaigns(days, only_active):
         cname = c.get("name", "")[:60]
         print(f"  [{i}/{len(campaigns)}] {cid} | {cname}")
 
-        # Insights da campanha no período
-        try:
-            insights_data = meta_get(f"{cid}/insights", {
-                "fields": "spend,impressions,clicks,actions",
-                "time_range": time_range,
-                "level": "campaign",
-            })
-            insights = (insights_data.get("data") or [{}])[0]
-        except Exception as e:
-            print(f"    ⚠ insights error: {e}")
-            insights = {}
-
+        # Insights já vieram pré-calculados do account level
+        insights = campaign_insights.get(cid, {})
         camp_rows.append(build_campaign_row(c, insights))
 
         # Ads da campanha
