@@ -21,14 +21,14 @@ from datetime import datetime, timedelta, timezone
 import requests
 
 META_TOKEN = os.environ.get("META_ACCESS_TOKEN")
-META_ACCOUNT = os.environ.get("META_AD_ACCOUNT_ID")
+# Ad account ID fixo da Boost Research (não expira)
+META_ACCOUNT = os.environ.get("META_AD_ACCOUNT_ID", "act_844208497068966")
 SB_URL = os.environ.get("SUPABASE_URL")
 SB_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
 
-if not all([META_TOKEN, META_ACCOUNT, SB_URL, SB_KEY]):
+if not all([META_TOKEN, SB_URL, SB_KEY]):
     print("ERROR: env vars missing")
     print(f"  META_ACCESS_TOKEN={'ok' if META_TOKEN else 'MISSING'}")
-    print(f"  META_AD_ACCOUNT_ID={'ok' if META_ACCOUNT else 'MISSING'}")
     print(f"  SUPABASE_URL={'ok' if SB_URL else 'MISSING'}")
     print(f"  SUPABASE_SERVICE_ROLE_KEY={'ok' if SB_KEY else 'MISSING'}")
     sys.exit(1)
