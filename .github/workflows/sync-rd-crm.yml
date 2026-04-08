@@ -1,0 +1,62 @@
+name: Sync RD CRM → Supabase
+
+on:
+  # Cron diário às 08:00 UTC (05:00 BRT)
+  schedule:
+    - cron: '0 8 * * *'
+  # Permite rodar manualmente pela UI do GitHub
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Modo de sync'
+        required: true
+        default: 'incremental'
+        type: choice
+        options:
+          - incremental
+          - backfill
+      since_hours:
+        description: 'Horas atrás (só modo incremental)'
+        required: false
+        default: '48'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: pip install requests
+
+      - name: Run sync (incremental cron)
+        if: github.event_name == 'schedule'
+        env:
+          RD_CRM_TOKEN: ${{ secrets.RD_CRM_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 scripts/sync_rd_crm.py --since-hours 48
+
+      - name: Run sync (manual incremental)
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'incremental'
+        env:
+          RD_CRM_TOKEN: ${{ secrets.RD_CRM_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 scripts/sync_rd_crm.py --since-hours ${{ inputs.since_hours }}
+
+      - name: Run sync (manual backfill)
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'backfill'
+        env:
+          RD_CRM_TOKEN: ${{ secrets.RD_CRM_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python3 scripts/sync_rd_crm.py --all
