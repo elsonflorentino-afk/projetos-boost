@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Revisão Criativos C6 — Boost Research</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Revisão Criativos C6 — Boost Research</h1>
+</header>
+<h1 id="revisão-de-criativos-campanha-6-boost-research">Revisão de
+Criativos — Campanha 6 Boost Research</h1>
+<p><strong>Data da revisão:</strong> 2026-04-09
+<strong>Revisores:</strong> <span class="citation"
+data-cites="qa">@qa</span> (apontamentos) + <span class="citation"
+data-cites="vera">@vera</span> (aplicação copy) + verificação
+vocabulário Boost + filtro de qualificação <strong>Terminologia
+oficial:</strong> “Mentoria Boost Research” (categoria), “Mentoria
+Boost” (produto pago), “Boost Research” (marca)</p>
+<hr />
+<h2 id="estratégia-da-campanha-6">🎯 Estratégia da Campanha 6</h2>
+<p><strong>Objetivo:</strong> gerar agendamentos de <strong>análise
+gratuita</strong> com leads que tenham <strong>≥R$100.000</strong> em
+cripto <strong>OU</strong> em investimentos tradicionais.</p>
+<p><strong>Dor atual:</strong> C5-ANDROMEDA trouxe leads com alto volume
+mas <strong>zero</strong> ≥R$100k em cripto. A maioria do funil atual
+está recebendo leads desqualificados (R$5-10k).</p>
+<p><strong>Fórmula vencedora (derivada da C4 AF-CRIPTO FEED que tem 80%
+qualif):</strong> 1. <strong>Filtrar no headline</strong> — pressupor
+que o lead já tem patrimônio alto 2. <strong>Quebrar objeção</strong>
+específica do público R$100k+ 3. <strong>Autoridade
+institucional</strong> (André Franco, mesa de análise, método) 4.
+<strong>CTA análise gratuita</strong> como porta de entrada única</p>
+<p><strong>Produto único da campanha:</strong> Análise gratuita (não
+Mentoria Boost — essa é upsell pós-qualificação).</p>
+<hr />
+<h2 id="resumo-por-status">📊 Resumo por status</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Status</th>
+<th>Quantidade</th>
+<th>Criativos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✅ OK — mantém como está</td>
+<td>5</td>
+<td>Awareness institucional, Lacuna portfólio, Assimetria,
+Descorrelação, Carrossel-1</td>
+</tr>
+<tr>
+<td>🟢 Correção mínima (ortografia/pontuação)</td>
+<td>4</td>
+<td>Conversão cripto ativo, Carrossel-3, Carrossel-4 (partial), Proteção
+do real</td>
+</tr>
+<tr>
+<td>🟡 Reescrita de headline</td>
+<td>7</td>
+<td>Awareness comportamental, Entrada método, Carrossel-2, Retarg
+engajados, Retarg 50%, Retarg visitantes, R$100k análise grátis</td>
+</tr>
+<tr>
+<td>🔴 Vocabulário crítico</td>
+<td>1</td>
+<td>Research house institucional</td>
+</tr>
+<tr>
+<td>🔶 Filtro R$100k ausente (urgente)</td>
+<td>5+</td>
+<td>Criativos atraem público genérico</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="awareness">🎯 AWARENESS</h1>
+<h2 id="awareness-comportamental.png">1. Awareness comportamental.png
+🟡</h2>
+<p><strong>Erro atual:</strong> &gt; “BRASIL É O 5º PAÍS QUE MAIS USA
+CRIPTO NO MUNDO. A MAIORIA AINDA DECIDE SOZINHO.”</p>
+<p><strong>Problema:</strong> “sozinho” soa como autonomia (positivo).
+Investidor sofisticado não se sente errado decidindo sozinho.</p>
+<p><strong>Correção:</strong> &gt; “BRASIL É O 5º PAÍS QUE MAIS USA
+CRIPTO NO MUNDO. A MAIORIA AINDA DECIDE SEM MÉTODO.”</p>
+<hr />
+<h2 id="awareness-institucional.png">2. Awareness institucional.png
+✅</h2>
+<p><strong>Texto atual:</strong> &gt; “CRIPTO ENTROU NO PORTFÓLIO DOS
+MAIORES GESTORES DO MUNDO. E NO SEU?”</p>
+<p><strong>Status:</strong> OK — hook institucional forte, pressupõe um
+“seu portfólio” que denota patrimônio.</p>
+<hr />
+<h1 id="consideração">🎯 CONSIDERAÇÃO</h1>
+<h2 id="consideração-lacuna-portfólio.png">3. Consideração — lacuna
+portfólio.png ✅</h2>
+<p><strong>Texto atual:</strong> &gt; “OS MAIORES GESTORES DO MUNDO JÁ
+ALOCARAM EM BITCOIN. SEU PORTFÓLIO AINDA NÃO.”</p>
+<p><strong>Status:</strong> OK — mantém.</p>
+<hr />
+<h2 id="consideração-assimetria.png">4. Consideração — assimetria.png
+✅</h2>
+<p><strong>Texto atual:</strong> &gt; “NÃO TER EXPOSIÇÃO A CRIPTO TAMBÉM
+É UMA DECISÃO DE RISCO.”</p>
+<p><strong>Status:</strong> OK — inversão de frame perfeita.</p>
+<hr />
+<h2 id="consideração-descorrelação.png">5. Consideração —
+descorrelação.png ✅</h2>
+<p><strong>Texto atual:</strong> &gt; “VOCÊ JÁ DIVERSIFICA BEM. MAS
+DIVERSIFICAÇÃO REAL INCLUI O ATIVO QUE DESCORRELACIONA TUDO.”</p>
+<p><strong>Status:</strong> OK — “você já diversifica bem” pressupõe
+público que JÁ investe = filtro implícito.</p>
+<hr />
+<h2 id="consideração-proteção-do-real.png">6. Consideração — proteção do
+real.png ✅</h2>
+<p><strong>Texto atual:</strong> &gt; “RENDA FIXA PROTEGE DA BOLSA. QUEM
+PROTEGE DO REAL?”</p>
+<p><strong>Status:</strong> OK — ângulo macro forte.</p>
+<hr />
+<h2 id="entrada-com-método.png">7. Entrada com método.png 🟡</h2>
+<p><strong>Erro atual:</strong> &gt; “PRONTO PRA ENTRAR EM CRIPTO COM
+MÉTODO NÃO COM INTUIÇÃO?”</p>
+<p><strong>Problemas:</strong> - Falta pontuação antes de “não” -
+“Método vs intuição” é abstrato demais - Não filtra público</p>
+<p><strong>Correção (proposta <span class="citation"
+data-cites="qa">@qa</span> + filtro patrimônio):</strong> &gt; “CRIPTO
+COM TESE ESCRITA. ALVOS DEFINIDOS. GESTÃO DE RISCO. É ASSIM QUE A BOOST
+TRATA SEUS CLIENTES.”</p>
+<hr />
+<h2 id="r100k-consideração.png">8. R$100k consideração.png ✅</h2>
+<p><strong>Texto atual:</strong> &gt; “R$100K EM CRIPTO. VOCÊ TEM UM
+ADVISOR OLHANDO ESSA POSIÇÃO?”</p>
+<p><strong>Status:</strong> OK — <strong>esse é o único que tem filtro
+R$100k explícito no headline</strong>. Modelo a ser replicado nos
+outros.</p>
+<hr />
+<h2 id="research-house-institucional.png">9. Research house
+institucional.png 🔴</h2>
+<p><strong>Erro atual:</strong> &gt; “UMA RESEARCH HOUSE DE CRIPTO. PARA
+O INVESTIDOR QUE JÁ SABE INVESTIR.”</p>
+<p><strong>Problema:</strong> “research house” está no vocabulário
+banido da Boost.</p>
+<p><strong>Correção:</strong> &gt; “MENTORIA BOOST RESEARCH. PARA O
+INVESTIDOR QUE JÁ SABE INVESTIR.”</p>
+<p><strong>Recomendação:</strong> renomear o arquivo também →
+<code>mentoria_boost_research_institucional.png</code></p>
+<hr />
+<h2 id="carrossel-advisory-1.png">10. Carrossel advisory-1.png ✅</h2>
+<p><strong>Texto atual:</strong> &gt; “VOCÊ INVESTE COM MÉTODO EM AÇÕES.
+EM CRIPTO, TEM ALGUÉM DO SEU LADO?”</p>
+<p><strong>Status:</strong> OK — pressupõe que o lead JÁ investe em
+ações = filtro de sofisticação.</p>
+<hr />
+<h2 id="carrossel-advisory-2.png">11. Carrossel advisory-2.png 🟡</h2>
+<p><strong>Erro atual:</strong> &gt; “O MERCADO MUDOU. OS MAIORES BANCOS
+DO MUNDO JÁ TÊM BITCOIN NO BALANÇO. A QUESTÃO NÃO É ‘SE ENTRAR’ É ‘COMO
+ENTRAR COM O MESMO NÍVEL DE SERIEDADE.’”</p>
+<p><strong>Problemas:</strong> - Pontuação confusa - “Maiores bancos” é
+vago</p>
+<p><strong>Correção:</strong> &gt; “O MERCADO MUDOU. BLACKROCK,
+FIDELITY, JPMORGAN: TODOS COM BITCOIN NO BALANÇO. ELES TÊM MESA DE
+ANÁLISE INSTITUCIONAL. VOCÊ TEM THREAD NO X.”</p>
+<hr />
+<h2 id="carrossel-advisory-3.png">12. Carrossel advisory-3.png 🟢</h2>
+<p><strong>Erro atual:</strong> &gt; “ENTRAR SEM ADVISOR É ENTRAR
+SOZINHO. CADA NOTÍCIA VIRA DECISÃO. SEM TESE, VOCÊ REAGE NÃO
+INVESTE.”</p>
+<p><strong>Problema:</strong> travessão/vírgula antes de “não”.</p>
+<p><strong>Correção:</strong> &gt; “ENTRAR SEM ADVISOR É ENTRAR SOZINHO.
+CADA NOTÍCIA VIRA DECISÃO. SEM TESE, VOCÊ REAGE — NÃO INVESTE.”</p>
+<hr />
+<h2 id="carrossel-advisory-4.png-decisão-estratégica">13. Carrossel
+advisory-4.png 🟢 + ⚠️ DECISÃO ESTRATÉGICA</h2>
+<p><strong>Erro atual:</strong></p>
+<pre><code>MENTORIA BOOST:
+• Inteligência de mercado aplicada à sua carteira
+• Acesso à carteira do André + rebalanceamento
+• Sinais com contexto e gestão de risco
+• Advisor WhatsApp + reuniões
+• Honorário fixo  sem conflit</code></pre>
+<p><strong>Correção mínima (ortografia):</strong></p>
+<pre><code>MENTORIA BOOST:
+• Inteligência de mercado aplicada à sua carteira
+• Acesso à carteira do André + rebalanceamento
+• Sinais com contexto e gestão de risco
+• Advisor WhatsApp + reuniões
+• Honorário fixo, sem conflito de interesse</code></pre>
+<h3 id="desalinhamento-estratégico">⚠️ Desalinhamento estratégico</h3>
+<p>Este card apresenta <strong>Mentoria Boost</strong> (produto pago)
+como CTA final do carrossel — mas o objetivo da C6 é gerar
+<strong>análise gratuita</strong>, não venda direta da Mentoria.</p>
+<p><strong>Problema do funil atual:</strong> - Lead vê carrossel - Card
+1-3 quebram objeção (“você precisa de método, de advisor, o mercado
+mudou”) - Card 4 oferece Mentoria Boost direto → lead que não tem budget
+da Mentoria sai - Nenhum CTA de análise gratuita (que seria a ponte)</p>
+<p><strong>Minha recomendação:</strong> substituir o Carrossel-4 por um
+card que oferece <strong>análise gratuita</strong> como porta de
+entrada, e a Mentoria Boost fica como upsell pós-análise.</p>
+<p><strong>Proposta de novo Carrossel-4:</strong></p>
+<pre><code>A BOOST ANALISA SUA CARTEIRA, GRÁTIS.
+
+✔ Diagnóstico real da sua alocação
+✔ Comparação com a carteira do André
+✔ Tese institucional aplicada ao seu perfil
+
+Exclusivo para quem tem R$100k+ em cripto ou mercado tradicional.
+
+→ Agendar análise gratuita</code></pre>
+<p><strong>Alternativas pra você escolher:</strong></p>
+<p><strong>Opção A (minha recomendação):</strong> substituir Carrossel-4
+por “análise gratuita” (reescrita acima) - ✅ Alinha funil com objetivo
+da campanha - ✅ Menciona filtro R$100k explicitamente - ❌ Perde a
+apresentação da Mentoria</p>
+<p><strong>Opção B:</strong> manter Carrossel-4 com Mentoria, adicionar
+Carrossel-5 novo com análise gratuita - ✅ Mantém todas as informações -
+✅ Cria funil natural (análise grátis → mentoria) - ❌ Carrossel com 5
+cards pode ser muito longo</p>
+<p><strong>Opção C:</strong> manter Carrossel-4 como está (só arruma
+ortografia) - ✅ Zero reescrita - ❌ Continua desalinhado com objetivo
+da campanha - ❌ Não resolve a dor de leads desqualificados</p>
+<hr />
+<h1 id="conversão">🎯 CONVERSÃO</h1>
+<h2 id="conversão-cripto-ativo.png">14. Conversão — cripto ativo.png
+🟢</h2>
+<p><strong>Erro atual:</strong> &gt; “TEM CRIPTO NA CARTEIRA. TEM
+INTELIGÊNCIA DE MERCADO OLHANDO ELA?”</p>
+<p><strong>Problemas:</strong> - “olhando ela” — regência errada -
+Headline não filtra R$100k</p>
+<p><strong>Correção (mínima — só a regência):</strong> &gt; “TEM CRIPTO
+NA CARTEIRA. TEM INTELIGÊNCIA DE MERCADO OLHANDO PARA ELA?”</p>
+<p><strong>Correção sugerida (com filtro R$100k — recomendada):</strong>
+&gt; “TEM R$100K+ EM CRIPTO NA CARTEIRA. TEM INTELIGÊNCIA DE MERCADO
+OLHANDO PARA ELA?”</p>
+<hr />
+<h2 id="r100k-análise-gratuita.png">15. R$100k — análise gratuita.png
+🟡</h2>
+<p><strong>Texto atual:</strong> &gt; “ANÁLISE GRATUITA DA SUA CARTEIRA
+CRIPTO. PELO TIME DO ANDRÉ FRANCO.”</p>
+<p><strong>Problema:</strong> apesar do nome do arquivo incluir
+“R$100k”, o headline <strong>não menciona</strong> o filtro. Nome do
+arquivo ≠ headline visível ao usuário.</p>
+<p><strong>Correção sugerida:</strong> &gt; “ANÁLISE GRATUITA DA SUA
+CARTEIRA CRIPTO. EXCLUSIVO PARA R$100K+. PELO TIME DO ANDRÉ FRANCO.”</p>
+<p><strong>Ou alternativa mais curta:</strong> &gt; “R$100K+ EM CRIPTO?
+ANÁLISE GRATUITA PELO TIME DO ANDRÉ FRANCO.”</p>
+<hr />
+<h1 id="retargeting">🎯 RETARGETING</h1>
+<h2 id="retargeting-engajados-perfil.png">16. Retargeting — engajados
+perfil.png 🟡</h2>
+<p><strong>Erro atual:</strong> &gt; “VOCÊ ACOMPANHA A ANÁLISE. TEM UM
+ADVISOR APLICANDO ELA NA SUA CARTEIRA?”</p>
+<p><strong>Problemas:</strong> - “aplicando ela” — regência errada - Não
+aproveita que é retargeting</p>
+<p><strong>Correção:</strong> &gt; “VOCÊ JÁ ACOMPANHA A BOOST. AGORA
+DEIXA A BOOST ACOMPANHAR SUA CARTEIRA.”</p>
+<p><strong>Por quê:</strong> quiasmo inteligente (você→Boost,
+Boost→você), só faz sentido pra quem JÁ conhece a marca, memorável,
+tamanho ideal.</p>
+<hr />
+<h2 id="retargeting-50-viewers.png">17. Retargeting — 50%+ viewers.png
+🟢</h2>
+<p><strong>Texto atual:</strong> &gt; “VOCÊ VIU O QUE A BOOST ENTREGA.
+QUER ISSO NA SUA CARTEIRA?”</p>
+<p><strong>Status:</strong> OK — mantém. Frase curta, retargeting
+direto.</p>
+<p><strong>Sugestão opcional:</strong> adicionar linha inferior com
+“análise gratuita” como CTA explícito: &gt; “VOCÊ VIU O QUE A BOOST
+ENTREGA. &gt; QUER ISSO NA SUA CARTEIRA? &gt; → Análise gratuita”</p>
+<hr />
+<h2 id="retargeting-visitantes-landing.png">18. Retargeting — visitantes
+landing.png 🟢</h2>
+<p><strong>Texto atual:</strong> &gt; “VOCÊ VIU COMO FUNCIONA. O PRÓXIMO
+PASSO É UMA CONVERSA.”</p>
+<p><strong>Status:</strong> OK — retargeting clássico pós-LP view. Frase
+curta.</p>
+<p><strong>Sugestão opcional:</strong> especificar o CTA: &gt; “VOCÊ VIU
+COMO FUNCIONA. &gt; O PRÓXIMO PASSO É UMA ANÁLISE GRATUITA.”</p>
+<hr />
+<h1 id="tabela-resumo-geral">📊 Tabela-resumo geral</h1>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Criativo</th>
+<th>Status</th>
+<th>Filtro R$100k?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Awareness comportamental</td>
+<td>🟡 Corrigir</td>
+<td>❌ Genérico (mas topo de funil, ok)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Awareness institucional</td>
+<td>✅ OK</td>
+<td>⚠️ Implícito (“seu portfólio”)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Lacuna portfólio</td>
+<td>✅ OK</td>
+<td>⚠️ Implícito</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Assimetria</td>
+<td>✅ OK</td>
+<td>❌ Genérico</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Descorrelação</td>
+<td>✅ OK</td>
+<td>✅ Implícito forte (“diversifica bem”)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Proteção do real</td>
+<td>✅ OK</td>
+<td>⚠️ Implícito</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Entrada com método</td>
+<td>🟡 Reescrever</td>
+<td>❌ Genérico</td>
+</tr>
+<tr>
+<td>8</td>
+<td>R$100k consideração</td>
+<td>✅ OK</td>
+<td>✅ <strong>Explícito</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Research house institucional</td>
+<td>🔴 Vocabulário</td>
+<td>⚠️ Implícito</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Carrossel-1</td>
+<td>✅ OK</td>
+<td>✅ Implícito (“investe em ações”)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Carrossel-2</td>
+<td>🟡 Reescrever</td>
+<td>❌ Implícito fraco</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Carrossel-3</td>
+<td>🟢 Travessão</td>
+<td>❌ Genérico</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Carrossel-4</td>
+<td>🟢 + decisão</td>
+<td>❌ Não converte pra análise</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Conversão cripto ativo</td>
+<td>🟢 + sugestão</td>
+<td>⚠️ Pode explicitar</td>
+</tr>
+<tr>
+<td>15</td>
+<td>R$100k análise gratuita</td>
+<td>🟡 Adicionar filtro no texto</td>
+<td>❌ Só no nome</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Retargeting engajados</td>
+<td>🟡 Reescrever</td>
+<td>❌ (mas é retargeting)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Retargeting 50% viewers</td>
+<td>✅ OK</td>
+<td>❌ (mas é retargeting)</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Retargeting visitantes</td>
+<td>✅ OK</td>
+<td>❌ (mas é retargeting)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="insights-gerais">🎯 Insights gerais</h1>
+<h2 id="o-que-funciona-bem-no-conjunto">O que funciona bem no
+conjunto</h2>
+<ol type="1">
+<li><strong>Ângulos brilhantes</strong> em Consideração (assimetria,
+descorrelação, proteção do real) — são melhores que os atuais da C4</li>
+<li><strong>Autoridade clara</strong> (André Franco, Boost, time,
+carteira)</li>
+<li><strong>Consistência visual</strong> (André Franco nas imagens,
+paleta verde Boost)</li>
+</ol>
+<h2 id="principais-gaps">Principais gaps</h2>
+<ol type="1">
+<li><strong>Só 1 criativo tem filtro R$100k explícito</strong> (“R$100k
+consideração”). A dor de leads desqualificados vem daí — você precisa
+<strong>filtrar no próprio headline</strong>.</li>
+<li><strong>Carrossel-4 desalinhado com objetivo</strong> — oferece
+Mentoria Boost quando deveria oferecer análise gratuita</li>
+<li><strong>CTAs genéricos</strong> — vários criativos terminam em
+pergunta mas não deixam claro qual é o próximo passo (deveria ser
+“agendar análise gratuita”)</li>
+</ol>
+<h2 id="recomendação-estratégica">Recomendação estratégica</h2>
+<p>Antes do upload no Meta: 1. <strong>Adicionar “R$100k+” em pelo menos
+3-4 criativos da Consideração</strong> (copiar modelo do #8) 2.
+<strong>Decidir sobre Carrossel-4</strong> (opção A, B ou C da seção 13)
+3. <strong>CTAs uniformes</strong> — todos terminam apontando pra
+“análise gratuita” explícita ou implícita (não “advisor”)</p>
+<hr />
+<h1 id="decisões-pendentes-do-user">⚠️ Decisões pendentes do user</h1>
+<ol type="1">
+<li><strong>Carrossel advisory-4:</strong> Opção A (substituir por
+análise gratuita), B (manter + criar Carrossel-5) ou C (só
+ortografia)?</li>
+<li><strong>Renomear arquivo</strong>
+<code>Research house institucional.png</code> →
+<code>mentoria_boost_research_institucional.png</code>? (Seguro, nenhum
+impacto na campanha porque ainda não está rodando.)</li>
+<li><strong>Renomear pasta</strong> <code>Considereação/</code> →
+<code>Consideração/</code>? (typo de digitação, impacta UTMs se forem
+derivados do nome)</li>
+<li><strong>Adicionar filtro R$100k explícito</strong> em mais
+criativos? Quais?</li>
+<li><strong>CTAs</strong> — padronizar todos pra “agendar análise
+gratuita”?</li>
+</ol>
+<hr />
+<h1 id="próximos-passos">📋 Próximos passos</h1>
+<ol type="1">
+<li><strong>User decide</strong> os 5 pontos pendentes acima</li>
+<li>Gero documento final com decisões aplicadas</li>
+<li><strong>Designer</strong> aplica ajustes de texto nos PNGs (ou
+regenera via IA)</li>
+<li><strong><span class="citation"
+data-cites="helena">@helena</span></strong> faz o audit final (checklist
+12 pontos da Creative Director)</li>
+<li><strong>Upload no Meta Ads</strong> usando as CUAs vencedoras da C4
+CONVERSAO</li>
+<li><strong>Monitorar 48h</strong> no dashboard qualificação pra validar
+leads ≥R$100k</li>
+</ol>
+</body>
+</html>
