@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Designer Meta Ads — Masterclass</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Designer Meta Ads — Masterclass</h1>
+</header>
+<h1 id="designer-especialista-em-meta-ads-masterclass-completo">Designer
+Especialista em Meta Ads — Masterclass Completo</h1>
+<blockquote>
+<p><strong>Documento de referência</strong> para designers que trabalham
+com performance creative em Meta Ads (Facebook + Instagram). Compilado
+com base nas práticas dos melhores do mundo em 2026. Última atualização:
+Abril 2026.</p>
+</blockquote>
+<hr />
+<h2 id="índice">Índice</h2>
+<ol type="1">
+<li><a href="#1-o-papel-do-designer-em-performance-creative">O papel do
+designer em performance creative</a></li>
+<li><a href="#2-referências-mundiais">Referências mundiais — quem você
+precisa seguir</a></li>
+<li><a href="#3-fundamentos-técnicos">Fundamentos técnicos — dimensões e
+specs</a></li>
+<li><a href="#4-safe-zones-e-mobile-first">Safe zones e
+mobile-first</a></li>
+<li><a href="#5-anatomia-do-ad-vencedor">Anatomia do ad
+vencedor</a></li>
+<li><a href="#6-hook-e-scroll-stopper">Hook e scroll stopper — os 3
+primeiros segundos</a></li>
+<li><a href="#7-tipografia-para-performance">Tipografia para
+performance</a></li>
+<li><a href="#8-cor-contraste-e-hierarquia-visual">Cor, contraste e
+hierarquia visual</a></li>
+<li><a href="#9-copy-como-elemento-de-design">Copy como elemento de
+design</a></li>
+<li><a href="#10-ugc-vs-polished">UGC vs polished — quando usar cada
+um</a></li>
+<li><a href="#11-frameworks-de-criação">Frameworks de criação</a></li>
+<li><a href="#12-testing-e-iteração">Testing e iteração</a></li>
+<li><a href="#13-ferramentas-do-ofício">Ferramentas do ofício</a></li>
+<li><a href="#14-workflow-semanal">Workflow semanal recomendado</a></li>
+<li><a href="#15-métricas-que-importam">Métricas que importam pro
+designer</a></li>
+<li><a href="#16-checklist-final">Checklist final antes de
+publicar</a></li>
+<li><a href="#17-erros-comuns">Erros comuns que derrubam ads</a></li>
+</ol>
+<hr />
+<h2 id="o-papel-do-designer-em-performance-creative">1. O papel do
+designer em performance creative</h2>
+<h3 id="o-que-mudou-nos-últimos-5-anos">O que mudou nos últimos 5
+anos</h3>
+<p>Designer de Meta Ads <strong>não é mais só “designer”</strong>. É
+<strong>Creative Strategist</strong> — um híbrido entre: - Copywriter -
+Designer visual - Analista de dados - Editor de vídeo - Behavioral
+psychologist</p>
+<h3 id="a-diferença-entre-arte-e-performance-creative">A diferença entre
+“arte” e “performance creative”</h3>
+<table>
+<thead>
+<tr>
+<th>Designer tradicional</th>
+<th>Performance Creative Designer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Busca beleza</td>
+<td>Busca <strong>hook rate e CTR</strong></td>
+</tr>
+<tr>
+<td>Faz 1-2 versões por briefing</td>
+<td>Faz <strong>10-30 variações por teste</strong></td>
+</tr>
+<tr>
+<td>Entrega e esquece</td>
+<td><strong>Itera semanalmente</strong> com base em dados</td>
+</tr>
+<tr>
+<td>“Funciona se ficar bonito”</td>
+<td>“Funciona se parar o scroll em 1,5s”</td>
+</tr>
+<tr>
+<td>Atende marcas</td>
+<td>Atende <strong>algoritmos e comportamento humano</strong></td>
+</tr>
+<tr>
+<td>Portfolio estático</td>
+<td><strong>Testa, mede, aprende, repete</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="o-mindset-obrigatório">O mindset obrigatório</h3>
+<blockquote>
+<p><strong>“Não estou fazendo arte. Estou fazendo um experimento com
+hipótese clara, que vai ser julgado por um humano distraído em 1,5
+segundo e por um algoritmo em 72 horas.”</strong></p>
+</blockquote>
+<p>Se você não tem esse mindset, não está fazendo performance creative —
+está fazendo brand design disfarçado.</p>
+<h3 id="em-1-frase">Em 1 frase</h3>
+<blockquote>
+<p>Um designer de Meta Ads 2026 precisa saber <strong>como o cérebro
+processa imagens em movimento no feed mobile</strong> melhor do que
+precisa saber Photoshop.</p>
+</blockquote>
+<hr />
+<h2 id="referências-mundiais-quem-você-precisa-seguir">2. Referências
+mundiais — quem você precisa seguir</h2>
+<h3 id="os-8-principais-do-mundo">🇺🇸 Os 8 principais do mundo</h3>
+<h4 id="savannah-sanchez-thesocialsavannah">1. <strong>Savannah
+Sanchez</strong> — <a href="https://thesocialsavannah.com/"><span
+class="citation"
+data-cites="thesocialsavannah">@thesocialsavannah</span></a></h4>
+<ul>
+<li><strong>Por quê:</strong> Criou ads vencedores pra Fabletics,
+Athletic Greens, Dr. Squatch, The Farmer’s Dog, Ipsy, Kate Spade.</li>
+<li><strong>Filosofia:</strong> “Velocidade mata qualidade. Quem manda
+mais ads por mês ganha.” (2-3x o volume do mercado)</li>
+<li><strong>Workflow:</strong> Segunda/terça grava com creators usando
+iPhone, quarta/quinta edita, sexta lança.</li>
+<li><strong>Onde aprender:</strong>
+<code>thesocialsavannah.com/courses</code>, YouTube dela</li>
+<li><strong>Maior insight:</strong> <em>“Ship more. Edit less. Kill
+faster.”</em></li>
+</ul>
+<h4 id="dara-denney-ex-thesis-motion-app">2. <strong>Dara
+Denney</strong> — <a
+href="https://motionapp.com/dara-lp-backup">ex-Thesis, Motion
+app</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Gerenciou $100M+ em ad spend. Chief
+Evangelist da Motion.</li>
+<li><strong>Filosofia:</strong> Hipótese antes do design. Teste
+estruturado &gt; teste aleatório.</li>
+<li><strong>Framework:</strong> <strong>Pressure Test</strong> (iteração
+de vencedor), <strong>New Format</strong> (mesma mensagem novo formato),
+<strong>Net New Concept</strong> (ideia zero).</li>
+<li><strong>Onde aprender:</strong> YouTube (100K+ subs), Motion blog,
+Motion Creative Strategy Bootcamp</li>
+<li><strong>Maior insight:</strong> <em>“Antes de lançar o teste, defina
+a hipótese e o critério de sucesso. Se não sabe o que ia comemorar, não
+lance.”</em></li>
+</ul>
+<h4 id="alex-cooper-foreplay-ex-growth-marketer">3. <strong>Alex
+Cooper</strong> — <a href="https://foreplay.co/">Foreplay</a> (ex-growth
+marketer)</h4>
+<ul>
+<li><strong>Por quê:</strong> Criou o Foreplay, ferramenta de swipe file
+pra performance creatives</li>
+<li><strong>Filosofia:</strong> “Ad libraries são o GitHub dos designers
+de performance”</li>
+<li><strong>Onde aprender:</strong> Foreplay blog, YouTube</li>
+</ul>
+<h4 id="nick-shackelford-common-thread-collective-structured">4.
+<strong>Nick Shackelford</strong> — <a
+href="https://structured.so/">Common Thread Collective,
+Structured</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Um dos fundadores da escola moderna de
+performance creative</li>
+<li><strong>Filosofia:</strong> “Creative is targeting.” (o criativo faz
+o papel de segmentação)</li>
+<li><strong>Onde aprender:</strong> Structured, DTC Podcast,
+YouTube</li>
+</ul>
+<h4 id="ezra-firestone-smart-marketer">5. <strong>Ezra
+Firestone</strong> — <a href="https://smartmarketer.com/">Smart
+Marketer</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Pai do DTC moderno, educador de ~250k+
+marketers</li>
+<li><strong>Filosofia:</strong> “Storytelling beats selling” +
+frameworks de produto em ação</li>
+<li><strong>Onde aprender:</strong> Smart Marketer blog, cursos
+pagos</li>
+</ul>
+<h4 id="brez-cam-dorsey-brez-marketing">6. <strong>Brez (Cam
+Dorsey)</strong> — <a href="https://www.youtube.com/@brezmarketing">Brez
+Marketing</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Referência atual (2025-2026) em breakdown
+de ads que convertem</li>
+<li><strong>Filosofia:</strong> “Pattern interruption em 0.8s”</li>
+<li><strong>Onde aprender:</strong> YouTube (muito conteúdo grátis)</li>
+</ul>
+<h4 id="ed-leake-midas-media-ex-inspired-marketing">7. <strong>Ed
+Leake</strong> — <a href="https://edleake.com/">Midas Media, ex-Inspired
+Marketing</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Ex-consultor oficial do Facebook Marketing
+Partner</li>
+<li><strong>Filosofia:</strong> Dados matam opinião</li>
+<li><strong>Onde aprender:</strong> Twitter/X, blog dele</li>
+</ul>
+<h4 id="joseph-wilkins-facebook-ads-strategist">8. <strong>Joseph
+Wilkins</strong> — <a href="https://www.josephwilkins.com/">Facebook Ads
+strategist</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Esteira de criativos para DTC (+$300M em
+ad spend rodado)</li>
+<li><strong>Filosofia:</strong> “Scroll stopper é decisão de primeiros 3
+frames”</li>
+</ul>
+<h3 id="referências-brasileiras">🇧🇷 Referências brasileiras</h3>
+<h4 id="ícaro-de-carvalho-o-novo-mercado">9. <strong>Ícaro de
+Carvalho</strong> — <a
+href="https://www.instagram.com/icarodecarvalho/">O Novo
+Mercado</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Referência em copy direct response no
+Brasil</li>
+<li><strong>Frameworks:</strong> AIDA brasileira, buyer trance,
+intencionalidade</li>
+<li><strong>Já está na memória Boost</strong>
+(<code>project_vera_knowledge_base.md</code>)</li>
+<li><strong>Aplicação em design:</strong> a hierarquia do copy informa a
+hierarquia visual</li>
+</ul>
+<h4 id="gabriel-benites-victor-custódio-sobrancelhas-de-tráfego">10.
+<strong>Gabriel Benites / Victor Custódio</strong> — <a
+href="https://www.youtube.com/@SobrancelhasdeTrafego">Sobrancelhas de
+Tráfego</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Bastidores reais de performance creative
+no Brasil</li>
+<li><strong>Onde aprender:</strong> YouTube</li>
+</ul>
+<h4 id="vitor-peçanha-rock-content">11. <strong>Vitor Peçanha</strong> —
+<a href="https://rockcontent.com/">Rock Content</a></h4>
+<ul>
+<li><strong>Por quê:</strong> Metodologia de conteúdo + performance pra
+B2B</li>
+</ul>
+<h3 id="referências-fundadoras-clássicos-obrigatórios">🧠 Referências
+fundadoras (clássicos obrigatórios)</h3>
+<ul>
+<li><strong>David Ogilvy</strong> — <em>Ogilvy on Advertising</em>,
+<em>Confessions of an Advertising Man</em>
+<ul>
+<li><em>“Headline vale 80% do preço do anúncio”</em></li>
+</ul></li>
+<li><strong>Dan Kennedy</strong> — <em>The Ultimate Sales Letter</em>,
+<em>Magnetic Marketing</em>
+<ul>
+<li>Direct response pai-de-santo. Toda copy hoje deriva dele.</li>
+</ul></li>
+<li><strong>Claude Hopkins</strong> — <em>Scientific Advertising</em>
+(1923!)
+<ul>
+<li>Testes A/B existem há 100 anos. Leitura de 2h.</li>
+</ul></li>
+<li><strong>Eugene Schwartz</strong> — <em>Breakthrough Advertising</em>
+<ul>
+<li>Níveis de consciência do mercado (ainda válido hoje)</li>
+</ul></li>
+</ul>
+<p><strong>Regra:</strong> se você nunca leu esses 4, seu “performance
+creative” é chute sofisticado.</p>
+<hr />
+<h2 id="fundamentos-técnicos-dimensões-e-specs">3. Fundamentos técnicos
+— dimensões e specs</h2>
+<h3 id="tabela-de-dimensões-oficiais-meta-ads-2026">Tabela de dimensões
+oficiais Meta Ads 2026</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Placement</th>
+<th>Aspect Ratio</th>
+<th>Pixels</th>
+<th>File Size Max</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Feed Facebook</strong></td>
+<td>1:1 (quadrado)</td>
+<td>1080 × 1080</td>
+<td>30 MB</td>
+<td>Aceita mas 4:5 performa melhor</td>
+</tr>
+<tr>
+<td><strong>Feed Facebook/IG</strong></td>
+<td><strong>4:5</strong> (vertical) ⭐</td>
+<td><strong>1080 × 1350</strong></td>
+<td>30 MB</td>
+<td><strong>Formato recomendado</strong> — ocupa 31% mais tela
+mobile</td>
+</tr>
+<tr>
+<td><strong>Feed Instagram</strong></td>
+<td>1:1 ou 4:5</td>
+<td>1080 × 1080 ou 1080 × 1350</td>
+<td>30 MB</td>
+<td>4:5 prefere</td>
+</tr>
+<tr>
+<td><strong>Stories FB/IG</strong></td>
+<td>9:16 (vertical full)</td>
+<td>1080 × 1920</td>
+<td>30 MB</td>
+<td>Safe zone obrigatória</td>
+</tr>
+<tr>
+<td><strong>Reels FB/IG</strong></td>
+<td>9:16 (vertical full)</td>
+<td>1080 × 1920</td>
+<td>4 GB (vídeo)</td>
+<td>Unified safe zone (mar/2026)</td>
+</tr>
+<tr>
+<td><strong>Carrossel</strong></td>
+<td>1:1</td>
+<td>1080 × 1080 por card</td>
+<td>30 MB por card</td>
+<td>2-10 cards</td>
+</tr>
+<tr>
+<td><strong>Marketplace</strong></td>
+<td>1:1</td>
+<td>1080 × 1080</td>
+<td>30 MB</td>
+<td>Imagem</td>
+</tr>
+<tr>
+<td><strong>Messenger Inbox</strong></td>
+<td>1:1</td>
+<td>1080 × 1080</td>
+<td>30 MB</td>
+<td>Imagem</td>
+</tr>
+<tr>
+<td><strong>Right column (desktop)</strong></td>
+<td>1:1 ou 1.91:1</td>
+<td>1200 × 628</td>
+<td>30 MB</td>
+<td>Desktop only, baixo volume</td>
+</tr>
+<tr>
+<td><strong>In-Stream Video</strong></td>
+<td>16:9 ou 1:1</td>
+<td>1920 × 1080 ou 1080 × 1080</td>
+<td>4 GB</td>
+<td>Pré/durante vídeo</td>
+</tr>
+<tr>
+<td><strong>Audience Network native</strong></td>
+<td>9:16 ou 1:1 ou 16:9</td>
+<td>vários</td>
+<td>30 MB</td>
+<td>Resto da rede Meta</td>
+</tr>
+</tbody>
+</table>
+<h3 id="especificações-de-vídeo">Especificações de vídeo</h3>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Codec</strong></td>
+<td>H.264 (recomendado) ou H.265</td>
+</tr>
+<tr>
+<td><strong>Container</strong></td>
+<td>MP4 ou MOV</td>
+</tr>
+<tr>
+<td><strong>Frame rate</strong></td>
+<td>30fps (mínimo) — 60fps pra movimento rápido</td>
+</tr>
+<tr>
+<td><strong>Resolução mínima</strong></td>
+<td>1080p</td>
+</tr>
+<tr>
+<td><strong>Bitrate</strong></td>
+<td>8-12 Mbps (1080p), 16-20 Mbps (4K)</td>
+</tr>
+<tr>
+<td><strong>Áudio</strong></td>
+<td>AAC, 128kbps+</td>
+</tr>
+<tr>
+<td><strong>Duração máx Feed</strong></td>
+<td>241 minutos (mas use &lt;15s)</td>
+</tr>
+<tr>
+<td><strong>Duração máx Stories</strong></td>
+<td>60 segundos</td>
+</tr>
+<tr>
+<td><strong>Duração máx Reels</strong></td>
+<td><strong>90 segundos</strong> (atualizado 2026)</td>
+</tr>
+<tr>
+<td><strong>File size</strong></td>
+<td>4 GB</td>
+</tr>
+</tbody>
+</table>
+<h3 id="formatos-de-texto-no-ad">Formatos de texto no ad</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Limite caracteres</th>
+<th>Onde aparece</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Text</strong></td>
+<td>125 caracteres antes do “ver mais”</td>
+<td>Texto principal acima da imagem</td>
+</tr>
+<tr>
+<td><strong>Headline</strong></td>
+<td>27-40 caracteres</td>
+<td>Abaixo da imagem, tamanho grande</td>
+</tr>
+<tr>
+<td><strong>Description</strong></td>
+<td>27 caracteres</td>
+<td>Abaixo da headline (nem sempre mostra)</td>
+</tr>
+<tr>
+<td><strong>Link</strong></td>
+<td>URL completa</td>
+<td>Destination</td>
+</tr>
+<tr>
+<td><strong>CTA Button</strong></td>
+<td>Escolher da lista Meta</td>
+<td>“Saiba mais”, “Cadastre-se”, etc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>IMPORTANTE:</strong> a regra dos 20% de texto na imagem foi
+removida, mas <strong>ads com menos texto na imagem</strong> continuam
+tendo delivery melhor e CPM menor. Meta ainda “pesa” isso no leilão
+mesmo sem avisar.</p>
+<hr />
+<h2 id="safe-zones-e-mobile-first">4. Safe zones e mobile-first</h2>
+<h3 id="por-que-mobile-first-não-é-opcional">Por que mobile-first não é
+opcional</h3>
+<ul>
+<li><strong>98% das impressões</strong> acontecem em celular</li>
+<li><strong>Tela média:</strong> 6 polegadas</li>
+<li><strong>Distância de leitura:</strong> 30-40cm</li>
+<li><strong>Tempo de atenção no feed:</strong> <strong>1.7 segundos por
+post</strong> (média)</li>
+<li><strong>Scroll rate médio:</strong> 1 post a cada 1.3s</li>
+</ul>
+<p>Se o ad não funciona em 1.7s num celular, <strong>não
+funciona</strong>. Ponto.</p>
+<h3 id="safe-zones-stories-e-reels-unified-2026">Safe zones — Stories e
+Reels (unified 2026)</h3>
+<p>Meta unificou em março/2026 as safe zones de Stories + Reels + ambas
+plataformas. Uma única zona segura para todos.</p>
+<pre><code>┌─────────────────────┐  ← 1080 × 1920 (9:16)
+│ 14% topo (UI Meta)  │  ← NÃO coloca texto aqui (username, X)
+├─────────────────────┤
+│                     │
+│                     │
+│    ZONA SEGURA      │  ← Texto, logo, elementos importantes
+│    1080 × 1120      │
+│                     │
+│                     │
+├─────────────────────┤
+│ 35% bottom (CTA)    │  ← NÃO coloca texto aqui (Meta coloca CTA)
+└─────────────────────┘
+  ↑ 6%            6% ↑   ← Margens laterais também</code></pre>
+<p><strong>Margens obrigatórias:</strong> - <strong>Topo:</strong> 14%
+(≈150px de 1080px altura) — Meta cobre com nome/X -
+<strong>Base:</strong> 20-35% (≈380-670px) — Meta cobre com
+CTA/username/descrição - <strong>Laterais:</strong> 6% cada lado (≈65px)
+— evita corte em telas diferentes</p>
+<p><strong>Zona 100% segura:</strong> centro 58% × 48% da tela =
+~625×920 pixels úteis.</p>
+<h3 id="feed-11-e-45">Feed (1:1 e 4:5)</h3>
+<p>Feed é mais permissivo, mas ainda tem: - <strong>Topo:</strong> ~5%
+pode ficar cortado em alguns devices (cuidado com texto) -
+<strong>Base:</strong> ~5% (nome do perfil, botões)</p>
+<p><strong>4:5 vs 1:1 — por que 4:5 ganha:</strong> - 4:5 ocupa
+<strong>31% mais tela vertical</strong> no feed - Mais tempo de dwell -
+Mais chance de hook funcionar - Meta prefere (delivery melhor)</p>
+<p><strong>Exceção:</strong> se você vai usar o mesmo criativo no
+Marketplace ou right column desktop, 1:1 fica mais versátil. Mas pra
+feed exclusivo, <strong>sempre 4:5</strong>.</p>
+<h3 id="regra-prática">Regra prática</h3>
+<blockquote>
+<p><strong>Tudo que importa cabe dentro dos 60% centrais da
+tela.</strong> Tudo fora disso é decoração ou pode ser cortado.</p>
+</blockquote>
+<hr />
+<h2 id="anatomia-do-ad-vencedor">5. Anatomia do ad vencedor</h2>
+<h3 id="os-5-elementos-obrigatórios">Os 5 elementos obrigatórios</h3>
+<p>Todo ad de performance precisa ter, nesta ordem visual:</p>
+<h4 id="hook-visual-primeiros-0.5s">1. <strong>HOOK VISUAL</strong>
+(primeiros 0.5s)</h4>
+<ul>
+<li>Movimento que quebra padrão</li>
+<li>Rosto humano olhando pra câmera</li>
+<li>Cor contrastante com o feed</li>
+<li>Número grande ou símbolo (<span class="math inline">,</span>)</li>
+<li>Pergunta provocativa</li>
+</ul>
+<h4 id="headline-primeiros-1.5s">2. <strong>HEADLINE</strong> (primeiros
+1.5s)</h4>
+<ul>
+<li>Frase curta (5-8 palavras)</li>
+<li>Fonte bold condensed</li>
+<li>Contraste máximo</li>
+<li>Promessa ou provocação</li>
+</ul>
+<h4 id="prova-segundos-3-5">3. <strong>PROVA</strong> (segundos
+3-5)</h4>
+<ul>
+<li>Número específico (“R$ 2.3M em gestão”)</li>
+<li>Logo de autoridade</li>
+<li>Depoimento rápido</li>
+<li>Dado concreto</li>
+</ul>
+<h4 id="oferta-segundos-5-8">4. <strong>OFERTA</strong> (segundos
+5-8)</h4>
+<ul>
+<li>O que a pessoa vai receber</li>
+<li>Grátis/desconto/benefício</li>
+<li>Sem ambiguidade</li>
+</ul>
+<h4 id="cta-último-frame">5. <strong>CTA</strong> (último frame)</h4>
+<ul>
+<li>Ação clara (“Agende agora”)</li>
+<li>Botão visual ou indicação</li>
+<li>Escassez se aplicável (“só até sexta”)</li>
+</ul>
+<h3 id="a-regra-dos-3-focos">A regra dos 3 focos</h3>
+<blockquote>
+<p>Todo ad deve ter <strong>1 foco principal</strong>, <strong>1
+hierarquia clara</strong>, <strong>1 ação clara</strong>.</p>
+</blockquote>
+<p>Se tem 3 headlines competindo, 2 CTAs ou 4 elementos visuais iguais,
+o olho não sabe onde parar e o scroll continua.</p>
+<h3 id="exemplo-anotado-af-cripto-feed-ad-vencedor-boost-c4">Exemplo
+anotado — AF-CRIPTO FEED (ad vencedor Boost C4)</h3>
+<pre><code>┌─────────────────────────────────────┐
+│                                     │
+│     [Foto do André Franco]          │  ← HOOK: rosto humano direto
+│      (plano médio, olhar            │     pra câmera, expressão séria
+│       firme pra câmera)             │
+│                                     │
+│     ────────────────────────        │
+│                                     │
+│   &quot;ANÁLISE GRATUITA DA SUA          │  ← HEADLINE: 6 palavras,
+│   CARTEIRA CRIPTO&quot;                  │     bold, branco sobre fundo
+│                                     │
+│   ────                              │
+│   Diagnóstico gratuito.             │  ← DESCRIPTION: 3 benefícios
+│   Analista sênior.                  │     concretos
+│   Conversa ao vivo.                 │
+│                                     │
+│   [     CADASTRAR-SE     ]          │  ← CTA: botão nativo Meta
+│                                     │
+└─────────────────────────────────────┘</code></pre>
+<p><strong>Por que funciona (80% qualif):</strong> 1. Rosto humano =
+pattern interrupt 2. Headline nomeia o público (“sua carteira cripto”)
+3. 3 bullets com prova institucional 4. CTA nativo não-agressivo</p>
+<hr />
+<h2 id="hook-e-scroll-stopper-os-3-primeiros-segundos">6. Hook e scroll
+stopper — os 3 primeiros segundos</h2>
+<h3 id="por-que-3-segundos">Por que 3 segundos?</h3>
+<p><strong>Hook Rate = % de pessoas que assistiram &gt;=3 segundos do
+vídeo</strong></p>
+<table>
+<thead>
+<tr>
+<th>Hook Rate</th>
+<th>Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt;25%</td>
+<td>Ruim — kill fast</td>
+</tr>
+<tr>
+<td>25-30%</td>
+<td>Saudável — pode otimizar</td>
+</tr>
+<tr>
+<td>30-40%</td>
+<td>Bom — escalar com cuidado</td>
+</tr>
+<tr>
+<td><strong>&gt;40%</strong></td>
+<td><strong>“Unicorn”</strong> — escalar agressivo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dado:</strong> ads com hook rate &gt;40% geram <strong>3.2x
+mais resultados</strong> do que ads &lt;30%, mesmo com copy e oferta
+idênticas depois.</p>
+<h3 id="a-regra-3-3-3">A regra 3-3-3</h3>
+<table>
+<thead>
+<tr>
+<th>Segundos</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>0-3s</strong></td>
+<td><strong>Hook</strong> — capturar atenção, quebrar padrão</td>
+</tr>
+<tr>
+<td><strong>3-6s</strong></td>
+<td><strong>Mensagem core</strong> — o que o ad é sobre</td>
+</tr>
+<tr>
+<td><strong>6-9s</strong></td>
+<td><strong>CTA</strong> — próxima ação</td>
+</tr>
+</tbody>
+</table>
+<p>Se o ad tem mais de 15 segundos, você está testando paciência. Para
+conversion ads: <strong>6-12 segundos é o sweet spot</strong>.</p>
+<h3 id="frameworks-de-hook-que-funcionam">10 frameworks de hook que
+funcionam</h3>
+<h4 id="pattern-interrupt-visual">1. <strong>Pattern interrupt
+visual</strong></h4>
+<p>Fazer algo que o feed não espera: - Objeto voando em direção à câmera
+- Zoom rápido em rosto - Cor pesada contrastando - Silêncio súbito
+depois de música - Inversão (“Isto NÃO é um anúncio.”)</p>
+<h4 id="pergunta-direta-ao-público">2. <strong>Pergunta direta ao
+público</strong></h4>
+<ul>
+<li>“Você tem patrimônio em cripto?”</li>
+<li>“Quanto do seu dinheiro está em renda fixa?”</li>
+<li>“Já perdeu R$10k tentando acertar o topo?”</li>
+</ul>
+<h4 id="dor-amplificada">3. <strong>Dor amplificada</strong></h4>
+<ul>
+<li>“Sua renda fixa perde da inflação há 3 anos.”</li>
+<li>“Você está investindo do jeito que seu pai investia.”</li>
+</ul>
+<h4 id="contradição">4. <strong>Contradição</strong></h4>
+<ul>
+<li>“Minha renda fixa tá me deixando pobre.”</li>
+<li>“Investir em Bitcoin é menos arriscado que Tesouro.”</li>
+</ul>
+<h4 id="especificidade-numérica">5. <strong>Especificidade
+numérica</strong></h4>
+<ul>
+<li>“Eu gerencio R$127 milhões em cripto.”</li>
+<li>“82% dos R$100k+ fazem isto errado.”</li>
+</ul>
+<h4 id="autoridade-visual">6. <strong>Autoridade visual</strong></h4>
+<ul>
+<li>Logo de BlackRock, Fidelity, JPMorgan</li>
+<li>Nome + título de analista</li>
+<li>Gráfico de retorno real</li>
+</ul>
+<h4 id="curiosidade">7. <strong>Curiosidade</strong></h4>
+<ul>
+<li>“O erro que 9 em 10 investidores cometem em cripto.”</li>
+<li>“Aqui tem uma planilha que paguei R$5k.”</li>
+</ul>
+<h4 id="inversão-de-expectativa">8. <strong>Inversão de
+expectativa</strong></h4>
+<ul>
+<li>“Eu NÃO vou te dizer pra comprar Bitcoin.”</li>
+<li>“Vender agora pode ser o melhor movimento.”</li>
+</ul>
+<h4 id="prova-social-instantânea">9. <strong>Prova social
+instantânea</strong></h4>
+<ul>
+<li>“R$2.3M analisados no último mês.”</li>
+<li>“347 investidores agendaram análise esta semana.”</li>
+</ul>
+<h4 id="problema-solução-em-1-frame">10. <strong>Problema + solução em 1
+frame</strong></h4>
+<ul>
+<li>Split screen: dor em cima, solução embaixo</li>
+<li>Before/after visível</li>
+</ul>
+<h3 id="regra-de-ouro-do-hook">Regra de ouro do hook</h3>
+<blockquote>
+<p><strong>Se tirar os primeiros 3 segundos do ad, ele ainda faz
+sentido?</strong> Se sim, o hook está falhando — não é um hook, é um
+warm-up.</p>
+</blockquote>
+<hr />
+<h2 id="tipografia-para-performance">7. Tipografia para performance</h2>
+<h3 id="as-5-regras-de-tipografia-em-ad-mobile">As 5 regras de
+tipografia em ad mobile</h3>
+<h4 id="bold-ou-nada">1. <strong>Bold ou nada</strong></h4>
+<p>Light, regular, medium não funcionam em 6 polegadas a 30cm de
+distância. Use <strong>Bold ou Black</strong>.</p>
+<h4 id="condensed-ganha-de-extended">2. <strong>Condensed ganha de
+extended</strong></h4>
+<p>Condensed = mais letras no mesmo espaço, mais legíveis. Tente: -
+<strong>Bebas Neue</strong> (clássico) - <strong>Impact</strong>
+(nativa) - <strong>Anton</strong> (Google Fonts) -
+<strong>Oswald</strong> (Google Fonts) - <strong>Inter
+Bold/Black</strong> (moderna, clean) - <strong>Neue Haas
+Grotesk</strong> (premium) - <strong>Sora</strong> (usado pela Boost
+Research)</p>
+<h4 id="tamanho-mínimo-14pt-mobile">3. <strong>Tamanho mínimo 14pt
+(mobile)</strong></h4>
+<ul>
+<li>Headline: <strong>48-72pt</strong> (equivalente)</li>
+<li>Subhead: <strong>24-36pt</strong></li>
+<li>Body: <strong>18-24pt</strong></li>
+<li><strong>NUNCA menor que 14pt</strong> — ninguém lê</li>
+</ul>
+<h4 id="contraste-71-mínimo">4. <strong>Contraste 7:1
+mínimo</strong></h4>
+<p>Texto branco sobre fundo escuro ou texto escuro sobre fundo claro.
+Sem gradient sutil. Sem “cinza claro sobre cinza médio”.</p>
+<p>Ferramenta de teste: <strong>WebAIM Contrast Checker</strong>.</p>
+<h4 id="stroke-ou-box-sempre-que-fundo-for-variado">5. <strong>Stroke ou
+box = sempre que fundo for variado</strong></h4>
+<p>Se o fundo tem textura, use: - Stroke preto de 2-4px no texto - Ou
+box semitransparente atrás do texto (rgba(0,0,0,0.8))</p>
+<h3 id="hierarquia-tipográfica-em-3-níveis">Hierarquia tipográfica em 3
+níveis</h3>
+<pre><code>HEADLINE (60pt, black)
+──────
+Subhead descritivo (24pt, medium)
+Corpo pequeno complementar (16pt, regular)</code></pre>
+<h3 id="pares-de-fonte-recomendados">Pares de fonte recomendados</h3>
+<table>
+<thead>
+<tr>
+<th>Caso</th>
+<th>Headline</th>
+<th>Body</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Institucional</strong></td>
+<td>Neue Haas Grotesk Bold</td>
+<td>Inter Regular</td>
+</tr>
+<tr>
+<td><strong>Crypto/Tech</strong></td>
+<td>Sora Black</td>
+<td>Sora Regular</td>
+</tr>
+<tr>
+<td><strong>DTC</strong></td>
+<td>Bebas Neue</td>
+<td>Inter Regular</td>
+</tr>
+<tr>
+<td><strong>Luxo</strong></td>
+<td>Playfair Display Black</td>
+<td>Inter Regular</td>
+</tr>
+<tr>
+<td><strong>Tradicional</strong></td>
+<td>Impact</td>
+<td>Arial</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fontes-que-nunca-usar-em-ad-mobile">Fontes que
+<strong>NUNCA</strong> usar em ad mobile</h3>
+<ul>
+<li>Script/cursiva (ilegível em 6”)</li>
+<li>Serifada light</li>
+<li>Comic Sans (óbvio)</li>
+<li>Fonte que o designer “gosta” mas ninguém conhece</li>
+<li>Qualquer fonte &lt;400 weight</li>
+</ul>
+<h3 id="regra-da-boost">Regra da Boost</h3>
+<blockquote>
+<p>Fonte <strong>Sora</strong> (paleta atual) ou <strong>Inter</strong>
+(fallback). <strong>Sempre Bold ou Black em headlines.</strong> Cor:
+<strong>#FFFFFF</strong> sobre fundo <strong>#000</strong> ou
+<strong>#0A0A14</strong>, com acento <strong>#00B37E</strong> nas
+palavras-chave.</p>
+</blockquote>
+<hr />
+<h2 id="cor-contraste-e-hierarquia-visual">8. Cor, contraste e
+hierarquia visual</h2>
+<h3 id="paleta-boost-research-referência">Paleta Boost Research
+(referência)</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>--bg-primary<span class="in">:</span>   <span class="pp">#000000</span>   <span class="co">/* fundo puro */</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>--bg-secondary<span class="in">:</span> <span class="pp">#0A0A14</span>   <span class="co">/* fundo azulado escuro */</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>--text<span class="in">:</span>         <span class="pp">#FFFFFF</span>   <span class="co">/* texto principal */</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>--accent<span class="in">:</span>       <span class="pp">#00B37E</span>   <span class="co">/* verde Boost — palavras-chave */</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>--gray<span class="in">:</span>         <span class="pp">#A0A0C0</span>   <span class="co">/* texto secundário */</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>--red<span class="in">:</span>          <span class="pp">#FF4444</span>   <span class="co">/* alerta */</span></span></code></pre></div>
+<h3 id="por-que-contraste-com-o-feed-importa">Por que contraste com o
+feed importa</h3>
+<p>O feed do Facebook/Instagram é predominantemente <strong>branco +
+azul + cinza</strong>. Pra um ad parar o scroll, ele precisa
+<strong>contrastar</strong> com esse fundo visual.</p>
+<p><strong>Cores que chamam mais atenção no feed:</strong> 1.
+<strong>Preto</strong> (contraste máximo com o branco da timeline) 2.
+<strong>Vermelho</strong> (aviso/alerta/promoção) 3.
+<strong>Amarelo</strong> (atenção, fora do padrão) 4. <strong>Verde
+saturado</strong> (diferente do verde WhatsApp)</p>
+<p><strong>Cores que SE PERDEM no feed:</strong> - Azul claro (igual ao
+feed) - Cinza (igual ao feed) - Branco puro (vira fundo)</p>
+<h3 id="regra-60-30-10">Regra 60-30-10</h3>
+<ul>
+<li><strong>60%</strong> cor dominante (fundo/background)</li>
+<li><strong>30%</strong> cor secundária (elementos)</li>
+<li><strong>10%</strong> cor de acento (CTA, palavras-chave)</li>
+</ul>
+<p>Exemplo Boost: - 60% preto (#000) - 30% branco/cinza (#FFF, #A0A0C0)
+- 10% verde (#00B37E) — reservado pro CTA e palavras-chave</p>
+<h3 id="hierarquia-visual-os-3-níveis-do-olho">Hierarquia visual — os 3
+níveis do olho</h3>
+<ol type="1">
+<li><strong>F-Pattern (texto longo):</strong> olho faz um F invertido.
+Primeira linha e primeira palavra de cada linha ganham peso.</li>
+<li><strong>Z-Pattern (imagem + texto):</strong> olho faz Z — canto
+superior esquerdo → superior direito → diagonal → inferior direito.</li>
+<li><strong>Golden Spiral:</strong> olho vai pro
+centro-ligeiramente-esquerda primeiro.</li>
+</ol>
+<p><strong>Aplicação prática:</strong> coloque o hook/headline onde o
+olho naturalmente vai primeiro. Não na parte inferior.</p>
+<h3 id="regra-3-2-1-de-foco">Regra 3-2-1 de foco</h3>
+<ul>
+<li><strong>3</strong> elementos no ad (não mais)</li>
+<li><strong>2</strong> níveis de hierarquia (primário + secundário)</li>
+<li><strong>1</strong> único CTA</li>
+</ul>
+<p>Mais que isso = feed continua rolando.</p>
+<hr />
+<h2 id="copy-como-elemento-de-design">9. Copy como elemento de
+design</h2>
+<h3 id="copy-e-design-são-a-mesma-coisa">Copy e design são a mesma
+coisa</h3>
+<p>Ad é <strong>texto visual</strong>. Se o designer não sabe
+copywriting, o ad não performa. Se o copywriter não sabe design, o ad
+não é lido.</p>
+<h3
+id="frameworks-de-copy-que-todo-designer-de-meta-ads-precisa-saber">Frameworks
+de copy que todo designer de Meta Ads precisa saber</h3>
+<h4 id="aida-atenção-interesse-desejo-ação"><strong>AIDA</strong>
+(Atenção → Interesse → Desejo → Ação)</h4>
+<p>Clássico de 1898, ainda funciona: 1. <strong>Atenção:</strong>
+hook/headline 2. <strong>Interesse:</strong> o que o produto faz 3.
+<strong>Desejo:</strong> por que a pessoa quer 4. <strong>Ação:</strong>
+o CTA</p>
+<h4 id="pas-problem-agitate-solution"><strong>PAS</strong> (Problem →
+Agitate → Solution)</h4>
+<p>Rápido, brutal, funciona: 1. <strong>Problem:</strong> você tem este
+problema 2. <strong>Agitate:</strong> e vai piorar se não resolver 3.
+<strong>Solution:</strong> a solução é nossa</p>
+<h4 id="u-useful-urgent-unique-ultra-specific"><strong>4U</strong>
+(Useful, Urgent, Unique, Ultra-specific)</h4>
+<p>Checklist de headline: - ✓ <strong>Útil</strong> pro leitor? - ✓
+<strong>Urgente</strong>? - ✓ <strong>Único</strong> (diferente de todo
+o resto)? - ✓ <strong>Ultra-específico</strong> (números, nomes,
+datas)?</p>
+<h4 id="bab-before-after-bridge"><strong>BAB</strong> (Before → After →
+Bridge)</h4>
+<p>Narrativa simples: 1. <strong>Before:</strong> como era antes 2.
+<strong>After:</strong> como é depois 3. <strong>Bridge:</strong> nosso
+produto é a ponte</p>
+<h3 id="a-regra-do-first-sentence">A regra do “first sentence”</h3>
+<p>Primary text do Facebook mostra <strong>125 caracteres antes de “ver
+mais”</strong>. Nesse espaço: - <strong>Hook que filtra público</strong>
+(primeira frase = 1 hook, não introdução) - <strong>Nunca começa com
+“olá, tudo bem?”</strong> (scroll garantido) - <strong>Pergunta ou
+afirmação provocativa</strong></p>
+<h3 id="exemplo-comparativo">Exemplo comparativo</h3>
+<p><strong>❌ Ruim:</strong> &gt; “Olá! Você sabia que a Boost Research
+é uma casa de análise especializada em criptoativos com metodologia
+institucional aplicada à sua carteira…” &gt; → ninguém lê</p>
+<p><strong>✅ Bom:</strong> &gt; “Você tem patrimônio em cripto. Mas tem
+método pra gerenciá-lo?” &gt; → para o scroll em 1s</p>
+<h3 id="regra-dos-verbos">Regra dos verbos</h3>
+<p>Verbos de ação &gt; substantivos abstratos.</p>
+<ul>
+<li><p>❌ “Nossa metodologia traz eficiência”</p></li>
+<li><p>✅ “Analisamos sua carteira em 48h”</p></li>
+<li><p>❌ “Oferecemos inteligência de mercado”</p></li>
+<li><p>✅ “Nosso analista olha sua posição. Grátis.”</p></li>
+</ul>
+<h3 id="palavras-proibidas-em-copy-boost">Palavras proibidas em copy
+Boost</h3>
+<p>(memória <code>feedback_boost_vocabulario.md</code>)</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>❌ Não usar</th>
+<th>✅ Usar em vez</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>research house</td>
+<td>Mentoria Boost Research</td>
+</tr>
+<tr>
+<td>mentoria (como produto genérico)</td>
+<td>análise de carteira (grátis) / Mentoria Boost (produto pago)</td>
+</tr>
+<tr>
+<td>descubra o segredo</td>
+<td>análise transparente</td>
+</tr>
+<tr>
+<td>mude sua vida</td>
+<td>mude sua alocação</td>
+</tr>
+<tr>
+<td>rendimento garantido</td>
+<td>tese com critério</td>
+</tr>
+<tr>
+<td>curso</td>
+<td>análise</td>
+</tr>
+<tr>
+<td>magia</td>
+<td>método</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ugc-vs-polished-quando-usar-cada-um">10. UGC vs polished —
+quando usar cada um</h2>
+<h3 id="o-que-os-dados-mostram-2026">O que os dados mostram (2026)</h3>
+<ul>
+<li><strong>UGC-style outperforma polished em 35%</strong></li>
+<li><strong>UGC gera 4x mais engajamento</strong> que brand content</li>
+<li>Meta’s algoritmo <strong>rewards signals de
+autenticidade</strong></li>
+<li>Ads que parecem “feitos no iPhone” têm <strong>CPCs
+menores</strong></li>
+</ul>
+<h3 id="quando-usar-ugc-style">Quando usar UGC-style</h3>
+<p>✅ <strong>DTC</strong> (produto físico, e-commerce) ✅
+<strong>Direct response</strong> topo de funil ✅
+<strong>Aplicativos/SaaS</strong> com demo de uso ✅
+<strong>Awareness</strong> de marca nova ✅
+<strong>Antes-e-depois</strong> (skincare, fitness, educação)</p>
+<h3 id="quando-usar-polished">Quando usar polished</h3>
+<p>✅ <strong>Financeiro</strong> (credibilidade é tudo) ✅
+<strong>Luxo/premium</strong> ✅ <strong>B2B</strong> com decisores
+C-level ✅ <strong>Institucional</strong> (hospital, jurídico, seguro)
+✅ <strong>Retargeting</strong> de quem já viu UGC e quer mais
+“seriedade”</p>
+<h3 id="híbrido-o-melhor-dos-dois-mundos">Híbrido — o melhor dos dois
+mundos</h3>
+<p><strong>“Polished UGC”</strong> — visual limpo, enquadramento
+profissional, mas <strong>tom natural, imperfeições pequenas, linguagem
+do dia-a-dia</strong>. Este é o padrão 2026.</p>
+<p><strong>Exemplos:</strong> - Foto profissional do André Franco + copy
+em tom de conversa - Vídeo com luz bem tratada + fala natural, sem
+roteiro travado - Gráfico minimalista + headline provocativa</p>
+<h3 id="para-boost-research-específico">Para Boost Research
+específico</h3>
+<p>O público é <strong>R$100k+ em cripto/tradicional</strong>. Esse
+público: - <strong>Não confia</strong> em UGC raw (cheira golpe) -
+<strong>Não gosta</strong> de polished demais (cheira mentira corporate)
+- <strong>Gosta</strong> de autoridade institucional com tom direto</p>
+<p><strong>Recipe Boost:</strong> - Foto profissional André Franco
+(polished) - Copy direto, sem floreio (UGC-style) - Tipografia bold
+condensed (performance) - Paleta preta/verde (institucional)</p>
+<hr />
+<h2 id="frameworks-de-criação">11. Frameworks de criação</h2>
+<h3 id="framework-1-the-creative-matrix-savannah-sanchez">Framework 1 —
+<strong>The Creative Matrix</strong> (Savannah Sanchez)</h3>
+<p>Matriz 4x4 de variações:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Hook A</th>
+<th>Hook B</th>
+<th>Hook C</th>
+<th>Hook D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Formato Feed 4:5</strong></td>
+<td>Ad 1</td>
+<td>Ad 2</td>
+<td>Ad 3</td>
+<td>Ad 4</td>
+</tr>
+<tr>
+<td><strong>Formato Story 9:16</strong></td>
+<td>Ad 5</td>
+<td>Ad 6</td>
+<td>Ad 7</td>
+<td>Ad 8</td>
+</tr>
+<tr>
+<td><strong>Formato Carrossel</strong></td>
+<td>Ad 9</td>
+<td>Ad 10</td>
+<td>Ad 11</td>
+<td>Ad 12</td>
+</tr>
+<tr>
+<td><strong>Formato Reels</strong></td>
+<td>Ad 13</td>
+<td>Ad 14</td>
+<td>Ad 15</td>
+<td>Ad 16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>16 ads de 1 conceito.</strong> Lança todos, mede hook rate,
+escala os top 3.</p>
+<h3 id="framework-2-dara-denneys-3-iterations">Framework 2 —
+<strong>Dara Denney’s 3 Iterations</strong></h3>
+<p>Antes de criar qualquer ad do zero, tente:</p>
+<ol type="1">
+<li><strong>Pressure Test:</strong> pega o ad que está ganhando, cria 5
+variações (troca hook, troca cor, troca CTA, troca modelo, troca
+fundo)</li>
+<li><strong>New Format:</strong> pega a mensagem que ganha em Feed,
+adapta pra Story, Reels, Carrossel</li>
+<li><strong>Net New Concept:</strong> só depois de esgotar 1 e 2, tente
+conceito novo</li>
+</ol>
+<p><strong>Por quê:</strong> iteração custa 20% do tempo de conceito
+novo e entrega 60-80% do resultado. Conceito novo é aposta.</p>
+<h3 id="framework-3-fiber-foreplay">Framework 3 — <strong>FIBER</strong>
+(Foreplay)</h3>
+<p>Checklist rápido pra validar ad antes de lançar:</p>
+<ul>
+<li><strong>F</strong>ocus: tem 1 foco visual?</li>
+<li><strong>I</strong>ntent: a intenção do ad está clara em 2s?</li>
+<li><strong>B</strong>enefit: o benefício aparece antes do produto?</li>
+<li><strong>E</strong>motion: desperta alguma emoção (medo, desejo,
+curiosidade)?</li>
+<li><strong>R</strong>eason: tem uma razão pra agir agora (CTA +
+urgência)?</li>
+</ul>
+<p>Se algum “não”, o ad não sai.</p>
+<h3 id="framework-4-the-3-act-ad-para-vídeo">Framework 4 — <strong>The
+3-Act Ad</strong> (para vídeo)</h3>
+<table>
+<thead>
+<tr>
+<th>Ato</th>
+<th>Segundos</th>
+<th>Conteúdo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ato 1 — Hook</strong></td>
+<td>0-3s</td>
+<td>Pattern interrupt + pergunta/dor</td>
+</tr>
+<tr>
+<td><strong>Ato 2 — Promise</strong></td>
+<td>3-8s</td>
+<td>Oferta + prova + benefício</td>
+</tr>
+<tr>
+<td><strong>Ato 3 — CTA</strong></td>
+<td>8-12s</td>
+<td>Ação clara + urgência</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Máximo 12-15 segundos</strong> no total. Mais que isso =
+desperdício de budget.</p>
+<h3 id="framework-5-the-swipe-file">Framework 5 — <strong>The Swipe
+File</strong></h3>
+<p>Todo designer sério mantém um swipe file com: - <strong>Screenshots
+de ads que te pararam no feed</strong> (100+) - <strong>Ads da
+concorrência</strong> (via Meta Ad Library) - <strong>Ads de nichos
+semelhantes</strong> (financeiro, educação, SaaS)</p>
+<p><strong>Ferramentas:</strong> - <strong>Foreplay</strong>
+(foreplay.co) — pago, swipe file especializado - <strong>Meta Ad
+Library</strong> (facebook.com/ads/library) — grátis, oficial -
+<strong>AdCreative.ai</strong> — grátis, swipe automatizado</p>
+<p><strong>Regra:</strong> antes de criar, olhe 20 ads relevantes. 80%
+da criatividade é remix.</p>
+<hr />
+<h2 id="testing-e-iteração">12. Testing e iteração</h2>
+<h3 id="a-estrutura-de-teste-mínima">A estrutura de teste mínima</h3>
+<p><strong>Não lance 1 ad. Lance 5.</strong></p>
+<p>Por quê: você não sabe qual vai funcionar. Nem Savannah sabe. O jogo
+é quantidade + medição + kill rápido.</p>
+<h3 id="o-protocolo-de-teste-de-3-dias">O protocolo de teste de 3
+dias</h3>
+<table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1</strong></td>
+<td>Lança 5 variações com budget igual (R$50-100/ad/dia)</td>
+</tr>
+<tr>
+<td><strong>D2</strong></td>
+<td>Mede: qual tem hook rate &gt;25%?</td>
+</tr>
+<tr>
+<td><strong>D3</strong></td>
+<td>Kill os &lt;20%. Escala os &gt;35%. Itera os &gt;40%.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="métricas-chave-que-o-designer-precisa-olhar">Métricas-chave que
+o designer precisa olhar</h3>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>O que mede</th>
+<th>Benchmark saudável</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hook rate</strong></td>
+<td>% que assistiu 3s+</td>
+<td>&gt;25% (video)</td>
+</tr>
+<tr>
+<td><strong>Thumb-stop ratio</strong></td>
+<td>Hook rate / impressões</td>
+<td>20%+</td>
+</tr>
+<tr>
+<td><strong>CTR (link)</strong></td>
+<td>Cliques no link / impressões</td>
+<td>1%+</td>
+</tr>
+<tr>
+<td><strong>CPM</strong></td>
+<td>Custo por 1000 impressões</td>
+<td>&lt;R$40 (Brasil)</td>
+</tr>
+<tr>
+<td><strong>CPC</strong></td>
+<td>Custo por clique</td>
+<td>&lt;R$3</td>
+</tr>
+<tr>
+<td><strong>Frequency</strong></td>
+<td>Vezes que cada pessoa viu</td>
+<td>&lt;3 em 7 dias</td>
+</tr>
+<tr>
+<td><strong>LPV rate</strong></td>
+<td>Landing page views / cliques</td>
+<td>&gt;70%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hipótese-antes-do-teste">Hipótese antes do teste</h3>
+<p>Antes de lançar, escreva:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">teste</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">hipotese</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;O hook com dor específica (R$100k perdendo pra inflação)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">             vai ter hook rate maior que o hook genérico (investir em cripto)&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">metrica</span><span class="kw">:</span><span class="at"> hook_rate</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">criterio_sucesso</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;&gt; 30%&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">duracao</span><span class="kw">:</span><span class="at"> 3 dias</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">budget_total</span><span class="kw">:</span><span class="at"> R$300 (R$100 por variação)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">variacoes</span><span class="kw">:</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">A</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;R$100k em cripto. Você tem advisor olhando?&quot;</span><span class="at"> </span><span class="er">(específico)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">B</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Cripto entrou no portfólio dos maiores gestores.&quot;</span><span class="at"> </span><span class="er">(genérico)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">C</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;Sua renda fixa perde pra inflação há 3 anos.&quot;</span><span class="at"> </span><span class="er">(dor</span><span class="at"> </span><span class="er">tradicional)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">decisao</span><span class="kw">:</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">escalar</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;hook rate &gt; 40% e CPL &lt; R$80&quot;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">iterar</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;hook rate 25-40%&quot;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">kill</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;hook rate &lt; 20% ou CPL &gt; R$150&quot;</span></span></code></pre></div>
+<p>Sem hipótese e critério, o teste vira intuição. Intuição é cara.</p>
+<h3 id="quando-iterar-vs-quando-matar">Quando iterar vs quando
+matar</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Sintoma</th>
+<th>Ação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hook rate &gt;40% mas CTR &lt;1%</td>
+<td><strong>Iterar copy</strong> (hook funciona, ad body não)</td>
+</tr>
+<tr>
+<td>Hook rate &lt;20%</td>
+<td><strong>Matar o hook</strong>, tentar outro</td>
+</tr>
+<tr>
+<td>CTR &gt;1% mas LPV &lt;50%</td>
+<td><strong>Iterar destino</strong> (ad funciona, LP não)</td>
+</tr>
+<tr>
+<td>Frequency &gt;4 em 5 dias</td>
+<td><strong>Audiência pequena, expandir</strong> ou <strong>trocar
+criativo</strong></td>
+</tr>
+<tr>
+<td>CPM &gt;R$60 subitamente</td>
+<td><strong>Learning phase quebrada</strong>, esperar 48h</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ferramentas-do-ofício">13. Ferramentas do ofício</h2>
+<h3 id="design-estático">Design estático</h3>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>Uso</th>
+<th>Preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Figma</strong> ⭐</td>
+<td>Design + colaboração + auto-layout</td>
+<td>Grátis-$15/mês</td>
+</tr>
+<tr>
+<td><strong>Canva Pro</strong></td>
+<td>Templates rápidos + brand kit</td>
+<td>$13/mês</td>
+</tr>
+<tr>
+<td><strong>Adobe Illustrator</strong></td>
+<td>Vetor avançado</td>
+<td>$20+/mês</td>
+</tr>
+<tr>
+<td><strong>Affinity Designer</strong></td>
+<td>Alternativa Adobe, compra única</td>
+<td>$70 único</td>
+</tr>
+</tbody>
+</table>
+<h3 id="design-de-vídeo">Design de vídeo</h3>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>Uso</th>
+<th>Preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CapCut</strong> ⭐</td>
+<td>Editor mobile + desktop</td>
+<td>Grátis</td>
+</tr>
+<tr>
+<td><strong>Adobe Premiere Pro</strong></td>
+<td>Profissional completo</td>
+<td>$20+/mês</td>
+</tr>
+<tr>
+<td><strong>DaVinci Resolve</strong></td>
+<td>Profissional grátis</td>
+<td>Grátis</td>
+</tr>
+<tr>
+<td><strong>Descript</strong></td>
+<td>Edição por transcrição</td>
+<td>$12+/mês</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ai-generativa-2026">AI generativa (2026)</h3>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>Uso</th>
+<th>Preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Midjourney v7</strong></td>
+<td>Imagens hiperrealistas</td>
+<td>$10-60/mês</td>
+</tr>
+<tr>
+<td><strong>DALL-E 3 / GPT-4o</strong></td>
+<td>Imagens via ChatGPT</td>
+<td>$20/mês</td>
+</tr>
+<tr>
+<td><strong>Stable Diffusion XL</strong></td>
+<td>Open source local</td>
+<td>Grátis (hardware)</td>
+</tr>
+<tr>
+<td><strong>Runway Gen-3</strong></td>
+<td>Vídeos AI</td>
+<td>$15-95/mês</td>
+</tr>
+<tr>
+<td><strong>Pika Labs</strong></td>
+<td>Vídeos AI curtos</td>
+<td>$10-50/mês</td>
+</tr>
+<tr>
+<td><strong>Sora (OpenAI)</strong></td>
+<td>Vídeos AI avançados</td>
+<td>Pago</td>
+</tr>
+<tr>
+<td><strong>Luma Dream Machine</strong></td>
+<td>Vídeos AI high-end</td>
+<td>$30-500/mês</td>
+</tr>
+</tbody>
+</table>
+<h3 id="análise-e-swipe-file">Análise e swipe file</h3>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>Uso</th>
+<th>Preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Meta Ad Library</strong> ⭐</td>
+<td>Ver ads de concorrência</td>
+<td>Grátis</td>
+</tr>
+<tr>
+<td><strong>Foreplay</strong></td>
+<td>Swipe file organizado</td>
+<td>$49-299/mês</td>
+</tr>
+<tr>
+<td><strong>Motion</strong></td>
+<td>Creative reporting</td>
+<td>$89-599/mês</td>
+</tr>
+<tr>
+<td><strong>TripleWhale</strong></td>
+<td>Ad analytics DTC</td>
+<td>$129+/mês</td>
+</tr>
+<tr>
+<td><strong>AdCreative.ai</strong></td>
+<td>Scoring de ad</td>
+<td>$29-149/mês</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ugc-e-shoots">UGC e shoots</h3>
+<table>
+<thead>
+<tr>
+<th>Ferramenta</th>
+<th>Uso</th>
+<th>Preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Insert Your Face</strong></td>
+<td>Remove fundo + IA</td>
+<td>$10-50/mês</td>
+</tr>
+<tr>
+<td><strong>ElevenLabs</strong></td>
+<td>Voz AI pra narração</td>
+<td>$5-99/mês</td>
+</tr>
+<tr>
+<td><strong>CapCut + iPhone 15 Pro</strong></td>
+<td>Setup UGC completo</td>
+<td>$1000+ (1x)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="brasil-específico">Brasil específico</h3>
+<ul>
+<li><strong>Canva Pro Brasil</strong> — templates prontos</li>
+<li><strong>Kantar</strong> — pesquisa de mercado</li>
+<li><strong>Nubank brand assets</strong> — referência de institucional
+limpo</li>
+<li><strong>Instituto Locomotiva</strong> — dados demográficos
+Brasil</li>
+</ul>
+<hr />
+<h2 id="workflow-semanal-recomendado">14. Workflow semanal
+recomendado</h2>
+<h3 id="modelo-savannah-sanchez-adaptado-pra-boost">Modelo Savannah
+Sanchez (adaptado pra Boost)</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Manhã</th>
+<th>Tarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Segunda</strong></td>
+<td>Análise dos ads da semana anterior (Motion/Meta)</td>
+<td>Planejamento da semana + briefing dos 10-15 ads novos</td>
+</tr>
+<tr>
+<td><strong>Terça</strong></td>
+<td>Shoot/produção (fotos, vídeos, gráficos)</td>
+<td>Mais produção</td>
+</tr>
+<tr>
+<td><strong>Quarta</strong></td>
+<td>Edit (vídeos) + design (estático)</td>
+<td>Mais edit</td>
+</tr>
+<tr>
+<td><strong>Quinta</strong></td>
+<td>Finalização + QA interno</td>
+<td>Upload no Meta, review</td>
+</tr>
+<tr>
+<td><strong>Sexta</strong></td>
+<td>Monitoramento primeiros resultados</td>
+<td>Planejamento próxima semana</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ritmo-realista-pra-boost-research">Ritmo realista pra Boost
+Research</h3>
+<p><strong>Mínimo recomendado:</strong> - <strong>10 ads novos por
+semana</strong> (mix: 6 estáticos + 3 vídeos + 1 carrossel) -
+<strong>3-5 iterações</strong> dos vencedores da semana anterior -
+<strong>1 conceito novo</strong> experimental</p>
+<p><strong>Se você faz 2-3 ads por semana, está subperformando. Sem
+ofensa.</strong></p>
+<h3 id="review-weekly-o-ritual">Review weekly — o ritual</h3>
+<p>Toda sexta 30 minutos:</p>
+<ol type="1">
+<li><strong>Top 3 ads da semana</strong> — o que funcionou?</li>
+<li><strong>Bottom 3 ads da semana</strong> — o que não funcionou? Por
+quê?</li>
+<li><strong>Hipóteses</strong> que a gente validou</li>
+<li><strong>Hipóteses</strong> que a gente invalidou</li>
+<li><strong>Próximas 5 ideias</strong> pra testar</li>
+</ol>
+<hr />
+<h2 id="métricas-que-importam-pro-designer">15. Métricas que importam
+pro designer</h2>
+<h3 id="as-5-que-você-deve-olhar">As 5 que você DEVE olhar</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Fórmula</th>
+<th>Ação se baixa</th>
+<th>Ação se alta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hook rate</strong></td>
+<td>3s views / impressões</td>
+<td>Muda hook</td>
+<td>Escala</td>
+</tr>
+<tr>
+<td><strong>CTR (link)</strong></td>
+<td>Link clicks / impressões</td>
+<td>Muda copy/oferta</td>
+<td>Escala</td>
+</tr>
+<tr>
+<td><strong>CPM</strong></td>
+<td>Spend / (impressões/1000)</td>
+<td>Muda criativo ou audiência</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Thumbstop ratio</strong></td>
+<td>Plays / impressões</td>
+<td>Muda first frame</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Frequency</strong></td>
+<td>Impressões / alcance</td>
+<td>—</td>
+<td>Troca criativo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="as-3-que-você-pode-ignorar-por-enquanto">As 3 que você pode
+IGNORAR (por enquanto)</h3>
+<ul>
+<li><strong>ROAS</strong> (é do trafficker/gestor, não do designer)</li>
+<li><strong>CPM da concorrência</strong> (cada nicho é um)</li>
+<li><strong>Relevance score</strong> (Meta deprecou)</li>
+</ul>
+<h3 id="a-métrica-mágica-hook-rate-40">A métrica mágica: <strong>Hook
+rate &gt; 40%</strong></h3>
+<p>Se um ad tem hook rate &gt;40%, <strong>quase sempre ele escala
+bem</strong>. Você pode errar o CTR, o CPL, o que for — mas se o hook
+parou o scroll, você tem matéria-prima pra iterar.</p>
+<p><strong>Sem hook rate alto, não há escala.</strong></p>
+<hr />
+<h2 id="checklist-final-antes-de-publicar">16. Checklist final antes de
+publicar</h2>
+<h3 id="antes-de-subir-o-ad-responda-sim-pra-cada-pergunta">Antes de
+subir o ad, responda SIM pra cada pergunta:</h3>
+<p><strong>Dimensões:</strong> - [ ] O formato bate com o placement (4:5
+feed, 9:16 story/reels)? - [ ] O arquivo está em JPG/PNG (estático) ou
+MP4/MOV (vídeo)? - [ ] Está abaixo de 30MB (imagem) ou 4GB (vídeo)?</p>
+<p><strong>Mobile:</strong> - [ ] Visualizei em tela de 6” (não
+desktop)? - [ ] Texto legível sem zoom? - [ ] Cabe na safe zone (14%
+topo, 35% base)?</p>
+<p><strong>Hook:</strong> - [ ] Nos primeiros 0.5s tem pattern
+interrupt? - [ ] O primeiro frame funcionaria como miniatura sozinho? -
+[ ] Passa o teste “tirar os 3s primeiros e ad não faz sentido”?</p>
+<p><strong>Copy:</strong> - [ ] Primeira frase &lt;125 caracteres com
+hook? - [ ] Tem 1 foco principal (não 3)? - [ ] CTA claro e único? - [ ]
+Vocabulário Boost? (sem “research house”, sem “mentoria” genérico)</p>
+<p><strong>Design:</strong> - [ ] Fonte Bold/Black, tamanho &gt;=14pt? -
+[ ] Contraste texto/fundo 7:1? - [ ] 3 elementos visuais máximo? - [ ]
+Paleta Boost (preto + verde + branco)?</p>
+<p><strong>Público:</strong> - [ ] O criativo FILTRA o público certo?
+(R$100k+ pro Boost) - [ ] Não atrai leads desqualificados com headline
+genérica?</p>
+<p><strong>Autoridade:</strong> - [ ] Tem André Franco ou Boost Research
+visível? - [ ] Tem prova institucional (número, dado, logo)?</p>
+<p><strong>Técnico:</strong> - [ ] UTMs nos links? - [ ] Pixel
+configurado? - [ ] Destino certo (LP Análise)? - [ ] Ad name segue
+padrão
+<code>[BR][QUENTE|MORNO][CONCEITO][FORMATO][CAMPANHA][VERSAO]</code>?</p>
+<p>Se tem 1 “não”, o ad não sai.</p>
+<hr />
+<h2 id="erros-comuns-que-derrubam-ads">17. Erros comuns que derrubam
+ads</h2>
+<h3 id="os-15-erros-top">Os 15 erros top</h3>
+<h4 id="headline-de-15-palavras">1. <strong>Headline de 15
+palavras</strong></h4>
+<p>Ninguém lê. Corta pra 5-8 palavras.</p>
+<h4 id="texto-muito-pequeno-na-imagem">2. <strong>Texto muito pequeno na
+imagem</strong></h4>
+<p>&lt;14pt em mobile = ilegível. Aumenta.</p>
+<h4 id="logo-gigante-no-meio">3. <strong>Logo gigante no
+meio</strong></h4>
+<p>Logo é marca, não é CTA. Coloca canto ou discreto.</p>
+<h4 id="ctas-diferentes">4. <strong>3 CTAs diferentes</strong></h4>
+<p>“Clique aqui”, “Saiba mais”, “Agende já” no mesmo ad. Escolhe 1.</p>
+<h4 id="foto-de-estoque-genérica">5. <strong>Foto de estoque
+genérica</strong></h4>
+<p>Pessoa branca sorrindo de terno numa mesa vazia. Meta algoritmo
+reconhece e pune.</p>
+<h4 id="fundo-branco-puro">6. <strong>Fundo branco puro</strong></h4>
+<p>Feed é branco. Ad branco desaparece. Usa cor de contraste.</p>
+<h4 id="ignorar-safe-zone">7. <strong>Ignorar safe zone</strong></h4>
+<p>Texto cortado na base do Reels. Perde 30% da mensagem.</p>
+<h4 id="vídeo-vertical-mal-cropado">8. <strong>Vídeo vertical mal
+cropado</strong></h4>
+<p>Vídeo 16:9 esticado pra 9:16. Qualidade horrível.</p>
+<h4 id="copy-genérica-copiada-de-template">9. <strong>Copy genérica
+copiada de template</strong></h4>
+<p>“Descubra os segredos que mudaram a vida de milhares”. Banido por
+Meta e por humanos.</p>
+<h4 id="cta-vago">10. <strong>CTA vago</strong></h4>
+<p>“Clique aqui” é ruim. “Agendar análise gratuita” é bom.</p>
+<h4 id="sem-som-sem-sentido">11. <strong>Sem som = sem
+sentido</strong></h4>
+<p>85% dos vídeos são vistos sem som. Se depende do áudio, o ad morreu.
+<strong>Sempre legenda queimada.</strong></p>
+<h4 id="oferta-escondida-no-fim">12. <strong>Oferta escondida no
+fim</strong></h4>
+<p>CTA no segundo 20 de vídeo de 25s. 95% já saíram.</p>
+<h4 id="não-testar-variações">13. <strong>Não testar
+variações</strong></h4>
+<p>1 ad = 1 aposta. 10 ads = experimento válido.</p>
+<h4 id="desenhar-pra-impressão">14. <strong>Desenhar pra
+impressão</strong></h4>
+<p>300 DPI, CMYK, print-safe. Ninguém vai imprimir. Desenha pra 72 DPI
+RGB.</p>
+<h4 id="ignorar-métricas">15. <strong>Ignorar métricas</strong></h4>
+<p>“Meu ad é bonito!” — mas o hook rate é 12%. Bonito não paga
+aluguel.</p>
+<hr />
+<h2 id="leitura-obrigatória-se-for-levar-a-sério">📚 Leitura obrigatória
+(se for levar a sério)</h2>
+<h3 id="livros">Livros</h3>
+<ol type="1">
+<li><strong>Breakthrough Advertising</strong> — Eugene Schwartz (1966) —
+O livro definitivo de direct response</li>
+<li><strong>Ogilvy on Advertising</strong> — David Ogilvy (1983) — A
+bíblia</li>
+<li><strong>Scientific Advertising</strong> — Claude Hopkins (1923) — 90
+páginas que mudam tudo</li>
+<li><strong>The Ultimate Sales Letter</strong> — Dan Kennedy — direct
+response moderno</li>
+<li><strong>Purple Cow</strong> — Seth Godin — por que ads “bonitos” não
+funcionam</li>
+<li><strong>Cashvertising</strong> — Drew Eric Whitman — psicologia do
+consumidor</li>
+<li><strong>Made to Stick</strong> — Chip &amp; Dan Heath — por que
+algumas ideias colam</li>
+<li><strong>Contagious</strong> — Jonah Berger — por que viraliza</li>
+</ol>
+<h3 id="cursos-online">Cursos online</h3>
+<ul>
+<li><strong>Motion Creative Strategy Bootcamp</strong> (Dara Denney) —
+grátis, 8 semanas</li>
+<li><strong>The Social Savannah Courses</strong> — pago, prático</li>
+<li><strong>Foreplay Academy</strong> — pago, swipe file + process</li>
+<li><strong>Common Thread Collective Blog</strong> — grátis, Nick
+Shackelford</li>
+<li><strong>Brez Marketing YouTube</strong> — grátis, breakdowns
+semanais</li>
+</ul>
+<h3 id="podcasts">Podcasts</h3>
+<ul>
+<li><strong>The Perfect Pitch</strong> (DTC)</li>
+<li><strong>DTC Podcast</strong> — entrevistas com operadores</li>
+<li><strong>The Marketing Millennials</strong></li>
+<li><strong>Call Paul (Paul Povolni)</strong> — brand + performance</li>
+</ul>
+<h3 id="newsletters">Newsletters</h3>
+<ul>
+<li><strong>Dense Discovery</strong> (cross-disciplinar, brand)</li>
+<li><strong>DTC Newsletter</strong> (ecom + performance)</li>
+<li><strong>Growth Memo</strong> (Kevin Indig)</li>
+<li><strong>Marketing Brew</strong> (geral)</li>
+</ul>
+<hr />
+<h2 id="específico-pra-boost-research-recomendações-finais">🎯
+Específico pra Boost Research — recomendações finais</h2>
+<h3 id="o-que-a-boost-tem-de-vantagem">O que a Boost tem de
+vantagem</h3>
+<ol type="1">
+<li><strong>Autoridade André Franco</strong> — poucos concorrentes têm
+um rosto forte</li>
+<li><strong>Nicho defensável</strong> (cripto + R$100k+) — filtra
+público automaticamente</li>
+<li><strong>LP validada</strong> (analise.boostresearch.com.br) —
+funciona</li>
+<li><strong>Budget saudável</strong> (R$60k/mês) — dá pra testar</li>
+<li><strong>Tracking funcionando</strong> (dashboard qualificação +
+Supabase) — mede de verdade</li>
+</ol>
+<h3 id="o-que-a-boost-precisa-melhorar-de-design">O que a Boost precisa
+melhorar (de design)</h3>
+<ol type="1">
+<li><strong>Volume de criativos</strong> — 2-3 ads/semana é pouco. Meta
+quer 10+.</li>
+<li><strong>Filtro R$100k no criativo</strong> — só 1 de 18 criativos C6
+tem isso explícito</li>
+<li><strong>Reels</strong> — zero criativos em Reels hoje. Maior
+gap.</li>
+<li><strong>Variação de hooks</strong> — maioria dos hooks é similar
+(“você tem método?”)</li>
+<li><strong>Testing estruturado</strong> — criativos feitos por
+intuição, não por hipótese</li>
+</ol>
+<h3 id="fórmula-da-boost-consolidada">Fórmula da Boost
+(consolidada)</h3>
+<pre><code>VISUAL:
+- André Franco (foto profissional, plano médio, olhar direto)
+- Paleta: preto #000 + verde #00B37E + branco
+- Fonte: Sora Black (headline) + Sora Regular (body)
+- Formato: 4:5 (feed) ou 9:16 (story/reels)
+
+COPY:
+- Hook: pergunta-filtro com patrimônio (&quot;Você tem R$100k+ em cripto?&quot;)
+- Objeção: quebra do &quot;já investe direito&quot;
+- Autoridade: André Franco + Boost Research + método institucional
+- 3 bullets ✔ com benefício concreto
+- CTA: &quot;Análise gratuita&quot; como porta única
+
+PÚBLICO:
+- Custom audiences: engajamento IG 15-90D + LAL seguidores
+- Zero interesses frios
+- Idade 25-60 (não 18-65)
+
+TESTING:
+- 10 novos ads/semana
+- 3-5 iterações dos vencedores
+- Hipótese escrita antes de cada teste</code></pre>
+<hr />
+<h2 id="próximos-passos-pra-você-designergestor-boost">🚀 Próximos
+passos pra você (designer/gestor Boost)</h2>
+<ol type="1">
+<li><strong>Ler os 8 educadores</strong> (pelo menos 1 vídeo de
+cada)</li>
+<li><strong>Criar swipe file</strong> no Foreplay ou pasta local com 50+
+ads de referência</li>
+<li><strong>Definir fluxo semanal</strong> de produção (seg-sex)</li>
+<li><strong>Instalar Motion</strong> pra análise de criativos (ou usar o
+dashboard qualificação da Boost)</li>
+<li><strong>Criar matriz 5x4</strong> pra C7 (5 conceitos x 4 formatos =
+20 ads pra testar)</li>
+<li><strong>Adicionar Reels</strong> na rotação (gap atual)</li>
+<li><strong>Fazer shoot UGC-style</strong> com André em iPhone
+(alternativa aos polished atuais)</li>
+</ol>
+<hr />
+<p><strong>Fim do documento. Versão 1.0 — 09/abr/2026.</strong></p>
+<blockquote>
+<p><em>“O melhor designer de Meta Ads não é o que faz o ad mais bonito.
+É o que entende o humano distraído no feed melhor que qualquer
+outro.”</em></p>
+</blockquote>
+<hr />
+<h2 id="fontes-e-referências-consultadas">Fontes e referências
+consultadas</h2>
+<p>Este documento foi compilado a partir das seguintes fontes públicas
+(abril 2026):</p>
+<ul>
+<li><a href="https://adsuploader.com/blog/meta-ads-size">Meta Ads Size
+Guide 2026 — AdsUploader</a></li>
+<li><a href="https://www.shopify.com/blog/facebook-ad-sizes">Facebook Ad
+Sizes Complete Guide — Shopify</a></li>
+<li><a href="https://www.thebrief.ai/blog/meta-ad-specs/">Meta Ad Specs
+2026 — The Brief AI</a></li>
+<li><a
+href="https://www.get-ryze.ai/blog/facebook-ad-sizes-complete-specs-guide-for-2026">Facebook
+Ad Sizes 2026 — Ryze AI</a></li>
+<li><a href="https://admanage.ai/blog/meta-carousel-ad-specs">Meta
+Carousel Ad Specs — AdManage.ai</a></li>
+<li><a href="https://billo.app/blog/meta-ads-safe-zones/">Meta Ads Safe
+Zones 2026 — Billo</a></li>
+<li><a
+href="https://creativeos.com/blog/guides/facebook-ad-design-guide">Facebook
+Ad Design Guide — CreativeOS</a></li>
+<li><a
+href="https://sierrasocialmarketing.com/meta-ads-best-practices-2026-strategies/">Meta
+Ads Best Practices 2026 — Sierra Social</a></li>
+<li><a href="https://thesocialsavannah.com/courses">The Social Savannah
+Courses</a></li>
+<li><a
+href="https://motionapp.com/2026-creative-strategy-bootcamp">Motion
+Creative Strategy Bootcamp 2026</a></li>
+<li><a href="https://motionapp.com/dara-lp-backup">Dara Denney on
+Motion</a></li>
+<li><a href="https://www.linkedin.com/in/savannahsanchez/">Savannah
+Sanchez LinkedIn</a></li>
+<li><a
+href="https://motionapp.com/blog/creative-iterations-for-winning-ads">Creative
+Iterations Guide — Motion</a></li>
+<li><a
+href="https://cloudixdigital.com/the-science-of-the-hook-why-your-social-ad-creative-fails-and-how-to-master-2026-retention/">The
+Science of Hook Rates — Cloudix Digital</a></li>
+<li><a
+href="https://medium.com/@kamal_46644/10-hook-frameworks-that-actually-stop-the-scroll-on-meta-ads-8cea8b3940ae">10
+Hook Frameworks — Medium/Kamal</a></li>
+<li><a
+href="https://adynext.com/the-role-of-typography-in-meta-ad-design-for-maximum-impact/">Typography
+Meta Ads — Adynext</a></li>
+<li><a
+href="https://www.believeadvertising.com/the-anatomy-of-a-high-converting-meta-ad-creative-in-2026/">The
+Anatomy of High-Converting Meta Ad Creative 2026 — Believe
+Advertising</a></li>
+<li><a
+href="https://videoai.me/blog/meta-ads-creative-ugc-framework-roas-2026">UGC
+Ads Strategy 2026 — VideoAI.me</a></li>
+<li><a
+href="https://www.facebook.com/business/help/223409425500940">Meta
+Business Help — Text in Ads</a></li>
+</ul>
+</body>
+</html>
