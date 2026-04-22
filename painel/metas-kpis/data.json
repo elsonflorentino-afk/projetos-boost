@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-22 21:49 UTC",
+  "updated_at": "2026-04-22 22:11 UTC",
   "meta_weekly": {
     "Fev W1": {
       "spend": 7103.11,
@@ -79,11 +79,11 @@
       "ctr": 2.45
     },
     "Abr W4": {
-      "spend": 524.08,
-      "impressions": 20096,
+      "spend": 539.66,
+      "impressions": 20504,
       "clicks": 232,
       "leads": 12,
-      "ctr": 1.15
+      "ctr": 1.13
     }
   },
   "crm_weekly": {
@@ -175,7 +175,7 @@
     "Abr W4": 0
   },
   "btc": {
-    "brl": 392957,
-    "usd": 78803
+    "brl": 392991,
+    "usd": 78812
   }
 }

@@ -5,414 +5,175 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metas e KPIs — Boost Research</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ─── Reset & Base ─── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 14px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', sans-serif;
     background: #000;
     color: #FFF;
     min-height: 100vh;
-    font-feature-settings: 'tnum' 1, 'ss01' 1;
-}
-
-/* ─── Layout ─── */
-.dashboard {
-    max-width: 1600px;
-    margin: 0 auto;
     padding: 24px;
 }
 
-/* ─── Header ─── */
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 32px;
     flex-wrap: wrap;
     gap: 16px;
 }
-.header-left {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00D195;
 }
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.brand-logo {
+.header .meta {
     display: flex;
     align-items: center;
-    gap: 2px;
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-}
-.brand-logo .boost { color: #FFF; }
-.brand-logo .research { color: #00B37E; }
-.brand-divider {
-    width: 1px;
-    height: 24px;
-    background: #2a2a3e;
-    margin: 0 4px;
-}
-.brand-title {
-    font-size: 16px;
-    font-weight: 500;
+    gap: 16px;
     color: #A0A0C0;
+    font-size: 13px;
 }
-.breadcrumb {
-    font-size: 12px;
-    color: #555;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.breadcrumb a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.breadcrumb a:hover { color: #00B37E; }
-.breadcrumb .sep { color: #333; }
-.breadcrumb .current { color: #A0A0C0; }
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-.badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+.header .meta .btc {
     background: #0A0A14;
-    padding: 7px 14px;
+    padding: 6px 14px;
     border-radius: 8px;
     border: 1px solid #1a1a2e;
-    font-size: 12px;
     font-weight: 500;
-    color: #A0A0C0;
-    white-space: nowrap;
-}
-.badge-btc {
     color: #FFA500;
-    border-color: rgba(255, 165, 0, 0.15);
-    background: rgba(255, 165, 0, 0.05);
-}
-.badge-btc .icon { font-size: 14px; }
-.badge-live {
-    color: #00D195;
-    border-color: rgba(0, 209, 149, 0.15);
-    background: rgba(0, 179, 126, 0.05);
-}
-.badge-live::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #00D195;
-    animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
 }
 .btn-refresh {
     background: #00B37E;
     color: #000;
     border: none;
-    padding: 8px 18px;
+    padding: 8px 20px;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 13px;
     font-family: 'Inter', sans-serif;
-    transition: all 0.2s;
-    letter-spacing: 0.3px;
 }
-.btn-refresh:hover { background: #00D195; transform: translateY(-1px); }
-.btn-refresh:active { transform: translateY(0); }
+.btn-refresh:hover { background: #00D195; }
 
-/* ─── Summary Cards ─── */
+/* Summary cards */
 .summary-row {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 16px;
     margin-bottom: 32px;
-}
-@media (max-width: 1280px) {
-    .summary-row { grid-template-columns: repeat(4, 1fr); }
-}
-@media (max-width: 768px) {
-    .summary-row { grid-template-columns: repeat(2, 1fr); }
 }
 .summary-card {
     background: #0A0A14;
     border: 1px solid #1a1a2e;
     border-radius: 12px;
     padding: 20px;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.2s;
+    text-align: center;
 }
-.summary-card:hover {
-    border-color: #2a2a3e;
-    transform: translateY(-2px);
-}
-.summary-card::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    border-radius: 12px 0 0 12px;
-}
-.summary-card.border-green::before { background: #00B37E; }
-.summary-card.border-orange::before { background: #FFA500; }
-.summary-card.border-pink::before { background: #FF6B9D; }
-.summary-card.border-red::before { background: #E53E3E; }
-
-.card-label {
-    font-size: 11px;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-.card-value {
-    font-size: 26px;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    line-height: 1.1;
-    margin-bottom: 6px;
-}
-.card-value.green { color: #00D195; }
-.card-value.orange { color: #FFA500; }
-.card-value.pink { color: #FF6B9D; }
-.card-value.white { color: #FFF; }
-
-.card-trend {
-    font-size: 11px;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 3px;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-variant-numeric: tabular-nums;
-}
-.card-trend.up {
-    color: #00D195;
-    background: rgba(0, 209, 149, 0.1);
-}
-.card-trend.down {
-    color: #E53E3E;
-    background: rgba(229, 62, 62, 0.1);
-}
-
-/* ─── Section Titles ─── */
-.section-title {
-    font-size: 13px;
-    font-weight: 600;
+.summary-card .label {
+    font-size: 12px;
     color: #A0A0C0;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
 }
-.section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, #1a1a2e, transparent);
+.summary-card .value {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00D195;
 }
+.summary-card .value.accent { color: #FFA500; }
+.summary-card .value.pink { color: #FF6B9D; }
 
-/* ─── WoW Table ─── */
+/* WoW Table */
 .table-container {
     overflow-x: auto;
     margin-bottom: 40px;
     border-radius: 12px;
     border: 1px solid #1a1a2e;
-    background: #050509;
 }
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1200px;
-    font-variant-numeric: tabular-nums;
+    min-width: 900px;
 }
-
-/* Month group header */
-.month-group-row th {
-    background: #08081a;
-    color: #00B37E;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 10px 12px;
-    text-align: center;
-    border-bottom: 1px solid #1a1a2e;
-}
-.month-group-row th:first-child {
-    background: #050509;
-}
-.month-group-row th.month-feb { border-left: 1px solid #1a1a2e; border-right: 1px solid #1a1a2e; }
-.month-group-row th.month-mar { border-right: 1px solid #1a1a2e; background: #0a0a1f; }
-.month-group-row th.month-apr { border-right: 1px solid #1a1a2e; }
-.month-group-row th.month-total { background: #0d0d20; color: #FFA500; }
-
-/* Sub-header: week columns */
 th {
     background: #0A0A14;
-    color: #555;
-    font-size: 11px;
+    color: #A0A0C0;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
-    padding: 10px 12px;
+    padding: 14px 12px;
     text-align: right;
     border-bottom: 2px solid #1a1a2e;
     white-space: nowrap;
-    letter-spacing: 0.3px;
 }
-th:first-child {
-    text-align: left;
-    color: #A0A0C0;
-    font-size: 11px;
-    letter-spacing: 0.8px;
-}
-th.col-total {
-    color: #FFA500;
-    background: #0d0d20;
-    font-weight: 700;
-}
-
+th:first-child { text-align: left; }
 td {
-    padding: 11px 12px;
-    font-size: 13px;
+    padding: 12px;
+    font-size: 14px;
     text-align: right;
     border-bottom: 1px solid #0d0d1a;
-    color: #C0C0D8;
-    font-weight: 400;
-    transition: background 0.15s;
+    color: #E0E0F0;
 }
 td.metric-name {
     text-align: left;
     font-weight: 600;
-    color: #E0E0F0;
+    color: #FFF;
     white-space: nowrap;
     position: sticky;
     left: 0;
-    background: #050509;
-    z-index: 2;
-    padding-left: 16px;
-    font-size: 12px;
-    letter-spacing: 0.2px;
+    background: #000;
+    z-index: 1;
 }
-td.col-total {
-    font-weight: 700;
-    color: #FFF;
-    background: rgba(255, 165, 0, 0.04);
-    border-left: 1px solid #1a1a2e;
-}
-
-/* Hover */
-tr:hover td { background: rgba(10, 10, 20, 0.8); }
+tr:hover td { background: #0A0A14; }
 tr:hover td.metric-name { background: #0A0A14; }
-tr:hover td.col-total { background: rgba(255, 165, 0, 0.08); }
 
-/* Commercial separator */
-tr.commercial-separator td {
-    border-top: 2px solid rgba(255, 107, 157, 0.2);
-    padding-top: 13px;
-}
+/* Commercial rows */
 td.commercial {
-    background: rgba(255, 107, 157, 0.03);
+    background: rgba(255, 107, 157, 0.06);
 }
 td.metric-name.commercial {
-    background: #050509;
+    background: rgba(255, 107, 157, 0.06);
     color: #FF6B9D;
-    padding-left: 16px;
 }
-td.metric-name.commercial::before {
-    content: '';
-    display: inline-block;
-    width: 3px;
-    height: 12px;
-    background: #FF6B9D;
-    border-radius: 2px;
-    margin-right: 8px;
-    vertical-align: -1px;
-}
-tr:hover td.commercial { background: rgba(255, 107, 157, 0.08); }
-tr:hover td.metric-name.commercial { background: rgba(255, 107, 157, 0.08); }
+tr:hover td.commercial { background: rgba(255, 107, 157, 0.12); }
+tr:hover td.metric-name.commercial { background: rgba(255, 107, 157, 0.12); }
 
-/* Conditional coloring */
-td.cpl-good { color: #00D195; }
-td.cpl-mid { color: #FFA500; }
-td.cpl-bad { color: #E53E3E; }
-td.ctr-good { color: #00D195; }
-td.ctr-mid { color: #FFA500; }
-td.ctr-bad { color: #E53E3E; }
-td.dim { color: #444; }
-
-/* ─── Month Summary Cards ─── */
+/* Month cards */
 .month-section {
     margin-bottom: 40px;
 }
+.month-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #A0A0C0;
+    font-weight: 500;
+}
 .month-cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-}
-@media (max-width: 1024px) {
-    .month-cards { grid-template-columns: 1fr; }
 }
 .month-card {
     background: #0A0A14;
     border: 1px solid #1a1a2e;
     border-radius: 12px;
     padding: 24px;
-    transition: border-color 0.3s;
 }
-.month-card:hover { border-color: #2a2a3e; }
-.month-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid #1a1a2e;
-}
-.month-card-header h3 {
-    font-size: 16px;
+.month-card h3 {
+    font-size: 18px;
     font-weight: 700;
-    color: #FFF;
-}
-.month-card-header .period-badge {
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: #00B37E;
-    background: rgba(0, 179, 126, 0.1);
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: 600;
+    color: #00D195;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #1a1a2e;
 }
 .month-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 12px;
 }
 .month-stat {
     display: flex;
@@ -420,527 +181,179 @@ td.dim { color: #444; }
     gap: 4px;
 }
 .month-label {
-    font-size: 10px;
-    color: #555;
+    font-size: 11px;
+    color: #A0A0C0;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
-    font-weight: 500;
 }
 .month-value {
     font-size: 15px;
     font-weight: 600;
     color: #E0E0F0;
-    font-variant-numeric: tabular-nums;
 }
-.month-delta {
-    font-size: 10px;
-    font-weight: 500;
-    margin-top: 2px;
-    font-variant-numeric: tabular-nums;
-}
-.month-delta.up { color: #00D195; }
-.month-delta.down { color: #E53E3E; }
-.month-delta.neutral { color: #555; }
 
-/* Progress bar */
-.progress-bar-container {
-    margin-top: 16px;
-    padding-top: 14px;
-    border-top: 1px solid #0d0d1a;
+/* Funil de Conversao */
+.funnel-section { margin-bottom: 40px; }
+.funnel-title {
+    font-size: 13px; font-weight: 600; color: #A0A0C0;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
 }
-.progress-item {
-    margin-bottom: 8px;
-}
-.progress-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    color: #555;
-    margin-bottom: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.progress-bar {
-    height: 4px;
-    background: #1a1a2e;
-    border-radius: 2px;
-    overflow: hidden;
-}
-.progress-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 1s ease-out;
-}
-.progress-fill.green { background: linear-gradient(90deg, #00B37E, #00D195); }
-.progress-fill.orange { background: linear-gradient(90deg, #E08A00, #FFA500); }
-.progress-fill.pink { background: linear-gradient(90deg, #D94E7A, #FF6B9D); }
-
-/* ─── Funnel ─── */
-.funnel-section {
-    margin-bottom: 40px;
-}
+.funnel-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(to right, #1a1a2e, transparent); }
 .funnel-container {
-    background: #0A0A14;
-    border: 1px solid #1a1a2e;
-    border-radius: 12px;
-    padding: 32px 48px;
+    background: #0A0A14; border: 1px solid #1a1a2e;
+    border-radius: 12px; padding: 32px 48px;
 }
-.vfunnel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    max-width: 800px;
-    margin: 0 auto;
-}
-.vfunnel-stage {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
+.vfunnel { display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 800px; margin: 0 auto; }
+.vfunnel-stage { width: 100%; display: flex; justify-content: center; }
 .vfunnel-bar {
-    height: 52px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 24px;
-    font-weight: 700;
-    font-size: 16px;
-    color: #FFF;
-    font-variant-numeric: tabular-nums;
-    transition: opacity 0.3s, transform 0.2s;
-    min-width: 160px;
+    height: 52px; border-radius: 8px; display: flex; align-items: center;
+    justify-content: space-between; padding: 0 24px; font-weight: 700;
+    font-size: 16px; color: #FFF; font-variant-numeric: tabular-nums;
+    transition: opacity 0.3s; min-width: 160px;
 }
-.vfunnel-bar:hover {
-    opacity: 0.9;
-    transform: scale(1.01);
-}
-.vfunnel-label {
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-.vfunnel-value {
-    font-size: 20px;
-    font-weight: 800;
-}
-.vfunnel-conv-row {
-    padding: 6px 0;
-    display: flex;
-    justify-content: center;
-}
+.vfunnel-bar:hover { opacity: 0.85; }
+.vfunnel-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.vfunnel-value { font-size: 20px; font-weight: 800; }
+.vfunnel-conv-row { padding: 6px 0; display: flex; justify-content: center; }
 .vfunnel-pct {
-    font-size: 11px;
-    font-weight: 500;
-    color: #A0A0C0;
-    background: rgba(160, 160, 192, 0.06);
-    padding: 3px 12px;
-    border-radius: 4px;
-    letter-spacing: 0.3px;
+    font-size: 11px; font-weight: 500; color: #A0A0C0;
+    background: rgba(160, 160, 192, 0.06); padding: 3px 12px; border-radius: 4px;
 }
 .vfunnel-bottom {
-    margin-top: 20px;
-    padding-top: 16px;
-    border-top: 1px solid #1a1a2e;
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    font-size: 13px;
-    color: #A0A0C0;
-    width: 100%;
+    margin-top: 20px; padding-top: 16px; border-top: 1px solid #1a1a2e;
+    display: flex; justify-content: center; gap: 40px;
+    font-size: 13px; color: #A0A0C0; width: 100%;
 }
 
-/* ─── Footer ─── */
 .footer {
     text-align: center;
-    color: #333;
-    font-size: 11px;
+    color: #555;
+    font-size: 12px;
     margin-top: 40px;
-    padding: 20px 0;
-    border-top: 1px solid #0d0d1a;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-.footer a { color: #00B37E; text-decoration: none; }
-
-/* ─── Utility ─── */
-.tabnum {
-    font-variant-numeric: tabular-nums;
+    padding-top: 20px;
+    border-top: 1px solid #1a1a2e;
 }
 </style>
 </head>
 <body>
-<div class="dashboard">
 
-<!-- ═══ HEADER ═══ -->
 <div class="header">
-    <div class="header-left">
-        <div class="brand">
-            <div class="brand-logo">
-                <span class="boost">BOOST</span><span class="research">RESEARCH</span>
-            </div>
-            <div class="brand-divider"></div>
-            <span class="brand-title">Metas e KPIs</span>
-        </div>
-        <div class="breadcrumb">
-            <a href="../">Painel</a>
-            <span class="sep">/</span>
-            <span class="current">Metas e KPIs</span>
-        </div>
-    </div>
-    <div class="header-right">
-        <span class="badge badge-btc"><span class="icon">&#8383;</span> R$ 392.957 / US$ 78.803</span>
-        <span class="badge badge-live">Atualizado 22 Abr 2026, 21:49</span>
+    <h1>Metas e KPIs &mdash; Boost Research</h1>
+    <div class="meta">
+        <span class="btc">BTC: R$ 392.991,00 / US$ 78.812,00</span>
+        <span>Atualizado: 2026-04-22 22:11 UTC</span>
         <button class="btn-refresh" onclick="location.reload()">Atualizar</button>
     </div>
 </div>
 
-<!-- ═══ SUMMARY CARDS ═══ -->
-<div class="section-title">Visao Geral Acumulada</div>
 <div class="summary-row">
-    <div class="summary-card border-orange">
-        <div class="card-label">Investimento Total</div>
-        <div class="card-value orange">R$ 129.401</div>
-        <span class="card-trend down">-24% vs Meta</span>
+    <div class="summary-card">
+        <div class="label">Investimento Total</div>
+        <div class="value accent">R$ 129.417,48</div>
     </div>
-    <div class="summary-card border-green">
-        <div class="card-label">Total Leads</div>
-        <div class="card-value white">2.759</div>
-        <span class="card-trend down">-71% Mar vs Fev</span>
+    <div class="summary-card">
+        <div class="label">Total Leads</div>
+        <div class="value">2.759</div>
     </div>
-    <div class="summary-card border-orange">
-        <div class="card-label">CPL Medio</div>
-        <div class="card-value orange">R$ 46,90</div>
-        <span class="card-trend up">OK &lt; R$50</span>
+    <div class="summary-card">
+        <div class="label">CPL Medio</div>
+        <div class="value accent">R$ 46,91</div>
     </div>
-    <div class="summary-card border-green">
-        <div class="card-label">Leads Qualificados</div>
-        <div class="card-value green">221</div>
-        <span class="card-trend down">-39% Mar vs Fev</span>
+    <div class="summary-card">
+        <div class="label">Leads Qualificados</div>
+        <div class="value">221</div>
     </div>
-    <div class="summary-card border-pink">
-        <div class="card-label">Contatos</div>
-        <div class="card-value pink">623</div>
-        <span class="card-trend down">-4% Mar vs Fev</span>
+    <div class="summary-card">
+        <div class="label">Contatos</div>
+        <div class="value pink">623</div>
     </div>
-    <div class="summary-card border-pink">
-        <div class="card-label">Reunioes</div>
-        <div class="card-value pink">19</div>
-        <span class="card-trend up">+175% Mar vs Fev</span>
+    <div class="summary-card">
+        <div class="label">Reunioes</div>
+        <div class="value pink">19</div>
     </div>
-    <div class="summary-card border-green">
-        <div class="card-label">Vendas</div>
-        <div class="card-value green">9</div>
-        <span class="card-trend up">+100% Abr vs Mar</span>
+    <div class="summary-card">
+        <div class="label">Vendas</div>
+        <div class="value pink">9</div>
     </div>
 </div>
 
-<!-- ═══ WoW TABLE ═══ -->
-<div class="section-title">Performance Semanal (Week over Week)</div>
 <div class="table-container">
 <table>
 <thead>
-<!-- Month group row -->
-<tr class="month-group-row">
-    <th></th>
-    <th colspan="4" class="month-feb">Fevereiro</th>
-    <th colspan="4" class="month-mar">Marco</th>
-    <th colspan="4" class="month-apr">Abril</th>
-    <th class="month-total">Total</th>
-</tr>
-<!-- Week sub-header -->
 <tr>
     <th>Metrica</th>
-    <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
-    <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
-    <th>W1</th><th>W2</th><th>W3</th><th>W4</th>
-    <th class="col-total">Acum.</th>
+    <th>Fev W1</th><th>Fev W2</th><th>Fev W3</th><th>Fev W4</th><th>Mar W1</th><th>Mar W2</th><th>Mar W3</th><th>Mar W4</th><th>Abr W1</th><th>Abr W2</th><th>Abr W3</th><th>Abr W4</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-    <td class="metric-name">Investimento</td>
-    <td>R$ 7.103</td><td>R$ 12.417</td><td>R$ 15.459</td><td>R$ 9.235</td>
-    <td>R$ 12.601</td><td>R$ 13.216</td><td>R$ 8.525</td><td>R$ 14.011</td>
-    <td>R$ 11.277</td><td>R$ 19.449</td><td>R$ 5.586</td><td>R$ 524</td>
-    <td class="col-total">R$ 129.402</td>
-</tr>
-<tr>
-    <td class="metric-name">Impressoes</td>
-    <td>189.967</td><td>359.915</td><td>620.437</td><td>273.624</td>
-    <td>574.606</td><td>677.519</td><td>314.119</td><td>618.713</td>
-    <td>248.393</td><td>392.278</td><td>227.216</td><td>20.096</td>
-    <td class="col-total">4.516.883</td>
-</tr>
-<tr>
-    <td class="metric-name">Cliques</td>
-    <td>5.106</td><td>4.698</td><td>6.690</td><td>3.983</td>
-    <td>13.766</td><td>17.455</td><td>7.283</td><td>3.208</td>
-    <td>3.762</td><td>12.548</td><td>5.574</td><td>232</td>
-    <td class="col-total">84.305</td>
-</tr>
-<tr>
-    <td class="metric-name">Leads</td>
-    <td>248</td><td>487</td><td>590</td><td>374</td>
-    <td>339</td><td>290</td><td>133</td><td>61</td>
-    <td>30</td><td>63</td><td>132</td><td>12</td>
-    <td class="col-total">2.759</td>
-</tr>
-<tr>
-    <td class="metric-name">Leads Qualificados</td>
-    <td>18</td><td>35</td><td>44</td><td>27</td>
-    <td>33</td><td>26</td><td>12</td><td>5</td>
-    <td>16</td><td>5</td><td class="dim">&mdash;</td><td class="dim">&mdash;</td>
-    <td class="col-total">221</td>
-</tr>
-<tr>
-    <td class="metric-name">CTR</td>
-    <td class="ctr-good">2,69%</td><td class="ctr-mid">1,31%</td><td class="ctr-mid">1,08%</td><td class="ctr-mid">1,46%</td>
-    <td class="ctr-good">2,40%</td><td class="ctr-good">2,58%</td><td class="ctr-good">2,32%</td><td class="ctr-bad">0,52%</td>
-    <td class="ctr-mid">1,51%</td><td class="ctr-good">3,20%</td><td class="ctr-good">2,45%</td><td class="ctr-mid">1,15%</td>
-    <td class="col-total">1,87%</td>
-</tr>
-<tr>
-    <td class="metric-name">CPL</td>
-    <td class="cpl-good">R$ 28,64</td><td class="cpl-good">R$ 25,50</td><td class="cpl-good">R$ 26,20</td><td class="cpl-good">R$ 24,69</td>
-    <td class="cpl-good">R$ 37,17</td><td class="cpl-good">R$ 45,57</td><td class="cpl-mid">R$ 64,10</td><td class="cpl-bad">R$ 229,69</td>
-    <td class="cpl-bad">R$ 375,89</td><td class="cpl-bad">R$ 308,71</td><td class="cpl-good">R$ 42,32</td><td class="cpl-good">R$ 43,67</td>
-    <td class="col-total">R$ 46,90</td>
-</tr>
-
-<!-- Commercial separator -->
-<tr class="commercial-separator">
-    <td class="metric-name commercial">Contatos</td>
-    <td class="commercial">32</td><td class="commercial">64</td><td class="commercial">79</td><td class="commercial">49</td>
-    <td class="commercial">90</td><td class="commercial">75</td><td class="commercial">34</td><td class="commercial">15</td>
-    <td class="commercial">57</td><td class="commercial">54</td><td class="commercial">74</td><td class="commercial dim">&mdash;</td>
-    <td class="col-total">623</td>
-</tr>
-<tr>
-    <td class="metric-name commercial">Reunioes</td>
-    <td class="commercial dim">&mdash;</td><td class="commercial">1</td><td class="commercial">3</td><td class="commercial dim">&mdash;</td>
-    <td class="commercial">7</td><td class="commercial">3</td><td class="commercial">1</td><td class="commercial dim">&mdash;</td>
-    <td class="commercial">3</td><td class="commercial dim">&mdash;</td><td class="commercial">1</td><td class="commercial dim">&mdash;</td>
-    <td class="col-total">19</td>
-</tr>
-<tr>
-    <td class="metric-name commercial">Pedidos</td>
-    <td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td>
-    <td class="commercial">2</td><td class="commercial">1</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td>
-    <td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td>
-    <td class="col-total">3</td>
-</tr>
-<tr>
-    <td class="metric-name commercial">Vendas</td>
-    <td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td>
-    <td class="commercial">2</td><td class="commercial">1</td><td class="commercial dim">&mdash;</td><td class="commercial dim">&mdash;</td>
-    <td class="commercial">3</td><td class="commercial">2</td><td class="commercial">1</td><td class="commercial dim">&mdash;</td>
-    <td class="col-total">9</td>
-</tr>
+<tr><td class="metric-name ">Investimento</td><td class="">R$ 7.103,11</td><td class="">R$ 12.417,15</td><td class="">R$ 15.458,54</td><td class="">R$ 9.234,56</td><td class="">R$ 12.600,93</td><td class="">R$ 13.215,93</td><td class="">R$ 8.524,83</td><td class="">R$ 14.011,16</td><td class="">R$ 11.276,68</td><td class="">R$ 19.449,00</td><td class="">R$ 5.585,93</td><td class="">R$ 539,66</td></tr>
+<tr><td class="metric-name ">Impressoes</td><td class="">189.967</td><td class="">359.915</td><td class="">620.437</td><td class="">273.624</td><td class="">574.606</td><td class="">677.519</td><td class="">314.119</td><td class="">618.713</td><td class="">248.393</td><td class="">392.278</td><td class="">227.216</td><td class="">20.504</td></tr>
+<tr><td class="metric-name ">Cliques</td><td class="">5.106</td><td class="">4.698</td><td class="">6.690</td><td class="">3.983</td><td class="">13.766</td><td class="">17.455</td><td class="">7.283</td><td class="">3.208</td><td class="">3.762</td><td class="">12.548</td><td class="">5.574</td><td class="">232</td></tr>
+<tr><td class="metric-name ">Leads</td><td class="">248</td><td class="">487</td><td class="">590</td><td class="">374</td><td class="">339</td><td class="">290</td><td class="">133</td><td class="">61</td><td class="">30</td><td class="">63</td><td class="">132</td><td class="">12</td></tr>
+<tr><td class="metric-name ">Leads Qualificados</td><td class="">18</td><td class="">35</td><td class="">44</td><td class="">27</td><td class="">33</td><td class="">26</td><td class="">12</td><td class="">5</td><td class="">16</td><td class="">5</td><td class="">—</td><td class="">—</td></tr>
+<tr><td class="metric-name ">CTR</td><td class="">2,69%</td><td class="">1,31%</td><td class="">1,08%</td><td class="">1,46%</td><td class="">2,40%</td><td class="">2,58%</td><td class="">2,32%</td><td class="">0,52%</td><td class="">1,51%</td><td class="">3,20%</td><td class="">2,45%</td><td class="">1,13%</td></tr>
+<tr><td class="metric-name ">CPL</td><td class="">R$ 28,64</td><td class="">R$ 25,50</td><td class="">R$ 26,20</td><td class="">R$ 24,69</td><td class="">R$ 37,17</td><td class="">R$ 45,57</td><td class="">R$ 64,10</td><td class="">R$ 229,69</td><td class="">R$ 375,89</td><td class="">R$ 308,71</td><td class="">R$ 42,32</td><td class="">R$ 44,97</td></tr>
+<tr><td class="metric-name commercial">Contatos</td><td class="commercial">32</td><td class="commercial">64</td><td class="commercial">79</td><td class="commercial">49</td><td class="commercial">90</td><td class="commercial">75</td><td class="commercial">34</td><td class="commercial">15</td><td class="commercial">57</td><td class="commercial">54</td><td class="commercial">74</td><td class="commercial">—</td></tr>
+<tr><td class="metric-name commercial">Reunioes</td><td class="commercial">—</td><td class="commercial">1</td><td class="commercial">3</td><td class="commercial">—</td><td class="commercial">7</td><td class="commercial">3</td><td class="commercial">1</td><td class="commercial">—</td><td class="commercial">3</td><td class="commercial">—</td><td class="commercial">1</td><td class="commercial">—</td></tr>
+<tr><td class="metric-name commercial">Pedidos</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">2</td><td class="commercial">1</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td></tr>
+<tr><td class="metric-name commercial">Vendas</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">2</td><td class="commercial">1</td><td class="commercial">—</td><td class="commercial">—</td><td class="commercial">3</td><td class="commercial">2</td><td class="commercial">1</td><td class="commercial">—</td></tr>
 </tbody>
 </table>
 </div>
 
-<!-- ═══ MONTH SUMMARY ═══ -->
-<div class="section-title">Resumo Mensal Comparativo</div>
 <div class="month-section">
+    <h2>Resumo Mensal</h2>
     <div class="month-cards">
-        <!-- Fevereiro -->
+        
         <div class="month-card">
-            <div class="month-card-header">
-                <h3>Fevereiro 2026</h3>
-                <span class="period-badge">Baseline</span>
-            </div>
+            <h3>Fevereiro 2026</h3>
             <div class="month-grid">
-                <div class="month-stat">
-                    <span class="month-label">Investimento</span>
-                    <span class="month-value">R$ 44.213</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Leads</span>
-                    <span class="month-value">1.699</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Qualificados</span>
-                    <span class="month-value">124</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">CPL</span>
-                    <span class="month-value" style="color:#00D195;">R$ 26,02</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">CTR</span>
-                    <span class="month-value">1,42%</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Cliques</span>
-                    <span class="month-value">20.477</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Contatos</span>
-                    <span class="month-value" style="color:#FF6B9D;">224</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Reunioes</span>
-                    <span class="month-value" style="color:#FF6B9D;">4</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Vendas</span>
-                    <span class="month-value" style="color:#555;">&mdash;</span>
-                </div>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-item">
-                    <div class="progress-meta"><span>Lead &rarr; Qualif.</span><span>7,3%</span></div>
-                    <div class="progress-bar"><div class="progress-fill green" style="width: 73%;"></div></div>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-meta"><span>Investimento</span><span>34%</span></div>
-                    <div class="progress-bar"><div class="progress-fill orange" style="width: 34%;"></div></div>
-                </div>
+                <div class="month-stat"><span class="month-label">Investimento</span><span class="month-value">R$ 44.213,36</span></div>
+                <div class="month-stat"><span class="month-label">Leads</span><span class="month-value">1.699</span></div>
+                <div class="month-stat"><span class="month-label">Leads Qualif.</span><span class="month-value">124</span></div>
+                <div class="month-stat"><span class="month-label">CPL</span><span class="month-value">R$ 26,02</span></div>
+                <div class="month-stat"><span class="month-label">CTR</span><span class="month-value">1,42%</span></div>
+                <div class="month-stat"><span class="month-label">Cliques</span><span class="month-value">20.477</span></div>
+                <div class="month-stat"><span class="month-label">Contatos</span><span class="month-value">224</span></div>
+                <div class="month-stat"><span class="month-label">Reunioes</span><span class="month-value">4</span></div>
+                <div class="month-stat"><span class="month-label">Vendas</span><span class="month-value">—</span></div>
             </div>
         </div>
-
-        <!-- Marco -->
         <div class="month-card">
-            <div class="month-card-header">
-                <h3>Marco 2026</h3>
-                <span class="period-badge">Mes 2</span>
-            </div>
+            <h3>Marco 2026</h3>
             <div class="month-grid">
-                <div class="month-stat">
-                    <span class="month-label">Investimento</span>
-                    <span class="month-value">R$ 48.353</span>
-                    <span class="month-delta up">+9% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Leads</span>
-                    <span class="month-value">823</span>
-                    <span class="month-delta down">-52% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Qualificados</span>
-                    <span class="month-value">76</span>
-                    <span class="month-delta down">-39% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">CPL</span>
-                    <span class="month-value" style="color:#FFA500;">R$ 58,75</span>
-                    <span class="month-delta down">+126% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">CTR</span>
-                    <span class="month-value">1,91%</span>
-                    <span class="month-delta up">+35% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Cliques</span>
-                    <span class="month-value">41.712</span>
-                    <span class="month-delta up">+104% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Contatos</span>
-                    <span class="month-value" style="color:#FF6B9D;">214</span>
-                    <span class="month-delta down">-4% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Reunioes</span>
-                    <span class="month-value" style="color:#FF6B9D;">11</span>
-                    <span class="month-delta up">+175% vs Fev</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Vendas</span>
-                    <span class="month-value" style="color:#FF6B9D;">3</span>
-                    <span class="month-delta up">Primeiro</span>
-                </div>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-item">
-                    <div class="progress-meta"><span>Lead &rarr; Qualif.</span><span>9,2%</span></div>
-                    <div class="progress-bar"><div class="progress-fill green" style="width: 92%;"></div></div>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-meta"><span>Investimento</span><span>37%</span></div>
-                    <div class="progress-bar"><div class="progress-fill orange" style="width: 37%;"></div></div>
-                </div>
+                <div class="month-stat"><span class="month-label">Investimento</span><span class="month-value">R$ 48.352,85</span></div>
+                <div class="month-stat"><span class="month-label">Leads</span><span class="month-value">823</span></div>
+                <div class="month-stat"><span class="month-label">Leads Qualif.</span><span class="month-value">76</span></div>
+                <div class="month-stat"><span class="month-label">CPL</span><span class="month-value">R$ 58,75</span></div>
+                <div class="month-stat"><span class="month-label">CTR</span><span class="month-value">1,91%</span></div>
+                <div class="month-stat"><span class="month-label">Cliques</span><span class="month-value">41.712</span></div>
+                <div class="month-stat"><span class="month-label">Contatos</span><span class="month-value">214</span></div>
+                <div class="month-stat"><span class="month-label">Reunioes</span><span class="month-value">11</span></div>
+                <div class="month-stat"><span class="month-label">Vendas</span><span class="month-value">3</span></div>
             </div>
         </div>
-
-        <!-- Abril -->
         <div class="month-card">
-            <div class="month-card-header">
-                <h3>Abril 2026</h3>
-                <span class="period-badge">Em andamento</span>
-            </div>
+            <h3>Abril 2026</h3>
             <div class="month-grid">
-                <div class="month-stat">
-                    <span class="month-label">Investimento</span>
-                    <span class="month-value">R$ 36.836</span>
-                    <span class="month-delta down">-24% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Leads</span>
-                    <span class="month-value">237</span>
-                    <span class="month-delta down">-71% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Qualificados</span>
-                    <span class="month-value">21</span>
-                    <span class="month-delta down">-72% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">CPL</span>
-                    <span class="month-value" style="color:#E53E3E;">R$ 155,42</span>
-                    <span class="month-delta down">+165% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">CTR</span>
-                    <span class="month-value" style="color:#00D195;">2,49%</span>
-                    <span class="month-delta up">+30% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Cliques</span>
-                    <span class="month-value">22.116</span>
-                    <span class="month-delta down">-47% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Contatos</span>
-                    <span class="month-value" style="color:#FF6B9D;">185</span>
-                    <span class="month-delta down">-14% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Reunioes</span>
-                    <span class="month-value" style="color:#FF6B9D;">4</span>
-                    <span class="month-delta down">-64% vs Mar</span>
-                </div>
-                <div class="month-stat">
-                    <span class="month-label">Vendas</span>
-                    <span class="month-value" style="color:#00D195;">6</span>
-                    <span class="month-delta up">+100% vs Mar</span>
-                </div>
-            </div>
-            <div class="progress-bar-container">
-                <div class="progress-item">
-                    <div class="progress-meta"><span>Lead &rarr; Qualif.</span><span>8,9%</span></div>
-                    <div class="progress-bar"><div class="progress-fill green" style="width: 89%;"></div></div>
-                </div>
-                <div class="progress-item">
-                    <div class="progress-meta"><span>Investimento</span><span>28%</span></div>
-                    <div class="progress-bar"><div class="progress-fill orange" style="width: 28%;"></div></div>
-                </div>
+                <div class="month-stat"><span class="month-label">Investimento</span><span class="month-value">R$ 36.851,27</span></div>
+                <div class="month-stat"><span class="month-label">Leads</span><span class="month-value">237</span></div>
+                <div class="month-stat"><span class="month-label">Leads Qualif.</span><span class="month-value">21</span></div>
+                <div class="month-stat"><span class="month-label">CPL</span><span class="month-value">R$ 155,49</span></div>
+                <div class="month-stat"><span class="month-label">CTR</span><span class="month-value">2,49%</span></div>
+                <div class="month-stat"><span class="month-label">Cliques</span><span class="month-value">22.116</span></div>
+                <div class="month-stat"><span class="month-label">Contatos</span><span class="month-value">185</span></div>
+                <div class="month-stat"><span class="month-label">Reunioes</span><span class="month-value">4</span></div>
+                <div class="month-stat"><span class="month-label">Vendas</span><span class="month-value">6</span></div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ═══ FUNNEL ═══ -->
-<div class="section-title">Funil de Conversao Acumulado</div>
+
+<div class="funnel-title">Funil de Conversao Acumulado</div>
 <div class="funnel-section">
     <div class="funnel-container">
-        <!-- Funil vertical estilo report -->
         <div class="vfunnel">
             <div class="vfunnel-stage">
                 <div class="vfunnel-bar" style="width: 100%; background: linear-gradient(90deg, #00B37E, #00D195);">
@@ -948,48 +361,45 @@ td.dim { color: #444; }
                     <span class="vfunnel-value">2.759</span>
                 </div>
             </div>
-            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 22,6%</span></div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 22.6% foram contatados</span></div>
             <div class="vfunnel-stage">
-                <div class="vfunnel-bar" style="width: 80%; background: linear-gradient(90deg, #9B59B6, #C084FC);">
+                <div class="vfunnel-bar" style="width: 75%; background: linear-gradient(90deg, #9B59B6, #C084FC);">
                     <span class="vfunnel-label">Contatos</span>
                     <span class="vfunnel-value">623</span>
                 </div>
             </div>
-            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 35,5% dos contatos sao qualificados</span></div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 35.5% sao qualificados</span></div>
             <div class="vfunnel-stage">
-                <div class="vfunnel-bar" style="width: 60%; background: linear-gradient(90deg, #0090c0, #00b4d8);">
+                <div class="vfunnel-bar" style="width: 55%; background: linear-gradient(90deg, #0090c0, #00b4d8);">
                     <span class="vfunnel-label">Leads Qualificados</span>
                     <span class="vfunnel-value">221</span>
                 </div>
             </div>
-            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 8,6%</span></div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 8.6% tiveram reuniao</span></div>
             <div class="vfunnel-stage">
-                <div class="vfunnel-bar" style="width: 35%; background: linear-gradient(90deg, #E08A00, #FFA500);">
+                <div class="vfunnel-bar" style="width: 30%; background: linear-gradient(90deg, #E08A00, #FFA500);">
                     <span class="vfunnel-label">Reunioes</span>
                     <span class="vfunnel-value">19</span>
                 </div>
             </div>
-            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 47,4%</span></div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 47.4% fecharam</span></div>
             <div class="vfunnel-stage">
-                <div class="vfunnel-bar" style="width: 20%; background: linear-gradient(90deg, #D94E7A, #FF6B9D);">
+                <div class="vfunnel-bar" style="width: 18%; background: linear-gradient(90deg, #D94E7A, #FF6B9D);">
                     <span class="vfunnel-label">Vendas</span>
                     <span class="vfunnel-value">9</span>
                 </div>
             </div>
             <div class="vfunnel-bottom">
-                <span>Taxa geral: <strong style="color:#00D195">0,33%</strong> (leads &rarr; vendas)</span>
-                <span>Ticket medio: <strong style="color:#FFA500">R$ 4.333</strong></span>
+                <span>Taxa geral: <strong style="color:#00D195">0.33%</strong> (leads &rarr; vendas)</span>
             </div>
         </div>
     </div>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
 <div class="footer">
-    <span>Boost Research &mdash; Dashboard automatizado via AIOX</span>
-    <span>Proxima atualizacao: Segunda 23:59</span>
+    Boost Research &mdash; Dashboard automatizado via AIOX
+    &nbsp;|&nbsp; Proxima atualizacao: Segunda 23:59
 </div>
 
-</div><!-- /.dashboard -->
 </body>
 </html>

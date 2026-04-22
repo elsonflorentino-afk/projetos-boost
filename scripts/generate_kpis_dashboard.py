@@ -593,6 +593,60 @@ def generate_html(data):
             </div>
         </div>'''
 
+    # Funil de conversao acumulado
+    conv_lead_cont = round(total_contatos / total_leads * 100, 1) if total_leads else 0
+    conv_cont_qual = round(total_qual / total_contatos * 100, 1) if total_contatos else 0
+    conv_qual_reun = round(total_reunioes / total_qual * 100, 1) if total_qual else 0
+    total_pedidos = sum(crm.get(w, {}).get('pedidos', 0) for w in week_labels)
+    conv_reun_vend = round(total_vendas / total_reunioes * 100, 1) if total_reunioes else 0
+    conv_total = round(total_vendas / total_leads * 100, 2) if total_leads else 0
+
+    funnel_html = f'''
+<div class="funnel-title">Funil de Conversao Acumulado</div>
+<div class="funnel-section">
+    <div class="funnel-container">
+        <div class="vfunnel">
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 100%; background: linear-gradient(90deg, #00B37E, #00D195);">
+                    <span class="vfunnel-label">Leads</span>
+                    <span class="vfunnel-value">{fmt_int(total_leads)}</span>
+                </div>
+            </div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; {conv_lead_cont}% foram contatados</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 75%; background: linear-gradient(90deg, #9B59B6, #C084FC);">
+                    <span class="vfunnel-label">Contatos</span>
+                    <span class="vfunnel-value">{fmt_int(total_contatos)}</span>
+                </div>
+            </div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; {conv_cont_qual}% sao qualificados</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 55%; background: linear-gradient(90deg, #0090c0, #00b4d8);">
+                    <span class="vfunnel-label">Leads Qualificados</span>
+                    <span class="vfunnel-value">{fmt_int(total_qual)}</span>
+                </div>
+            </div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; {conv_qual_reun}% tiveram reuniao</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 30%; background: linear-gradient(90deg, #E08A00, #FFA500);">
+                    <span class="vfunnel-label">Reunioes</span>
+                    <span class="vfunnel-value">{fmt_int(total_reunioes)}</span>
+                </div>
+            </div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; {conv_reun_vend}% fecharam</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 18%; background: linear-gradient(90deg, #D94E7A, #FF6B9D);">
+                    <span class="vfunnel-label">Vendas</span>
+                    <span class="vfunnel-value">{fmt_int(total_vendas)}</span>
+                </div>
+            </div>
+            <div class="vfunnel-bottom">
+                <span>Taxa geral: <strong style="color:#00D195">{conv_total}%</strong> (leads &rarr; vendas)</span>
+            </div>
+        </div>
+    </div>
+</div>'''
+
     btc_brl = fmt_brl(btc.get('brl', 0)) if btc.get('brl') else '—'
     btc_usd = f"US$ {btc.get('usd', 0):,.2f}".replace(',', 'X').replace('.', ',').replace('X', '.') if btc.get('usd') else '—'
 
@@ -789,6 +843,40 @@ tr:hover td.metric-name.commercial {{ background: rgba(255, 107, 157, 0.12); }}
     color: #E0E0F0;
 }}
 
+/* Funil de Conversao */
+.funnel-section {{ margin-bottom: 40px; }}
+.funnel-title {{
+    font-size: 13px; font-weight: 600; color: #A0A0C0;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+}}
+.funnel-title::after {{ content: ''; flex: 1; height: 1px; background: linear-gradient(to right, #1a1a2e, transparent); }}
+.funnel-container {{
+    background: #0A0A14; border: 1px solid #1a1a2e;
+    border-radius: 12px; padding: 32px 48px;
+}}
+.vfunnel {{ display: flex; flex-direction: column; align-items: center; gap: 0; max-width: 800px; margin: 0 auto; }}
+.vfunnel-stage {{ width: 100%; display: flex; justify-content: center; }}
+.vfunnel-bar {{
+    height: 52px; border-radius: 8px; display: flex; align-items: center;
+    justify-content: space-between; padding: 0 24px; font-weight: 700;
+    font-size: 16px; color: #FFF; font-variant-numeric: tabular-nums;
+    transition: opacity 0.3s; min-width: 160px;
+}}
+.vfunnel-bar:hover {{ opacity: 0.85; }}
+.vfunnel-label {{ font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }}
+.vfunnel-value {{ font-size: 20px; font-weight: 800; }}
+.vfunnel-conv-row {{ padding: 6px 0; display: flex; justify-content: center; }}
+.vfunnel-pct {{
+    font-size: 11px; font-weight: 500; color: #A0A0C0;
+    background: rgba(160, 160, 192, 0.06); padding: 3px 12px; border-radius: 4px;
+}}
+.vfunnel-bottom {{
+    margin-top: 20px; padding-top: 16px; border-top: 1px solid #1a1a2e;
+    display: flex; justify-content: center; gap: 40px;
+    font-size: 13px; color: #A0A0C0; width: 100%;
+}}
+
 .footer {{
     text-align: center;
     color: #555;
@@ -862,8 +950,11 @@ tr:hover td.metric-name.commercial {{ background: rgba(255, 107, 157, 0.12); }}
     </div>
 </div>
 
+{funnel_html}
+
 <div class="footer">
-    Boost Research &mdash; Dashboard gerado automaticamente via generate_kpis_dashboard.py
+    Boost Research &mdash; Dashboard automatizado via AIOX
+    &nbsp;|&nbsp; Proxima atualizacao: Segunda 23:59
 </div>
 
 </body>
