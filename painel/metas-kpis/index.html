@@ -483,89 +483,73 @@ td.dim { color: #444; }
     background: #0A0A14;
     border: 1px solid #1a1a2e;
     border-radius: 12px;
-    padding: 32px;
+    padding: 32px 48px;
 }
-.funnel {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    width: 100%;
-}
-.funnel-stage {
+.vfunnel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    position: relative;
+    gap: 0;
+    max-width: 800px;
+    margin: 0 auto;
 }
-.funnel-bar-wrap {
-    display: flex;
-    align-items: center;
+.vfunnel-stage {
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
-.funnel-bar {
-    height: 48px;
-    border-radius: 6px;
+.vfunnel-bar {
+    height: 52px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 24px;
     font-weight: 700;
-    font-size: 18px;
+    font-size: 16px;
     color: #FFF;
     font-variant-numeric: tabular-nums;
-    transition: opacity 0.3s;
-    position: relative;
+    transition: opacity 0.3s, transform 0.2s;
+    min-width: 160px;
 }
-.funnel-bar:hover { opacity: 0.85; }
-.funnel-arrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 6px;
-    min-width: 60px;
+.vfunnel-bar:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
 }
-.funnel-arrow-line {
-    color: #333;
-    font-size: 16px;
-    line-height: 1;
-}
-.funnel-conv {
-    font-size: 10px;
+.vfunnel-label {
+    font-size: 13px;
     font-weight: 600;
-    color: #A0A0C0;
-    white-space: nowrap;
-    letter-spacing: 0.3px;
-    background: rgba(160, 160, 192, 0.08);
-    padding: 2px 6px;
-    border-radius: 3px;
-}
-.funnel-stage-label {
-    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: #555;
-    font-weight: 600;
-    text-align: center;
+    letter-spacing: 0.5px;
 }
-.funnel-row {
+.vfunnel-value {
+    font-size: 20px;
+    font-weight: 800;
+}
+.vfunnel-conv-row {
+    padding: 6px 0;
     display: flex;
-    align-items: center;
     justify-content: center;
+}
+.vfunnel-pct {
+    font-size: 11px;
+    font-weight: 500;
+    color: #A0A0C0;
+    background: rgba(160, 160, 192, 0.06);
+    padding: 3px 12px;
+    border-radius: 4px;
+    letter-spacing: 0.3px;
+}
+.vfunnel-bottom {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #1a1a2e;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 13px;
+    color: #A0A0C0;
     width: 100%;
-    gap: 0;
-}
-.funnel-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-.funnel-connector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 8px;
 }
 
 /* ─── Footer ─── */
@@ -956,47 +940,45 @@ td.dim { color: #444; }
 <div class="section-title">Funil de Conversao Acumulado</div>
 <div class="funnel-section">
     <div class="funnel-container">
-        <div class="funnel-row">
-            <!-- Leads -->
-            <div class="funnel-item">
-                <div class="funnel-bar" style="width: 320px; background: linear-gradient(135deg, #00B37E, #00D195);">2.759</div>
-                <div class="funnel-stage-label">Leads</div>
+        <!-- Funil vertical estilo report -->
+        <div class="vfunnel">
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 100%; background: linear-gradient(90deg, #00B37E, #00D195);">
+                    <span class="vfunnel-label">Leads</span>
+                    <span class="vfunnel-value">2.759</span>
+                </div>
             </div>
-            <div class="funnel-connector">
-                <div class="funnel-arrow-line">&rarr;</div>
-                <div class="funnel-conv">8,0%</div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 22,6%</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 80%; background: linear-gradient(90deg, #9B59B6, #C084FC);">
+                    <span class="vfunnel-label">Contatos</span>
+                    <span class="vfunnel-value">623</span>
+                </div>
             </div>
-            <!-- Qualificados -->
-            <div class="funnel-item">
-                <div class="funnel-bar" style="width: 180px; background: linear-gradient(135deg, #0090c0, #00b4d8);">221</div>
-                <div class="funnel-stage-label">Qualificados</div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 35,5% dos contatos sao qualificados</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 60%; background: linear-gradient(90deg, #0090c0, #00b4d8);">
+                    <span class="vfunnel-label">Leads Qualificados</span>
+                    <span class="vfunnel-value">221</span>
+                </div>
             </div>
-            <div class="funnel-connector">
-                <div class="funnel-arrow-line">&rarr;</div>
-                <div class="funnel-conv">282%</div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 8,6%</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 35%; background: linear-gradient(90deg, #E08A00, #FFA500);">
+                    <span class="vfunnel-label">Reunioes</span>
+                    <span class="vfunnel-value">19</span>
+                </div>
             </div>
-            <!-- Contatos -->
-            <div class="funnel-item">
-                <div class="funnel-bar" style="width: 240px; background: linear-gradient(135deg, #9B59B6, #C084FC);">623</div>
-                <div class="funnel-stage-label">Contatos</div>
+            <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; 47,4%</span></div>
+            <div class="vfunnel-stage">
+                <div class="vfunnel-bar" style="width: 20%; background: linear-gradient(90deg, #D94E7A, #FF6B9D);">
+                    <span class="vfunnel-label">Vendas</span>
+                    <span class="vfunnel-value">9</span>
+                </div>
             </div>
-            <div class="funnel-connector">
-                <div class="funnel-arrow-line">&rarr;</div>
-                <div class="funnel-conv">3,1%</div>
-            </div>
-            <!-- Reunioes -->
-            <div class="funnel-item">
-                <div class="funnel-bar" style="width: 100px; background: linear-gradient(135deg, #E08A00, #FFA500);">19</div>
-                <div class="funnel-stage-label">Reunioes</div>
-            </div>
-            <div class="funnel-connector">
-                <div class="funnel-arrow-line">&rarr;</div>
-                <div class="funnel-conv">47,4%</div>
-            </div>
-            <!-- Vendas -->
-            <div class="funnel-item">
-                <div class="funnel-bar" style="width: 80px; background: linear-gradient(135deg, #D94E7A, #FF6B9D);">9</div>
-                <div class="funnel-stage-label">Vendas</div>
+            <div class="vfunnel-bottom">
+                <span>Taxa geral: <strong style="color:#00D195">0,33%</strong> (leads &rarr; vendas)</span>
+                <span>Ticket medio: <strong style="color:#FFA500">R$ 4.333</strong></span>
             </div>
         </div>
     </div>
