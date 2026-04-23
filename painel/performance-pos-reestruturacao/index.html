@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Performance Pos-Reestruturacao | 15-17/abr/2026 | Boost Research</title>
+<title>Performance Pos-Reestruturacao | 15/04-23/04/2026 | Boost Research</title>
 <style>
 :root{--bg:#0a0a0a;--card:#141414;--border:#222;--green:#00C853;--gold:#FFD600;--blue:#448AFF;--purple:#B388FF;--orange:#FF9100;--text:#E0E0E0;--dim:#666;--white:#fff;--red:#FF5252}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -26,10 +26,6 @@ h1{font-size:24px;color:var(--white);margin-bottom:4px}
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead th{background:#1a1a1a;color:var(--dim);padding:8px 10px;text-align:left;font-size:10px;text-transform:uppercase;position:sticky;top:0}
 tbody td{padding:8px 10px;border-bottom:1px solid var(--border)}tbody tr:hover{background:#1a1a1a}
-.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.bar-label{font-size:11px;color:var(--text);min-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar-track{flex:1;height:22px;background:#1a1a1a;border-radius:4px;overflow:hidden}
-.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:10px;font-weight:700;color:#000;min-width:25px}
 .comp-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
 .comp-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
 .comp-card .label{font-size:10px;color:var(--dim);text-transform:uppercase;margin-bottom:8px}
@@ -41,1217 +37,350 @@ tbody td{padding:8px 10px;border-bottom:1px solid var(--border)}tbody tr:hover{b
 .proj-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center}
 .proj-item .pv{font-size:20px;font-weight:800;color:var(--white)}
 .proj-item .pl{font-size:9px;color:var(--dim);text-transform:uppercase;margin-top:4px}
-/* Lead Profile Section */
-.lead-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-.lead-stat{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center}
-.lead-stat .lsv{font-size:28px;font-weight:800}.lead-stat .lsl{font-size:10px;color:var(--dim);text-transform:uppercase;margin-top:4px}
-.lead-stat .lsd{font-size:11px;color:var(--dim);margin-top:2px}
-.dist-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.mini-chart{margin-bottom:8px}
-.mini-chart .mc-label{font-size:11px;color:var(--text);margin-bottom:4px;display:flex;justify-content:space-between}
-.mini-chart .mc-track{height:18px;background:#1a1a1a;border-radius:3px;overflow:hidden}
-.mini-chart .mc-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:9px;font-weight:700;color:#000;min-width:20px}
-.sub-title{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;margin-top:16px}
-/* Qualified leads table */
-.search-box{width:100%;padding:8px 12px;background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;margin-bottom:12px;outline:none}
-.search-box:focus{border-color:var(--blue)}
-.qual-badge{display:inline-block;padding:2px 6px;border-radius:3px;font-size:10px;font-weight:600}
-.qual-high{background:rgba(0,200,83,.15);color:var(--green)}
-.qual-mid{background:rgba(255,214,0,.15);color:var(--gold)}
-/* Creative cards */
-.creative-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.creative-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;position:relative}
-.creative-card .cc-rank{font-size:28px;font-weight:900;color:var(--green);opacity:.25;position:absolute;top:10px;right:14px}
-.creative-card h3{font-size:13px;color:var(--white);margin-bottom:4px;max-width:80%}
-.creative-card .cc-camp{font-size:10px;color:var(--dim);margin-bottom:12px}
-.cc-metrics{display:flex;gap:16px;flex-wrap:wrap}
-.cc-metric{text-align:center}
-.cc-metric .ccv{font-size:16px;font-weight:800}.cc-metric .ccl{font-size:9px;color:var(--dim);text-transform:uppercase}
-@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}.comp-grid{grid-template-columns:1fr}.proj-grid{grid-template-columns:repeat(3,1fr)}.lead-stats{grid-template-columns:1fr}.dist-grid{grid-template-columns:1fr}.creative-grid{grid-template-columns:1fr}}
+.qual-badge{display:inline-block;padding:2px 6px;border-radius:3px;font-size:10px;font-weight:600;background:rgba(0,200,83,.15);color:var(--green)}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.bar-label{font-size:11px;color:var(--text);min-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-track{flex:1;height:22px;background:#1a1a1a;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:10px;font-weight:700;color:#000;min-width:25px}
+@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}.comp-grid{grid-template-columns:1fr}.proj-grid{grid-template-columns:repeat(3,1fr)}.creative-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.proj-grid{grid-template-columns:repeat(2,1fr)}}
 </style></head><body>
 
-<h1>Performance Pos-Reestruturacao | 15-17/abr/2026</h1>
-<p class="sub">3 dias apos ajustes de 14/abr | Budget R$608/dia | Meta R$40k abril | Boost Research</p>
+<h1>Performance Pos-Reestruturacao | 15/04-23/04/2026</h1>
+<p class="sub">8 dias apos ajustes de 14/abr | Meta R$40k abril | Boost Research | Atualizado: 23/04/2026 20:30 UTC</p>
 
 <!-- Stats Bar -->
-<div class="stats" id="stats"></div>
+<div class="stats">
+<div class="stat"><div class="sv" style="color:var(--white)">R$6.799</div><div class="sl">Spend Periodo</div></div>
+<div class="stat"><div class="sv" style="color:var(--green)">223</div><div class="sl">Leads</div></div>
+<div class="stat"><div class="sv" style="color:var(--green)">R$30,49</div><div class="sl">CPL</div></div>
+<div class="stat"><div class="sv" style="color:var(--white)">R$850</div><div class="sl">Spend/dia</div></div>
+<div class="stat"><div class="sv" style="color:var(--green)">-64%</div><div class="sl">Variacao CPL</div></div>
+<div class="stat"><div class="sv" style="color:var(--blue)">28</div><div class="sl">Leads/dia</div></div>
+</div>
 
 <!-- Comparativo -->
 <div class="panel">
-  <h2>Comparativo Antes vs Depois da Reestruturacao</h2>
-  <div class="comp-grid" id="comparativo"></div>
+<h2>Comparativo Antes vs Depois da Reestruturacao</h2>
+<div class="comp-grid">
+<div class="comp-card">
+<div class="label">Spend/dia</div>
+<div class="values">
+<div><div class="val" style="color:var(--dim)">R$2.195</div><div class="tag">Antes (01-14/abr)</div></div>
+<div><div class="val" style="color:var(--white)">R$850</div><div class="tag">Depois (15/04+)</div></div>
 </div>
-
-<!-- Charts -->
-<div class="grid2">
-  <div class="panel"><h2>Leads por Campanha</h2><div id="chartLeads"></div></div>
-  <div class="panel"><h2>CPL por Campanha</h2><div id="chartCPL"></div></div>
+<div class="delta" style="color:var(--green)">-61%</div>
+</div>
+<div class="comp-card">
+<div class="label">Leads/dia</div>
+<div class="values">
+<div><div class="val" style="color:var(--dim)">26</div><div class="tag">Antes (01-14/abr)</div></div>
+<div><div class="val" style="color:var(--white)">28</div><div class="tag">Depois (15/04+)</div></div>
+</div>
+<div class="delta" style="color:var(--red)">+7%</div>
+</div>
+<div class="comp-card">
+<div class="label">CPL</div>
+<div class="values">
+<div><div class="val" style="color:var(--dim)">R$83,95</div><div class="tag">Antes (01-14/abr)</div></div>
+<div><div class="val" style="color:var(--white)">R$30,49</div><div class="tag">Depois (15/04+)</div></div>
+</div>
+<div class="delta" style="color:var(--green)">-64%</div>
+</div>
+</div>
 </div>
 
 <!-- Campanhas Table -->
 <div class="panel">
-  <h2>Campanhas — 15-17/abr/2026</h2>
-  <table>
-    <thead><tr><th>Campanha</th><th style="text-align:right">Spend</th><th style="text-align:right">Leads</th><th style="text-align:right">CPL</th><th>Status</th></tr></thead>
-    <tbody id="tbCampanhas"></tbody>
-  </table>
+<h2>Campanhas — 15/04 a 23/04/2026</h2>
+<table>
+<thead><tr><th>Campanha</th><th style="text-align:right">Spend</th><th style="text-align:right">Leads</th><th style="text-align:right">CPL</th><th>Status</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">IR Cripto 2026 — Leads | Boost Research</td>
+<td style="text-align:right">R$1.735,36</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">136</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$12,76</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">[BR][BOOST][C5-ANDROMEDA-V2][CBO][CONVERSAO-LP][Ab</td>
+<td style="text-align:right">R$611,57</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">28</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$21,84</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">[BR][BOOST][C5-ANDROMEDA][CBO][CONVERSAO-LP][Abr20</td>
+<td style="text-align:right">R$637,35</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">23</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$27,71</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">[BR][BOOST][CONVERSAO-FORM][CBO][C4][Mar2026]</td>
+<td style="text-align:right">R$852,97</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">19</td>
+<td style="text-align:right;font-weight:700;color:var(--gold)">R$44,89</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">[BR][BOOST][AQUECIMENTO][CBO][QUIZ-PATRIMONIO][Abr</td>
+<td style="text-align:right">R$927,37</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">15</td>
+<td style="text-align:right;font-weight:700;color:var(--orange)">R$61,82</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">[BR][BOOST][CONSIDERACAO][CBO][C4][Mar2026]</td>
+<td style="text-align:right">R$443,15</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">2</td>
+<td style="text-align:right;font-weight:700;color:var(--red)">R$221,57</td>
+<td><span class="badge badge-orange">CPL alto</span></td>
+</tr><tr>
+<td style="font-weight:600">Post do Instagram: Você não começa com muito...</td>
+<td style="text-align:right">R$428,25</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">0</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">-</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">Post do Instagram: Tudo cotado em BITCOIN , nos...</td>
+<td style="text-align:right">R$352,49</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">0</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">-</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">Post do Instagram: Petróleo Vs Bitcoin 
+
+#bitcoin.</td>
+<td style="text-align:right">R$810,60</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">0</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">-</td>
+<td><span class="badge badge-green">Ativa</span></td>
+</tr><tr>
+<td style="font-weight:600">[BR][BOOST][CONVERSAO][CBO][C4][Mar2026]</td>
+<td style="text-align:right">R$0,00</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">0</td>
+<td style="text-align:right;font-weight:700;color:var(--dim)">-</td>
+<td><span class="badge badge-red">Pausada</span></td>
+</tr><tr style="border-top:2px solid #444">
+<td><strong style="color:var(--white)">TOTAL</strong></td>
+<td style="text-align:right;color:var(--white)"><strong>R$6.799,11</strong></td>
+<td style="text-align:right;color:var(--green)"><strong>223</strong></td>
+<td style="text-align:right;color:var(--green)"><strong>R$30,49</strong></td>
+<td></td>
+</tr></tbody>
+</table>
 </div>
 
 <!-- Top Anuncios Table -->
 <div class="panel">
-  <h2>Top 10 Anuncios — 15-17/abr/2026</h2>
-  <table>
-    <thead><tr><th>Anuncio</th><th>Campanha</th><th style="text-align:right">Spend</th><th style="text-align:right">Leads</th><th style="text-align:right">CPL</th></tr></thead>
-    <tbody id="tbAnuncios"></tbody>
-  </table>
+<h2>Top 10 Anuncios — 15/04 a 23/04/2026</h2>
+<table>
+<thead><tr><th>Anuncio</th><th>Campanha</th><th style="text-align:right">Spend</th><th style="text-align:right">Leads</th><th style="text-align:right">CPL</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">[NOVO] E05-10ANOS</td>
+<td><span class="badge badge-blue">IR Cripto 2026 — Leads | </span></td>
+<td style="text-align:right">R$1.541,01</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">120</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$12,84</td>
+</tr><tr>
+<td style="font-weight:600">V2-OCULUS-3SIMS</td>
+<td><span class="badge badge-blue">[BR][BOOST][AQUECIMENTO][</span></td>
+<td style="text-align:right">R$748,20</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">15</td>
+<td style="text-align:right;font-weight:700;color:var(--gold)">R$49,88</td>
+</tr><tr>
+<td style="font-weight:600">VID-100K-ESTRATEGIAS-LP-ANALISE</td>
+<td><span class="badge badge-blue">[BR][BOOST][C5-ANDROMEDA-</span></td>
+<td style="text-align:right">R$260,08</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">13</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$20,01</td>
+</tr><tr>
+<td style="font-weight:600">[NOVO] E03-MULTA-75</td>
+<td><span class="badge badge-blue">IR Cripto 2026 — Leads | </span></td>
+<td style="text-align:right">R$178,76</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">13</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$13,75</td>
+</tr><tr>
+<td style="font-weight:600">[BR][QUENTE][BOOST-CRIPTO-FORM][FEED][C4</td>
+<td><span class="badge badge-blue">[BR][BOOST][CONVERSAO-FOR</span></td>
+<td style="text-align:right">R$639,36</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">13</td>
+<td style="text-align:right;font-weight:700;color:var(--gold)">R$49,18</td>
+</tr><tr>
+<td style="font-weight:600">VID-100K-ESTRATEGIAS-LP-ANALISE</td>
+<td><span class="badge badge-blue">[BR][BOOST][C5-ANDROMEDA]</span></td>
+<td style="text-align:right">R$210,68</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">11</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$19,15</td>
+</tr><tr>
+<td style="font-weight:600">VID-100K-ESTRATEGIAS-LP-ANALISE</td>
+<td><span class="badge badge-blue">[BR][BOOST][C5-ANDROMEDA-</span></td>
+<td style="text-align:right">R$181,04</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">10</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">R$18,10</td>
+</tr><tr>
+<td style="font-weight:600">VID-100K-ESTRATEGIAS-LP-ANALISE</td>
+<td><span class="badge badge-blue">[BR][BOOST][C5-ANDROMEDA]</span></td>
+<td style="text-align:right">R$292,04</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">9</td>
+<td style="text-align:right;font-weight:700;color:var(--gold)">R$32,45</td>
+</tr><tr>
+<td style="font-weight:600">[C4][V2][Mar2026]</td>
+<td><span class="badge badge-blue">[BR][BOOST][CONVERSAO-FOR</span></td>
+<td style="text-align:right">R$185,59</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">5</td>
+<td style="text-align:right;font-weight:700;color:var(--gold)">R$37,12</td>
+</tr><tr>
+<td style="font-weight:600">EST-REUNIAO-ANDRE-VAGAS-LP-ANALISE</td>
+<td><span class="badge badge-blue">[BR][BOOST][C5-ANDROMEDA-</span></td>
+<td style="text-align:right">R$143,17</td>
+<td style="text-align:right;font-weight:700;color:var(--green)">4</td>
+<td style="text-align:right;font-weight:700;color:var(--gold)">R$35,79</td>
+</tr></tbody>
+</table>
 </div>
-
-<!-- Info Box Decisoes -->
-<div class="info" id="decisoes"></div>
 
 <!-- Projecao -->
 <div class="panel">
-  <h2>Projecao Abril 2026</h2>
-  <div class="proj-grid" id="projecao"></div>
+<h2>Projecao Abril 2026</h2>
+<div class="proj-grid">
+<div class="proj-item"><div class="pv" style="color:var(--white)">R$37.525</div><div class="pl">Gasto ate agora</div></div>
+<div class="proj-item"><div class="pv" style="color:var(--gold)">R$40.000</div><div class="pl">Meta Abril</div></div>
+<div class="proj-item"><div class="pv" style="color:var(--green)">R$2.475</div><div class="pl">Restante</div></div>
+<div class="proj-item"><div class="pv" style="color:var(--blue)">8</div><div class="pl">Dias restantes</div></div>
+<div class="proj-item"><div class="pv" style="color:var(--orange)">R$309</div><div class="pl">Budget/dia necessario</div></div>
+</div>
 </div>
 
-<!-- ====== NEW: Perfil dos Leads ====== -->
+<!-- Leads Qualificados -->
 <div class="panel">
-  <h2>Perfil dos Leads — 15 a 17/abr/2026</h2>
-  <div class="lead-stats" id="leadStats"></div>
-
-  <div class="dist-grid">
-    <div>
-      <div class="sub-title">Origem dos Leads</div>
-      <div id="chartLeadSource"></div>
-    </div>
-    <div>
-      <div class="sub-title">Patrimonio Cripto</div>
-      <div id="chartPatCripto"></div>
-    </div>
-  </div>
-
-  <div class="dist-grid">
-    <div>
-      <div class="sub-title">Patrimonio Tradicional</div>
-      <div id="chartPatTrad"></div>
-    </div>
-    <div>
-      <div class="sub-title">Investe em Cripto?</div>
-      <div id="chartCripto"></div>
-    </div>
-  </div>
-
-  <div class="dist-grid">
-    <div>
-      <div class="sub-title">Investe em Tradicional?</div>
-      <div id="chartTradicional"></div>
-    </div>
-    <div></div>
-  </div>
+<h2>Leads Qualificados >= 50k (20 leads)</h2>
+<table>
+<thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th></tr></thead>
+<tbody><tr>
+<td style="font-weight:600">Lucas Saraiva</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Aureo Moura Ferreira</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Ademilson Gomes Pereira de Jesus</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">teste javcque</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Teste Cripto Inteligence</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Teste Form V3 Valores</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Teste Ebook Port</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Teste E-book Portfólio</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Tales Cobra</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Rodrigo Martins</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Thiago Fioratti</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">𝕋𝕙𝕚𝕒𝕘𝕠 𝕊𝕔𝕙𝕒𝕝𝕔𝕙</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Aislan da Rocha Sepulcro</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Fabiano Do Couto Couto</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Eduardo Valle</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Elson Florentino</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Roger Roos</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Reinaldo</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Taylan Blanco</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr><tr>
+<td style="font-weight:600">Izabela Fernandes I Blockchain e Planejamento Patrimonial</td>
+<td style="font-size:11px">-</td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="qual-badge qual-high">-</span></td>
+<td><span class="badge badge-blue">Desconhecido</span></td>
+</tr></tbody>
+</table>
 </div>
 
-<!-- ====== Info Note ====== -->
 <div class="info">
-<strong>Nota:</strong> 'Nao informado' = leads do Lead Form IR Cripto que nao pergunta valor de patrimonio — pergunta apenas se investe em cripto e em mercado tradicional (sim/nao). O valor de patrimonio so esta disponivel para leads que passaram pela LP Analise ou pelo Lead Form BOOST-FORM.
+<strong>Atualizado automaticamente a cada 2 horas via GitHub Actions.</strong><br>
+Dados: Meta Ads API + RD Station Marketing (segmentacoes qualificados >= R$50k).<br>
+Referencia de reestruturacao: 14/abr/2026 — C4 CONV e IR-LP pausadas, budget redistribuido.
 </div>
 
-<!-- ====== NEW: Leads Qualificados >=50k ====== -->
-<div class="panel">
-  <h2>Leads Qualificados >= 50k (14 leads — 17,5%)</h2>
-  <input type="text" class="search-box" id="searchQual" placeholder="Buscar por nome, patrimonio, telefone ou fonte...">
-  <table>
-    <thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th></tr></thead>
-    <tbody id="tbQualificados"></tbody>
-  </table>
-</div>
-
-<!-- ====== NEW: Todos os Leads ====== -->
-<div class="panel">
-  <h2>Todos os Leads — 15 a 17/abr (80 leads)</h2>
-  <div style="margin-bottom:12px;display:flex;gap:6px;flex-wrap:wrap" id="fonteFilters"></div>
-  <input type="text" class="search-box" id="searchAll" placeholder="Buscar por nome, telefone, patrimonio ou fonte...">
-  <div style="max-height:600px;overflow-y:auto">
-  <table>
-    <thead><tr><th>#</th><th>Nome</th><th>Telefone</th><th>Inv. Cripto</th><th>Pat. Cripto</th><th>Inv. Trad</th><th>Pat. Trad</th><th>Fonte</th></tr></thead>
-    <tbody id="tbAllLeads"></tbody>
-  </table>
-  </div>
-</div>
-
-<!-- ====== NEW: Top Criativos ====== -->
-<div class="panel">
-  <h2>Top 8 Criativos — 15-17/abr/2026</h2>
-  <div class="creative-grid" id="creativeGrid"></div>
-</div>
-
-<script>
-
-// === DATA ===
-const statsData = [
-  { label: 'Spend Periodo', value: 'R$1.968', color: 'var(--white)' },
-  { label: 'Leads', value: '66', color: 'var(--green)' },
-  { label: 'CPL', value: 'R$29,81', color: 'var(--green)' },
-  { label: 'Spend/dia', value: 'R$656', color: 'var(--white)' },
-  { label: 'Variacao CPL', value: '-65%', color: 'var(--green)' },
-  { label: 'Leads/dia', value: '22', color: 'var(--blue)' }
-];
-
-const comparativo = [
-  { label: 'Spend/dia', antes: 'R$2.162', depois: 'R$656', delta: '-70%', deltaColor: 'var(--green)' },
-  { label: 'Leads/dia', antes: '25', depois: '22', delta: '-12%', deltaColor: 'var(--gold)' },
-  { label: 'CPL', antes: 'R$86', depois: 'R$30', delta: '-65%', deltaColor: 'var(--green)' }
-];
-
-const campanhas = [
-  { nome: 'IR Cripto 2026', spend: 474, leads: 42, cpl: 11, status: 'Ativa (escalada)', badge: 'green' },
-  { nome: 'C4 CONVERSAO-FORM', spend: 276, leads: 8, cpl: 35, status: 'Ativa (Form V2)', badge: 'green' },
-  { nome: 'Quiz Patrimonio', spend: 245, leads: 4, cpl: 61, status: 'Ativa', badge: 'green' },
-  { nome: 'C5 ANDROMEDA V2 (teste)', spend: 147, leads: 7, cpl: 21, status: 'Teste OK', badge: 'purple' },
-  { nome: 'C5 ANDROMEDA V1 (teste)', spend: 145, leads: 4, cpl: 36, status: 'Teste OK', badge: 'purple' },
-  { nome: 'C4 CONSIDERACAO (teste)', spend: 108, leads: 1, cpl: 108, status: 'CPL alto', badge: 'orange' },
-  { nome: 'C4 CONVERSAO', spend: 0, leads: 0, cpl: null, status: 'Pausada', badge: 'red' },
-  { nome: 'Posts/seguidores', spend: 574, leads: 0, cpl: null, status: 'Engajamento', badge: 'gray' }
-];
-
-const anuncios = [
-  { nome: 'E05-10ANOS', campanha: 'IR Cripto', spend: 395, leads: 35, cpl: 11 },
-  { nome: 'V2-OCULUS-3SIMS', campanha: 'Quiz', spend: 210, leads: 4, cpl: 53 },
-  { nome: 'BOOST-CRIPTO-FORM V1', campanha: 'C4 FORM', spend: 155, leads: 5, cpl: 31 },
-  { nome: 'AF-CRIPTO STORY V2', campanha: 'C4 Consideracao', spend: 107, leads: 1, cpl: 107 },
-  { nome: 'C4-V2 (FORM)', campanha: 'C4 FORM', spend: 104, leads: 2, cpl: 52 },
-  { nome: 'E03-MULTA-75', campanha: 'IR Cripto', spend: 77, leads: 7, cpl: 11 },
-  { nome: 'VID-100K-ESTRATEGIAS', campanha: 'C5 V1', spend: 63, leads: 1, cpl: 63 },
-  { nome: 'VID-100K-ESTRATEGIAS', campanha: 'C5 V2', spend: 61, leads: 2, cpl: 30 },
-  { nome: 'EST-REUNIAO-ANDRE-VAGAS', campanha: 'C5 V2', spend: 58, leads: 4, cpl: 15 },
-  { nome: 'VID-100K-ESTRATEGIAS', campanha: 'C5 V1', spend: 42, leads: 3, cpl: 14 }
-];
-
-const projecaoData = [
-  { label: 'Gasto ate agora', value: 'R$32.693', color: 'var(--white)' },
-  { label: 'Meta Abril', value: 'R$40.000', color: 'var(--gold)' },
-  { label: 'Restante', value: 'R$7.307', color: 'var(--green)' },
-  { label: 'Dias restantes', value: '13', color: 'var(--blue)' },
-  { label: 'Budget/dia necessario', value: 'R$562', color: 'var(--orange)' }
-];
-
-// === RENDER ===
-
-// Stats bar
-document.getElementById('stats').innerHTML = statsData.map(s =>
-  `<div class="stat"><div class="sv" style="color:${s.color}">${s.value}</div><div class="sl">${s.label}</div></div>`
-).join('');
-
-// Comparativo
-document.getElementById('comparativo').innerHTML = comparativo.map(c =>
-  `<div class="comp-card">
-    <div class="label">${c.label}</div>
-    <div class="values">
-      <div><div class="val" style="color:var(--dim)">${c.antes}</div><div class="tag">Antes (01-14/abr)</div></div>
-      <div><div class="val" style="color:var(--white)">${c.depois}</div><div class="tag">Depois (15-17/abr)</div></div>
-    </div>
-    <div class="delta" style="color:${c.deltaColor}">${c.delta}</div>
-  </div>`
-).join('');
-
-// Bar charts
-function renderBarChart(containerId, data, valueKey, color, format) {
-  const max = Math.max(...data.map(d => d[valueKey] || 0));
-  const container = document.getElementById(containerId);
-  container.innerHTML = data.filter(d => d[valueKey] > 0).map(d => {
-    const pct = max > 0 ? (d[valueKey] / max * 100) : 0;
-    const label = format === 'currency' ? `R$${d[valueKey]}` : d[valueKey];
-    return `<div class="bar-row">
-      <div class="bar-label">${d.nome}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(pct, 8)}%;background:${color}">${label}</div></div>
-    </div>`;
-  }).join('');
-}
-
-renderBarChart('chartLeads', campanhas, 'leads', 'var(--green)', 'number');
-renderBarChart('chartCPL', campanhas.filter(c => c.cpl !== null), 'cpl', 'var(--orange)', 'currency');
-
-// Campanhas table
-const badgeClass = { green: 'badge-green', blue: 'badge-blue', gold: 'badge-gold', purple: 'badge-purple', orange: 'badge-orange', gray: 'badge-gray', red: 'badge-red' };
-const statusIcon = { green: '\u2705', purple: '\u2705', orange: '\u26A0\uFE0F', red: '\u274C', gray: '\u2139\uFE0F' };
-
-document.getElementById('tbCampanhas').innerHTML = campanhas.map(c => {
-  const cplDisplay = c.cpl !== null ? `R$${c.cpl}` : '-';
-  const cplColor = c.cpl !== null ? (c.cpl <= 30 ? 'var(--green)' : c.cpl <= 50 ? 'var(--gold)' : c.cpl <= 80 ? 'var(--orange)' : 'var(--red)') : 'var(--dim)';
-  return `<tr>
-    <td style="font-weight:600">${c.nome}</td>
-    <td style="text-align:right">R$${c.spend}</td>
-    <td style="text-align:right;font-weight:700;color:${c.leads > 0 ? 'var(--green)' : 'var(--dim)'}">${c.leads}</td>
-    <td style="text-align:right;font-weight:700;color:${cplColor}">${cplDisplay}</td>
-    <td><span class="badge ${badgeClass[c.badge]}">${c.status}</span></td>
-  </tr>`;
-}).join('') + `<tr style="border-top:2px solid #444">
-  <td><strong style="color:var(--white)">TOTAL</strong></td>
-  <td style="text-align:right;color:var(--white)"><strong>R$1.968</strong></td>
-  <td style="text-align:right;color:var(--green)"><strong>66</strong></td>
-  <td style="text-align:right;color:var(--green)"><strong>R$29,81</strong></td>
-  <td></td>
-</tr>`;
-
-// Anuncios table
-document.getElementById('tbAnuncios').innerHTML = anuncios.map((a, i) => {
-  const cplColor = a.cpl <= 15 ? 'var(--green)' : a.cpl <= 35 ? 'var(--gold)' : a.cpl <= 60 ? 'var(--orange)' : 'var(--red)';
-  return `<tr>
-    <td style="font-weight:600">${a.nome}</td>
-    <td><span class="badge badge-blue">${a.campanha}</span></td>
-    <td style="text-align:right">R$${a.spend}</td>
-    <td style="text-align:right;font-weight:700;color:var(--green)">${a.leads}</td>
-    <td style="text-align:right;font-weight:700;color:${cplColor}">R$${a.cpl}</td>
-  </tr>`;
-}).join('');
-
-// Info box - Decisoes
-document.getElementById('decisoes').innerHTML = `
-<strong>Decisoes tomadas em 14/abr:</strong><br>
-C4 CONVERSAO pausada (CPL qualificado R$1.214). C5 e C4 CONSIDERACAO reativadas somente com anuncios vencedores. Budget redistribuido:<br>
-<span style="color:var(--green)">IR Cripto R$200/dia</span> |
-<span style="color:var(--blue)">FORM R$100/dia</span> |
-<span style="color:var(--purple)">Quiz R$108/dia</span> |
-<span style="color:var(--orange)">Testes R$50-75/dia</span>
-`;
-
-// Projecao
-document.getElementById('projecao').innerHTML = projecaoData.map(p =>
-  `<div class="proj-item"><div class="pv" style="color:${p.color}">${p.value}</div><div class="pl">${p.label}</div></div>`
-).join('');
-
-// ============================================================
-// SECTION: Perfil dos Leads 15-17/abr
-// ============================================================
-const leadSourceData = [
-  { label: 'E-book IR 03/2026', value: 35, color: 'var(--green)' },
-  { label: 'Sem atribuicao', value: 26, color: 'var(--dim)' },
-  { label: 'LP Analise (lp_mentoria_boost)', value: 12, color: 'var(--blue)' },
-  { label: 'BOOST-LEAD-FORM-V1', value: 3, color: 'var(--purple)' },
-  { label: 'Pos Webinar 1 Milhao', value: 2, color: 'var(--gold)' },
-  { label: 'Quiz Patrimonio', value: 2, color: 'var(--orange)' }
-];
-
-const investeCripto = [
-  { label: 'Sim', value: 24, color: 'var(--green)' },
-  { label: 'Nao', value: 25, color: 'var(--red)' },
-  { label: 'Nao informado', value: 31, color: 'var(--dim)' }
-];
-
-const investeTradicional = [
-  { label: 'Sim', value: 17, color: 'var(--green)' },
-  { label: 'Nao', value: 20, color: 'var(--red)' },
-  { label: 'Nao informado', value: 43, color: 'var(--dim)' }
-];
-
-const patCriptoData = [
-  { label: 'Nao informado', value: 56, color: 'var(--dim)' },
-  { label: 'Ate R$10 mil', value: 13, color: 'var(--gold)' },
-  { label: 'R$10-50 mil', value: 6, color: 'var(--gold)' },
-  { label: 'R$50-200 mil', value: 4, color: 'var(--green)' },
-  { label: 'R$200-500 mil', value: 1, color: 'var(--green)' }
-];
-
-const patTradData = [
-  { label: 'Nao informado', value: 62, color: 'var(--dim)' },
-  { label: 'Ate R$10 mil', value: 9, color: 'var(--gold)' },
-  { label: 'R$10-50 mil', value: 5, color: 'var(--gold)' },
-  { label: 'R$200-500 mil', value: 2, color: 'var(--green)' },
-  { label: 'R$50-200 mil', value: 2, color: 'var(--green)' }
-];
-
-// Lead stats summary
-document.getElementById('leadStats').innerHTML = [
-  { label: 'Total Leads (RD)', value: '80', color: 'var(--white)', detail: 'Periodo 15-17/abr' },
-  { label: 'Com dados patrimonio', value: '24', color: 'var(--blue)', detail: '30% responderam' },
-  { label: 'Qualificados >=50k', value: '14', color: 'var(--green)', detail: '17,5% do total' }
-].map(s => `<div class="lead-stat"><div class="lsv" style="color:${s.color}">${s.value}</div><div class="lsl">${s.label}</div><div class="lsd">${s.detail}</div></div>`).join('');
-
-// Bar chart renderer for lead sections
-function renderMiniBar(containerId, data) {
-  const max = Math.max(...data.map(d => d.value));
-  document.getElementById(containerId).innerHTML = data.map(d => {
-    const pct = max > 0 ? (d.value / max * 100) : 0;
-    return `<div class="mini-chart">
-      <div class="mc-label"><span>${d.label}</span><span style="font-weight:700;color:${d.color}">${d.value}</span></div>
-      <div class="mc-track"><div class="mc-fill" style="width:${Math.max(pct, 5)}%;background:${d.color}">${d.value > 0 ? d.value : ''}</div></div>
-    </div>`;
-  }).join('');
-}
-
-renderMiniBar('chartLeadSource', leadSourceData);
-renderMiniBar('chartCripto', investeCripto);
-renderMiniBar('chartTradicional', investeTradicional);
-renderMiniBar('chartPatCripto', patCriptoData);
-renderMiniBar('chartPatTrad', patTradData);
-
-// Phone formatter (used by both qualified and all-leads tables)
-function formatPhone(p) {
-  if (!p || p === '-') return '-';
-  let d = p.replace(/[^0-9]/g, '');
-  if (d.length === 13 && d.startsWith('55')) {
-    return '(' + d.substring(2,4) + ') ' + d.substring(4,9) + '-' + d.substring(9);
-  }
-  if (d.length === 12 && d.startsWith('55')) {
-    return '(' + d.substring(2,4) + ') ' + d.substring(4,8) + '-' + d.substring(8);
-  }
-  if (d.length === 11) {
-    return '(' + d.substring(0,2) + ') ' + d.substring(2,7) + '-' + d.substring(7);
-  }
-  return p;
-}
-
-// ============================================================
-// SECTION: Leads Qualificados >=50k
-// ============================================================
-const leadsQualificados = [
-  { nome: 'Fabiano Do Couto Couto', tel: '+5562981793308', patCripto: 'R$200-500k', patTrad: 'R$200-500k', fonte: 'E-book IR', patClass: 'qual-high' },
-  { nome: 'Allan Costa da Silva', tel: '+5521999323947', patCripto: 'R$10-50k', patTrad: 'R$200-500k', fonte: 'E-book IR', patClass: 'qual-high' },
-  { nome: 'Macrys Martins', tel: '+5588999796326', patCripto: 'R$50-200k', patTrad: 'R$50-200k', fonte: 'FORM V1', patClass: 'qual-high' },
-  { nome: 'Newton Curvelo', tel: '+5571987796000', patCripto: 'R$10-50k', patTrad: 'R$50-200k', fonte: 'E-book IR', patClass: 'qual-high' },
-  { nome: 'Aislan da Rocha Sepulcro', tel: '+27998058180', patCripto: 'R$50-200k', patTrad: '-', fonte: 'E-book IR', patClass: 'qual-high' },
-  { nome: '\ud835\udd4b\ud835\udd59\ud835\udd5a\ud835\udd52\ud835\udd58\ud835\udd60 \ud835\udd4a\ud835\udd54\ud835\udd59\ud835\udd52\ud835\udd5d\ud835\udd54\ud835\udd59', tel: '+5548999125240', patCripto: 'R$50-200k', patTrad: 'Ate R$10k', fonte: 'E-book IR', patClass: 'qual-high' },
-  { nome: 'Eduardo Valle', tel: '554196830000', patCripto: 'R$50-200k', patTrad: '-', fonte: 'LP Analise', patClass: 'qual-high' },
-  { nome: 'Jose Agustin', tel: '+5511992705864', patCripto: 'R$10-50k', patTrad: '-', fonte: 'E-book IR', patClass: 'qual-mid' },
-  { nome: 'Rita Helena Saviano Range', tel: '-', patCripto: 'R$10-50k', patTrad: '-', fonte: 'E-book IR', patClass: 'qual-mid' },
-  { nome: 'Emannuel Fernandes', tel: '+553788043492', patCripto: 'R$10-50k', patTrad: 'R$10-50k', fonte: 'E-book IR', patClass: 'qual-mid' },
-  { nome: 'Felipe Vieira', tel: '+5561981193767', patCripto: 'R$10-50k', patTrad: 'R$10-50k', fonte: 'E-book IR', patClass: 'qual-mid' },
-  { nome: 'Henrique Furtado Toloi', tel: '+5516997179998', patCripto: 'Ate R$10k', patTrad: 'R$10-50k', fonte: 'E-book IR', patClass: 'qual-mid' },
-  { nome: 'Saulo Maranhao', tel: '+5581995144422', patCripto: 'Ate R$10k', patTrad: 'R$10-50k', fonte: 'E-book IR', patClass: 'qual-mid' },
-  { nome: 'Andre Betts', tel: '+5551996345963', patCripto: 'Ate R$10k', patTrad: 'R$10-50k', fonte: 'E-book IR', patClass: 'qual-mid' }
-];
-
-function renderQualifiedTable(filter) {
-  const f = (filter || '').toLowerCase();
-  const filtered = f ? leadsQualificados.filter(l =>
-    l.nome.toLowerCase().includes(f) || l.patCripto.toLowerCase().includes(f) || l.patTrad.toLowerCase().includes(f) || l.fonte.toLowerCase().includes(f) || l.tel.includes(f)
-  ) : leadsQualificados;
-  document.getElementById('tbQualificados').innerHTML = filtered.map((l, i) =>
-    `<tr>
-      <td style="font-weight:600">${l.nome}</td>
-      <td style="font-size:11px">${formatPhone(l.tel)}</td>
-      <td><span class="qual-badge ${l.patClass}">${l.patCripto}</span></td>
-      <td><span class="qual-badge ${l.patTrad !== '-' ? l.patClass : ''}" style="${l.patTrad === '-' ? 'color:var(--dim)' : ''}">${l.patTrad}</span></td>
-      <td><span class="badge badge-blue">${l.fonte}</span></td>
-    </tr>`
-  ).join('') || '<tr><td colspan="5" style="text-align:center;color:var(--dim)">Nenhum lead encontrado</td></tr>';
-}
-renderQualifiedTable();
-document.getElementById('searchQual').addEventListener('input', function(){ renderQualifiedTable(this.value); });
-
-// ============================================================
-// SECTION: Todos os Leads (80)
-// ============================================================
-const allLeads = [
-  {
-    "nome": "Danillo Siqueira",
-    "telefone": "+5522999743848",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "María Lúcia de macedo",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Jones",
-    "telefone": "+5549999936685",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Maria Jose",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Allan Costa da Silva",
-    "telefone": "+5521999323947",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 10 mil e R$ 50 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 200 mil e R$500 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Rita Helena Saviano Rangel Ozorio",
-    "telefone": "-",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 10 mil e R$ 50 mil",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Aislan da Rocha Sepulcro",
-    "telefone": "+27998058180",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 50 mil a R$ 200 mil",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Edjane Gomes",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Luís",
-    "telefone": "+5514988256900",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Rosemary Dos Reis de Menezes",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Rosineide Cruz",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Marinalva Lopes do vale",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "DILSON ALBUQUERQUE",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Webinar"
-  },
-  {
-    "nome": "GILMAR BISPO DA SILVA JUNIOR",
-    "telefone": "5573999485696",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Michael Douglas Silveira da Silva",
-    "telefone": "5541998715408",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "RUI FERREIRA FONTES",
-    "telefone": "5511991912424",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Marcelo Mouta Soares",
-    "telefone": "5511984520680",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Leila Marcia Ferreira",
-    "telefone": "5522999632824",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "RICARDO FREDERICO VEGA",
-    "telefone": "5511986853097",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Marco Valério Flores Andreazza",
-    "telefone": "5555984378358",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Julian Peter Grey",
-    "telefone": "5511989060663",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Eduardo de Paula",
-    "telefone": "5511984156310",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Rosimeiry Santos",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Rodrigo Madeira Leite",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Rodrigo Assis da Silva",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "José Agustín",
-    "telefone": "+5511992705864",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 10 mil e R$ 50 mil",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Gustavo Cavalcante Maio de Aguiar",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Alexandre Aparecido",
-    "telefone": "5511996026374",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Amanda Marques",
-    "telefone": "+5521974452315",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Luciano Cerff",
-    "telefone": "+5521976923779",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Kaio",
-    "telefone": "+5587988384876",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Lourdes gatto",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Quiz"
-  },
-  {
-    "nome": "Henrique Furtado Toloi",
-    "telefone": "+5516997179998",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 10 mil e R$ 50 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Joao Carlos Goncalves Krakauer Maia",
-    "telefone": "5531992217266",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Roberto Avila Otte",
-    "telefone": "5547988054697",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Marcio Fonseca Santiago",
-    "telefone": "5527981385445",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Mateus Galvao de Melo",
-    "telefone": "5531617291107",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Eduardo Estevam Fernandes de Oliveira",
-    "telefone": "5562981000005",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "REGINALDO LUIS JORGE",
-    "telefone": "+5514996652996",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Geison Rech",
-    "telefone": "+5554999314778",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Emannuel Fernandes",
-    "telefone": "+553788043492",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 10 mil e R$ 50 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 10 mil e R$ 50 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Hever Souza",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Arthur Comazzetto Viana",
-    "telefone": "+47996326167",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Vinicios",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Carine Dávalos",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Gabriela Aguiar",
-    "telefone": "+5554981075129",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Macrys Martins",
-    "telefone": "+5588999796326",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 50 mil a R$ 200 mil",
-    "investe_trad": "nao",
-    "pat_trad": "Entre R$ 50 mil a R$ 200 mil",
-    "fonte": "FORM V1"
-  },
-  {
-    "nome": "Newton Curvelo",
-    "telefone": "+5571987796000",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 10 mil e R$ 50 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 50 mil a R$ 200 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Francisco Linhares",
-    "telefone": "+5599993625070",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "FORM V1"
-  },
-  {
-    "nome": "Rafael Dos Santos Siqueira",
-    "telefone": "+5511943496298",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "𝕋𝕙𝕚𝕒𝕘𝕠 𝕊𝕔𝕙𝕒𝕝𝕔𝕙",
-    "telefone": "+5548999125240",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 50 mil a R$ 200 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "CARLOS PEREIRA DE PAULA",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Webinar"
-  },
-  {
-    "nome": "Eliane",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Quiz"
-  },
-  {
-    "nome": "Maria do Socorro De Lima Lopes",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Messa Regina Ribeiro dos anjos",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Dirce Godoi de Oliveira",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Mateus Herculano Rabello Faria",
-    "telefone": "+5577999827600",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Reginaldo cirilo",
-    "telefone": "+5518991518688",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Gustavo Machado Galvão",
-    "telefone": "+5521974749889",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Elson Florentino",
-    "telefone": "+5511954340000",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Elson Florentino",
-    "telefone": "(55) 11954-3424",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Jesaías Silva",
-    "telefone": "+5586999431515",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Mirele Mi",
-    "telefone": "+5532991491887",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Soraia Manasfi da Silva",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  },
-  {
-    "nome": "Viviane Swyanne",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "June Marques",
-    "telefone": "+5531991333813",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Fabiano Do Couto Couto",
-    "telefone": "+5562981793308",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 200 mil e R$500 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 200 mil e R$500 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Nick Oliveira",
-    "telefone": "+5513997344588",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Marcia Quesinski",
-    "telefone": "+5547988277272",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Gomes",
-    "telefone": "+5594992980091",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Saulo Maranhão",
-    "telefone": "+5581995144422",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 10 mil e R$ 50 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Felipe Vieira",
-    "telefone": "+5561981193767",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 10 mil e R$ 50 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 10 mil e R$ 50 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Márcia Christiane Penante Cordeiro",
-    "telefone": "+5581999670977",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Thays Ferreira",
-    "telefone": "+81971070359",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Josiane Andrade",
-    "telefone": "+5511949826482",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Até R$ 10 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "-",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "FORM V1"
-  },
-  {
-    "nome": "André Betts",
-    "telefone": "+5551996345963",
-    "investe_cripto": "sim",
-    "pat_cripto": "Até R$ 10 mil",
-    "investe_trad": "sim",
-    "pat_trad": "Entre R$ 10 mil e R$ 50 mil",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Eduardo Valle",
-    "telefone": "554196830000",
-    "investe_cripto": "sim",
-    "pat_cripto": "Entre R$ 50 mil a R$ 200 mil",
-    "investe_trad": "não",
-    "pat_trad": "-",
-    "fonte": "E-book IR"
-  },
-  {
-    "nome": "Alh Projetos Inovadores",
-    "telefone": "-",
-    "investe_cripto": "-",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "Sem atribuicao"
-  },
-  {
-    "nome": "Nevinha Moura",
-    "telefone": "-",
-    "investe_cripto": "não",
-    "pat_cripto": "-",
-    "investe_trad": "-",
-    "pat_trad": "-",
-    "fonte": "LP Analise"
-  }
-];
-
-const fontes = ['Todos', 'E-book IR', 'FORM V1', 'LP Analise', 'Quiz', 'Webinar', 'Sem atribuicao'];
-const fonteBadgeColors = { 'E-book IR': 'badge-green', 'FORM V1': 'badge-purple', 'LP Analise': 'badge-blue', 'Quiz': 'badge-orange', 'Webinar': 'badge-gold', 'Sem atribuicao': 'badge-gray' };
-let activeFonte = 'Todos';
-
-document.getElementById('fonteFilters').innerHTML = fontes.map(f => {
-  const cls = f === 'Todos' ? 'badge-green' : (fonteBadgeColors[f] || 'badge-gray');
-  return `<button class="badge ${cls}" style="cursor:pointer;padding:5px 12px;font-size:11px;border:none;opacity:${f === 'Todos' ? '1' : '0.5'}" data-fonte="${f}" onclick="setFonte(this)">${f}</button>`;
-}).join('');
-
-function setFonte(btn) {
-  activeFonte = btn.dataset.fonte;
-  document.querySelectorAll('#fonteFilters button').forEach(b => b.style.opacity = b.dataset.fonte === activeFonte ? '1' : '0.5');
-  renderAllLeads();
-}
-
-function renderAllLeads() {
-  const search = (document.getElementById('searchAll').value || '').toLowerCase();
-  let filtered = allLeads;
-  if (activeFonte !== 'Todos') {
-    filtered = filtered.filter(l => l.fonte === activeFonte);
-  }
-  if (search) {
-    filtered = filtered.filter(l =>
-      l.nome.toLowerCase().includes(search) || l.telefone.includes(search) || l.pat_cripto.toLowerCase().includes(search) || l.pat_trad.toLowerCase().includes(search) || l.fonte.toLowerCase().includes(search)
-    );
-  }
-  document.getElementById('tbAllLeads').innerHTML = filtered.map((l, i) => {
-    const fonteBadge = fonteBadgeColors[l.fonte] || 'badge-gray';
-    const dimStyle = 'color:var(--dim)';
-    return `<tr>
-      <td style="color:var(--dim)">${i+1}</td>
-      <td style="font-weight:600">${l.nome}</td>
-      <td style="font-size:11px">${formatPhone(l.telefone)}</td>
-      <td style="${l.investe_cripto === '-' ? dimStyle : l.investe_cripto === 'sim' ? 'color:var(--green)' : 'color:var(--red)'}">${l.investe_cripto}</td>
-      <td style="${l.pat_cripto === '-' ? dimStyle : ''}">${l.pat_cripto}</td>
-      <td style="${l.investe_trad === '-' ? dimStyle : l.investe_trad === 'sim' ? 'color:var(--green)' : 'color:var(--red)'}">${l.investe_trad}</td>
-      <td style="${l.pat_trad === '-' ? dimStyle : ''}">${l.pat_trad}</td>
-      <td><span class="badge ${fonteBadge}">${l.fonte}</span></td>
-    </tr>`;
-  }).join('') || '<tr><td colspan="8" style="text-align:center;color:var(--dim)">Nenhum lead encontrado</td></tr>';
-}
-renderAllLeads();
-document.getElementById('searchAll').addEventListener('input', renderAllLeads);
-
-// ============================================================
-// SECTION: Top Criativos (cards)
-// ============================================================
-const creativeThumbs = {
-  'E05-10ANOS': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t45.1600-4/667610479_122221215188050031_1028205597578763324_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_eui2=AeHyKhph9PPla7TlWVfzpkjxR6yEfOR1Qp5HrIR85HVCng4DB069hfPMBp2m22X9CtPzeN3kjuTpt0udGy6HW7hc&_nc_ohc=go7FTQugBqMQ7kNvwHF9CvF&_nc_oc=Adq82UoVBlEzAmBOfUveeJPK_b9fzfme2l2O-W5vKoozdZWFbIX_CsunC39p89L8-ZI&_nc_zt=1&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=62S7iDYTGT-nqTdOSupIMw&_nc_tpa=Q5bMBQEc8t_e_n7hx59ZcOjz9ErxbRLs3_UOmCj7z-CQjDAYLPTd21sLJfIrlNECZCaxEg0XQkOwkbaFZg&oh=00_Af2WNEnH-o4fh6soL18vD5na_HOl8NrdjjQmFyYrd_Nk8g&oe=69E815EA',
-  'V2-OCULUS-3SIMS': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t45.1600-4/666487290_122221207706050031_7056717917367021339_n.png?_nc_cat=104&ccb=1-7&_nc_eui2=AeERlOacTKsj1IzDCQkbOFTQuo7nT5tiOsS6judPm2I6xB4ajHUpf5HCCEMYC6rFEwRIjRNyW7oqU3LvRDBjBB-D&_nc_ohc=VUIoGoRWP3YQ7kNvwEGV6Ct&_nc_oc=AdpUVJPlfHYm43wX8cA6n2f3jo7XnoBMZJHdBsyMDIHcVk2zu6qlQIOGG6qRlbxuDdY&_nc_zt=1&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=5KOCITNKKF-nqVmncwY75Q&_nc_tpa=Q5bMBQEIrmuI_MuAIUA2N11ZR9rvNcFqO5k89hIPeDDUY1vuoKAIieXRHoANM_Y67oHHYB-z6QGIFGU_tg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af3hxQAQ-pIHf0r28qKVMTKgMCog8kY07zkPBVxRYN-jUg&oe=69E800A8',
-  'BOOST-CRIPTO-FORM V1': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t45.1600-4/653962116_122219903978050031_1791281280992965259_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_eui2=AeHdCA7zgkkUyNgUQk2FawHjnXfVf8mkdjydd9V_yaR2PBQUglKQaQZrHoHOUwdxyMNEi6RFOh0M_C9pl8Dt8ZaL&_nc_ohc=AxmrEMkSVuQQ7kNvwFRkT4r&_nc_oc=AdrlEdaXZQmLGnLKBAJb5Yhg9qOma_G_X-vFNUD5uBiIlP2g6rSP28DIfZmaj7FxWkU&_nc_zt=1&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=4sDcggSHi3viao0eEZTs5Q&_nc_tpa=Q5bMBQELhdriOaJb0pbluRVzj1AeR2tI3uVuhaFGrmhfyA3kocI02GTZYxJiwnRCRiNgfQmcsuScoz5aKw&oh=00_Af1gA59pq_B66wp1wR4hYTXmAcr6UVhiNqjVdZ27-q_JIQ&oe=69E81914',
-  'AF-CRIPTO STORY V2': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t45.1600-4/653994601_122219902214050031_8446650983890494001_n.png?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_eui2=AeFgVXRDhtoKUbTKGvkA4AC6x7nSo_chn0nHudKj9yGfSQUl3o55aYB17uDiwW7lU9SpAW06BpRSilC5sdEdCORI&_nc_ohc=lRhVcxBO040Q7kNvwE13kbt&_nc_oc=Adqr_PkXPvkjUGQMjS9OXR_L8kemNFO5diPDrsyav05ao-iY9KA5rAxEDo5PbgT5Oe4&_nc_zt=1&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=uYGrsGWhpx83mx5jFeuAuQ&_nc_tpa=Q5bMBQGN7EtNtdCyL6SkTsw8wrOy_OaxJSHFhIuYvA2eFzzvgHKlfZoFfcAFR9xd_gqo7UJdANpqhHQESA&oh=00_Af1hTYg8a965WRbda56LXb8-RYTkqi5Sjj4WHPuCfryh1w&oe=69E7F554',
-  'C4-V2 (FORM)': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t15.5256-10/655973375_2244185896321716_4222545333946622127_n.jpg?_nc_cat=106&ccb=1-7&_nc_eui2=AeGL5XPwm7VqJQ-VkXZ5vsAKibKVxmUZMLCJspXGZRkwsM4--bOw9FV1xNWXwhxv0EAfLF-iOFXZamnyMapdoEVn&_nc_ohc=g0en8s5CoukQ7kNvwFQDBly&_nc_oc=AdrcEmPv7cuJLJ3mOmTjCxKulb3PMVbX9p9PGZrnxtQ2fD1323Yy7M_MiMD2AmKNsP4&_nc_zt=23&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=-4mGKJghXSn3S_bRH9pBIA&_nc_tpa=Q5bMBQFX08V0rYfENRwr8LqNoFbfncfZzNmSGfKJFMw2XWqbgqF2LUtw8wK1Qu1hjxq8P_v5-IuKJh08AQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=d2b52d&_nc_sid=58080a&oh=00_Af1J17-ajWYPY6BDyES9Pt6KED9-lLVPzgAgYxG415lcUw&oe=69E7EC2E',
-  'E03-MULTA-75': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t45.1600-4/665924317_122221215116050031_3984570233552765166_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_eui2=AeG6qP862i4JrEbSnOpXjQinf27cV7K2lr1_btxXsraWvcnuStan4afvIV-B4kECJ2jZLsSKkeBdImQW1A-NrHHN&_nc_ohc=XM2b1ECC4PYQ7kNvwGomaHU&_nc_oc=AdrtChCgRxrL27T1nm3G2-jg3kae5yIo0hqUUQPuTT187lG8cdStbVRXGKKQPfbhZ0A&_nc_zt=1&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=xncPVbrSYRd3uZDTEG74Og&_nc_tpa=Q5bMBQGdY5w9L3wcsAskMjFHe3wklAAfYg8iC1eYKGMM02orZrBAwRUstt5CNH9WPK4ek6wNQ-lShpTXGw&oh=00_Af0_6nQDq5zgMWcK4KCpUJtx5ZUKzeaG6H49fMhPizU48Q&oe=69E7FD9F',
-  'VID-100K-ESTRATEGIAS': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t15.5256-10/666891273_1376371837581840_8253036674551034379_n.jpg?_nc_cat=109&ccb=1-7&_nc_eui2=AeH-5_i0FI7gJyodlN9y0EvOeeXh-ft1V2J55eH5-3VXYqJSYBuAsNGeWiyrYJqPKjO_95wBQi3yeqD1dVadpuKJ&_nc_ohc=AYpzQfSoAAkQ7kNvwGVw_VT&_nc_oc=Adr1y-a99M-_AAvRbJCuZ-CD9ZONU7MSa4DCkZyEp75AwXaUkgmchqyxifziuaDKQPE&_nc_zt=23&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=371i_4UoNSIq82GPxya8cQ&_nc_tpa=Q5bMBQHF1J8ogPASMyaDoWcECZad-gW1EpRrFGvdTzAuHgIeOBP7tWS1URw4_D1es0H494wHNef8KGfH1Q&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=d2b52d&_nc_sid=58080a&oh=00_Af1K9pTAwv-avP2G_mozswCKLsU-B91vK8oVrquup_z83g&oe=69E7F768',
-  'EST-REUNIAO-ANDRE-VAGAS': 'https://scontent.fcpq4-1.fna.fbcdn.net/v/t45.1600-4/653999686_122219902598050031_17808101342220308_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_eui2=AeE4geVCOgpWjLS_yQ0KZTozcyuTf77g8xtzK5N_vuDzG6bW4Nsj8_SbsUUsMSqPx8hI0KlqmLpk-nN0W9VJkoXz&_nc_ohc=2135oDBkfdQQ7kNvwENtirf&_nc_oc=AdolrjsJUDX560XX-H0isQ_ffDZwagiQABQuY5-EQHSAXPtomTprki_x-0aVZ3Oh0fw&_nc_zt=1&_nc_ht=scontent.fcpq4-1.fna&edm=AAT1rw8EAAAA&_nc_gid=QGtRoGylR6m7RfgPBIpCNA&_nc_tpa=Q5bMBQGmEi1nz-nEpH1Wo4n29qfLwNZrKLYgwHx8SWGGLFLy486gmX7MLq2sMhBiOrSpS8FayWEaDxuFMw&oh=00_Af22v5XfBnGRZbY6EYcehzNOKXDvf0pV2oyhNN_RBRHKQQ&oe=69E815D2'
-};
-
-const topCreatives = [
-  { rank: 1, nome: 'E05-10ANOS', campanha: 'IR Cripto', spend: 395, leads: 35, cpl: 11 },
-  { rank: 2, nome: 'V2-OCULUS-3SIMS', campanha: 'Quiz', spend: 210, leads: 4, cpl: 53 },
-  { rank: 3, nome: 'BOOST-CRIPTO-FORM V1', campanha: 'C4 FORM', spend: 155, leads: 5, cpl: 31 },
-  { rank: 4, nome: 'AF-CRIPTO STORY V2', campanha: 'C4 Consideracao', spend: 107, leads: 1, cpl: 107 },
-  { rank: 5, nome: 'C4-V2 (FORM)', campanha: 'C4 FORM', spend: 104, leads: 2, cpl: 52 },
-  { rank: 6, nome: 'E03-MULTA-75', campanha: 'IR Cripto', spend: 77, leads: 7, cpl: 11 },
-  { rank: 7, nome: 'VID-100K-ESTRATEGIAS', campanha: 'C5 V1', spend: 63, leads: 1, cpl: 63 },
-  { rank: 8, nome: 'EST-REUNIAO-ANDRE-VAGAS', campanha: 'C5 V2', spend: 58, leads: 4, cpl: 15 }
-];
-
-document.getElementById('creativeGrid').innerHTML = topCreatives.map(c => {
-  const cplColor = c.cpl <= 15 ? 'var(--green)' : c.cpl <= 35 ? 'var(--gold)' : c.cpl <= 60 ? 'var(--orange)' : 'var(--red)';
-  const campBadge = c.campanha.includes('IR') ? 'badge-green' : c.campanha.includes('Quiz') ? 'badge-purple' : c.campanha.includes('C4') ? 'badge-blue' : 'badge-orange';
-  const thumbUrl = creativeThumbs[c.nome] || '';
-  const thumbHtml = thumbUrl ? `<img src="${thumbUrl}" alt="${c.nome}" style="height:150px;width:100%;object-fit:contain;display:flex;background:#1a1a1a;border-radius:8px;margin-bottom:8px">` : '';
-  return `<div class="creative-card">
-    <div class="cc-rank">#${c.rank}</div>
-    ${thumbHtml}
-    <h3>${c.nome}</h3>
-    <div class="cc-camp"><span class="badge ${campBadge}">${c.campanha}</span></div>
-    <div class="cc-metrics">
-      <div class="cc-metric"><div class="ccv" style="color:var(--white)">R$${c.spend}</div><div class="ccl">Spend</div></div>
-      <div class="cc-metric"><div class="ccv" style="color:var(--green)">${c.leads}</div><div class="ccl">Leads</div></div>
-      <div class="cc-metric"><div class="ccv" style="color:${cplColor}">R$${c.cpl}</div><div class="ccl">CPL</div></div>
-    </div>
-  </div>`;
-}).join('');
-
-</script>
 </body></html>
