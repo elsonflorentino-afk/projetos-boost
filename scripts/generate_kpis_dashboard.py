@@ -384,11 +384,151 @@ def extract_cf(contact, field):
 
 
 def is_qualified(contact):
-    """Lead eh qualificado se patrimonio cripto >= R$50k."""
-    pat = extract_cf(contact, 'cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho')
-    if pat and any(x in pat for x in ['50', '200', '500', '800']):
-        return True
+    """Lead eh qualificado se patrimonio cripto >= R$50k.
+
+    Verifica campos cf_* do contato, incluindo valores internos do Meta Lead Form.
+    """
+    QUALIFIED_KEYWORDS = ['50', '200', '500', '800']
+    META_INTERNAL_VALUES = ['50k_200k', '200k_500k', 'acima_500k', 'acima_de_r_500_mil']
+
+    # Checar todos os cf_* que possam conter patrimonio
+    for cf in contact.get('cf', []) or []:
+        api_id = cf.get('custom_field', {}).get('api_identifier', '')
+        val = (cf.get('value', '') or '').strip().lower()
+        if not val:
+            continue
+        # Campos de patrimonio conhecidos
+        if 'patrimonio' in api_id or 'patrimonio_ho' in api_id or api_id == 'cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho':
+            if any(x in val for x in QUALIFIED_KEYWORDS):
+                return True
+            if any(x in val for x in META_INTERNAL_VALUES):
+                return True
     return False
+
+
+# ──────────────────────────────────────────────────────────────
+# QUALIFIED LEADS CACHE (para evitar re-consultar RD API)
+# ──────────────────────────────────────────────────────────────
+CACHE_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    'painel', 'metas-kpis', 'qualified_cache.json'
+)
+
+
+def load_qualified_cache():
+    """Carrega cache de leads ja verificados via RD API."""
+    if os.path.exists(CACHE_PATH):
+        try:
+            with open(CACHE_PATH, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {}
+
+
+def save_qualified_cache(cache):
+    """Salva cache de leads verificados."""
+    os.makedirs(os.path.dirname(CACHE_PATH), exist_ok=True)
+    with open(CACHE_PATH, 'w', encoding='utf-8') as f:
+        json.dump(cache, f, ensure_ascii=False, indent=2)
+
+
+def check_lead_via_rd_api(email, token):
+    """Verifica se um lead eh qualificado consultando RD Marketing API.
+
+    1. Busca contato por email
+    2. Checa campos cf_* do contato
+    3. Busca eventos de conversao e checa payload
+
+    Returns: True se qualificado (patrimonio >= R$50k), False caso contrario.
+    """
+    QUALIFIED_KEYWORDS = ['50', '200', '500', '800']
+    META_INTERNAL_VALUES = ['50k_200k', '200k_500k', 'acima_500k', 'acima_de_r_500_mil']
+
+    # 1. Buscar contato por email
+    contact = rd_mkt_get(f'/platform/contacts/email:{urllib.parse.quote(email)}', token)
+    if not contact or not contact.get('uuid'):
+        return False
+
+    # 2. Checar cf_* do contato
+    if is_qualified(contact):
+        return True
+
+    # 3. Buscar eventos de conversao
+    uuid = contact['uuid']
+    events = rd_mkt_get(f'/platform/contacts/{uuid}/events', token, {
+        'event_type': 'CONVERSION'
+    })
+
+    for event in events.get('events', []) if isinstance(events, dict) else []:
+        # Checar event_identifier
+        ev_id = (event.get('event_identifier', '') or '').lower()
+        # Checar payload/metadata por indicadores de patrimonio
+        payload = event.get('payload', {}) or {}
+        if isinstance(payload, str):
+            try:
+                payload = json.loads(payload)
+            except Exception:
+                payload = {}
+
+        # Percorrer todos os valores do payload buscando indicadores de patrimonio
+        for key, val in payload.items():
+            val_lower = str(val).lower()
+            if 'patrimonio' in key.lower() or 'patrimonio' in val_lower:
+                if any(x in val_lower for x in QUALIFIED_KEYWORDS):
+                    return True
+                if any(x in val_lower for x in META_INTERNAL_VALUES):
+                    return True
+
+    return False
+
+
+def enrich_leads_without_patrimonio(leads_without_pat, token):
+    """Para leads sem patrimonio no Supabase, consulta RD API para verificar qualificacao.
+
+    Args:
+        leads_without_pat: lista de dicts com 'email' e 'created_at'
+        token: RD Marketing API token
+
+    Returns:
+        lista de leads qualificados (com created_at para distribuicao por semana)
+    """
+    cache = load_qualified_cache()
+    qualified = []
+    checked_count = 0
+    cached_count = 0
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+
+    for lead in leads_without_pat:
+        email = (lead.get('email') or '').strip().lower()
+        if not email:
+            continue
+
+        # Checar cache
+        if email in cache:
+            cached_count += 1
+            if cache[email].get('qualified'):
+                qualified.append(lead)
+            continue
+
+        # Consultar RD API
+        try:
+            is_qual = check_lead_via_rd_api(email, token)
+            cache[email] = {'qualified': is_qual, 'checked_at': today}
+            if is_qual:
+                qualified.append(lead)
+            checked_count += 1
+            time.sleep(0.2)  # Rate limit
+        except Exception as e:
+            print(f'    RD API err para {email[:20]}...: {e}', file=sys.stderr)
+            cache[email] = {'qualified': False, 'checked_at': today}
+            checked_count += 1
+            time.sleep(0.2)
+
+    # Salvar cache atualizado
+    save_qualified_cache(cache)
+    print(f'    RD API: {checked_count} consultados, {cached_count} do cache, {len(qualified)} qualificados')
+    return qualified
 
 
 def fetch_qualified_leads_by_week(token):
@@ -1039,7 +1179,7 @@ def main():
     # 3. Leads Qualificados — Historico + Supabase
     print()
     print('=' * 60)
-    print('3/4 — Leads qualificados: historico + Supabase')
+    print('3/4 — Leads qualificados: historico + Supabase + RD API enrichment')
     print('=' * 60)
 
     qual_weekly = {}
@@ -1060,34 +1200,84 @@ def main():
             qual_weekly[w] = distributed[i]
         print(f'  {month_short}: historico — {total_q} qualificados')
 
-    # Abril: Supabase
+    # Abril+: RD Station Segmentacoes (fonte mais precisa — inclui Lead Form)
+    # Segmentacoes criadas no RD:
+    #   19356678 = Investidor R$50k-500k
+    #   19356688 = Investidor Acima R$500k
+    RD_SEG_IDS = [19356678, 19356688]
+
     try:
-        if SUPABASE_KEY:
-            year, month = 2026, 4
-            first = f'{year}-{month:02d}-01'
-            last_day = monthrange(year, month)[1]
-            last = f'{year}-{month:02d}-{last_day}'
-            url = (f'{SUPABASE_URL}/rest/v1/leads'
-                   f'?select=created_at,patrimonio_cripto_min_k'
-                   f'&patrimonio_cripto_min_k=gte.50'
-                   f'&created_at=gte.{first}T00:00:00'
-                   f'&created_at=lte.{last}T23:59:59'
-                   f'&limit=1000')
-            req = urllib.request.Request(url, headers={
-                'apikey': SUPABASE_KEY,
-                'Authorization': f'Bearer {SUPABASE_KEY}',
-            })
-            with urllib.request.urlopen(req, context=ctx, timeout=15) as r:
-                leads = json.loads(r.read())
+        rd_mkt_token = rd_mkt_get_token()
+        all_qual_emails = {}  # email -> created_at (deduplicar)
+
+        for seg_id in RD_SEG_IDS:
+            page = 1
+            seg_contacts = []
+            while page <= 30:
+                r = rd_mkt_get(f'/platform/segmentations/{seg_id}/contacts', rd_mkt_token, {
+                    'page': page, 'page_size': 125
+                })
+                items = r.get('contacts', []) if isinstance(r, dict) else (r if isinstance(r, list) else [])
+                if not items:
+                    break
+                seg_contacts.extend(items)
+                total = r.get('total', 0) if isinstance(r, dict) else 0
+                if len(seg_contacts) >= total or len(items) < 125:
+                    break
+                page += 1
+                time.sleep(0.2)
+
+            for c in seg_contacts:
+                email = (c.get('email') or '').strip().lower()
+                created = c.get('created_at', '')
+                if email and created:
+                    all_qual_emails[email] = created
+            print(f'  RD Segmentacao {seg_id}: {len(seg_contacts)} leads')
+
+        # Distribuir por semana (so meses nao-historicos = Abr+)
+        valid_months_qual = set((yr, mo) for yr, mo in MONTHS if (yr, mo) >= (2026, 4))
+        rd_count = 0
+        for email, created in all_qual_emails.items():
+            parsed = parse_date(created)
+            if parsed and (parsed[0], parsed[1]) in valid_months_qual:
+                lbl = week_label(*parsed)
+                if lbl in qual_weekly:
+                    qual_weekly[lbl] += 1
+                    rd_count += 1
+
+        print(f'  RD Segmentacoes total (dedup): {len(all_qual_emails)} | Abr+: {rd_count} qualificados')
+
+    except Exception as e:
+        print(f'  FALHA RD Segmentacoes: {e}', file=sys.stderr)
+        print(f'  Fallback: usando Supabase para Abr+...')
+        # Fallback: Supabase
+        try:
+            for year, month in MONTHS:
+                if (year, month) < (2026, 4):
+                    continue
+                first = f'{year}-{month:02d}-01'
+                last_day = monthrange(year, month)[1]
+                last = f'{year}-{month:02d}-{last_day}'
+                url = (f'{SUPABASE_URL}/rest/v1/leads'
+                       f'?select=created_at,patrimonio_cripto_min_k'
+                       f'&patrimonio_cripto_min_k=gte.50'
+                       f'&created_at=gte.{first}T00:00:00'
+                       f'&created_at=lte.{last}T23:59:59'
+                       f'&limit=1000')
+                req = urllib.request.Request(url, headers={
+                    'apikey': SUPABASE_KEY,
+                    'Authorization': f'Bearer {SUPABASE_KEY}',
+                })
+                with urllib.request.urlopen(req, context=ctx, timeout=15) as r:
+                    leads = json.loads(r.read())
                 for lead in leads:
                     parsed = parse_date(lead.get('created_at'))
                     if parsed:
                         lbl = week_label(*parsed)
                         if lbl in qual_weekly:
                             qual_weekly[lbl] += 1
-                print(f'  Abr: Supabase — {len(leads)} qualificados')
-    except Exception as e:
-        print(f'  FALHA Supabase qualif Abr: {e}', file=sys.stderr)
+        except Exception as e2:
+            print(f'  FALHA Supabase fallback: {e2}', file=sys.stderr)
 
     data['qualified_weekly'] = qual_weekly
     total_q = sum(qual_weekly.values())
