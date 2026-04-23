@@ -275,8 +275,10 @@ def fetch_qualified_leads():
             if events:
                 # Primeira conversão = origem do lead
                 full['_conversion_event'] = events[0].get('event_identifier', '')
+                full['_conversion_date'] = events[0].get('event_timestamp', '')
             else:
                 full['_conversion_event'] = ''
+                full['_conversion_date'] = ''
             enriched.append(full)
         if (i + 1) % 10 == 0:
             print(f"    ... {i + 1}/{len(unique)} contatos enriquecidos")
@@ -429,6 +431,13 @@ def main():
             # Classificação de qualificação
             faixas_altas = ['Entre R$ 50 mil a R$ 200 mil', 'Entre R$ 200 mil e R$500 mil', 'Acima de R$500 mil']
             pat_class = 'qual-high' if (pat_cripto in faixas_altas or pat_trad in faixas_altas) else 'qual-mid'
+            # Data de conversão
+            conv_date_raw = c.get('_conversion_date') or created
+            try:
+                dt = datetime.fromisoformat(conv_date_raw.replace('Z', '+00:00'))
+                conv_date = dt.strftime('%d/%m/%Y %H:%M')
+            except Exception:
+                conv_date = conv_date_raw[:16] if conv_date_raw else '-'
             qualified_pos.append({
                 'nome': nome,
                 'tel': tel,
@@ -436,6 +445,7 @@ def main():
                 'patTrad': pat_trad,
                 'fonte': str(fonte)[:30],
                 'patClass': pat_class,
+                'convDate': conv_date,
             })
     print(f"  {len(qualified_pos)} leads qualificados no período pós")
 
@@ -554,10 +564,11 @@ def generate_html(**d):
 <td><span class="qual-badge {pat_class}">{q['patCripto']}</span></td>
 <td><span {pat_trad_style}>{q['patTrad']}</span></td>
 <td><span class="badge badge-blue">{q['fonte']}</span></td>
+<td style="font-size:11px;color:var(--dim)">{q['convDate']}</td>
 </tr>"""
 
     if not qual_rows:
-        qual_rows = '<tr><td colspan="5" style="text-align:center;color:var(--dim)">Nenhum lead qualificado no período</td></tr>'
+        qual_rows = '<tr><td colspan="6" style="text-align:center;color:var(--dim)">Nenhum lead qualificado no período</td></tr>'
 
     updated = d['now'].strftime('%d/%m/%Y %H:%M UTC')
     since_fmt = datetime.strptime(d['since_pos'], '%Y-%m-%d').strftime('%d/%m')
@@ -689,7 +700,7 @@ tbody td{{padding:8px 10px;border-bottom:1px solid var(--border)}}tbody tr:hover
 <div class="panel">
 <h2>Leads Qualificados >= 50k ({len(d['qualified'])} leads)</h2>
 <table>
-<thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th></tr></thead>
+<thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th><th>Data Conversao</th></tr></thead>
 <tbody>{qual_rows}</tbody>
 </table>
 </div>
