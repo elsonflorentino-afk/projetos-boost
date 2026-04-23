@@ -292,8 +292,8 @@ def main():
     now = datetime.now(timezone.utc)
     today = now.strftime('%Y-%m-%d')
 
-    # Período pós-reestruturação: 15/abr → hoje
-    since_pos = '2026-04-15'
+    # Período pós-reestruturação: 01/abr → hoje
+    since_pos = '2026-04-01'
     until_pos = today
 
     # Período pré-reestruturação: 01/abr → 14/abr
@@ -304,7 +304,7 @@ def main():
     since_abr = '2026-04-01'
     until_abr = today
 
-    days_pos = max((now - datetime(2026, 4, 15, tzinfo=timezone.utc)).days, 1)
+    days_pos = max((now - datetime(2026, 4, 1, tzinfo=timezone.utc)).days, 1)
     days_pre = 14
     days_abr = max((now - datetime(2026, 4, 1, tzinfo=timezone.utc)).days, 1)
     days_remaining = max(30 - days_abr, 0)
