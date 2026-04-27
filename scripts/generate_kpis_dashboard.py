@@ -46,23 +46,83 @@ META_BASE = 'https://graph.facebook.com/v19.0'
 RD_CRM_BASE = 'https://crm.rdstation.com/api/v1'
 RD_MKT_BASE = 'https://api.rd.services'
 
-# Stage IDs do CRM (Funil Padrao — 9 estagios)
-STAGE_CONTATO = '69a1cc698603df001711f704'        # Contato feito
-STAGE_FUP_POS = '69d3fe91adb03e0014314e14'        # FUP - Pos contato feito
-STAGE_INTERESSE = '69a1cc698603df001711f705'       # Identificacao do interesse
-STAGE_REUNIAO_MARCADA = '69a1cc698603df001711f706' # Reuniao Marcada
-STAGE_REUNIAO_REALIZADA = '69a1cc698603df001711f707' # Reuniao Realizada
-STAGE_FUP = '69c07d74a56e7c0016468e4f'            # FUP
-STAGE_NEGOCIACAO = '69c07dc7f9379f0013c95a4b'      # Negociacao Fechada
+# ── Stage IDs — TODOS os funis do CRM ──
+# Funil Padrao
+FP_SEM_CONTATO     = '69a1cc698603df001711f703'
+FP_CONTATO         = '69a1cc698603df001711f704'
+FP_FUP_POS         = '69d3fe91adb03e0014314e14'
+FP_INTERESSE       = '69a1cc698603df001711f705'
+FP_REUNIAO_MARCADA = '69a1cc698603df001711f706'
+FP_REUNIAO_REALIZ  = '69a1cc698603df001711f707'
+FP_FUP             = '69c07d74a56e7c0016468e4f'
+FP_NEGOCIACAO      = '69c07dc7f9379f0013c95a4b'
+FP_PERDIDO         = '69c52c04eea19c0019a5ee00'
 
-# Stages que contam como "contato" (passou do "Sem contato")
-STAGES_CONTATO = {STAGE_CONTATO, STAGE_FUP_POS, STAGE_INTERESSE,
-                  STAGE_REUNIAO_MARCADA, STAGE_REUNIAO_REALIZADA,
-                  STAGE_FUP, STAGE_NEGOCIACAO}
-# Stages que contam como "reuniao"
-STAGES_REUNIAO = {STAGE_REUNIAO_MARCADA, STAGE_REUNIAO_REALIZADA}
-# Stages que contam como "pedido/negociacao"
-STAGES_PEDIDO = {STAGE_NEGOCIACAO}
+# Prospeccao Ativa
+PA_SEM_CONTATO  = '69c52ba2beeb7600166918d6'
+PA_CONTATO      = '69c52ba2beeb7600166918d7'
+PA_INTERESSE    = '69c52ba2beeb7600166918d8'
+PA_REUNIAO_FUP  = '69c52ba3beeb7600166918d9'
+PA_PROPOSTA     = '69c52ba3beeb7600166918da'
+PA_NEGOCIACAO   = '69c6d204fb863000132cc68f'
+
+# Clientes Renovacao
+CR_SEM_CONTATO  = '69c690bd795a9b00168be39e'
+CR_CONTATO      = '69c690bd795a9b00168be39f'
+CR_INTERESSE    = '69c690bd795a9b00168be3a0'
+CR_APRESENTACAO = '69c690bd795a9b00168be3a1'
+CR_PROPOSTA     = '69c690bd795a9b00168be3a2'
+CR_NEGOCIACAO   = '69cd2cf1d3062c00161ab229'
+CR_PERDIDO      = '69d92716729c3f00173ce848'
+
+# Cryptostart Upsell
+CU_SEM_CONTATO  = '69de8e03eb0b02001791249a'
+CU_CONTATO      = '69de8e03eb0b02001791249b'
+CU_INTERESSE    = '69de8e03eb0b02001791249c'
+CU_APRESENTACAO = '69de8e03eb0b02001791249d'
+CU_PROPOSTA     = '69de8e03eb0b02001791249e'
+
+# ── Stages "Sem contato" e "Perdido" (excluir de contatos) ──
+STAGES_EXCLUIR = {
+    FP_SEM_CONTATO, FP_PERDIDO,
+    PA_SEM_CONTATO,
+    CR_SEM_CONTATO, CR_PERDIDO,
+    CU_SEM_CONTATO,
+}
+
+# ── Stages que contam como "contato" (todos EXCETO sem contato e perdido) ──
+STAGES_CONTATO = {
+    FP_CONTATO, FP_FUP_POS, FP_INTERESSE, FP_REUNIAO_MARCADA,
+    FP_REUNIAO_REALIZ, FP_FUP, FP_NEGOCIACAO,
+    PA_CONTATO, PA_INTERESSE, PA_REUNIAO_FUP, PA_PROPOSTA, PA_NEGOCIACAO,
+    CR_CONTATO, CR_INTERESSE, CR_APRESENTACAO, CR_PROPOSTA, CR_NEGOCIACAO,
+    CU_CONTATO, CU_INTERESSE, CU_APRESENTACAO, CU_PROPOSTA,
+}
+
+# ── Stages que contam como "reuniao" ──
+# Inclui: Reuniao Marcada, Reuniao Realizada, Apresentacao, Proposta Enviada
+STAGES_REUNIAO = {
+    FP_REUNIAO_MARCADA, FP_REUNIAO_REALIZ,
+    PA_REUNIAO_FUP, PA_PROPOSTA,
+    CR_APRESENTACAO, CR_PROPOSTA,
+    CU_APRESENTACAO, CU_PROPOSTA,
+}
+
+# ── Stages que contam como "pedido/negociacao" ──
+STAGES_PEDIDO = {FP_NEGOCIACAO, PA_NEGOCIACAO, CR_NEGOCIACAO}
+
+# Pipeline IDs (para buscar deals de todos os funis)
+PIPELINE_IDS = [
+    '69a1cc698603df001711f701',  # Funil Padrao
+    '69c52ba2beeb7600166918d4',  # Prospeccao Ativa
+    '69c690bd795a9b00168be39c',  # Clientes Renovacao
+    '69de8e03eb0b020017912498',  # Cryptostart Upsell
+]
+
+# Backward compat — variaveis usadas em fetch_crm_data_from_supabase
+STAGE_REUNIAO_MARCADA = FP_REUNIAO_MARCADA
+STAGE_REUNIAO_REALIZADA = FP_REUNIAO_REALIZ
+STAGE_NEGOCIACAO = FP_NEGOCIACAO
 
 # Supabase (para leads qualificados)
 SUPABASE_URL = os.environ.get('SUPABASE_URL', 'https://dvvfnrdvhkjfovhfqiow.supabase.co')
@@ -77,19 +137,34 @@ MONTHS = [(2026, 2), (2026, 3), (2026, 4)]
 # Estes dados sao fixos — o report ja foi fechado.
 # Abril em diante e puxado via API automaticamente.
 # ──────────────────────────────────────────────────────────────
+# ── Dados historicos do Report Midia & Vendas Marco 2026 (PDF) ──
+# TODOS OS FUNIS COMBINADOS por mes
+#
+# Fev: Funil Padrao (pag 4): Contatos 224, Reunioes 4, Vendas 0
+#      Renovacao (Resultados Consolidados pag 8): Pedidos Renov 1, Receita R$20k
+#      TOTAL Fev: 224 contatos, 4 reunioes, 1 pedido, 1 venda
+#
+# Mar: Funil Padrao (Comercial Marco pag 6): Contato 214, Reunioes 11, Vendas 3
+#      Renovacao Q1 (pag 5): 27 contatos, 9 reunioes, 7 renovacoes no Q1
+#      Renovacao Mar (Resultados Consolidados pag 8): Pedidos Renov 3, Receita R$24k
+#      TOTAL Mar: 214+27=241 contatos, 11+9=20 reunioes, 3+3=6 pedidos, 3+3=6 vendas
+#
 HISTORICAL_COMMERCIAL = {
-    # Fevereiro 2026 — dados do funil do report
-    # Total mensal: Contatos 224, Reunioes 4, Vendas 0, FUP 65, SQL 124
-    'Fev': {'contatos': 224, 'reunioes': 4, 'pedidos': 0, 'vendas': 0},
-    # Marco 2026 — Comercial Março slide
-    # Leads 888, Contato 214 (24%), Reunioes 11, Vendas 3, Pedidos 3
-    'Mar': {'contatos': 214, 'reunioes': 11, 'pedidos': 3, 'vendas': 3},
+    'Fev': {'contatos': 224, 'reunioes': 4, 'pedidos': 1, 'vendas': 1},
+    'Mar': {'contatos': 241, 'reunioes': 20, 'pedidos': 6, 'vendas': 6},
+}
+
+# Renovacao historico (para funil acumulado com breakdown)
+HISTORICAL_RENOVACAO = {
+    'Jan': {'contatos': 0, 'reunioes': 0, 'pedidos': 2, 'vendas': 2, 'receita': 40000},
+    'Fev': {'contatos': 0, 'reunioes': 0, 'pedidos': 1, 'vendas': 1, 'receita': 20000},
+    'Mar': {'contatos': 27, 'reunioes': 9, 'pedidos': 3, 'vendas': 3, 'receita': 24000},
 }
 
 HISTORICAL_QUALIFIED = {
-    # Fevereiro: SQL 124 do funil (report nao detalha por semana)
+    # Fevereiro: SQL 124 do funil (report pagina 4)
     'Fev': 124,
-    # Marco: ~76 leads qualificados (63 form nativo + 13 LP C4)
+    # Marco: ~76 leads qualificados (63 form nativo + 13 LP C4) — report pagina 9
     'Mar': 76,
 }
 
@@ -263,53 +338,85 @@ def fetch_crm_data_from_supabase():
         with urllib.request.urlopen(req, context=ctx, timeout=20) as r:
             return json.loads(r.read())
 
+    # Stages por funil
+    funnel_config = {
+        'fp': {
+            'contato': {FP_CONTATO, FP_FUP_POS, FP_INTERESSE, FP_REUNIAO_MARCADA, FP_REUNIAO_REALIZ, FP_FUP, FP_NEGOCIACAO},
+            'reuniao': {FP_REUNIAO_MARCADA, FP_REUNIAO_REALIZ},
+            'pedido': {FP_NEGOCIACAO},
+            'excluir': {FP_SEM_CONTATO, FP_PERDIDO},
+        },
+        'pa': {
+            'contato': {PA_CONTATO, PA_INTERESSE, PA_REUNIAO_FUP, PA_PROPOSTA, PA_NEGOCIACAO},
+            'reuniao': {PA_REUNIAO_FUP, PA_PROPOSTA},
+            'pedido': {PA_NEGOCIACAO},
+            'excluir': {PA_SEM_CONTATO},
+        },
+        'cr': {
+            'contato': {CR_CONTATO, CR_INTERESSE, CR_APRESENTACAO, CR_PROPOSTA, CR_NEGOCIACAO},
+            'reuniao': {CR_APRESENTACAO, CR_PROPOSTA},
+            'pedido': {CR_NEGOCIACAO},
+            'excluir': {CR_SEM_CONTATO, CR_PERDIDO},
+        },
+    }
+
+    # Inicializar weeks por funil
+    weeks_by_funnel = {}
+    for fn in ['fp', 'pa', 'cr']:
+        weeks_by_funnel[fn] = {}
+        for label in all_week_labels():
+            weeks_by_funnel[fn][label] = {'contatos': 0, 'reunioes': 0, 'pedidos': 0, 'vendas': 0}
+
     try:
-        # Contatos: todos que passaram de "Sem contato"
-        contatos = sb_fetch('&stage_name=neq.Sem contato&stage_name=neq.Perdido ou Fora do ICP')
-        print(f'  Supabase: {len(contatos)} deals com contato feito')
-        for d in contatos:
+        all_deals = sb_fetch('')
+        print(f'  Supabase: {len(all_deals)} deals total')
+
+        for d in all_deals:
             p = parse_date(d.get('crm_created_at'))
-            if p and (p[0], p[1]) in valid_months:
-                lbl = week_label(*p)
-                if lbl in weeks:
-                    weeks[lbl]['contatos'] += 1
+            if not p or (p[0], p[1]) not in valid_months:
+                continue
 
-        # Reunioes: stage Reuniao Marcada ou Realizada
-        for sid in [STAGE_REUNIAO_MARCADA, STAGE_REUNIAO_REALIZADA]:
-            reunioes = sb_fetch(f'&stage_id=eq.{sid}')
-            print(f'  Supabase: {len(reunioes)} deals em reuniao (stage {sid[-6:]})')
-            for d in reunioes:
-                p = parse_date(d.get('crm_created_at'))
-                if p and (p[0], p[1]) in valid_months:
-                    lbl = week_label(*p)
-                    if lbl in weeks:
-                        weeks[lbl]['reunioes'] += 1
+            lbl = week_label(*p)
+            sid = d.get('stage_id', '')
+            is_won = d.get('deal_status') == 'won'
 
-        # Pedidos: Negociacao Fechada
-        pedidos = sb_fetch(f'&stage_id=eq.{STAGE_NEGOCIACAO}')
-        print(f'  Supabase: {len(pedidos)} deals em negociacao fechada')
-        for d in pedidos:
-            p = parse_date(d.get('crm_created_at'))
-            if p and (p[0], p[1]) in valid_months:
-                lbl = week_label(*p)
-                if lbl in weeks:
-                    weeks[lbl]['pedidos'] += 1
+            for fn, cfg in funnel_config.items():
+                all_fn_stages = cfg['contato'] | cfg['excluir']
+                if sid not in all_fn_stages:
+                    continue
 
-        # Vendas: deal_status = won
-        vendas = sb_fetch('&deal_status=eq.won')
-        print(f'  Supabase: {len(vendas)} vendas (won)')
-        for d in vendas:
-            date_field = d.get('closed_at') or d.get('crm_created_at')
-            p = parse_date(date_field)
-            if p and (p[0], p[1]) in valid_months:
-                lbl = week_label(*p)
-                if lbl in weeks:
-                    weeks[lbl]['vendas'] += 1
+                if lbl not in weeks_by_funnel[fn]:
+                    continue
+
+                if sid in cfg['contato']:
+                    weeks_by_funnel[fn][lbl]['contatos'] += 1
+                if sid in cfg['reuniao']:
+                    weeks_by_funnel[fn][lbl]['reunioes'] += 1
+                if sid in cfg['pedido']:
+                    weeks_by_funnel[fn][lbl]['pedidos'] += 1
+                if is_won:
+                    weeks_by_funnel[fn][lbl]['vendas'] += 1
+
+        # Log por funil
+        for fn in ['fp', 'pa', 'cr']:
+            tc = sum(w['contatos'] for w in weeks_by_funnel[fn].values())
+            tr = sum(w['reunioes'] for w in weeks_by_funnel[fn].values())
+            tv = sum(w['vendas'] for w in weeks_by_funnel[fn].values())
+            print(f'  {fn.upper()} (Abr+): contatos={tc}, reunioes={tr}, vendas={tv}')
 
     except Exception as e:
         print(f'  Supabase CRM err: {e}', file=sys.stderr)
 
+    # weeks principal = Funil Padrao (para compatibilidade)
+    weeks = weeks_by_funnel['fp']
+
+    # Guardar weeks_by_funnel no modulo para uso posterior
+    global _weeks_by_funnel
+    _weeks_by_funnel = weeks_by_funnel
+
     return weeks
+
+_weeks_by_funnel = {}
 
 
 # ──────────────────────────────────────────────────────────────
@@ -637,10 +744,11 @@ def generate_html(data):
     total_spend = sum(meta.get(w, {}).get('spend', 0) for w in week_labels)
     total_leads = sum(meta.get(w, {}).get('leads', 0) for w in week_labels)
     total_qual = sum(qual.get(w, 0) for w in week_labels)
-    total_contatos = sum(crm.get(w, {}).get('contatos', 0) for w in week_labels)
-    total_reunioes = sum(crm.get(w, {}).get('reunioes', 0) for w in week_labels)
-    total_vendas = sum(crm.get(w, {}).get('vendas', 0) for w in week_labels)
     avg_cpl = round(total_spend / total_leads, 2) if total_leads else 0
+
+    # Totais comerciais = todos os funis combinados
+    # crm ja tem Fev/Mar com dados do PDF (todos os funis), Abr+ sera somado com PA/CR abaixo
+    # Os totais finais serao recalculados depois que contatos_data for montado
 
     # Build table rows
     def fmt_brl(v):
@@ -658,11 +766,16 @@ def generate_html(data):
             return '—'
         return f"{v:.2f}%".replace('.', ',')
 
-    def build_row(label, values, formatter, css_class=''):
+    def build_row(label, values, formatter, css_class='', total_formatter=None):
         cells = f'<td class="metric-name {css_class}">{label}</td>'
+        total = 0
         for w in week_labels:
             val = values.get(w, 0)
             cells += f'<td class="{css_class}">{formatter(val)}</td>'
+            total += val
+        # Coluna total
+        tfmt = total_formatter or formatter
+        cells += f'<td class="total-col {css_class}">{tfmt(total)}</td>'
         return f'<tr>{cells}</tr>'
 
     # Prepare data dicts for each row
@@ -678,10 +791,42 @@ def generate_html(data):
         l = meta.get(w, {}).get('leads', 0)
         cpl_data[w] = round(s / l, 2) if l else 0
 
-    contatos_data = {w: crm.get(w, {}).get('contatos', 0) for w in week_labels}
-    reunioes_data = {w: crm.get(w, {}).get('reunioes', 0) for w in week_labels}
-    pedidos_data = {w: crm.get(w, {}).get('pedidos', 0) for w in week_labels}
-    vendas_data = {w: crm.get(w, {}).get('vendas', 0) for w in week_labels}
+    # Dados comerciais combinados (todos os funis)
+    # Para Fev/Mar: historico ja inclui todos os funis (PDF)
+    # Para Abr+: somar FP + PA + CR do Supabase
+    contatos_data = {}
+    reunioes_data = {}
+    pedidos_data = {}
+    vendas_data = {}
+
+    for w in week_labels:
+        # Historico (Fev/Mar) ja vem combinado no crm dict
+        fp = crm.get(w, {})
+        pa = _weeks_by_funnel.get('pa', {}).get(w, {})
+        cr = _weeks_by_funnel.get('cr', {}).get(w, {})
+
+        contatos_data[w] = fp.get('contatos', 0) + pa.get('contatos', 0) + cr.get('contatos', 0)
+        reunioes_data[w] = fp.get('reunioes', 0) + pa.get('reunioes', 0) + cr.get('reunioes', 0)
+        pedidos_data[w] = fp.get('pedidos', 0) + pa.get('pedidos', 0) + cr.get('pedidos', 0)
+        vendas_data[w] = fp.get('vendas', 0) + pa.get('vendas', 0) + cr.get('vendas', 0)
+
+    # Recalcular totais comerciais (todos os funis combinados)
+    total_contatos = sum(contatos_data.values())
+    total_reunioes = sum(reunioes_data.values())
+    total_pedidos_all = sum(pedidos_data.values())
+    total_vendas = sum(vendas_data.values())
+
+    # CTR e CPL totais (media ponderada, nao soma)
+    avg_ctr = round(sum(clicks_data.values()) / sum(impressions_data.values()) * 100, 2) if sum(impressions_data.values()) else 0
+
+    def build_row_custom_total(label, values, formatter, total_val, total_fmt, css_class=''):
+        """Row com total customizado (para CTR e CPL que nao sao soma)."""
+        cells = f'<td class="metric-name {css_class}">{label}</td>'
+        for w in week_labels:
+            val = values.get(w, 0)
+            cells += f'<td class="{css_class}">{formatter(val)}</td>'
+        cells += f'<td class="total-col {css_class}">{total_fmt(total_val)}</td>'
+        return f'<tr>{cells}</tr>'
 
     table_rows = '\n'.join([
         build_row('Investimento', spend_data, fmt_brl),
@@ -689,15 +834,15 @@ def generate_html(data):
         build_row('Cliques', clicks_data, fmt_int),
         build_row('Leads', leads_data, fmt_int),
         build_row('Leads Qualificados', qual_data, fmt_int),
-        build_row('CTR', ctr_data, fmt_pct),
-        build_row('CPL', cpl_data, fmt_brl),
+        build_row_custom_total('CTR', ctr_data, fmt_pct, avg_ctr, fmt_pct),
+        build_row_custom_total('CPL', cpl_data, fmt_brl, avg_cpl, fmt_brl),
         build_row('Contatos', contatos_data, fmt_int, 'commercial'),
         build_row('Reunioes', reunioes_data, fmt_int, 'commercial'),
         build_row('Pedidos', pedidos_data, fmt_int, 'commercial'),
         build_row('Vendas', vendas_data, fmt_int, 'commercial'),
     ])
 
-    week_headers = ''.join(f'<th>{w}</th>' for w in week_labels)
+    week_headers = ''.join(f'<th>{w}</th>' for w in week_labels) + '<th class="total-col">TOTAL</th>'
 
     # Month summary cards
     month_cards_html = ''
@@ -713,9 +858,10 @@ def generate_html(data):
         m_impressions = sum(meta.get(w, {}).get('impressions', 0) for w in m_weeks)
         m_cpl = round(m_spend / m_leads, 2) if m_leads else 0
         m_ctr = round(m_clicks / m_impressions * 100, 2) if m_impressions else 0
-        m_contatos = sum(crm.get(w, {}).get('contatos', 0) for w in m_weeks)
-        m_reunioes = sum(crm.get(w, {}).get('reunioes', 0) for w in m_weeks)
-        m_vendas = sum(crm.get(w, {}).get('vendas', 0) for w in m_weeks)
+        m_contatos = sum(contatos_data.get(w, 0) for w in m_weeks)
+        m_reunioes = sum(reunioes_data.get(w, 0) for w in m_weeks)
+        m_pedidos = sum(pedidos_data.get(w, 0) for w in m_weeks)
+        m_vendas = sum(vendas_data.get(w, 0) for w in m_weeks)
 
         month_cards_html += f'''
         <div class="month-card">
@@ -729,26 +875,80 @@ def generate_html(data):
                 <div class="month-stat"><span class="month-label">Cliques</span><span class="month-value">{fmt_int(m_clicks)}</span></div>
                 <div class="month-stat"><span class="month-label">Contatos</span><span class="month-value">{fmt_int(m_contatos)}</span></div>
                 <div class="month-stat"><span class="month-label">Reunioes</span><span class="month-value">{fmt_int(m_reunioes)}</span></div>
+                <div class="month-stat"><span class="month-label">Pedidos</span><span class="month-value">{fmt_int(m_pedidos)}</span></div>
                 <div class="month-stat"><span class="month-label">Vendas</span><span class="month-value">{fmt_int(m_vendas)}</span></div>
             </div>
         </div>'''
 
-    # Funil de conversao acumulado
-    conv_lead_cont = round(total_contatos / total_leads * 100, 1) if total_leads else 0
-    conv_cont_qual = round(total_qual / total_contatos * 100, 1) if total_contatos else 0
-    conv_qual_reun = round(total_reunioes / total_qual * 100, 1) if total_qual else 0
-    total_pedidos = sum(crm.get(w, {}).get('pedidos', 0) for w in week_labels)
-    conv_reun_vend = round(total_vendas / total_reunioes * 100, 1) if total_reunioes else 0
-    conv_total = round(total_vendas / total_leads * 100, 2) if total_leads else 0
+    # ── Funil de conversao acumulado ──
+    # Totais = mesmos da tabela semanal (todos os funis combinados)
+    all_contatos = total_contatos
+    all_reunioes = total_reunioes
+    all_pedidos = total_pedidos_all
+    all_vendas = total_vendas
+
+    # Breakdown por funil (historico separado + Supabase Abr+)
+    # FP historico: Fev=224c/4r/0p/0v, Mar=214c/11r/3p/3v
+    fp_hist_c = 224 + 214  # Fev + Mar FP only
+    fp_hist_r = 4 + 11
+    fp_hist_p = 0 + 3
+    fp_hist_v = 0 + 3
+    # FP Supabase Abr+
+    fp_abr_c = sum(_weeks_by_funnel.get('fp', {}).get(w, {}).get('contatos', 0) for w in week_labels if w.startswith('Abr'))
+    fp_abr_r = sum(_weeks_by_funnel.get('fp', {}).get(w, {}).get('reunioes', 0) for w in week_labels if w.startswith('Abr'))
+    fp_abr_p = sum(_weeks_by_funnel.get('fp', {}).get(w, {}).get('pedidos', 0) for w in week_labels if w.startswith('Abr'))
+    fp_abr_v = sum(_weeks_by_funnel.get('fp', {}).get(w, {}).get('vendas', 0) for w in week_labels if w.startswith('Abr'))
+    fp_contatos = fp_hist_c + fp_abr_c
+    fp_reunioes = fp_hist_r + fp_abr_r
+    fp_pedidos_t = fp_hist_p + fp_abr_p
+    fp_vendas = fp_hist_v + fp_abr_v
+
+    # PA (sem historico, tudo do Supabase)
+    pa_contatos = sum(_weeks_by_funnel.get('pa', {}).get(w, {}).get('contatos', 0) for w in week_labels)
+    pa_reunioes = sum(_weeks_by_funnel.get('pa', {}).get(w, {}).get('reunioes', 0) for w in week_labels)
+    pa_vendas = sum(_weeks_by_funnel.get('pa', {}).get(w, {}).get('vendas', 0) for w in week_labels)
+
+    # CR historico: Fev=0c/0r/1p/1v, Mar=27c/9r/3p/3v (do report PDF)
+    cr_hist_c = 0 + 27
+    cr_hist_r = 0 + 9
+    cr_hist_v = 1 + 3  # Fev=1 renov + Mar=3 renov
+    # CR Supabase Abr+
+    cr_abr_c = sum(_weeks_by_funnel.get('cr', {}).get(w, {}).get('contatos', 0) for w in week_labels if w.startswith('Abr'))
+    cr_abr_r = sum(_weeks_by_funnel.get('cr', {}).get(w, {}).get('reunioes', 0) for w in week_labels if w.startswith('Abr'))
+    cr_abr_v = sum(_weeks_by_funnel.get('cr', {}).get(w, {}).get('vendas', 0) for w in week_labels if w.startswith('Abr'))
+    cr_contatos = cr_hist_c + cr_abr_c
+    cr_reunioes = cr_hist_r + cr_abr_r
+    cr_vendas = cr_hist_v + cr_abr_v
+
+    print(f'  Funil acumulado — FP: {fp_contatos}c/{fp_reunioes}r/{fp_vendas}v | PA: {pa_contatos}c/{pa_reunioes}r/{pa_vendas}v | CR: {cr_contatos}c/{cr_reunioes}r/{cr_vendas}v')
+    print(f'  Totais: {all_contatos}c/{all_reunioes}r/{all_vendas}v (check: FP+PA+CR = {fp_contatos+pa_contatos+cr_contatos}c/{fp_reunioes+pa_reunioes+cr_reunioes}r/{fp_vendas+pa_vendas+cr_vendas}v)')
+
+    conv_lead_cont = round(all_contatos / total_leads * 100, 1) if total_leads else 0
+    conv_cont_qual = round(total_qual / all_contatos * 100, 1) if all_contatos else 0
+    conv_qual_reun = round(all_reunioes / total_qual * 100, 1) if total_qual else 0
+    conv_reun_vend = round(all_vendas / all_reunioes * 100, 1) if all_reunioes else 0
+    conv_total = round(all_vendas / total_leads * 100, 2) if total_leads else 0
+
+    # Breakdown HTML por origem
+    def breakdown_badge(fp, pa, cr):
+        parts = []
+        if fp: parts.append(f'<span class="fb-fp">{fmt_int(fp)} Funil Padrao</span>')
+        if pa: parts.append(f'<span class="fb-pa">{fmt_int(pa)} Prosp. Ativa</span>')
+        if cr: parts.append(f'<span class="fb-cr">{fmt_int(cr)} Renovacao</span>')
+        return ' '.join(parts) if parts else ''
+
+    bd_contatos = breakdown_badge(fp_contatos, pa_contatos, cr_contatos)
+    bd_reunioes = breakdown_badge(fp_reunioes, pa_reunioes, cr_reunioes)
+    bd_vendas = breakdown_badge(fp_vendas, pa_vendas, cr_vendas)
 
     funnel_html = f'''
-<div class="funnel-title">Funil de Conversao Acumulado</div>
+<div class="funnel-title">Funil de Conversao Acumulado — Todos os Funis</div>
 <div class="funnel-section">
     <div class="funnel-container">
         <div class="vfunnel">
             <div class="vfunnel-stage">
                 <div class="vfunnel-bar" style="width: 100%; background: linear-gradient(90deg, #00B37E, #00D195);">
-                    <span class="vfunnel-label">Leads</span>
+                    <span class="vfunnel-label">Leads (Meta Ads)</span>
                     <span class="vfunnel-value">{fmt_int(total_leads)}</span>
                 </div>
             </div>
@@ -756,9 +956,10 @@ def generate_html(data):
             <div class="vfunnel-stage">
                 <div class="vfunnel-bar" style="width: 75%; background: linear-gradient(90deg, #9B59B6, #C084FC);">
                     <span class="vfunnel-label">Contatos</span>
-                    <span class="vfunnel-value">{fmt_int(total_contatos)}</span>
+                    <span class="vfunnel-value">{fmt_int(all_contatos)}</span>
                 </div>
             </div>
+            <div class="vfunnel-breakdown">{bd_contatos}</div>
             <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; {conv_cont_qual}% sao qualificados</span></div>
             <div class="vfunnel-stage">
                 <div class="vfunnel-bar" style="width: 55%; background: linear-gradient(90deg, #0090c0, #00b4d8);">
@@ -770,16 +971,18 @@ def generate_html(data):
             <div class="vfunnel-stage">
                 <div class="vfunnel-bar" style="width: 30%; background: linear-gradient(90deg, #E08A00, #FFA500);">
                     <span class="vfunnel-label">Reunioes</span>
-                    <span class="vfunnel-value">{fmt_int(total_reunioes)}</span>
+                    <span class="vfunnel-value">{fmt_int(all_reunioes)}</span>
                 </div>
             </div>
+            <div class="vfunnel-breakdown">{bd_reunioes}</div>
             <div class="vfunnel-conv-row"><span class="vfunnel-pct">&#8595; {conv_reun_vend}% fecharam</span></div>
             <div class="vfunnel-stage">
                 <div class="vfunnel-bar" style="width: 18%; background: linear-gradient(90deg, #D94E7A, #FF6B9D);">
                     <span class="vfunnel-label">Vendas</span>
-                    <span class="vfunnel-value">{fmt_int(total_vendas)}</span>
+                    <span class="vfunnel-value">{fmt_int(all_vendas)}</span>
                 </div>
             </div>
+            <div class="vfunnel-breakdown">{bd_vendas}</div>
             <div class="vfunnel-bottom">
                 <span>Taxa geral: <strong style="color:#00D195">{conv_total}%</strong> (leads &rarr; vendas)</span>
             </div>
@@ -933,6 +1136,65 @@ td.metric-name.commercial {{
 tr:hover td.commercial {{ background: rgba(255, 107, 157, 0.12); }}
 tr:hover td.metric-name.commercial {{ background: rgba(255, 107, 157, 0.12); }}
 
+/* Total column */
+td.total-col {{
+    background: rgba(0, 209, 149, 0.08);
+    font-weight: 700;
+    border-left: 2px solid rgba(0, 209, 149, 0.3);
+}}
+th.total-col {{
+    background: rgba(0, 209, 149, 0.12);
+    color: #00D195;
+    font-weight: 700;
+    border-left: 2px solid rgba(0, 209, 149, 0.3);
+}}
+
+/* Prospect rows */
+td.prospect {{ background: rgba(0, 209, 149, 0.06); }}
+td.metric-name.prospect {{ background: rgba(0, 209, 149, 0.06); color: #00D195; }}
+tr:hover td.prospect {{ background: rgba(0, 209, 149, 0.12); }}
+
+/* Renovation rows */
+td.renov {{ background: rgba(255, 165, 0, 0.06); }}
+td.metric-name.renov {{ background: rgba(255, 165, 0, 0.06); color: #FFA500; }}
+tr:hover td.renov {{ background: rgba(255, 165, 0, 0.12); }}
+
+/* Total rows */
+td.total-row {{ background: rgba(255, 255, 255, 0.04); font-weight: 700; }}
+td.metric-name.total-row {{ background: rgba(255, 255, 255, 0.04); color: #FFF; font-weight: 700; }}
+
+/* Section header in table */
+.section-header-row td {{
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #A0A0C0;
+    padding: 14px 10px 6px 10px;
+    border-bottom: 1px solid #1a1a2e;
+    background: transparent;
+}}
+
+/* Separator row */
+.separator-row td {{
+    padding: 0;
+    height: 2px;
+    border: none;
+    background: transparent;
+}}
+
+/* Section labels */
+.section-label {{
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #A0A0C0;
+    margin: 24px 0 8px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #1a1a2e;
+}}
+
 /* Month cards */
 .month-section {{
     margin-bottom: 40px;
@@ -1011,6 +1273,16 @@ tr:hover td.metric-name.commercial {{ background: rgba(255, 107, 157, 0.12); }}
     font-size: 11px; font-weight: 500; color: #A0A0C0;
     background: rgba(160, 160, 192, 0.06); padding: 3px 12px; border-radius: 4px;
 }}
+.vfunnel-breakdown {{
+    display: flex; justify-content: center; gap: 8px; padding: 4px 0 2px;
+    flex-wrap: wrap;
+}}
+.vfunnel-breakdown span {{
+    font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px;
+}}
+.fb-fp {{ background: rgba(155, 89, 182, 0.15); color: #C084FC; }}
+.fb-pa {{ background: rgba(0, 179, 126, 0.15); color: #00D195; }}
+.fb-cr {{ background: rgba(224, 138, 0, 0.15); color: #FFA500; }}
 .vfunnel-bottom {{
     margin-top: 20px; padding-top: 16px; border-top: 1px solid #1a1a2e;
     display: flex; justify-content: center; gap: 40px;
@@ -1038,6 +1310,7 @@ tr:hover td.metric-name.commercial {{ background: rgba(255, 107, 157, 0.12); }}
     </div>
 </div>
 
+<div class="section-label">Midia Paga (Meta Ads)</div>
 <div class="summary-row">
     <div class="summary-card">
         <div class="label">Investimento Total</div>
@@ -1055,6 +1328,10 @@ tr:hover td.metric-name.commercial {{ background: rgba(255, 107, 157, 0.12); }}
         <div class="label">Leads Qualificados</div>
         <div class="value">{fmt_int(total_qual)}</div>
     </div>
+</div>
+
+<div class="section-label">Comercial — Todos os Funis</div>
+<div class="summary-row">
     <div class="summary-card">
         <div class="label">Contatos</div>
         <div class="value pink">{fmt_int(total_contatos)}</div>
@@ -1064,8 +1341,20 @@ tr:hover td.metric-name.commercial {{ background: rgba(255, 107, 157, 0.12); }}
         <div class="value pink">{fmt_int(total_reunioes)}</div>
     </div>
     <div class="summary-card">
+        <div class="label">Pedidos</div>
+        <div class="value pink">{fmt_int(total_pedidos_all)}</div>
+    </div>
+    <div class="summary-card">
         <div class="label">Vendas</div>
         <div class="value pink">{fmt_int(total_vendas)}</div>
+    </div>
+    <div class="summary-card">
+        <div class="label">Taxa Contato</div>
+        <div class="value" style="color:#A0A0C0">{fmt_pct(round(total_contatos / total_leads * 100, 1) if total_leads else 0)}</div>
+    </div>
+    <div class="summary-card">
+        <div class="label">Taxa Reuniao</div>
+        <div class="value" style="color:#A0A0C0">{fmt_pct(round(total_reunioes / total_contatos * 100, 1) if total_contatos else 0)}</div>
     </div>
 </div>
 
