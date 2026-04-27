@@ -712,7 +712,7 @@
             cursor: pointer;
         }
 
-        /* ===== LOGO NAVBAR ===== */
+        /* ===== LOGO NAVBAR (igual LP Análise) ===== */
         .nav-bar {
             position: fixed;
             top: 0;
@@ -722,64 +722,77 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 20px;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            padding: 10px 20px;
+            background: rgba(0,0,0,0.96);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border);
         }
         .nav-logo img {
-            height: 32px;
-            opacity: 0.95;
+            height: 56px;
+            width: auto;
+            mix-blend-mode: screen;
+            filter: contrast(1.1);
         }
         .nav-cta {
-            font-size: 10px;
-            font-weight: 600;
-            color: var(--accent);
+            font-size: 13px;
+            font-weight: 800;
+            color: #000;
             text-decoration: none;
-            padding: 6px 12px;
-            border: 1px solid var(--accent);
+            padding: 10px 20px;
+            background: var(--accent);
             border-radius: 6px;
-            transition: all 0.2s;
-            line-height: 1.4;
+            transition: opacity 0.2s;
+            line-height: 1.3;
             text-align: center;
         }
         .nav-cta:hover {
-            background: var(--accent);
-            color: #000;
+            opacity: 0.85;
         }
-        @media (max-width: 420px) {
-            .nav-cta { font-size: 9px; padding: 4px 8px; }
+        @media (max-width: 480px) {
+            .nav-logo img { height: 40px; }
+            .nav-cta { font-size: 11px; padding: 8px 14px; }
         }
 
         /* ===== AUTHOR PHOTO ===== */
         .author-photo {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--accent);
         }
 
-        /* ===== WHATSAPP FLUTUANTE ===== */
+        /* ===== WHATSAPP FLUTUANTE (igual LP Análise) ===== */
         .wa-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 99;
-            width: 52px;
-            height: 52px;
-            background: #25D366;
-            border-radius: 50%;
+            bottom: 28px;
+            right: 28px;
+            z-index: 9999;
             display: flex;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 16px rgba(37,211,102,0.4);
-            transition: transform 0.2s;
+            gap: 10px;
+            background: #25D366;
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 14px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+            transition: transform 0.2s, box-shadow 0.2s;
             text-decoration: none;
         }
-        .wa-float:hover { transform: scale(1.1); }
-        .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+        .wa-float:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(37,211,102,0.55);
+        }
+        .wa-float svg { width: 22px; height: 22px; fill: #fff; }
+        .wa-float .wa-label { color: #000; }
+        @media (max-width: 600px) {
+            .wa-float { padding: 14px; border-radius: 50%; }
+            .wa-float .wa-label { display: none; }
+        }
 
         /* ===== AUTHORITY SECTION (results) ===== */
         .authority-bar {
@@ -826,7 +839,7 @@
 
         /* Adjust screens for fixed navbar */
         .screen {
-            padding-top: 72px;
+            padding-top: 84px;
         }
     </style>
 </head>
@@ -842,12 +855,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="nav-logo">
         <img src="data:image/png;base64,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" alt="Boost Research">
     </div>
-    <a class="nav-cta" href="https://analise.boostresearch.com.br/" target="_blank">Tem +100K em cripto?<br>Análise gratuita da carteira</a>
+    <a class="nav-cta" href="https://analise.boostresearch.com.br/" target="_blank">Análise Gratuita de Carteira</a>
 </nav>
 
-<!-- ===== WHATSAPP FLUTUANTE ===== -->
+<!-- ===== WHATSAPP FLUTUANTE (igual LP Análise) ===== -->
 <a class="wa-float" href="https://wa.me/5521965622891?text=Vim%20do%20quiz%20de%20proteção%20patrimonial%20e%20quero%20falar%20com%20a%20equipe" target="_blank" aria-label="WhatsApp">
     <svg viewBox="0 0 32 32"><path d="M16.004 0C7.175 0 .003 7.175.003 16.004c0 2.823.737 5.577 2.137 8.003L.003 32l8.207-2.107a15.94 15.94 0 007.794 2.015C24.833 31.908 32 24.733 32 15.904 32 7.175 24.833 0 16.004 0zm0 29.283a13.24 13.24 0 01-6.895-1.93l-.494-.293-5.122 1.315 1.37-5.005-.322-.514A13.18 13.18 0 012.63 16.004c0-7.37 5.998-13.37 13.374-13.37 7.37 0 13.37 5.998 13.37 13.37-.002 7.376-6 13.38-13.37 13.28zm7.327-10.005c-.4-.2-2.367-1.17-2.734-1.303-.367-.134-.633-.2-.9.2-.267.4-1.034 1.303-1.267 1.57-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.214-1.983-1.188-1.06-1.99-2.37-2.223-2.77-.233-.4-.025-.617.175-.817.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.134-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.687l-.767-.013c-.267 0-.7.1-1.067.5-.367.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.867 1.634 4.134.2.267 2.823 4.31 6.84 6.044.955.413 1.7.66 2.283.845.958.306 1.832.263 2.522.16.77-.115 2.367-.968 2.7-1.903.334-.934.334-1.734.234-1.9-.1-.17-.367-.267-.767-.467z"/></svg>
+    <span class="wa-label">Falar com a Boost Research</span>
 </a>
 
 <!-- ===== TELA 1: LANDING ===== -->
