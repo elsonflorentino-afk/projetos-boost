@@ -664,6 +664,117 @@
                 padding: 18px 20px;
             }
         }
+        /* ===== LOGO NAVBAR ===== */
+        .nav-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo img {
+            height: 32px;
+            opacity: 0.95;
+        }
+        .nav-cta {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            padding: 6px 14px;
+            border: 1px solid var(--accent);
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .nav-cta:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        /* ===== AUTHOR PHOTO ===== */
+        .author-photo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        /* ===== WHATSAPP FLUTUANTE ===== */
+        .wa-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            width: 52px;
+            height: 52px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+            transition: transform 0.2s;
+            text-decoration: none;
+        }
+        .wa-float:hover { transform: scale(1.1); }
+        .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+        /* ===== AUTHORITY SECTION (results) ===== */
+        .authority-bar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+            padding: 16px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .authority-stat {
+            text-align: center;
+        }
+        .authority-stat .val {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .authority-stat .lbl {
+            font-size: 10px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== FOOTER LOGO ===== */
+        .boost-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .boost-footer img {
+            height: 28px;
+            opacity: 0.7;
+        }
+        .boost-footer span {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* Adjust screens for fixed navbar */
+        .screen {
+            padding-top: 72px;
+        }
     </style>
 </head>
 <body>
@@ -672,6 +783,19 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HT6HBX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+<!-- ===== NAVBAR COM LOGO ===== -->
+<nav class="nav-bar">
+    <div class="nav-logo">
+        <img src="https://elsonflorentino-afk.github.io/projetos-boost/docs/campanhas/boost-research/boost-logo-horizontal.png" alt="Boost Research">
+    </div>
+    <a class="nav-cta" href="https://analise.boostresearch.com.br/" target="_blank">Análise Gratuita</a>
+</nav>
+
+<!-- ===== WHATSAPP FLUTUANTE ===== -->
+<a class="wa-float" href="https://wa.me/5521965622891?text=Vim%20do%20quiz%20de%20proteção%20patrimonial%20e%20quero%20falar%20com%20a%20equipe" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M16.004 0C7.175 0 .003 7.175.003 16.004c0 2.823.737 5.577 2.137 8.003L.003 32l8.207-2.107a15.94 15.94 0 007.794 2.015C24.833 31.908 32 24.733 32 15.904 32 7.175 24.833 0 16.004 0zm0 29.283a13.24 13.24 0 01-6.895-1.93l-.494-.293-5.122 1.315 1.37-5.005-.322-.514A13.18 13.18 0 012.63 16.004c0-7.37 5.998-13.37 13.374-13.37 7.37 0 13.37 5.998 13.37 13.37-.002 7.376-6 13.38-13.37 13.28zm7.327-10.005c-.4-.2-2.367-1.17-2.734-1.303-.367-.134-.633-.2-.9.2-.267.4-1.034 1.303-1.267 1.57-.233.267-.467.3-.867.1-.4-.2-1.687-.622-3.214-1.983-1.188-1.06-1.99-2.37-2.223-2.77-.233-.4-.025-.617.175-.817.18-.18.4-.467.6-.7.2-.233.267-.4.4-.667.134-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.687l-.767-.013c-.267 0-.7.1-1.067.5-.367.4-1.4 1.367-1.4 3.334 0 1.967 1.434 3.867 1.634 4.134.2.267 2.823 4.31 6.84 6.044.955.413 1.7.66 2.283.845.958.306 1.832.263 2.522.16.77-.115 2.367-.968 2.7-1.903.334-.934.334-1.734.234-1.9-.1-.17-.367-.267-.767-.467z"/></svg>
+</a>
 
 <!-- ===== TELA 1: LANDING ===== -->
 <div id="screen-landing" class="screen active fade-in">
@@ -697,10 +821,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
     <div class="landing-author">
-        <div class="author-avatar">AF</div>
+        <img class="author-photo" src="https://elsonflorentino-afk.github.io/projetos-boost/docs/campanhas/boost-research/af-258.jpg" alt="André Franco">
         <div class="author-info">
             <strong>André Franco</strong>
-            Analista de criptoativos desde 2016. Fundador da Boost Research.
+            Analista de criptoativos desde 2016. Fundador da Boost Research. Economista, sem fundo próprio, sem comissão.
         </div>
     </div>
     <button class="btn-primary" onclick="startQuiz()">Começar o Quiz</button>
@@ -766,11 +890,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="share-btn" onclick="shareWhatsApp()">Compartilhar</button>
         <button class="share-btn" onclick="retakeQuiz()">Refazer Quiz</button>
     </div>
+    <!-- Seção de autoridade -->
+    <div class="authority-bar">
+        <div class="authority-stat"><div class="val">+10 anos</div><div class="lbl">de mercado</div></div>
+        <div class="authority-stat"><div class="val">+19k</div><div class="lbl">investidores</div></div>
+        <div class="authority-stat"><div class="val">2 ciclos</div><div class="lbl">completos</div></div>
+        <div class="authority-stat"><div class="val">fixo</div><div class="lbl">honorário</div></div>
+    </div>
     <div class="green-box" id="green-box">
         Quer uma análise personalizada do seu patrimônio? <a href="https://wa.me/5521965622891?text=Quero%20uma%20análise%20personalizada%20do%20meu%20patrimônio" target="_blank">Fale com a equipe da Boost Research pelo WhatsApp.</a>
     </div>
-    <div class="boost-footer">BOOST RESEARCH</div>
-    <p class="disclaimer">Este quiz tem caráter educacional. Não é recomendação de investimento.</p>
+    <div class="boost-footer">
+        <img src="https://elsonflorentino-afk.github.io/projetos-boost/docs/campanhas/boost-research/boost-logo-horizontal.png" alt="Boost Research">
+        <span>Casa de análise independente de criptoativos</span>
+    </div>
+    <p class="disclaimer">Este quiz tem caráter educacional. Não é recomendação de investimento. Conteúdo informativo nos termos do Art. 7º, II da LGPD.</p>
 </div>
 
 <script>
@@ -846,7 +980,7 @@ const profiles = {
         range: "0 a 6 pontos",
         diagnosis: `<h3>Seu diagnóstico</h3>
 <p>Seu patrimônio está significativamente exposto à desvalorização do real. Com mais de 90% em ativos brasileiros e sem proteção cambial, cada ponto percentual de desvalorização do real reduz diretamente o poder de compra do seu patrimônio em dólar. Nos últimos 3 anos, isso significou uma perda real de mais de 30% para quem não se protegeu.</p>`,
-        mentorship: `<h3>Mentoria Boost Research</h3>
+        mentorship: `<h3>Boost Research</h3>
 <p>Essa exposição precisa de correção estruturada. A mesa de análise da Boost Research cria um plano de diversificação e proteção cambial personalizado, incluindo cripto, stablecoins e investimentos internacionais, com acompanhamento do André Franco.</p>`,
         recommendations: [
             "Comece a diversificar HOJE: mesmo 10% em ativos dolarizados já reduz significativamente o risco.",
@@ -864,7 +998,7 @@ const profiles = {
         range: "7 a 12 pontos",
         diagnosis: `<h3>Seu diagnóstico</h3>
 <p>Você já tem alguma consciência do risco cambial, mas sua proteção ainda é parcial. Parte do seu patrimônio está exposta e, em um cenário de crise fiscal ou eleitoral, essa parcela pode sofrer desvalorização significativa. O bom é que você já começou a diversificar — falta completar o trabalho.</p>`,
-        mentorship: `<h3>Mentoria Boost Research</h3>
+        mentorship: `<h3>Boost Research</h3>
 <p>Você tem a mentalidade certa, falta o framework completo. A equipe de análise da Boost Research monta a estratégia de proteção patrimonial ideal para o seu perfil, combinando cripto, renda fixa digital e exposição internacional.</p>`,
         recommendations: [
             "Aumente gradualmente a exposição a ativos dolarizados para pelo menos 30% do portfólio.",
@@ -882,7 +1016,7 @@ const profiles = {
         range: "13 a 18 pontos",
         diagnosis: `<h3>Seu diagnóstico</h3>
 <p>Seu patrimônio está bem protegido. Você já tem diversificação cambial significativa, entende os riscos macro e tem alocação estratégica em ativos que protegem contra a desvalorização do real. Poucos investidores brasileiros chegam nesse nível de preparo.</p>`,
-        mentorship: `<h3>Mentoria Boost Research</h3>
+        mentorship: `<h3>Boost Research</h3>
 <p>Proteção você já tem. O próximo passo é maximizar retorno dentro dessa estrutura sólida. O Boost Research oferece análise de ciclo, teses de investimento e timing para otimizar sua alocação cripto.</p>`,
         recommendations: [
             "Refine a alocação cripto: considere teses de alta assimetria (DeFi, RWA, infraestrutura).",
@@ -1131,14 +1265,35 @@ function showResult(profile) {
             </div>`;
     });
 
-    document.getElementById('result-cta-box').innerHTML = `
-        <h3>Próximo passo</h3>
-        <a href="${profile.cta_primary_link}" target="_blank">
-            <button class="btn-primary" style="margin-bottom:8px">${profile.cta_primary}</button>
-        </a>
-        <a href="${profile.cta_secondary_link}" target="_blank">
-            <button class="btn-secondary">${profile.cta_secondary}</button>
-        </a>`;
+    // Roteamento por patrimônio (Q6, índice 5)
+    var q6Answer = answers[5] ? answers[5].selectedText : '';
+    var isQualified = (q6Answer.indexOf('R$ 50 mil') >= 0 || q6Answer.indexOf('R$ 200 mil') >= 0 || q6Answer.indexOf('R$ 1 milhão') >= 0 || q6Answer.indexOf('Acima') >= 0) && q6Answer.indexOf('Até') === -1;
+
+    var ctaHtml = '';
+    if (isQualified) {
+        // Lead qualificado (>=R$50k) → WhatsApp direto
+        ctaHtml = `
+            <h3>Próximo passo</h3>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Com base no seu perfil, você se qualifica para uma análise gratuita com o time do André Franco.</p>
+            <a href="${profile.cta_primary_link}" target="_blank">
+                <button class="btn-primary" style="margin-bottom:8px">${profile.cta_primary}</button>
+            </a>
+            <a href="${profile.cta_secondary_link}" target="_blank">
+                <button class="btn-secondary">${profile.cta_secondary}</button>
+            </a>`;
+    } else {
+        // Lead não qualificado (<R$50k) → Newsletter
+        ctaHtml = `
+            <h3>Próximo passo</h3>
+            <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Acompanhe a Boost Research para aprender com método como proteger e fazer seu patrimônio crescer.</p>
+            <a href="https://oandrefrancobr.com.br/decode-crypto/" target="_blank">
+                <button class="btn-primary" style="margin-bottom:8px">Assinar Decode (newsletter gratuita)</button>
+            </a>
+            <a href="https://boostresearch.com.br/" target="_blank">
+                <button class="btn-secondary">Conhecer a Boost Research</button>
+            </a>`;
+    }
+    document.getElementById('result-cta-box').innerHTML = ctaHtml;
 
     showScreen('screen-result');
 
