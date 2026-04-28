@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Ads — Boost Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e13;
+  --bg2:#111820;
+  --bg3:#1a2230;
+  --green:#03E4D0;
+  --green2:#00B37E;
+  --white:#f0f2f5;
+  --gray:#8899aa;
+  --gray2:#556677;
+  --red:#ff4d6a;
+  --yellow:#ffc940;
+  --blue:#4da6ff;
+}
+html,body{height:100%;font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow:hidden}
+.deck{position:relative;width:100%;height:100%}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:60px 80px;
+  opacity:0;pointer-events:none;
+  transition:opacity .4s ease;
+}
+.slide.active{opacity:1;pointer-events:auto}
+.slide-cover{
+  background:linear-gradient(135deg,#0a0e13 0%,#111820 50%,#0d1a1a 100%);
+  align-items:center;text-align:center;
+}
+.slide-dark{background:var(--bg)}
+.slide-accent{background:linear-gradient(135deg,#0b1a1a 0%,#0a0e13 100%)}
+.slide-chart{background:var(--bg)}
+
+/* Logo */
+.logo-svg{width:220px;margin-bottom:40px;filter:brightness(0) invert(1)}
+.logo-sm{width:100px;position:absolute;top:30px;left:40px;filter:brightness(0) invert(1)}
+
+/* Typography */
+h1{font-size:52px;font-weight:800;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
+h2{font-size:40px;font-weight:700;line-height:1.15;letter-spacing:-1px;margin-bottom:12px}
+h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
+.subtitle{font-size:20px;color:var(--gray);font-weight:400;line-height:1.5;max-width:700px}
+.subtitle-center{text-align:center;margin:0 auto}
+.label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+.accent{color:var(--green)}
+.accent2{color:var(--yellow)}
+.red{color:var(--red)}
+
+/* Tooltip for technical terms */
+.tip{
+  position:relative;
+  border-bottom:1px dotted var(--gray2);
+  cursor:help;
+  color:inherit;
+}
+.tip::after{
+  content:attr(data-tip);
+  position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);
+  background:#1e2a3a;color:var(--white);font-size:12px;font-weight:400;font-style:normal;
+  padding:8px 12px;border-radius:8px;white-space:nowrap;
+  border:1px solid rgba(3,228,208,.15);
+  opacity:0;pointer-events:none;transition:opacity .2s;
+  z-index:200;max-width:320px;white-space:normal;line-height:1.4;
+  box-shadow:0 4px 12px rgba(0,0,0,.4);
+}
+.tip:hover::after{opacity:1}
+
+/* Big numbers */
+.big-num{font-size:72px;font-weight:900;color:var(--green);letter-spacing:-3px;line-height:1}
+.big-num-row{display:flex;gap:60px;margin-top:40px;flex-wrap:wrap}
+.big-num-item{display:flex;flex-direction:column;gap:6px}
+.big-num-item .big-num{font-size:56px;letter-spacing:-2px}
+.big-num-item span{font-size:14px;color:var(--gray);font-weight:500;max-width:200px}
+
+/* Cards */
+.card-grid{display:grid;gap:20px;margin-top:32px}
+.card-grid-2{grid-template-columns:1fr 1fr}
+.card-grid-3{grid-template-columns:1fr 1fr 1fr}
+.card-grid-4{grid-template-columns:1fr 1fr 1fr 1fr}
+.card{
+  background:var(--bg2);border:1px solid rgba(255,255,255,.06);
+  border-radius:12px;padding:24px;
+  transition:border-color .2s;
+}
+.card:hover{border-color:rgba(3,228,208,.2)}
+.card h3{font-size:18px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--gray);line-height:1.55}
+.card-accent{border-left:3px solid var(--green)}
+.card-red{border-left:3px solid var(--red)}
+.card-yellow{border-left:3px solid var(--yellow)}
+.card-blue{border-left:3px solid var(--blue)}
+.card .tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;margin-bottom:10px}
+.tag-green{background:rgba(3,228,208,.12);color:var(--green)}
+.tag-red{background:rgba(255,77,106,.12);color:var(--red)}
+.tag-yellow{background:rgba(255,201,64,.12);color:var(--yellow)}
+.tag-blue{background:rgba(77,166,255,.12);color:var(--blue)}
+
+/* Table */
+.tbl{width:100%;border-collapse:collapse;margin-top:24px;font-size:14px}
+.tbl th{text-align:left;padding:10px 14px;color:var(--green);font-weight:600;border-bottom:2px solid rgba(3,228,208,.2);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.tbl td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--gray)}
+.tbl tr:hover td{color:var(--white)}
+.tbl td:first-child{color:var(--white);font-weight:500}
+
+/* Bars */
+.bar-chart{display:flex;flex-direction:column;gap:14px;margin-top:28px;max-width:600px}
+.bar-row{display:flex;align-items:center;gap:14px}
+.bar-label{width:120px;font-size:13px;font-weight:500;text-align:right;color:var(--gray)}
+.bar-track{flex:1;height:28px;background:var(--bg2);border-radius:6px;overflow:hidden;position:relative}
+.bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:10px;font-size:12px;font-weight:700;color:var(--bg);transition:width .8s ease}
+.bar-green{background:linear-gradient(90deg,var(--green2),var(--green))}
+.bar-gray{background:rgba(255,255,255,.15)}
+
+/* Quote */
+.quote{
+  font-size:22px;font-style:italic;color:var(--white);
+  line-height:1.5;padding:28px 32px;
+  border-left:3px solid var(--green);
+  background:rgba(3,228,208,.04);border-radius:0 12px 12px 0;
+  margin:24px 0;max-width:700px;
+}
+.quote-author{font-size:14px;font-style:normal;color:var(--gray);margin-top:8px}
+
+/* Funnel */
+.funnel{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:32px}
+.funnel-step{
+  display:flex;align-items:center;justify-content:center;
+  padding:14px 28px;border-radius:10px;font-size:14px;font-weight:600;
+  text-align:center;transition:transform .2s;
+}
+.funnel-step:hover{transform:scale(1.02)}
+.f1{width:90%;background:rgba(3,228,208,.08);border:1px solid rgba(3,228,208,.2);color:var(--green)}
+.f2{width:75%;background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.2);color:var(--blue)}
+.f3{width:60%;background:rgba(255,201,64,.08);border:1px solid rgba(255,201,64,.2);color:var(--yellow)}
+.f4{width:45%;background:rgba(255,77,106,.08);border:1px solid rgba(255,77,106,.2);color:var(--red)}
+.f5{width:30%;background:rgba(0,179,126,.15);border:2px solid var(--green2);color:var(--white);font-weight:700}
+.funnel-arrow{color:var(--gray2);font-size:18px}
+
+/* Two columns */
+.cols{display:flex;gap:48px;margin-top:28px}
+.col{flex:1}
+
+/* Pills */
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.pill{display:inline-block;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;background:var(--bg2);color:var(--gray);border:1px solid rgba(255,255,255,.06)}
+.pill-green{border-color:rgba(3,228,208,.3);color:var(--green)}
+
+/* Progress / phases */
+.phase-row{display:flex;gap:20px;margin-top:32px}
+.phase{flex:1;background:var(--bg2);border-radius:12px;padding:24px;border-top:3px solid var(--gray2)}
+.phase.p1{border-top-color:var(--green)}
+.phase.p2{border-top-color:var(--blue)}
+.phase.p3{border-top-color:var(--yellow)}
+.phase .phase-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.phase.p1 .phase-title{color:var(--green)}
+.phase.p2 .phase-title{color:var(--blue)}
+.phase.p3 .phase-title{color:var(--yellow)}
+.phase h3{font-size:20px;margin-bottom:10px}
+.phase p{font-size:13px;color:var(--gray);line-height:1.5}
+.phase .val{font-size:28px;font-weight:800;margin:8px 0}
+.phase.p1 .val{color:var(--green)}
+.phase.p2 .val{color:var(--blue)}
+.phase.p3 .val{color:var(--yellow)}
+
+/* Timeline */
+.timeline{display:flex;gap:0;margin-top:32px;position:relative}
+.timeline::before{content:'';position:absolute;top:18px;left:0;right:0;height:2px;background:var(--bg3)}
+.tl-item{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;padding:0 8px}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--green);margin-bottom:12px;z-index:1}
+.tl-dot.gray{background:var(--gray2)}
+.tl-label{font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1px}
+.tl-text{font-size:12px;color:var(--gray);text-align:center;margin-top:6px;line-height:1.4}
+
+/* Glossary bar */
+.glossary{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding:14px 18px;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;
+}
+.glossary-item{font-size:11px;color:var(--gray);line-height:1.4}
+.glossary-item strong{color:var(--green);font-weight:600}
+
+/* Nav */
+.nav{
+  position:fixed;bottom:24px;right:40px;
+  display:flex;gap:8px;align-items:center;
+  z-index:100;
+}
+.nav-btn{
+  width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(10,14,19,.8);color:var(--white);font-size:18px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  backdrop-filter:blur(10px);transition:border-color .2s;
+}
+.nav-btn:hover{border-color:var(--green)}
+.counter{font-size:12px;color:var(--gray);font-weight:500;min-width:50px;text-align:center}
+
+/* Responsive */
+@media(max-width:1024px){
+  .slide{padding:40px}
+  h1{font-size:36px}h2{font-size:28px}
+  .big-num{font-size:48px}
+  .big-num-item .big-num{font-size:36px}
+  .card-grid-3,.card-grid-4{grid-template-columns:1fr 1fr}
+  .cols{flex-direction:column;gap:24px}
+  .phase-row{flex-direction:column}
+  .tip::after{left:0;transform:none}
+}
+
+/* Scrollable slide content */
+.slide-scroll{overflow-y:auto;max-height:calc(100vh - 120px);padding-right:10px}
+.slide-scroll::-webkit-scrollbar{width:4px}
+.slide-scroll::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:4px}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- SLIDE 0: CAPA -->
+<div class="slide slide-cover active" data-idx="0">
+  <img src="boost-logo-horizontal.svg" alt="Boost Research" class="logo-svg" style="filter:brightness(0) invert(1)">
+  <h1 style="margin-top:20px">Planejamento<br><span class="accent">YouTube Ads</span></h1>
+  <p class="subtitle subtitle-center" style="margin-top:16px">Estratégia de entrada no YouTube baseada em 1.412 dores reais de clientes e 5.832 entrevistas nacionais</p>
+  <div style="margin-top:48px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap">
+    <div class="pill pill-green"><span class="tip" data-tip="Perfil de Cliente Ideal — estudo com 228 reuniões de advisors">ICP</span> Insights v2 — 228 atas</div>
+    <div class="pill pill-green">Raio-X ANBIMA 2026</div>
+    <div class="pill pill-green">Pesquisa de mercado YouTube BR</div>
+  </div>
+  <p style="margin-top:48px;font-size:13px;color:var(--gray2)">Abril 2026 | Equipe: Greg (YouTube Ads) + Vera (Copy) + Cris (Mídia)</p>
+</div>
+
+<!-- SLIDE 1: POR QUE YOUTUBE -->
+<div class="slide slide-dark" data-idx="1">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">O canal certo</div>
+  <h2>YouTube é o canal <span class="accent">#1</span> de informação<br>sobre investimentos no Brasil</h2>
+  <p class="subtitle">Pela 5a edição consecutiva da ANBIMA. 35% dos investidores usam YouTube para se informar sobre investimentos.</p>
+  <div class="bar-chart">
+    <div class="bar-row">
+      <span class="bar-label">YouTube</span>
+      <div class="bar-track"><div class="bar-fill bar-green" style="width:100%">35%</div></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Instagram</span>
+      <div class="bar-track"><div class="bar-fill bar-gray" style="width:77%">27%</div></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">TV</span>
+      <div class="bar-track"><div class="bar-fill bar-gray" style="width:60%">21%</div></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">Google</span>
+      <div class="bar-track"><div class="bar-fill bar-gray" style="width:57%">20%</div></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">WhatsApp</span>
+      <div class="bar-track"><div class="bar-fill bar-gray" style="width:43%">15%</div></div>
+    </div>
+    <div class="bar-row">
+      <span class="bar-label">IA</span>
+      <div class="bar-track"><div class="bar-fill bar-gray" style="width:26%">9%</div></div>
+    </div>
+  </div>
+  <p style="margin-top:20px;font-size:12px;color:var(--gray2)">Fonte: Raio-X do Investidor Brasileiro 2026, ANBIMA/Datafolha, 5.832 entrevistas</p>
+</div>
+
+<!-- SLIDE 2: YOUTUBE BRASIL EM NÚMEROS -->
+<div class="slide slide-accent" data-idx="2">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">YouTube Brasil</div>
+  <h2>O mercado em números</h2>
+  <div class="big-num-row">
+    <div class="big-num-item">
+      <div class="big-num">144M+</div>
+      <span>usuários no Brasil (67,8% da população)</span>
+    </div>
+    <div class="big-num-item">
+      <div class="big-num">R$9,8B</div>
+      <span>receita publicitária Q2/2025 (+12,6% ao ano)</span>
+    </div>
+    <div class="big-num-item">
+      <div class="big-num">70B</div>
+      <span>visualizações/dia em Shorts globalmente</span>
+    </div>
+  </div>
+  <div class="big-num-row" style="margin-top:28px">
+    <div class="big-num-item">
+      <div class="big-num" style="color:var(--yellow)">R$80-180</div>
+      <span><span class="tip" data-tip="Custo por Mil Impressões — quanto custa exibir o anúncio para 1.000 pessoas">CPM</span> no nicho financeiro (o mais caro do YouTube BR)</span>
+    </div>
+    <div class="big-num-item">
+      <div class="big-num" style="color:var(--blue)">R$0,20-0,50</div>
+      <span><span class="tip" data-tip="Custo por Visualização — quanto custa cada pessoa que assiste o anúncio">CPV</span> médio no setor financeiro Brasil</span>
+    </div>
+    <div class="big-num-item">
+      <div class="big-num" style="color:var(--white)">35%+</div>
+      <span><span class="tip" data-tip="View-Through Rate — percentual de pessoas que assistem o anúncio até o fim (ou 30s)">VTR</span> em finanças (acima da média geral)</span>
+    </div>
+  </div>
+  <div class="glossary">
+    <div class="glossary-item"><strong>CPM</strong> = Custo por Mil Impressões</div>
+    <div class="glossary-item"><strong>CPV</strong> = Custo por Visualização</div>
+    <div class="glossary-item"><strong>VTR</strong> = Taxa de Visualização Completa</div>
+    <div class="glossary-item"><strong>Shorts</strong> = Vídeos curtos verticais (até 60s)</div>
+  </div>
+</div>
+
+<!-- SLIDE 3: ICP YOUTUBE POR GERAÇÃO -->
+<div class="slide slide-dark" data-idx="3">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Nosso público</div>
+  <h2>YouTube por geração:<br><span class="accent">Millennials e Gen X</span> são o alvo</h2>
+  <div class="cols">
+    <div class="col">
+      <div class="bar-chart" style="margin-top:16px">
+        <p style="font-size:13px;color:var(--gray);margin-bottom:12px;font-weight:600">% que usa YouTube para informação financeira</p>
+        <div class="bar-row">
+          <span class="bar-label">Gen Z (16-29)</span>
+          <div class="bar-track"><div class="bar-fill bar-green" style="width:100%">49%</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label" style="color:var(--white);font-weight:700">Millennials (30-44)</span>
+          <div class="bar-track"><div class="bar-fill bar-green" style="width:82%">40%</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label" style="color:var(--white);font-weight:700">Gen X (45-64)</span>
+          <div class="bar-track"><div class="bar-fill bar-green" style="width:55%">27%</div></div>
+        </div>
+        <div class="bar-row">
+          <span class="bar-label">Boomers (65+)</span>
+          <div class="bar-track"><div class="bar-fill bar-gray" style="width:29%">14%</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card card-accent" style="margin-top:16px">
+        <h3><span class="tip" data-tip="Perfil de Cliente Ideal — o tipo de investidor que a Boost quer alcançar">ICP</span> Boost Research</h3>
+        <p><strong style="color:var(--white)">Idade:</strong> 30-54 (Millennials + Gen X)</p>
+        <p><strong style="color:var(--white)">Patrimônio:</strong> R$100k+ em cripto OU R$500k+ total</p>
+        <p><strong style="color:var(--white)">Comportamento:</strong> 75% dos Millennials investem online</p>
+        <p style="margin-top:12px"><strong style="color:var(--white)">O que quer:</strong> curadoria, validação, acesso ao André. Menos ruído, não mais conteúdo.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: ESTADO EMOCIONAL -->
+<div class="slide slide-accent" data-idx="4">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Insight crítico</div>
+  <h2>O estado emocional do nosso público:<br><span class="red">Resignação</span></h2>
+  <p class="subtitle">Não estão desesperados. Estão resignados. Já aceitaram o prejuízo, desistiram de entender, não esperam mais nada de novo.</p>
+  <div class="cols" style="margin-top:28px">
+    <div class="col">
+      <div class="quote">"Passaram 8, 10 topos de Bitcoin e eu não realizei"<div class="quote-author">— Paulo Seixas, cliente Boost</div></div>
+      <div class="quote" style="margin-top:12px">"Dá vontade de chorar, né, bicho?"<div class="quote-author">— Frederico, cliente Boost</div></div>
+    </div>
+    <div class="col">
+      <div class="card card-red" style="margin-bottom:16px">
+        <span class="tag tag-red">NÃO FUNCIONA</span>
+        <p>"É agora! Oportunidade única!"<br>Hype, urgência artificial, pressão<br>Esse investidor já ouviu isso mil vezes</p>
+      </div>
+      <div class="card card-accent">
+        <span class="tag tag-green">FUNCIONA</span>
+        <p>Honestidade + plano concreto<br>"Eu também já errei. E aqui está o que fiz diferente."<br>Conversa de igual para igual, não palestra</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: CONCORRENTES -->
+<div class="slide slide-dark" data-idx="5">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Análise de mercado</div>
+  <h2>Quem anuncia no Google <span class="accent">e quanto</span></h2>
+  <p class="subtitle" style="font-size:14px">Central de Transparência Google + pesquisa de mercado, abril/2026</p>
+  <div class="slide-scroll">
+    <h3 style="font-size:14px;margin-top:16px;color:var(--gray)">Volume de anúncios Google (dados reais)</h3>
+    <table class="tbl" style="margin-top:8px">
+      <thead>
+        <tr><th>Empresa</th><th>Anúncios</th><th>Tipo</th><th>Ameaça</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Empiricus (BTG)</td><td style="color:var(--red);font-weight:700">~30.000</td><td><span class="tip" data-tip="Video Sales Letter — vídeo longo de vendas">VSLs</span>, in-stream, search</td><td style="color:var(--red)">Multada R$9,7M. Reputação desgastada</td></tr>
+        <tr><td>BTG Pactual</td><td style="color:var(--yellow);font-weight:600">~3.000</td><td>In-stream + TV</td><td style="color:var(--gray)">Banco, não research cripto</td></tr>
+        <tr><td>XP Investimentos</td><td style="color:var(--yellow);font-weight:600">~2.000</td><td>In-stream</td><td style="color:var(--gray)">Banco, não research cripto</td></tr>
+        <tr><td>Nord Research</td><td style="color:var(--green)">~60</td><td>In-stream 30-60s</td><td style="color:var(--gray)">Generalista com vertical cripto</td></tr>
+        <tr><td>Binance / Hashdex</td><td style="color:var(--gray)">37 / 0</td><td>Restrito ou zero</td><td style="color:var(--gray)">Exchange/gestora — não pode anunciar</td></tr>
+      </tbody>
+    </table>
+    <h3 style="font-size:14px;margin-top:20px;color:var(--gray)">Concorrentes diretos de research cripto</h3>
+    <table class="tbl" style="margin-top:8px">
+      <thead>
+        <tr><th>Player</th><th>Ameaça</th><th>Posicionamento</th><th>Preço</th></tr>
+      </thead>
+      <tbody>
+        <tr><td style="color:var(--red)">Mercurius Crypto</td><td style="color:var(--red);font-weight:700">MUITO ALTA</td><td>Research on-chain especializado. +R$10M sob gestão</td><td>Premium</td></tr>
+        <tr><td style="color:var(--yellow)">Convex Research</td><td style="color:var(--yellow);font-weight:600">ALTA</td><td>Modelo quantitativo (CFM). Público premium</td><td>R$564/mês</td></tr>
+        <tr><td style="color:var(--yellow)">Underblock</td><td style="color:var(--yellow);font-weight:600">ALTA</td><td>Vinícius Bazan (ex-Empiricus). Crescendo rápido</td><td>~R$49-99/mês</td></tr>
+      </tbody>
+    </table>
+    <div class="card card-accent" style="margin-top:16px">
+      <p><strong style="color:var(--green)">Vantagem regulatória:</strong> Google proíbe exchanges de anunciar no Brasil, mas PERMITE casas de análise (conteúdo educacional). A Boost pode anunciar — Binance, MB, Foxbit não podem. E ninguém combina analista-referência (André) + research institucional + compliance sério.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: GAPS -->
+<div class="slide slide-accent" data-idx="6">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Diferenciação</div>
+  <h2><span class="accent">4 oportunidades</span> que só a Boost pode preencher</h2>
+  <div class="card-grid card-grid-2" style="margin-top:24px">
+    <div class="card card-accent">
+      <span class="tag tag-green">OPORTUNIDADE 1</span>
+      <h3>Tom confessional</h3>
+      <p>Todos os concorrentes usam hype ou tom institucional distante. Nenhum conversa com o investidor na linguagem que ele realmente usa no dia a dia.</p>
+    </div>
+    <div class="card card-accent">
+      <span class="tag tag-green">OPORTUNIDADE 2</span>
+      <h3>Fiscal e offshore</h3>
+      <p>72 menções no <span class="tip" data-tip="Perfil de Cliente Ideal">ICP</span>, zero concorrentes abordando publicamente. "Chega de ficar dando dinheiro para esses caras."</p>
+    </div>
+    <div class="card card-accent">
+      <span class="tag tag-green">OPORTUNIDADE 3</span>
+      <h3>Método de realização</h3>
+      <p>A dor #1 (54% dos clientes): "não sei quando vender". Nenhum anúncio no YouTube aborda isso. Território livre.</p>
+    </div>
+    <div class="card card-accent">
+      <span class="tag tag-green">OPORTUNIDADE 4</span>
+      <h3>Ex-Empiricus</h3>
+      <p>André saiu da Empiricus. 42% dos clientes Premium já passaram por lá. Ângulo exclusivo e poderoso.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: 7 DORES -->
+<div class="slide slide-dark" data-idx="7">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Base de dados</div>
+  <h2>7 dores do cliente — <span class="accent">1.412 citações</span></h2>
+  <p class="subtitle" style="font-size:14px;margin-bottom:8px">Extraídas de 228 reuniões reais entre advisors e clientes Boost Research</p>
+  <div class="slide-scroll">
+    <div class="bar-chart" style="max-width:100%">
+      <div class="bar-row">
+        <span class="bar-label" style="width:200px">Não sabe vender</span>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:100%">145 menções (54%)</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:200px">Sem tempo/conhecimento</span>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:92%">134 menções (51%)</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:200px">Medo/ansiedade</span>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:60%">87 menções</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:200px">Impostos/fiscal</span>
+        <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--yellow)">72 menções — NINGUÉM ABORDA</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:200px">Custódia/segurança</span>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:37%">54 menções</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:200px">Trauma com altcoins</span>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:36%">52 menções</div></div>
+      </div>
+      <div class="bar-row">
+        <span class="bar-label" style="width:200px"><span class="tip" data-tip="Finanças Descentralizadas — serviços financeiros sem intermediário, via blockchain">DeFi</span>/renda fixa digital</span>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:32%">47 menções</div></div>
+      </div>
+    </div>
+    <div class="glossary" style="margin-top:16px">
+      <div class="glossary-item"><strong>Altcoin</strong> = Qualquer criptomoeda que não seja Bitcoin</div>
+      <div class="glossary-item"><strong>Custódia</strong> = Onde e como as criptomoedas ficam guardadas</div>
+      <div class="glossary-item"><strong>DeFi</strong> = Finanças Descentralizadas (serviços financeiros via blockchain)</div>
+    </div>
+    <p style="margin-top:12px;font-size:12px;color:var(--gray2)">Fonte: ICP Insights v2, 228 atas analisadas, Boost Research (Confidencial)</p>
+  </div>
+</div>
+
+<!-- SLIDE 8: 12 TEMAS TIER 1 -->
+<div class="slide slide-accent" data-idx="8">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Temas de vídeo</div>
+  <h2><span class="accent">Prioridade 1</span> — Gravar primeiro</h2>
+  <p class="subtitle">Alto volume de dor + alto potencial de conversão. Os 3 temas que mais ressoam com nosso público.</p>
+  <div class="card-grid card-grid-3" style="margin-top:24px">
+    <div class="card card-accent">
+      <span class="tag tag-green">TEMA 1 | 54% dos clientes</span>
+      <h3>"Quando vender Bitcoin — o que ninguém te ensina"</h3>
+      <p><span class="tip" data-tip="Anúncio exibido antes/durante vídeo, que pode ser pulado após 5 segundos">In-stream</span> 3-5min | André na câmera + gráficos <span class="tip" data-tip="Dados registrados diretamente na blockchain, usados para análise de mercado">on-chain</span></p>
+      <p style="margin-top:8px;color:var(--white);font-size:13px;font-style:italic">"Você já viu o Bitcoin subir 300%, não vendeu, e depois viu cair 80%? A maioria dos investidores passa por isso."</p>
+    </div>
+    <div class="card card-accent">
+      <span class="tag tag-green">TEMA 2 | 51% dos clientes</span>
+      <h3>"O investidor que não tem tempo"</h3>
+      <p>In-stream 2-3min | Conversa natural</p>
+      <p style="margin-top:8px;color:var(--white);font-size:13px;font-style:italic">"Você trabalha 12h por dia e não tem tempo pra acompanhar cripto?"</p>
+    </div>
+    <div class="card card-accent">
+      <span class="tag tag-yellow">TEMA 3 | NINGUÉM ABORDA</span>
+      <h3>"Cripto e IR — o que ninguém te conta"</h3>
+      <p>In-stream 3-5min | Educacional + autoridade</p>
+      <p style="margin-top:8px;color:var(--white);font-size:13px;font-style:italic">"Você pagou mais imposto do que deveria na última declaração de cripto?"</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9: TEMAS TIER 2 + 3 -->
+<div class="slide slide-dark" data-idx="9">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Temas de vídeo</div>
+  <h2><span class="blue">Prioridade 2</span> — Alta diferenciação</h2>
+  <div class="card-grid card-grid-4" style="margin-top:20px">
+    <div class="card card-blue">
+      <span class="tag tag-blue">TEMA 4</span>
+      <h3>"Hold não é estratégia — por que você precisa de regras de saída"</h3>
+      <p>In-stream 2min, confessional</p>
+    </div>
+    <div class="card card-blue">
+      <span class="tag tag-blue">TEMA 5</span>
+      <h3>"Sua cripto na corretora não é sua"</h3>
+      <p><span class="tip" data-tip="Vídeos curtos verticais de até 60 segundos no YouTube">Shorts</span> 30s + In-stream 2min</p>
+    </div>
+    <div class="card card-blue">
+      <span class="tag tag-blue">TEMA 6</span>
+      <h3>"Sobreviver ao trauma das altcoins"</h3>
+      <p>In-stream 3min, confessional</p>
+    </div>
+    <div class="card card-blue">
+      <span class="tag tag-blue">TEMA 7</span>
+      <h3>"O que a IA não te conta sobre cripto"</h3>
+      <p>In-stream 2-3min. Ângulo único.</p>
+    </div>
+  </div>
+  <div class="label" style="margin-top:32px">Prioridade 3 — Alcance amplo</div>
+  <div class="card-grid card-grid-4" style="margin-top:8px">
+    <div class="card" style="border-left:3px solid var(--gray2)">
+      <span class="tag" style="background:rgba(255,255,255,.06);color:var(--gray)">TEMA 8</span>
+      <h3 style="font-size:15px">"3 erros que a maioria dos investidores comete"</h3>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gray2)">
+      <span class="tag" style="background:rgba(255,255,255,.06);color:var(--gray)">TEMA 9</span>
+      <h3 style="font-size:15px">"Como comecei em cripto em 2016 — e o que aprendi"</h3>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gray2)">
+      <span class="tag" style="background:rgba(255,255,255,.06);color:var(--gray)">TEMA 10</span>
+      <h3 style="font-size:15px">"93% dos aposentados dependem do INSS — e o seu plano?"</h3>
+    </div>
+    <div class="card" style="border-left:3px solid var(--gray2)">
+      <span class="tag" style="background:rgba(255,255,255,.06);color:var(--gray)">TEMA 11</span>
+      <h3 style="font-size:15px">"O que uma casa de análise independente faz de diferente"</h3>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 10: O QUE É DEMAND GEN -->
+<div class="slide slide-accent" data-idx="10">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Conceito-chave</div>
+  <h2>O que é <span class="accent">Demand Gen</span> e por que usamos</h2>
+  <div class="cols">
+    <div class="col">
+      <p style="color:var(--gray);line-height:1.7;font-size:15px;margin-top:8px">
+        <span class="tip" data-tip="Geração de Demanda — tipo de campanha do Google lançada em 2024 que substituiu as antigas campanhas de vídeo para ação">Demand Gen</span> é o formato mais recente do Google Ads. Em vez de escolher onde o anúncio aparece, a inteligência artificial do Google distribui automaticamente entre YouTube (vídeos e Shorts), Discover (feed de notícias) e Gmail — sempre buscando quem tem mais chance de converter.
+      </p>
+      <p style="color:var(--gray);line-height:1.7;font-size:15px;margin-top:12px">
+        Na prática, você sobe os vídeos e imagens, define o público, e o Google decide o melhor formato e o melhor momento para cada pessoa. É como ter um mídia buyer automático rodando 24h.
+      </p>
+    </div>
+    <div class="col">
+      <div class="card card-accent" style="margin-bottom:12px">
+        <h3 style="font-size:14px">Onde o anúncio aparece</h3>
+        <p>YouTube (antes dos vídeos + feed + Shorts) + Google Discover (feed de notícias no celular) + Gmail (aba Promoções)</p>
+      </div>
+      <div class="card card-accent" style="margin-bottom:12px">
+        <h3 style="font-size:14px">Por que é bom para a Boost</h3>
+        <p>O Google usa IA para encontrar investidores com perfil parecido com quem já converteu. Quanto mais dados, melhor a otimização. Desde abril/2026, otimiza também para quem assiste o vídeo e converte depois sem clicar.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--gray2)">
+        <h3 style="font-size:14px">Substituiu o quê?</h3>
+        <p>As antigas "Video Action Campaigns" foram migradas para Demand Gen em abril/2026. Todas as campanhas novas de vídeo para conversão usam esse formato.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 11: ESTRUTURA 3 FASES COM RACIONAL -->
+<div class="slide slide-dark" data-idx="11">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Estratégia em 3 fases</div>
+  <h2>Cada fase tem um <span class="accent">objetivo claro</span></h2>
+  <div class="phase-row">
+    <div class="phase p1">
+      <div class="phase-title">Fase 1 — Descobrir o que funciona</div>
+      <h3>30 dias | R$6k/mês</h3>
+      <div class="val" style="font-size:22px">TESTAR</div>
+      <p><strong style="color:var(--white)">Objetivo:</strong> Testar 4 campanhas diferentes com orçamento baixo para descobrir quais temas, formatos e públicos trazem os melhores resultados antes de investir mais.</p>
+      <p style="margin-top:8px"><strong style="color:var(--white)">Racional:</strong> Ninguém acerta de primeira. Investimos pouco (R$200/dia) para aprender rápido. Ao final dos 30 dias, sabemos quais vídeos funcionam e quais não.</p>
+      <p style="margin-top:8px;color:var(--green);font-weight:600">Meta: <span class="tip" data-tip="Custo por Lead — quanto custa cada formulário preenchido">CPL</span> ≤ R$120 | 50+ leads</p>
+    </div>
+    <div class="phase p2">
+      <div class="phase-title">Fase 2 — Acelerar o que funciona</div>
+      <h3>Dias 31-90 | R$15-20k/mês</h3>
+      <div class="val" style="font-size:22px">ESCALAR</div>
+      <p><strong style="color:var(--white)">Objetivo:</strong> Colocar mais orçamento nos vídeos vencedores da Fase 1. Ativar sequência de 3 vídeos (quem viu o 1o recebe o 2o, e depois a oferta).</p>
+      <p style="margin-top:8px"><strong style="color:var(--white)">Racional:</strong> Agora sabemos o que funciona. Aumentamos o investimento de forma controlada (20-30% a cada 48h) e cruzamos YouTube com Meta Ads para reforçar a mensagem em dois canais.</p>
+      <p style="margin-top:8px;color:var(--blue);font-weight:600">Meta: CPL ≤ R$80 | 200+ leads</p>
+    </div>
+    <div class="phase p3">
+      <div class="phase-title">Fase 3 — Otimizar e amadurecer</div>
+      <h3>Dia 90+ | R$25-40k/mês</h3>
+      <div class="val" style="font-size:22px">OTIMIZAR</div>
+      <p><strong style="color:var(--white)">Objetivo:</strong> Usar <span class="tip" data-tip="Geração de Demanda — campanha do Google que distribui anúncios automaticamente entre YouTube, Discover e Gmail">Demand Gen</span> no máximo potencial. O Google já tem dados suficientes para encontrar sozinho os melhores investidores.</p>
+      <p style="margin-top:8px"><strong style="color:var(--white)">Racional:</strong> Após 90 dias, a IA do Google conhece o perfil de quem converte. Medimos não só cliques, mas quem assistiu o vídeo e converteu depois (EVC). Campanha madura e previsível.</p>
+      <p style="margin-top:8px;color:var(--yellow);font-weight:600">Meta: CPL ≤ R$60 | 400+ leads</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 12: CAMPANHA FASE 1 DETALHADA -->
+<div class="slide slide-accent" data-idx="12">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Fase 1 — As 4 campanhas</div>
+  <h2>Cada campanha tem uma <span class="accent">função no funil</span></h2>
+  <div class="card-grid card-grid-2" style="margin-top:20px">
+    <div class="card card-accent">
+      <span class="tag tag-green">CAMPANHA 1 — ALCANCE | R$60/dia</span>
+      <h3>Fazer as pessoas conhecerem o André e a Boost Research</h3>
+      <p><strong style="color:var(--white)">O que faz:</strong> Exibe vídeos educacionais (Temas 8, 9, 10) para pessoas que nunca ouviram falar da Boost Research. Pagamos por visualização.</p>
+      <p style="margin-top:6px"><strong style="color:var(--white)">Por quê:</strong> Sem essa etapa, ninguém sabe quem somos. É a porta de entrada. Não esperamos conversão aqui — esperamos que assistam o vídeo e conheçam o André e a Boost.</p>
+    </div>
+    <div class="card card-accent">
+      <span class="tag tag-green">CAMPANHA 2 — CONSIDERAÇÃO | R$80/dia</span>
+      <h3>Levar o interessado a agir</h3>
+      <p><strong style="color:var(--white)">O que faz:</strong> Usa <span class="tip" data-tip="Geração de Demanda — o Google distribui o anúncio automaticamente entre YouTube, Discover e Gmail, usando IA para encontrar quem tem mais chance de converter">Demand Gen</span> com os vídeos mais fortes (Temas 1, 2, 3) para gerar leads. O Google decide o melhor formato e momento.</p>
+      <p style="margin-top:6px"><strong style="color:var(--white)">Por quê:</strong> Aqui o objetivo é que a pessoa clique e preencha o formulário. É onde investimos mais orçamento porque é onde o lead nasce.</p>
+    </div>
+    <div class="card card-blue">
+      <span class="tag tag-blue">CAMPANHA 3 — SHORTS | R$30/dia</span>
+      <h3>Alcance rápido em formato vertical</h3>
+      <p><strong style="color:var(--white)">O que faz:</strong> Vídeos curtos (15-30s) no feed de Shorts do YouTube. Formato que parece conteúdo nativo, não anúncio.</p>
+      <p style="margin-top:6px"><strong style="color:var(--white)">Por quê:</strong> Shorts têm custo 40-60% menor que vídeos longos. Testamos com orçamento baixo para ver se o formato funciona para nosso público (investidores 30-54 anos).</p>
+    </div>
+    <div class="card card-yellow">
+      <span class="tag tag-yellow">CAMPANHA 4 — REMARKETING | R$30/dia</span>
+      <h3>Converter quem já nos conhece</h3>
+      <p><strong style="color:var(--white)">O que faz:</strong> Exibe anúncio com oferta direta (análise gratuita) APENAS para quem já assistiu 75%+ de um vídeo nosso na Campanha 1.</p>
+      <p style="margin-top:6px"><strong style="color:var(--white)">Por quê:</strong> Quem assistiu quase todo o vídeo já se interessou. Agora damos o empurrão final com a oferta. É o público mais quente e mais barato de converter.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 13: FUNIL -->
+<div class="slide slide-dark" data-idx="13">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Funil de conversão</div>
+  <h2>Do anúncio no YouTube <span class="accent">até o WhatsApp</span></h2>
+  <div class="funnel">
+    <div class="funnel-step f1">Anúncio YouTube — Alcance (Temas 8, 9, 10)</div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step f2">Assistiu 75%+ do vídeo &rarr; <span class="tip" data-tip="Exibir novo anúncio para quem já interagiu antes">Remarketing</span> com oferta</div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step f3">Clique &rarr; <span class="tip" data-tip="Página de destino — site onde o visitante preenche um formulário">Página de destino</span> (Análise ou Quiz)</div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step f4">Formulário preenchido &rarr; <span class="tip" data-tip="Plataforma de automação de marketing usada pela Boost">RD Station</span> (tags: youtube-ads + tema)</div>
+    <div class="funnel-arrow">&#8595;</div>
+    <div class="funnel-step f5">&ge;R$50k &rarr; WhatsApp Advisor &nbsp;|&nbsp; &lt;R$50k &rarr; Newsletter</div>
+  </div>
+  <div class="glossary" style="margin-top:20px;justify-content:center">
+    <div class="glossary-item"><strong>Remarketing</strong> = Reexibir anúncio para quem já interagiu</div>
+    <div class="glossary-item"><strong>Lead</strong> = Pessoa que preencheu formulário</div>
+    <div class="glossary-item"><strong>Advisor</strong> = Consultor da Boost que atende o cliente</div>
+  </div>
+</div>
+
+<!-- SLIDE 14: CRIATIVO -->
+<div class="slide slide-accent" data-idx="14">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Regras de criativo</div>
+  <h2>Como o André deve <span class="accent">falar nos vídeos</span></h2>
+  <div class="cols">
+    <div class="col">
+      <h3>O tom certo</h3>
+      <p style="color:var(--gray);line-height:1.6;margin-top:8px">O André fala como se estivesse numa conversa com o investidor, não numa palestra. Sem roteiro decorado, sem linguagem de marketing. Direto, honesto, como numa reunião de análise.</p>
+      <div class="card card-accent" style="margin-top:16px">
+        <h3 style="font-size:14px">Linguagem real do investidor</h3>
+        <p>Nosso público não fala "volatilidade do ativo" — fala "o negócio derreteu". Não fala "estratégia de realização parcial" — fala "não sei quando vender". Os vídeos devem refletir essa linguagem natural, sem forçar e sem parecer informal demais.</p>
+      </div>
+      <div class="card card-red" style="margin-top:12px">
+        <h3 style="font-size:14px">Evitar sempre</h3>
+        <p>Hype, urgência artificial, promessas de retorno, linguagem de influencer ("to the moon", "vai explodir", "oportunidade única", "garantido")</p>
+      </div>
+    </div>
+    <div class="col">
+      <h3><span class="tip" data-tip="Abertura do vídeo — os primeiros segundos que prendem a atenção do espectador">Hook</span> — primeiros 5 segundos</h3>
+      <p style="color:var(--gray);font-size:13px;margin-top:4px;margin-bottom:12px">O espectador decide se fica ou pula o anúncio em 5 segundos. A abertura precisa gerar identificação imediata.</p>
+      <div class="card card-accent" style="margin-bottom:10px">
+        <p style="color:var(--green);font-weight:600">Filtrar pelo público certo</p>
+        <p>"Se você tem mais de R$100 mil em cripto..."</p>
+      </div>
+      <div class="card card-accent" style="margin-bottom:10px">
+        <p style="color:var(--green);font-weight:600">Criar identificação</p>
+        <p>"Já viu o Bitcoin subir e não vendeu?"</p>
+      </div>
+      <div class="card card-accent">
+        <p style="color:var(--green);font-weight:600">Provocar uma reflexão</p>
+        <p>"Sem regra de saída, você está apostando, não investindo."</p>
+      </div>
+      <div style="margin-top:12px;padding:12px;background:rgba(255,77,106,.06);border-radius:8px;font-size:12px;color:var(--gray)">
+        <strong style="color:var(--red)">Compliance:</strong> Disclaimer obrigatório. Sem promessa de retorno. <span class="tip" data-tip="Comissão de Valores Mobiliários — órgão regulador do mercado de capitais">CVM</span> + <span class="tip" data-tip="Associação Brasileira das Entidades dos Mercados Financeiro e de Capitais">ANBIMA</span>.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 15: KPIs -->
+<div class="slide slide-dark" data-idx="15">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Metas</div>
+  <h2><span class="tip" data-tip="Key Performance Indicators — indicadores-chave de desempenho">KPIs</span> por fase</h2>
+  <table class="tbl" style="margin-top:24px">
+    <thead>
+      <tr><th>Métrica</th><th style="color:var(--green)">Fase 1 (teste)</th><th style="color:var(--blue)">Fase 2 (escala)</th><th style="color:var(--yellow)">Fase 3 (maturidade)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Orçamento/mês</td><td style="color:var(--green)">R$6k</td><td style="color:var(--blue)">R$15-20k</td><td style="color:var(--yellow)">R$25-40k</td></tr>
+      <tr><td><span class="tip" data-tip="Custo por Visualização — quanto custa cada pessoa que assiste o anúncio">CPV</span></td><td>&le; R$0,35</td><td>&le; R$0,25</td><td>&le; R$0,20</td></tr>
+      <tr><td><span class="tip" data-tip="Taxa de visualização — % de pessoas que assistem o anúncio até o final ou por 30 segundos">View Rate</span></td><td>&ge; 25%</td><td>&ge; 30%</td><td>&ge; 35%</td></tr>
+      <tr><td><span class="tip" data-tip="Click-Through Rate — % de pessoas que clicam no anúncio após vê-lo">CTR</span></td><td>&ge; 0,7%</td><td>&ge; 1,0%</td><td>&ge; 1,2%</td></tr>
+      <tr><td><span class="tip" data-tip="Custo por Lead — quanto custa cada pessoa que preenche o formulário">CPL</span> (lead)</td><td style="color:var(--green)">&le; R$120</td><td style="color:var(--blue)">&le; R$80</td><td style="color:var(--yellow)">&le; R$60</td></tr>
+      <tr><td>CPL qualificado (&ge;R$50k)</td><td>&le; R$600</td><td>&le; R$400</td><td>&le; R$300</td></tr>
+      <tr><td>Leads/mês</td><td>50+</td><td>200+</td><td>400+</td></tr>
+      <tr><td>Leads qualificados/mês</td><td style="color:var(--green)">10+</td><td style="color:var(--blue)">40+</td><td style="color:var(--yellow)">80+</td></tr>
+    </tbody>
+  </table>
+  <div class="glossary" style="margin-top:16px">
+    <div class="glossary-item"><strong>CPV</strong> = Custo por Visualização</div>
+    <div class="glossary-item"><strong>CTR</strong> = Taxa de Cliques</div>
+    <div class="glossary-item"><strong>CPL</strong> = Custo por Lead (formulário preenchido)</div>
+    <div class="glossary-item"><strong>Lead qualificado</strong> = Pessoa com patrimônio acima de R$50k</div>
+  </div>
+</div>
+
+<!-- SLIDE 16: CALENDÁRIO -->
+<div class="slide slide-accent" data-idx="16">
+  <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="label">Calendário</div>
+  <h2>12 semanas de execução</h2>
+  <div class="timeline" style="margin-top:40px">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-label">S1</div><div class="tl-text">Gravar Temas 1, 2, 3 + 2 Shorts</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-label">S2</div><div class="tl-text">Editar, legendar. Configurar campanhas</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-label">S3</div><div class="tl-text">Lançar teste. Monitorar diariamente</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-label">S4</div><div class="tl-text">Análise. Gravar Temas 8, 9, 10</div></div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-label" style="color:var(--blue)">S5</div><div class="tl-text">Escalar vencedores</div></div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-label" style="color:var(--blue)">S6</div><div class="tl-text">Gravar Prioridade 2. 5 Shorts</div></div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-label" style="color:var(--blue)">S7</div><div class="tl-text">Sequência de 3 vídeos ativa</div></div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--blue)"></div><div class="tl-label" style="color:var(--blue)">S8</div><div class="tl-text">Análise mensal. Decisão de orçamento</div></div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--yellow)"></div><div class="tl-label" style="color:var(--yellow)">S9-10</div><div class="tl-text">Demand Gen. Shorts em volume</div></div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--yellow)"></div><div class="tl-label" style="color:var(--yellow)">S11-12</div><div class="tl-text">Cruzar YouTube + Meta. Brand Lift</div></div>
+  </div>
+  <div style="display:flex;gap:24px;margin-top:40px;justify-content:center">
+    <div class="pill" style="border-color:var(--green);color:var(--green)">Fase 1: Teste (S1-S4)</div>
+    <div class="pill" style="border-color:var(--blue);color:var(--blue)">Fase 2: Escala (S5-S8)</div>
+    <div class="pill" style="border-color:var(--yellow);color:var(--yellow)">Fase 3: Maturidade (S9-S12)</div>
+  </div>
+</div>
+
+<!-- SLIDE 17: PRÓXIMOS PASSOS -->
+<div class="slide slide-cover" data-idx="17">
+  <img src="boost-logo-horizontal.svg" alt="Boost Research" class="logo-svg" style="filter:brightness(0) invert(1)">
+  <h2 style="margin-top:28px">Próximos passos</h2>
+  <div style="text-align:left;max-width:600px;margin:28px auto 0">
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--bg);flex-shrink:0">1</div>
+      <p style="font-size:16px;color:var(--white)">André aprovar temas e priorizar gravações</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--bg);flex-shrink:0">2</div>
+      <p style="font-size:16px;color:var(--white)">Definir orçamento aprovado para Fase 1 (R$6k/mês)</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px">
+      <div style="width:28px;height:28px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:var(--bg);flex-shrink:0">3</div>
+      <p style="font-size:16px;color:var(--white)">Gravar primeiros 3 vídeos (Temas 1, 2, 3)</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px">
+      <div style="width:28px;height:28px;border-radius:50%;background:rgba(3,228,208,.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--green);flex-shrink:0">4</div>
+      <p style="font-size:16px;color:var(--gray)">Configurar Google Ads + Customer Match + conversões</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px">
+      <div style="width:28px;height:28px;border-radius:50%;background:rgba(3,228,208,.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--green);flex-shrink:0">5</div>
+      <p style="font-size:16px;color:var(--gray)">Vincular canal YouTube + configurar rastreamento</p>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:16px">
+      <div style="width:28px;height:28px;border-radius:50%;background:rgba(3,228,208,.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--green);flex-shrink:0">6</div>
+      <p style="font-size:16px;color:var(--gray)">Lançar campanhas Fase 1</p>
+    </div>
+  </div>
+  <p style="margin-top:36px;font-size:12px;color:var(--gray2)">Baseado em 1.412 dores reais (ICP Insights v2) + 5.832 entrevistas (ANBIMA 2026)</p>
+</div>
+
+</div><!-- /deck -->
+
+<!-- Navigation -->
+<nav class="nav">
+  <button class="nav-btn" id="prev" aria-label="Anterior">&larr;</button>
+  <span class="counter" id="counter">1 / 18</span>
+  <button class="nav-btn" id="next" aria-label="Próximo">&rarr;</button>
+</nav>
+
+<script>
+(function(){
+  const slides=document.querySelectorAll('.slide');
+  const total=slides.length;
+  let cur=0;
+  const counter=document.getElementById('counter');
+
+  function go(n){
+    if(n<0||n>=total)return;
+    slides[cur].classList.remove('active');
+    cur=n;
+    slides[cur].classList.add('active');
+    counter.textContent=(cur+1)+' / '+total;
+  }
+
+  document.getElementById('prev').onclick=()=>go(cur-1);
+  document.getElementById('next').onclick=()=>go(cur+1);
+
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' ')go(cur+1);
+    if(e.key==='ArrowLeft')go(cur-1);
+    if(e.key==='Home')go(0);
+    if(e.key==='End')go(total-1);
+  });
+
+  // Touch support
+  let sx=0;
+  document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>50){dx<0?go(cur+1):go(cur-1)}
+  },{passive:true});
+})();
+</script>
+
+</body>
+</html>
