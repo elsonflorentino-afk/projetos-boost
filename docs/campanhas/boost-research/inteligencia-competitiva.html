@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inteligência Competitiva — Boost Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0e13;--bg2:#111820;--bg3:#1a2230;
+  --green:#03E4D0;--green2:#00B37E;
+  --white:#f0f2f5;--gray:#8899aa;--gray2:#556677;
+  --red:#ff4d6a;--yellow:#ffc940;--blue:#4da6ff;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);padding:0;margin:0}
+.header{
+  padding:40px 60px 32px;border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;gap:24px;
+}
+.header img{width:120px;filter:brightness(0) invert(1)}
+.header-text h1{font-size:28px;font-weight:700;letter-spacing:-.5px}
+.header-text p{font-size:14px;color:var(--gray);margin-top:4px}
+.container{max-width:1200px;margin:0 auto;padding:32px 60px 80px}
+h2{font-size:20px;font-weight:700;margin:40px 0 16px;color:var(--green);letter-spacing:-.3px}
+h2:first-child{margin-top:0}
+.intro{font-size:15px;color:var(--gray);line-height:1.6;max-width:800px;margin-bottom:32px}
+
+/* Competitor card */
+.comp{
+  background:var(--bg2);border:1px solid rgba(255,255,255,.06);
+  border-radius:14px;padding:28px 32px;margin-bottom:20px;
+  transition:border-color .2s;
+}
+.comp:hover{border-color:rgba(3,228,208,.15)}
+.comp-header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.comp-name{font-size:20px;font-weight:700}
+.comp-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:5px;white-space:nowrap}
+.b-red{background:rgba(255,77,106,.12);color:var(--red)}
+.b-yellow{background:rgba(255,201,64,.12);color:var(--yellow)}
+.b-green{background:rgba(3,228,208,.12);color:var(--green)}
+.b-gray{background:rgba(255,255,255,.06);color:var(--gray)}
+.b-blue{background:rgba(77,166,255,.12);color:var(--blue)}
+.comp-body{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.comp-body p{font-size:13px;color:var(--gray);line-height:1.55}
+.comp-body strong{color:var(--white);font-weight:600}
+.comp-links{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+.comp-link{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;
+  text-decoration:none;border:1px solid rgba(3,228,208,.2);color:var(--green);
+  background:rgba(3,228,208,.04);transition:background .2s,border-color .2s;
+}
+.comp-link:hover{background:rgba(3,228,208,.1);border-color:var(--green)}
+.comp-link svg{width:14px;height:14px}
+
+/* Summary table */
+.summary-tbl{width:100%;border-collapse:collapse;margin:16px 0 32px;font-size:13px}
+.summary-tbl th{text-align:left;padding:10px 14px;color:var(--green);font-weight:600;border-bottom:2px solid rgba(3,228,208,.2);font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.summary-tbl td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.04);color:var(--gray)}
+.summary-tbl tr:hover td{color:var(--white)}
+.summary-tbl td:first-child{color:var(--white);font-weight:500}
+
+/* Open all */
+.actions{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:8px;font-size:14px;font-weight:700;
+  text-decoration:none;cursor:pointer;border:none;transition:background .2s;
+}
+.btn-green{background:var(--green);color:var(--bg)}
+.btn-green:hover{background:var(--green2)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--white)}
+.btn-outline:hover{border-color:var(--green);color:var(--green)}
+
+.note{font-size:12px;color:var(--gray2);margin-top:40px;line-height:1.6;border-top:1px solid rgba(255,255,255,.06);padding-top:20px}
+
+/* Arrow icon */
+.arrow-icon{display:inline-block;width:12px;height:12px;margin-left:2px;vertical-align:middle}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="boost-logo-horizontal.svg" alt="Boost Research">
+  <div class="header-text">
+    <h1>Inteligência Competitiva</h1>
+    <p>Como os concorrentes estão anunciando no Google e YouTube — Abril 2026</p>
+  </div>
+</div>
+
+<div class="container">
+
+<p class="intro">
+  Mapeamento de 15 concorrentes diretos e indiretos no mercado de análise e research de criptoativos no Brasil.
+  Cada card abaixo mostra o posicionamento, volume estimado de anúncios e links diretos para a Central de Transparência do Google, onde é possível ver os anúncios reais de cada empresa.
+</p>
+
+<div class="actions">
+  <button class="btn btn-green" onclick="openAll('direct')">Abrir todos os concorrentes diretos</button>
+  <button class="btn btn-outline" onclick="openAll('all')">Abrir todos (15 empresas)</button>
+  <a class="btn btn-outline" href="APRESENTACAO_YOUTUBE_ADS_BOOST_v1.html">Voltar para a apresentação</a>
+</div>
+
+<!-- ======================== CONCORRENTES DIRETOS ======================== -->
+
+<h2>Concorrentes diretos — Research cripto</h2>
+
+<div class="comp" data-group="direct">
+  <div class="comp-header">
+    <span class="comp-name">Empiricus Research</span>
+    <div class="comp-meta">
+      <span class="badge b-red">~30.000 anúncios</span>
+      <span class="badge b-red">Ameaça: ALTA (volume)</span>
+    </div>
+  </div>
+  <div class="comp-body">
+    <div>
+      <p><strong>O que fazem:</strong> Maior casa de análise do Brasil (grupo BTG). Produtos cripto: Exponential Coins, Crypto Alert, Crypto Legacy, Memebot.</p>
+      <p style="margin-top:8px"><strong>Preço:</strong> R$50/mês a R$1.500+/ano</p>
+    </div>
+    <div>
+      <p><strong>Como anunciam:</strong> VSLs longos (5-15min), in-stream, search. Tom sensacionalista: urgência, FOMO, promessas de ganhos exponenciais.</p>
+      <p style="margin-top:8px;color:var(--red)"><strong>Risco deles:</strong> Multada R$9,7M (caso Bettina). Processo CVM + CONAR. Reputação desgastada.</p>
+    </div>
+  </div>
+  <div class="comp-links">
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=empiricus" target="_blank" data-link="direct">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Ver anúncios (por nome)
+    </a>
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=empiricus.com.br" target="_blank" data-link="direct">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Ver anúncios (por domínio)
+    </a>
+    <a class="comp-link" href="https://www.empiricus.com.br/assinaturas/exponential-coins-anual/" target="_blank">Site do produto</a>
+  </div>
+</div>
+
+<div class="comp" data-group="direct">
+  <div class="comp-header">
+    <span class="comp-name">Mercurius Crypto</span>
+    <div class="comp-meta">
+      <span class="badge b-red">Ameaça: MUITO ALTA</span>
+      <span class="badge b-yellow">Volume moderado</span>
+    </div>
+  </div>
+  <div class="comp-body">
+    <div>
+      <p><strong>O que fazem:</strong> Casa de research especializada em cripto. Mercurius PRO (assinatura premium). +R$10M sob gestão. Equipe de 6 analistas.</p>
+      <p style="margin-top:8px"><strong>Preço:</strong> Premium (não divulgado)</p>
+    </div>
+    <div>
+      <p><strong>Como anunciam:</strong> YouTube orgânico forte + funnels via HubSpot. Ads focados em conversão para Mercurius PRO.</p>
+      <p style="margin-top:8px"><strong>Diferencial vs Boost:</strong> Concorrente mais direto. Mesmo nicho, mesmo público. Mas NÃO tem um rosto tão forte quanto André Franco.</p>
+    </div>
+  </div>
+  <div class="comp-links">
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=mercurius+crypto" target="_blank" data-link="direct">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Ver anúncios
+    </a>
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=mercuriuscrypto.com" target="_blank" data-link="direct">Por domínio</a>
+    <a class="comp-link" href="https://research.mercuriuscrypto.com/" target="_blank">Site</a>
+  </div>
+</div>
+
+<div class="comp" data-group="direct">
+  <div class="comp-header">
+    <span class="comp-name">Convex Research</span>
+    <div class="comp-meta">
+      <span class="badge b-yellow">Ameaça: ALTA</span>
+      <span class="badge b-gray">Volume baixo (janela anual)</span>
+    </div>
+  </div>
+  <div class="comp-body">
+    <div>
+      <p><strong>O que fazem:</strong> Modelo quantitativo (CFM — Crypto Fragility Model). Richard Rytenband. Público premium, mesmo ICP da Boost.</p>
+      <p style="margin-top:8px"><strong>Preço:</strong> R$564/mês (R$6.768/ano)</p>
+    </div>
+    <div>
+      <p><strong>Como anunciam:</strong> Abre inscrições anualmente (modelo de escassez). Search ads + remarketing durante janela de vendas. Volume concentrado em poucas semanas.</p>
+      <p style="margin-top:8px"><strong>Diferencial vs Boost:</strong> Abordagem quantitativa vs André como rosto. Preço mais alto.</p>
+    </div>
+  </div>
+  <div class="comp-links">
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=convex+research" target="_blank" data-link="direct">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Ver anúncios
+    </a>
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=convexresearch.com.br" target="_blank" data-link="direct">Por domínio</a>
+    <a class="comp-link" href="https://convexresearch.com.br/" target="_blank">Site</a>
+  </div>
+</div>
+
+<div class="comp" data-group="direct">
+  <div class="comp-header">
+    <span class="comp-name">Underblock</span>
+    <div class="comp-meta">
+      <span class="badge b-yellow">Ameaça: ALTA</span>
+      <span class="badge b-yellow">Volume moderado</span>
+    </div>
+  </div>
+  <div class="comp-body">
+    <div>
+      <p><strong>O que fazem:</strong> Vinícius Bazan (ex-Empiricus, impactou +300k assinantes). Underclub (análise + carteira), Zero a Cripto (curso), Block Times newsletter.</p>
+      <p style="margin-top:8px"><strong>Preço:</strong> ~R$49-99/mês</p>
+    </div>
+    <div>
+      <p><strong>Como anunciam:</strong> YouTube orgânico + ads educacionais. Newsletter como funil de entrada. Tom acessível e confiável.</p>
+      <p style="margin-top:8px"><strong>Diferencial vs Boost:</strong> Preço mais baixo. Bazan tem audiência própria. Crescendo rápido.</p>
+    </div>
+  </div>
+  <div class="comp-links">
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=underblock" target="_blank" data-link="direct">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Ver anúncios
+    </a>
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=underblock.com.br" target="_blank" data-link="direct">Por domínio</a>
+    <a class="comp-link" href="https://www.underblock.com.br/" target="_blank">Site</a>
+  </div>
+</div>
+
+<div class="comp" data-group="direct">
+  <div class="comp-header">
+    <span class="comp-name">Nord Investimentos</span>
+    <div class="comp-meta">
+      <span class="badge b-green">~60 anúncios</span>
+      <span class="badge b-gray">Ameaça: MODERADA</span>
+    </div>
+  </div>
+  <div class="comp-body">
+    <div>
+      <p><strong>O que fazem:</strong> Casa de análise generalista com vertical cripto (Nord Crypto Master). Luiz Pedro lidera a área cripto.</p>
+    </div>
+    <div>
+      <p><strong>Como anunciam:</strong> Volume mínimo no Google (~60 ads). Foco em search + YouTube. Tom fundamentalista, longo prazo.</p>
+    </div>
+  </div>
+  <div class="comp-links">
+    <a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=nord+investimentos" target="_blank" data-link="direct">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Ver anúncios
+    </a>
+    <a class="comp-link" href="https://www.nordinvestimentos.com.br/research/produtos-e-assinaturas/nord-crypto-master/" target="_blank">Site</a>
+  </div>
+</div>
+
+<!-- ======================== BANCOS E CORRETORAS ======================== -->
+
+<h2>Bancos e corretoras (concorrência indireta)</h2>
+
+<table class="summary-tbl">
+  <thead><tr><th>Empresa</th><th>Anúncios</th><th>Ameaça</th><th>Nota</th><th>Ver anúncios</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>BTG Pactual</td><td style="color:var(--yellow)">~3.000</td><td>Moderada</td><td>Banco, não research puro. Mynt (carteira cripto automática)</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=btg+pactual" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>XP Investimentos</td><td style="color:var(--yellow)">~2.000</td><td>Baixa</td><td>Cripto é pequena no escopo total. 29 analistas, foco generalista</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=xp+investimentos" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ======================== EXCHANGES ======================== -->
+
+<h2>Exchanges e gestoras</h2>
+
+<table class="summary-tbl">
+  <thead><tr><th>Empresa</th><th>Anúncios</th><th>Nota</th><th>Ver anúncios</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Binance</td><td>37</td><td>Google restringe exchanges no Brasil. Usa Binance Academy como workaround</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=binance" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>Hashdex</td><td style="color:var(--gray)">0</td><td>Zero anúncios. Thought leadership 100% orgânico. Gestora de ETFs</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=hashdex" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>Mercado Bitcoin</td><td style="color:var(--gray)">Restrito</td><td>Exchange, não pode anunciar via Google. Usa conteúdo editorial</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=mercado+bitcoin" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ======================== INFLUENCIADORES ======================== -->
+
+<h2>Influenciadores e educação</h2>
+
+<table class="summary-tbl">
+  <thead><tr><th>Nome</th><th>YouTube</th><th>Volume Ads</th><th>Foco cripto?</th><th>Ver anúncios</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Augusto Backes</td><td>~300k</td><td style="color:var(--yellow)">Alto</td><td>Sim — Cripto Blinders (R$1.597)</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=augusto+backes" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>Fernando Ulrich</td><td>~304k</td><td>Baixo</td><td>Sim — maximalista Bitcoin, orgânico</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=fernando+ulrich" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>Criptomaníacos</td><td>~200k</td><td>Moderado</td><td>Sim — educação e comunidade</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=criptomaniacos" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>BlockTrends</td><td>—</td><td>Baixo</td><td>Sim — parceria OKX, relatórios grátis</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=blocktrends" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>Paradigma Education</td><td>—</td><td>Baixo</td><td>Sim — investimento do Grupo Primo</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=paradigma+education" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>VG Research</td><td>—</td><td>Baixo</td><td>Sim — VG Cripto (carteira recomendada)</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=vg+research" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>EscolaCripto</td><td>—</td><td>Baixo</td><td>Sim — +5.000 alunos</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=escola+cripto" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+    <tr>
+      <td>Levante Ideias</td><td>—</td><td>Baixo</td><td>Sim — Cripto Research (carteira)</td>
+      <td><a class="comp-link" href="https://adstransparency.google.com/?region=BR&q=levante+ideias" target="_blank" data-link="all">Ver</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="note">
+  Dados de volume estimados com base em pesquisa de abril/2026. A Central de Transparência do Google mostra anúncios exibidos nos últimos 30 dias.<br>
+  Se a busca por nome não retornar resultados, tente pelo domínio (ex: empiricus.com.br).<br>
+  Recomendação: verificar quinzenalmente para monitorar movimentos dos concorrentes.<br><br>
+  <a href="APRESENTACAO_YOUTUBE_ADS_BOOST_v1.html" style="color:var(--green);text-decoration:none;font-weight:600">&larr; Voltar para a apresentação</a>
+</p>
+
+</div>
+
+<script>
+function openAll(group){
+  const sel = group === 'direct'
+    ? 'a[data-link="direct"]'
+    : 'a[data-link]';
+  const links = document.querySelectorAll(sel);
+  const seen = new Set();
+  links.forEach(a => {
+    const url = a.href;
+    if(!seen.has(url) && url.includes('adstransparency')){
+      seen.add(url);
+      window.open(url, '_blank');
+    }
+  });
+}
+</script>
+
+</body>
+</html>
