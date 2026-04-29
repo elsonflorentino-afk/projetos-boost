@@ -26,16 +26,18 @@ html,body{height:100%;font-family:'Inter',sans-serif;background:var(--bg);color:
 .deck{position:relative;width:100%;height:100%}
 .slide{
   position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:60px 80px;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:48px 40px;
   opacity:0;pointer-events:none;
   transition:opacity .4s ease;
 }
 .slide.active{opacity:1;pointer-events:auto}
+.slide-inner{width:100%;max-width:1080px}
 .slide-cover{
   background:linear-gradient(135deg,#0a0e13 0%,#111820 50%,#0d1a1a 100%);
-  align-items:center;text-align:center;
+  text-align:center;
 }
+.slide-cover .slide-inner{display:flex;flex-direction:column;align-items:center}
 .slide-dark{background:var(--bg)}
 .slide-accent{background:linear-gradient(135deg,#0b1a1a 0%,#0a0e13 100%)}
 .slide-chart{background:var(--bg)}
@@ -227,6 +229,7 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
 
 <!-- SLIDE 0: CAPA -->
 <div class="slide slide-cover active" data-idx="0">
+  <div class="slide-inner">
   <img src="boost-logo-horizontal.svg" alt="Boost Research" class="logo-svg" style="filter:brightness(0) invert(1)">
   <h1 style="margin-top:20px">Planejamento<br><span class="accent">YouTube Ads</span></h1>
   <p class="subtitle subtitle-center" style="margin-top:16px">Estratégia de entrada no YouTube baseada em 1.412 dores reais de clientes e 5.832 entrevistas nacionais</p>
@@ -236,11 +239,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     <div class="pill pill-green">Pesquisa de mercado YouTube BR</div>
   </div>
   <p style="margin-top:48px;font-size:13px;color:var(--gray2)">Abril 2026</p>
+  </div>
 </div>
 
 <!-- SLIDE 1: POR QUE YOUTUBE -->
 <div class="slide slide-dark" data-idx="1">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">O canal certo</div>
   <h2>YouTube é o canal <span class="accent">#1</span> de informação<br>sobre investimentos no Brasil</h2>
   <p class="subtitle">Pela 5a edição consecutiva da ANBIMA. 35% dos investidores usam YouTube para se informar sobre investimentos.</p>
@@ -271,11 +276,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     </div>
   </div>
   <p style="margin-top:20px;font-size:12px;color:var(--gray2)">Fonte: Raio-X do Investidor Brasileiro 2026, ANBIMA/Datafolha, 5.832 entrevistas</p>
+  </div>
 </div>
 
 <!-- SLIDE 2: YOUTUBE BRASIL EM NÚMEROS -->
 <div class="slide slide-accent" data-idx="2">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">YouTube Brasil</div>
   <h2>O mercado em números</h2>
   <div class="big-num-row">
@@ -312,11 +319,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     <div class="glossary-item"><strong>VTR</strong> = Taxa de Visualização Completa</div>
     <div class="glossary-item"><strong>Shorts</strong> = Vídeos curtos verticais (até 60s)</div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 3: ICP YOUTUBE POR GERAÇÃO -->
 <div class="slide slide-dark" data-idx="3">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Nosso público</div>
   <h2>YouTube por geração:<br><span class="accent">Millennials e Gen X</span> são o alvo</h2>
   <div class="cols">
@@ -351,11 +360,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 4: ESTADO EMOCIONAL -->
 <div class="slide slide-accent" data-idx="4">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Insight crítico</div>
   <h2>O estado emocional do nosso público:<br><span class="red">Resignação</span></h2>
   <p class="subtitle">Não estão desesperados. Estão resignados. Já aceitaram o prejuízo, desistiram de entender, não esperam mais nada de novo.</p>
@@ -375,11 +386,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 5: CONCORRENTES -->
 <div class="slide slide-dark" data-idx="5">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Análise de mercado</div>
   <h2>Quem anuncia no Google <span class="accent">e quanto</span></h2>
   <p class="subtitle" style="font-size:14px">Central de Transparência Google + pesquisa de mercado, abril/2026</p>
@@ -412,11 +425,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       <p><strong style="color:var(--green)">Vantagem regulatória:</strong> Google proíbe exchanges de anunciar no Brasil, mas PERMITE casas de análise (conteúdo educacional). A Boost pode anunciar — Binance, MB, Foxbit não podem. E ninguém combina analista-referência (André) + research institucional + compliance sério.</p>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 6: INTELIGENCIA COMPETITIVA - CONCORRENTES DIRETOS -->
 <div class="slide slide-dark" data-idx="6">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Inteligência competitiva — Concorrentes diretos</div>
   <h2>Os 3 que competem pelo <span class="accent">mesmo cliente</span></h2>
   <div class="slide-scroll" style="margin-top:20px">
@@ -463,11 +478,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 7: INTELIGENCIA COMPETITIVA - PANORAMA COMPLETO -->
 <div class="slide slide-accent" data-idx="7">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Inteligência competitiva — Panorama completo</div>
   <h2>Volume de anúncios no <span class="accent">Google Ads</span></h2>
   <div class="slide-scroll" style="margin-top:16px">
@@ -543,11 +560,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       <p><strong style="color:var(--green)">Conclusão:</strong> O único player de research cripto com volume expressivo (Empiricus) tem reputação desgastada. Underblock anuncia ativamente com ticket alto (R$26.990). Mercurius, Convex e Hashdex não foram encontrados na Central de Transparência — operam via orgânico ou outros canais. Ninguém combina analista-referência (André) + research institucional + compliance sério.</p>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 7: GAPS -->
 <div class="slide slide-accent" data-idx="8">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Diferenciação</div>
   <h2><span class="accent">4 oportunidades</span> que só a Boost pode preencher</h2>
   <div class="card-grid card-grid-2" style="margin-top:24px">
@@ -572,11 +591,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       <p>André saiu da Empiricus. Muitos clientes Premium já passaram por lá. Ângulo exclusivo e poderoso.</p>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 8: 7 DORES -->
 <div class="slide slide-dark" data-idx="9">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Base de dados</div>
   <h2>7 dores do cliente — <span class="accent">1.412 citações</span></h2>
   <p class="subtitle" style="font-size:14px;margin-bottom:8px">Extraídas de 228 reuniões reais entre advisors e clientes Boost Research</p>
@@ -618,11 +639,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     </div>
     <p style="margin-top:12px;font-size:12px;color:var(--gray2)">Fonte: ICP Insights v2, 228 atas analisadas, Boost Research (Confidencial)</p>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 9: 12 TEMAS TIER 1 -->
 <div class="slide slide-accent" data-idx="10">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Temas de vídeo</div>
   <h2><span class="accent">Prioridade 1</span> — Gravar primeiro</h2>
   <p class="subtitle">Alto volume de dor + alto potencial de conversão. Os 3 temas que mais ressoam com nosso público.</p>
@@ -646,11 +669,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       <p style="margin-top:8px;color:var(--white);font-size:13px;font-style:italic">"Você pagou mais imposto do que deveria na última declaração de cripto?"</p>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 10: TEMAS TIER 2 + 3 -->
 <div class="slide slide-dark" data-idx="11">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Temas de vídeo</div>
   <h2><span class="blue">Prioridade 2</span> — Alta diferenciação</h2>
   <div class="card-grid card-grid-4" style="margin-top:20px">
@@ -698,11 +723,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       <h3 style="font-size:15px">"Renda fixa digital — o que é e como funciona"</h3>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 11: O QUE É DEMAND GEN -->
 <div class="slide slide-accent" data-idx="12">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Conceito-chave</div>
   <h2>O que é <span class="accent">Demand Gen</span> e por que usamos</h2>
   <div class="cols">
@@ -729,11 +756,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 12: ESTRUTURA 3 FASES COM RACIONAL -->
 <div class="slide slide-dark" data-idx="13">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Estratégia em 3 fases</div>
   <h2>Cada fase tem um <span class="accent">objetivo claro</span></h2>
   <div class="phase-row">
@@ -762,11 +791,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       <p style="margin-top:8px;color:var(--yellow);font-weight:600">Meta: CPL ≤ R$80 | 350+ leads</p>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 13: CAMPANHA FASE 1 DETALHADA -->
 <div class="slide slide-accent" data-idx="14">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Fase 1 — As 3 campanhas</div>
   <h2>Cada campanha tem uma <span class="accent">função no funil</span></h2>
   <p class="subtitle" style="font-size:13px;margin-bottom:16px">Shorts entram como asset group dentro de Demand Gen (não é tipo de campanha separado no Google). Remarketing ativado na semana 3, quando houver audiência suficiente.</p>
@@ -793,11 +824,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       <p class="spec" style="margin-top:8px"><strong>Bidding:</strong> Max Conversions (não tCPA — volume insuficiente para tCPA no início)</p>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 14: FUNIL -->
 <div class="slide slide-dark" data-idx="15">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Funil de conversão</div>
   <h2>Do anúncio no YouTube <span class="accent">até o WhatsApp</span></h2>
   <div class="funnel">
@@ -816,11 +849,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     <div class="glossary-item"><strong>Lead</strong> = Pessoa que preencheu formulário</div>
     <div class="glossary-item"><strong>Advisor</strong> = Consultor da Boost que atende o cliente</div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 15: CRIATIVO -->
 <div class="slide slide-accent" data-idx="16">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Regras de criativo</div>
   <h2>Como o André deve <span class="accent">falar nos vídeos</span></h2>
   <div class="cols">
@@ -856,11 +891,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 16: KPIs -->
 <div class="slide slide-dark" data-idx="17">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Metas</div>
   <h2><span class="tip" data-tip="Key Performance Indicators — indicadores-chave de desempenho">KPIs</span> por fase</h2>
   <table class="tbl" style="margin-top:24px">
@@ -884,11 +921,13 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     <div class="glossary-item"><strong>CPL</strong> = Custo por Lead (formulário preenchido)</div>
     <div class="glossary-item"><strong>Lead qualificado</strong> = Pessoa com patrimônio acima de R$50k</div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 17: CALENDÁRIO -->
 <div class="slide slide-accent" data-idx="18">
   <img src="boost-logo-horizontal.svg" alt="" class="logo-sm">
+  <div class="slide-inner">
   <div class="label">Calendário</div>
   <h2>12 semanas de execução</h2>
   <div class="timeline" style="margin-top:40px">
@@ -908,10 +947,12 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     <div class="pill" style="border-color:var(--blue);color:var(--blue)">Fase 2: Escala (S5-S8)</div>
     <div class="pill" style="border-color:var(--yellow);color:var(--yellow)">Fase 3: Maturidade (S9-S12)</div>
   </div>
+  </div>
 </div>
 
 <!-- SLIDE 18: PRÓXIMOS PASSOS -->
 <div class="slide slide-cover" data-idx="19">
+  <div class="slide-inner">
   <img src="boost-logo-horizontal.svg" alt="Boost Research" class="logo-svg" style="filter:brightness(0) invert(1)">
   <h2 style="margin-top:28px">Próximos passos</h2>
   <div style="text-align:left;max-width:640px;margin:28px auto 0">
@@ -944,6 +985,7 @@ h3{font-size:24px;font-weight:600;line-height:1.3;margin-bottom:8px}
     <a href="producao-youtube-ads.html" style="display:inline-block;padding:12px 24px;border-radius:8px;background:var(--green);color:var(--bg);font-weight:700;font-size:14px;text-decoration:none">Ver guia completo de produção (specs + copy + checklist) &rarr;</a>
   </div>
   <p style="margin-top:20px;font-size:12px;color:var(--gray2)">Baseado em 1.412 dores reais (ICP Insights v2) + 5.832 entrevistas (ANBIMA 2026)</p>
+  </div>
 </div>
 
 </div><!-- /deck -->
