@@ -35,10 +35,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
 .creative-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin:16px 0}
 .creative-card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden;transition:border-color .2s}
 .creative-card:hover{border-color:rgba(3,228,208,.2)}
-.creative-card .thumb{width:100%;height:220px;object-fit:contain;background:var(--bg3);padding:8px}
-.creative-card .thumb-placeholder{width:100%;height:180px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gray)}
+.creative-card .thumb-wrap{background:var(--bg3);display:flex;flex-direction:column;align-items:center;padding:12px}
+.creative-card .thumb{max-width:100%;max-height:280px;object-fit:contain;display:block}
+.creative-card .thumb-label{font-size:11px;color:var(--gray);margin-top:8px;text-align:center;line-height:1.4;padding:0 8px}
+.creative-card .thumb-placeholder{width:100%;height:200px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--gray);font-weight:600;text-align:center;padding:20px}
 .creative-card .info{padding:16px}
-.creative-card .name{font-size:13px;font-weight:600;margin-bottom:8px;line-height:1.4}
+.creative-card .name{font-size:13px;font-weight:600;margin-bottom:4px;line-height:1.4}
 .creative-card .metrics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .creative-card .metric{text-align:center}
 .creative-card .metric .mv{font-size:18px;font-weight:700}
@@ -236,10 +238,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
 <div class="creative-grid">
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120246533286120651.jpg" alt="E05-10ANOS">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120246533286120651.jpg" alt="E05-10ANOS">
+      <div class="thumb-label">Lead Form IR Cripto — "André Franco analisa cripto há 10 anos". Volume alto, qualificação baixa.</div>
+    </div>
     <div class="info">
       <div class="name">[NOVO] E05-10ANOS</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Lead Form IR Cripto — "Andre Franco analisa cripto ha 10 anos". Volume alto, qualificacao baixa.</div>
       <div class="metrics">
         <div class="metric"><div class="mv" style="color:var(--green)">18</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv">R$140</div><div class="ml">CPL Qualif</div></div>
@@ -250,10 +254,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120245573960300651.jpg" alt="BOOST-CRIPTO-FORM">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120245573960300651.jpg" alt="BOOST-CRIPTO-FORM">
+      <div class="thumb-label">Feed estático — Form cripto na LP. Público quente (salvou post 30d). Melhor equilíbrio custo x qualidade.</div>
+    </div>
     <div class="info">
       <div class="name">[BR][QUENTE][BOOST-CRIPTO-FORM][FEED][C4][V1]</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Feed estatico — Form cripto na LP. Publico quente (salvou post 30d). Melhor equilibrio custo x qualidade.</div>
       <div class="metrics">
         <div class="metric"><div class="mv" style="color:var(--green)">10</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv" style="color:var(--green)">R$123</div><div class="ml">CPL Qualif</div></div>
@@ -264,10 +270,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120245573650300651.jpg" alt="BOOST-TRAD FEED V2">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120245573650300651.jpg" alt="BOOST-TRAD FEED V2">
+      <div class="thumb-label">Feed estático — Investidor tradicional querendo cripto. Público morno. Taxa de qualificação excepcional.</div>
+    </div>
     <div class="info">
       <div class="name">[BR][MORNO][BOOST-TRAD][FEED][C4][V2]</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Feed estatico — Investidor tradicional querendo cripto. Publico morno. Taxa de qualificacao excepcional.</div>
       <div class="metrics">
         <div class="metric"><div class="mv" style="color:var(--green)">9</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv">R$191</div><div class="ml">CPL Qualif</div></div>
@@ -278,10 +286,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120245573894320651.jpg" alt="BOOST-BROAD CARROSSEL">
+    <div class="thumb-wrap">
+      <div class="thumb-placeholder">CARROSSEL 5 CARDS<br>Análise Gratuita Boost Research<br><span style="font-size:10px;font-weight:400;margin-top:8px;display:block">Imagem não disponível via API Meta para carrosseis</span></div>
+      <div class="thumb-label">Carrossel 5 cards — Análise gratuita. Público LAL seguidor. Qualidade alta mas CPL elevado.</div>
+    </div>
     <div class="info">
       <div class="name">[BR][QUENTE][BOOST-BROAD][CARROSSEL][C4][V1]</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Carrossel 5 cards — Analise gratuita. Publico LAL seguidor. Qualidade alta mas CPL elevado.</div>
       <div class="metrics">
         <div class="metric"><div class="mv" style="color:var(--green)">8</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv" style="color:var(--red)">R$510</div><div class="ml">CPL Qualif</div></div>
@@ -292,10 +302,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120245573875380651.jpg" alt="AF-CRIPTO FEED">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120245573875380651.jpg" alt="AF-CRIPTO FEED">
+      <div class="thumb-label">Feed estático — Foto André + cripto. Frequência saturada (4x+). Precisa refresh urgente.</div>
+    </div>
     <div class="info">
       <div class="name">[BR][QUENTE][AF-CRIPTO][FEED][C4][C1]</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Feed estatico — Foto Andre + cripto. Frequencia saturada (4x+). Precisa refresh urgente.</div>
       <div class="metrics">
         <div class="metric"><div class="mv" style="color:var(--green)">6</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv">R$318</div><div class="ml">CPL Qualif</div></div>
@@ -306,10 +318,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120245573646250651.jpg" alt="AF-CRIPTO STORY">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120245573646250651.jpg" alt="AF-CRIPTO STORY">
+      <div class="thumb-label">Story — André + cripto. 100% dos leads qualificados. Volume baixo, potencial inexplorado.</div>
+    </div>
     <div class="info">
       <div class="name">[BR][MORNO][AF-CRIPTO][STORY][C4][V2]</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Story — Andre + cripto. 100% dos leads qualificados. Volume baixo, potencial inexplorado.</div>
       <div class="metrics">
         <div class="metric"><div class="mv">4</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv">R$274</div><div class="ml">CPL Qualif</div></div>
@@ -320,10 +334,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120246533289300651.jpg" alt="E03-MULTA-75">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120246533289300651.jpg" alt="E03-MULTA-75">
+      <div class="thumb-label">Lead Form IR Cripto — "Multa de 75%". Volume alto, qualificação baixa.</div>
+    </div>
     <div class="info">
       <div class="name">[NOVO] E03-MULTA-75</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Lead Form IR Cripto — "Multa de 75%". Volume alto, qualificacao baixa.</div>
       <div class="metrics">
         <div class="metric"><div class="mv">6</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv">R$159</div><div class="ml">CPL Qualif</div></div>
@@ -334,10 +350,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120245573892860651.jpg" alt="BOOST-TRAD STORY">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120245573892860651.jpg" alt="BOOST-TRAD STORY">
+      <div class="thumb-label">Story — Investidor tradicional. Público quente. Boa taxa de qualificação.</div>
+    </div>
     <div class="info">
       <div class="name">[BR][QUENTE][BOOST-TRAD][STORY][C4][V1]</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Story — Investidor tradicional. Publico quente. Boa taxa de qualificacao.</div>
       <div class="metrics">
         <div class="metric"><div class="mv">4</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv">R$378</div><div class="ml">CPL Qualif</div></div>
@@ -348,10 +366,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
   </div>
 
   <div class="creative-card">
-    <img class="thumb" src="thumbs/120245573649630651.jpg" alt="BOOST-TRAD FEED V1">
+    <div class="thumb-wrap">
+      <img class="thumb" src="thumbs/120245573649630651.jpg" alt="BOOST-TRAD FEED V1">
+      <div class="thumb-label">Feed estático — Mercado tradicional. MENOR CPL qualificado de toda a conta (R$83). 100% taxa.</div>
+    </div>
     <div class="info">
       <div class="name">[BR][MORNO][BOOST-TRAD][FEED][C4][V1]</div>
-      <div style="font-size:11px;color:var(--gray);margin-bottom:8px;line-height:1.4">Feed estatico — Mercado tradicional. MENOR CPL qualificado de toda a conta (R$83). 100% taxa.</div>
       <div class="metrics">
         <div class="metric"><div class="mv">3</div><div class="ml">Qualificados</div></div>
         <div class="metric"><div class="mv" style="color:var(--green)">R$83</div><div class="ml">CPL Qualif</div></div>
