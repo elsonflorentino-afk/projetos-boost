@@ -412,7 +412,12 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
 
 <!-- PERFORMANCE DE VIDEOS -->
 <h2>Vídeos — Performance em abril</h2>
-<p style="font-size:13px;color:var(--gray);margin-bottom:16px">51 anúncios com vídeo. Cruzamento com leads qualificados RD Station. Vídeos VID-* (C5 ANDROMEDA) não têm cruzamento de qualificados porque o event_identifier no RD mapeia para C4.</p>
+<p style="font-size:13px;color:var(--gray);margin-bottom:8px">51 anúncios com vídeo. Cruzamento real com leads qualificados RD Station (segmentações >=R$50k).</p>
+
+<div class="insight" style="margin-bottom:16px;border-left-color:var(--yellow)">
+  <h3>Rastreamento dos vídeos VID-* (C5 ANDROMEDA)</h3>
+  <p>Os vídeos VID-* (C5 ANDROMEDA) enviam para a LP Análise com identifier <code>lp_mentoria_boost</code> — o mesmo da C4. Dos 27 qualificados com esse identifier, 11 vieram da C4 CONVERSÃO e 7 da C4 CONSIDERAÇÃO (via traffic_campaign). <strong style="color:var(--white)">Os 9 restantes não têm traffic_campaign</strong> — são provavelmente dos vídeos C5. Para resolver: adicionar UTM de campanha nos links dos vídeos VID-*.</p>
+</div>
 
 <div class="creative-grid">
 
@@ -426,9 +431,9 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
       <div class="metrics">
         <div class="metric"><div class="mv" style="color:var(--green)">88</div><div class="ml">Leads totais</div></div>
         <div class="metric"><div class="mv" style="color:var(--green)">R$25</div><div class="ml">CPL bruto</div></div>
-        <div class="metric"><div class="mv" style="color:var(--yellow)">?</div><div class="ml">Qualificados*</div></div>
+        <div class="metric"><div class="mv" style="color:var(--yellow)">~9</div><div class="ml">Qualificados est.</div></div>
       </div>
-      <div class="tags"><span class="tag tg">Melhor vídeo</span><span class="tag tg">CPL R$25</span><span class="tag ty">*Sem cruzamento RD — roda em C5</span></div>
+      <div class="tags"><span class="tag tg">Melhor vídeo</span><span class="tag tg">CPL R$25</span><span class="tag ty">~9 qualificados sem campaign (provavelmente daqui)</span></div>
       <div style="margin-top:10px;padding:10px;background:rgba(255,255,255,.03);border-radius:6px;font-size:11px;color:var(--gray);line-height:1.5">
         <strong style="color:#A0A0C0">Copy:</strong> Carteira com método: regra de saída, percentual de alocação, critério de rebalanceamento. Análise gratuita com André Franco. Sem compromisso de contratação.
       </div>
@@ -504,7 +509,7 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
         <div class="metric"><div class="mv" style="color:var(--green)">R$49</div><div class="ml">CPL bruto</div></div>
         <div class="metric"><div class="mv" style="color:var(--green)">38%</div><div class="ml">Retenção</div></div>
       </div>
-      <div class="tags"><span class="tag tg">Potencial alto</span><span class="tag ty">*Sem cruzamento RD — roda em C5</span></div>
+      <div class="tags"><span class="tag tg">Potencial alto</span><span class="tag ty">Incluído nos ~9 qualificados sem campaign</span></div>
       <div style="margin-top:10px;padding:10px;background:rgba(255,255,255,.03);border-radius:6px;font-size:11px;color:var(--gray);line-height:1.5">
         <strong style="color:#A0A0C0">Copy:</strong> A maioria compra alto e vende no pânico. Você merece um método. André Franco analisa sua carteira de cripto gratuitamente — honorário fixo, sem conflito de interesse.
       </div>
@@ -523,7 +528,7 @@ h3{font-size:15px;font-weight:600;margin:20px 0 8px}
         <div class="metric"><div class="mv" style="color:var(--green)">R$42</div><div class="ml">CPL bruto</div></div>
         <div class="metric"><div class="mv" style="color:var(--green)">39%</div><div class="ml">Retenção</div></div>
       </div>
-      <div class="tags"><span class="tag tg">Potencial alto</span><span class="tag ty">*Sem cruzamento RD — roda em C5</span></div>
+      <div class="tags"><span class="tag tg">Potencial alto</span><span class="tag ty">Incluído nos ~9 qualificados sem campaign</span></div>
       <div style="margin-top:10px;padding:10px;background:rgba(255,255,255,.03);border-radius:6px;font-size:11px;color:var(--gray);line-height:1.5">
         <strong style="color:#A0A0C0">Copy:</strong> Acesso à carteira real do André. Sinais diários. Reuniões ao vivo. Honorário fixo, sem comissão. Análise gratuita para conhecer.
       </div>
