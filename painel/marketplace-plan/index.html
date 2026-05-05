@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano de Ação — Marketplace 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--card:#141414;--border:#1e1e1e;--green:#00C853;--teal:#03E4D0;--blue:#448AFF;--purple:#B388FF;--orange:#FF9100;--red:#FF5252;--gold:#FFD600;--text:#E0E0E0;--dim:#777;--white:#fff}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);overflow:hidden}
+.deck{position:relative;width:100%;height:100%}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:48px 64px;opacity:0;pointer-events:none;transition:opacity .4s;overflow-y:auto}
+.slide.active{opacity:1;pointer-events:auto}
+.si{width:100%;max-width:1100px;margin:0 auto}
+h1{font-size:42px;font-weight:800;line-height:1.1;letter-spacing:-1.5px}
+h2{font-size:32px;font-weight:700;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+h3{font-size:20px;font-weight:600;margin-bottom:8px}
+.sub{font-size:16px;color:var(--dim);margin-top:8px;line-height:1.6}
+.label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.accent{color:var(--teal)}
+.green{color:var(--green)}
+.gold{color:var(--gold)}
+.orange{color:var(--orange)}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:14px}
+.card-grid{display:grid;gap:14px}
+.card-grid-2{grid-template-columns:1fr 1fr}
+.card-grid-3{grid-template-columns:1fr 1fr 1fr}
+.card-grid-5{grid-template-columns:repeat(5,1fr)}
+
+.stat-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:24px 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.stat .sv{font-size:28px;font-weight:800}
+.stat .sl{font-size:10px;color:var(--dim);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+table{width:100%;border-collapse:collapse;font-size:13px;margin:12px 0}
+thead th{background:rgba(3,228,208,.08);color:var(--teal);padding:10px 14px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+tbody td{padding:10px 14px;border-bottom:1px solid var(--border)}
+tbody tr:hover{background:rgba(255,255,255,.02)}
+
+.tag{display:inline-block;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase}
+.tag-green{background:rgba(0,200,83,.12);color:var(--green)}
+.tag-gold{background:rgba(255,214,0,.12);color:var(--gold)}
+.tag-blue{background:rgba(68,138,255,.12);color:var(--blue)}
+.tag-orange{background:rgba(255,145,0,.12);color:var(--orange)}
+.tag-teal{background:rgba(3,228,208,.12);color:var(--teal)}
+
+.timeline{position:relative;padding-left:32px;margin:20px 0}
+.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-item::before{content:'';position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;border:2px solid var(--teal);background:var(--bg)}
+.tl-item.done::before{background:var(--teal)}
+.tl-week{font-size:12px;color:var(--teal);font-weight:700;margin-bottom:4px}
+.tl-title{font-size:15px;font-weight:600;color:var(--white)}
+.tl-desc{font-size:13px;color:var(--dim);margin-top:4px;line-height:1.5}
+
+.product-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden}
+.product-card .rank{position:absolute;top:16px;right:20px;font-size:36px;font-weight:900;color:rgba(3,228,208,.1)}
+.product-card h3{font-size:16px;margin-bottom:6px}
+.product-card .price{font-size:22px;font-weight:800;color:var(--teal)}
+.product-card .margin{font-size:14px;font-weight:700;margin-top:4px}
+.product-card .detail{font-size:12px;color:var(--dim);margin-top:8px;line-height:1.6}
+
+.checklist{list-style:none;padding:0}
+.checklist li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:13px;display:flex;align-items:center;gap:10px}
+.checklist li::before{content:'○';color:var(--teal);font-size:16px;flex-shrink:0}
+
+.nav{position:fixed;bottom:24px;right:40px;display:flex;gap:8px;align-items:center;z-index:100}
+.nav-btn{width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(10,10,10,.9);color:var(--white);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)}
+.nav-btn:hover{border-color:var(--teal)}
+.counter{font-size:12px;color:var(--dim);min-width:50px;text-align:center}
+
+.cols{display:flex;gap:24px}.col{flex:1}
+
+@media(max-width:900px){.card-grid-2,.card-grid-3,.card-grid-5{grid-template-columns:1fr}.stat-bar{grid-template-columns:repeat(3,1fr)}.cols{flex-direction:column}h1{font-size:28px}h2{font-size:24px}.slide{padding:24px 20px}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+<!-- SLIDE 0: CAPA -->
+<div class="slide active" data-idx="0">
+<div class="si" style="text-align:center">
+  <div class="label">Plano de Ação 2026</div>
+  <h1>Marketplace<br><span class="accent">ML · Shopee · TikTok Shop</span></h1>
+  <p class="sub" style="max-width:600px;margin:16px auto">Pesquisa de nicho validada + plano de execução em 90 dias<br>Do zero à primeira venda — e da primeira venda a R$100k/mês</p>
+  <div style="margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <span class="tag tag-green">3 Nichos Validados</span>
+    <span class="tag tag-teal">5 Produtos Mapeados</span>
+    <span class="tag tag-gold">R$5k Investimento Inicial</span>
+  </div>
+  <p style="margin-top:40px;font-size:12px;color:var(--dim)">Maio 2026 | Projeto Pessoal | Confidencial</p>
+</div>
+</div>
+
+<!-- SLIDE 1: POR QUE MARKETPLACE -->
+<div class="slide" data-idx="1">
+<div class="si">
+  <div class="label">Contexto</div>
+  <h2>Por que <span class="accent">marketplace</span> em 2026?</h2>
+  <div class="stat-bar">
+    <div class="stat"><div class="sv" style="color:var(--teal)">71%</div><div class="sl">das compras online<br>são em marketplace</div></div>
+    <div class="stat"><div class="sv" style="color:var(--green)">R$204bi</div><div class="sl">faturamento<br>e-commerce BR</div></div>
+    <div class="stat"><div class="sv" style="color:var(--gold)">3</div><div class="sl">plataformas<br>simultâneas</div></div>
+    <div class="stat"><div class="sv" style="color:var(--blue)">MEI</div><div class="sl">sem custo<br>pra começar</div></div>
+    <div class="stat"><div class="sv" style="color:var(--orange)">R$5k</div><div class="sl">investimento<br>inicial</div></div>
+  </div>
+  <div class="card-grid card-grid-3">
+    <div class="card" style="border-left:3px solid var(--green)">
+      <h3>Mercado Livre</h3>
+      <p style="font-size:13px;color:var(--dim)">Maior marketplace BR. Ticket mais alto. Full = frete grátis. Foco em margem e reputação.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--orange)">
+      <h3>Shopee</h3>
+      <p style="font-size:13px;color:var(--dim)">Volume. Cupons e frete grátis. Público sensível a preço. Live shopping funciona bem.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--purple)">
+      <h3>TikTok Shop</h3>
+      <p style="font-size:13px;color:var(--dim)">Viralização. Conteúdo orgânico vende. Menos concorrência. Produto demonstrável = sucesso.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SLIDE 2: 3 NICHOS VALIDADOS -->
+<div class="slide" data-idx="2">
+<div class="si">
+  <div class="label">Pesquisa Hunter — Nichos Validados</div>
+  <h2>Os 3 nichos com <span class="accent">maior potencial</span></h2>
+  <div class="card-grid card-grid-3" style="margin-top:20px">
+    <div class="card" style="border-top:3px solid var(--green)">
+      <span class="tag tag-green">#1 — MELHOR MARGEM</span>
+      <h3 style="margin-top:12px">Utensílios de Cozinha</h3>
+      <p style="font-size:28px;font-weight:800;color:var(--green);margin:8px 0">40%</p>
+      <p style="font-size:12px;color:var(--dim)">margem líquida</p>
+      <div style="margin-top:12px;font-size:12px;color:var(--dim);line-height:1.8">
+        Score: <strong style="color:var(--white)">14/15</strong><br>
+        Ticket: R$89-149 (kits)<br>
+        TikTok: Extremo<br>
+        Recompra: Alta<br>
+        Concorrência: Média
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <span class="tag tag-blue">#2 — TICKET ALTO</span>
+      <h3 style="margin-top:12px">Home Office / Ergonomia</h3>
+      <p style="font-size:28px;font-weight:800;color:var(--blue);margin:8px 0">34%</p>
+      <p style="font-size:12px;color:var(--dim)">margem líquida</p>
+      <div style="margin-top:12px;font-size:12px;color:var(--dim);line-height:1.8">
+        Score: <strong style="color:var(--white)">13/15</strong><br>
+        Ticket: R$69-149<br>
+        TikTok: Alto<br>
+        Recompra: Média<br>
+        Concorrência: Média
+      </div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--gold)">
+      <span class="tag tag-gold">#3 — VIRAL TIKTOK</span>
+      <h3 style="margin-top:12px">Organizadores de Casa</h3>
+      <p style="font-size:28px;font-weight:800;color:var(--gold);margin:8px 0">24%</p>
+      <p style="font-size:12px;color:var(--dim)">margem líquida (kit premium)</p>
+      <div style="margin-top:12px;font-size:12px;color:var(--dim);line-height:1.8">
+        Score: <strong style="color:var(--white)">12/15</strong><br>
+        Ticket: R$79-149 (kit premium)<br>
+        TikTok: Altíssimo<br>
+        Recompra: Alta<br>
+        Concorrência: Média
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:var(--dim);margin-top:12px">Público-alvo: Mulher 25-45, profissional, cozinha em casa, quer praticidade e organização</p>
+</div>
+</div>
+
+<!-- SLIDE 3: 5 PRODUTOS -->
+<div class="slide" data-idx="3">
+<div class="si">
+  <div class="label">Stack de Produtos — Stratego</div>
+  <h2>5 produtos para a <span class="accent">mesma pessoa</span></h2>
+  <div class="card-grid card-grid-5" style="margin-top:16px">
+    <div class="product-card"><div class="rank">1</div><span class="tag tag-green">PRIORIDADE</span><h3 style="margin-top:8px">Kit Preparo Semanal</h3><p style="font-size:11px;color:var(--dim)">Cortador + Ralador + Tábua</p><div class="price">R$119,90</div><div class="margin green">Margem 40%</div><div class="detail">Custo: R$35<br>ML + TikTok</div></div>
+    <div class="product-card"><div class="rank">2</div><span class="tag tag-blue">TICKET</span><h3 style="margin-top:8px">Suporte Notebook</h3><p style="font-size:11px;color:var(--dim)">Alumínio ergonômico</p><div class="price">R$99,90</div><div class="margin green">Margem 34%</div><div class="detail">Custo: R$35<br>ML + Shopee</div></div>
+    <div class="product-card"><div class="rank">3</div><span class="tag tag-gold">VIRAL</span><h3 style="margin-top:8px">Kit Org. Geladeira</h3><p style="font-size:11px;color:var(--dim)">6 peças acrílico premium</p><div class="price">R$139,90</div><div class="margin gold">Margem 24%</div><div class="detail">Custo: R$68<br>ML + TikTok</div></div>
+    <div class="product-card"><div class="rank">4</div><span class="tag tag-teal">FÁCIL</span><h3 style="margin-top:8px">Desk Mat Premium</h3><p style="font-size:11px;color:var(--dim)">80×40cm couro sintético</p><div class="price">R$69,90</div><div class="margin green">Margem 45%</div><div class="detail">Custo: R$18<br>Shopee + ML</div></div>
+    <div class="product-card"><div class="rank">5</div><span class="tag tag-orange">RECOMPRA</span><h3 style="margin-top:8px">Kit Potes Herméticos</h3><p style="font-size:11px;color:var(--dim)">8 peças cozinha</p><div class="price">R$89,90</div><div class="margin green">Margem 38%</div><div class="detail">Custo: R$28<br>ML + TikTok</div></div>
+  </div>
+  <div class="card" style="margin-top:16px;border-left:3px solid var(--teal)">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div><strong>Investimento inicial:</strong> <span style="color:var(--teal);font-size:20px;font-weight:800">R$5.000</span><br><span style="font-size:12px;color:var(--dim)">20un × 5 produtos + embalagem + fotos</span></div>
+      <div><strong>Ticket médio:</strong> <span style="color:var(--teal);font-size:20px;font-weight:800">R$103,90</span></div>
+      <div><strong>Margem média:</strong> <span style="color:var(--green);font-size:20px;font-weight:800">36%</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SLIDE 4: MARGEM DETALHADA -->
+<div class="slide" data-idx="4">
+<div class="si">
+  <div class="label">Números Reais</div>
+  <h2>Cálculo de <span class="accent">margem real</span></h2>
+  <p class="sub" style="margin-bottom:16px">Fórmula: Preço = Custo / (1 - Margem - Taxa ML - Frete - Devolução)</p>
+  <table>
+    <thead><tr><th>Produto</th><th style="text-align:right">Preço</th><th style="text-align:right">Custo</th><th style="text-align:right">Taxa ML (16%)</th><th style="text-align:right">Frete (8%)</th><th style="text-align:right">Embalagem</th><th style="text-align:right">Devolução (3%)</th><th style="text-align:right;color:var(--green)">Margem R$</th><th style="text-align:right;color:var(--green)">Margem %</th></tr></thead>
+    <tbody>
+      <tr><td>Kit Preparo Semanal</td><td style="text-align:right">R$119,90</td><td style="text-align:right">R$35,00</td><td style="text-align:right">R$19,18</td><td style="text-align:right">R$9,59</td><td style="text-align:right">R$5,00</td><td style="text-align:right">R$3,60</td><td style="text-align:right;color:var(--green);font-weight:700">R$47,53</td><td style="text-align:right;color:var(--green);font-weight:700">40%</td></tr>
+      <tr><td>Suporte Notebook</td><td style="text-align:right">R$99,90</td><td style="text-align:right">R$35,00</td><td style="text-align:right">R$15,98</td><td style="text-align:right">R$7,99</td><td style="text-align:right">R$4,00</td><td style="text-align:right">R$3,00</td><td style="text-align:right;color:var(--green);font-weight:700">R$33,93</td><td style="text-align:right;color:var(--green);font-weight:700">34%</td></tr>
+      <tr><td>Kit Org. Geladeira</td><td style="text-align:right">R$139,90</td><td style="text-align:right">R$68,00</td><td style="text-align:right">R$22,38</td><td style="text-align:right">R$11,19</td><td style="text-align:right">R$4,00</td><td style="text-align:right">R$4,20</td><td style="text-align:right;color:var(--gold);font-weight:700">R$30,13</td><td style="text-align:right;color:var(--gold);font-weight:700">22%</td></tr>
+      <tr><td>Desk Mat Premium</td><td style="text-align:right">R$69,90</td><td style="text-align:right">R$18,00</td><td style="text-align:right">R$11,18</td><td style="text-align:right">R$5,59</td><td style="text-align:right">R$3,00</td><td style="text-align:right">R$2,10</td><td style="text-align:right;color:var(--green);font-weight:700">R$30,03</td><td style="text-align:right;color:var(--green);font-weight:700">43%</td></tr>
+      <tr><td>Kit Potes Herméticos</td><td style="text-align:right">R$89,90</td><td style="text-align:right">R$28,00</td><td style="text-align:right">R$14,38</td><td style="text-align:right">R$7,19</td><td style="text-align:right">R$4,00</td><td style="text-align:right">R$2,70</td><td style="text-align:right;color:var(--green);font-weight:700">R$33,63</td><td style="text-align:right;color:var(--green);font-weight:700">37%</td></tr>
+    </tbody>
+  </table>
+  <div class="card" style="margin-top:16px;background:rgba(0,200,83,.05);border:1px solid rgba(0,200,83,.15)">
+    <p style="font-size:14px;color:var(--green)"><strong>Se vender 5 unidades/dia (1 de cada):</strong> R$519,50 faturamento/dia × 30 = <strong>R$15.585/mês</strong> com margem média de <strong>R$5.609 lucro líquido</strong></p>
+  </div>
+</div>
+</div>
+
+<!-- SLIDE 5: ROADMAP 90 DIAS -->
+<div class="slide" data-idx="5">
+<div class="si">
+  <div class="label">Framework LAUNCH — Stratego</div>
+  <h2>Roadmap <span class="accent">90 dias</span></h2>
+  <div class="cols">
+    <div class="col">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-week">SEMANA 1</div><div class="tl-title">Estrutura</div><div class="tl-desc">MEI/CNPJ · Contas seller (ML + Shopee) · Contato com fornecedores · Solicitar amostras · Definir budget</div></div>
+        <div class="tl-item"><div class="tl-week">SEMANA 2</div><div class="tl-title">Estoque + Fotos</div><div class="tl-desc">Comprar lote inicial (20un × 5 produtos = R$3.700) · Fotos profissionais (6+ por produto) · Preparar embalagem personalizada</div></div>
+        <div class="tl-item"><div class="tl-week">SEMANA 3</div><div class="tl-title">Listar</div><div class="tl-desc">Upload anúncios ML + Shopee · Título otimizado com keywords · Descrição copy (Problema → Solução → Benefícios) · Preço de lançamento (-15%)</div></div>
+        <div class="tl-item"><div class="tl-week">SEMANA 4</div><div class="tl-title">Primeiras Vendas</div><div class="tl-desc">Meta: 10 vendas · Responder perguntas < 1h · Pós-venda ativo · Cartão agradecimento na embalagem · Pedir reviews</div></div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="timeline">
+        <div class="tl-item"><div class="tl-week">SEMANA 5-6</div><div class="tl-title">Reputação</div><div class="tl-desc">Meta: 25 reviews/produto · Ajustar preço e fotos com base em dados · Começar TikTok (vídeos demonstrativos) · Ativar cupons Shopee</div></div>
+        <div class="tl-item"><div class="tl-week">SEMANA 7-8</div><div class="tl-title">Analisar + Escalar</div><div class="tl-desc">Identificar produto vencedor (mais vendas + melhor margem) · Pausar perdedores · Escalar vencedor (mais estoque) · Listar no TikTok Shop</div></div>
+        <div class="tl-item"><div class="tl-week">MÊS 3</div><div class="tl-title">Crescer</div><div class="tl-desc">Produto vencedor em 3 plataformas · Adicionar variações (cores, tamanhos, kits) · Produtos complementares · Considerar marca própria</div></div>
+        <div class="tl-item"><div class="tl-week">MÊS 4-6</div><div class="tl-title">Escalar</div><div class="tl-desc">Meta: R$20-40k/mês · 10-15 produtos ativos · Marca própria · Ads ML + Shopee · Afiliados TikTok</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SLIDE 6: PROJEÇÃO FINANCEIRA -->
+<div class="slide" data-idx="6">
+<div class="si">
+  <div class="label">Projeção Financeira</div>
+  <h2>Do <span class="accent">zero</span> a <span class="green">R$100k/mês</span></h2>
+  <table>
+    <thead><tr><th>Fase</th><th>Período</th><th style="text-align:right">Investimento</th><th style="text-align:right">Produtos</th><th style="text-align:right">Vendas/dia</th><th style="text-align:right">Faturamento/mês</th><th style="text-align:right">Lucro líquido</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-gold">Validação</span></td><td>Mês 1</td><td style="text-align:right">R$5.000</td><td style="text-align:right">5</td><td style="text-align:right">2-3</td><td style="text-align:right">R$5.000-8.000</td><td style="text-align:right">R$1.500-2.500</td></tr>
+      <tr><td><span class="tag tag-blue">Tração</span></td><td>Mês 2-3</td><td style="text-align:right">R$8.000</td><td style="text-align:right">5-8</td><td style="text-align:right">5-8</td><td style="text-align:right">R$10.000-20.000</td><td style="text-align:right">R$3.000-7.000</td></tr>
+      <tr><td><span class="tag tag-green">Crescimento</span></td><td>Mês 4-6</td><td style="text-align:right">R$15.000</td><td style="text-align:right">10-15</td><td style="text-align:right">10-20</td><td style="text-align:right">R$25.000-50.000</td><td style="text-align:right">R$8.000-18.000</td></tr>
+      <tr style="background:rgba(0,200,83,.05)"><td><span class="tag tag-green">Escala</span></td><td>Mês 7-12</td><td style="text-align:right">R$25.000</td><td style="text-align:right">15-25</td><td style="text-align:right">20-50</td><td style="text-align:right;color:var(--green);font-weight:700">R$50.000-100.000</td><td style="text-align:right;color:var(--green);font-weight:700">R$15.000-35.000</td></tr>
+    </tbody>
+  </table>
+  <div class="card-grid card-grid-3" style="margin-top:16px">
+    <div class="card" style="text-align:center"><div style="font-size:32px;font-weight:800;color:var(--gold)">R$5k</div><div style="font-size:11px;color:var(--dim)">Investimento inicial</div></div>
+    <div class="card" style="text-align:center"><div style="font-size:32px;font-weight:800;color:var(--teal)">90 dias</div><div style="font-size:11px;color:var(--dim)">Até primeira escala</div></div>
+    <div class="card" style="text-align:center"><div style="font-size:32px;font-weight:800;color:var(--green)">R$100k</div><div style="font-size:11px;color:var(--dim)">Meta mês 12</div></div>
+  </div>
+</div>
+</div>
+
+<!-- SLIDE 7: FORNECEDORES -->
+<div class="slide" data-idx="7">
+<div class="si">
+  <div class="label">Sourcing — Hunter</div>
+  <h2>Fornecedores <span class="accent">nacionais</span> validados</h2>
+  <table>
+    <thead><tr><th>Fornecedor</th><th>Cidade</th><th>Nicho</th><th>Tipo</th><th>Diferencial</th></tr></thead>
+    <tbody>
+      <tr><td style="font-weight:600">Plasvale Meu Negócio</td><td>PR</td><td>Organizadores acrílico</td><td>Fábrica</td><td>Caixa 24un, BPA free, atacado direto</td></tr>
+      <tr><td style="font-weight:600">JLK Plásticos</td><td>SP</td><td>Utensílios cozinha</td><td>Fábrica (20+ anos)</td><td>Direto da fábrica, volume</td></tr>
+      <tr><td style="font-weight:600">Shopprolar</td><td>SP</td><td>Organizadores/cozinha</td><td>Distribuidor</td><td>Showroom SP, nacionais + importados</td></tr>
+      <tr><td style="font-weight:600">Atacado Vencedor</td><td>SP</td><td>Multi-categoria</td><td>Atacadista</td><td>Desconto 5-10% acima de 10un</td></tr>
+      <tr><td style="font-weight:600">Semaan Pari</td><td>SP</td><td>Utensílios domésticos</td><td>Atacadista</td><td>Referência no setor</td></tr>
+      <tr><td style="font-weight:600">Ergomais</td><td>SP</td><td>Home office/ergonomia</td><td>Especialista</td><td>80k+ kits vendidos, B2B</td></tr>
+      <tr><td style="font-weight:600">Ajeitaí</td><td>SP</td><td>Organizadores</td><td>Atacado</td><td>Condições especiais pra volume</td></tr>
+      <tr><td style="font-weight:600">Atacashow</td><td>SP</td><td>Gadgets importados</td><td>Importador</td><td>Produtos da Rua 25/Brás</td></tr>
+    </tbody>
+  </table>
+  <div class="card" style="margin-top:16px;border-left:3px solid var(--gold)">
+    <p style="font-size:13px;color:var(--dim)"><strong style="color:var(--white)">Próximo passo:</strong> Solicitar amostras de 3-5 fornecedores. Avaliar qualidade, prazo e preço por volume. Negociar desconto pra lote de 50+ unidades.</p>
+  </div>
+</div>
+</div>
+
+<!-- SLIDE 8: CHECKLIST -->
+<div class="slide" data-idx="8">
+<div class="si">
+  <div class="label">Go-to-Market — Stratego</div>
+  <h2>Checklist de <span class="accent">lançamento</span></h2>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--teal);font-size:13px;margin-bottom:12px">ESTRUTURA</h3>
+      <ul class="checklist">
+        <li>CNPJ MEI ativo</li>
+        <li>Conta bancária PJ</li>
+        <li>Conta seller Mercado Livre</li>
+        <li>Conta seller Shopee</li>
+        <li>Conta TikTok Shop</li>
+        <li>Espaço de armazenamento</li>
+      </ul>
+      <h3 style="color:var(--teal);font-size:13px;margin:20px 0 12px">PRODUTO</h3>
+      <ul class="checklist">
+        <li>3 nichos validados (score ≥ 12/15)</li>
+        <li>5 produtos do stack definidos</li>
+        <li>Fornecedor nacional contratado</li>
+        <li>Estoque inicial comprado (20un/produto)</li>
+        <li>Embalagem personalizada pronta</li>
+      </ul>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);font-size:13px;margin-bottom:12px">ANÚNCIO</h3>
+      <ul class="checklist">
+        <li>Título otimizado com keywords</li>
+        <li>6+ fotos profissionais por produto</li>
+        <li>Descrição copy (Problema → Solução → Benefícios)</li>
+        <li>Preço calculado com fórmula de margem</li>
+        <li>Frete Full ativado (ML)</li>
+      </ul>
+      <h3 style="color:var(--teal);font-size:13px;margin:20px 0 12px">OPERAÇÃO</h3>
+      <ul class="checklist">
+        <li>Alertas de perguntas (meta: < 1h)</li>
+        <li>Dashboard de métricas</li>
+        <li>Processo pós-venda definido</li>
+        <li>Critérios de kill/scale por produto</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SLIDE 9: PRÓXIMOS PASSOS -->
+<div class="slide" data-idx="9">
+<div class="si" style="text-align:center">
+  <div class="label">Próximos Passos</div>
+  <h2>O que fazer <span class="accent">esta semana</span></h2>
+  <div style="text-align:left;max-width:560px;margin:24px auto">
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:20px">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bg);flex-shrink:0">1</div>
+      <div><p style="font-size:16px"><strong>Abrir MEI</strong> (gov.br, 10 minutos, gratuito)</p><p style="font-size:12px;color:var(--dim)">CNAE: 4789-0/99 — Comércio varejista de outros produtos</p></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:20px">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bg);flex-shrink:0">2</div>
+      <div><p style="font-size:16px"><strong>Criar contas seller</strong> no ML e Shopee</p><p style="font-size:12px;color:var(--dim)">TikTok Shop fica pro mês 2 (precisa de CNPJ ativo)</p></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:20px">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bg);flex-shrink:0">3</div>
+      <div><p style="font-size:16px"><strong>Contatar 3 fornecedores</strong> e pedir amostras</p><p style="font-size:12px;color:var(--dim)">Plasvale + JLK + Shopprolar — comparar qualidade e preço</p></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:20px">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bg);flex-shrink:0">4</div>
+      <div><p style="font-size:16px"><strong>Separar R$5.000</strong> de budget inicial</p><p style="font-size:12px;color:var(--dim)">R$3.700 estoque + R$800 embalagem/fotos + R$500 reserva</p></div>
+    </div>
+    <div style="display:flex;align-items:flex-start;gap:14px">
+      <div style="width:32px;height:32px;border-radius:50%;background:rgba(3,228,208,.3);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--teal);flex-shrink:0">5</div>
+      <div><p style="font-size:16px;color:var(--dim)"><strong>Semana que vem:</strong> comprar estoque e tirar fotos</p></div>
+    </div>
+  </div>
+  <p style="margin-top:32px;font-size:12px;color:var(--dim)">Marketplace Squad | Hunter + Stratego | Maio 2026</p>
+</div>
+</div>
+
+</div>
+
+<nav class="nav">
+  <button class="nav-btn" id="prev">&larr;</button>
+  <span class="counter" id="counter">1 / 10</span>
+  <button class="nav-btn" id="next">&rarr;</button>
+</nav>
+
+<script>
+(function(){
+  const slides=document.querySelectorAll('.slide');
+  const total=slides.length;
+  let cur=0;
+  const counter=document.getElementById('counter');
+  function go(n){if(n<0||n>=total)return;slides[cur].classList.remove('active');cur=n;slides[cur].classList.add('active');counter.textContent=(cur+1)+' / '+total}
+  document.getElementById('prev').onclick=()=>go(cur-1);
+  document.getElementById('next').onclick=()=>go(cur+1);
+  document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)});
+  let sx=0;
+  document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){dx<0?go(cur+1):go(cur-1)}},{passive:true});
+})();
+</script>
+</body>
+</html>
