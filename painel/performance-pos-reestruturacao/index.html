@@ -288,7 +288,7 @@ tbody td{padding:8px 10px;border-bottom:1px solid var(--border)}tbody tr:hover{b
 <div class="panel">
 <h2>Leads Qualificados >= 50k (79 leads)</h2>
 <table>
-<thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th><th>Data Conversao</th></tr></thead>
+<thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th><th id="sort-data" style="cursor:pointer;user-select:none" onclick="sortByDate()">Data Conversao <span id="sort-arrow">▼</span></th></tr></thead>
 <tbody><tr>
 <td style="font-weight:600">Marcos Vinicios Sant’ana</td>
 <td style="font-size:11px">(22) 98116-2039</td>
@@ -852,4 +852,33 @@ Dados: Meta Ads API + RD Station Marketing (segmentacoes qualificados >= R$50k).
 Referencia de reestruturacao: 14/abr/2026 — C4 CONV e IR-LP pausadas, budget redistribuido.
 </div>
 
+<script>
+let sortDesc = true;
+function sortByDate() {
+  const table = document.getElementById('sort-data').closest('table');
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+
+  rows.sort(function(a, b) {
+    const dateA = parseDate(a.cells[5].textContent.trim());
+    const dateB = parseDate(b.cells[5].textContent.trim());
+    return sortDesc ? dateB - dateA : dateA - dateB;
+  });
+
+  rows.forEach(function(row) { tbody.appendChild(row); });
+  sortDesc = !sortDesc;
+  document.getElementById('sort-arrow').textContent = sortDesc ? '▼' : '▲';
+}
+
+function parseDate(str) {
+  // Formato: "04/05/2026 17:15"
+  var parts = str.split(' ');
+  var d = parts[0].split('/');
+  var t = parts[1] ? parts[1].split(':') : ['0','0'];
+  return new Date(parseInt(d[2]), parseInt(d[1])-1, parseInt(d[0]), parseInt(t[0]), parseInt(t[1]));
+}
+
+// Ordenar decrescente ao carregar (mais recente primeiro)
+document.addEventListener('DOMContentLoaded', function() { sortDesc = false; sortByDate(); });
+</script>
 </body></html>
