@@ -84,11 +84,11 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 <body>
 
 <h1>Boost Growth Squad — Painel de Agentes</h1>
-<p class="sub">23 agentes + Atlas (orquestrador) | Boost Research | Crypto Intelligence PRO</p>
+<p class="sub">24 agentes + Atlas (orquestrador) | Boost Research | Crypto Intelligence PRO</p>
 
 <!-- Stats -->
 <div class="stats">
-  <div class="stat"><div class="sv" style="color:var(--teal)">24</div><div class="sl">Agentes</div></div>
+  <div class="stat"><div class="sv" style="color:var(--teal)">25</div><div class="sl">Agentes</div></div>
   <div class="stat"><div class="sv" style="color:var(--green)">2</div><div class="sl">Skills</div></div>
   <div class="stat"><div class="sv" style="color:var(--blue)">4</div><div class="sl">Workflows</div></div>
   <div class="stat"><div class="sv" style="color:var(--purple)">6</div><div class="sl">Áreas</div></div>
@@ -125,7 +125,7 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 
 <!-- Filters -->
 <div class="filters">
-  <button class="filter-btn active" onclick="filterAgents('all')">Todos (24)</button>
+  <button class="filter-btn active" onclick="filterAgents('all')">Todos (25)</button>
   <button class="filter-btn" onclick="filterAgents('lideranca')">Liderança</button>
   <button class="filter-btn" onclick="filterAgents('aquisicao')">Aquisição</button>
   <button class="filter-btn" onclick="filterAgents('criativo')">Criativo</button>
@@ -150,10 +150,11 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
   <div class="org-level">
     <div class="org-node"><div class="org-dot" style="background:var(--teal)"></div><span class="org-name">Atlas</span><span class="org-role">— Orquestrador Mestre</span></div>
     <div class="org-level">
-      <div class="org-node"><div class="org-dot" style="background:var(--blue)"></div><span class="org-name">Tati</span><span class="org-role">— CMO → Leo, Nina, Cris, Helena, Theo, Lia, Bruno</span></div>
+      <div class="org-node"><div class="org-dot" style="background:var(--blue)"></div><span class="org-name">Tati</span><span class="org-role">— CMO → Leo, Nina, Cris, Helena, Theo, Lia, Bruno, Aura</span></div>
       <div class="org-level">
         <div class="org-node"><div class="org-dot" style="background:var(--purple)"></div><span class="org-name">Helena</span><span class="org-role">— Criativa → Vera, Zeca</span></div>
         <div class="org-node"><div class="org-dot" style="background:var(--orange)"></div><span class="org-name">Bruno</span><span class="org-role">— Performance → Rex, Dani, Enzo</span></div>
+        <div class="org-node"><div class="org-dot" style="background:var(--purple)"></div><span class="org-name">Aura</span><span class="org-role">— Brand Awareness (valida split budget com Cris)</span></div>
       </div>
       <div class="org-node"><div class="org-dot" style="background:var(--blue)"></div><span class="org-name">Gabi</span><span class="org-role">— PM → Rafa, Dev, Otto</span></div>
       <div class="org-node"><div class="org-dot" style="background:var(--red)"></div><span class="org-name">Kai</span><span class="org-role">— Auditoria → Tag (poder de BLOQUEIO)</span></div>
@@ -204,7 +205,7 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
   </div>
 </div>
 
-<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Growth Squad v1.0 | 23 agentes + Atlas | 05/mai/2026</p>
+<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Growth Squad v1.1 | 24 agentes + Atlas | 06/mai/2026</p>
 
 <script>
 const agents = [
@@ -230,7 +231,8 @@ const agents = [
   {id:"mel",name:"Mel",role:"E-mail / Automação",area:"nurturing",color:"var(--green)",scope:"E-mails RD Station, templates, deliverability, fluxos, A/B",skills:[],reports:"Lia",validates:"",tags:["e-mail","rd-station"],responsibilities:["Templates de e-mail","Implementação no RD","Deliverability","Fluxos de automação"]},
   {id:"rick",name:"Rick",role:"Closer / Sales",area:"vendas",color:"var(--gold)",scope:"Scripts reunião, objeções, follow-up, playbook, win/loss",skills:[],reports:"Leo",validates:"",tags:["vendas","closer"],responsibilities:["Scripts de reunião","Mapeamento de objeções","Follow-up","Win/loss analysis"]},
   {id:"juri",name:"Juri",role:"Compliance",area:"vendas",color:"var(--red)",scope:"CVM/ANBIMA/LGPD, disclaimers, revisão claims, PODER DE VETO",skills:[],reports:"Atlas",validates:"Vera, Theo, Helena, Mel",tags:["compliance","veto"],responsibilities:["Revisão CVM/ANBIMA","LGPD","Disclaimers obrigatórios","PODER DE VETO"]},
-  {id:"dev",name:"Dev",role:"Desenvolvedor",area:"conversao",color:"var(--teal)",scope:"HTML/CSS/JS, integração RD, GTM tags, deploy, scripts",skills:[],reports:"Gabi",validates:"",tags:["dev","front-end"],responsibilities:["Implementação de LPs","Integração RD Station","GTM tags","Deploy Cloudflare/GitHub Pages"]}
+  {id:"dev",name:"Dev",role:"Desenvolvedor",area:"conversao",color:"var(--teal)",scope:"HTML/CSS/JS, integração RD, GTM tags, deploy, scripts",skills:[],reports:"Gabi",validates:"",tags:["dev","front-end"],responsibilities:["Implementação de LPs","Integração RD Station","GTM tags","Deploy Cloudflare/GitHub Pages"]},
+  {id:"aura",name:"Aura",role:"Brand Awareness",area:"aquisicao",color:"var(--purple)",scope:"Mensuração de marca, brand tracking, MMM, mental availability, Share of Search, split brand/activation",skills:["mensuracao-avancada"],reports:"Tati",validates:"Cris (split budget)",tags:["brand","awareness","skill-1"],responsibilities:["Brand Score (5 perguntas recorrente)","Share of Search semanal (proxy de brand health)","Category Entry Points (CEPs) da Boost","Distinctive Brand Assets (DAG grid)","Split brand building vs activation (Binet & Field)","Diagnóstico plateau de performance","MMM — atribuição brand-to-revenue","Auditoria criativos (right-brain Orlando Wood)","Conectar métricas de marca a resultados de negócio","Monitorar mental availability e salience"]}
 ];
 
 function renderAgents(filter) {
