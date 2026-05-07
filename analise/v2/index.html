@@ -1087,10 +1087,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
   });
 
-  /* ── Multi-Step Navigation ── */
-  function goStep(n) {
-    var errEl = document.getElementById('form-error');
-    errEl.style.display = 'none';
+  /* ── Multi-Step Navigation (global scope for onclick) ── */
+  window.goStep = function(n) {
+    var errEl = document.getElementById('form-error') || document.getElementById('form-error-global');
+    if (errEl) errEl.style.display = 'none';
 
     // Validate current step before advancing
     if (n === 2) {
@@ -1140,22 +1140,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     // Scroll form into view
     document.getElementById('form-analise').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  };
 
-  /* ── Radio Cards ── */
-  document.querySelectorAll('.radio-cards').forEach(function(group) {
-    var fieldId = group.getAttribute('data-field');
-    group.querySelectorAll('.radio-card').forEach(function(card) {
-      card.addEventListener('click', function() {
-        group.querySelectorAll('.radio-card').forEach(function(c) { c.classList.remove('selected'); });
-        card.classList.add('selected');
-        document.getElementById(fieldId).value = card.getAttribute('data-value');
+  /* ── Submit + Radio Cards → envia para RD Station via Conversions API ── */
+  document.addEventListener('DOMContentLoaded', function() {
+
+    /* Radio Cards listeners */
+    document.querySelectorAll('.radio-cards').forEach(function(group) {
+      var fieldId = group.getAttribute('data-field');
+      group.querySelectorAll('.radio-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+          group.querySelectorAll('.radio-card').forEach(function(c) { c.classList.remove('selected'); });
+          card.classList.add('selected');
+          document.getElementById(fieldId).value = card.getAttribute('data-value');
+        });
       });
     });
-  });
-
-  /* ── Submit → envia para RD Station via Conversions API ── */
-  document.addEventListener('DOMContentLoaded', function() {
     fillUTMs();
     var form  = document.getElementById('form-analise');
     var btnEl = document.getElementById('btn-enviar');
