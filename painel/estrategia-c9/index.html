@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estratégia C9 — Maio 2026 — Boost Research</title>
+<style>
+:root {
+  --bg:#0C0C0C;--card:#1A1A1A;--border:#2A2A2A;--teal:#19C6B5;--orange:#FFA500;
+  --red:#FF4D6A;--blue:#4D9EFF;--purple:#A855F7;--green:#34D399;--gold:#FFD700;
+  --t1:#E5E5E5;--t2:#A0A0A0;--t3:#666;--radius:12px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--t1);padding:24px;line-height:1.5}
+.container{max-width:1200px;margin:0 auto}
+
+/* Header */
+.header{text-align:center;padding:48px 0 32px}
+.header h1{font-size:36px;font-weight:800}
+.header h1 span{color:var(--teal)}
+.header .sub{color:var(--t2);font-size:14px;margin-top:8px}
+.divider{width:120px;height:3px;background:var(--teal);margin:16px auto}
+
+/* Section */
+.section{margin-bottom:40px}
+.section-title{font-size:22px;font-weight:700;color:var(--teal);margin-bottom:16px;border-bottom:2px solid var(--teal);display:inline-block;padding-bottom:4px}
+
+/* Grid */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.card.accent-teal{border-color:var(--teal)}
+.card.accent-orange{border-color:var(--orange)}
+.card.accent-blue{border-color:var(--blue)}
+.card.accent-purple{border-color:var(--purple)}
+.card.accent-green{border-color:var(--green)}
+.card.accent-red{border-color:var(--red)}
+.card.accent-gold{border-color:var(--gold)}
+.card h3{font-size:14px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13px;color:var(--t2);margin-bottom:6px}
+.card .big{font-size:28px;font-weight:800;margin:4px 0}
+.card ul{list-style:none;padding:0}
+.card ul li{font-size:12px;color:var(--t2);padding:3px 0;padding-left:16px;position:relative}
+.card ul li::before{content:"→";position:absolute;left:0;color:var(--teal)}
+
+/* Pills */
+.pill{display:inline-block;padding:3px 12px;border-radius:20px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.pill-teal{background:rgba(25,198,181,.15);color:var(--teal)}
+.pill-orange{background:rgba(255,165,0,.15);color:var(--orange)}
+.pill-blue{background:rgba(77,158,255,.15);color:var(--blue)}
+.pill-purple{background:rgba(168,85,247,.15);color:var(--purple)}
+.pill-green{background:rgba(52,211,153,.15);color:var(--green)}
+.pill-red{background:rgba(255,77,106,.15);color:var(--red)}
+.pill-gold{background:rgba(255,215,0,.15);color:var(--gold)}
+
+/* Big numbers */
+.big-num{text-align:center;padding:16px}
+.big-num .label{font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.big-num .value{font-size:24px;font-weight:800;margin-top:4px}
+
+/* Steps */
+.step{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;color:var(--bg)}
+.step-content h4{font-size:14px;font-weight:700;margin-bottom:2px}
+.step-content p{font-size:12px;color:var(--t2)}
+
+/* UTM box */
+.utm-box{background:#111;border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-family:'SF Mono',Monaco,monospace;font-size:11px;color:var(--teal);line-height:1.8;margin-bottom:12px;cursor:pointer;transition:border-color .2s;word-break:break-all}
+.utm-box:hover{border-color:var(--teal)}
+.utm-box .param{color:var(--t3)}
+.utm-box .val{color:var(--teal)}
+.utm-box .highlight{color:var(--gold);font-weight:700}
+
+/* Table */
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th,.tbl td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+.tbl th{background:#111;color:var(--t3);font-weight:700;text-transform:uppercase;font-size:10px;letter-spacing:.5px}
+.tbl td{color:var(--t2)}
+.tbl .good{color:var(--green)}
+.tbl .warn{color:var(--orange)}
+.tbl .bad{color:var(--red)}
+
+/* Alert */
+.alert{border-radius:var(--radius);padding:16px 20px;margin-bottom:16px}
+.alert-gold{background:rgba(255,215,0,.06);border:1px solid var(--gold)}
+.alert-red{background:rgba(255,77,106,.06);border:1px solid var(--red)}
+.alert h4{font-size:12px;font-weight:700;margin-bottom:4px}
+.alert p{font-size:12px;color:var(--t2)}
+
+/* Copy to clipboard */
+.copy-btn{background:var(--teal);color:var(--bg);border:none;padding:4px 12px;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer;float:right}
+.copy-btn:hover{opacity:.8}
+
+footer{text-align:center;color:var(--t3);font-size:11px;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+
+@media(max-width:900px){.grid-4,.grid-3{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
+@media(max-width:600px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Campanha <span>C9</span> — Maio 2026</h1>
+  <div class="sub">Boost Research — Crypto Intelligence PRO</div>
+  <div class="divider"></div>
+  <div class="sub">10 criativos  •  3 conjuntos  •  Teste A/B form v1 vs v2  •  R$600/dia</div>
+</div>
+
+<!-- APRENDIZADOS ABRIL -->
+<div class="section">
+  <div class="section-title">O que Abril nos ensinou</div>
+  <div class="grid-4">
+    <div class="card accent-green"><span class="pill pill-green">Melhor</span><h3>IR Cripto</h3><div class="big" style="color:var(--green)">CPL R$15</div><p>30% qualificados</p></div>
+    <div class="card accent-red"><span class="pill pill-red">Pior</span><h3>C5 Andromeda</h3><div class="big" style="color:var(--red)">2% qualif</div><p>CPL qualif R$2.252</p></div>
+    <div class="card accent-teal"><span class="pill pill-teal">Virada</span><h3>Reestruturação</h3><div class="big" style="color:var(--teal)">-61% custo</div><p>Triplicou leads</p></div>
+    <div class="card accent-orange"><span class="pill pill-orange">Qualidade</span><h3>C4 Conversão</h3><div class="big" style="color:var(--orange)">36% qualif</div><p>CPL alto (R$298)</p></div>
+  </div>
+  <div class="alert alert-gold">
+    <h4 style="color:var(--gold)">Direção da C9</h4>
+    <p>Padrão IR Cripto: CPL baixo + qualificação alta. Criativos baseados nas dores reais do ICP (228 atas). Teste A/B do formulário.</p>
+  </div>
+  <div class="grid-4" style="grid-template-columns:repeat(6,1fr)">
+    <div class="card big-num"><div class="label">Budget/dia</div><div class="value" style="color:var(--teal)">R$ 600</div></div>
+    <div class="card big-num"><div class="label">Budget/mês</div><div class="value" style="color:var(--teal)">R$ 18k</div></div>
+    <div class="card big-num"><div class="label">Criativos</div><div class="value" style="color:var(--blue)">10</div></div>
+    <div class="card big-num"><div class="label">Conjuntos</div><div class="value" style="color:var(--purple)">3</div></div>
+    <div class="card big-num"><div class="label">Teste A/B</div><div class="value" style="color:var(--gold)">14 dias</div></div>
+    <div class="card big-num"><div class="label">Métrica</div><div class="value" style="color:var(--orange)">CPR</div></div>
+  </div>
+</div>
+
+<!-- 3 CONJUNTOS -->
+<div class="section">
+  <div class="section-title">3 Conjuntos de Anúncios</div>
+  <div class="grid-3">
+    <div class="card accent-orange">
+      <span class="pill pill-orange">QUENTE</span>
+      <h3>Morno + Quente</h3>
+      <div class="big" style="color:var(--orange)">R$180/dia</div>
+      <p style="color:var(--t3)">30% do budget</p>
+      <h4 style="color:var(--t2);margin-top:12px;font-size:11px">PÚBLICO</h4>
+      <p>Custom Audience: engajaram IG 90d + visitaram perfil 90d</p>
+      <h4 style="color:var(--t2);margin-top:12px;font-size:11px">CRIATIVOS</h4>
+      <ul>
+        <li>#1 Sem regra de saída</li>
+        <li>#2 Lucro foi e voltou</li>
+        <li>#6 Confessional André</li>
+        <li>#7 Trauma altcoin</li>
+      </ul>
+      <h4 style="color:var(--t3);margin-top:12px;font-size:10px">UTM_CAMPAIGN</h4>
+      <p style="color:var(--orange);font-family:monospace;font-size:11px">c9-analise-quente-mai2026</p>
+    </div>
+    <div class="card accent-blue">
+      <span class="pill pill-blue">FRIO-CRIPTO</span>
+      <h3>Broad + LAL</h3>
+      <div class="big" style="color:var(--blue)">R$300/dia</div>
+      <p style="color:var(--t3)">50% do budget</p>
+      <h4 style="color:var(--t2);margin-top:12px;font-size:11px">PÚBLICO</h4>
+      <p>LAL 1% Seguidores + Investimento, Day trading, Mercado financeiro, Fintech, Mercado de ações</p>
+      <h4 style="color:var(--t2);margin-top:12px;font-size:11px">CRIATIVOS</h4>
+      <ul>
+        <li>#3 Patrimônio sem cripto</li>
+        <li>#4 Travado pra entrar</li>
+        <li>#5 Método não palpite</li>
+        <li>#8 Análise sem conflito</li>
+      </ul>
+      <h4 style="color:var(--t3);margin-top:12px;font-size:10px">UTM_CAMPAIGN</h4>
+      <p style="color:var(--blue);font-family:monospace;font-size:11px">c9-analise-frio-cripto-mai2026</p>
+    </div>
+    <div class="card accent-purple">
+      <span class="pill pill-purple">CLEVEL</span>
+      <h3>Decisores</h3>
+      <div class="big" style="color:var(--purple)">R$120/dia</div>
+      <p style="color:var(--t3)">20% do budget</p>
+      <h4 style="color:var(--t2);margin-top:12px;font-size:11px">PÚBLICO</h4>
+      <p>Investimento, Gestão de fortunas, Mercado financeiro, Plano financeiro, Mercado de ações, Finanças (30-55 BR)</p>
+      <h4 style="color:var(--t2);margin-top:12px;font-size:11px">CRIATIVOS</h4>
+      <ul>
+        <li>#9 Curadoria não conteúdo</li>
+        <li>#10 Sem tempo</li>
+      </ul>
+      <h4 style="color:var(--t3);margin-top:12px;font-size:10px">UTM_CAMPAIGN</h4>
+      <p style="color:var(--purple);font-family:monospace;font-size:11px">c9-analise-clevel-mai2026</p>
+    </div>
+  </div>
+</div>
+
+<!-- TESTE A/B -->
+<div class="section">
+  <div class="section-title">Teste A/B — Form v1 vs v2</div>
+  <div class="grid-2">
+    <div class="card" style="border-color:var(--t3)">
+      <span class="pill" style="background:rgba(160,160,160,.15);color:var(--t2)">CONTROLE (A)</span>
+      <h3>Form atual — 5 campos</h3>
+      <p style="color:var(--teal);font-family:monospace;font-size:12px">analise.boostresearch.com.br</p>
+      <ul style="margin-top:10px">
+        <li>Nome, e-mail, WhatsApp, Instagram</li>
+        <li>Toggle cripto/trad + patrimônio</li>
+        <li>~1 minuto pra preencher</li>
+        <li>CR baseline: ~20%</li>
+        <li style="color:var(--t3)">Conversion ID: lp_mentoria_boost</li>
+      </ul>
+    </div>
+    <div class="card accent-teal">
+      <span class="pill pill-teal">TESTE (B)</span>
+      <h3>Multi-step — +3 perguntas</h3>
+      <p style="color:var(--teal);font-family:monospace;font-size:12px">analise.boostresearch.com.br/v2</p>
+      <ul style="margin-top:10px">
+        <li>Step 1: contato (igual) · Step 2: perfil (igual)</li>
+        <li style="color:var(--teal);font-weight:600">Step 3: tempo André + desafio cripto + disposição</li>
+        <li>~1.5 minutos pra preencher</li>
+        <li style="color:var(--orange)">CR esperada: ~15% (menos volume, mais qualidade)</li>
+        <li style="color:var(--t3)">Conversion ID: lp_mentoria_boost_v2</li>
+      </ul>
+    </div>
+  </div>
+  <div class="alert alert-gold">
+    <h4 style="color:var(--gold)">Setup do Experiment</h4>
+    <p>50/50 sem overlap · 14 dias mín · 100 leads/variante · ~R$8.400 · Métrica: CPR (custo por reunião)</p>
+    <p style="color:var(--gold);font-weight:700;margin-top:6px">CPR v2 &lt; v1 → adotar v2 &nbsp;|&nbsp; Piorar &gt;15% → reverter &nbsp;|&nbsp; Neutro → manter v2</p>
+  </div>
+  <div class="grid-2">
+    <div class="card accent-red">
+      <h3 style="color:var(--red)">Kill Rules (7 dias)</h3>
+      <ul><li>CPL &gt; R$100 e &lt; 3 leads → PAUSAR</li><li>Sem qualificado em 5 dias → REVISAR</li><li>Frequência &gt; 3.0 → trocar criativo</li></ul>
+    </div>
+    <div class="card accent-green">
+      <h3 style="color:var(--green)">Scale Rules (7 dias)</h3>
+      <ul><li>CPL &lt; R$30 e &gt; 10 leads → ESCALAR +30%</li><li>Qualificação &gt; 25% → duplicar vencedor</li><li>CPR &lt; R$300 → aumentar budget</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- 10 ANÚNCIOS -->
+<div class="section">
+  <div class="section-title">10 Anúncios Criados (PAUSADOS)</div>
+  <div style="overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border)">
+    <table class="tbl">
+      <tr><th>#</th><th>Ângulo</th><th>Dor ICP</th><th>Headline (resumo)</th><th>Conjunto</th><th>Ad ID</th></tr>
+      <tr><td>1</td><td>Sem regra de saída</td><td>#1 Não sabe vender</td><td>Mais de R$100 mil em cripto e sem regra de saída?</td><td><span class="pill pill-orange">QUENTE</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585438360651</td></tr>
+      <tr><td>2</td><td>Lucro foi e voltou</td><td>#1 Não sabe vender</td><td>Mais de R$100 mil em cripto e o lucro foi e voltou?</td><td><span class="pill pill-orange">QUENTE</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585442390651</td></tr>
+      <tr><td>3</td><td>Patrimônio sem cripto</td><td>#2 Sem tempo</td><td>Mais de R$200 mil investidos e nenhum real em cripto?</td><td><span class="pill pill-blue">FRIO</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585446940651</td></tr>
+      <tr><td>4</td><td>Travado pra entrar</td><td>#3 Medo</td><td>Mais de R$200 mil investidos e travado pra entrar?</td><td><span class="pill pill-blue">FRIO</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585450690651</td></tr>
+      <tr><td>5</td><td>Método não palpite</td><td>#2 Sem tempo</td><td>Mais de R$100 mil em cripto merecem método</td><td><span class="pill pill-blue">FRIO</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585620750651</td></tr>
+      <tr><td>6</td><td>Confessional André</td><td>#1 + #3</td><td>Eu também já fiquei refém do ciclo</td><td><span class="pill pill-blue">FRIO</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585454570651</td></tr>
+      <tr><td>7</td><td>Trauma altcoin</td><td>#1 Não sabe vender</td><td>A altcoin que ia triplicar...</td><td><span class="pill pill-orange">QUENTE</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585460030651</td></tr>
+      <tr><td>8</td><td>Análise sem conflito</td><td>Posicionamento</td><td>Mais de R$100 mil merecem análise sem conflito</td><td><span class="pill pill-blue">FRIO</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585462580651</td></tr>
+      <tr><td>9</td><td>Curadoria</td><td>#2 Sem tempo</td><td>Você não precisa de mais conteúdo sobre cripto</td><td><span class="pill pill-purple">CLEVEL</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585465470651</td></tr>
+      <tr><td>10</td><td>Sem tempo</td><td>#2 Sem tempo</td><td>Mais de R$100 mil e sem tempo pra acompanhar?</td><td><span class="pill pill-purple">CLEVEL</span></td><td style="font-family:monospace;font-size:10px;color:var(--t3)">120248585468640651</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- COMO CRIAR EXPERIMENT -->
+<div class="section">
+  <div class="section-title">Como criar o Experiment no Meta — passo a passo</div>
+  <div class="grid-2">
+    <div>
+      <div class="step"><div class="step-num" style="background:var(--teal)">1</div><div class="step-content"><h4>Abrir o Gerenciador de Anúncios</h4><p>ads.manager.facebook.com → conta André Franco</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--teal)">2</div><div class="step-content"><h4>Menu ☰ (3 risquinhos no canto esquerdo)</h4><p>Clicar pra abrir o menu lateral</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--blue)">3</div><div class="step-content"><h4>Clicar em "Experimentos"</h4><p>Seção "Analisar e reportar". Se não achar, buscar na barra de pesquisa</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--green)">4</div><div class="step-content"><h4>Clicar "Criar" → "Teste A/B"</h4><p>Botão azul no canto superior direito</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--orange)">5</div><div class="step-content"><h4>Escolher "Campanha existente"</h4><p>Selecionar: [BR][BOOST][C9-MAIO][CBO][ANALISE-LP][Mai2026]</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--orange)">6</div><div class="step-content"><h4>Variável: "Criativo"</h4><p>É a opção que permite URLs diferentes nos anúncios</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--purple)">7</div><div class="step-content"><h4>Selecionar os 2 grupos</h4><p>Grupo A = conjuntos com URL v1 · Grupo B = conjuntos com URL v2</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--gold)">8</div><div class="step-content"><h4>Duração: 14 dias</h4><p>Data início = hoje · Data fim = daqui 14 dias</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--gold)">9</div><div class="step-content"><h4>Métrica: "Custo por resultado"</h4><p>A mais próxima do CPR no Meta</p></div></div>
+      <div class="step"><div class="step-num" style="background:var(--green)">10</div><div class="step-content"><h4>Clicar "Criar teste"</h4><p>Pronto! O Meta divide 50/50 automaticamente</p></div></div>
+    </div>
+    <div>
+      <div class="card accent-teal" style="margin-bottom:16px">
+        <h3 style="color:var(--teal)">URLs v2 — copiar e colar</h3>
+        <p style="color:var(--t3);font-size:11px;margin-bottom:12px">Duplicar cada conjunto e trocar a URL por estas:</p>
+
+        <p style="color:var(--orange);font-weight:700;font-size:11px;margin-bottom:4px">QUENTE v2</p>
+        <div class="utm-box" onclick="copyUTM(this)">
+          <button class="copy-btn">Copiar</button>
+          https://analise.boostresearch.com.br/v2?<span class="param">utm_source=</span><span class="val">facebook</span>&<span class="param">utm_medium=</span><span class="val">cpc</span>&<span class="param">utm_campaign=</span><span class="val">c9-analise-quente-mai2026</span>&<span class="param">utm_content=</span><span class="highlight">form-v2</span>&<span class="param">utm_term=</span><span class="val">estatico</span>
+        </div>
+
+        <p style="color:var(--blue);font-weight:700;font-size:11px;margin-bottom:4px">FRIO-CRIPTO v2</p>
+        <div class="utm-box" onclick="copyUTM(this)">
+          <button class="copy-btn">Copiar</button>
+          https://analise.boostresearch.com.br/v2?<span class="param">utm_source=</span><span class="val">facebook</span>&<span class="param">utm_medium=</span><span class="val">cpc</span>&<span class="param">utm_campaign=</span><span class="val">c9-analise-frio-cripto-mai2026</span>&<span class="param">utm_content=</span><span class="highlight">form-v2</span>&<span class="param">utm_term=</span><span class="val">estatico</span>
+        </div>
+
+        <p style="color:var(--purple);font-weight:700;font-size:11px;margin-bottom:4px">CLEVEL v2</p>
+        <div class="utm-box" onclick="copyUTM(this)">
+          <button class="copy-btn">Copiar</button>
+          https://analise.boostresearch.com.br/v2?<span class="param">utm_source=</span><span class="val">facebook</span>&<span class="param">utm_medium=</span><span class="val">cpc</span>&<span class="param">utm_campaign=</span><span class="val">c9-analise-clevel-mai2026</span>&<span class="param">utm_content=</span><span class="highlight">form-v2</span>&<span class="param">utm_term=</span><span class="val">estatico</span>
+        </div>
+
+        <p style="color:var(--t3);font-size:10px;margin-top:8px">A diferença entre v1 e v2: URL com <span style="color:var(--gold)">/v2</span> e <span style="color:var(--gold)">utm_content=form-v2</span></p>
+      </div>
+
+      <div class="alert alert-gold">
+        <h4 style="color:var(--gold)">Antes de criar o Experiment</h4>
+        <p>Primeiro duplique os 3 conjuntos no Gerenciador. Em cada cópia, troque a URL do anúncio pela URL v2 acima. Depois crie o Experiment vinculando originais (v1) vs cópias (v2).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IDs -->
+<div class="section">
+  <div class="section-title">IDs da Campanha</div>
+  <div class="grid-2">
+    <div class="card accent-teal">
+      <h3 style="color:var(--teal)">Campanha + Conjuntos</h3>
+      <table class="tbl">
+        <tr><td>Campanha</td><td style="font-family:monospace;color:var(--teal)">120248585181920651</td></tr>
+        <tr><td><span class="pill pill-orange">QUENTE</span></td><td style="font-family:monospace;color:var(--orange)">120248585189140651</td></tr>
+        <tr><td><span class="pill pill-blue">FRIO-CRIPTO</span></td><td style="font-family:monospace;color:var(--blue)">120248585190840651</td></tr>
+        <tr><td><span class="pill pill-purple">CLEVEL</span></td><td style="font-family:monospace;color:var(--purple)">120248585192680651</td></tr>
+      </table>
+    </div>
+    <div class="card accent-gold">
+      <h3 style="color:var(--gold)">RD Station — Campos criados</h3>
+      <table class="tbl">
+        <tr><td>cf_tempo_conhece_andre</td><td style="font-family:monospace;font-size:10px;color:var(--t3)">7dcd6259-5621-456e-9338-4ce1e9635960</td></tr>
+        <tr><td>cf_desafio_cripto</td><td style="font-family:monospace;font-size:10px;color:var(--t3)">9d87be48-053e-4468-abc4-eb2898fae755</td></tr>
+        <tr><td>cf_disposicao_investimento_anual</td><td style="font-family:monospace;font-size:10px;color:var(--t3)">e72c7d64-2312-4d33-8c35-a613ed050582</td></tr>
+      </table>
+      <p style="margin-top:8px;font-size:11px;color:var(--t3)">Landing Pages: v1 (lp_mentoria_boost) · v2 (lp_mentoria_boost_v2)</p>
+    </div>
+  </div>
+</div>
+
+<!-- PENDÊNCIAS -->
+<div class="section">
+  <div class="section-title">O que falta (manual)</div>
+  <div class="alert alert-gold">
+    <h4 style="color:var(--gold)">3 passos pra ativar</h4>
+    <p>1. Duplicar os 3 conjuntos no Gerenciador → trocar URL pra /v2 + utm_content=form-v2</p>
+    <p>2. Criar Experiment no Meta (passo a passo acima)</p>
+    <p>3. Revisar tudo → Ativar campanha</p>
+  </div>
+</div>
+
+<footer>
+  Boost Research — Campanha C9 Maio 2026 — Estratégia + Teste A/B · 07/mai/2026<br>
+  <a href="https://elsonflorentino-afk.github.io/projetos-boost/painel/estrategia-c9/" style="color:var(--teal);text-decoration:none">elsonflorentino-afk.github.io/projetos-boost/painel/estrategia-c9/</a>
+</footer>
+
+</div>
+
+<script>
+function copyUTM(el) {
+  var text = el.innerText.replace('Copiar','').trim();
+  navigator.clipboard?.writeText(text);
+  var btn = el.querySelector('.copy-btn');
+  btn.textContent = '✓ Copiado';
+  btn.style.background = 'var(--green)';
+  setTimeout(function(){ btn.textContent='Copiar'; btn.style.background='var(--teal)'; }, 2000);
+}
+</script>
+</body>
+</html>
