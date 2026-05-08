@@ -1201,6 +1201,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         errEl.style.display = 'block'; return;
       }
 
+      // Validação Step 3 — campos obrigatórios
+      if (!document.getElementById('f-tempo-andre').value) {
+        errEl.textContent = 'Selecione há quanto tempo conhece o trabalho do André Franco.';
+        errEl.style.display = 'block'; return;
+      }
+      if (!document.getElementById('f-desafio-cripto').value) {
+        errEl.textContent = 'Selecione seu maior desafio com investimentos em cripto.';
+        errEl.style.display = 'block'; return;
+      }
+      if (!document.getElementById('f-disposicao').value) {
+        errEl.textContent = 'Selecione quanto consideraria destinar a um Advisor dedicado.';
+        errEl.style.display = 'block'; return;
+      }
+
       btnEl.disabled = true;
       btnEl.textContent = 'Enviando...';
 
