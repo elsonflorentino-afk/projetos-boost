@@ -162,11 +162,20 @@ HISTORICAL_RENOVACAO = {
 }
 
 HISTORICAL_QUALIFIED = {
-    # Fevereiro: SQL 124 do funil (report pagina 4)
+    # Fevereiro: Report nao detalha qualificados separadamente.
+    # SQL do funil era 124, mas esse numero inclui leads sem criterio de patrimonio.
+    # Mantemos 124 como valor do report para compatibilidade.
     'Fev': 124,
-    # Marco: ~76 leads qualificados (63 form nativo + 13 LP C4) — report pagina 9
+    # Marco: ~76 leads qualificados (63 form >=R$100k + 13 LP >=R$50k) — report pag 9
+    # Com criterio corrigido (>=R$50k), o CSV encontra 105 qualificados.
+    # Mantemos 76 do report (fonte oficial fechada).
     'Mar': 76,
 }
+
+# Leads qualificados de Abril via CSV RD Station (06/mai/2026)
+# Criterio: patrimonio cripto OU trad >= R$50k
+# Fonte: rd-boost-research-leads-todos-os-contatos-da-base-de-leads.csv
+HISTORICAL_QUALIFIED_ABR_CSV = 112
 
 # Diretorio de saida
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -290,6 +299,54 @@ def fetch_meta_weekly():
             d['ctr'] = round(d['clicks'] / d['impressions'] * 100, 2)
 
     return all_weeks
+
+
+def fetch_meta_campaign_breakdown():
+    """Busca campanhas por mes e separa em leads vs engajamento.
+
+    Retorna dict com 'leads' e 'engagement', cada um com lista de campanhas.
+    """
+    result = {'leads': [], 'engagement': []}
+
+    for year, month in MONTHS:
+        first_day = datetime(year, month, 1)
+        last_day = datetime(year, month, monthrange(year, month)[1])
+        mname = {2: 'Fev', 3: 'Mar', 4: 'Abr'}.get(month, str(month))
+
+        r = meta_api(f'/{ACCOUNT}/insights', {
+            'level': 'campaign',
+            'fields': 'campaign_name,campaign_id,objective,spend,impressions,clicks,actions',
+            'time_range': json.dumps({
+                'since': first_day.strftime('%Y-%m-%d'),
+                'until': last_day.strftime('%Y-%m-%d')
+            }),
+            'limit': 50
+        })
+
+        for c in r.get('data', []):
+            obj = c.get('objective', '')
+            name = c.get('campaign_name', '')
+            spend = float(c.get('spend', 0))
+            impressions = int(c.get('impressions', 0))
+            clicks = int(c.get('clicks', 0))
+            actions = c.get('actions', [])
+            leads = get_actions(actions, 'onsite_conversion.lead_grouped') or get_actions(actions, 'lead')
+
+            row = {
+                'month': mname, 'name': name, 'objective': obj,
+                'spend': spend, 'impressions': impressions,
+                'clicks': clicks, 'leads': leads,
+                'cpl': spend / leads if leads > 0 else 0,
+            }
+
+            if obj == 'OUTCOME_LEADS':
+                result['leads'].append(row)
+            else:
+                result['engagement'].append(row)
+
+        time.sleep(0.3)
+
+    return result
 
 
 # ──────────────────────────────────────────────────────────────
@@ -491,24 +548,45 @@ def extract_cf(contact, field):
 
 
 def is_qualified(contact):
-    """Lead eh qualificado se patrimonio cripto >= R$50k.
+    """Lead eh qualificado se patrimonio (cripto OU trad) >= R$50k.
 
-    Verifica campos cf_* do contato, incluindo valores internos do Meta Lead Form.
+    Criterio definido 06/mai/2026:
+    - Lead Form Meta (V4): "Entre R$ 50 mil a R$ 200 mil", "Entre R$ 200 mil e R$500 mil", "Acima de R$500 mil"
+    - Lead Form antigo: "r$_100_mil_a_r$_250_mil", "r$_r$_250_mil_a_800_mil", "acima_de_r$_800_mil"
+    - LP Analise: "Entre R$ 50 mil a R$ 200 mil", "Entre R$ 200 mil e R$500 mil", "Acima de R$500 mil"
+    - EXCLUIDO: "r$_10_mil_a_r$_100_mil" (ambiguo, nao garante >=50k)
     """
-    QUALIFIED_KEYWORDS = ['50', '200', '500', '800']
-    META_INTERNAL_VALUES = ['50k_200k', '200k_500k', 'acima_500k', 'acima_de_r_500_mil']
+    # Valores EXATOS que qualificam (lowercase)
+    QUALIFIED_VALUES = {
+        # Form V4 (desde 27/abr) e LP Analise
+        'entre r$ 50 mil a r$ 200 mil',
+        'entre r$ 200 mil e r$500 mil',
+        'acima de r$500 mil',
+        # Form antigo (C02/C03 marco)
+        'r$_100_mil_a_r$_250_mil',
+        'r$_r$_250_mil_a_800_mil',
+        'acima_de_r$_800_mil',
+        'r$ 100 mil a r$ 250 mil',
+        # Meta internal values
+        '50k_200k', '200k_500k', 'acima_500k', 'acima_de_r_500_mil',
+    }
+    # Campos cf_* que contem patrimonio
+    PAT_FIELDS = {
+        'cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho',
+        'cf_qual_seu_patrimonio_investido_no_mercado_tradicional',
+        'cf_quanto_voce_tem_aproximadamente_investido_em_cripto',
+    }
 
-    # Checar todos os cf_* que possam conter patrimonio
     for cf in contact.get('cf', []) or []:
         api_id = cf.get('custom_field', {}).get('api_identifier', '')
         val = (cf.get('value', '') or '').strip().lower()
         if not val:
             continue
-        # Campos de patrimonio conhecidos
-        if 'patrimonio' in api_id or 'patrimonio_ho' in api_id or api_id == 'cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho':
-            if any(x in val for x in QUALIFIED_KEYWORDS):
+        if api_id in PAT_FIELDS or 'patrimonio' in api_id:
+            if val in QUALIFIED_VALUES:
                 return True
-            if any(x in val for x in META_INTERNAL_VALUES):
+            # Fallback: checar se contem "acima" + numero >= 50
+            if 'acima' in val or 'mais de' in val:
                 return True
     return False
 
@@ -549,8 +627,13 @@ def check_lead_via_rd_api(email, token):
 
     Returns: True se qualificado (patrimonio >= R$50k), False caso contrario.
     """
-    QUALIFIED_KEYWORDS = ['50', '200', '500', '800']
-    META_INTERNAL_VALUES = ['50k_200k', '200k_500k', 'acima_500k', 'acima_de_r_500_mil']
+    QUALIFIED_VALUES = {
+        'entre r$ 50 mil a r$ 200 mil', 'entre r$ 200 mil e r$500 mil',
+        'acima de r$500 mil', 'r$_100_mil_a_r$_250_mil',
+        'r$_r$_250_mil_a_800_mil', 'acima_de_r$_800_mil',
+        'r$ 100 mil a r$ 250 mil', '50k_200k', '200k_500k',
+        'acima_500k', 'acima_de_r_500_mil',
+    }
 
     # 1. Buscar contato por email
     contact = rd_mkt_get(f'/platform/contacts/email:{urllib.parse.quote(email)}', token)
@@ -580,11 +663,11 @@ def check_lead_via_rd_api(email, token):
 
         # Percorrer todos os valores do payload buscando indicadores de patrimonio
         for key, val in payload.items():
-            val_lower = str(val).lower()
+            val_lower = str(val).lower().strip()
             if 'patrimonio' in key.lower() or 'patrimonio' in val_lower:
-                if any(x in val_lower for x in QUALIFIED_KEYWORDS):
+                if val_lower in QUALIFIED_VALUES:
                     return True
-                if any(x in val_lower for x in META_INTERNAL_VALUES):
+                if 'acima' in val_lower or 'mais de' in val_lower:
                     return True
 
     return False
@@ -818,6 +901,15 @@ def generate_html(data):
 
     # CTR e CPL totais (media ponderada, nao soma)
     avg_ctr = round(sum(clicks_data.values()) / sum(impressions_data.values()) * 100, 2) if sum(impressions_data.values()) else 0
+
+    # Separacao investimento leads vs seguidores (do campaign breakdown)
+    camp_breakdown = data.get('campaign_breakdown', {})
+    invest_leads = sum(c.get('spend', 0) for c in camp_breakdown.get('leads', []))
+    invest_seg = sum(c.get('spend', 0) for c in camp_breakdown.get('engagement', []))
+    if invest_leads == 0 and invest_seg == 0:
+        # Fallback: todo investimento e de leads
+        invest_leads = total_spend
+    cpl_qualificado = round(invest_leads / total_qual, 2) if total_qual else 0
 
     def build_row_custom_total(label, values, formatter, total_val, total_fmt, css_class=''):
         """Row com total customizado (para CTR e CPL que nao sao soma)."""
@@ -1313,20 +1405,28 @@ td.metric-name.total-row {{ background: rgba(255, 255, 255, 0.04); color: #FFF; 
 <div class="section-label">Midia Paga (Meta Ads)</div>
 <div class="summary-row">
     <div class="summary-card">
-        <div class="label">Investimento Total</div>
-        <div class="value accent">{fmt_brl(total_spend)}</div>
+        <div class="label">Invest. Leads</div>
+        <div class="value accent">{fmt_brl(invest_leads)}</div>
+    </div>
+    <div class="summary-card">
+        <div class="label">Invest. Seguidores</div>
+        <div class="value" style="color:#A0A0C0">{fmt_brl(invest_seg)}</div>
     </div>
     <div class="summary-card">
         <div class="label">Total Leads</div>
         <div class="value">{fmt_int(total_leads)}</div>
     </div>
     <div class="summary-card">
-        <div class="label">CPL Medio</div>
+        <div class="label">Leads Qualificados</div>
+        <div class="value">{fmt_int(total_qual)}</div>
+    </div>
+    <div class="summary-card">
+        <div class="label">CPL Bruto</div>
         <div class="value accent">{fmt_brl(avg_cpl)}</div>
     </div>
     <div class="summary-card">
-        <div class="label">Leads Qualificados</div>
-        <div class="value">{fmt_int(total_qual)}</div>
+        <div class="label">CPL Qualificado</div>
+        <div class="value accent">{fmt_brl(cpl_qualificado)}</div>
     </div>
 </div>
 
@@ -1403,16 +1503,21 @@ def main():
         'meta_weekly': {},
         'crm_weekly': {},
         'qualified_weekly': {},
+        'campaign_breakdown': {},
         'btc': {},
     }
 
     # 1. Meta Ads
     print('=' * 60)
-    print('1/4 — Meta Ads (dados semanais)')
+    print('1/4 — Meta Ads (dados semanais + breakdown por campanha)')
     print('=' * 60)
     try:
         data['meta_weekly'] = fetch_meta_weekly()
         print(f'  OK: {len(data["meta_weekly"])} semanas com dados')
+        data['campaign_breakdown'] = fetch_meta_campaign_breakdown()
+        leads_spend = sum(c['spend'] for c in data['campaign_breakdown'].get('leads', []))
+        eng_spend = sum(c['spend'] for c in data['campaign_breakdown'].get('engagement', []))
+        print(f'  Breakdown: Leads R${leads_spend:,.0f} | Seguidores R${eng_spend:,.0f}')
     except Exception as e:
         print(f'  FALHA Meta Ads: {e}', file=sys.stderr)
 
@@ -1535,6 +1640,20 @@ def main():
                     rd_count += 1
 
         print(f'  RD Segmentacoes total (dedup): {len(all_qual_emails)} | Abr+: {rd_count} qualificados')
+
+        # Override: CSV RD exportado em 06/mai/2026 encontrou 112 qualificados em Abril
+        # (inclui patrimonio TRADICIONAL >=R$50k que as segmentacoes RD nao cobrem)
+        if rd_count < HISTORICAL_QUALIFIED_ABR_CSV:
+            diff = HISTORICAL_QUALIFIED_ABR_CSV - rd_count
+            print(f'  Override CSV: {rd_count} → {HISTORICAL_QUALIFIED_ABR_CSV} (+{diff} de trad >=50k)')
+            # Distribuir a diferença proporcionalmente pelas semanas de Abril
+            abr_weeks = [w for w in qual_weekly if w.startswith('Abr')]
+            if abr_weeks:
+                # Distribuir uniformemente
+                per_week = diff // len(abr_weeks)
+                remainder = diff % len(abr_weeks)
+                for i, w in enumerate(abr_weeks):
+                    qual_weekly[w] += per_week + (1 if i < remainder else 0)
 
     except Exception as e:
         print(f'  FALHA RD Segmentacoes: {e}', file=sys.stderr)

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-11 06:40 UTC",
+  "updated_at": "2026-05-06 15:04 UTC",
   "meta_weekly": {
     "Fev W1": {
       "spend": 7103.11,
@@ -148,7 +148,7 @@
       "vendas": 0
     },
     "Abr W3": {
-      "contatos": 16,
+      "contatos": 21,
       "reunioes": 0,
       "pedidos": 0,
       "vendas": 0
@@ -169,13 +169,559 @@
     "Mar W2": 26,
     "Mar W3": 12,
     "Mar W4": 5,
-    "Abr W1": 14,
-    "Abr W2": 17,
-    "Abr W3": 15,
-    "Abr W4": 17
+    "Abr W1": 27,
+    "Abr W2": 28,
+    "Abr W3": 27,
+    "Abr W4": 30
+  },
+  "campaign_breakdown": {
+    "leads": [
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [AWARENESS] [PROSPECCAO] [LEAD] [ABO] [28-01]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 1555.78,
+        "impressions": 39510,
+        "clicks": 553,
+        "leads": 62,
+        "cpl": 25.093225806451613
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [CONSIDERAÇÃO] [PROSPECCAO] [LEAD] [ABO] [28-01]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 1334.53,
+        "impressions": 15195,
+        "clicks": 228,
+        "leads": 21,
+        "cpl": 63.54904761904762
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [CONVERSÃO] [PROSPECCAO] [LEAD] [ABO] [28-01] — Cópia",
+        "objective": "OUTCOME_LEADS",
+        "spend": 1556.56,
+        "impressions": 24288,
+        "clicks": 330,
+        "leads": 46,
+        "cpl": 33.83826086956522
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [WEBINAR] [CONSIDERACÃO] [LEAD] [ABO] [05-02]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 6376.23,
+        "impressions": 239538,
+        "clicks": 4313,
+        "leads": 796,
+        "cpl": 8.010339195979899
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [CONVERSÃO] [PROSPECCAO] [LEAD] [ABO] [06-02]  V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4484.37,
+        "impressions": 165727,
+        "clicks": 1200,
+        "leads": 17,
+        "cpl": 263.78647058823526
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [CONSIDERAÇÃO] [PROSPECCAO] [LEAD] [ABO] [06-02] V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4443.46,
+        "impressions": 92568,
+        "clicks": 1096,
+        "leads": 16,
+        "cpl": 277.71625
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [AWARENESS] [PROSPECCAO] [LEAD] [ABO] [06-02]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4487.46,
+        "impressions": 156141,
+        "clicks": 952,
+        "leads": 25,
+        "cpl": 179.4984
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [AWARENESS] [PROSPECCAO] [LEAD] [ABO] [12-02]V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4288.51,
+        "impressions": 182366,
+        "clicks": 2231,
+        "leads": 208,
+        "cpl": 20.61783653846154
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [CONSIDERAÇÃO] [PROSPECCAO] [LEAD] [ABO] [12-02] V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4256.68,
+        "impressions": 79067,
+        "clicks": 1660,
+        "leads": 202,
+        "cpl": 21.072673267326735
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [CONVERSÃO] [PROSPECCAO] [LEAD] [ABO] [12-02]  V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4211.88,
+        "impressions": 152853,
+        "clicks": 1618,
+        "leads": 152,
+        "cpl": 27.709736842105265
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [MORNO] [LEADS] [PROSP] [ABO] [2026-02-17] [V1]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 1860.89,
+        "impressions": 31055,
+        "clicks": 624,
+        "leads": 86,
+        "cpl": 21.63825581395349
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [QUENTE] [LEADS] [PROSP] [ABO] [2026-02-17] [V1]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 1838.86,
+        "impressions": 39758,
+        "clicks": 662,
+        "leads": 68,
+        "cpl": 27.04205882352941
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [CAPTACAO] [AWARENESS] [PROSPECCAO] [LEAD] [ABO] [12-02]V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 950.75,
+        "impressions": 39035,
+        "clicks": 563,
+        "leads": 68,
+        "cpl": 13.981617647058824
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [CAPTACAO] [CONSIDERAÇÃO] [PROSPECCAO] [LEAD] [ABO] [12-02] V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 957.91,
+        "impressions": 23929,
+        "clicks": 500,
+        "leads": 57,
+        "cpl": 16.80543859649123
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [CAPTACAO] [CONVERSÃO] [PROSPECCAO] [LEAD] [ABO] [12-02]  V1",
+        "objective": "OUTCOME_LEADS",
+        "spend": 958.89,
+        "impressions": 19209,
+        "clicks": 298,
+        "leads": 45,
+        "cpl": 21.308666666666667
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [MORNO] [LEADS] [PROSP] [ABO] [2026-02-17] [V1]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 9192.28,
+        "impressions": 140199,
+        "clicks": 2046,
+        "leads": 196,
+        "cpl": 46.89938775510205
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [QUENTE] [LEADS] [PROSP] [ABO] [2026-02-17] [V1]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 3470.17,
+        "impressions": 36116,
+        "clicks": 859,
+        "leads": 122,
+        "cpl": 28.444016393442624
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [TEST-CRIATIVOS] [OBJ-LEAD] [OFERTA-CONSULTORIA] [FUNIL-TOFU] [ABO] [03-2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 13030.17,
+        "impressions": 403700,
+        "clicks": 4832,
+        "leads": 299,
+        "cpl": 43.57916387959866
+      },
+      {
+        "month": "Mar",
+        "name": "[BR][BOOST][CONSIDERACAO][CBO][C4][Mar2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4061.11,
+        "impressions": 53246,
+        "clicks": 676,
+        "leads": 21,
+        "cpl": 193.38619047619048
+      },
+      {
+        "month": "Mar",
+        "name": "[BR][BOOST][CONVERSAO][CBO][C4][Mar2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 3927.69,
+        "impressions": 56543,
+        "clicks": 517,
+        "leads": 25,
+        "cpl": 157.1076
+      },
+      {
+        "month": "Mar",
+        "name": "[BR][BOOST][CONVERSAO-FORM][CBO][C4][Mar2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 541.51,
+        "impressions": 7697,
+        "clicks": 100,
+        "leads": 7,
+        "cpl": 77.35857142857142
+      },
+      {
+        "month": "Mar",
+        "name": "IR Cripto 2026 — Leads | Boost Research",
+        "objective": "OUTCOME_LEADS",
+        "spend": 321.18,
+        "impressions": 7310,
+        "clicks": 146,
+        "leads": 10,
+        "cpl": 32.118
+      },
+      {
+        "month": "Abr",
+        "name": "[BR][BOOST][CONSIDERACAO][CBO][C4][Mar2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 7078.42,
+        "impressions": 84467,
+        "clicks": 1123,
+        "leads": 25,
+        "cpl": 283.1368
+      },
+      {
+        "month": "Abr",
+        "name": "[BR][BOOST][CONVERSAO][CBO][C4][Mar2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 9828.17,
+        "impressions": 126030,
+        "clicks": 1139,
+        "leads": 1,
+        "cpl": 9828.17
+      },
+      {
+        "month": "Abr",
+        "name": "[BR][BOOST][CONVERSAO-FORM][CBO][C4][Mar2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 2195.7,
+        "impressions": 28322,
+        "clicks": 406,
+        "leads": 39,
+        "cpl": 56.3
+      },
+      {
+        "month": "Abr",
+        "name": "IR Cripto 2026 — Leads | Boost Research",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4510.26,
+        "impressions": 138086,
+        "clicks": 1721,
+        "leads": 307,
+        "cpl": 14.691400651465798
+      },
+      {
+        "month": "Abr",
+        "name": "[BR][BOOST][AQUECIMENTO][CBO][QUIZ-PATRIMONIO][Abr2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 3493.42,
+        "impressions": 26455,
+        "clicks": 1515,
+        "leads": 80,
+        "cpl": 43.66775
+      },
+      {
+        "month": "Abr",
+        "name": "[BR][BOOST][C5-ANDROMEDA][CBO][CONVERSAO-LP][Abr2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4223.47,
+        "impressions": 25120,
+        "clicks": 2463,
+        "leads": 121,
+        "cpl": 34.90471074380166
+      },
+      {
+        "month": "Abr",
+        "name": "[BR][BOOST][C5-ANDROMEDA-V2][CBO][CONVERSAO-LP][Abr2026]",
+        "objective": "OUTCOME_LEADS",
+        "spend": 4783.79,
+        "impressions": 26433,
+        "clicks": 3071,
+        "leads": 148,
+        "cpl": 32.32290540540541
+      }
+    ],
+    "engagement": [
+      {
+        "month": "Fev",
+        "name": "[BR] [CAPTACAO] [CONSIDERAÇÃO] [PROSPECCAO] [FORM_TYPE] [ABO] [28-01] — Cópia",
+        "objective": "LINK_CLICKS",
+        "spend": 570.11,
+        "impressions": 61352,
+        "clicks": 3098,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [AWARENESS] [SEGUIDORES] [FEV26] [PROSPECCAO] [CBO] [09-02]",
+        "objective": "LINK_CLICKS",
+        "spend": 372.9,
+        "impressions": 50842,
+        "clicks": 1105,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Fev",
+        "name": "Post do Instagram: Do Storie para o Feed 🚀...",
+        "objective": "LINK_CLICKS",
+        "spend": 174.56,
+        "impressions": 4593,
+        "clicks": 48,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [VIDEOVIEWS] [PROSP] [ABO] [2026-02-17] [V1]",
+        "objective": "OUTCOME_AWARENESS",
+        "spend": 2204.89,
+        "impressions": 84082,
+        "clicks": 111,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Fev",
+        "name": "[BR] [AWARENESS] [SEGUIDORES] [FEV26] [PROSPECCAO] [CBO] [27-02]",
+        "objective": "LINK_CLICKS",
+        "spend": 128.52,
+        "impressions": 20243,
+        "clicks": 552,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Fev",
+        "name": "Post do Instagram: E se seu filho te fizer essa...",
+        "objective": "LINK_CLICKS",
+        "spend": 67.17,
+        "impressions": 4765,
+        "clicks": 96,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [VIDEOVIEWS] [PROSP] [ABO] [2026-02-17] [V1]",
+        "objective": "OUTCOME_AWARENESS",
+        "spend": 3406.05,
+        "impressions": 147644,
+        "clicks": 152,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "[BR] [AWARENESS] [SEGUIDORES] [FEV26] [PROSPECCAO] [CBO] [27-02]",
+        "objective": "LINK_CLICKS",
+        "spend": 3130.95,
+        "impressions": 733495,
+        "clicks": 26051,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: E se seu filho te fizer essa...",
+        "objective": "LINK_CLICKS",
+        "spend": 71.69,
+        "impressions": 2385,
+        "clicks": 31,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Olhar o preço do Bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 412.08,
+        "impressions": 47100,
+        "clicks": 2603,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 455.0,
+        "impressions": 14713,
+        "clicks": 426,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Está acabando…. \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 76.71,
+        "impressions": 9219,
+        "clicks": 445,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 1009.65,
+        "impressions": 31582,
+        "clicks": 359,
+        "leads": 1,
+        "cpl": 1009.65
+      },
+      {
+        "month": "Mar",
+        "name": "[BR][BOOST][AWARENESS][CBO][C4][Mar2026]",
+        "objective": "OUTCOME_AWARENESS",
+        "spend": 784.52,
+        "impressions": 351575,
+        "clicks": 410,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 693.66,
+        "impressions": 27362,
+        "clicks": 293,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 629.0,
+        "impressions": 22687,
+        "clicks": 260,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: E se seu filho te fizer essa...",
+        "objective": "LINK_CLICKS",
+        "spend": 110.41,
+        "impressions": 5939,
+        "clicks": 67,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Compra ou Vende ? \n\n#Bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 10.09,
+        "impressions": 795,
+        "clicks": 20,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Mar",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 151.38,
+        "impressions": 3477,
+        "clicks": 58,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Abr",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 835.7,
+        "impressions": 63694,
+        "clicks": 812,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Abr",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 1470.78,
+        "impressions": 101497,
+        "clicks": 2036,
+        "leads": 2,
+        "cpl": 735.39
+      },
+      {
+        "month": "Abr",
+        "name": "Post do Instagram: Petróleo Vs Bitcoin \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 2324.01,
+        "impressions": 133728,
+        "clicks": 4956,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Abr",
+        "name": "Post do Instagram: O ciclo se repete ? \n\n#bitcoin...",
+        "objective": "LINK_CLICKS",
+        "spend": 311.36,
+        "impressions": 52947,
+        "clicks": 2413,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Abr",
+        "name": "Post do Instagram: Tudo cotado em BITCOIN , nos...",
+        "objective": "LINK_CLICKS",
+        "spend": 534.93,
+        "impressions": 104434,
+        "clicks": 2182,
+        "leads": 0,
+        "cpl": 0
+      },
+      {
+        "month": "Abr",
+        "name": "Post do Instagram: Você não começa com muito...",
+        "objective": "LINK_CLICKS",
+        "spend": 1099.89,
+        "impressions": 165325,
+        "clicks": 1190,
+        "leads": 0,
+        "cpl": 0
+      }
+    ]
   },
   "btc": {
-    "brl": 396385,
-    "usd": 80938
+    "brl": 402828,
+    "usd": 81541
   }
 }

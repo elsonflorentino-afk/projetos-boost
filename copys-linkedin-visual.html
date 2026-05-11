@@ -30,7 +30,6 @@
     padding: 0 0 60px;
   }
 
-  /* Header */
   .header {
     background: linear-gradient(135deg, var(--dark) 0%, var(--dark-card) 100%);
     border-bottom: 2px solid var(--teal);
@@ -40,19 +39,10 @@
     top: 0;
     z-index: 100;
   }
-  .header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--teal);
-    margin-bottom: 8px;
-  }
-  .header .meta {
-    font-size: 13px;
-    color: var(--gray-text);
-  }
+  .header h1 { font-size: 22px; font-weight: 700; color: var(--teal); margin-bottom: 8px; }
+  .header .meta { font-size: 13px; color: var(--gray-text); }
   .header .meta span { margin: 0 8px; }
 
-  /* Nav */
   .nav {
     display: flex;
     justify-content: center;
@@ -81,10 +71,8 @@
     background: rgba(25, 198, 181, 0.08);
   }
 
-  /* Container */
   .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
 
-  /* Section titles */
   .section-title {
     margin: 40px 0 20px;
     padding: 16px 20px;
@@ -98,7 +86,6 @@
     letter-spacing: 1px;
   }
 
-  /* Card */
   .card {
     background: var(--dark-card);
     border: 1px solid #2a363e;
@@ -109,6 +96,20 @@
   }
   .card:hover { border-color: var(--teal); }
 
+  /* FASE 1 highlight */
+  .card.fase1 { border: 2px solid var(--green); }
+  .card.fase1 .card-header { position: relative; }
+  .fase1-badge {
+    background: var(--green);
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
   .card-header {
     display: flex;
     justify-content: space-between;
@@ -116,23 +117,15 @@
     padding: 16px 20px;
     background: var(--dark-surface);
     border-bottom: 1px solid #2a363e;
+    gap: 8px;
   }
-  .card-header h3 {
-    font-size: 15px;
-    font-weight: 600;
-  }
-  .card-header .badge {
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-weight: 600;
-  }
+  .card-header h3 { font-size: 15px; font-weight: 600; }
+  .card-header .badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 600; }
   .badge-chars { background: rgba(59,130,246,0.15); color: var(--blue); }
   .badge-utm { background: rgba(167,139,250,0.15); color: var(--purple); font-family: monospace; }
 
   .card-body { padding: 20px; }
 
-  /* Message bubble */
   .message {
     background: var(--dark);
     border: 1px solid #2a363e;
@@ -165,7 +158,6 @@
   .copy-btn:hover { opacity: 1; transform: scale(1.05); }
   .copy-btn.copied { background: var(--green); }
 
-  /* Buttons */
   .buttons-label {
     font-size: 11px;
     text-transform: uppercase;
@@ -174,12 +166,7 @@
     margin: 16px 0 8px;
     font-weight: 600;
   }
-  .btn-row {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 4px;
-  }
+  .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
   .btn-item {
     display: inline-flex;
     align-items: center;
@@ -190,10 +177,7 @@
     padding: 8px 14px;
     font-size: 13px;
   }
-  .btn-text {
-    color: var(--teal);
-    font-weight: 600;
-  }
+  .btn-text { color: var(--teal); font-weight: 600; }
   .btn-arrow { color: var(--gray-text); font-size: 11px; }
   .btn-dest {
     background: rgba(25, 198, 181, 0.1);
@@ -204,13 +188,7 @@
     font-weight: 700;
   }
 
-  /* Tags */
-  .tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-top: 12px;
-  }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
   .tag {
     font-size: 11px;
     padding: 3px 10px;
@@ -219,11 +197,9 @@
     color: var(--gray-text);
   }
 
-  /* Follow-up cards */
   .followup .card-header { background: rgba(59,130,246,0.08); }
   .followup .card-header h3 { color: var(--blue); }
 
-  /* Form section */
   .form-section .card-header { background: rgba(34,197,94,0.08); }
   .form-section .card-header h3 { color: var(--green); }
 
@@ -234,18 +210,8 @@
     padding: 14px 16px;
     margin-bottom: 10px;
   }
-  .form-field label {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--white);
-    display: block;
-    margin-bottom: 8px;
-  }
-  .form-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
+  .form-field label { font-size: 13px; font-weight: 600; color: var(--white); display: block; margin-bottom: 8px; }
+  .form-options { display: flex; flex-wrap: wrap; gap: 6px; }
   .form-option {
     font-size: 12px;
     padding: 4px 12px;
@@ -255,7 +221,6 @@
     border: 1px solid #2a363e;
   }
 
-  /* Flowchart */
   .flowchart {
     background: var(--dark-card);
     border: 1px solid #2a363e;
@@ -263,13 +228,7 @@
     padding: 24px;
     margin-top: 24px;
   }
-  .flow-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
+  .flow-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
   .flow-box {
     padding: 8px 16px;
     border-radius: 10px;
@@ -285,7 +244,6 @@
   .flow-arrow { color: var(--gray-text); font-size: 18px; }
   .flow-label { font-size: 11px; color: var(--gray-text); min-width: 100px; }
 
-  /* UTM box */
   .utm-box {
     background: var(--dark);
     border: 1px solid #2a363e;
@@ -299,7 +257,6 @@
     position: relative;
   }
 
-  /* Disclaimer */
   .disclaimer-box {
     background: rgba(245,158,11,0.08);
     border: 1px solid rgba(245,158,11,0.3);
@@ -310,7 +267,19 @@
     position: relative;
   }
 
-  /* Print */
+  /* Fase 1 banner */
+  .fase1-banner {
+    background: linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(25,198,181,0.08) 100%);
+    border: 1px solid rgba(34,197,94,0.3);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .fase1-banner h4 { color: var(--green); font-size: 14px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+  .fase1-banner table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .fase1-banner td { padding: 6px 12px; border-bottom: 1px solid rgba(34,197,94,0.15); }
+  .fase1-banner td:first-child { color: var(--green); font-weight: 700; width: 60px; }
+
   @media print {
     .header { position: static; }
     .nav { display: none; }
@@ -339,7 +308,7 @@
     <span>|</span>
     <span>Campaign: 700812734</span>
     <span>|</span>
-    <span>10/mai/2026</span>
+    <span>11/mai/2026</span>
   </div>
 </div>
 
@@ -357,23 +326,32 @@
 <div class="section-title" id="aberturas">Parte 1 — Mensagens de Abertura</div>
 <!-- ============================================ -->
 
-<!-- C1 -->
+<div class="fase1-banner">
+  <h4>Fase 1 — Teste A/B (2 semanas, R$3k)</h4>
+  <table>
+    <tr><td>02</td><td>Consultiva / Neutra — baseline institucional</td></tr>
+    <tr><td>05</td><td>Concierge / Exclusivo — testa ancoragem de preco</td></tr>
+    <tr><td>08</td><td>Decisao sozinho — testa confronto direto com dor</td></tr>
+  </table>
+</div>
+
+<!-- 01 -->
 <div class="card">
   <div class="card-header">
-    <h3>C1 — Curta / Discreta</h3>
+    <h3>01 — Curta / Discreta</h3>
     <div style="display:flex;gap:6px;">
       <span class="badge badge-chars">~340 chars</span>
-      <span class="badge badge-utm">curta_discreta</span>
+      <span class="badge badge-utm">01_curta_discreta</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-c1">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+    <div class="message" id="msg-01">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
 
 A Boost é uma consultoria independente de investimentos em cripto, voltada para investidores com patrimônio relevante que preferem ter orientação profissional a tomar decisões sozinhos.
 
 Sem vínculo com banco ou corretora. Sem comissão de exchange.
 
-Posso te contar brevemente como funciona?<button class="copy-btn" onclick="copyMsg('msg-c1')">Copiar</button></div>
+Posso te contar brevemente como funciona?<button class="copy-btn" onclick="copyMsg('msg-01')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Pode contar</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -387,23 +365,24 @@ Posso te contar brevemente como funciona?<button class="copy-btn" onclick="copyM
   </div>
 </div>
 
-<!-- C2 -->
-<div class="card">
+<!-- 02 — FASE 1 -->
+<div class="card fase1">
   <div class="card-header">
-    <h3>C2 — Consultiva / Neutra</h3>
+    <h3>02 — Consultiva / Neutra</h3>
     <div style="display:flex;gap:6px;">
+      <span class="fase1-badge">Fase 1</span>
       <span class="badge badge-chars">~440 chars</span>
-      <span class="badge badge-utm">consultiva_neutra</span>
+      <span class="badge badge-utm">02_consultiva_neutra</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-c2">Prezado %FIRSTNAME%, sou a Zelia, da Boost Research.
+    <div class="message" id="msg-02">Prezado %FIRSTNAME%, sou a Zelia, da Boost Research.
 
 A Boost é uma consultoria independente em criptoativos, liderada pelo André Franco, que analisa esse mercado desde 2016, dois ciclos completos de alta e baixa.
 
 Atendemos investidores que já possuem patrimônio acima de R$100 mil e buscam clareza sobre alocação, timing e proteção de capital em cripto.
 
-Teria interesse em um diagnóstico personalizado de 20 minutos com nosso time?<button class="copy-btn" onclick="copyMsg('msg-c2')">Copiar</button></div>
+Teria interesse em um diagnóstico personalizado de 20 minutos com nosso time?<button class="copy-btn" onclick="copyMsg('msg-02')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Tenho interesse</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -413,27 +392,28 @@ Teria interesse em um diagnóstico personalizado de 20 minutos com nosso time?<b
     <div class="tags">
       <span class="tag">Filtro: R$100k explícito</span>
       <span class="tag">CTA: diagnóstico 20 min</span>
+      <span class="tag">Baseline institucional</span>
     </div>
   </div>
 </div>
 
-<!-- C3 -->
+<!-- 03 -->
 <div class="card">
   <div class="card-header">
-    <h3>C3 — Valor / Educação</h3>
+    <h3>03 — Valor / Educação</h3>
     <div style="display:flex;gap:6px;">
       <span class="badge badge-chars">~470 chars</span>
-      <span class="badge badge-utm">valor_educacao</span>
+      <span class="badge badge-utm">03_valor_educacao</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-c3">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+    <div class="message" id="msg-03">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
 
 Uma dúvida que recebo toda semana de investidores com mais de R$100 mil: "tenho cripto no portfólio, mas não sei se estou posicionado certo para o próximo ciclo."
 
 Na Boost, o André Franco (que analisa cripto desde 2016) montou uma consultoria independente com Advisor dedicado. O Advisor conhece seu portfólio e te orienta sobre o que fazer e quando, sem que você precise acompanhar notícias ou gráficos.
 
-Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMsg('msg-c3')">Copiar</button></div>
+Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMsg('msg-03')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Quero entender</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -448,17 +428,17 @@ Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMs
   </div>
 </div>
 
-<!-- C4 -->
+<!-- 04 -->
 <div class="card">
   <div class="card-header">
-    <h3>C4 — Credibilidade / Não presumir</h3>
+    <h3>04 — Credibilidade / Não presumir</h3>
     <div style="display:flex;gap:6px;">
       <span class="badge badge-chars">~495 chars</span>
-      <span class="badge badge-utm">credibilidade</span>
+      <span class="badge badge-utm">04_credibilidade</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-c4">%FIRSTNAME%, aqui é a Zelia, da Boost Research.
+    <div class="message" id="msg-04">%FIRSTNAME%, aqui é a Zelia, da Boost Research.
 
 Trabalho com investidores que já possuem patrimônio expressivo e querem entender se cripto faz sentido como parte da alocação, sem ter que virar especialista no assunto.
 
@@ -466,7 +446,7 @@ A Boost é uma consultoria independente, não vinculada a banco ou corretora, co
 
 O André Franco lidera a consultoria desde 2016, com o mesmo método em dois ciclos completos.
 
-Posso marcar uma conversa breve para entender suas prioridades?<button class="copy-btn" onclick="copyMsg('msg-c4')">Copiar</button></div>
+Posso marcar uma conversa breve para entender suas prioridades?<button class="copy-btn" onclick="copyMsg('msg-04')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Pode marcar</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -480,17 +460,18 @@ Posso marcar uma conversa breve para entender suas prioridades?<button class="co
   </div>
 </div>
 
-<!-- C5 -->
-<div class="card">
+<!-- 05 — FASE 1 -->
+<div class="card fase1">
   <div class="card-header">
-    <h3>C5 — Concierge / Convite exclusivo</h3>
+    <h3>05 — Concierge / Convite exclusivo</h3>
     <div style="display:flex;gap:6px;">
+      <span class="fase1-badge">Fase 1</span>
       <span class="badge badge-chars">~490 chars</span>
-      <span class="badge badge-utm">concierge_exclusivo</span>
+      <span class="badge badge-utm">05_concierge_exclusivo</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-c5">Prezado %FIRSTNAME%, sou a Zelia, da Boost Research.
+    <div class="message" id="msg-05">Prezado %FIRSTNAME%, sou a Zelia, da Boost Research.
 
 A Boost oferece uma consultoria concierge em criptoativos para investidores com patrimônio acima de R$200 mil: Advisor dedicado via WhatsApp, acompanhamento contínuo do portfólio e orientação direta sobre alocação e timing.
 
@@ -498,7 +479,7 @@ A Boost oferece uma consultoria concierge em criptoativos para investidores com 
 
 Planos a partir de 12x de R$416 sem juros. O mais completo, com acesso direto ao André, sai a 12x de R$1.666.
 
-Posso encaminhar os detalhes?<button class="copy-btn" onclick="copyMsg('msg-c5')">Copiar</button></div>
+Posso encaminhar os detalhes?<button class="copy-btn" onclick="copyMsg('msg-05')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Encaminhe</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -508,27 +489,28 @@ Posso encaminhar os detalhes?<button class="copy-btn" onclick="copyMsg('msg-c5')
     <div class="tags">
       <span class="tag">Filtro: R$200k+</span>
       <span class="tag">Ancoragem: R$416 &rarr; R$1.666</span>
+      <span class="tag">Testa preco no LinkedIn</span>
     </div>
   </div>
 </div>
 
-<!-- V1 -->
+<!-- 06 -->
 <div class="card">
   <div class="card-header">
-    <h3>V1 — Método + Filtro patrimônio</h3>
+    <h3>06 — Método + Filtro patrimônio</h3>
     <div style="display:flex;gap:6px;">
       <span class="badge badge-chars">~430 chars</span>
-      <span class="badge badge-utm">metodo_filtro</span>
+      <span class="badge badge-utm">06_metodo_filtro</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-v1">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+    <div class="message" id="msg-06">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
 
 Trabalhamos com investidores que já possuem patrimônio relevante em cripto ou no mercado tradicional e querem tomar decisões com mais clareza.
 
 O André Franco acompanha criptoativos desde 2016 e estruturou uma consultoria independente para quem precisa de orientação profissional, não de mais conteúdo genérico.
 
-Faz sentido para o seu momento?<button class="copy-btn" onclick="copyMsg('msg-v1')">Copiar</button></div>
+Faz sentido para o seu momento?<button class="copy-btn" onclick="copyMsg('msg-06')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Faz sentido, me conte</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -542,23 +524,23 @@ Faz sentido para o seu momento?<button class="copy-btn" onclick="copyMsg('msg-v1
   </div>
 </div>
 
-<!-- V2 -->
+<!-- 07 -->
 <div class="card">
   <div class="card-header">
-    <h3>V2 — Dor da realização + Advisor</h3>
+    <h3>07 — Dor da realização + Advisor</h3>
     <div style="display:flex;gap:6px;">
       <span class="badge badge-chars">~490 chars</span>
-      <span class="badge badge-utm">realizacao_advisor</span>
+      <span class="badge badge-utm">07_realizacao_advisor</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-v2">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+    <div class="message" id="msg-07">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
 
 Uma situação que vejo com frequência entre investidores com patrimônio acima de R$100 mil: o portfólio cresceu, mas na hora de realizar, a dúvida trava tudo. Quando vender? Quanto manter? Realocar para onde?
 
 Na Boost, cada investidor tem um Advisor dedicado. É uma consultoria independente, sem vínculo com banco ou corretora. O André Franco, que analisa cripto desde 2016, é quem lidera o método.
 
-Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMsg('msg-v2')">Copiar</button></div>
+Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMsg('msg-07')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Quero entender</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -572,23 +554,24 @@ Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMs
   </div>
 </div>
 
-<!-- V3 -->
-<div class="card">
+<!-- 08 — FASE 1 -->
+<div class="card fase1">
   <div class="card-header">
-    <h3>V3 — Decisão sozinho</h3>
+    <h3>08 — Decisão sozinho</h3>
     <div style="display:flex;gap:6px;">
+      <span class="fase1-badge">Fase 1</span>
       <span class="badge badge-chars">~480 chars</span>
-      <span class="badge badge-utm">decisao_sozinho</span>
+      <span class="badge badge-utm">08_decisao_sozinho</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-v3">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+    <div class="message" id="msg-08">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
 
 Você investe em cripto, mas toma todas as decisões sozinho? A maioria dos investidores com patrimônio acima de R$100 mil me diz a mesma coisa: "sei que deveria ter uma estratégia, mas não tenho com quem conversar sobre isso".
 
 A Boost é uma Consultoria de Investimentos em Cripto, independente de banco ou corretora. Você recebe um Advisor dedicado que conhece seu portfólio e te orienta no que fazer e quando fazer.
 
-Quer saber se faz sentido para o seu caso?<button class="copy-btn" onclick="copyMsg('msg-v3')">Copiar</button></div>
+Quer saber se faz sentido para o seu caso?<button class="copy-btn" onclick="copyMsg('msg-08')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Quero saber mais</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -598,27 +581,28 @@ Quer saber se faz sentido para o seu caso?<button class="copy-btn" onclick="copy
     <div class="tags">
       <span class="tag">Dor #2: sozinho</span>
       <span class="tag">Citação de investidor</span>
+      <span class="tag">Testa confronto direto</span>
     </div>
   </div>
 </div>
 
-<!-- V4 -->
+<!-- 09 -->
 <div class="card">
   <div class="card-header">
-    <h3>V4 — Cenário macro + Confessional</h3>
+    <h3>09 — Cenário macro + Confessional</h3>
     <div style="display:flex;gap:6px;">
       <span class="badge badge-chars">~495 chars</span>
-      <span class="badge badge-utm">cenario_confessional</span>
+      <span class="badge badge-utm">09_cenario_confessional</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-v4">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+    <div class="message" id="msg-09">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
 
 Com tudo que mudou nos últimos meses (regulação, ETFs, halving), muitos investidores que conheço fizeram a mesma coisa: nada. Não por falta de interesse, mas por falta de clareza sobre o próximo passo.
 
 A Boost é uma consultoria independente de investimentos em cripto, liderada pelo André Franco, que analisa esse mercado desde 2016. Cada investidor recebe um Advisor dedicado que entende o seu contexto e te diz o que faz sentido para o seu portfólio.
 
-Quer ver se a consultoria cabe no seu momento?<button class="copy-btn" onclick="copyMsg('msg-v4')">Copiar</button></div>
+Quer ver se a consultoria cabe no seu momento?<button class="copy-btn" onclick="copyMsg('msg-09')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Quero ver</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -632,17 +616,17 @@ Quer ver se a consultoria cabe no seu momento?<button class="copy-btn" onclick="
   </div>
 </div>
 
-<!-- V5 -->
+<!-- 10 -->
 <div class="card">
   <div class="card-header">
-    <h3>V5 — Tempo + Executivos</h3>
+    <h3>10 — Tempo + Executivos</h3>
     <div style="display:flex;gap:6px;">
       <span class="badge badge-chars">~485 chars</span>
-      <span class="badge badge-utm">tempo_executivos</span>
+      <span class="badge badge-utm">10_tempo_executivos</span>
     </div>
   </div>
   <div class="card-body">
-    <div class="message" id="msg-v5">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+    <div class="message" id="msg-10">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
 
 Sei que executivos com a sua senioridade têm pouco tempo para acompanhar mercado cripto no dia a dia. E é exatamente esse o ponto: você não deveria precisar fazer isso.
 
@@ -650,7 +634,7 @@ Na Boost, a consultoria funciona assim: o Advisor conhece seu portfólio, acompa
 
 O André Franco lidera a consultoria desde 2016, com foco em investidores que já possuem patrimônio relevante.
 
-Faz sentido conversar?<button class="copy-btn" onclick="copyMsg('msg-v5')">Copiar</button></div>
+Faz sentido conversar?<button class="copy-btn" onclick="copyMsg('msg-10')">Copiar</button></div>
     <div class="buttons-label">Botoes</div>
     <div class="btn-row">
       <div class="btn-item"><span class="btn-text">Faz sentido</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
@@ -782,8 +766,8 @@ Quer preencher o formulário para conversarmos?<button class="copy-btn" onclick=
     <div class="form-field">
       <label>Pergunta 1: Você já possui investimentos em Bitcoin ou criptoativos?</label>
       <div class="form-options">
-        <span class="form-option">sim</span>
-        <span class="form-option">não</span>
+        <span class="form-option">Sim</span>
+        <span class="form-option">Não</span>
       </div>
     </div>
 
@@ -801,8 +785,8 @@ Quer preencher o formulário para conversarmos?<button class="copy-btn" onclick=
     <div class="form-field">
       <label>Pergunta 3: Você possui investimentos no mercado tradicional (Tesouro, CDI, ações, fundos)?</label>
       <div class="form-options">
-        <span class="form-option">sim</span>
-        <span class="form-option">não</span>
+        <span class="form-option">Sim</span>
+        <span class="form-option">Não</span>
       </div>
     </div>
 
@@ -846,19 +830,20 @@ Quer preencher o formulário para conversarmos?<button class="copy-btn" onclick=
           <tr style="border-bottom:1px solid #2a363e;">
             <th style="text-align:left;padding:8px 12px;color:var(--gray-text);font-size:11px;text-transform:uppercase;">Copy</th>
             <th style="text-align:left;padding:8px 12px;color:var(--gray-text);font-size:11px;text-transform:uppercase;">utm_term</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--gray-text);font-size:11px;text-transform:uppercase;">Fase</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C1</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">curta_discreta</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C2</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">consultiva_neutra</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C3</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">valor_educacao</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C4</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">credibilidade</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C5</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">concierge_exclusivo</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V1</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">metodo_filtro</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V2</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">realizacao_advisor</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V3</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">decisao_sozinho</td></tr>
-          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V4</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">cenario_confessional</td></tr>
-          <tr><td style="padding:6px 12px;">V5</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">tempo_executivos</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">01</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">01_curta_discreta</td><td style="padding:6px 12px;color:var(--gray-text);">—</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;background:rgba(34,197,94,0.05);"><td style="padding:6px 12px;color:var(--green);font-weight:700;">02</td><td style="padding:6px 12px;font-family:monospace;color:var(--green);">02_consultiva_neutra</td><td style="padding:6px 12px;color:var(--green);font-weight:600;">Fase 1</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">03</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">03_valor_educacao</td><td style="padding:6px 12px;color:var(--gray-text);">—</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">04</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">04_credibilidade</td><td style="padding:6px 12px;color:var(--gray-text);">—</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;background:rgba(34,197,94,0.05);"><td style="padding:6px 12px;color:var(--green);font-weight:700;">05</td><td style="padding:6px 12px;font-family:monospace;color:var(--green);">05_concierge_exclusivo</td><td style="padding:6px 12px;color:var(--green);font-weight:600;">Fase 1</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">06</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">06_metodo_filtro</td><td style="padding:6px 12px;color:var(--gray-text);">—</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">07</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">07_realizacao_advisor</td><td style="padding:6px 12px;color:var(--gray-text);">—</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;background:rgba(34,197,94,0.05);"><td style="padding:6px 12px;color:var(--green);font-weight:700;">08</td><td style="padding:6px 12px;font-family:monospace;color:var(--green);">08_decisao_sozinho</td><td style="padding:6px 12px;color:var(--green);font-weight:600;">Fase 1</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">09</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">09_cenario_confessional</td><td style="padding:6px 12px;color:var(--gray-text);">—</td></tr>
+          <tr><td style="padding:6px 12px;">10</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">10_tempo_executivos</td><td style="padding:6px 12px;color:var(--gray-text);">—</td></tr>
         </tbody>
       </table>
     </div>
@@ -872,7 +857,7 @@ Quer preencher o formulário para conversarmos?<button class="copy-btn" onclick=
 <div class="flowchart">
   <div style="text-align:center;margin-bottom:20px;">
     <div class="flow-box flow-opener" style="display:inline-block;font-size:14px;padding:10px 24px;">
-      ABERTURA<br><span style="font-size:11px;opacity:0.8;">C1 / C2 / C3 / C4 / C5 / V1 / V2 / V3 / V4 / V5</span>
+      ABERTURA<br><span style="font-size:11px;opacity:0.8;">Fase 1: 02 / 05 / 08</span>
     </div>
   </div>
 
@@ -918,7 +903,6 @@ Quer preencher o formulário para conversarmos?<button class="copy-btn" onclick=
 <script>
 function copyMsg(id) {
   const el = document.getElementById(id);
-  // Get text content excluding the button
   const clone = el.cloneNode(true);
   const btn = clone.querySelector('.copy-btn');
   if (btn) btn.remove();
