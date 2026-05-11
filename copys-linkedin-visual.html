@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Conversation Ads — Boost Research v2</title>
+<style>
+  :root {
+    --teal: #19c6b5;
+    --teal-dark: #14a89a;
+    --dark: #12191D;
+    --dark-card: #1a2329;
+    --dark-surface: #232d35;
+    --gray-text: #94a3b8;
+    --white: #f1f5f9;
+    --green: #22c55e;
+    --blue: #3b82f6;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --purple: #a78bfa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    line-height: 1.6;
+    padding: 0 0 60px;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark-card) 100%);
+    border-bottom: 2px solid var(--teal);
+    padding: 32px 24px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .header .meta {
+    font-size: 13px;
+    color: var(--gray-text);
+  }
+  .header .meta span { margin: 0 8px; }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background: var(--dark-card);
+    border-bottom: 1px solid #2a363e;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 92px;
+    z-index: 99;
+  }
+  .nav a {
+    color: var(--gray-text);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #2a363e;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav a:hover, .nav a.active {
+    color: var(--teal);
+    border-color: var(--teal);
+    background: rgba(25, 198, 181, 0.08);
+  }
+
+  /* Container */
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+  /* Section titles */
+  .section-title {
+    margin: 40px 0 20px;
+    padding: 16px 20px;
+    background: var(--dark-surface);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 12px 12px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Card */
+  .card {
+    background: var(--dark-card);
+    border: 1px solid #2a363e;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--teal); }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--dark-surface);
+    border-bottom: 1px solid #2a363e;
+  }
+  .card-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .card-header .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .badge-chars { background: rgba(59,130,246,0.15); color: var(--blue); }
+  .badge-utm { background: rgba(167,139,250,0.15); color: var(--purple); font-family: monospace; }
+
+  .card-body { padding: 20px; }
+
+  /* Message bubble */
+  .message {
+    background: var(--dark);
+    border: 1px solid #2a363e;
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #cbd5e1;
+    position: relative;
+    white-space: pre-line;
+  }
+
+  .copy-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--teal);
+    color: var(--dark);
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .copy-btn:hover { opacity: 1; transform: scale(1.05); }
+  .copy-btn.copied { background: var(--green); }
+
+  /* Buttons */
+  .buttons-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-text);
+    margin: 16px 0 8px;
+    font-weight: 600;
+  }
+  .btn-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .btn-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--dark);
+    border: 1px solid #2a363e;
+    border-radius: 10px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .btn-text {
+    color: var(--teal);
+    font-weight: 600;
+  }
+  .btn-arrow { color: var(--gray-text); font-size: 11px; }
+  .btn-dest {
+    background: rgba(25, 198, 181, 0.1);
+    color: var(--teal);
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* Tags */
+  .tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: rgba(148,163,184,0.1);
+    color: var(--gray-text);
+  }
+
+  /* Follow-up cards */
+  .followup .card-header { background: rgba(59,130,246,0.08); }
+  .followup .card-header h3 { color: var(--blue); }
+
+  /* Form section */
+  .form-section .card-header { background: rgba(34,197,94,0.08); }
+  .form-section .card-header h3 { color: var(--green); }
+
+  .form-field {
+    background: var(--dark);
+    border: 1px solid #2a363e;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .form-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .form-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .form-option {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 6px;
+    background: var(--dark-surface);
+    color: var(--gray-text);
+    border: 1px solid #2a363e;
+  }
+
+  /* Flowchart */
+  .flowchart {
+    background: var(--dark-card);
+    border: 1px solid #2a363e;
+    border-radius: 16px;
+    padding: 24px;
+    margin-top: 24px;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .flow-box {
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 80px;
+  }
+  .flow-opener { background: var(--teal); color: var(--dark); }
+  .flow-followup { background: rgba(59,130,246,0.2); color: var(--blue); border: 1px solid var(--blue); }
+  .flow-form { background: rgba(34,197,94,0.2); color: var(--green); border: 1px solid var(--green); }
+  .flow-exit { background: rgba(148,163,184,0.15); color: var(--gray-text); border: 1px solid #475569; }
+  .flow-arrow { color: var(--gray-text); font-size: 18px; }
+  .flow-label { font-size: 11px; color: var(--gray-text); min-width: 100px; }
+
+  /* UTM box */
+  .utm-box {
+    background: var(--dark);
+    border: 1px solid #2a363e;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--purple);
+    word-break: break-all;
+    position: relative;
+  }
+
+  /* Disclaimer */
+  .disclaimer-box {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.3);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #fbbf24;
+    position: relative;
+  }
+
+  /* Print */
+  @media print {
+    .header { position: static; }
+    .nav { display: none; }
+    .copy-btn { display: none; }
+    body { background: white; color: black; }
+    .card { border-color: #ddd; break-inside: avoid; }
+    .message { background: #f5f5f5; color: #333; }
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 20px 16px; }
+    .container { padding: 0 12px; }
+    .card-body { padding: 14px; }
+    .nav a { font-size: 11px; padding: 4px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>LinkedIn Conversation Ads — Boost Research v2</h1>
+  <div class="meta">
+    <span>Remetente: <strong>Zelia Moraes</strong></span>
+    <span>|</span>
+    <span>Conta: 518857520</span>
+    <span>|</span>
+    <span>Campaign: 700812734</span>
+    <span>|</span>
+    <span>10/mai/2026</span>
+  </div>
+</div>
+
+<div class="nav">
+  <a href="#aberturas" class="active">Aberturas (10)</a>
+  <a href="#followups">Follow-ups (5)</a>
+  <a href="#form">Lead Gen Form</a>
+  <a href="#utm">UTMs</a>
+  <a href="#fluxo">Fluxograma</a>
+</div>
+
+<div class="container">
+
+<!-- ============================================ -->
+<div class="section-title" id="aberturas">Parte 1 — Mensagens de Abertura</div>
+<!-- ============================================ -->
+
+<!-- C1 -->
+<div class="card">
+  <div class="card-header">
+    <h3>C1 — Curta / Discreta</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~340 chars</span>
+      <span class="badge badge-utm">curta_discreta</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-c1">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+
+A Boost é uma consultoria independente de investimentos em cripto, voltada para investidores com patrimônio relevante que preferem ter orientação profissional a tomar decisões sozinhos.
+
+Sem vínculo com banco ou corretora. Sem comissão de exchange.
+
+Posso te contar brevemente como funciona?<button class="copy-btn" onclick="copyMsg('msg-c1')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Pode contar</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Quanto custa?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Não no momento</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Filtro: "patrimônio relevante"</span>
+      <span class="tag">Diferencial: sem comissão de exchange</span>
+    </div>
+  </div>
+</div>
+
+<!-- C2 -->
+<div class="card">
+  <div class="card-header">
+    <h3>C2 — Consultiva / Neutra</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~440 chars</span>
+      <span class="badge badge-utm">consultiva_neutra</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-c2">Prezado %FIRSTNAME%, sou a Zelia, da Boost Research.
+
+A Boost é uma consultoria independente em criptoativos, liderada pelo André Franco, que analisa esse mercado desde 2016, dois ciclos completos de alta e baixa.
+
+Atendemos investidores que já possuem patrimônio acima de R$100 mil e buscam clareza sobre alocação, timing e proteção de capital em cripto.
+
+Teria interesse em um diagnóstico personalizado de 20 minutos com nosso time?<button class="copy-btn" onclick="copyMsg('msg-c2')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Tenho interesse</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Quais são os planos?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Agora não</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Filtro: R$100k explícito</span>
+      <span class="tag">CTA: diagnóstico 20 min</span>
+    </div>
+  </div>
+</div>
+
+<!-- C3 -->
+<div class="card">
+  <div class="card-header">
+    <h3>C3 — Valor / Educação</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~470 chars</span>
+      <span class="badge badge-utm">valor_educacao</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-c3">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+
+Uma dúvida que recebo toda semana de investidores com mais de R$100 mil: "tenho cripto no portfólio, mas não sei se estou posicionado certo para o próximo ciclo."
+
+Na Boost, o André Franco (que analisa cripto desde 2016) montou uma consultoria independente com Advisor dedicado. O Advisor conhece seu portfólio e te orienta sobre o que fazer e quando, sem que você precise acompanhar notícias ou gráficos.
+
+Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMsg('msg-c3')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Quero entender</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Quanto custa?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Prefiro só conteúdo</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Dor #1: posicionamento</span>
+      <span class="tag">Dor #2: sem tempo</span>
+      <span class="tag">Citação de investidor</span>
+    </div>
+  </div>
+</div>
+
+<!-- C4 -->
+<div class="card">
+  <div class="card-header">
+    <h3>C4 — Credibilidade / Não presumir</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~495 chars</span>
+      <span class="badge badge-utm">credibilidade</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-c4">%FIRSTNAME%, aqui é a Zelia, da Boost Research.
+
+Trabalho com investidores que já possuem patrimônio expressivo e querem entender se cripto faz sentido como parte da alocação, sem ter que virar especialista no assunto.
+
+A Boost é uma consultoria independente, não vinculada a banco ou corretora, com zero comissão de exchange. Cada investidor recebe um Advisor dedicado que acompanha o portfólio e orienta as decisões.
+
+O André Franco lidera a consultoria desde 2016, com o mesmo método em dois ciclos completos.
+
+Posso marcar uma conversa breve para entender suas prioridades?<button class="copy-btn" onclick="copyMsg('msg-c4')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Pode marcar</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Qual o investimento?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Não é o momento</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">2x integridade (independente + zero comissão)</span>
+      <span class="tag">Respeita quem não está convencido</span>
+    </div>
+  </div>
+</div>
+
+<!-- C5 -->
+<div class="card">
+  <div class="card-header">
+    <h3>C5 — Concierge / Convite exclusivo</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~490 chars</span>
+      <span class="badge badge-utm">concierge_exclusivo</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-c5">Prezado %FIRSTNAME%, sou a Zelia, da Boost Research.
+
+A Boost oferece uma consultoria concierge em criptoativos para investidores com patrimônio acima de R$200 mil: Advisor dedicado via WhatsApp, acompanhamento contínuo do portfólio e orientação direta sobre alocação e timing.
+
+É uma consultoria independente, liderada pelo André Franco (desde 2016), sem vínculo com banco, corretora ou exchange.
+
+Planos a partir de 12x de R$416 sem juros. O mais completo, com acesso direto ao André, sai a 12x de R$1.666.
+
+Posso encaminhar os detalhes?<button class="copy-btn" onclick="copyMsg('msg-c5')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Encaminhe</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Detalhes do plano PRO</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2E</span></div>
+      <div class="btn-item"><span class="btn-text">Não tenho esse perfil</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Filtro: R$200k+</span>
+      <span class="tag">Ancoragem: R$416 &rarr; R$1.666</span>
+    </div>
+  </div>
+</div>
+
+<!-- V1 -->
+<div class="card">
+  <div class="card-header">
+    <h3>V1 — Método + Filtro patrimônio</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~430 chars</span>
+      <span class="badge badge-utm">metodo_filtro</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-v1">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+
+Trabalhamos com investidores que já possuem patrimônio relevante em cripto ou no mercado tradicional e querem tomar decisões com mais clareza.
+
+O André Franco acompanha criptoativos desde 2016 e estruturou uma consultoria independente para quem precisa de orientação profissional, não de mais conteúdo genérico.
+
+Faz sentido para o seu momento?<button class="copy-btn" onclick="copyMsg('msg-v1')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Faz sentido, me conte</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Quanto custa?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Agora não é o momento</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Autoridade: André 2016</span>
+      <span class="tag">Filtro suave</span>
+    </div>
+  </div>
+</div>
+
+<!-- V2 -->
+<div class="card">
+  <div class="card-header">
+    <h3>V2 — Dor da realização + Advisor</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~490 chars</span>
+      <span class="badge badge-utm">realizacao_advisor</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-v2">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+
+Uma situação que vejo com frequência entre investidores com patrimônio acima de R$100 mil: o portfólio cresceu, mas na hora de realizar, a dúvida trava tudo. Quando vender? Quanto manter? Realocar para onde?
+
+Na Boost, cada investidor tem um Advisor dedicado. É uma consultoria independente, sem vínculo com banco ou corretora. O André Franco, que analisa cripto desde 2016, é quem lidera o método.
+
+Quer entender como funciona na prática?<button class="copy-btn" onclick="copyMsg('msg-v2')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Quero entender</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Já tenho, quero comparar</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2D</span></div>
+      <div class="btn-item"><span class="btn-text">Não tenho esse perfil</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Dor #1: não sabe realizar (54%)</span>
+      <span class="tag">Filtro: R$100k</span>
+    </div>
+  </div>
+</div>
+
+<!-- V3 -->
+<div class="card">
+  <div class="card-header">
+    <h3>V3 — Decisão sozinho</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~480 chars</span>
+      <span class="badge badge-utm">decisao_sozinho</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-v3">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+
+Você investe em cripto, mas toma todas as decisões sozinho? A maioria dos investidores com patrimônio acima de R$100 mil me diz a mesma coisa: "sei que deveria ter uma estratégia, mas não tenho com quem conversar sobre isso".
+
+A Boost é uma Consultoria de Investimentos em Cripto, independente de banco ou corretora. Você recebe um Advisor dedicado que conhece seu portfólio e te orienta no que fazer e quando fazer.
+
+Quer saber se faz sentido para o seu caso?<button class="copy-btn" onclick="copyMsg('msg-v3')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Quero saber mais</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Qual o mínimo?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Não no momento</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Dor #2: sozinho</span>
+      <span class="tag">Citação de investidor</span>
+    </div>
+  </div>
+</div>
+
+<!-- V4 -->
+<div class="card">
+  <div class="card-header">
+    <h3>V4 — Cenário macro + Confessional</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~495 chars</span>
+      <span class="badge badge-utm">cenario_confessional</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-v4">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+
+Com tudo que mudou nos últimos meses (regulação, ETFs, halving), muitos investidores que conheço fizeram a mesma coisa: nada. Não por falta de interesse, mas por falta de clareza sobre o próximo passo.
+
+A Boost é uma consultoria independente de investimentos em cripto, liderada pelo André Franco, que analisa esse mercado desde 2016. Cada investidor recebe um Advisor dedicado que entende o seu contexto e te diz o que faz sentido para o seu portfólio.
+
+Quer ver se a consultoria cabe no seu momento?<button class="copy-btn" onclick="copyMsg('msg-v4')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Quero ver</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Quanto custa?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Prefiro só conteúdo</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Resignação (inércia como dor)</span>
+      <span class="tag">Confessional</span>
+    </div>
+  </div>
+</div>
+
+<!-- V5 -->
+<div class="card">
+  <div class="card-header">
+    <h3>V5 — Tempo + Executivos</h3>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-chars">~485 chars</span>
+      <span class="badge badge-utm">tempo_executivos</span>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-v5">Olá, %FIRSTNAME%. Sou a Zelia, da Boost Research.
+
+Sei que executivos com a sua senioridade têm pouco tempo para acompanhar mercado cripto no dia a dia. E é exatamente esse o ponto: você não deveria precisar fazer isso.
+
+Na Boost, a consultoria funciona assim: o Advisor conhece seu portfólio, acompanha o mercado e te orienta sobre o que fazer e quando. Sem relatórios para ler, sem gráficos para interpretar.
+
+O André Franco lidera a consultoria desde 2016, com foco em investidores que já possuem patrimônio relevante.
+
+Faz sentido conversar?<button class="copy-btn" onclick="copyMsg('msg-v5')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Faz sentido</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2A</span></div>
+      <div class="btn-item"><span class="btn-text">Qual o mínimo?</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Não agora</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Dor #2: sem tempo</span>
+      <span class="tag">Público executivo</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<div class="section-title" id="followups">Parte 2 — Follow-ups (montar 1 vez, reutilizar)</div>
+<!-- ============================================ -->
+
+<!-- 2A -->
+<div class="card followup">
+  <div class="card-header">
+    <h3>2A — Interesse confirmado</h3>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-2a">Que bom, %FIRSTNAME%.
+
+Para entendermos se a consultoria faz sentido para você, preencha essas 3 perguntas rápidas. É confidencial. Com base nas respostas, nosso time avalia e entra em contato.<button class="copy-btn" onclick="copyMsg('msg-2a')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Preencher</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">Lead Gen Form</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2B -->
+<div class="card followup">
+  <div class="card-header">
+    <h3>2B — Planos e preços</h3>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-2b">Boa pergunta, %FIRSTNAME%. A Boost tem três planos de consultoria:
+
+PRO — 12x de R$1.666 sem juros
+Consultoria completa para quem tem mais de R$200k em cripto. Advisor dedicado via WhatsApp, reuniões com André Franco e acompanhamento direto.
+
+ESSENTIAL — 12x de R$1.000 sem juros
+Para quem quer o método completo com suporte do Advisor por e-mail.
+
+ACCESS — 12x de R$416 sem juros
+Para o investidor mais autônomo. Acesso a todas as análises, carteira recomendada e reuniões gerais.
+
+Quer saber qual faz mais sentido para o seu perfil?<button class="copy-btn" onclick="copyMsg('msg-2b')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Quero saber qual é o meu</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">Lead Gen Form</span></div>
+      <div class="btn-item"><span class="btn-text">Mais sobre o PRO</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2E</span></div>
+      <div class="btn-item"><span class="btn-text">Preciso pensar</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2C -->
+<div class="card followup">
+  <div class="card-header">
+    <h3>2C — Soft exit</h3>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-2c">Sem problema, %FIRSTNAME%. Se em algum momento fizer sentido, o André Franco publica conteúdo toda semana no Instagram da Boost (@boostresearch).
+
+Boa semana.<button class="copy-btn" onclick="copyMsg('msg-2c')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Seguir no Instagram</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">URL Instagram</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2D -->
+<div class="card followup">
+  <div class="card-header">
+    <h3>2D — Já tem advisor</h3>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-2d">Entendo. Muitos dos nossos investidores já tinham advisor ou contador antes de nos procurar. O diferencial da Boost é ser especializada exclusivamente em cripto, com independência total de banco ou corretora.
+
+Se quiser comparar, o primeiro passo é um breve formulário.<button class="copy-btn" onclick="copyMsg('msg-2d')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Preencher formulário</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">Lead Gen Form</span></div>
+      <div class="btn-item"><span class="btn-text">Agora não</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2E -->
+<div class="card followup">
+  <div class="card-header">
+    <h3>2E — Detalhes do PRO</h3>
+  </div>
+  <div class="card-body">
+    <div class="message" id="msg-2e">O Crypto Intelligence PRO é a consultoria mais completa da Boost.
+
+Você recebe um Advisor dedicado via WhatsApp que conhece seu portfólio e te avisa exatamente quando agir. Carteira recomendada, rebalanceamento e reuniões com o André Franco.
+
+É pensado para investidores com mais de R$200k em cripto que não têm tempo para acompanhar o mercado no dia a dia.
+
+12x de R$1.666 sem juros.
+
+Quer preencher o formulário para conversarmos?<button class="copy-btn" onclick="copyMsg('msg-2e')">Copiar</button></div>
+    <div class="buttons-label">Botoes</div>
+    <div class="btn-row">
+      <div class="btn-item"><span class="btn-text">Preencher formulário</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">Lead Gen Form</span></div>
+      <div class="btn-item"><span class="btn-text">Voltar aos planos</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2B</span></div>
+      <div class="btn-item"><span class="btn-text">Agora não</span> <span class="btn-arrow">&rarr;</span> <span class="btn-dest">2C</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<div class="section-title" id="form">Parte 3 — Lead Gen Form</div>
+<!-- ============================================ -->
+
+<div class="card form-section">
+  <div class="card-header">
+    <h3>Formulário de Leads</h3>
+  </div>
+  <div class="card-body">
+    <div style="font-size:12px;color:var(--gray-text);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Campos padrao: Nome, Sobrenome, E-mail</div>
+
+    <div class="form-field">
+      <label>Pergunta 1: Você já possui investimentos em Bitcoin ou criptoativos?</label>
+      <div class="form-options">
+        <span class="form-option">sim</span>
+        <span class="form-option">não</span>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Pergunta 2: Qual faixa melhor representa seu patrimônio total investido hoje?</label>
+      <div class="form-options">
+        <span class="form-option">Até R$10 mil</span>
+        <span class="form-option">R$10 mil a R$50 mil</span>
+        <span class="form-option">R$50 mil a R$200 mil</span>
+        <span class="form-option">R$200 mil a R$500 mil</span>
+        <span class="form-option">Acima de R$500 mil</span>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Pergunta 3: Você possui investimentos no mercado tradicional (Tesouro, CDI, ações, fundos)?</label>
+      <div class="form-options">
+        <span class="form-option">sim</span>
+        <span class="form-option">não</span>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="buttons-label">Disclaimer (campo privacidade)</div>
+      <div class="disclaimer-box" id="msg-disclaimer">A Boost Research é uma Consultoria de Investimentos em Cripto. A consultoria é independente, não está vinculada a banco ou corretora. Rentabilidade passada não é garantia de resultados futuros. CNPJ 51.476.713/0001-67.<button class="copy-btn" onclick="copyMsg('msg-disclaimer')">Copiar</button></div>
+    </div>
+
+    <div style="margin-top:16px;">
+      <div class="buttons-label">Mensagem de confirmacao</div>
+      <div class="message" id="msg-confirm" style="font-size:13px;">Obrigada, %FIRSTNAME%. Nosso time vai analisar suas respostas e entrar em contato nos próximos dias úteis. Enquanto isso, acompanhe o André Franco no Instagram @boostresearch.<button class="copy-btn" onclick="copyMsg('msg-confirm')">Copiar</button></div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;gap:16px;flex-wrap:wrap;">
+      <div class="form-field" style="flex:1;min-width:200px;margin:0;">
+        <label style="font-size:11px;color:var(--gray-text);">Pagina destino</label>
+        <div style="font-size:13px;color:var(--teal);font-family:monospace;">https://analise.boostresearch.com.br</div>
+      </div>
+      <div class="form-field" style="flex:1;min-width:200px;margin:0;">
+        <label style="font-size:11px;color:var(--gray-text);">Politica de privacidade</label>
+        <div style="font-size:13px;color:var(--teal);font-family:monospace;">https://boostresearch.com.br/politica-de-privacidade</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<div class="section-title" id="utm">UTMs por variacao</div>
+<!-- ============================================ -->
+
+<div class="card">
+  <div class="card-header">
+    <h3>UTM padrao (todos os anuncios)</h3>
+  </div>
+  <div class="card-body">
+    <div class="utm-box" id="msg-utm">utm_source=LinkedIn&utm_medium=conversation_ad&utm_campaign=analise_portfolio_v2&utm_content={{CREATIVE_ID}}&utm_term=TROCAR_AQUI<button class="copy-btn" onclick="copyMsg('msg-utm')">Copiar</button></div>
+
+    <div style="margin-top:16px;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="border-bottom:1px solid #2a363e;">
+            <th style="text-align:left;padding:8px 12px;color:var(--gray-text);font-size:11px;text-transform:uppercase;">Copy</th>
+            <th style="text-align:left;padding:8px 12px;color:var(--gray-text);font-size:11px;text-transform:uppercase;">utm_term</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C1</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">curta_discreta</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C2</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">consultiva_neutra</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C3</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">valor_educacao</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C4</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">credibilidade</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">C5</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">concierge_exclusivo</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V1</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">metodo_filtro</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V2</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">realizacao_advisor</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V3</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">decisao_sozinho</td></tr>
+          <tr style="border-bottom:1px solid #1a2329;"><td style="padding:6px 12px;">V4</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">cenario_confessional</td></tr>
+          <tr><td style="padding:6px 12px;">V5</td><td style="padding:6px 12px;font-family:monospace;color:var(--purple);">tempo_executivos</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<div class="section-title" id="fluxo">Fluxograma</div>
+<!-- ============================================ -->
+
+<div class="flowchart">
+  <div style="text-align:center;margin-bottom:20px;">
+    <div class="flow-box flow-opener" style="display:inline-block;font-size:14px;padding:10px 24px;">
+      ABERTURA<br><span style="font-size:11px;opacity:0.8;">C1 / C2 / C3 / C4 / C5 / V1 / V2 / V3 / V4 / V5</span>
+    </div>
+  </div>
+
+  <div class="flow-row">
+    <span class="flow-label">Botao 1 (interesse)</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-followup">2A</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-form">Lead Gen Form</span>
+  </div>
+
+  <div class="flow-row">
+    <span class="flow-label">Botao 2 (preco)</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-followup">2B</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-form">Lead Gen Form</span>
+    <span style="color:var(--gray-text);font-size:12px;margin-left:4px;">ou</span>
+    <span class="flow-box flow-followup">2E</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-form">Form</span>
+  </div>
+
+  <div class="flow-row">
+    <span class="flow-label">Botao 3 (nao)</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-exit">2C</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-exit">Instagram</span>
+  </div>
+
+  <div class="flow-row">
+    <span class="flow-label">Botao "ja tenho"</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-followup">2D</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="flow-box flow-form">Lead Gen Form</span>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<script>
+function copyMsg(id) {
+  const el = document.getElementById(id);
+  // Get text content excluding the button
+  const clone = el.cloneNode(true);
+  const btn = clone.querySelector('.copy-btn');
+  if (btn) btn.remove();
+  const text = clone.textContent.trim();
+
+  navigator.clipboard.writeText(text).then(() => {
+    const button = el.querySelector('.copy-btn');
+    button.textContent = 'Copiado!';
+    button.classList.add('copied');
+    setTimeout(() => {
+      button.textContent = 'Copiar';
+      button.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
