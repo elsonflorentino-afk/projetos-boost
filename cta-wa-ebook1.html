@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Boost Research — Redirecionando...</title>
+
+<!-- GTM Web -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://sgtm.boostresearch.com.br/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W9F5MN8W');</script>
+
+<style>
+body { background:#000; color:#fff; font-family:'Helvetica Neue',Arial,sans-serif;
+       display:flex; align-items:center; justify-content:center;
+       min-height:100vh; text-align:center; margin:0; }
+.spinner { width:48px; height:48px; border:3px solid rgba(0,179,126,0.2);
+           border-top-color:#00B37E; border-radius:50%;
+           animation:spin 0.8s linear infinite; margin:0 auto 24px; }
+@keyframes spin { to { transform:rotate(360deg); } }
+h1 { font-size:18px; margin-bottom:8px; }
+p { color:#999; font-size:14px; margin-bottom:16px; }
+a { color:#00B37E; font-size:13px; }
+</style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://sgtm.boostresearch.com.br/ns.html?id=GTM-W9F5MN8W"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div>
+  <div class="spinner"></div>
+  <h1>Redirecionando...</h1>
+  <p>Você está sendo enviado para o WhatsApp da Boost.</p>
+  <a href="#" id="fallback">Clique aqui se não redirecionar</a>
+</div>
+
+<script>
+var DESTINO = 'https://wa.me/5521965622891?text=' + encodeURIComponent('Olá, li o e-book "Portfólio Tradicional + Cripto" da Boost Research e gostaria de uma análise gratuita da minha carteira. (ref: ebook-portfolio)');
+
+// 1. Disparar evento rastreável
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({
+  event: 'ebook_cta_click',
+  cta_id: 'ebook1_whatsapp',
+  cta_type: 'whatsapp',
+  source: 'ebook_pdf',
+  ebook_name: 'portfolio_trad_cripto',
+  campaign: 'ebook_portfolio',
+  medium: 'pdf',
+  content: 'cta_whatsapp_final'
+});
+
+// 2. Setar fallback
+document.getElementById('fallback').href = DESTINO;
+
+// 3. Redirecionar após 500ms (tempo para GTM + sGTM enviar)
+setTimeout(function() {
+  window.location.href = DESTINO;
+}, 500);
+</script>
+</body>
+</html>

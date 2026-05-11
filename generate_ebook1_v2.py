@@ -51,7 +51,7 @@ _WATERMARK_URI = "data:image/svg+xml," + _urlparse.quote(_WATERMARK_SVG, safe=''
 CSS = """
 @page {
     size: A4;
-    margin: 2cm 2cm 2.5cm 2cm;
+    margin: 2cm 2cm 3.2cm 2cm;
     @top-right {
         content: "Boost Research";
         font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -417,7 +417,7 @@ ul li::marker {
 /* ── Social footer fixo (todas as páginas) ── */
 .social-footer {
     position: fixed;
-    bottom: -3mm;
+    bottom: -26mm;
     left: 0;
     width: 100%;
     text-align: center;
@@ -494,7 +494,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
         <svg viewBox="0 0 24 24" fill="#E1306C"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         @cryptoandrefranco
     </a>
-    <a href="https://wa.me/5521965622891" style="color:#25D366;">
+    <a href="https://elsonflorentino-afk.github.io/projetos-boost/cta-wa-ebook1.html" style="color:#25D366;">
         <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Fale com a Boost
     </a>
@@ -543,80 +543,50 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <!-- CAPÍTULO 1 — Por que um Portfólio Híbrido? -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">CAPÍTULO 1</div>
+<div class="chapter-label">C A P Í T U L O  1</div>
 <h1>Por que um Portfólio Híbrido?</h1>
 
-<div class="learn-box">
-<strong>O que você vai aprender neste capítulo:</strong>
-<ul>
-<li>Entender o contexto macroeconômico brasileiro em 2026</li>
-<li>Compreender por que diversificação entre classes tradicionais e cripto faz sentido</li>
-<li>Reconhecer os riscos de concentração excessiva em uma única classe de ativos</li>
-<li>Identificar se o seu perfil de investidor se beneficia</li>
-</ul>
-</div>
 
-<h2>1.1 O cenário do investidor brasileiro em 2026</h2>
+<h2>O cenário do investidor brasileiro em 2026</h2>
 
 <p>O investidor brasileiro com patrimônio acima de R$100 mil enfrenta um paradoxo em 2026. De um lado, a taxa Selic a 14,75% a.a. oferece retornos nominais atrativos em renda fixa, um CDI que rende mais de 1% ao mês parece confortável. De outro, o IPCA acumulado em 12 meses de 4,14% (IBGE) corrói parte desse ganho, e o retorno real líquido de impostos fica significativamente menor do que o número bruto sugere.</p>
 
 <p>No cenário internacional, o Federal Reserve mantém a taxa de juros entre 3,50% e 3,75% a.a., após um ciclo de cortes iniciado no segundo semestre de 2024. Essa política monetária mais branda nos Estados Unidos tende a enfraquecer o dólar e favorecer ativos de risco, inclusive criptoativos. O Bitcoin, negociado em torno de US$74.600, já acumula uma valorização expressiva desde a mínima do ciclo de 2022.</p>
 
-<h2>1.2 A armadilha da zona de conforto da renda fixa</h2>
+<h2>A armadilha da zona de conforto da renda fixa</h2>
 
 <p>Quando a Selic está alta, é tentador concentrar todo o patrimônio em títulos pós-fixados. O problema dessa estratégia é triplo:</p>
 
 <p>1. Risco de reinvestimento: quando a Selic cair (e ciclos de queda são inevitáveis), o investidor precisará realocar a taxas menores, sem ter construído posição em ativos que se valorizam justamente nesse cenário.</p>
 
-<p>2. Erosão real: com IPCA a 4,14% (IBGE) e alíquota regressiva de IR que pode chegar a 22,5% em prazos curtos, o retorno real líquido de um CDB a 100% do CDI fica em torno de 7% a 8% a.a. Sólido, mas não transformador para patrimônios de longo prazo.</p>
+<p>2. Erosão real: com IPCA a 4,14% (IBGE) e alíquota regressiva de IR que pode chegar a 22,5% em prazos curtos, o retorno real líquido de um CDB a 100% do CDI fica em torno de 7% a 8% a.a. Relevante, mas insuficiente para crescimento real expressivo de patrimônio no longo prazo.</p>
 
 <p>3. Custo de oportunidade: classes como ações globais, criptoativos e fundos imobiliários possuem dinâmicas de retorno completamente distintas, e a ausência dessas posições pode significar décadas de retorno composto perdido.</p>
 
-<h2>1.3 O que é um portfólio híbrido</h2>
+<h2>O que é um portfólio híbrido</h2>
 
 <p>Um portfólio híbrido, no contexto deste e-book, é uma carteira que combina ativos tradicionais (renda fixa, ações, fundos imobiliários, ativos internacionais) com uma alocação deliberada e dimensionada em criptoativos (principalmente Bitcoin e Ethereum). A ideia não é substituir o pilar tradicional, mas complementá-lo com uma classe de ativos que possui características únicas: escassez digital, liquidez global 24/7, ausência de risco de contraparte (em custódia própria) e correlação historicamente baixa com ativos tradicionais brasileiros.</p>
 
-<div class="boost-opinion">
-<strong>Na visão da Boost Research:</strong> Acreditamos que uma alocação entre 5% e 15% em criptoativos, calibrada pelo perfil de risco e horizonte do investidor, pode melhorar a relação retorno/risco de um portfólio diversificado sem comprometer a segurança do patrimônio principal.
-</div>
 
-<div class="checklist-box">
-<h4>Checklist do Capítulo</h4>
-<ul>
-<li>Entendi que Selic alta não significa portfólio ótimo</li>
-<li>Compreendi o conceito de custo de oportunidade entre classes</li>
-<li>Sei que portfólio híbrido = tradicional + cripto com pesos definidos</li>
-<li>Reconheço que criptoativos exigem horizonte longo e dimensionamento cuidadoso</li>
-</ul>
-</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- CAPÍTULO 2 — Fundamentos de Alocação de Ativos -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">CAPÍTULO 2</div>
+<div class="chapter-label">C A P Í T U L O  2</div>
 <h1>Fundamentos de Alocação de Ativos</h1>
 
-<div class="learn-box">
-<strong>O que você vai aprender neste capítulo:</strong>
-<ul>
-<li>Conhecer a teoria de portfólio de Harry Markowitz e sua relevância prática</li>
-<li>Entender correlação entre ativos e seus limites como ferramenta de decisão</li>
-<li>Interpretar uma matriz de correlação com nota metodológica</li>
-<li>Aplicar o conceito de fronteira eficiente ao seu portfólio</li>
-</ul>
-</div>
 
 <p>Correlação e volatilidade são parâmetros instáveis, regime-dependentes e sensíveis à janela de observação. Não são propriedades permanentes do ativo. Em períodos de crise sistêmica, correlações entre classes de ativos tendem a convergir para 1, reduzindo temporariamente o benefício da diversificação.</p>
 
-<h2>2.1 Harry Markowitz e a Teoria Moderna do Portfólio</h2>
+<h2>Harry Markowitz e a Teoria Moderna do Portfólio</h2>
 
-<p>Em 1952, o economista Harry Markowitz publicou o artigo "Portfólio Selection" no Journal of Finance, introduzindo a ideia de que o risco de um portfólio não é simplesmente a soma dos riscos individuais de cada ativo. Markowitz demonstrou matematicamente que a combinação de ativos com correlações imperfeitas pode reduzir o risco total do portfólio sem necessariamente reduzir o retorno esperado.</p>
+<p>Em 1952, o economista Harry Markowitz publicou o artigo "Portfolio Selection" no Journal of Finance, introduzindo a ideia de que o risco de um portfólio não é simplesmente a soma dos riscos individuais de cada ativo. Markowitz demonstrou matematicamente que a combinação de ativos com correlações imperfeitas pode reduzir o risco total do portfólio sem necessariamente reduzir o retorno esperado.</p>
 
 <p>Essa insight, que lhe rendeu o Prêmio Nobel de Economia em 1990, é a base teórica de toda a gestão moderna de carteiras. O conceito central é a fronteira eficiente: o conjunto de portfólios que oferecem o maior retorno esperado para cada nível de risco, ou equivalentemente, o menor risco para cada nível de retorno.</p>
 
-<h2>2.2 Correlação: o que é, como medir e por que desconfiar</h2>
+<h2>Correlação: o que é, como medir e por que desconfiar</h2>
 
 <p>A correlação mede o grau de co-movimento entre dois ativos, variando de -1 (movem-se em direções opostas perfeitamente) a +1 (movem-se juntos perfeitamente). Um valor próximo de 0 indica ausência de relação linear.</p>
 
@@ -638,7 +608,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p class="nota-metodologica">Correlações calculadas com retornos mensais logarítmicos sobre janela de 5 anos (2021-2026). Fonte: Bloomberg, CoinMetrics, B3, Anbima. Correlações são instáveis entre regimes de mercado. Em crises (ex.: março 2020, junho 2022), correlações entre ativos de risco tendem a convergir para +1, reduzindo o benefício da diversificação justamente quando ele é mais necessário. Recomenda-se recalcular periodicamente e não tratar esses valores como fixos.</p>
 
-<h2>2.3 Fronteira eficiente na prática</h2>
+<h2>Fronteira eficiente na prática</h2>
 
 <p>A fronteira eficiente é um conceito, não uma receita. Na prática, significa que para cada nível de risco que você está disposto a tolerar, existe uma combinação ótima de ativos. Adicionar Bitcoin a um portfólio tradicional brasileiro historicamente empurrou a fronteira eficiente para cima e para a esquerda (mais retorno para o mesmo risco, ou menos risco para o mesmo retorno), desde que a alocação seja dimensionada adequadamente.</p>
 
@@ -648,42 +618,23 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <strong>⚠ Risco:</strong> A otimização de portfólio por Markowitz depende de estimativas de retorno esperado, volatilidade e correlação, todas sujeitas a erro. Pequenas mudanças nos inputs podem gerar alocações radicalmente diferentes. Na prática, combine a teoria com bom senso e limites de exposição pré-definidos.
 </div>
 
-<h2>2.4 Finanças comportamentais: o investidor contra si mesmo</h2>
+<h2>Finanças comportamentais: o investidor contra si mesmo</h2>
 
 <p>Os professores Brad Barber e Terrance Odean, em sua pesquisa seminal na Universidade da Califórnia, demonstraram que investidores individuais tendem a operar com excesso de frequência (overtrading), vender vencedores cedo demais (efeito disposição) e manter perdedores por tempo demais. Esses vieses se amplificam dramaticamente no mercado cripto, onde a volatilidade é 3 a 5 vezes maior que a de ações.</p>
 
 <p>Um portfólio com alocação-alvo predefinida e regras claras de rebalanceamento é a melhor defesa contra vieses comportamentais. Automatize o que puder. Decida em planilha, não em tela de trading.</p>
 
-<div class="checklist-box">
-<h4>Checklist do Capítulo</h4>
-<ul>
-<li>Entendi quem é Harry Markowitz e o conceito de fronteira eficiente</li>
-<li>Sei interpretar uma tabela de correlação e suas limitações</li>
-<li>Compreendi que correlações mudam entre regimes de mercado</li>
-<li>Conheço os vieses comportamentais de Barber e Odean</li>
-<li>Sei que otimização teórica precisa de bom senso prático</li>
-</ul>
-</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- CAPÍTULO 3 — O Pilar Tradicional -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">CAPÍTULO 3</div>
+<div class="chapter-label">C A P Í T U L O  3</div>
 <h1>O Pilar Tradicional</h1>
 
-<div class="learn-box">
-<strong>O que você vai aprender neste capítulo:</strong>
-<ul>
-<li>Mapear as subclasses do pilar tradicional disponíveis no Brasil</li>
-<li>Entender renda fixa pré, pós e indexada à inflação</li>
-<li>Conhecer FIIs, ações e BDRs como ferramentas de diversificação</li>
-<li>Avaliar exposição internacional sem sair da B3</li>
-</ul>
-</div>
 
-<h2>3.1 Renda fixa: a base do patrimônio</h2>
+<h2>Renda fixa: a base do patrimônio</h2>
 
 <p>Para o investidor com R$100 mil ou mais, renda fixa não é sinônimo de caderneta de poupança. O arsenal disponível inclui:</p>
 
@@ -699,15 +650,15 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>Protegem o poder de compra e pagam um prêmio real. Com o IPCA acumulado em 4,14% a.a. e títulos NTN-B pagando IPCA + 6% a 7%, o retorno real bruto é historicamente elevado. São essenciais para objetivos de longo prazo (aposentadoria, educação dos filhos).</p>
 
-<h2>3.2 Renda variável brasileira</h2>
+<h2>Renda variável brasileira</h2>
 
 <p>Ações brasileiras, representadas pelo Ibovespa, oferecem exposição ao crescimento econômico doméstico. Para patrimônios acima de R$100 mil, a forma mais eficiente costuma ser via ETFs (como BOVA11) ou fundos de ações com gestão ativa e histórico consistente. Ações individuais exigem tempo de análise que muitos investidores subestimam.</p>
 
-<h2>3.3 Fundos Imobiliários (FIIs)</h2>
+<h2>Fundos Imobiliários (FIIs)</h2>
 
 <p>FIIs distribuem rendimentos mensais isentos de IR para pessoa física (em fundos com mais de 50 cotistas e cotas negociadas em bolsa). Oferecem exposição ao mercado imobiliário com liquidez diária e ticket mínimo baixo. O IFIX é o índice de referência. Atenção ao risco de vacância e à qualidade dos ativos do fundo.</p>
 
-<h2>3.4 BDRs e exposição internacional</h2>
+<h2>BDRs e exposição internacional</h2>
 
 <p>BDRs (Brazilian Depositary Receipts) permitem ao investidor brasileiro comprar recibos de ações estrangeiras diretamente na B3, em reais. Desde 2020, BDRs de empresas como Apple, Microsoft e Amazon estão acessíveis a qualquer investidor.</p>
 
@@ -717,39 +668,18 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <strong>⚠ Risco:</strong> BDRs e ETFs internacionais carregam risco cambial. Uma queda do dólar frente ao real reduz o retorno em reais, mesmo que o ativo em dólar se valorize. Considere isso como uma forma de diversificação (exposição a moeda forte), não como risco puro.
 </div>
 
-<div class="boost-opinion">
-<strong>Na visão da Boost Research:</strong> Para o investidor com R$100 mil a R$300 mil, sugerimos que o pilar tradicional represente entre 85% e 95% do portfólio, dividido entre renda fixa (50-70%), renda variável/FIIs (15-30%) e exposição internacional (5-15%). O pilar cripto complementa com os 5-15% restantes.
-</div>
 
-<div class="checklist-box">
-<h4>Checklist do Capítulo</h4>
-<ul>
-<li>Conheço os 3 tipos de renda fixa e quando cada um faz sentido</li>
-<li>Entendi o papel de ações, FIIs e BDRs na diversificação</li>
-<li>Sei o que são BDRs e como funcionam na B3</li>
-<li>Tenho uma visão da minha alocação atual no pilar tradicional</li>
-</ul>
-</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- CAPÍTULO 4 — O Pilar Cripto -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">CAPÍTULO 4</div>
+<div class="chapter-label">C A P Í T U L O  4</div>
 <h1>O Pilar Cripto</h1>
 
-<div class="learn-box">
-<strong>O que você vai aprender neste capítulo:</strong>
-<ul>
-<li>Compreender a tese de investimento do Bitcoin e os fundamentos do protocolo</li>
-<li>Diferenciar Bitcoin de Ethereum e de altcoins</li>
-<li>Estabelecer critérios racionais para selecionar criptoativos</li>
-<li>Entender o papel de stablecoins em um portfólio</li>
-</ul>
-</div>
 
-<h2>4.1 Bitcoin: tese de investimento</h2>
+<h2>Bitcoin: tese de investimento</h2>
 
 <p>O Bitcoin é o primeiro ativo digital com escassez digital verificável. Sua oferta total é limitada a 21 milhões de unidades, com emissão decrescente a cada ciclo de halving (aproximadamente a cada 4 anos). Em 2026, aproximadamente 19,85 milhões de bitcoins já foram minerados, e o preço gira em torno de US$74.600.</p>
 
@@ -763,17 +693,14 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>Para uma explicação detalhada de como o protocolo Bitcoin funciona tecnicamente (UTXO, mineração, halving, Lightning Network), consulte o Apêndice A.</p>
 
-<h2>4.2 Ethereum e contratos inteligentes</h2>
+<h2>Ethereum e contratos inteligentes</h2>
 
 <p>O Ethereum é uma plataforma de contratos inteligentes (smart contracts) que permite a criação de aplicações descentralizadas. Enquanto o Bitcoin é primariamente reserva de valor e meio de pagamento, o Ethereum é a infraestrutura sobre a qual funcionam aplicações de finanças descentralizadas (DeFi), tokens não fungíveis (NFTs), e outros protocolos.</p>
 
 <p>Desde setembro de 2022, o Ethereum opera com proof-of-stake (prova de participação), reduzindo seu consumo energético em mais de 99%. Stakers (validadores) travam ETH como garantia e recebem recompensas, criando uma dinâmica de rendimento nativo do ativo.</p>
 
-<div class="boost-opinion">
-<strong>Na visão da Boost Research:</strong> Ethereum é a segunda posição cripto em importância para a Boost Research. Sua posição no portfólio deve ser menor que a de Bitcoin (geralmente 30-40% da alocação cripto total), refletindo seu maior risco técnico e competitivo.
-</div>
 
-<h2>4.3 Altcoins: critérios de seleção racional</h2>
+<h2>Altcoins: critérios de seleção racional</h2>
 
 <p>Fora Bitcoin e Ethereum, existem milhões de criptoativos. A grande maioria não sobrevive a um ciclo completo de mercado. Para o investidor com patrimônio relevante, o critério de seleção deve ser rigoroso:</p>
 
@@ -791,7 +718,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>A regra prática: se você não consegue explicar em 2 frases por que um criptoativo tem valor, você não deveria investir nele. Complexidade não é sinônimo de sofisticação.</p>
 
-<h2>4.4 Stablecoins: a moeda de trânsito</h2>
+<h2>Stablecoins: a moeda de trânsito</h2>
 
 <p>Stablecoins são criptoativos pareados a uma moeda fiduciária (geralmente o dólar americano). USDC (Circle) e USDT (Tether) são as mais utilizadas. No contexto de portfólio, stablecoins servem como:</p>
 
@@ -806,39 +733,18 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <strong>⚠ Risco:</strong> Stablecoins carregam risco de contraparte (a empresa emissora pode não ter lastro suficiente) e risco regulatório (governos podem restringir seu uso). USDC é auditada por terceiros e considerada de menor risco que USDT, mas nenhuma stablecoin é 100% livre de risco.
 </div>
 
-<div class="checklist-box">
-<h4>Checklist do Capítulo</h4>
-<ul>
-<li>Entendi a tese de investimento do Bitcoin (escassez, rede global, sem contraparte)</li>
-<li>Sei diferenciar Bitcoin de Ethereum em termos de proposta de valor</li>
-<li>Tenho critérios claros para avaliar altcoins antes de investir</li>
-<li>Compreendo o papel e os riscos de stablecoins</li>
-</ul>
-</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- CAPÍTULO 5 — Modelo de Alocação Boost -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">CAPÍTULO 5</div>
+<div class="chapter-label">C A P Í T U L O  5</div>
 <h1>Modelo de Alocação Boost</h1>
 
-<div class="learn-box">
-<strong>O que você vai aprender neste capítulo:</strong>
-<ul>
-<li>Conhecer o modelo de alocação híbrida proposto pela Boost Research</li>
-<li>Aplicar o modelo a 3 faixas de patrimônio: R$100 mil, R$300 mil e R$1 milhão</li>
-<li>Entender stress test e drawdown máximo esperado</li>
-<li>Planejar rebalanceamento com eficiência tributária</li>
-</ul>
-</div>
 
-<div class="boost-opinion">
-<strong>Na visão da Boost Research:</strong> O modelo a seguir é a visão da Boost Research sobre como estruturar um portfólio híbrido. Não é uma recomendação individual de investimento. Cada investidor deve adaptar os pesos à sua realidade, perfil de risco, horizonte e necessidades de liquidez. Consulte um profissional habilitado antes de implementar qualquer estratégia.
-</div>
 
-<h2>5.1 Os princípios do modelo</h2>
+<h2>Os princípios do modelo</h2>
 
 <p>O modelo de alocação Boost segue cinco princípios:</p>
 
@@ -852,7 +758,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>5. Escalabilidade: o modelo funciona de R$100 mil a R$10 milhões, com ajustes de granularidade</p>
 
-<h2>5.2 Alocação-alvo por faixa de patrimônio</h2>
+<h2>Alocação-alvo por faixa de patrimônio</h2>
 
 <h3>Portfólio R$100 mil — Perfil Moderado</h3>
 
@@ -907,7 +813,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tbody>
 </table>
 
-<h2>5.3 Stress test: o pior cenário</h2>
+<h2>Stress test: o pior cenário</h2>
 
 <p>Todo modelo de alocação precisa ser testado contra cenários adversos. A pergunta central é: "se o pior cenário histórico de cada classe se repetir simultaneamente, quanto eu perco?"</p>
 
@@ -930,7 +836,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>Num cenário de estresse simultâneo (tudo cai ao mesmo tempo, como em março de 2020), o portfólio de R$100 mil poderia perder entre 15% e 25% no pior momento. É por isso que a parcela de renda fixa pós-fixada (40%) funciona como âncora: ela continua rendendo mesmo quando tudo mais cai.</p>
 
-<h2>5.4 Rebalanceamento com eficiência tributária</h2>
+<h2>Rebalanceamento com eficiência tributária</h2>
 
 <p>Rebalancear significa trazer as alocações de volta aos pesos-alvo quando alguma classe se desviou significativamente. O rebalanceamento disciplinado força o investidor a "vender caro e comprar barato" de forma sistemática.</p>
 
@@ -958,88 +864,55 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>Liquidez: altcoins e alguns FIIs podem ter liquidez restrita</li>
 </ul>
 
-<div class="checklist-box">
-<h4>Checklist do Capítulo</h4>
-<ul>
-<li>Conheço o modelo de alocação para minha faixa de patrimônio</li>
-<li>Entendi o conceito de stress test e drawdown máximo</li>
-<li>Sei como rebalancear de forma tributariamente eficiente</li>
-<li>Defini minha alocação-alvo personalizada</li>
-</ul>
-</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- CAPÍTULO 6 — Erros Comuns (antigo 7) -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">CAPÍTULO 6</div>
+<div class="chapter-label">C A P Í T U L O  6</div>
 <h1>Erros Comuns do Investidor com R$100 Mil+</h1>
 
-<div class="learn-box">
-<strong>O que você vai aprender neste capítulo:</strong>
-<ul>
-<li>Identificar os erros mais frequentes de investidores com patrimônio relevante</li>
-<li>Entender por que esses erros são mais danosos em cripto do que em mercados tradicionais</li>
-<li>Desenvolver mecanismos de proteção contra cada erro</li>
-</ul>
-</div>
 
-<h2>6.1 Erro #1: Concentração excessiva em um único ativo</h2>
+<h2>Erro #1: Concentração excessiva em um único ativo</h2>
 
 <p>O investidor que coloca 50% ou mais do patrimônio em um único criptoativo, mesmo que seja Bitcoin, está se expondo a um risco desnecessário. Um drawdown de 77% (como ocorreu entre novembro de 2021 e novembro de 2022) em 50% do patrimônio significa uma perda de 38,5% do total. Nenhum retorno futuro justifica essa assimetria de risco para quem já tem patrimônio a preservar.</p>
 
-<h2>6.2 Erro #2: Operar com frequência excessiva</h2>
+<h2>Erro #2: Operar com frequência excessiva</h2>
 
 <p>Os estudos de Brad Barber e Terrance Odean mostram que investidores que operam mais frequentemente tendem a obter retornos piores do que aqueles que compram e mantêm. Em cripto, a volatilidade 24/7 amplifica esse efeito. A tentação de "comprar na baixa e vender na alta" diariamente quase sempre resulta em compras emocionais e vendas prematuras.</p>
 
-<h2>6.3 Erro #3: Ignorar a custódia até ser tarde demais</h2>
+<h2>Erro #3: Ignorar a custódia até ser tarde demais</h2>
 
 <p>Muitos investidores deixam criptoativos em exchanges por meses ou anos. Quando a exchange tem problemas (como ocorreu com a FTX em novembro de 2022), os fundos ficam inacessíveis. A regra é simples: exchange é para comprar e vender. Cold wallet é para guardar.</p>
 
-<h2>6.4 Erro #4: Entrar em cripto sem entender o básico do protocolo</h2>
+<h2>Erro #4: Entrar em cripto sem entender o básico do protocolo</h2>
 
 <p>Investir em Bitcoin sem entender o que é uma blockchain, como funciona a mineração ou por que o supply é limitado é equivalente a comprar ações de uma empresa sem ler o balanço. O Apêndice A deste e-book existe para preencher essa lacuna.</p>
 
-<h2>6.5 Erro #5: Confundir alocação com convicção</h2>
+<h2>Erro #5: Confundir alocação com convicção</h2>
 
 <p>Ter convicção em um ativo não significa que ele deva ocupar uma fatia grande do portfólio. Alocação é sobre gestão de risco, não sobre fé. Um investidor pode ter alta convicção em Bitcoin e ainda assim alocar apenas 10%, porque entende que a volatilidade do ativo exige um posicionamento dimensionado.</p>
 
-<h2>6.6 Erro #6: Não ter plano tributário</h2>
+<h2>Erro #6: Não ter plano tributário</h2>
 
 <p>Criptoativos no Brasil são tributados a 15% sobre ganho de capital para vendas acima de R$35 mil/mês. Muitos investidores não planejam suas vendas e acabam pagando imposto desnecessariamente. Rebalancear em parcelas mensais abaixo do limite de isenção é uma estratégia simples e legal de eficiência tributária.</p>
 
-<h2>6.7 Erro #7: Seguir influenciadores sem análise própria</h2>
+<h2>Erro #7: Seguir influenciadores sem análise própria</h2>
 
 <p>O mercado cripto é inundado por conteúdo de influenciadores com conflitos de interesse não declarados (investimento prévio, parcerias pagas, airdrops). O investidor com R$100 mil+ tem patrimônio suficiente para que decisões baseadas em hype possam causar danos financeiros relevantes. Desenvolva seu próprio framework de análise ou confie em profissionais transparentes sobre seus interesses.</p>
 
-<div class="checklist-box">
-<h4>Checklist do Capítulo</h4>
-<ul>
-<li>Identifiquei quais dos 7 erros eu cometo ou já cometi</li>
-<li>Defini ações concretas para corrigir pelo menos 2 deles</li>
-<li>Entendi que disciplina importa mais que convicção</li>
-<li>Sei que operação frequente tende a destruir valor, não a criá-lo</li>
-</ul>
-</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- CAPÍTULO 7 — Próximos Passos (antigo 8) -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">CAPÍTULO 7</div>
+<div class="chapter-label">C A P Í T U L O  7</div>
 <h1>Próximos Passos</h1>
 
-<div class="learn-box">
-<strong>O que você vai aprender neste capítulo:</strong>
-<ul>
-<li>Definir um plano de ação concreto após a leitura deste e-book</li>
-<li>Conhecer os recursos disponíveis na Boost Research</li>
-</ul>
-</div>
 
-<h2>7.1 Seu plano de ação em 4 passos</h2>
+<h2>Seu plano de ação em 4 passos</h2>
 
 <p>Se você leu este e-book do início ao fim, já domina os conceitos centrais para tomar decisões mais conscientes sobre alocação híbrida. Mas conhecimento sem ação é apenas entretenimento. Aqui está seu plano:</p>
 
@@ -1051,41 +924,32 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>Passo 4 — Rebalanceamento periódico: Agende um lembrete semestral para revisar a alocação. Use novos aportes para corrigir desvios. Mantenha a disciplina.</p>
 
-<h2>7.2 O acompanhamento Boost Research</h2>
+<h2>O acompanhamento Boost Research</h2>
 
-<p>A Boost Research é o serviço de análise e acompanhamento da Boost Research, liderado por André Franco. O acompanhamento oferece:</p>
+<p>A Boost Research é uma Consultoria de Investimentos em Cripto, independente, não vinculada a banco ou corretora, liderada por André Franco. O acompanhamento oferece:</p>
 
 <ul>
-<li>Relatórios semanais de análise do mercado cripto e macro</li>
-<li>Carteiras recomendadas com alocações detalhadas e teses por ativo</li>
-<li>Alertas de movimentação (quando comprar, quando rebalancear, quando reduzir exposição)</li>
+<li>Acompanhamento semanal do mercado cripto e macro com seu Advisor dedicado</li>
+<li>Orientação personalizada do seu Advisor sobre alocação e momentos de ação</li>
+<li>Direcionamento claro do que fazer e quando fazer, sem que você precise acompanhar gráficos ou notícias</li>
 <li>Comunidade exclusiva para discussão e dúvidas</li>
-<li>Acesso direto à equipe de análise</li>
+<li>Advisor dedicado que compreende seu perfil e suas necessidades</li>
 </ul>
 
 <p>Se este e-book despertou seu interesse em construir um portfólio híbrido com acompanhamento profissional, conheça a Boost Research em boostresearch.com.br.</p>
 
-<div class="checklist-box">
-<h4>Checklist do Capítulo</h4>
-<ul>
-<li>Tenho meu diagnóstico de alocação atual montado</li>
-<li>Defini minha alocação-alvo personalizada</li>
-<li>Sei os próximos passos concretos para implementar</li>
-<li>Conheço os recursos disponíveis na Boost Research</li>
-</ul>
-</div>
 </div>
 
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <!-- APÊNDICE A — Bitcoin como Protocolo -->
 <!-- ════════════════════════════════════════════════════════════════════ -->
 <div class="chapter content-page">
-<div class="chapter-label">APÊNDICE A</div>
+<div class="chapter-label">A P Ê N D I C E  A</div>
 <h1>Bitcoin como Protocolo</h1>
 
 <p>Este apêndice é dedicado ao investidor que quer entender como o Bitcoin funciona além da tese de investimento. Não é necessário dominar esses conceitos para investir, mas compreendê-los aumenta significativamente sua convicção e capacidade de avaliar riscos.</p>
 
-<h2>A.1 O modelo UTXO (Unspent Transaction Output)</h2>
+<h2>O modelo UTXO (Unspent Transaction Output)</h2>
 
 <p>Diferente de um banco, que mantém saldos em contas, o Bitcoin funciona com um modelo de "saídas não gastas". Imagine que cada transação cria moedas digitais específicas (UTXOs) que pertencem a um endereço. Quando você quer gastar Bitcoin, precisa consumir UTXOs inteiros e gerar novos.</p>
 
@@ -1093,7 +957,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>Esse modelo garante que cada unidade de Bitcoin é rastreável desde sua emissão original (coinbase transaction) até o estado atual, sem necessidade de um banco de dados centralizado de saldos.</p>
 
-<h2>A.2 Mempool e taxas de rede (fee rates)</h2>
+<h2>Mempool e taxas de rede (fee rates)</h2>
 
 <p>Quando você envia uma transação Bitcoin, ela não é confirmada instantaneamente. Primeiro, ela entra no mempool (memory pool), uma área de espera onde transações aguardam para serem incluídas em um bloco por mineradores.</p>
 
@@ -1101,7 +965,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>Para o investidor de longo prazo, a implicação prática é: não envie transações em momentos de congestionamento (após grandes movimentos de preço, por exemplo). Use estimadores de taxa (como mempool.space) para escolher o momento ideal.</p>
 
-<h2>A.3 Proof of Work (Prova de Trabalho)</h2>
+<h2>Proof of Work (Prova de Trabalho)</h2>
 
 <p>O Bitcoin utiliza proof of work (PoW) como mecanismo de consenso. Mineradores competem para encontrar um número (nonce) que, quando combinado com os dados do bloco e processado pela função hash SHA-256, produz um resultado abaixo de um determinado alvo (target).</p>
 
@@ -1109,7 +973,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>A dificuldade de mineração se ajusta automaticamente a cada 2.016 blocos (aproximadamente 2 semanas), garantindo que blocos sejam produzidos em média a cada 10 minutos, independente do número de mineradores.</p>
 
-<h2>A.4 Halving (redução da emissão)</h2>
+<h2>Halving (redução da emissão)</h2>
 
 <p>A cada 210.000 blocos (aproximadamente 4 anos), a recompensa que mineradores recebem por criar um novo bloco é cortada pela metade. Esse evento é chamado de halving.</p>
 
@@ -1127,9 +991,9 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tbody>
 </table>
 
-<p>O halving é o mecanismo que garante a escassez programática do Bitcoin. Após todos os halvings (~ano 2140), a emissão total terá atingido 21 milhões de BTC. Historicamente, os 12-18 meses seguintes a cada halving foram períodos de valorização significativa, embora rentabilidades passadas não garantam resultados futuros.</p>
+<p>O halving é o mecanismo que garante a escassez digital do Bitcoin. Após todos os halvings (~ano 2140), a emissão total terá atingido 21 milhões de BTC. Historicamente, os 12-18 meses seguintes a cada halving foram períodos de valorização significativa, embora rentabilidades passadas não garantam resultados futuros.</p>
 
-<h2>A.5 SegWit (Segregated Witness)</h2>
+<h2>SegWit (Segregated Witness)</h2>
 
 <p>Ativado em agosto de 2017 (conforme BIP-141), o SegWit foi uma atualização que separou ("segregou") os dados de assinatura ("witness") do corpo principal da transação. Benefícios:</p>
 
@@ -1139,7 +1003,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>Redução de taxas para transações SegWit (formato bech32, endereços começando com bc1)</li>
 </ul>
 
-<h2>A.6 Taproot</h2>
+<h2>Taproot</h2>
 
 <p>Ativado em novembro de 2021 (conforme BIP-340, BIP-341 e BIP-342), o Taproot trouxe assinaturas Schnorr e árvores MAST (Merkelized Abstract Syntax Trees) ao Bitcoin. Na prática:</p>
 
@@ -1151,7 +1015,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 <p>É importante não confundir esses três avanços. O SegWit (BIP-141, 2017) resolveu a maleabilidade de transações e alterou a contabilização do witness data. O Taproot (BIP-340/341/342, 2021) introduziu outputs SegWit v1 e assinaturas Schnorr, melhorando privacidade e eficiência de scripts complexos. A Lightning Network é uma camada adicional de canais de pagamento que opera sobre a blockchain principal, não é um upgrade 'dentro do bloco', mas uma infraestrutura complementar com liquidação final on-chain.</p>
 
-<h2>A.7 Lightning Network</h2>
+<h2>Lightning Network</h2>
 
 <p>A Lightning Network é uma camada 2 (layer 2) construída sobre o Bitcoin que permite transações instantâneas e com taxas mínimas. Funciona através de canais de pagamento bidirecionais entre participantes.</p>
 
@@ -1190,9 +1054,9 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <p style="text-align:center;font-size:9pt;margin-bottom:6px;">
 <a href="https://www.linkedin.com/company/boostresearch" style="color:#0A66C2;text-decoration:none;">LinkedIn</a> &nbsp;·&nbsp;
 <a href="https://www.instagram.com/cryptoandrefranco/" style="color:#E1306C;text-decoration:none;">Instagram</a> &nbsp;·&nbsp;
-<a href="https://wa.me/5521965622891?text=Olá%2C%20li%20o%20e-book%20da%20Boost%20Research%20e%20gostaria%20de%20saber%20mais." style="color:#25D366;text-decoration:none;">WhatsApp</a>
+<a href="https://elsonflorentino-afk.github.io/projetos-boost/cta-wa-ebook1.html" style="color:#25D366;text-decoration:none;">WhatsApp</a>
 </p>
-<p style="text-align:center;font-size:8pt;color:#999;margin-top:10px;">&copy; 2026 Boost Research. Todos os direitos reservados.<br>Este material é de uso exclusivo do assinante. Reprodução proibida sem autorização.</p>
+<p style="text-align:center;font-size:8pt;color:#999;margin-top:10px;">&copy; 2026 Boost Research. Todos os direitos reservados.<br>Este material é de uso exclusivo do cliente. Reprodução proibida sem autorização.</p>
 </div>
 </div>
 
@@ -1210,7 +1074,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
     </svg>
     <h2>Quer uma análise gratuita da sua carteira?</h2>
     <p>André Franco e o time da Boost Research analisam sua carteira cripto e tradicional, identificam oportunidades e pontos de risco.<br><br>Sem compromisso. Sem custo.</p>
-    <a href="https://wa.me/5521965622891" class="cta-btn">FALAR COM A BOOST NO WHATSAPP</a>
+    <a href="https://elsonflorentino-afk.github.io/projetos-boost/cta-wa-ebook1.html" class="cta-btn">FALAR COM A BOOST NO WHATSAPP</a>
     <div class="cta-sub">analise.boostresearch.com.br<br><em>Ou acesse o site para agendar sua análise gratuita</em></div>
 </div>
 
