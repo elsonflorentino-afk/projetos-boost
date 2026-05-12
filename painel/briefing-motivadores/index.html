@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Motivadores Criativos — Boost Research</title>
+<style>
+:root{--bg:#0a0a0a;--card:#141414;--border:#222;--teal:#03E4D0;--blue:#448AFF;--purple:#B388FF;--orange:#FF9100;--red:#FF5252;--gold:#FFD600;--green:#00C853;--white:#fff;--text:#E0E0E0;--dim:#666;--dark:#12191D}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);padding:24px;max-width:1200px;margin:0 auto}
+h1{font-size:24px;color:var(--white);margin-bottom:4px}
+h2{font-size:16px;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+h3{font-size:14px;color:var(--teal);margin-bottom:8px}
+.sub{color:var(--dim);font-size:13px;margin-bottom:24px}
+.section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px}
+.badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-right:6px}
+.b-teal{background:rgba(3,228,208,.12);color:var(--teal)}
+.b-blue{background:rgba(68,138,255,.12);color:var(--blue)}
+.b-purple{background:rgba(179,136,255,.12);color:var(--purple)}
+.b-orange{background:rgba(255,145,0,.12);color:var(--orange)}
+.b-red{background:rgba(255,82,82,.12);color:var(--red)}
+.b-gold{background:rgba(255,214,0,.12);color:var(--gold)}
+.b-green{background:rgba(0,200,83,.12);color:var(--green)}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center}
+.stat-box .v{font-size:28px;font-weight:800}
+.stat-box .l{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* === DIAGRAMA === */
+.diagram{padding:32px 16px;overflow-x:auto}
+.d-row{display:flex;justify-content:center;align-items:stretch;gap:0;margin-bottom:0;position:relative}
+.d-layer{background:linear-gradient(135deg,rgba(3,228,208,.08),rgba(3,228,208,.02));border:1px solid rgba(3,228,208,.25);border-radius:12px;padding:12px 24px;text-align:center;font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:1.5px;width:100%;max-width:800px;margin:0 auto}
+.d-layer-num{font-size:24px;display:block;margin-bottom:2px}
+.d-connector{display:flex;justify-content:center;padding:8px 0}
+.d-connector .line{width:2px;height:24px;background:var(--teal);opacity:.3}
+.d-branch-connector{display:flex;justify-content:center;align-items:flex-start;padding:8px 0;position:relative;max-width:800px;margin:0 auto}
+.d-branch-connector::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:12px;background:var(--teal);opacity:.3}
+.d-branch-connector .h-line{position:absolute;top:12px;height:2px;background:var(--teal);opacity:.3}
+.d-cards{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;max-width:800px;margin:0 auto}
+.d-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;text-align:center;min-width:180px;max-width:220px;flex:1;position:relative;transition:all .2s}
+.d-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.d-card .title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px}
+.d-card .desc{font-size:11px;color:var(--dim);line-height:1.4}
+.d-card .type{font-size:9px;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:700}
+.d-card .type.barreira{color:var(--orange)}
+.d-card .type.necessidade{color:var(--red)}
+.d-card .type.desejo{color:var(--green)}
+.d-card .dot{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;border:2px solid var(--bg)}
+
+/* Visual branch */
+.d-visual-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;max-width:900px;margin:0 auto}
+.d-format-group{display:flex;flex-direction:column;align-items:center;gap:8px}
+.d-format-label{font-size:12px;font-weight:700;color:var(--white);padding:8px 20px;border-radius:8px;border:1px solid var(--border);background:var(--card)}
+.d-fidelity{display:flex;gap:10px}
+.d-fid-card{border-radius:8px;padding:10px 14px;text-align:center;min-width:110px;border:1px solid var(--border);transition:all .2s}
+.d-fid-card:hover{transform:translateY(-2px)}
+.d-fid-card.lofi{background:rgba(255,145,0,.06);border-color:rgba(255,145,0,.2)}
+.d-fid-card.hifi{background:rgba(68,138,255,.06);border-color:rgba(68,138,255,.2)}
+.d-fid-card .fid-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.d-fid-card.lofi .fid-label{color:var(--orange)}
+.d-fid-card.hifi .fid-label{color:var(--blue)}
+.d-fid-card .fid-desc{font-size:10px;color:var(--dim);line-height:1.3}
+
+/* Top box */
+.d-top-box{background:linear-gradient(135deg,rgba(3,228,208,.1),rgba(3,228,208,.03));border:1px dashed rgba(3,228,208,.3);border-radius:10px;padding:16px 24px;text-align:center;max-width:600px;margin:0 auto 8px;font-size:12px;color:var(--text);line-height:1.5}
+
+/* Conceito cards */
+.conceito-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+.conceito{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color .2s}
+.conceito:hover{border-color:var(--teal)}
+.conceito .c-num{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.conceito .c-title{font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px}
+.conceito .c-hook{font-size:13px;color:var(--teal);font-style:italic;margin-bottom:12px;padding:8px 12px;background:rgba(3,228,208,.05);border-radius:6px;border-left:3px solid var(--teal)}
+.conceito dl{display:grid;grid-template-columns:80px 1fr;gap:4px 12px;font-size:12px}
+.conceito dt{color:var(--dim);font-weight:600}
+.conceito dd{color:var(--text);margin:0}
+
+/* Matriz */
+.matrix{overflow-x:auto;margin-top:12px}
+.matrix table{width:100%;border-collapse:collapse;font-size:11px}
+.matrix th{background:var(--dark);color:var(--teal);padding:8px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:.5px;border:1px solid var(--border)}
+.matrix td{padding:8px;text-align:center;border:1px solid var(--border);color:var(--text)}
+.matrix tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.matrix .code{font-family:'SF Mono',Monaco,monospace;font-size:10px;padding:2px 6px;border-radius:3px}
+.matrix .code.lo{background:rgba(255,145,0,.1);color:var(--orange)}
+.matrix .code.hi{background:rgba(68,138,255,.1);color:var(--blue)}
+.matrix .row-label{text-align:left;font-weight:600;color:var(--white)}
+
+/* Princípios */
+.principios{display:grid;gap:12px;margin-top:12px}
+.principio{display:flex;gap:14px;align-items:flex-start;padding:12px 16px;border-radius:8px;background:rgba(3,228,208,.03);border:1px solid rgba(3,228,208,.08)}
+.principio .num{width:28px;height:28px;border-radius:50%;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0}
+.principio .p-text{flex:1}
+.principio .p-title{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px}
+.principio .p-desc{font-size:12px;color:var(--dim)}
+
+/* Workflow */
+.wf-steps{display:flex;flex-direction:column;gap:6px}
+.wf-step{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.02);font-size:13px}
+.wf-step .s-num{width:24px;height:24px;border-radius:50%;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.wf-step .s-agent{color:var(--teal);font-weight:600;min-width:60px}
+
+/* Specs */
+.spec-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+@media(max-width:700px){.spec-grid{grid-template-columns:1fr}}
+.spec-card{border:1px solid var(--border);border-radius:10px;padding:16px;background:var(--card)}
+.spec-card h4{font-size:12px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.spec-card ul{list-style:none;font-size:12px;color:var(--dim);line-height:1.8}
+.spec-card ul li::before{content:'→ ';color:var(--teal)}
+
+/* Motivador detail */
+.motiv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:12px}
+.motiv-card{border:1px solid var(--border);border-radius:12px;padding:20px;background:var(--card)}
+.motiv-card .m-type{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.motiv-card .m-title{font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px}
+.motiv-card .m-quote{font-size:13px;font-style:italic;color:var(--teal);padding:10px 14px;border-left:3px solid;border-radius:4px;margin-bottom:12px;background:rgba(3,228,208,.04)}
+.motiv-card .m-meta{font-size:11px;color:var(--dim);line-height:1.8}
+.motiv-card .m-meta strong{color:var(--text)}
+
+/* Prioridade */
+.pri-table{overflow-x:auto;margin-top:12px}
+.pri-table table{width:100%;border-collapse:collapse;font-size:12px}
+.pri-table th{background:var(--dark);color:var(--teal);padding:8px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;border:1px solid var(--border)}
+.pri-table td{padding:8px 10px;border:1px solid var(--border)}
+.pri-table tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.pri-num{width:22px;height:22px;border-radius:50%;background:var(--teal);color:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+
+.footer{text-align:center;color:var(--dim);font-size:11px;margin-top:32px;padding-bottom:24px}
+</style>
+</head>
+<body>
+
+<h1>Briefing de Motivadores Criativos</h1>
+<p class="sub">Campanha C10-EBOOKS · Boost Research · Framework Meta Blueprint + TIDAL + Pilothouse · 12/mai/2026</p>
+
+<!-- Stats -->
+<div class="stat-row">
+  <div class="stat-box"><div class="v" style="color:var(--teal)">3</div><div class="l">Motivadores</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--blue)">3</div><div class="l">Conceitos</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--purple)">8</div><div class="l">Formatos</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--orange)">24</div><div class="l">Peças Total</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--green)">10</div><div class="l">Fase 1</div></div>
+  <div class="stat-box"><div class="v" style="color:var(--gold)">7</div><div class="l">Agentes</div></div>
+</div>
+
+<!-- Agentes -->
+<div class="section" style="padding:14px 24px">
+  <span class="badge b-purple">@helena</span><span class="badge b-teal">@vera</span><span class="badge b-orange">@zeca</span><span class="badge b-blue">@max</span><span class="badge b-green">@rafa</span><span class="badge b-red">@cris</span><span class="badge b-gold">@nina</span>
+</div>
+
+<!-- Princípios -->
+<div class="section">
+  <h2>O que faz diferença na prática</h2>
+  <div class="principios">
+    <div class="principio"><div class="num">1</div><div class="p-text"><div class="p-title">Performance criativa vem antes de mídia</div><div class="p-desc">Pós-Andromeda, criativo é o sinal primário de targeting. Segmentação é algorítmica, criativo é a variável controlável.</div></div></div>
+    <div class="principio"><div class="num">2</div><div class="p-text"><div class="p-title">Motivadores geram mais intenção que mensagens genéricas</div><div class="p-desc">89% novas audiências, 46% CPA menor (Meta study, 225 campanhas, 99.99% confiança).</div></div></div>
+    <div class="principio"><div class="num">3</div><div class="p-text"><div class="p-title">Adaptar ao comportamento da plataforma</div><div class="p-desc">Lo-fi nativo supera Hi-fi em intenção de compra: 9.7% lift (Brainlabs, 46 estudos Meta).</div></div></div>
+    <div class="principio"><div class="num">4</div><div class="p-text"><div class="p-title">Copy, imagem e vídeo contam a mesma história</div><div class="p-desc">Coerência conceitual por formato. O motivador dirige uma narrativa unificada expressa diferente por formato.</div></div></div>
+    <div class="principio"><div class="num">5</div><div class="p-text"><div class="p-title">Clareza antes da execução</div><div class="p-desc">Pipeline de 3 camadas força clareza (descoberta + conceito) ANTES de qualquer produção.</div></div></div>
+  </div>
+</div>
+
+<!-- ============ DIAGRAMA ============ -->
+<div class="section">
+  <h2>Diagrama: Motivador → Mensagem → Visual</h2>
+
+  <div class="diagram">
+    <!-- Top box -->
+    <div class="d-top-box">
+      Avalie seus ativos existentes e descubra <strong>3 motivadores, barreiras ou necessidades</strong> que não estão sendo abordados atualmente.
+    </div>
+
+    <div class="d-connector"><div class="line"></div></div>
+
+    <!-- Layer 01 -->
+    <div class="d-layer"><span class="d-layer-num">01</span>MOTIVADORES</div>
+    <div class="d-connector"><div class="line"></div></div>
+
+    <!-- 3 Motivador cards -->
+    <div class="d-cards">
+      <div class="d-card" style="border-top:3px solid var(--orange)">
+        <div class="type barreira">Barreira</div>
+        <div class="title">Motivador 1</div>
+        <div class="desc">Inércia — "Não sei por onde começar"</div>
+      </div>
+      <div class="d-card" style="border-top:3px solid var(--red)">
+        <div class="type necessidade">Necessidade</div>
+        <div class="title">Motivador 2</div>
+        <div class="desc">Fiscal — "Preciso ficar em conformidade"</div>
+      </div>
+      <div class="d-card" style="border-top:3px solid var(--green)">
+        <div class="type desejo">Desejo</div>
+        <div class="title">Motivador 3</div>
+        <div class="desc">Advisor — "Quero alguém que me diga o que fazer"</div>
+      </div>
+    </div>
+
+    <div class="d-connector"><div class="line"></div></div>
+
+    <!-- Layer 02 -->
+    <div class="d-layer"><span class="d-layer-num">02</span>MENSAGENS (CONCEITOS)</div>
+    <div class="d-connector"><div class="line"></div></div>
+
+    <!-- 3 Conceito cards -->
+    <div class="d-cards">
+      <div class="d-card" style="border-top:3px solid var(--orange)">
+        <div class="type barreira">Conceito 1</div>
+        <div class="title">"O primeiro passo"</div>
+        <div class="desc">Acolhimento. E-book como ação de baixo atrito.</div>
+      </div>
+      <div class="d-card" style="border-top:3px solid var(--red)">
+        <div class="type necessidade">Conceito 2</div>
+        <div class="title">"Julho está chegando"</div>
+        <div class="desc">Urgência real. DeCripto, multa 3%, CARF/OCDE.</div>
+      </div>
+      <div class="d-card" style="border-top:3px solid var(--green)">
+        <div class="type desejo">Conceito 3</div>
+        <div class="title">"Não faça sozinho"</div>
+        <div class="desc">Confessional. Advisor dedicado desde 2016.</div>
+      </div>
+    </div>
+
+    <div class="d-connector"><div class="line"></div></div>
+
+    <!-- Layer 03 -->
+    <div class="d-layer"><span class="d-layer-num">03</span>VISUAIS (PRODUÇÃO)</div>
+    <div class="d-connector"><div class="line"></div></div>
+
+    <!-- Visual branches -->
+    <div class="d-visual-row">
+      <div class="d-format-group">
+        <div class="d-format-label">Vídeo (9:16 & 4:5)</div>
+        <div class="d-fidelity">
+          <div class="d-fid-card lofi">
+            <div class="fid-label">Lo-fi</div>
+            <div class="fid-desc">André falando direto, celular, iluminação natural</div>
+          </div>
+          <div class="d-fid-card hifi">
+            <div class="fid-label">Hi-fi</div>
+            <div class="fid-desc">Motion graphics, branded, estúdio, Boost palette</div>
+          </div>
+        </div>
+      </div>
+      <div class="d-format-group">
+        <div class="d-format-label">Estático (9:16 & 1:1)</div>
+        <div class="d-fidelity">
+          <div class="d-fid-card lofi">
+            <div class="fid-label">Lo-fi</div>
+            <div class="fid-desc">Texto pesado, screenshot, sem logo, nativo</div>
+          </div>
+          <div class="d-fid-card hifi">
+            <div class="fid-label">Hi-fi</div>
+            <div class="fid-desc">Design Boost, foto André, #12191D, teal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align:center;margin-top:16px;font-size:12px;color:var(--dim)">3 conceitos × 8 combinações (formato × fidelidade) = <strong style="color:var(--teal)">24 peças por ciclo</strong></p>
+  </div>
+</div>
+
+<!-- Motivadores detalhe -->
+<div class="section">
+  <h2>Layer 01 — Motivadores (detalhe)</h2>
+  <div class="motiv-grid">
+    <div class="motiv-card" style="border-top:3px solid var(--orange)">
+      <div class="m-type" style="color:var(--orange)">Barreira · Dor #2 · 134 menções</div>
+      <div class="m-title">Motivador 1: Inércia</div>
+      <div class="m-quote">"Eu fico bolado com essas coisas, bicho. Eu até hoje não tenho segurança, cara" — Frederico</div>
+      <div class="m-meta">
+        <strong>Estágio:</strong> TOPO (Problem Aware, Schwartz nível 2)<br>
+        <strong>Psicologia:</strong> Life Force 8 — #5 Condições confortáveis<br>
+        <strong>E-book:</strong> E-book 1 (Portfólio Tradicional + Cripto)<br>
+        <strong>Justificativa:</strong> 38% dos leads são Não-ICP que chegam sem saber o que fazer
+      </div>
+    </div>
+    <div class="motiv-card" style="border-top:3px solid var(--red)">
+      <div class="m-type" style="color:var(--red)">Necessidade · Dor #4 · 72 menções</div>
+      <div class="m-title">Motivador 2: Urgência Fiscal</div>
+      <div class="m-quote">"Chega de ficar dando dinheiro para esses caras, meu. Tô revoltado aqui" — Jacques</div>
+      <div class="m-meta">
+        <strong>Estágio:</strong> MEIO (Solution Aware, Schwartz nível 3)<br>
+        <strong>Psicologia:</strong> Life Force 8 — #4 Liberdade de medo e dor<br>
+        <strong>E-book:</strong> E-book 2 (Novas Regras Cripto 2026)<br>
+        <strong>Justificativa:</strong> Urgência real. DeCripto entra em vigor em julho 2026
+      </div>
+    </div>
+    <div class="motiv-card" style="border-top:3px solid var(--green)">
+      <div class="m-type" style="color:var(--green)">Desejo · Dor #1 · 145 menções</div>
+      <div class="m-title">Motivador 3: Advisor Dedicado</div>
+      <div class="m-quote">"Comprei na alta, não vendi no topo, e agora tô com um gostinho amargo" — Sidney</div>
+      <div class="m-meta">
+        <strong>Estágio:</strong> MEIO/FUNDO (Solution/Product Aware, Schwartz 3-4)<br>
+        <strong>Psicologia:</strong> Life Force 8 — #7 Proteção do patrimônio<br>
+        <strong>E-book:</strong> Ambos (CTA pós-download → análise gratuita)<br>
+        <strong>Justificativa:</strong> Mecanismo diferenciador da Boost: consultoria independente desde 2016
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Conceitos detalhe -->
+<div class="section">
+  <h2>Layer 02 — Conceitos (detalhe)</h2>
+  <div class="conceito-grid">
+    <div class="conceito" style="border-top:3px solid var(--orange)">
+      <div class="c-num" style="color:var(--orange)">Conceito 1 / Motivador 1</div>
+      <div class="c-title">"O primeiro passo"</div>
+      <div class="c-hook">"Mais de R$100 mil investidos e sem saber por onde começar em cripto?"</div>
+      <dl>
+        <dt>Ângulo</dt><dd>Acolhimento. Não julgar — oferecer o primeiro passo</dd>
+        <dt>Narrativa</dt><dd>Patrimônio parado → Mercado muda, você não → E-book como primeiro passo</dd>
+        <dt>Prova</dt><dd>André Franco orienta investidores desde 2016. Dois ciclos completos.</dd>
+        <dt>CTA</dt><dd>Baixe o e-book gratuito. Leitura de 20 minutos.</dd>
+        <dt>Tom</dt><dd>Acolhedor, sem julgamento</dd>
+      </dl>
+    </div>
+    <div class="conceito" style="border-top:3px solid var(--red)">
+      <div class="c-num" style="color:var(--red)">Conceito 2 / Motivador 2</div>
+      <div class="c-title">"Julho está chegando"</div>
+      <div class="c-hook">"Em julho de 2026, a Receita Federal vai saber tudo sobre sua carteira de cripto."</div>
+      <dl>
+        <dt>Ângulo</dt><dd>Urgência real com deadline concreto. Multa 3%</dd>
+        <dt>Narrativa</dt><dd>DeCripto julho → Multa 3%, 48 países → E-book explica artigo por artigo</dd>
+        <dt>Prova</dt><dd>Árvore decisória + checklist de 7 passos</dd>
+        <dt>CTA</dt><dd>Baixe antes de julho. Gratuito.</dd>
+        <dt>Tom</dt><dd>Sério, informativo. Deadline real, não FOMO</dd>
+      </dl>
+    </div>
+    <div class="conceito" style="border-top:3px solid var(--green)">
+      <div class="c-num" style="color:var(--green)">Conceito 3 / Motivador 3</div>
+      <div class="c-title">"Você não precisa fazer isso sozinho"</div>
+      <div class="c-hook">"Comprei na alta, não vendi no topo. Você também?"</div>
+      <dl>
+        <dt>Ângulo</dt><dd>Confessional + aspiração. Resignação → orientação</dd>
+        <dt>Narrativa</dt><dd>54% passam por isso → Falta de critério → Advisor desde 2016 → E-book como porta</dd>
+        <dt>Prova</dt><dd>228 reuniões. André Franco, dois ciclos completos.</dd>
+        <dt>CTA</dt><dd>Leia. Depois decida se faz sentido conversar.</dd>
+        <dt>Tom</dt><dd>Confessional, íntimo. Linguagem do ICP</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<!-- Specs Lo-fi vs Hi-fi -->
+<div class="section">
+  <h2>Layer 03 — Specs por Fidelidade</h2>
+  <div class="spec-grid">
+    <div class="spec-card" style="border-top:3px solid var(--orange)">
+      <h4><span class="badge b-orange">Lo-fi</span> Vídeo</h4>
+      <ul>
+        <li>André falando direto pra câmera, celular</li>
+        <li>Iluminação natural, sem estúdio</li>
+        <li>15-30 segundos</li>
+        <li>Fonte nativa do Instagram (não Sora)</li>
+        <li>Corte seco, sem transições</li>
+        <li>Estilo: story pessoal do André</li>
+      </ul>
+    </div>
+    <div class="spec-card" style="border-top:3px solid var(--blue)">
+      <h4><span class="badge b-blue">Hi-fi</span> Vídeo</h4>
+      <ul>
+        <li>Background #12191D, tipografia Sora</li>
+        <li>Acento teal #03E4D0</li>
+        <li>Motion graphics, dados animados</li>
+        <li>15-30 segundos</li>
+        <li>Legenda estilizada</li>
+        <li>Estilo: anúncio fintech premium</li>
+      </ul>
+    </div>
+    <div class="spec-card" style="border-top:3px solid var(--orange)">
+      <h4><span class="badge b-orange">Lo-fi</span> Estático</h4>
+      <ul>
+        <li>Screenshot de conversa, texto pesado</li>
+        <li>SEM logo (parece orgânico)</li>
+        <li>Fonte do sistema (SF Pro, Helvetica)</li>
+        <li>Fundo branco ou bege</li>
+        <li>Estilo: post compartilhado por amigo</li>
+      </ul>
+    </div>
+    <div class="spec-card" style="border-top:3px solid var(--blue)">
+      <h4><span class="badge b-blue">Hi-fi</span> Estático</h4>
+      <ul>
+        <li>Background #12191D, acento #03E4D0</li>
+        <li>Foto André Franco (70%+)</li>
+        <li>Logo Boost presente</li>
+        <li>Tipografia Sora + Inter</li>
+        <li>Legível em 200×200px (Sullivan)</li>
+        <li>Estilo: vencedores C4 (AF-CRIPTO FEED)</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:14px;font-size:12px;color:var(--dim);padding:12px 16px;border:1px dashed var(--border);border-radius:8px"><strong style="color:var(--white)">Regra-chave:</strong> Lo-fi NÃO significa baixa qualidade. Significa estética nativa da plataforma. O conteúdo precisa ser tão bom quanto o Hi-fi, mas parecer que foi postado por uma pessoa, não por uma marca.</p>
+</div>
+
+<!-- Matriz 24 peças -->
+<div class="section">
+  <h2>Matriz de Produção: 24 Peças</h2>
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Vídeo 9:16<br><span style="color:var(--orange)">Lo</span></th>
+          <th>Vídeo 9:16<br><span style="color:var(--blue)">Hi</span></th>
+          <th>Vídeo 4:5<br><span style="color:var(--orange)">Lo</span></th>
+          <th>Vídeo 4:5<br><span style="color:var(--blue)">Hi</span></th>
+          <th>Est. 9:16<br><span style="color:var(--orange)">Lo</span></th>
+          <th>Est. 9:16<br><span style="color:var(--blue)">Hi</span></th>
+          <th>Est. 1:1<br><span style="color:var(--orange)">Lo</span></th>
+          <th>Est. 1:1<br><span style="color:var(--blue)">Hi</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">C1: Primeiro passo</td>
+          <td><span class="code lo">V1a</span></td><td><span class="code hi">V1b</span></td>
+          <td><span class="code lo">V1c</span></td><td><span class="code hi">V1d</span></td>
+          <td><span class="code lo">E1a</span></td><td><span class="code hi">E1b</span></td>
+          <td><span class="code lo">E1c</span></td><td><span class="code hi">E1d</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">C2: Julho chega</td>
+          <td><span class="code lo">V2a</span></td><td><span class="code hi">V2b</span></td>
+          <td><span class="code lo">V2c</span></td><td><span class="code hi">V2d</span></td>
+          <td><span class="code lo">E2a</span></td><td><span class="code hi">E2b</span></td>
+          <td><span class="code lo">E2c</span></td><td><span class="code hi">E2d</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">C3: Não faça sozinho</td>
+          <td><span class="code lo">V3a</span></td><td><span class="code hi">V3b</span></td>
+          <td><span class="code lo">V3c</span></td><td><span class="code hi">V3d</span></td>
+          <td><span class="code lo">E3a</span></td><td><span class="code hi">E3b</span></td>
+          <td><span class="code lo">E3c</span></td><td><span class="code hi">E3d</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Prioridade Fase 1 -->
+<div class="section">
+  <h2>Prioridade de Produção — Fase 1 (10 peças, 7 dias)</h2>
+  <div class="pri-table">
+    <table>
+      <thead><tr><th>#</th><th>Peça</th><th>Conceito</th><th>Formato</th><th>Fidelidade</th><th>Justificativa</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pri-num">1</span></td><td>E1d</td><td>Primeiro passo</td><td>Est. 1:1</td><td><span class="badge b-blue">Hi-fi</span></td><td>Formato vencedor C4 (AF-CRIPTO FEED)</td></tr>
+        <tr><td><span class="pri-num">2</span></td><td>E2d</td><td>Julho chega</td><td>Est. 1:1</td><td><span class="badge b-blue">Hi-fi</span></td><td>Urgência regulatória</td></tr>
+        <tr><td><span class="pri-num">3</span></td><td>E3d</td><td>Não faça sozinho</td><td>Est. 1:1</td><td><span class="badge b-blue">Hi-fi</span></td><td>Confessional + autoridade</td></tr>
+        <tr><td><span class="pri-num">4</span></td><td>E1c</td><td>Primeiro passo</td><td>Est. 1:1</td><td><span class="badge b-orange">Lo-fi</span></td><td>Teste lo-fi vs hi-fi</td></tr>
+        <tr><td><span class="pri-num">5</span></td><td>E2c</td><td>Julho chega</td><td>Est. 1:1</td><td><span class="badge b-orange">Lo-fi</span></td><td>Teste lo-fi vs hi-fi</td></tr>
+        <tr><td><span class="pri-num">6</span></td><td>E3c</td><td>Não faça sozinho</td><td>Est. 1:1</td><td><span class="badge b-orange">Lo-fi</span></td><td>Teste lo-fi vs hi-fi</td></tr>
+        <tr><td><span class="pri-num">7</span></td><td>V1a</td><td>Primeiro passo</td><td>Vídeo 9:16</td><td><span class="badge b-orange">Lo-fi</span></td><td>Gap C4: zero Reels</td></tr>
+        <tr><td><span class="pri-num">8</span></td><td>V2a</td><td>Julho chega</td><td>Vídeo 9:16</td><td><span class="badge b-orange">Lo-fi</span></td><td>Urgência em Reels</td></tr>
+        <tr><td><span class="pri-num">9</span></td><td>V3a</td><td>Não faça sozinho</td><td>Vídeo 9:16</td><td><span class="badge b-orange">Lo-fi</span></td><td>Confessional em vídeo</td></tr>
+        <tr><td><span class="pri-num">10</span></td><td>E1b</td><td>Primeiro passo</td><td>Est. 9:16</td><td><span class="badge b-blue">Hi-fi</span></td><td>Story branded</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="margin-top:14px;font-size:12px;color:var(--dim)"><strong>Fase 2:</strong> Escalar vencedores + Hi-fi dos Lo-fi que performaram · <strong>Fase 3:</strong> 24 peças completas</p>
+</div>
+
+<!-- Workflow validação -->
+<div class="section">
+  <h2>Workflow de Validação Cruzada</h2>
+  <div class="wf-steps">
+    <div class="wf-step"><div class="s-num">1</div><span class="s-agent">Nina</span>Mineração de motivadores (ICP, CRM, RD)</div>
+    <div class="wf-step"><div class="s-num">2</div><span class="s-agent">Max</span>Redige briefing por conceito (ângulo + narrativa + prova)</div>
+    <div class="wf-step"><div class="s-num">3</div><span class="s-agent">Vera</span>Escreve copy por conceito → <strong style="color:var(--orange)">Zeca valida hooks (3s)</strong></div>
+    <div class="wf-step"><div class="s-num">4</div><span class="s-agent">Helena</span><strong style="color:var(--red)">Quality Gate 15 pontos</strong></div>
+    <div class="wf-step"><div class="s-num">5</div><span class="s-agent">Juri</span><strong style="color:var(--red)">Compliance CVM/ANBIMA</strong> (poder de VETO)</div>
+    <div class="wf-step"><div class="s-num">6</div><span class="s-agent">Rafa</span>Produz visuais Lo-fi + Hi-fi (8 formatos por conceito)</div>
+    <div class="wf-step"><div class="s-num">7</div><span class="s-agent">Helena</span><strong style="color:var(--red)">Quality Gate 2</strong> (pré-upload)</div>
+    <div class="wf-step"><div class="s-num">8</div><span class="s-agent">Kai</span><strong style="color:var(--red)">Auditoria tracking</strong> (UTMs, pixel, CAPI)</div>
+    <div class="wf-step"><div class="s-num">9</div><span class="s-agent">Cris</span>Sobe no Meta Ads (Fase 1: 10 peças)</div>
+    <div class="wf-step"><div class="s-num">10</div><span class="s-agent">Bruno</span>Analisa por conceito × fidelidade → escala vencedores</div>
+  </div>
+</div>
+
+<!-- Referências -->
+<div class="section">
+  <h2>Referências do Framework</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;font-size:12px">
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">Meta Blueprint</strong><br><span style="color:var(--dim)">Path 253130 · Diversificação por conceito e motivadores</span></div>
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">Brainlabs</strong><br><span style="color:var(--dim)">46 estudos Meta · Lo-fi supera Hi-fi (9.7% lift)</span></div>
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">Sarah Levinger</strong><br><span style="color:var(--dim)">CIM Process · Mineração de motivadores psicológicos</span></div>
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">Jon Loomer</strong><br><span style="color:var(--dim)">Andromeda · Diversificação criativa</span></div>
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">TIDAL Digital</strong><br><span style="color:var(--dim)">4 dimensões de diversidade criativa</span></div>
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">Pilothouse</strong><br><span style="color:var(--dim)">3-3-3 · Funil × ângulo × formato = 27 combos</span></div>
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">Andrew Foxwell</strong><br><span style="color:var(--dim)">Ciência comportamental aplicada a ads</span></div>
+    <div style="padding:10px;border:1px solid var(--border);border-radius:8px"><strong style="color:var(--teal)">Jeniffer Prado</strong><br><span style="color:var(--dim)">RD Station · Adaptação para mercado BR</span></div>
+  </div>
+</div>
+
+<p class="footer">Briefing Motivadores Criativos v1.0 · Boost Research · C10-EBOOKS · 12/mai/2026</p>
+
+</body>
+</html>
