@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Criativos Estáticos — Boost Research</title>
+<style>
+:root{--mint:#E0F7F4;--mint2:#C5EDE8;--teal:#03897B;--teal-dark:#026B60;--white:#fff;--card:#fff;--border:#C5E8E3;--text:#1A2E2B;--dim:#5A7A75;--orange:#E8873D;--red:#D64545;--green:#2E9E6E;--blue:#3B7DD8;--purple:#7C5CBF;--shadow:0 2px 8px rgba(0,0,0,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--mint);color:var(--text);padding:32px 24px;max-width:1100px;margin:0 auto}
+h1{font-size:28px;font-weight:800;color:var(--teal-dark);margin-bottom:6px}
+h2{font-size:15px;font-weight:700;color:var(--teal-dark);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.sub{color:var(--dim);font-size:14px;margin-bottom:28px;line-height:1.5}
+.section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow)}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;margin-right:6px;margin-bottom:4px}
+.b-teal{background:#D4F5EF;color:var(--teal)}
+.b-orange{background:#FDE8D4;color:var(--orange)}
+.b-green{background:#D4F0E0;color:var(--green)}
+.b-red{background:#FADADA;color:var(--red)}
+.b-blue{background:#D6E6F7;color:var(--blue)}
+.b-purple{background:#E8DDF5;color:var(--purple)}
+
+/* Stats */
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:24px}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+.stat-box .v{font-size:30px;font-weight:800;color:var(--teal-dark)}
+.stat-box .l{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* =========== DIAGRAMA =========== */
+.diagram-wrapper{padding:24px 0;overflow-x:auto}
+.diagram{max-width:900px;margin:0 auto;position:relative}
+
+/* Top instruction */
+.d-instruction{background:var(--card);border:2px dashed var(--border);border-radius:12px;padding:16px 24px;text-align:center;font-size:13px;color:var(--dim);line-height:1.6;max-width:560px;margin:0 auto 0}
+.d-instruction strong{color:var(--teal-dark)}
+
+/* Connector arrows */
+.d-arrow{display:flex;justify-content:center;padding:6px 0}
+.d-arrow .shaft{width:2px;height:28px;background:var(--teal);opacity:.35;position:relative}
+.d-arrow .shaft::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--teal);opacity:.5}
+
+/* Branch arrows (1-to-3) */
+.d-branch{position:relative;height:32px;max-width:700px;margin:0 auto}
+.d-branch .trunk{position:absolute;top:0;left:50%;width:2px;height:12px;background:var(--teal);opacity:.35;transform:translateX(-50%)}
+.d-branch .bar{position:absolute;top:12px;left:16.66%;right:16.66%;height:2px;background:var(--teal);opacity:.35}
+.d-branch .leg{position:absolute;top:12px;width:2px;height:18px;background:var(--teal);opacity:.35}
+.d-branch .leg::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--teal);opacity:.6}
+.d-branch .leg.l1{left:16.66%}
+.d-branch .leg.l2{left:50%;transform:translateX(-50%)}
+.d-branch .leg.l3{right:16.66%}
+
+/* Layer label */
+.d-layer{background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-radius:10px;padding:10px 20px;text-align:center;color:var(--white);max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px}
+.d-layer .num{font-size:22px;font-weight:800;opacity:.6}
+.d-layer .label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px}
+
+/* Motivador / Conceito cards */
+.d-cards{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;max-width:750px;margin:0 auto}
+.d-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;flex:1;min-width:190px;max-width:230px;box-shadow:var(--shadow);position:relative}
+.d-card .icon{font-size:28px;margin-bottom:6px}
+.d-card .type-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;padding:2px 8px;border-radius:10px;display:inline-block}
+.d-card .type-label.barreira{background:#FDE8D4;color:var(--orange)}
+.d-card .type-label.necessidade{background:#FADADA;color:var(--red)}
+.d-card .type-label.desejo{background:#D4F0E0;color:var(--green)}
+.d-card .title{font-size:14px;font-weight:700;color:var(--teal-dark);margin:6px 0 4px}
+.d-card .desc{font-size:11px;color:var(--dim);line-height:1.4}
+
+/* Visual production grid */
+.d-prod-section{max-width:800px;margin:0 auto}
+.d-format-title{text-align:center;font-size:13px;font-weight:700;color:var(--teal-dark);margin-bottom:12px;padding:8px 0;border-bottom:2px solid var(--border)}
+.d-prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.d-prod-col{display:flex;flex-direction:column;gap:8px}
+.d-prod-col-header{font-size:10px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:1px;text-align:center;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.d-prod-cell{border-radius:10px;padding:10px 12px;text-align:center;border:1px solid;min-height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:transform .2s}
+.d-prod-cell:hover{transform:translateY(-2px)}
+.d-prod-cell .cell-icon{font-size:20px}
+.d-prod-cell .cell-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.d-prod-cell .cell-desc{font-size:9px;line-height:1.3}
+.d-prod-cell.lofi{background:#FFF8F2;border-color:#F0D4B8;color:var(--orange)}
+.d-prod-cell.lofi .cell-desc{color:#8B6540}
+.d-prod-cell.hifi{background:#F0F4FF;border-color:#B8CCF0;color:var(--blue)}
+.d-prod-cell.hifi .cell-desc{color:#40568B}
+
+/* Aspect ratio labels */
+.ar-row{display:flex;justify-content:center;gap:20px;margin-bottom:16px}
+.ar-badge{padding:6px 16px;border-radius:8px;font-size:12px;font-weight:700;background:var(--card);border:1px solid var(--border);color:var(--teal-dark);box-shadow:var(--shadow)}
+
+/* Copy cards */
+.copy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:14px}
+.copy-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.copy-card .c-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.copy-card .c-title{font-size:15px;font-weight:700;color:var(--teal-dark);margin-bottom:8px}
+.copy-card .c-hook{font-size:13px;color:var(--teal);font-style:italic;padding:10px 14px;background:#E8F8F5;border-left:3px solid var(--teal);border-radius:6px;margin-bottom:10px;line-height:1.5}
+.copy-card .c-headline{font-size:12px;margin-top:10px;padding:6px 10px;background:#F5F5F5;border-radius:6px;color:var(--dim)}
+.copy-card .c-headline strong{color:var(--text)}
+.copy-card .c-body{font-size:12px;color:var(--dim);line-height:1.7;white-space:pre-line}
+
+/* Matriz */
+.matrix{overflow-x:auto;margin-top:14px}
+.matrix table{width:100%;border-collapse:collapse;font-size:11px}
+.matrix th{background:var(--teal);color:var(--white);padding:8px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:.5px}
+.matrix td{padding:8px;text-align:center;border:1px solid var(--border);background:var(--card)}
+.matrix .code{font-family:'SF Mono',Monaco,monospace;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:700}
+.matrix .code.lo{background:#FDE8D4;color:var(--orange)}
+.matrix .code.hi{background:#D6E6F7;color:var(--blue)}
+.matrix .row-label{text-align:left;font-weight:700;color:var(--teal-dark)}
+
+.footer{text-align:center;color:var(--dim);font-size:11px;margin-top:28px}
+
+@media(max-width:700px){
+  .d-cards{flex-direction:column;align-items:center}
+  .d-prod-grid{grid-template-columns:1fr}
+  .d-branch{display:none}
+  .copy-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<h1>Briefing Criativos Estáticos</h1>
+<p class="sub">Campanha C10-EBOOKS · E-books 1 e 2 · Apenas formatos estáticos (Feed 1:1 + Story 9:16)<br>
+Framework Motivadores Criativos (Meta Blueprint) · Boost Research · 12/mai/2026</p>
+
+<!-- Stats -->
+<div class="stat-row">
+  <div class="stat-box"><div class="v">3</div><div class="l">Motivadores</div></div>
+  <div class="stat-box"><div class="v">3</div><div class="l">Conceitos</div></div>
+  <div class="stat-box"><div class="v">2</div><div class="l">Formatos</div></div>
+  <div class="stat-box"><div class="v">2</div><div class="l">Fidelidades</div></div>
+  <div class="stat-box"><div class="v">12</div><div class="l">Peças</div></div>
+</div>
+
+<!-- =========== DIAGRAMA PRINCIPAL =========== -->
+<div class="section">
+  <h2>Diagrama: Motivador → Mensagem → Estático</h2>
+
+  <div class="diagram-wrapper">
+    <div class="diagram">
+
+      <!-- Top instruction -->
+      <div class="d-instruction">
+        Avalie seus ativos existentes e descubra <strong>3 motivadores, barreiras ou necessidades</strong> que não estão sendo abordados atualmente.
+      </div>
+
+      <div class="d-arrow"><div class="shaft"></div></div>
+
+      <!-- Layer 01 -->
+      <div class="d-layer"><span class="num">01</span><span class="label">Motivador</span></div>
+
+      <!-- Branch 1→3 -->
+      <div class="d-branch">
+        <div class="trunk"></div>
+        <div class="bar"></div>
+        <div class="leg l1"></div>
+        <div class="leg l2"></div>
+        <div class="leg l3"></div>
+      </div>
+
+      <!-- 3 Motivadores -->
+      <div class="d-cards">
+        <div class="d-card">
+          <div class="icon">💡</div>
+          <span class="type-label barreira">Barreira</span>
+          <div class="title">Motivador 1</div>
+          <div class="desc">Inércia — "Não sei por onde começar"</div>
+        </div>
+        <div class="d-card">
+          <div class="icon">💡</div>
+          <span class="type-label necessidade">Necessidade</span>
+          <div class="title">Motivador 2</div>
+          <div class="desc">Fiscal — "Preciso ficar em conformidade"</div>
+        </div>
+        <div class="d-card">
+          <div class="icon">💡</div>
+          <span class="type-label desejo">Desejo</span>
+          <div class="title">Motivador 3</div>
+          <div class="desc">Advisor — "Quero alguém que me diga o que fazer"</div>
+        </div>
+      </div>
+
+      <div class="d-arrow"><div class="shaft"></div></div>
+
+      <!-- Layer 02 -->
+      <div class="d-layer"><span class="num">02</span><span class="label">Mensagem</span></div>
+
+      <div class="d-branch">
+        <div class="trunk"></div>
+        <div class="bar"></div>
+        <div class="leg l1"></div>
+        <div class="leg l2"></div>
+        <div class="leg l3"></div>
+      </div>
+
+      <!-- 3 Conceitos -->
+      <div class="d-cards">
+        <div class="d-card">
+          <div class="icon">📝</div>
+          <span class="type-label barreira">Conceito 1</span>
+          <div class="title">"O primeiro passo"</div>
+          <div class="desc">Acolhimento. E-book como ação de baixo atrito.</div>
+        </div>
+        <div class="d-card">
+          <div class="icon">📝</div>
+          <span class="type-label necessidade">Conceito 2</span>
+          <div class="title">"Julho está chegando"</div>
+          <div class="desc">Urgência real. DeCripto, multa 3%, CARF.</div>
+        </div>
+        <div class="d-card">
+          <div class="icon">📝</div>
+          <span class="type-label desejo">Conceito 3</span>
+          <div class="title">"Não faça sozinho"</div>
+          <div class="desc">Confessional. Advisor dedicado desde 2016.</div>
+        </div>
+      </div>
+
+      <div class="d-arrow"><div class="shaft"></div></div>
+
+      <!-- Layer 03 -->
+      <div class="d-layer"><span class="num">03</span><span class="label">Visuais · Estático</span></div>
+
+      <div style="height:16px"></div>
+
+      <!-- Aspect ratio badges -->
+      <div class="ar-row">
+        <div class="ar-badge">📐 Estático 9:16 (Story)</div>
+        <div class="ar-badge">📐 Estático 1:1 (Feed)</div>
+      </div>
+
+      <!-- Production grid: 3 conceitos × Lo-fi / Hi-fi -->
+      <div class="d-prod-section">
+
+        <div class="d-prod-grid">
+          <!-- Headers -->
+          <div class="d-prod-col">
+            <div class="d-prod-col-header">Conceito 1 · Primeiro passo</div>
+            <div class="d-prod-cell lofi">
+              <div class="cell-icon">📱</div>
+              <div class="cell-label">Lo-fi</div>
+              <div class="cell-desc">Texto pesado, sem logo, fundo claro, fonte sistema</div>
+            </div>
+            <div class="d-prod-cell hifi">
+              <div class="cell-icon">🎨</div>
+              <div class="cell-label">Hi-fi</div>
+              <div class="cell-desc">Background #12191D, foto André, teal, Sora/Inter</div>
+            </div>
+          </div>
+
+          <div class="d-prod-col">
+            <div class="d-prod-col-header">Conceito 2 · Julho chega</div>
+            <div class="d-prod-cell lofi">
+              <div class="cell-icon">📱</div>
+              <div class="cell-label">Lo-fi</div>
+              <div class="cell-desc">Screenshot, dados fiscais, urgência visual simples</div>
+            </div>
+            <div class="d-prod-cell hifi">
+              <div class="cell-icon">🎨</div>
+              <div class="cell-label">Hi-fi</div>
+              <div class="cell-desc">Deadline "JULHO 2026", ícone Receita, branded</div>
+            </div>
+          </div>
+
+          <div class="d-prod-col">
+            <div class="d-prod-col-header">Conceito 3 · Não faça sozinho</div>
+            <div class="d-prod-cell lofi">
+              <div class="cell-icon">📱</div>
+              <div class="cell-label">Lo-fi</div>
+              <div class="cell-desc">Citação ICP, estilo depoimento, tom confessional</div>
+            </div>
+            <div class="d-prod-cell hifi">
+              <div class="cell-icon">🎨</div>
+              <div class="cell-label">Hi-fi</div>
+              <div class="cell-desc">André Franco, autoridade, "desde 2016", Boost palette</div>
+            </div>
+          </div>
+        </div>
+
+        <p style="text-align:center;font-size:12px;color:var(--dim)">3 conceitos × 2 fidelidades × 2 aspect ratios = <strong style="color:var(--teal-dark)">12 peças estáticas</strong></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Matriz 12 peças -->
+<div class="section">
+  <h2>Matriz de Produção: 12 Peças Estáticas</h2>
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>9:16 <span style="color:#FDE8D4">Lo-fi</span></th>
+          <th>9:16 <span style="color:#D6E6F7">Hi-fi</span></th>
+          <th>1:1 <span style="color:#FDE8D4">Lo-fi</span></th>
+          <th>1:1 <span style="color:#D6E6F7">Hi-fi</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">C1: O primeiro passo</td>
+          <td><span class="code lo">E1a</span></td>
+          <td><span class="code hi">E1b</span></td>
+          <td><span class="code lo">E1c</span></td>
+          <td><span class="code hi">E1d</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">C2: Julho está chegando</td>
+          <td><span class="code lo">E2a</span></td>
+          <td><span class="code hi">E2b</span></td>
+          <td><span class="code lo">E2c</span></td>
+          <td><span class="code hi">E2d</span></td>
+        </tr>
+        <tr>
+          <td class="row-label">C3: Não faça sozinho</td>
+          <td><span class="code lo">E3a</span></td>
+          <td><span class="code hi">E3b</span></td>
+          <td><span class="code lo">E3c</span></td>
+          <td><span class="code hi">E3d</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Copys E-book 1 -->
+<div class="section">
+  <h2>Copys — E-book 1: Portfólio Tradicional + Cripto</h2>
+  <p style="font-size:12px;color:var(--dim);margin-bottom:14px">LP: ebook-portfolio.boostresearch.com.br · CTA: DOWNLOAD</p>
+
+  <div class="copy-grid">
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--orange)">Copy 1 · Dor #1 · 145 menções</div>
+      <div class="c-title">Não sabe quando vender</div>
+      <div class="c-hook">"Mais de R$100 mil investidos e ainda sem uma regra clara de quando vender?"</div>
+      <div class="c-body">Você não está sozinho. Em 228 reuniões com investidores, essa foi a dor mais citada: "passaram 8 topos e eu não realizei."
+
+A Boost Research preparou um e-book gratuito que mostra como montar um portfólio tradicional + cripto com método de entrada e saída definido.
+
+O que você vai encontrar:
+- Como definir percentuais de alocação entre renda fixa, ações e cripto
+- Regras de rebalanceamento que funcionam em qualquer cenário
+- O método que André Franco usa desde 2016
+
+Sem custo. Sem compromisso. E-book enviado direto no seu e-mail.</div>
+      <div class="c-headline"><strong>Headline:</strong> E-book gratuito: Portfólio Tradicional + Cripto</div>
+    </div>
+
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--orange)">Copy 2 · Dor #2 · 134 menções</div>
+      <div class="c-title">Sem tempo pra estudar cripto</div>
+      <div class="c-hook">"Você trabalha 12 horas por dia. Quando sobra tempo pra estudar cripto?"</div>
+      <div class="c-body">A maioria dos investidores com patrimônio relevante não tem problema de dinheiro. Tem problema de atenção. Quer saber o que fazer, mas não tem 4 horas por dia pra acompanhar mercado.
+
+A Boost Research criou um e-book que condensa em 40 páginas o que um Advisor explicaria em 3 reuniões:
+
+- Quanto do seu patrimônio deveria estar em cripto (com base no seu perfil)
+- Quais classes de criptoativos existem além do Bitcoin
+- Como estruturar sem precisar virar trader
+
+Baixe agora. Leitura de 20 minutos.</div>
+      <div class="c-headline"><strong>Headline:</strong> E-book gratuito para quem investe mas não tem tempo</div>
+    </div>
+
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--orange)">Copy 3 · Investidor tradicional</div>
+      <div class="c-title">Cripto faz sentido pra você?</div>
+      <div class="c-hook">"Mais de R$200 mil no mercado tradicional e cripto ainda não faz sentido pra você?"</div>
+      <div class="c-body">Talvez faça. Talvez não. E essa honestidade é rara no mercado.
+
+A Boost Research, consultoria independente de cripto liderada por André Franco desde 2016, criou um e-book que mostra com números reais quando faz sentido alocar em cripto e quando não faz.
+
+O que o e-book cobre:
+- Correlação histórica entre cripto e ativos tradicionais
+- Percentuais de alocação por perfil de risco
+- Cenários com e sem cripto na carteira
+
+Se cripto não fizer sentido pro seu caso, o e-book vai te dizer isso.</div>
+      <div class="c-headline"><strong>Headline:</strong> Cripto faz sentido pra quem já tem patrimônio tradicional?</div>
+    </div>
+
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--green)">Copy 4 · Dor #6 · 52 menções</div>
+      <div class="c-title">Trauma de altcoin</div>
+      <div class="c-hook">"Comprei na alta, não vendi no topo, e agora tô com um gostinho amargo."</div>
+      <div class="c-body">Se você se identificou, faz parte dos 54% dos investidores que passam por isso.
+
+O problema não foi a moeda que você escolheu. Foi a falta de critério pra decidir quando sair.
+
+A Boost Research criou um e-book gratuito que ensina como montar um portfólio com regra de saída definida antes de entrar. Sem emoção, sem achismo.
+
+André Franco aplica esse método desde 2016. Dois ciclos completos.
+
+Baixe gratuitamente.</div>
+      <div class="c-headline"><strong>Headline:</strong> E-book gratuito: pare de errar o timing em cripto</div>
+    </div>
+
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--green)">Copy 5 · Autoridade Boost</div>
+      <div class="c-title">Entenda o método</div>
+      <div class="c-hook">"Antes de marcar uma reunião, entenda o método."</div>
+      <div class="c-body">A Boost Research é uma consultoria independente de cripto. Sem vínculo com exchange. Sem fundo próprio. Sem conflito de interesse.
+
+André Franco fundou a Boost em 2016 e acompanha investidores com patrimônio relevante com Advisor dedicado.
+
+- Como a consultoria define alocação entre tradicional e cripto
+- Por que independência importa mais do que rentabilidade passada
+- O que diferencia um Advisor de um influenciador
+
+Leia. Depois decida se faz sentido conversar.</div>
+      <div class="c-headline"><strong>Headline:</strong> Antes da reunião, entenda o método</div>
+    </div>
+  </div>
+</div>
+
+<!-- Copys E-book 2 -->
+<div class="section">
+  <h2>Copys — E-book 2: Novas Regras Cripto 2026</h2>
+  <p style="font-size:12px;color:var(--dim);margin-bottom:14px">LP: ebook-regras-cripto.boostresearch.com.br · CTA: DOWNLOAD</p>
+
+  <div class="copy-grid">
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--red)">Copy 1 · Dor #4 · 72 menções</div>
+      <div class="c-title">Urgência regulatória</div>
+      <div class="c-hook">"Em julho de 2026, o Brasil começa a fiscalizar criptoativos de forma automatizada."</div>
+      <div class="c-body">DeCripto, CARF/OCDE, novas obrigações de reporte. Se você tem cripto e não sabe o que muda, precisa saber antes que mude.
+
+A Boost Research preparou um e-book gratuito que explica, artigo por artigo, o que está mudando:
+
+- O que é o DeCripto e como funciona a coleta automatizada
+- CARF/OCDE: troca internacional de dados a partir de 2027
+- Árvore decisória de tributação: quando você paga, quanto, e como declarar
+- Checklist de 7 passos pra ficar em conformidade
+
+André Franco, fundador da Boost Research, consultoria independente desde 2016.
+
+E-book gratuito. Baixe agora.</div>
+      <div class="c-headline"><strong>Headline:</strong> Novas regras cripto 2026: você está preparado?</div>
+    </div>
+
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--red)">Copy 2 · Multa 3%</div>
+      <div class="c-title">O custo de não declarar</div>
+      <div class="c-hook">"Multa de 3% sobre o valor da operação. Você sabia?"</div>
+      <div class="c-body">Esse é o custo de não declarar criptoativos corretamente a partir de 2026.
+
+A maioria dos investidores com cripto não sabe que:
+- Vendas acima de R$35 mil no mês já têm obrigação de reporte
+- A Receita Federal vai receber dados automaticamente das exchanges
+- Operações no exterior entram na troca internacional de dados (CARF/OCDE)
+
+A Boost Research criou um e-book que traduz a legislação em linguagem de investidor:
+
+Árvore decisória, checklist, cenários práticos.
+
+Gratuito. Baixe antes de julho.</div>
+      <div class="c-headline"><strong>Headline:</strong> 3% de multa por operação. Você sabia?</div>
+    </div>
+
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--red)">Copy 3 · Compliance</div>
+      <div class="c-title">Quem já declara</div>
+      <div class="c-hook">"Você já declara cripto no IR. Mas sabe o que muda com o DeCripto?"</div>
+      <div class="c-body">A fiscalização automatizada que começa em julho de 2026 não afeta só quem sonega. Afeta quem declara errado também.
+
+A Boost Research preparou um e-book com foco em quem já tenta fazer certo:
+
+- Diferença entre DeCripto (coleta) e tributação (pagamento)
+- O que muda na IN 1888 vs. nova regulamentação
+- Cenários específicos: staking, DeFi, P2P, exchanges internacionais
+
+Gratuito. Para investidores que levam conformidade a sério.</div>
+      <div class="c-headline"><strong>Headline:</strong> Já declara cripto? Veja o que muda em julho</div>
+    </div>
+
+    <div class="copy-card">
+      <div class="c-label" style="color:var(--red)">Copy 4 · Offshore · 72 menções</div>
+      <div class="c-title">Cripto no exterior</div>
+      <div class="c-hook">"Quero estar longe das garras do governo brasileiro."</div>
+      <div class="c-body">Essa frase apareceu em 72 reuniões com investidores da Boost Research. Não é radicalismo. É um desejo legítimo de quem tem patrimônio e quer protegê-lo.
+
+O problema: a partir de 2026, a troca automática de dados entre países (CARF/OCDE) torna a fuga fiscal quase impossível.
+
+A solução não é fugir. É entender as regras e usar a legislação a seu favor.
+
+A Boost Research preparou um e-book gratuito que explica:
+- Como funciona a troca internacional de dados
+- O que muda pra quem opera em exchanges no exterior
+- Estratégias legais de planejamento tributário em cripto
+
+Gratuito. Sem custo. Sem compromisso.</div>
+      <div class="c-headline"><strong>Headline:</strong> Cripto no exterior? As regras mudaram.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Specs -->
+<div class="section">
+  <h2>Specs por Fidelidade</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div style="background:#FFF8F2;border:1px solid #F0D4B8;border-radius:12px;padding:20px">
+      <h3 style="color:var(--orange);font-size:14px;margin-bottom:10px">📱 Lo-fi (nativo)</h3>
+      <ul style="list-style:none;font-size:12px;color:#8B6540;line-height:2">
+        <li>→ Screenshot de conversa, texto pesado</li>
+        <li>→ SEM logo (parece orgânico)</li>
+        <li>→ Fonte do sistema (SF Pro, Helvetica)</li>
+        <li>→ Fundo branco ou bege</li>
+        <li>→ Estilo: post compartilhado por amigo</li>
+        <li>→ Lo-fi ≠ baixa qualidade. É estética nativa.</li>
+      </ul>
+    </div>
+    <div style="background:#F0F4FF;border:1px solid #B8CCF0;border-radius:12px;padding:20px">
+      <h3 style="color:var(--blue);font-size:14px;margin-bottom:10px">🎨 Hi-fi (branded)</h3>
+      <ul style="list-style:none;font-size:12px;color:#40568B;line-height:2">
+        <li>→ Background #12191D, acento #03E4D0</li>
+        <li>→ Foto André Franco (70%+ das peças)</li>
+        <li>→ Logo Boost Research presente</li>
+        <li>→ Tipografia Sora + Inter</li>
+        <li>→ Legível em thumbnail 200×200px</li>
+        <li>→ Referência: vencedores C4 (AF-CRIPTO FEED)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div style="margin:20px 0;padding:14px 20px;border:1px dashed var(--border);border-radius:12px;font-size:11px;color:var(--dim);text-align:center;background:var(--card)">
+  <strong style="color:var(--text)">Disclaimer:</strong> Conteúdo educacional sobre criptoativos. Não constitui recomendação de investimento. Rentabilidade passada não garante resultados futuros. Boost Research — Consultoria de Investimentos em Cripto.
+</div>
+
+<p class="footer">Briefing Criativos Estáticos v1.0 · Boost Research · C10-EBOOKS · 12/mai/2026</p>
+
+</body>
+</html>
