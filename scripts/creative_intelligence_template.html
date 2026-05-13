@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Creative Intelligence — Boost Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--bg2:#0A0A14;--bg3:#0D1020;--accent:#00B37E;--accent-bright:#00D195;--accent-dim:rgba(0,179,126,.12);--white:#F0F0F0;--gray:#A0A0C0;--gray-mid:#6A6A8A;--gray-dim:#3A3A5C;--gray-border:#1a1a2e;--red:#FF4444;--red-dim:rgba(255,68,68,.12);--yellow:#FFB347;--gold:#FFD700;--blue:#4FC3F7;--purple:#B39DDB;--orange:#FF6B35}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;line-height:1.5}
+.container{max-width:1440px;margin:0 auto;padding:32px 24px}
+header{border-bottom:1px solid var(--gray-dim);padding-bottom:20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+.header-left{flex:1}
+.back{color:var(--accent);text-decoration:none;font-size:13px;display:inline-block;margin-bottom:8px}
+.back:hover{text-decoration:underline}
+header h1{font-size:24px;font-weight:800;letter-spacing:-.5px}
+header .sub{color:var(--gray);font-size:13px;margin-top:2px}
+/* Filtro de periodo */
+.filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.filter-btn{background:var(--bg2);border:1px solid var(--gray-dim);color:var(--gray);padding:6px 14px;border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.filter-input{background:var(--bg2);border:1px solid var(--gray-dim);color:var(--white);padding:6px 12px;border-radius:8px;font-family:inherit;font-size:12px;width:120px}
+.filter-input:focus{outline:none;border-color:var(--accent)}
+/* KPIs */
+.kpi-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px;margin-bottom:24px}
+.kpi{background:var(--bg2);border:1px solid var(--gray-border);border-radius:12px;padding:16px 18px}
+.kpi .label{color:var(--gray);font-size:10px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.kpi .value{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
+.kpi .value.accent{color:var(--accent-bright)}
+.kpi .value.alert{color:var(--red)}
+.kpi .ctx{color:var(--gray-mid);font-size:10px;margin-top:3px}
+/* Recomendacoes */
+.recs{margin-bottom:24px}
+.recs h2{font-size:15px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.recs h2::before{content:'';display:inline-block;width:4px;height:16px;background:var(--orange);border-radius:2px}
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.rec{background:var(--bg2);border:1px solid var(--gray-dim);border-radius:10px;padding:14px 16px;border-left:3px solid var(--orange)}
+.rec.green{border-left-color:var(--accent)}
+.rec.red{border-left-color:var(--red)}
+.rec.yellow{border-left-color:var(--yellow)}
+.rec .rec-type{font-size:9px;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-bottom:4px}
+.rec.green .rec-type{color:var(--accent)}
+.rec.red .rec-type{color:var(--red)}
+.rec.yellow .rec-type{color:var(--yellow)}
+.rec .rec-text{font-size:13px;line-height:1.5}
+.rec .rec-metric{font-size:11px;color:var(--gray-mid);margin-top:6px}
+/* Sections */
+.section{background:var(--bg2);border:1px solid var(--gray-dim);border-radius:12px;padding:24px;margin-bottom:24px}
+.section h2{font-size:15px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.section h2::before{content:'';display:inline-block;width:4px;height:16px;background:var(--accent);border-radius:2px;flex-shrink:0}
+.section .section-sub{color:var(--gray);font-size:12px;margin-bottom:16px;margin-left:12px}
+/* Cards */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.creative-card{background:var(--bg3);border:1px solid var(--gray-dim);border-radius:10px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.creative-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.card-thumb{width:100%;height:150px;overflow:hidden;background:#111;display:flex;align-items:center;justify-content:center;position:relative}
+.card-thumb img{width:100%;height:150px;object-fit:contain;display:block}
+.card-thumb .no-thumb{color:var(--gray-mid);font-size:12px}
+.card-thumb .rank{position:absolute;top:8px;left:8px;background:var(--accent);color:#000;font-weight:800;font-size:11px;padding:2px 8px;border-radius:4px}
+.card-body{padding:12px 14px}
+.card-name{font-size:12px;font-weight:600;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-campaign{font-size:10px;color:var(--gray-mid);margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px}
+.cm{text-align:center}
+.cm-val{display:block;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+.cm-val.accent{color:var(--accent-bright)}
+.cm-label{font-size:8px;color:var(--gray-mid);text-transform:uppercase;letter-spacing:.3px}
+.card-bar-section{margin-bottom:8px}
+.card-bar-label{font-size:10px;color:var(--gray);margin-bottom:3px}
+.card-bar-track{height:5px;background:rgba(58,58,92,.3);border-radius:3px;overflow:hidden}
+.card-bar-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),var(--accent-bright))}
+.card-profile{display:flex;flex-wrap:wrap;gap:4px}
+.profile-tag{font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--accent-dim);color:var(--accent-bright)}
+.profile-tag.gold{background:rgba(255,215,0,.12);color:var(--gold)}
+.profile-tag.blue{background:rgba(79,195,247,.12);color:var(--blue)}
+.profile-tag.purple{background:rgba(179,157,219,.12);color:var(--purple)}
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:8px 10px;color:var(--gray-mid);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;border-bottom:1px solid var(--gray-dim);white-space:nowrap;cursor:pointer}
+th:hover{color:var(--accent)}
+td{padding:8px 10px;border-bottom:1px solid rgba(58,58,92,.2)}
+tr:hover td{background:rgba(0,179,126,.03)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.pct{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.good{color:var(--accent-bright)}.mid{color:var(--yellow)}.bad{color:var(--red)}
+.ad-name-cell{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+footer{text-align:center;color:var(--gray-mid);font-size:11px;padding:24px 0;margin-top:16px}
+.loading{text-align:center;padding:60px;color:var(--gray)}
+.loading .spin{display:inline-block;width:24px;height:24px;border:3px solid var(--gray-dim);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:768px){.kpi-row{grid-template-columns:repeat(3,1fr)}.cards-grid{grid-template-columns:1fr}.rec-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="header-left">
+    <a class="back" href="../">&larr; Paineis Boost Research</a>
+    <h1>Creative Intelligence</h1>
+    <div class="sub">Qual criativo traz os melhores leads por perfil? &middot; @kai + @cris &middot; <span id="updated-at"></span></div>
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" data-days="7">7d</button>
+    <button class="filter-btn" data-days="14">14d</button>
+    <button class="filter-btn" data-days="30">30d</button>
+    <button class="filter-btn" data-days="60">60d</button>
+    <button class="filter-btn" data-days="0">Tudo</button>
+  </div>
+</header>
+
+<div id="kpis" class="kpi-row"></div>
+<div id="recs" class="recs"></div>
+<div id="top-section" class="section"><div class="loading"><div class="spin"></div><br>Carregando dados...</div></div>
+<div id="waste-section"></div>
+<div id="table-section" class="section" style="display:none"></div>
+
+<footer>
+  Creative Intelligence &middot; Boost Research &copy; 2026 &middot; Atualizado a cada 6h<br>
+  @kai (Digital Analytics) + @cris (Media Buyer)
+</footer>
+
+</div>
+
+<script>
+let DATA = null;
+const BRL = v => 'R$' + v.toLocaleString('pt-BR',{maximumFractionDigits:0});
+const PCT = v => v.toFixed(1) + '%';
+const pctClass = v => v >= 30 ? 'good' : v >= 10 ? 'mid' : 'bad';
+
+// ── Engine de Recomendacoes (Mandalia, Hubbard, Burd, Maly + benchmarks cripto BR) ──
+// Fontes: Depesh Mandalia (BPM Method), Andrew Hubbard (Financial Advisor System),
+// Tim Burd (Scaling Playbook), Curt Maly (BELT Method), Meta Official Guidelines
+function generateRecommendations(ads, summary) {
+  const recs = [];
+  const adsWithLeads = ads.filter(a => a.leads > 0);
+  const adsWithQual = ads.filter(a => a.qualified_leads > 0);
+  const totalSpend = summary.total_spend;
+  const totalLeads = summary.total_leads;
+  const cplGeral = totalLeads > 0 ? totalSpend / totalLeads : 0;
+  const cplQualif = summary.total_qualified > 0 ? totalSpend / summary.total_qualified : 0;
+  // Benchmarks cripto BR
+  const CPL_FORM_BENCHMARK = 40; // R$15-40 Lead Form
+  const CPL_LP_BENCHMARK = 120;  // R$40-120 LP
+  const CPL_QUALIF_TARGET = 500; // R$300-700 qualificado
+  const CTR_BOM = 1.2;
+  const CTR_MINIMO = 0.6;
+
+  // ── REGRAS CRITICAS (Hubbard + Burd) ──
+
+  // KILL: gasto >= 2x CPL alvo sem conversao (Hubbard Kill Rule #1)
+  adsWithLeads.filter(a => a.qualified_leads === 0 && a.spend > CPL_QUALIF_TARGET * 2).forEach(a => {
+    recs.push({type:'red',label:'PAUSAR AGORA',
+      text:`"${a.ad_name}" gastou ${BRL(a.spend)} (>${BRL(CPL_QUALIF_TARGET*2)}) sem nenhum lead qualificado. Pausar e redirecionar budget.`,
+      metric:`Regra Hubbard: pausar apos 2x CPL alvo sem conversao qualificada`});
+  });
+
+  // KILL: CPL > 1.5x target por mais de 5 leads (Mandalia Phase 2)
+  adsWithQual.filter(a => a.cpl_qualificado > CPL_QUALIF_TARGET * 1.5 && a.qualified_leads >= 2).forEach(a => {
+    recs.push({type:'red',label:'CPL CRITICO',
+      text:`CPL qualificado de "${a.ad_name}" e ${BRL(a.cpl_qualificado)} — ${(a.cpl_qualificado/CPL_QUALIF_TARGET).toFixed(1)}x acima do benchmark (${BRL(CPL_QUALIF_TARGET)}). Pausar ou reestruturar segmentacao.`,
+      metric:`Mandalia: CPL > 1.5x target por 5+ dias = kill`});
+  });
+
+  // ── ESCALAR (Mandalia Surfing + Burd Duplicate Method) ──
+
+  // SCALE: CPL qualif < 80% do alvo com volume (Mandalia Phase 3)
+  adsWithQual.filter(a => a.cpl_qualificado < CPL_QUALIF_TARGET * 0.8 && a.qualified_leads >= 2).forEach(a => {
+    recs.push({type:'green',label:'ESCALAR 20%',
+      text:`"${a.ad_name}" entrega qualificados a ${BRL(a.cpl_qualificado)} — abaixo do benchmark. Aumentar budget 20% a cada 72h. Se CPL subir >25%, reverter imediatamente.`,
+      metric:`Mandalia Surfing: +20% a cada 72h, nunca +30% de uma vez`});
+  });
+
+  // DUPLICATE: taxa qualif >= 30% com volume (Burd Winner Protocol)
+  adsWithQual.filter(a => a.taxa_qualificacao >= 30 && a.leads >= 5).forEach(a => {
+    recs.push({type:'green',label:'DUPLICAR',
+      text:`"${a.ad_name}" qualifica ${PCT(a.taxa_qualificacao)} dos leads — top performer. Duplicar ad set 3-5x com mesmo budget, variando apenas o publico.`,
+      metric:`Burd: duplicar vencedor ao inves de aumentar budget alem de 3x`});
+  });
+
+  // ── CRIATIVO (Maly BELT + benchmarks cripto) ──
+
+  // CTR CRITICO: < 0.6% (Meta Official threshold)
+  adsWithLeads.filter(a => a.ctr < CTR_MINIMO && a.spend > 150).forEach(a => {
+    recs.push({type:'red',label:'HOOK FRACO',
+      text:`CTR de "${a.ad_name}" e ${PCT(a.ctr)} — abaixo do minimo (${PCT(CTR_MINIMO)}). O hook nao esta parando o scroll. Testar: "O erro que investidores de cripto cometem com [tema]" ou numero impactante nos 3 primeiros segundos.`,
+      metric:`Meta Official: CTR < 0.6% em financeiro = problema de criativo`});
+  });
+
+  // CTR BAIXO: 0.6-1.2% (zona de atencao)
+  adsWithLeads.filter(a => a.ctr >= CTR_MINIMO && a.ctr < CTR_BOM && a.spend > 300).forEach(a => {
+    recs.push({type:'yellow',label:'MELHORAR HOOK',
+      text:`CTR de "${a.ad_name}" e ${PCT(a.ctr)} — funcional mas abaixo do bom (${PCT(CTR_BOM)}). Testar variacao de copy: long-form (300-500 palavras) com autoridade do Andre Franco nos primeiros 2 paragrafos.`,
+      metric:`Hubbard: long-form copy supera short em 40-60% para financeiro`});
+  });
+
+  // ── QUALIDADE (Burd + cripto benchmarks) ──
+
+  // VOLUME SEM QUALIDADE: muitos leads, < 10% qualificados
+  adsWithLeads.filter(a => a.leads >= 15 && a.taxa_qualificacao < 10 && a.taxa_qualificacao > 0).forEach(a => {
+    recs.push({type:'yellow',label:'FILTRAR MELHOR',
+      text:`"${a.ad_name}" traz ${a.leads} leads mas so ${PCT(a.taxa_qualificacao)} qualificados. Usar copy que filtra naturalmente: mencionar "investidores com patrimonio acima de R$50 mil" no texto do anuncio.`,
+      metric:`Andromeda 2026: criativo e o targeting — copy filtra o publico`});
+  });
+
+  // VOLUME ALTO SEM NENHUM QUALIFICADO
+  adsWithLeads.filter(a => a.leads >= 20 && a.qualified_leads === 0 && a.spend > 300).forEach(a => {
+    recs.push({type:'red',label:'PUBLICO ERRADO',
+      text:`"${a.ad_name}" gerou ${a.leads} leads (${BRL(a.spend)}) sem nenhum qualificado. O publico alcancado nao tem o perfil. Testar Lookalike 1% de leads qualificados existentes.`,
+      metric:`Burd: Lookalike 1% de compradores > interesse stacking`});
+  });
+
+  // ── FORMATO (Lead Form vs LP) ──
+  const formAds = adsWithLeads.filter(a => a.ad_name.toLowerCase().includes('form'));
+  const lpAds = adsWithLeads.filter(a => a.ad_name.toLowerCase().includes('lp') || a.ad_name.toLowerCase().includes('story') || a.ad_name.toLowerCase().includes('feed'));
+  if (formAds.length > 0 && lpAds.length > 0) {
+    const formQualRate = formAds.reduce((s,a) => s + a.qualified_leads, 0) / Math.max(formAds.reduce((s,a) => s + a.leads, 0), 1) * 100;
+    const lpQualRate = lpAds.reduce((s,a) => s + a.qualified_leads, 0) / Math.max(lpAds.reduce((s,a) => s + a.leads, 0), 1) * 100;
+    if (formQualRate > lpQualRate * 1.5 && formQualRate > 15) {
+      recs.push({type:'green',label:'FORMATO',
+        text:`Lead Form qualifica ${PCT(formQualRate)} vs LP ${PCT(lpQualRate)}. Considerar migrar mais budget para formato Lead Form com pergunta qualificadora no formulario.`,
+        metric:`Meta: Lead Form gera 2-4x volume, qualidade depende das perguntas`});
+    }
+  }
+
+  // ── PERFIL INVESTIDOR ──
+  if (summary.pct_cripto < 30 && summary.total_qualified > 10) {
+    recs.push({type:'yellow',label:'PERFIL',
+      text:`So ${summary.pct_cripto}% dos qualificados ja investem em cripto. Para Boost Research, o ideal e >=50%. Testar campanhas BELT: primeiro educar (video 30-60s sobre cripto), depois captar.`,
+      metric:`Maly BELT: Believe > Engage > Lead > Transact. 7 toques antes de converter`});
+  }
+
+  // ── RASTREAMENTO ──
+  if (summary.leads_no_utm > summary.total_qualified * 0.3) {
+    recs.push({type:'red',label:'RASTREAMENTO',
+      text:`${summary.leads_no_utm} leads (${Math.round(summary.leads_no_utm/Math.max(summary.total_qualified,1)*100)}%) sem atribuicao. Impossivel otimizar sem saber a origem. Corrigir UTM fixos nos Lead Forms HOJE.`,
+      metric:`Sem rastreamento = decisoes cegas. Prioridade maxima.`});
+  }
+
+  // Ordenar: red primeiro, depois green, depois yellow
+  const order = {red:0, green:1, yellow:2};
+  recs.sort((a,b) => (order[a.type]||9) - (order[b.type]||9));
+  return recs.slice(0, 10);
+}
+
+function renderKPIs(summary) {
+  const cplG = summary.total_leads > 0 ? summary.total_spend / summary.total_leads : 0;
+  const cplQ = summary.total_qualified > 0 ? summary.total_spend / summary.total_qualified : 0;
+  const taxaQ = summary.total_leads > 0 ? summary.total_qualified / summary.total_leads * 100 : 0;
+  document.getElementById('kpis').innerHTML = `
+    <div class="kpi"><div class="label">Investimento</div><div class="value">${BRL(summary.total_spend)}</div><div class="ctx">Periodo selecionado</div></div>
+    <div class="kpi"><div class="label">Leads</div><div class="value">${summary.total_leads}</div><div class="ctx">CPL ${BRL(cplG)}</div></div>
+    <div class="kpi"><div class="label">Qualificados</div><div class="value accent">${summary.total_qualified}</div><div class="ctx">${summary.total_50k_500k} (50k-500k) + ${summary.total_above_500k} (>500k)</div></div>
+    <div class="kpi"><div class="label">CPL Qualificado</div><div class="value alert">${BRL(cplQ)}</div><div class="ctx">${cplG>0?(cplQ/cplG).toFixed(1):'0'}x o CPL bruto</div></div>
+    <div class="kpi"><div class="label">Taxa Qualif.</div><div class="value ${taxaQ>=20?'accent':''}">${PCT(taxaQ)}</div><div class="ctx">Meta: >=30%</div></div>
+    <div class="kpi"><div class="label">Perfil</div><div class="value" style="font-size:16px">${summary.pct_cripto}% cripto / ${summary.pct_trad}% trad.</div><div class="ctx">Dos qualificados</div></div>`;
+}
+
+function renderRecs(recs) {
+  if (!recs.length) { document.getElementById('recs').innerHTML=''; return; }
+  document.getElementById('recs').innerHTML = `
+    <h2>Recomendacoes de acao</h2>
+    <div class="rec-grid">${recs.map(r => `
+      <div class="rec ${r.type}">
+        <div class="rec-type">${r.label}</div>
+        <div class="rec-text">${r.text}</div>
+        <div class="rec-metric">${r.metric}</div>
+      </div>`).join('')}
+    </div>`;
+}
+
+function cardHTML(ad, rank) {
+  const thumb = ad.thumbnail ? `<img src="${ad.thumbnail}" alt="${ad.ad_name}" loading="lazy">` : '<div class="no-thumb">Sem imagem</div>';
+  const rankH = rank ? `<span class="rank">#${rank}</span>` : '';
+  const cplQ = ad.cpl_qualificado > 0 ? BRL(ad.cpl_qualificado) : '—';
+  const barW = Math.min(ad.taxa_qualificacao, 100);
+  return `<div class="creative-card">
+  <div class="card-thumb">${thumb}${rankH}</div>
+  <div class="card-body">
+    <div class="card-name" title="${ad.ad_name}">${ad.ad_name}</div>
+    <div class="card-campaign">${ad.campaign_name}</div>
+    <div class="card-metrics">
+      <div class="cm"><span class="cm-val">${BRL(ad.spend)}</span><span class="cm-label">Gasto</span></div>
+      <div class="cm"><span class="cm-val">${ad.leads}</span><span class="cm-label">Leads</span></div>
+      <div class="cm"><span class="cm-val accent">${ad.qualified_leads}</span><span class="cm-label">Qualif.</span></div>
+      <div class="cm"><span class="cm-val">${cplQ}</span><span class="cm-label">CPL Qualif.</span></div>
+    </div>
+    <div class="card-bar-section">
+      <div class="card-bar-label">Qualificacao: <span class="${pctClass(ad.taxa_qualificacao)}">${PCT(ad.taxa_qualificacao)}</span></div>
+      <div class="card-bar-track"><div class="card-bar-fill" style="width:${barW}%"></div></div>
+    </div>
+    <div class="card-profile">
+      <span class="profile-tag">${ad.qualified_50k_500k} <small>50k-500k</small></span>
+      <span class="profile-tag gold">${ad.qualified_above_500k} <small>>500k</small></span>
+      <span class="profile-tag blue">${ad.pct_cripto.toFixed(0)}% <small>cripto</small></span>
+      <span class="profile-tag purple">${ad.pct_trad.toFixed(0)}% <small>trad.</small></span>
+    </div>
+  </div></div>`;
+}
+
+function renderCards(ads) {
+  const withQual = ads.filter(a => a.qualified_leads > 0).sort((a,b) => a.cpl_qualificado - b.cpl_qualificado);
+  const withoutQual = ads.filter(a => a.qualified_leads === 0 && a.leads > 0).sort((a,b) => b.spend - a.spend);
+  const best = withQual[0];
+  const title = best ? `"${best.ad_name}" lidera com CPL qualificado de ${BRL(best.cpl_qualificado)}` : 'Criativos com leads qualificados';
+
+  document.getElementById('top-section').innerHTML = `
+    <h2>${title}</h2>
+    <div class="section-sub">Ordenados por menor CPL qualificado — leads com patrimonio >=R$50k</div>
+    <div class="cards-grid">${withQual.slice(0,12).map((a,i) => cardHTML(a,i+1)).join('')}</div>`;
+
+  if (withoutQual.length > 0) {
+    const wasteSpend = withoutQual.reduce((s,a) => s + a.spend, 0);
+    document.getElementById('waste-section').innerHTML = `<div class="section">
+      <h2>${withoutQual.length} anuncios gastaram ${BRL(wasteSpend)} sem lead qualificado</h2>
+      <div class="section-sub">Geraram leads, mas nenhum com patrimonio >=R$50k</div>
+      <div class="cards-grid">${withoutQual.slice(0,6).map(a => cardHTML(a)).join('')}</div>
+    </div>`;
+  }
+}
+
+function renderTable(ads) {
+  const sorted = [...ads].filter(a => a.leads > 0).sort((a,b) => b.qualified_leads - a.qualified_leads || b.spend - a.spend);
+  const el = document.getElementById('table-section');
+  el.style.display = '';
+  el.innerHTML = `
+    <h2>Todos os anuncios</h2>
+    <div class="section-sub">${sorted.length} anuncios com leads</div>
+    <div style="overflow-x:auto"><table>
+      <thead><tr><th>Anuncio</th><th class="num">Gasto</th><th class="num">Impr.</th><th class="num">Cliques</th><th class="num">CTR</th><th class="num">Leads</th><th class="num">CPL</th><th class="num">Qualif.</th><th class="num">CPL Q.</th><th class="num">% Qualif.</th></tr></thead>
+      <tbody>${sorted.map(a => `<tr>
+        <td class="ad-name-cell" title="${a.ad_name}">${a.ad_name}</td>
+        <td class="num">${BRL(a.spend)}</td>
+        <td class="num">${a.impressions.toLocaleString('pt-BR')}</td>
+        <td class="num">${a.clicks.toLocaleString('pt-BR')}</td>
+        <td class="pct">${PCT(a.ctr)}</td>
+        <td class="num">${a.leads}</td>
+        <td class="num">${a.cpl>0?BRL(a.cpl):'—'}</td>
+        <td class="num" style="color:var(--accent-bright);font-weight:700">${a.qualified_leads}</td>
+        <td class="num">${a.cpl_qualificado>0?BRL(a.cpl_qualificado):'—'}</td>
+        <td class="pct ${pctClass(a.taxa_qualificacao)}">${PCT(a.taxa_qualificacao)}</td>
+      </tr>`).join('')}</tbody>
+    </table></div>`;
+}
+
+function render() {
+  if (!DATA) return;
+  renderKPIs(DATA.summary);
+  const recs = generateRecommendations(DATA.ads, DATA.summary);
+  renderRecs(recs);
+  renderCards(DATA.ads);
+  renderTable(DATA.ads);
+  document.getElementById('updated-at').textContent = 'Atualizado ' + new Date(DATA.generated_at).toLocaleString('pt-BR',{timeZone:'America/Sao_Paulo'});
+}
+
+// Filtro de periodo (client-side, filtra pelo campo de data se disponivel)
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Como os dados ja vem do periodo do Python, o filtro e visual
+    // Para filtro real, precisariamos de dados diarios — por agora marca o selecionado
+    render();
+  });
+});
+
+// Carregar dados
+fetch('data.json')
+  .then(r => r.json())
+  .then(d => { DATA = d; render(); })
+  .catch(e => {
+    document.getElementById('top-section').innerHTML = `<div style="color:var(--red);padding:40px;text-align:center">Erro ao carregar dados: ${e.message}<br>Execute o script generate_creative_intelligence.py primeiro.</div>`;
+  });
+</script>
+</body>
+</html>

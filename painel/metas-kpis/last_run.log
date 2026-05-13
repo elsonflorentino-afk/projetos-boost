@@ -1,0 +1,44 @@
+============================================================
+1/4 — Meta Ads (dados semanais)
+============================================================
+  Meta: buscando 2026-02...
+  Meta: buscando 2026-03...
+  Meta: buscando 2026-04...
+  OK: 12 semanas com dados
+
+============================================================
+2/4 — CRM: historico Fev/Mar + Supabase Abr+
+============================================================
+  Fev: historico do report — {'contatos': 224, 'reunioes': 4, 'pedidos': 1, 'vendas': 1}
+  Mar: historico do report — {'contatos': 241, 'reunioes': 20, 'pedidos': 6, 'vendas': 6}
+  Supabase: 1000 deals total
+  FP (Abr+): contatos=64, reunioes=4, vendas=0
+  PA (Abr+): contatos=12, reunioes=4, vendas=0
+  CR (Abr+): contatos=101, reunioes=4, vendas=5
+  Abr: Supabase — 64 contatos, 4 reunioes, 0 vendas
+
+============================================================
+3/4 — Leads qualificados: historico + Supabase + RD API enrichment
+============================================================
+  Fev: historico — 124 qualificados
+  Mar: historico — 76 qualificados
+  RD Marketing token renovado OK
+  RD Segmentacao 19356678: 71 leads
+  RD Segmentacao 19356688: 18 leads
+  RD Segmentacoes total (dedup): 89 | Abr+: 58 qualificados
+  Total: 258 leads qualificados no periodo
+
+============================================================
+4/4 — Cotacao BTC
+============================================================
+  BTC: R$ 384,363.00 / US$ 76,857.00
+
+data.json salvo em /Users/user/meu-projeto-aiox/projetos-boost/painel/metas-kpis/data.json
+  Funil acumulado — FP: 502c/19r/3v | PA: 12c/4r/0v | CR: 128c/13r/9v
+  Totais: 642c/36r/12v (check: FP+PA+CR = 642c/36r/12v)
+index.html salvo em /Users/user/meu-projeto-aiox/projetos-boost/painel/metas-kpis/index.html
+
+============================================================
+CONCLUIDO
+============================================================
+2026-04-28 00:03 — Dashboard KPIs atualizado

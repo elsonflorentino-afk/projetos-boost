@@ -1,0 +1,41 @@
+name: Atualizar Creative Intelligence Dashboard
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # a cada 6 horas
+  workflow_dispatch:          # permite rodar manualmente
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Gerar Creative Intelligence Dashboard
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          RD_CLIENT_ID: ${{ secrets.RD_CLIENT_ID }}
+          RD_CLIENT_SECRET: ${{ secrets.RD_CLIENT_SECRET }}
+          RD_REFRESH_TOKEN: ${{ secrets.RD_REFRESH_TOKEN }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: python scripts/generate_creative_intelligence.py
+
+      - name: Commit e push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add painel/creative-intelligence/index.html painel/creative-intelligence/data.json
+          git diff --staged --quiet || git commit -m "chore: atualizar creative intelligence $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
