@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Editor — YouTube Ads Boost Research</title>
+<style>
+/* ===== RESET & BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --teal:#19c6b5;
+  --teal-light:#03E4D0;
+  --dark:#12191D;
+  --text:#32373c;
+  --bg1:#ffffff;
+  --bg2:#f5f5f5;
+  --green:#22c55e;
+  --orange:#f59e0b;
+  --red:#ef4444;
+  --gray:#6b7280;
+  --gray-light:#e5e7eb;
+  --shadow:6px 6px 9px rgba(0,0,0,0.2);
+  --radius:16px;
+}
+body{font-family:Arial,sans-serif;color:var(--text);background:var(--bg1);line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+/* ===== HEADER ===== */
+.header{background:var(--dark);color:#fff;padding:48px 0 40px;text-align:center}
+.header h1{font-size:32px;font-weight:700;letter-spacing:-0.5px;margin-bottom:8px}
+.header p{font-size:16px;color:rgba(255,255,255,0.65);max-width:600px;margin:0 auto}
+
+/* ===== STATS ROW ===== */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:-40px auto 40px;position:relative;z-index:2}
+.stat-card{background:var(--bg1);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 16px;text-align:center}
+.stat-num{font-size:36px;font-weight:800;color:var(--teal);line-height:1}
+.stat-label{font-size:12px;color:var(--gray);margin-top:6px;line-height:1.3}
+
+/* ===== SECTIONS ===== */
+.section{padding:48px 0}
+.section:nth-child(odd){background:var(--bg2)}
+.section:nth-child(even){background:var(--bg1)}
+.section-title{font-size:24px;font-weight:700;color:var(--dark);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.section-title .icon{width:32px;height:32px;background:var(--teal);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex-shrink:0}
+.section-sub{font-size:14px;color:var(--gray);margin-bottom:24px}
+
+/* ===== TABLE ===== */
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-bottom:16px}
+.tbl th{text-align:left;padding:12px 14px;background:var(--dark);color:var(--teal);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px}
+.tbl th:first-child{border-radius:var(--radius) 0 0 0}
+.tbl th:last-child{border-radius:0 var(--radius) 0 0}
+.tbl td{padding:12px 14px;border-bottom:1px solid var(--gray-light);vertical-align:top}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:rgba(25,198,181,0.04)}
+
+/* ===== TIMECODE ===== */
+.tc{font-family:'Courier New',Courier,monospace;font-size:18px;font-weight:700;color:var(--dark);letter-spacing:0.5px}
+.tc-sm{font-family:'Courier New',Courier,monospace;font-size:14px;font-weight:600;color:var(--dark)}
+.file-tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;background:var(--dark);color:var(--teal-light);margin-right:6px}
+
+/* ===== THEME CARDS ===== */
+.theme-card{background:var(--bg1);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden;border:1px solid var(--gray-light)}
+.theme-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;cursor:pointer;user-select:none;transition:background 0.15s}
+.theme-header:hover{background:rgba(25,198,181,0.04)}
+.theme-num{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-right:12px}
+.theme-num.p1{color:var(--green)}
+.theme-num.p2{color:var(--orange)}
+.theme-num.p3{color:var(--gray)}
+.theme-title{font-size:18px;font-weight:700;color:var(--dark);flex:1}
+.theme-badges{display:flex;gap:8px;align-items:center;flex-shrink:0;margin-left:16px}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;white-space:nowrap}
+.badge-format{background:var(--dark);color:var(--teal-light)}
+.badge-p1{background:rgba(34,197,94,0.12);color:#16a34a}
+.badge-p2{background:rgba(245,158,11,0.12);color:#d97706}
+.badge-p3{background:rgba(107,114,128,0.12);color:#6b7280}
+.badge-dur{background:rgba(25,198,181,0.1);color:var(--teal)}
+.chevron{font-size:20px;color:var(--gray);transition:transform 0.2s;margin-left:12px}
+.theme-card.open .chevron{transform:rotate(180deg)}
+.theme-body{display:none;padding:0 24px 24px;border-top:1px solid var(--gray-light)}
+.theme-card.open .theme-body{display:block}
+
+/* Timecode block inside theme */
+.tc-block{background:var(--dark);color:#fff;border-radius:12px;padding:20px 24px;margin:16px 0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.tc-block .tc-item label{font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:rgba(255,255,255,0.5);display:block;margin-bottom:2px}
+.tc-block .tc-item .val{font-family:'Courier New',Courier,monospace;font-size:22px;font-weight:700;color:var(--teal-light)}
+.tc-block .tc-item .val-sm{font-family:'Courier New',Courier,monospace;font-size:14px;font-weight:600;color:rgba(255,255,255,0.7)}
+
+/* Structure timeline */
+.structure{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:16px 0}
+.struct-step{background:var(--bg2);border-radius:8px;padding:10px 8px;text-align:center;font-size:11px;border-top:3px solid var(--teal)}
+.struct-step .step-name{font-weight:700;color:var(--dark);margin-bottom:2px}
+.struct-step .step-time{color:var(--gray);font-family:'Courier New',monospace;font-size:10px}
+
+/* Editor notes */
+.editor-note{background:rgba(245,158,11,0.08);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13px;color:var(--text)}
+.editor-note strong{color:#b45309}
+
+/* ===== ALERT CARDS ===== */
+.alert-card{border-radius:var(--radius);padding:20px 24px;margin-bottom:16px;font-size:14px}
+.alert-red{background:rgba(239,68,68,0.06);border:2px solid var(--red);color:var(--text)}
+.alert-red .alert-title{color:var(--red);font-weight:700;font-size:16px;margin-bottom:6px}
+.alert-orange{background:rgba(245,158,11,0.06);border:2px solid var(--orange);color:var(--text)}
+.alert-orange .alert-title{color:#b45309;font-weight:700;font-size:16px;margin-bottom:6px}
+
+/* ===== PRIORITY TABLE ===== */
+.prio-row{display:flex;align-items:stretch;gap:16px;margin-bottom:16px}
+.prio-label{width:100px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;flex-shrink:0}
+.prio-label.p1{background:var(--green)}
+.prio-label.p2{background:var(--orange)}
+.prio-label.p3{background:var(--gray)}
+.prio-content{flex:1;background:var(--bg1);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 24px}
+.prio-content h4{font-size:15px;font-weight:700;margin-bottom:4px}
+.prio-content p{font-size:13px;color:var(--gray)}
+
+/* ===== CHECKLIST ===== */
+.checklist{list-style:none;padding:0}
+.checklist li{padding:10px 0;border-bottom:1px solid var(--gray-light);font-size:14px;display:flex;align-items:flex-start;gap:10px}
+.checklist li:last-child{border-bottom:none}
+.check-box{width:20px;height:20px;border:2px solid var(--gray-light);border-radius:4px;flex-shrink:0;margin-top:1px}
+
+/* ===== ASSETS LIST ===== */
+.asset-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.asset-item{background:var(--bg1);border:1px solid var(--gray-light);border-radius:12px;padding:16px;font-size:14px}
+.asset-item strong{color:var(--dark);display:block;margin-bottom:4px}
+.asset-item span{color:var(--gray);font-size:12px}
+
+/* ===== VISUAL ELEMENTS TABLE ===== */
+.ve-card{background:var(--bg1);border-radius:12px;border:1px solid var(--gray-light);padding:16px 20px;margin-bottom:10px}
+.ve-card h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.ve-card p{font-size:13px;color:var(--gray)}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--dark);color:rgba(255,255,255,0.45);text-align:center;padding:32px 0;font-size:13px}
+
+/* ===== PRINT ===== */
+@media print{
+  .theme-body{display:block !important}
+  .chevron{display:none}
+  .theme-card{break-inside:avoid;page-break-inside:avoid;box-shadow:none;border:1px solid #ccc}
+  .stat-card{box-shadow:none;border:1px solid #ccc}
+  .header{background:#12191D !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tc-block{background:#12191D !important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .alert-red,.alert-orange{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:12px}
+  .section{padding:24px 0}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .tc-block{grid-template-columns:1fr}
+  .structure{grid-template-columns:repeat(3,1fr)}
+  .asset-grid{grid-template-columns:1fr}
+  .theme-badges{flex-wrap:wrap}
+  .prio-row{flex-direction:column}
+  .prio-label{width:100%;height:48px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="container">
+    <h1>Briefing para Editor — YouTube Ads Boost Research</h1>
+    <p>12 temas gravados por Andre Franco &middot; 2 arquivos MOV &middot; Maio 2026</p>
+  </div>
+</div>
+
+<!-- ===== STATS ROW ===== -->
+<div class="container">
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Temas<br><small>11 gravados + 1 dividido</small></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Arquivos MOV<br><small>18:12 + 2:30</small></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10</div>
+      <div class="stat-label">In-stream<br><small>16:9 horizontal</small></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Shorts<br><small>9:16 vertical</small></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">29</div>
+      <div class="stat-label">Entregas totais<br><small>3 fases de campanha</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ARQUIVOS DE ORIGEM ===== -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><div class="icon">1</div> Arquivos de Origem</div>
+    <p class="section-sub">Dois arquivos MOV gravados em sessao unica. O Tema 10 esta dividido entre os dois arquivos.</p>
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Arquivo</th>
+          <th>Duracao</th>
+          <th>Temas</th>
+          <th>Tamanho</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>MVI_0015.MOV</strong></td>
+          <td class="tc">18:12</td>
+          <td>Temas 1, 4, 2, 3, 5, 6, 7, 8, 9, 11, 10 (inicio)</td>
+          <td>4.28 GB</td>
+          <td style="color:var(--red);font-weight:600">Tema 10 corta no final (mid-sentence)</td>
+        </tr>
+        <tr>
+          <td><strong>MVI_0016.MOV</strong></td>
+          <td class="tc">02:30</td>
+          <td>Tema 10 (final), Tema 12</td>
+          <td>588 MB</td>
+          <td>Continuacao do Tema 10 + Tema 12 completo</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--gray)"><strong>IMPORTANTE:</strong> A ordem de gravacao NAO e a ordem dos temas. Andre gravou na sequencia: 1 &rarr; 4 &rarr; 2 &rarr; 3 &rarr; 5 &rarr; 6 &rarr; 7 &rarr; 8 &rarr; 9 &rarr; 11 &rarr; 10 &rarr; 12.</p>
+  </div>
+</div>
+
+<!-- ===== MAPA DE CORTES ===== -->
+<div class="section" style="background:var(--bg1)">
+  <div class="container">
+    <div class="section-title"><div class="icon">2</div> Mapa de Cortes</div>
+    <p class="section-sub">Timecodes exatos para cada tema. Clique para expandir detalhes, notas de edicao e estrutura do video.</p>
+
+    <!-- TEMA 1 -->
+    <div class="theme-card open" id="tema-1">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p1">Tema 1</span>
+          <span class="theme-title">Quando vender Bitcoin — o que ninguem te ensina</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p1">P1</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~2:07</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">00:15</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">02:22</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>CORTAR 00:00-00:15</strong> — Andre esta aquecendo/testando. Diz "Video um" aos 00:15 (inicio real).<br>
+          <strong>Retake no CTA:</strong> Aos 02:07-02:15 Andre repete "O link esta aqui embaixo" 3 vezes — usar a melhor tomada.<br>
+          <strong>Disclaimer audio:</strong> "Investimentos em criptoativos envolvem riscos. Retornos passados nao garantem resultados futuros." (02:16-02:22)
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Dor</div><div class="step-time">5-20s</div></div>
+          <div class="struct-step"><div class="step-name">Empatia</div><div class="step-time">20-35s</div></div>
+          <div class="struct-step"><div class="step-name">Credencial</div><div class="step-time">35-50s</div></div>
+          <div class="struct-step"><div class="step-name">Metodo</div><div class="step-time">50-90s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">90-120s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 2-3 min (120-180s) &middot; <strong>Grafico necessario:</strong> Bitcoin price chart 3 ciclos (2017, 2021, 2025) com setas em topos/fundos &middot; <strong>Dor ICP:</strong> #1 — Nao saber quando vender (145 mencoes)</p>
+      </div>
+    </div>
+
+    <!-- TEMA 4 -->
+    <div class="theme-card" id="tema-4">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p2">Tema 4</span>
+          <span class="theme-title">Hold nao e estrategia — regra de saida</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p2">P2</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~1:51</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">02:55</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">04:46</div>
+          </div>
+        </div>
+        <div class="editor-note" style="border-left-color:var(--red);background:rgba(239,68,68,0.06)">
+          <strong style="color:var(--red)">RETAKE 03:52-04:11</strong> — Andre tenta a mesma frase 3 vezes ("Digamos que voce comprou bitcoin a 200 mil com regra de saida..."). <strong>Escolher a tomada mais limpa</strong> (a terceira, que comeca em ~04:11, e a que segue sem erro).<br>
+          <strong>CORTAR transicao 02:22-02:55</strong> — Andre conversa com a equipe entre temas.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Dor</div><div class="step-time">5-20s</div></div>
+          <div class="struct-step"><div class="step-name">Empatia</div><div class="step-time">20-35s</div></div>
+          <div class="struct-step"><div class="step-name">Credencial</div><div class="step-time">35-50s</div></div>
+          <div class="struct-step"><div class="step-name">Metodo</div><div class="step-time">50-90s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">90-120s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 2-3 min &middot; <strong>Grafico:</strong> Bullets animados (alvos de realizacao parcial, stop, percentuais) &middot; <strong>Exemplo pratico no roteiro:</strong> Bitcoin a 200k, regra 30%/30%/40%</p>
+      </div>
+    </div>
+
+    <!-- TEMA 2 -->
+    <div class="theme-card" id="tema-2">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p1">Tema 2</span>
+          <span class="theme-title">O investidor que nao tem tempo</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p1">P1</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~0:56</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">04:58</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">05:54</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>CORTAR transicao 04:46-04:58</strong> — Andre fala "Tema 2, ok?" para a equipe.<br>
+          <strong>Gravacao limpa.</strong> Sem retakes. Ritmo rapido e direto.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Dor</div><div class="step-time">5-15s</div></div>
+          <div class="struct-step"><div class="step-name">Empatia</div><div class="step-time">15-25s</div></div>
+          <div class="struct-step"><div class="step-name">Metodo</div><div class="step-time">25-40s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">40-55s</div></div>
+          <div class="struct-step"><div class="step-name">Disclaimer</div><div class="step-time">55s+</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 30-60s (formato curto) &middot; <strong>Grafico:</strong> "5 min/dia = decisoes informadas" &middot; <strong>Dor ICP:</strong> #2 — Falta de tempo (134 mencoes)</p>
+      </div>
+    </div>
+
+    <!-- TEMA 3 -->
+    <div class="theme-card" id="tema-3">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p1">Tema 3</span>
+          <span class="theme-title">Cripto e IR — o que ninguem te conta</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p1">P1</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~2:27</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">05:57</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">08:24</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>CORTAR transicao 05:54-05:57</strong><br>
+          <strong>Tema mais longo.</strong> Andre cobre 3 pontos (declaracao de bens, ganho de capital, troca cripto-cripto).<br>
+          <strong>Disclaimer ADICIONAL (audio):</strong> "Este conteudo tem carater educacional e nao substitui orientacao tributaria profissional." (08:17-08:24)<br>
+          <strong>Menciona e-book + live</strong> — adicionar cards/overlays com links.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Dor</div><div class="step-time">5-20s</div></div>
+          <div class="struct-step"><div class="step-name">Empatia</div><div class="step-time">20-35s</div></div>
+          <div class="struct-step"><div class="step-name">Credencial</div><div class="step-time">35-50s</div></div>
+          <div class="struct-step"><div class="step-name">Metodo</div><div class="step-time">50-120s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">120-150s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 2-4 min &middot; <strong>Graficos:</strong> Timeline DeCripto + tabela de tributacao &middot; <strong>Dor ICP:</strong> #4 — Medo/desconhecimento IR (72 mencoes) &middot; <strong>Disclaimer extra obrigatorio</strong></p>
+      </div>
+    </div>
+
+    <!-- TEMA 5 -->
+    <div class="theme-card" id="tema-5">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p2">Tema 5</span>
+          <span class="theme-title">Sua cripto na corretora nao e sua</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p2">P2</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~1:39</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">08:26</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">10:05</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>CORTAR transicao 08:24-08:26</strong><br>
+          <strong>Referencias FTX e MtGox</strong> — considerar imagens de referencia (logos, manchetes).<br>
+          <strong>Andre menciona 3 niveis de custodia:</strong> Exchange (facil, arriscado) / Hot wallet / Cold wallet — inserir graficos ou icones para cada nivel.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Dor</div><div class="step-time">5-20s</div></div>
+          <div class="struct-step"><div class="step-name">Empatia</div><div class="step-time">20-30s</div></div>
+          <div class="struct-step"><div class="step-name">Credencial</div><div class="step-time">30-40s</div></div>
+          <div class="struct-step"><div class="step-name">Metodo</div><div class="step-time">40-80s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">80-100s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 60-90s &middot; <strong>Graficos:</strong> Imagens FTX/MtGox + icones 3 niveis custodia &middot; <strong>Dor ICP:</strong> Seguranca dos ativos</p>
+      </div>
+    </div>
+
+    <!-- TEMA 6 -->
+    <div class="theme-card" id="tema-6">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p2">Tema 6</span>
+          <span class="theme-title">Sobreviver ao trauma das altcoins</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p2">P2</span>
+          <span class="badge badge-format" style="background:var(--red);color:#fff">Shorts 9:16</span>
+          <span class="badge badge-dur">~0:50</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">10:07</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">10:57</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>FORMATO SHORTS (9:16)</strong> — Crop vertical do footage 16:9. Centralizar no rosto de Andre.<br>
+          <strong>CORTAR transicao 10:05-10:07</strong><br>
+          <strong>"Comprei a 42, vendi a 19"</strong> — frase forte, ideal para hook visual com numeros grandes na tela.<br>
+          <strong>Legendas burn-in obrigatorias</strong> (Shorts nao suportam CC no feed).
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-3s</div></div>
+          <div class="struct-step"><div class="step-name">Dor</div><div class="step-time">3-12s</div></div>
+          <div class="struct-step"><div class="step-name">Insight</div><div class="step-time">12-25s</div></div>
+          <div class="struct-step"><div class="step-name">Regra</div><div class="step-time">25-35s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">35-45s</div></div>
+          <div class="struct-step"><div class="step-name">Disclaimer</div><div class="step-time">45-50s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 30-45s &middot; <strong>Resolucao:</strong> 1080x1920 &middot; <strong>Legendas:</strong> Burn-in (texto gravado no video)</p>
+      </div>
+    </div>
+
+    <!-- TEMA 7 -->
+    <div class="theme-card" id="tema-7">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p2">Tema 7</span>
+          <span class="theme-title">O que a IA nao te conta sobre cripto</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p2">P2</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~1:42</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">11:00</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">12:42</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>CORTAR transicao 10:57-11:00</strong><br>
+          <strong>Andre menciona ChatGPT e Gemini</strong> — inserir tela comparativa "ChatGPT vs Analista" (split-screen ou PiP).<br>
+          <strong>Dado ANBIMA:</strong> "9% dos investidores ja usam IA generativa" — inserir como texto grande na tela.<br>
+          <strong>Exemplo pratico:</strong> "Se voce perguntar pro ChatGPT 'devo comprar Ether?'" — considerar mockup de chat.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Dor</div><div class="step-time">5-20s</div></div>
+          <div class="struct-step"><div class="step-name">Empatia</div><div class="step-time">20-35s</div></div>
+          <div class="struct-step"><div class="step-name">Credencial</div><div class="step-time">35-50s</div></div>
+          <div class="struct-step"><div class="step-name">Metodo</div><div class="step-time">50-85s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">85-102s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 2-3 min &middot; <strong>Graficos:</strong> Comparativo ChatGPT vs Analista (mockup de tela) &middot; <strong>Dor ICP:</strong> Confianca excessiva em IA</p>
+      </div>
+    </div>
+
+    <!-- TEMA 8 -->
+    <div class="theme-card" id="tema-8">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p1">Tema 8</span>
+          <span class="theme-title">3 erros que a maioria dos investidores de cripto comete</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p1">P1</span>
+          <span class="badge badge-format" style="background:var(--red);color:#fff">Shorts 9:16</span>
+          <span class="badge badge-dur">~0:55</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">12:46</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">13:41</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>FORMATO SHORTS (9:16)</strong> — Crop vertical. Centralizar no rosto.<br>
+          <strong>CORTAR transicao 12:42-12:46</strong><br>
+          <strong>Formato listinha</strong> — 3 erros claros. Inserir numeracao grande na tela (1, 2, 3) sincronizada com a fala.<br>
+          <strong>Quick win:</strong> formato curto, ideal para primeira entrega.<br>
+          <strong>Legendas burn-in obrigatorias.</strong>
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Erro 1</div><div class="step-time">5-18s</div></div>
+          <div class="struct-step"><div class="step-name">Erro 2</div><div class="step-time">18-30s</div></div>
+          <div class="struct-step"><div class="step-name">Erro 3</div><div class="step-time">30-40s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">40-50s</div></div>
+          <div class="struct-step"><div class="step-name">Disclaimer</div><div class="step-time">50-55s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 30-60s &middot; <strong>Resolucao:</strong> 1080x1920 &middot; <strong>Graficos:</strong> Numeros 1-2-3 grandes animados &middot; <strong>Legendas:</strong> Burn-in</p>
+      </div>
+    </div>
+
+    <!-- TEMA 9 -->
+    <div class="theme-card" id="tema-9">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p3">Tema 9</span>
+          <span class="theme-title">Como comecei em cripto em 2016 — e o que aprendi</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p3">P3</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~1:47</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">13:45</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">15:32</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>CORTAR transicao 13:41-13:45</strong><br>
+          <strong>Video de autoridade/storytelling.</strong> Andre conta sua trajetoria desde 2016.<br>
+          <strong>3 licoes finais:</strong> (1) Nao siga manada, (2) Diversifique com criterio, (3) Tenha fonte independente.<br>
+          <strong>Tom mais pessoal</strong> — manter ritmo natural, nao cortar demais.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Historia</div><div class="step-time">5-30s</div></div>
+          <div class="struct-step"><div class="step-name">Ciclos</div><div class="step-time">30-55s</div></div>
+          <div class="struct-step"><div class="step-name">3 Licoes</div><div class="step-time">55-85s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">85-100s</div></div>
+          <div class="struct-step"><div class="step-name">Disclaimer</div><div class="step-time">100-107s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 2-3 min &middot; <strong>Grafico:</strong> Timeline 2016 &rarr; 2026 com marcos dos ciclos &middot; <strong>Tom:</strong> Autoridade + awareness</p>
+      </div>
+    </div>
+
+    <!-- TEMA 11 -->
+    <div class="theme-card" id="tema-11">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p3">Tema 11</span>
+          <span class="theme-title">O que uma consultoria independente faz de diferente</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p3">P3</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~1:01</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">15:33</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">16:34</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>CORTAR transicao em 15:32</strong><br>
+          <strong>Video institucional/posicionamento.</strong> Andre explica o modelo de consultoria independente.<br>
+          <strong>Pontos-chave:</strong> sem vinculo com banco/corretora, Advisor dedicado, receita nao depende da decisao do cliente.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Problema</div><div class="step-time">5-15s</div></div>
+          <div class="struct-step"><div class="step-name">Diferencial</div><div class="step-time">15-35s</div></div>
+          <div class="struct-step"><div class="step-name">Pratica</div><div class="step-time">35-48s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">48-56s</div></div>
+          <div class="struct-step"><div class="step-name">Disclaimer</div><div class="step-time">56-61s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 45-90s &middot; <strong>Tom:</strong> Posicionamento de marca</p>
+      </div>
+    </div>
+
+    <!-- TEMA 10 -->
+    <div class="theme-card" id="tema-10">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p3">Tema 10</span>
+          <span class="theme-title">93% dos aposentados dependem do INSS — e o seu plano?</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p3">P3</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~1:58</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block" style="grid-template-columns:1fr 1fr 1fr 1fr">
+          <div class="tc-item">
+            <label>Arquivo 1</label>
+            <div class="val-sm">MVI_0015.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN (Parte 1)</label>
+            <div class="val">16:40</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT (Parte 1)</label>
+            <div class="val" style="color:var(--red)">18:12 (corta!)</div>
+          </div>
+          <div class="tc-item">
+            <label>Duracao Parte 1</label>
+            <div class="val-sm">~1:32</div>
+          </div>
+        </div>
+        <div class="tc-block" style="grid-template-columns:1fr 1fr 1fr 1fr;margin-top:4px">
+          <div class="tc-item">
+            <label>Arquivo 2</label>
+            <div class="val-sm">MVI_0016.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN (Parte 2)</label>
+            <div class="val">00:00</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT (Parte 2)</label>
+            <div class="val">00:26</div>
+          </div>
+          <div class="tc-item">
+            <label>Duracao Parte 2</label>
+            <div class="val-sm">~0:26</div>
+          </div>
+        </div>
+        <div class="editor-note" style="border-left-color:var(--red);background:rgba(239,68,68,0.06)">
+          <strong style="color:var(--red)">TEMA DIVIDIDO ENTRE 2 ARQUIVOS!</strong><br>
+          MVI_0015.MOV corta mid-sentence em 18:12 (fim do arquivo). Andre estava falando "Terceiro, diversificacao..."<br>
+          MVI_0016.MOV continua de 00:00 com "...nao e ter cinco fundos de renda fixa, e ter classes de ativos diferentes".<br>
+          <strong>Juntar com hard cut ou crossfade suave.</strong> Verificar sincronizacao de audio na emenda. Andre esta dizendo a mesma frase — encontrar o ponto exato de continuidade.<br>
+          <strong>CORTAR transicao 16:34-16:40</strong> (entre Tema 11 e Tema 10 no MVI_0015).<br>
+          <strong>Retake no inicio:</strong> 16:42-16:47 Andre tenta o dado "93% dos aposentados" 2 vezes. Usar a segunda versao (~16:47).
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Dado</div><div class="step-time">5-20s</div></div>
+          <div class="struct-step"><div class="step-name">Problema</div><div class="step-time">20-40s</div></div>
+          <div class="struct-step"><div class="step-name">Solucao</div><div class="step-time">40-70s</div></div>
+          <div class="struct-step"><div class="step-name">3 Pontos</div><div class="step-time">70-105s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">105-118s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 2-3 min &middot; <strong>Grafico:</strong> Numero "93%" grande na tela (dado ANBIMA 2026) &middot; <strong>Disclaimer extra:</strong> "Criptoativos nao substituem previdencia social."</p>
+      </div>
+    </div>
+
+    <!-- TEMA 12 -->
+    <div class="theme-card" id="tema-12">
+      <div class="theme-header" onclick="toggleTheme(this)">
+        <div style="display:flex;align-items:center;flex:1;min-width:0">
+          <span class="theme-num p3">Tema 12</span>
+          <span class="theme-title">Renda fixa digital — o que e e como funciona</span>
+        </div>
+        <div class="theme-badges">
+          <span class="badge badge-p3">P3</span>
+          <span class="badge badge-format">In-stream 16:9</span>
+          <span class="badge badge-dur">~1:59</span>
+        </div>
+        <span class="chevron">&#9660;</span>
+      </div>
+      <div class="theme-body">
+        <div class="tc-block">
+          <div class="tc-item">
+            <label>Arquivo</label>
+            <div class="val-sm">MVI_0016.MOV</div>
+          </div>
+          <div class="tc-item">
+            <label>IN</label>
+            <div class="val">00:27</div>
+          </div>
+          <div class="tc-item">
+            <label>OUT</label>
+            <div class="val">02:26</div>
+          </div>
+        </div>
+        <div class="editor-note">
+          <strong>Gravacao limpa.</strong> Ultimo tema gravado, Andre esta no ritmo.<br>
+          <strong>Andre explica stablecoins de forma didatica</strong> — comparacao com CDB/Tesouro Direto.<br>
+          <strong>Menciona riscos DeFi:</strong> smart contract, descolamento de peg, regulatorio.<br>
+          <strong>Um retake leve</strong> em ~02:05 ("Se voce quer entender, se voce quer entender...") — usar a segunda tentativa.
+        </div>
+        <div class="structure">
+          <div class="struct-step"><div class="step-name">Hook</div><div class="step-time">0-5s</div></div>
+          <div class="struct-step"><div class="step-name">Contexto</div><div class="step-time">5-25s</div></div>
+          <div class="struct-step"><div class="step-name">Credencial</div><div class="step-time">25-40s</div></div>
+          <div class="struct-step"><div class="step-name">Mecanica</div><div class="step-time">40-80s</div></div>
+          <div class="struct-step"><div class="step-name">Riscos</div><div class="step-time">80-100s</div></div>
+          <div class="struct-step"><div class="step-name">CTA</div><div class="step-time">100-119s</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray)"><strong>Duracao alvo:</strong> 2-3 min &middot; <strong>Grafico:</strong> Tabela comparativa rendimento stablecoins vs renda fixa tradicional &middot; <strong>Disclaimer extra:</strong> "Protocolos DeFi possuem riscos adicionais de smart contract."</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== SPECS TECNICOS ===== -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><div class="icon">3</div> Specs Tecnicos de Entrega</div>
+    <p class="section-sub">Formatos de exportacao para cada tipo de video.</p>
+
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>Spec</th>
+          <th>In-stream (16:9)</th>
+          <th>Shorts (9:16)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Resolucao</strong></td><td>1920x1080</td><td>1080x1920</td></tr>
+        <tr><td><strong>Aspect Ratio</strong></td><td>16:9 horizontal</td><td>9:16 vertical</td></tr>
+        <tr><td><strong>Codec Video</strong></td><td>H.264 (MP4)</td><td>H.264 (MP4)</td></tr>
+        <tr><td><strong>Codec Audio</strong></td><td>AAC stereo 128kbps</td><td>AAC stereo 128kbps</td></tr>
+        <tr><td><strong>Frame Rate</strong></td><td>30fps (manter nativo)</td><td>30fps (manter nativo)</td></tr>
+        <tr><td><strong>Loudness</strong></td><td>-14 LUFS (broadcast)</td><td>-14 LUFS (broadcast)</td></tr>
+        <tr><td><strong>Legendas</strong></td><td>Arquivo .SRT separado</td><td>Burn-in (gravado no video)</td></tr>
+        <tr><td><strong>Thumbnail</strong></td><td>1280x720, JPG/PNG, max 2MB</td><td>N/A</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:14px;font-weight:700;color:var(--dark);margin:20px 0 8px">Naming convention:</p>
+    <div style="background:var(--dark);color:var(--teal-light);font-family:'Courier New',monospace;padding:16px 24px;border-radius:12px;font-size:15px">
+      BOOST_TEMA{N}_{TITULO}_{FORMATO}.mp4<br>
+      <span style="color:rgba(255,255,255,0.4)">Exemplos:</span><br>
+      BOOST_TEMA1_QUANDO_VENDER_BTC_INSTREAM.mp4<br>
+      BOOST_TEMA6_TRAUMA_ALTCOINS_SHORTS.mp4<br>
+      BOOST_TEMA1_QUANDO_VENDER_BTC_INSTREAM.srt
+    </div>
+  </div>
+</div>
+
+<!-- ===== ELEMENTOS VISUAIS ===== -->
+<div class="section" style="background:var(--bg1)">
+  <div class="container">
+    <div class="section-title"><div class="icon">4</div> Elementos Visuais — O Que Adicionar</div>
+    <p class="section-sub">Elementos obrigatorios em TODOS os videos, mais inserts especificos por tema.</p>
+
+    <h3 style="font-size:16px;font-weight:700;color:var(--dark);margin:24px 0 12px">Obrigatorios em todos os videos:</h3>
+
+    <div class="ve-card">
+      <h4>1. Lower Third (primeiros 5 segundos)</h4>
+      <p>"Andre Franco — Boost Research — Consultoria desde 2016"</p>
+      <p>Aparece no segundo 2. Fica visivel ate ~segundo 7. Estilo clean, sem animacao excessiva.</p>
+    </div>
+    <div class="ve-card">
+      <h4>2. Logo Boost Research (frame 1)</h4>
+      <p>Canto inferior esquerdo. Presente desde o primeiro frame ate o end card. Versao branca sobre o video ou versao verde sobre fundo escuro.</p>
+    </div>
+    <div class="ve-card">
+      <h4>3. Disclaimer visual (primeiros 15 segundos)</h4>
+      <p>Texto pequeno na base: "Investimentos em criptoativos envolvem riscos. Retornos passados nao garantem resultados futuros."<br>Legivel, mas nao intrusivo. Fonte minima 12px no export final.</p>
+    </div>
+    <div class="ve-card">
+      <h4>4. End Card (ultimos 5 segundos)</h4>
+      <p>Logo Boost Research centralizado + CTA ("Solicite sua analise") + URL (analise.boostresearch.com.br) + Disclaimer completo. Disclaimer visivel por minimo 3 segundos.</p>
+    </div>
+    <div class="ve-card">
+      <h4>5. Graficos/inserts onde Andre referencia dados</h4>
+      <p>PiP (Picture-in-Picture) ou full-screen dependendo do conteudo. Sincronizar com a fala.</p>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:700;color:var(--dark);margin:32px 0 12px">Inserts especificos por tema:</h3>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>Tema</th><th>Elemento Visual</th><th>Quando Aparece</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Grafico de preco Bitcoin — 3 ciclos (2017, 2021, 2025) com setas em topos e quedas de 70-80%</td>
+          <td>Quando Andre fala "subir 300%" e "Isso aconteceu em 2017, 2021..."</td>
+        </tr>
+        <tr>
+          <td><strong>1</strong></td>
+          <td>Bullets animados: "1. Alvo de preco / 2. Stop / 3. Realizacao parcial 30-30-40%"</td>
+          <td>Secao Metodo — sincronizado com a fala</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Timeline DeCripto (IN 1888/2019 exchanges BR reportam, 2024 exchanges internacionais)</td>
+          <td>Quando Andre fala "Desde 2019, as exchanges brasileiras..."</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td>Tabela de tributacao (declaracao de bens, ganho de capital >R$35k, troca cripto-cripto)</td>
+          <td>Quando Andre explica os 3 pontos</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td>Imagens/logos FTX e MtGox + manchetes de jornal</td>
+          <td>Quando Andre fala "A FTX tinha 8 milhoes de clientes"</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td>Icones 3 niveis custodia (Exchange / Hot Wallet / Cold Wallet)</td>
+          <td>Quando Andre explica cada nivel</td>
+        </tr>
+        <tr>
+          <td><strong>7</strong></td>
+          <td>Comparativo split-screen: ChatGPT (resposta generica) vs Analista (resposta com contexto)</td>
+          <td>Quando Andre fala "Se voce perguntar pro ChatGPT..."</td>
+        </tr>
+        <tr>
+          <td><strong>9</strong></td>
+          <td>Timeline visual: 2016 &rarr; 2017 &rarr; 2018 &rarr; ... &rarr; 2026 com marcos dos ciclos</td>
+          <td>Quando Andre fala "desde 2016" e durante a narrativa</td>
+        </tr>
+        <tr>
+          <td><strong>10</strong></td>
+          <td>Numero "93%" em destaque grande + "Dado ANBIMA 2026"</td>
+          <td>Hook e quando Andre cita a estatistica</td>
+        </tr>
+        <tr>
+          <td><strong>12</strong></td>
+          <td>Tabela comparativa: Renda Fixa Tradicional (CDB, Tesouro) vs Stablecoins (rendimento, risco, intermediario)</td>
+          <td>Quando Andre compara "Todo mundo entende renda fixa tradicional..."</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== PROBLEMAS E ALERTAS ===== -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><div class="icon" style="background:var(--red)">!</div> Problemas e Alertas para o Editor</div>
+    <p class="section-sub">Pontos criticos que exigem atencao especial durante a edicao.</p>
+
+    <div class="alert-red">
+      <div class="alert-title">1. Tema 10 dividido entre 2 arquivos</div>
+      <p>MVI_0015.MOV (16:40 ate o fim, 18:12) + MVI_0016.MOV (00:00-00:26). O arquivo corta no meio da frase "Terceiro, diversificacao...". Juntar com crossfade ou hard cut. <strong>Verificar sincronizacao de audio na emenda</strong> — o nivel de volume e a posicao do Andre podem ter mudado entre arquivos.</p>
+    </div>
+
+    <div class="alert-red">
+      <div class="alert-title">2. Tema 4 — Retake com 3 tentativas</div>
+      <p>Entre 03:52 e 04:11, Andre tenta a mesma frase 3 vezes: "Digamos que voce comprou bitcoin a 200 mil com regra de saida." A terceira tentativa (~04:11) e a que segue sem erro. <strong>Cortar as duas primeiras tentativas e usar a terceira.</strong></p>
+    </div>
+
+    <div class="alert-orange">
+      <div class="alert-title">3. Tema 1 — Warmup no inicio do arquivo</div>
+      <p>00:00 a 00:15 de MVI_0015.MOV e Andre aquecendo. Fala para a equipe, testa enquadramento. <strong>Cortar integralmente.</strong> O conteudo comeca em 00:15 quando ele diz "Video um, quando vender Bitcoin?"</p>
+    </div>
+
+    <div class="alert-orange">
+      <div class="alert-title">4. Transicoes entre temas — Cortar TODAS</div>
+      <p>Entre cada tema, Andre conversa com a equipe, bebe agua, ajusta posicao. Esses intervalos duram de 2 a 30 segundos. <strong>Cortar todos os intervalos.</strong> Os timecodes IN/OUT acima ja excluem essas transicoes.</p>
+    </div>
+
+    <div class="alert-orange">
+      <div class="alert-title">5. Sem hooks alternativos gravados</div>
+      <p>O roteiro previa 2-3 variacoes de hook por tema para teste A/B, mas Andre gravou apenas 1 hook por tema. <strong>Nao ha material para versoes alternativas de hook.</strong> Se necessario, variacoes serao feitas com corte/edicao diferentes (zoom, angulo, texto na tela).</p>
+    </div>
+
+    <div class="alert-orange">
+      <div class="alert-title">6. Niveis de audio — Verificar consistencia</div>
+      <p>Andre pode ter se movido para mais perto ou mais longe do microfone entre temas. <strong>Normalizar audio em -14 LUFS (broadcast) para todos os videos.</strong> Verificar especialmente a emenda do Tema 10 entre os dois arquivos.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ORDEM DE ENTREGA ===== -->
+<div class="section" style="background:var(--bg1)">
+  <div class="container">
+    <div class="section-title"><div class="icon">5</div> Ordem de Entrega (Prioridade)</div>
+    <p class="section-sub">Entregar na ordem abaixo. Cada bloco deve ser entregue completo antes de avancar.</p>
+
+    <div class="prio-row">
+      <div class="prio-label p1">P1</div>
+      <div class="prio-content">
+        <h4>Primeira semana — Temas 1, 2, 3 + 8 (Shorts)</h4>
+        <p>Temas validados por CPL. Dores #1, #2, #4 do ICP. Tema 8 (Shorts) e quick win por ser formato curto. Total: 4 videos (3 in-stream + 1 Shorts).</p>
+      </div>
+    </div>
+
+    <div class="prio-row">
+      <div class="prio-label p2">P2</div>
+      <div class="prio-content">
+        <h4>Segunda semana — Temas 4, 5, 6, 7</h4>
+        <p>Temas complementares. Incluem 1 Shorts (Tema 6) + 3 in-stream. Tema 4 requer atencao extra por causa do retake.</p>
+      </div>
+    </div>
+
+    <div class="prio-row">
+      <div class="prio-label p3">P3</div>
+      <div class="prio-content">
+        <h4>Terceira semana — Temas 9, 10, 11, 12</h4>
+        <p>Autoridade e awareness. Tema 10 e o mais complexo (dividido entre arquivos). Tema 12 e gravacao limpa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CHECKLIST ===== -->
+<div class="section">
+  <div class="container">
+    <div class="section-title"><div class="icon">6</div> Checklist de Entrega por Video</div>
+    <p class="section-sub">Verificar TODOS os itens para cada video antes de entregar.</p>
+
+    <ul class="checklist">
+      <li><div class="check-box"></div><strong>Corte limpo</strong> — sem transicoes de gravacao, sem fala para equipe, sem warmup</li>
+      <li><div class="check-box"></div><strong>Lower third nos primeiros 5s</strong> — "Andre Franco — Boost Research — Consultoria desde 2016"</li>
+      <li><div class="check-box"></div><strong>Logo Boost no frame 1</strong> — canto inferior esquerdo, presente ate o end card</li>
+      <li><div class="check-box"></div><strong>Disclaimer visual nos primeiros 15s</strong> — texto legivel na base do video</li>
+      <li><div class="check-box"></div><strong>Graficos/inserts</strong> — onde Andre referencia dados, sincronizados com a fala</li>
+      <li><div class="check-box"></div><strong>Legendas</strong> — .SRT para in-stream / burn-in para Shorts</li>
+      <li><div class="check-box"></div><strong>End card (5s)</strong> — logo + CTA + URL (analise.boostresearch.com.br) + disclaimer completo</li>
+      <li><div class="check-box"></div><strong>Audio normalizado</strong> — -14 LUFS broadcast, consistente entre temas</li>
+      <li><div class="check-box"></div><strong>Versao 16:9 exportada</strong> — 1920x1080, H.264 MP4, 30fps</li>
+      <li><div class="check-box"></div><strong>Versao 9:16 (Shorts)</strong> — 1080x1920, se aplicavel (Temas 6 e 8)</li>
+      <li><div class="check-box"></div><strong>Naming convention</strong> — BOOST_TEMA{N}_{TITULO}_{FORMATO}.mp4</li>
+      <li><div class="check-box"></div><strong>Compliance</strong> — disclaimer no audio (Andre fala) + disclaimer visual presente</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== ASSETS NECESSARIOS ===== -->
+<div class="section" style="background:var(--bg1)">
+  <div class="container">
+    <div class="section-title"><div class="icon">7</div> Assets Necessarios</div>
+    <p class="section-sub">Arquivos que o editor precisa receber antes de comecar a edicao.</p>
+
+    <div class="asset-grid">
+      <div class="asset-item">
+        <strong>Logo Boost Research</strong>
+        <span>SVG e PNG. Versao branca (para fundo escuro) e versao verde (para fundo claro). Fundo transparente.</span>
+      </div>
+      <div class="asset-item">
+        <strong>Foto Andre Franco</strong>
+        <span>Para thumbnails (1280x720). Rosto visivel, enquadramento fechado. Disponivel no repositorio.</span>
+      </div>
+      <div class="asset-item">
+        <strong>Template Lower Third</strong>
+        <span>After Effects / Premiere template. Texto: "Andre Franco — Boost Research — Consultoria desde 2016".</span>
+      </div>
+      <div class="asset-item">
+        <strong>Template End Card</strong>
+        <span>5 segundos. Logo centralizado + CTA + URL + disclaimer. Fundo #12191D ou keyable.</span>
+      </div>
+      <div class="asset-item">
+        <strong>Fontes</strong>
+        <span>Arial (corpo — sistema). Sora (headlines, se disponivel). Courier New (dados/numeros).</span>
+      </div>
+      <div class="asset-item">
+        <strong>Paleta de cores</strong>
+        <span>#12191D (dark) &middot; #19c6b5 (teal) &middot; #03E4D0 (teal light) &middot; #ffffff (branco)</span>
+      </div>
+      <div class="asset-item">
+        <strong>Imagens de referencia</strong>
+        <span>FTX/MtGox logos/manchetes (Tema 5). Mockup ChatGPT (Tema 7). Graficos placeholder.</span>
+      </div>
+      <div class="asset-item">
+        <strong>Imagem landscape</strong>
+        <span>1200x628 (1.91:1) para Demand Gen ads. Logo + rosto Andre + titulo.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  Briefing Editor v1.0 &middot; Boost Research &middot; YouTube Ads &middot; Maio 2026
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+function toggleTheme(header) {
+  const card = header.closest('.theme-card');
+  card.classList.toggle('open');
+}
+
+// Open first card by default (already set via class)
+// Close all others on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // All cards start collapsed except Tema 1
+});
+</script>
+
+</body>
+</html>
