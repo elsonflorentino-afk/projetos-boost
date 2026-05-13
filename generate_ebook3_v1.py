@@ -528,7 +528,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <!-- CONTEÚDO E-BOOK 3 -->
 <div class="content-page">
 <h1>Quanto Rende 1 Milhão em 2026</h1>
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>E Como Fazer Esse Dinheiro Trabalhar por Você</h2>
 <p><strong>André Franco</strong>, Fundador da Boost Research</p>
 <p>Boost Research, Consultoria de Investimentos em Cripto</p>
@@ -545,7 +546,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li><a href="#capítulo-8--a-diferença-entre-ter-r1-milhão-e-fazer-r1-milhão-trabalhar-por-você">A diferença entre ter R$1 milhão e fazer R$1 milhão trabalhar por você</a></li>
 </ol>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 1 — O paradoxo da Selic alta: seu milhão rende mais, mas você ganha menos do que pensa</h2>
 <p>Seu R$1 milhão rendeu algo próximo de 14% no último ano. Pelo menos é o que diz o extrato. O que ele não mostra é que, depois de inflação, impostos e custos, o ganho real ficou mais perto de 7%. Esse é o paradoxo que o investidor brasileiro enfrenta em 2026.</p>
 <p>Antes de calcular qualquer rendimento, é preciso entender o terreno onde o seu dinheiro está pisando.</p>
@@ -575,7 +577,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] 100% CDI não significa 100% de ganho real?</li>
 </ul>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 2 — Renda fixa: quanto R$1M rende em CDB, Tesouro e LCI/LCA</h2>
 <p>Vamos aos números. Este capítulo apresenta simulações detalhadas para as principais opções de renda fixa disponíveis ao investidor brasileiro com R$1 milhão. Cada cálculo considera o rendimento bruto, a tributação aplicável e o retorno real após inflação.</p>
 <div class="risk-box">
@@ -681,7 +684,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] Reconheço que a alíquota de IR é regressiva: quanto maior o prazo, menor o imposto</li>
 </ul>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 3 — Além da renda fixa: como dividendos, FIIs e ETFs complementam R$1 milhão</h2>
 <p>A renda fixa é a base. Mas para quem possui R$1 milhão, limitar-se a ela significa abrir mão de oportunidades que, no médio e longo prazo, podem fazer diferença significativa no crescimento patrimonial.</p>
 <p>Este capítulo explora renda variável com o olhar de quem busca retorno consistente, não especulação.</p>
@@ -803,7 +807,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] Renda variável exige horizonte de 3 a 5 anos no mínimo</li>
 </ul>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 4 — Cripto no portfólio de R$1M: quanto alocar e por quê</h2>
 <p>Criptoativos deixaram de ser uma curiosidade tecnológica. Com a aprovação de ETFs regulados, a entrada de investidores institucionais e a consolidação do mercado, o debate não é mais "se" cripto merece espaço no portfólio. É "quanto" e "como".</p>
 <p>André Franco acompanha o mercado de criptoativos desde 2016. Nesse período, acompanhou ciclos completos de valorização e queda, e construiu junto à equipe da Boost Research um modelo de alocação que reflete essa experiência acumulada.</p>
@@ -885,7 +890,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] Entendo o conceito de descorrelação como benefício para o portfólio</li>
 </ul>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 5 — Proteção cambial: por que manter 100% em reais é um risco que poucos medem</h2>
 <p>O real brasileiro se desvalorizou de forma consistente frente ao dólar americano ao longo das últimas décadas. Essa tendência não é exclusividade do Brasil. Moedas de países emergentes enfrentam pressão estrutural decorrente de inflação mais alta, risco político e ciclos de commodities. Mas para o investidor brasileiro, a consequência prática é direta: patrimônio 100% em reais está exposto à desvalorização cambial.</p>
 <h3>O argumento para dolarizar parte do patrimônio</h3>
@@ -975,7 +981,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] Reconheço os riscos de smart contract, depeg e regulatório em stablecoins</li>
 </ul>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 6 — Comparativo completo: 6 cenários de R$1M</h2>
 <p>Este é o capítulo central do e-book. Aqui reunimos todas as classes de ativos em seis portfólios distintos, do ultra-conservador ao arrojado, incluindo o Modelo de Alocação Boost. Cada cenário projeta o resultado de R$1 milhão em 12 meses.</p>
 <div class="risk-box">
@@ -1330,7 +1337,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] Sei que o Modelo Boost é um ponto de partida, não uma fórmula fixa</li>
 </ul>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 7 — Inflação, impostos e custos: o que sobra no bolso</h2>
 <p>A maioria dos investidores olha para o rendimento bruto e assume que aquele número representa seu ganho. Não representa. Entre o rendimento bruto e o dinheiro que efetivamente aumenta seu poder de compra, existem três camadas de redução: inflação, impostos e custos operacionais.</p>
 <p>Este capítulo detalha cada uma delas e responde a uma pergunta que poucos fazem: quanto R$1 milhão precisa render apenas para não perder dinheiro?</p>
@@ -1503,7 +1511,8 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] Reconheço que a estrutura de custos pode significar R$18 mil ou mais por ano de diferença</li>
 </ul>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Capítulo 8 — A diferença entre ter R$1 milhão e fazer R$1 milhão trabalhar por você</h2>
 <h3>O que este e-book revelou</h3>
 <p>Ao longo de sete capítulos, analisamos quanto R$1 milhão efetivamente rende em cada classe de ativo, considerando o cenário econômico vigente. Os números mostram que:</p>
@@ -1523,13 +1532,14 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <h3>Seu milhão está rendendo o que deveria?</h3>
 <p>Se a diferença entre R$70 mil e R$101 mil de retorno real por ano chamou sua atenção, o próximo passo é entender qual cenário faz sentido para o seu patrimônio.</p>
 <p><strong>Converse com um Advisor da Boost Research.</strong> A primeira conversa é sem compromisso. O objetivo é simples: mapear sua alocação atual e identificar se existe espaço para otimização.</p>
-<p><strong>WhatsApp:</strong> <a href="https://wa.me/5521965622891">wa.me/5521965622891</a></p>
+<p><a href="https://elsonflorentino-afk.github.io/projetos-boost/cta-wa-ebook3.html" class="cta-btn" style="display:inline-block;margin-top:16px;">CONVERSAR COM UM ADVISOR NO WHATSAPP</a></p>
 <p>Boost Research, Consultoria de Investimentos em Cripto</p>
 <hr />
 <p><strong>Boost Research</strong>, Consultoria de Investimentos em Cripto</p>
 <p>Fundada por André Franco, a Boost Research atua na interseção entre o mercado financeiro tradicional e o universo de criptoativos. Com uma equipe de Advisors dedicados e um modelo de alocação proprietário, a consultoria auxilia investidores com patrimônio relevante a integrar criptoativos ao portfólio de forma estruturada, com método e acompanhamento contínuo.</p>
 <hr />
-<div style="page-break-before:always"></div>
+</div>
+<div class="content-page" style="page-break-before:always">
 <h2>Aviso Legal</h2>
 <p>Este e-book tem caráter exclusivamente educacional e informativo. O conteúdo aqui apresentado não constitui recomendação de investimento, consultoria financeira, fiscal ou tributária individualizada.</p>
 <p>Todas as simulações, projeções e cenários apresentados são hipotéticos, baseados em dados históricos e premissas de mercado vigentes na data de elaboração. <strong>Rentabilidade passada não garante resultados futuros.</strong> Os retornos reais podem diferir significativamente das estimativas apresentadas.</p>
@@ -1575,10 +1585,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 
 # ── Gerar HTML e PDF ─────────────────────────────────────────────────────
 def main():
-    # Salvar HTML
-    with open(OUTPUT_HTML, 'w', encoding='utf-8') as f:
-        f.write(HTML_CONTENT)
-    print(f"HTML salvo: {OUTPUT_HTML}")
+    # HTML salvo internamente (não gera arquivo separado)
 
     # Gerar PDF via WeasyPrint
     try:
