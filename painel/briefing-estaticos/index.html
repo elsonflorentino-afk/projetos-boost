@@ -5,299 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Briefing Criativos Estáticos — Boost Research</title>
 <style>
-:root{
-  --white:#ffffff;--light:#f5f5f5;--teal:#19c6b5;--teal-bg:#e6fffb;
-  --dark:#32373c;--dim:#555555;--border:#e0e0e0;
-  --creative-bg:#12191D;--creative-teal:#19c6b5;
-  --orange:#E8873D;--red:#D64545;--green:#2E9E6E;--blue:#3B7DD8;
-  --shadow:6px 6px 9px rgba(0,0,0,0.2);--shadow-sm:0 2px 6px rgba(0,0,0,0.08);
-  --radius:16px;
-}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:var(--white);color:var(--dark);max-width:1100px;margin:0 auto;padding:40px 24px}
-
-/* Typography */
-h1{font-size:38px;font-weight:600;color:var(--dark);margin-bottom:8px}
-h2{font-size:20px;font-weight:600;color:var(--dark);margin-bottom:16px;padding-bottom:10px;border-bottom:3px solid var(--teal)}
-.sub{color:var(--dim);font-size:14px;margin-bottom:32px;line-height:1.6}
-.sub strong{color:var(--teal)}
-
-/* Sections */
-.section{border-radius:var(--radius);padding:32px;margin-bottom:28px;box-shadow:var(--shadow)}
-.section-white{background:var(--white);border:1px solid var(--border)}
-.section-light{background:var(--light)}
-
-/* Badges */
-.badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:600;margin-right:6px;margin-bottom:4px}
-.b-teal{background:var(--teal-bg);color:#0a8a7d}
-.b-orange{background:#FDE8D4;color:var(--orange)}
-.b-green{background:#D4F0E0;color:var(--green)}
-.b-red{background:#FADADA;color:var(--red)}
-.b-blue{background:#D6E6F7;color:var(--blue)}
-
-/* Stats */
-.stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:28px}
-.stat-box{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px;text-align:center;box-shadow:var(--shadow);border-top:4px solid var(--teal)}
-.stat-box .v{font-size:32px;font-weight:600;color:var(--dark)}
-.stat-box .l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
-
-/* ========== DIAGRAM ========== */
-.diagram-wrapper{padding:24px 0;overflow-x:auto}
-.diagram{max-width:900px;margin:0 auto}
-
-.d-instruction{background:var(--white);border:2px solid var(--teal);border-radius:var(--radius);padding:18px 28px;text-align:center;font-size:13px;color:var(--dim);line-height:1.6;max-width:560px;margin:0 auto}
-.d-instruction strong{color:var(--teal)}
-
-/* Arrows */
-.d-arrow{display:flex;justify-content:center;padding:8px 0}
-.d-arrow .shaft{width:2px;height:30px;background:var(--teal);opacity:.4;position:relative}
-.d-arrow .shaft::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid var(--teal);opacity:.6}
-
-/* Branch */
-.d-branch{position:relative;height:32px;max-width:700px;margin:0 auto}
-.d-branch .trunk{position:absolute;top:0;left:50%;width:2px;height:12px;background:var(--teal);opacity:.4;transform:translateX(-50%)}
-.d-branch .bar{position:absolute;top:12px;left:16.66%;right:16.66%;height:2px;background:var(--teal);opacity:.4}
-.d-branch .leg{position:absolute;top:12px;width:2px;height:18px;background:var(--teal);opacity:.4}
-.d-branch .leg::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--teal);opacity:.6}
-.d-branch .leg.l1{left:16.66%}
-.d-branch .leg.l2{left:50%;transform:translateX(-50%)}
-.d-branch .leg.l3{right:16.66%}
-
-/* Layer */
-.d-layer{background:var(--dark);border-radius:var(--radius);padding:12px 24px;text-align:center;color:var(--white);max-width:700px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px}
-.d-layer .num{font-size:22px;font-weight:600;color:var(--teal)}
-.d-layer .label{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:2px}
-
-/* Cards */
-.d-cards{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;max-width:750px;margin:0 auto}
-.d-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--teal);border-radius:var(--radius);padding:20px;text-align:center;flex:1;min-width:190px;max-width:230px;box-shadow:var(--shadow)}
-.d-card .icon{font-size:28px;margin-bottom:8px}
-.d-card .type-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;padding:3px 10px;border-radius:10px;display:inline-block}
-.d-card .type-label.barreira{background:#FDE8D4;color:var(--orange)}
-.d-card .type-label.necessidade{background:#FADADA;color:var(--red)}
-.d-card .type-label.desejo{background:#D4F0E0;color:var(--green)}
-.d-card .title{font-size:14px;font-weight:600;color:var(--dark);margin:8px 0 4px}
-.d-card .desc{font-size:12px;color:var(--dim);line-height:1.5}
-
-/* Production grid */
-.d-prod-section{max-width:800px;margin:0 auto}
-.d-prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px}
-.d-prod-col{display:flex;flex-direction:column;gap:10px}
-.d-prod-col-header{font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:1px;text-align:center;padding-bottom:6px;border-bottom:2px solid var(--teal)}
-.d-prod-cell{border-radius:12px;padding:12px 14px;text-align:center;border:1px solid;min-height:74px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:transform .2s}
-.d-prod-cell:hover{transform:translateY(-2px)}
-.d-prod-cell .cell-icon{font-size:20px}
-.d-prod-cell .cell-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.d-prod-cell .cell-desc{font-size:10px;line-height:1.4}
-.d-prod-cell.lofi{background:#FFF8F2;border-color:#F0D4B8;color:var(--orange)}
-.d-prod-cell.lofi .cell-desc{color:#8B6540}
-.d-prod-cell.hifi{background:#F0F4FF;border-color:#B8CCF0;color:var(--blue)}
-.d-prod-cell.hifi .cell-desc{color:#40568B}
-
-/* Aspect ratio */
-.ar-row{display:flex;justify-content:center;gap:20px;margin-bottom:20px}
-.ar-badge{padding:8px 20px;border-radius:var(--radius);font-size:12px;font-weight:600;background:var(--white);border:2px solid var(--teal);color:var(--dark);box-shadow:var(--shadow-sm)}
-
-/* ========== COPY CARDS ========== */
-.copy-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:16px}
-.copy-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
-.copy-card .c-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.copy-card .c-title{font-size:16px;font-weight:600;color:var(--dark);margin-bottom:14px}
-
-/* Anatomy labels */
-.anatomy-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;padding:5px 12px;border-radius:6px;display:inline-block;margin-bottom:10px}
-.anatomy-label.criativo{background:var(--creative-bg);color:var(--creative-teal)}
-.anatomy-label.legenda{background:var(--teal-bg);color:#0a8a7d}
-
-/* Creative zone (dark - represents actual ad) */
-.creative-zone{background:var(--creative-bg);border-radius:12px;padding:22px 26px;margin-bottom:16px;color:#fff;position:relative}
-.creative-zone .cz-headline{font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3}
-.creative-zone .cz-sub{font-size:13px;color:var(--creative-teal);margin-bottom:10px;line-height:1.4}
-.creative-zone .cz-bullets{font-size:12px;color:#ccc;line-height:1.8}
-.creative-zone .cz-cta{display:inline-block;margin-top:12px;padding:8px 22px;background:var(--creative-teal);color:var(--creative-bg);font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px}
-.creative-zone .cz-logo{position:absolute;top:16px;right:16px;font-size:10px;color:var(--creative-teal);font-weight:700;letter-spacing:1px;opacity:.7}
-.creative-zone .cz-note{font-size:10px;color:#888;margin-top:12px;font-style:italic;border-top:1px solid #333;padding-top:8px}
-
-/* Caption zone (light) */
-.caption-zone{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:18px 22px}
-.caption-zone .cap-field{margin-bottom:12px}
-.caption-zone .cap-field:last-child{margin-bottom:0}
-.caption-zone .cap-key{font-size:10px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-.caption-zone .cap-val{font-size:12px;color:var(--dark);line-height:1.7;white-space:pre-line}
-.caption-zone .cap-val.primary{font-size:13px}
-
-/* Copy split */
-.copy-split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:4px}
-
-/* Matrix */
-.matrix{overflow-x:auto;margin-top:14px}
-.matrix table{width:100%;border-collapse:collapse;font-size:12px}
-.matrix th{background:var(--dark);color:var(--white);padding:10px;text-align:center;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
-.matrix th:first-child{border-radius:var(--radius) 0 0 0}
-.matrix th:last-child{border-radius:0 var(--radius) 0 0}
-.matrix td{padding:10px;text-align:center;border:1px solid var(--border);background:var(--white)}
-.matrix .code{font-family:'SF Mono',Monaco,monospace;font-size:11px;padding:4px 10px;border-radius:6px;font-weight:600}
-.matrix .code.lo{background:#FDE8D4;color:var(--orange)}
-.matrix .code.hi{background:#D6E6F7;color:var(--blue)}
-.matrix .row-label{text-align:left;font-weight:600;color:var(--dark)}
-
-/* Specs grid */
-.specs-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.spec-card{border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
-.spec-card.lofi{background:#FFF8F2;border:1px solid #F0D4B8}
-.spec-card.hifi{background:#F0F4FF;border:1px solid #B8CCF0}
-.spec-card h3{font-size:15px;font-weight:600;margin-bottom:12px}
-.spec-card ul{list-style:none;font-size:12px;line-height:2.2}
-
-/* Anatomy section */
-.anatomy-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.anatomy-card{border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
-.anatomy-card.dark{background:var(--creative-bg);color:#fff}
-.anatomy-card.light{background:var(--light);border:1px solid var(--border)}
-.anatomy-card .a-title{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
-.anatomy-card .a-list{font-size:12px;line-height:2.2}
-
-/* Disclaimer */
-.disclaimer{margin:24px 0;padding:16px 24px;border:2px solid var(--teal);border-radius:var(--radius);font-size:12px;color:var(--dim);text-align:center;background:var(--teal-bg)}
-.disclaimer strong{color:var(--dark)}
-
-/* Footer */
-.footer{text-align:center;color:var(--dim);font-size:12px;margin-top:32px;padding-top:20px;border-top:1px solid var(--border)}
-
+body{font-family:Arial,sans-serif;background:#f5f5f5;color:#32373c;max-width:1100px;margin:0 auto;padding:40px 24px}
+h1{font-size:32px;font-weight:600;color:#32373c;margin-bottom:6px}
+h2{font-size:18px;font-weight:600;color:#32373c;margin-bottom:14px;padding-bottom:8px;border-bottom:3px solid #19c6b5}
 @media(max-width:800px){
-  .stat-row{grid-template-columns:repeat(3,1fr)}
-  .copy-split{grid-template-columns:1fr}
-  .anatomy-grid{grid-template-columns:1fr}
-  .specs-grid{grid-template-columns:1fr}
-  .d-cards{flex-direction:column;align-items:center}
-  .d-prod-grid{grid-template-columns:1fr}
-  .d-branch{display:none}
+  body{padding:16px}
+  h1{font-size:24px}
+  div[style*="grid-template-columns:1fr 1fr"]{display:block!important}
+  div[style*="grid-template-columns:1fr 1fr"] > div{margin-bottom:12px}
 }
-@media(max-width:500px){
-  .stat-row{grid-template-columns:repeat(2,1fr)}
-  h1{font-size:28px}
+@media print{
+  body{background:#fff;padding:0}
+  div[style*="box-shadow"]{box-shadow:none!important;border:1px solid #ddd!important}
 }
 </style>
 </head>
 <body>
 
-<h1>Briefing Criativos Estaticos</h1>
-<p class="sub">Campanha <strong>C10-EBOOKS</strong> &middot; E-books 1 e 2 &middot; Apenas formatos estaticos (Feed 1:1 + Story 9:16)<br>
-Framework Motivadores Criativos (Meta Blueprint) &middot; Boost Research &middot; 12/mai/2026</p>
-
-
-<h1>Briefing Criativos Estáticos</h1>
-<p class="sub">Campanha C10-EBOOKS · 4 e-books · <strong>19 copys</strong> revisadas por 5 agentes · Boost Research · 13/mai/2026</p>
+<div style="margin-bottom:32px">
+  <h1>Briefing Criativos Estáticos</h1>
+  <p style="color:#555;font-size:14px;line-height:1.6">Campanha C10-EBOOKS · 4 e-books · <strong style="color:#19c6b5">19 copys</strong> revisadas por 5 agentes · Boost Research · 13/mai/2026</p>
+</div>
 
 <!-- Stats -->
-<div class="stat-row">
-  <div class="stat-box"><div class="v">4</div><div class="l">E-books</div></div>
-  <div class="stat-box"><div class="v">19</div><div class="l">Copys</div></div>
-  <div class="stat-box"><div class="v">3</div><div class="l">Motivadores</div></div>
-  <div class="stat-box"><div class="v">2</div><div class="l">Formatos</div></div>
-  <div class="stat-box"><div class="v">38</div><div class="l">Peças Total</div></div>
-  <div class="stat-box"><div class="v">5</div><div class="l">Agentes revisaram</div></div>
+<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:32px">
+  <div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:18px;text-align:center;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-top:4px solid #19c6b5"><div style="font-size:30px;font-weight:600;color:#32373c">4</div><div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:4px">E-books</div></div>
+  <div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:18px;text-align:center;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-top:4px solid #19c6b5"><div style="font-size:30px;font-weight:600;color:#32373c">19</div><div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:4px">Copys</div></div>
+  <div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:18px;text-align:center;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-top:4px solid #19c6b5"><div style="font-size:30px;font-weight:600;color:#32373c">3</div><div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:4px">Motivadores</div></div>
+  <div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:18px;text-align:center;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-top:4px solid #19c6b5"><div style="font-size:30px;font-weight:600;color:#32373c">2</div><div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:4px">Formatos</div></div>
+  <div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:18px;text-align:center;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-top:4px solid #19c6b5"><div style="font-size:30px;font-weight:600;color:#32373c">38</div><div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:4px">Peças Total</div></div>
+  <div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:18px;text-align:center;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-top:4px solid #19c6b5"><div style="font-size:30px;font-weight:600;color:#32373c">12</div><div style="font-size:10px;color:#555;text-transform:uppercase;letter-spacing:1px;margin-top:4px">P1 Primeiro</div></div>
 </div>
 
-<!-- Anatomia -->
-<div class="section section-white">
-  <h2>Anatomia do Anúncio Meta Ads</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div style="background:#12191D;border-radius:var(--radius);padding:20px;color:#fff">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#19c6b5;margin-bottom:10px">NO CRIATIVO (imagem)</div>
-      <div style="font-size:12px;color:#ccc;line-height:2">
-        Headline principal (frase curta e forte)<br>
-        Sub-headline (complemento)<br>
-        Bullets visuais (máx. 3)<br>
-        CTA visual (botão no criativo)<br>
-        Logo Boost Research (Hi-fi)<br>
-        Foto André Franco (70%+ das peças)<br>
-        <strong style="color:#19c6b5">Máx. 20% texto na imagem.</strong>
+<!-- Como ler -->
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:28px;box-shadow:6px 6px 9px rgba(0,0,0,0.2)">
+  <h2>Como ler cada copy</h2>
+  <p style="font-size:13px;color:#555;margin-bottom:16px">Cada copy tem dois lados. O designer usa o lado esquerdo (dark). O mídia buyer usa o lado direito (cinza).</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="background:#12191D;border-radius:16px;padding:24px;color:#fff">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#19c6b5;margin-bottom:12px">LADO ESQUERDO — NO CRIATIVO (imagem)</div>
+      <div style="font-size:13px;color:#ccc;line-height:2">
+        <strong style="color:#fff">Headline:</strong> frase principal na imagem<br>
+        <strong style="color:#fff">Sub-headline:</strong> complemento<br>
+        <strong style="color:#fff">Bullets:</strong> máx 3 pontos curtos<br>
+        <strong style="color:#fff">CTA:</strong> texto do botão no criativo<br>
+        <strong style="color:#fff">Nota visual:</strong> direção pro designer<br>
+        <span style="color:#19c6b5;font-weight:700">Máx. 20% texto na imagem</span>
       </div>
     </div>
-    <div style="background:var(--light);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
-      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);margin-bottom:10px">NA LEGENDA (campos Meta Ads)</div>
-      <div style="font-size:12px;color:var(--dim);line-height:2">
-        <strong>Texto principal</strong>: copy longa acima da imagem<br>
-        <strong>Headline</strong>: título bold abaixo da imagem<br>
-        <strong>Descrição</strong>: subtítulo cinza abaixo<br>
-        <strong>CTA</strong>: botão do Meta (DOWNLOAD)
+    <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-radius:16px;padding:24px">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#32373c;margin-bottom:12px">LADO DIREITO — NA LEGENDA (Meta Ads)</div>
+      <div style="font-size:13px;color:#555;line-height:2">
+        <strong style="color:#32373c">Texto principal:</strong> copy longa acima da imagem<br>
+        <strong style="color:#32373c">Headline:</strong> título bold abaixo da imagem<br>
+        <strong style="color:#32373c">Descrição:</strong> subtítulo cinza abaixo<br>
+        <strong style="color:#32373c">CTA:</strong> botão do Meta (DOWNLOAD)<br>
+        <span style="color:#19c6b5;font-weight:700">Copiar e colar no Meta Ads Manager</span>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Diagrama Motivadores -->
-<div class="section section-light">
-  <h2>Diagrama: Motivador → Mensagem → Visual</h2>
-  <div style="max-width:700px;margin:0 auto;padding:20px 0">
-    <div style="background:var(--white);border:2px dashed var(--border);border-radius:var(--radius);padding:16px;text-align:center;font-size:13px;color:var(--dim);margin-bottom:12px">
-      Avalie ativos existentes e descubra <strong style="color:var(--dark)">3 motivadores</strong> não abordados
-    </div>
-    <div style="text-align:center;color:var(--teal);font-size:20px;margin:4px 0">↓</div>
-    <div style="background:var(--dark);color:var(--teal);border-radius:8px;padding:10px;text-align:center;font-weight:600;font-size:13px;letter-spacing:1px">01 MOTIVADOR</div>
-    <div style="text-align:center;color:var(--teal);font-size:20px;margin:4px 0">↓</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
-      <div style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--orange);border-radius:10px;padding:14px;text-align:center;box-shadow:var(--shadow-sm)">
-        <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--orange)">Barreira</div>
-        <div style="font-size:13px;font-weight:600;color:var(--dark);margin:4px 0">Inércia</div>
-        <div style="font-size:11px;color:var(--dim)">"Não sei por onde começar"</div>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--red);border-radius:10px;padding:14px;text-align:center;box-shadow:var(--shadow-sm)">
-        <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--red)">Necessidade</div>
-        <div style="font-size:13px;font-weight:600;color:var(--dark);margin:4px 0">Fiscal / Dólar</div>
-        <div style="font-size:11px;color:var(--dim)">"Preciso me proteger"</div>
-      </div>
-      <div style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--green);border-radius:10px;padding:14px;text-align:center;box-shadow:var(--shadow-sm)">
-        <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:var(--green)">Desejo</div>
-        <div style="font-size:13px;font-weight:600;color:var(--dark);margin:4px 0">Advisor</div>
-        <div style="font-size:11px;color:var(--dim)">"Quero orientação"</div>
-      </div>
-    </div>
-    <div style="text-align:center;color:var(--teal);font-size:20px;margin:4px 0">↓</div>
-    <div style="background:var(--dark);color:var(--teal);border-radius:8px;padding:10px;text-align:center;font-weight:600;font-size:13px;letter-spacing:1px">02 MENSAGEM (19 copys)</div>
-    <div style="text-align:center;color:var(--teal);font-size:20px;margin:4px 0">↓</div>
-    <div style="background:var(--dark);color:var(--teal);border-radius:8px;padding:10px;text-align:center;font-weight:600;font-size:13px;letter-spacing:1px">03 VISUAIS — Estático 1:1 (Feed) + 9:16 (Story)</div>
-    <div style="text-align:center;font-size:12px;color:var(--dim);margin-top:10px">19 copys × 2 formatos = <strong style="color:var(--teal)">38 peças</strong></div>
   </div>
 </div>
 
 <!-- Design System -->
-<div class="section section-white">
-  <h2>Design System</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div style="background:#12191D;border-radius:var(--radius);padding:20px;color:#fff">
-      <div style="font-size:12px;font-weight:600;color:#19c6b5;margin-bottom:10px">CORES E TIPOGRAFIA</div>
-      <div style="font-size:12px;color:#ccc;line-height:2">
-        Background: #12191D (dark)<br>
-        Acento: #19c6b5 (teal)<br>
-        Tipografia: Sora (títulos) + Inter (corpo)<br>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:28px;box-shadow:6px 6px 9px rgba(0,0,0,0.2)">
+  <h2>Design System — boostresearch.com.br</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div>
+      <div style="display:flex;gap:8px;margin-bottom:14px">
+        <div style="width:48px;height:48px;background:#12191D;border-radius:8px;border:1px solid #e0e0e0" title="#12191D"></div>
+        <div style="width:48px;height:48px;background:#19c6b5;border-radius:8px" title="#19c6b5"></div>
+        <div style="width:48px;height:48px;background:#ffffff;border-radius:8px;border:1px solid #e0e0e0" title="#ffffff"></div>
+        <div style="width:48px;height:48px;background:#32373c;border-radius:8px" title="#32373c"></div>
+        <div style="width:48px;height:48px;background:#f5f5f5;border-radius:8px;border:1px solid #e0e0e0" title="#f5f5f5"></div>
+      </div>
+      <div style="font-size:12px;color:#555;line-height:2">
+        Background: <strong>#12191D</strong> (dark)<br>
+        Acento: <strong>#19c6b5</strong> (teal)<br>
+        Tipografia: <strong>Arial</strong> (corpo), <strong>Sora</strong> se disponível<br>
         Logo Boost Research presente<br>
-        Foto André Franco 70%+ das peças<br>
-        Referência: boostresearch.com.br
+        Border-radius: <strong>16px</strong><br>
+        Referência: <a href="https://boostresearch.com.br" style="color:#19c6b5">boostresearch.com.br</a>
       </div>
     </div>
-    <div style="background:var(--light);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
-      <div style="font-size:12px;font-weight:600;color:var(--dark);margin-bottom:10px">REGRAS</div>
-      <div style="font-size:12px;color:var(--dim);line-height:2">
-        Hierarquia: Headline > Foto > Bullets > CTA > Logo<br>
-        Máx. 20% texto na imagem<br>
-        Legível em thumbnail 200×200px<br>
-        Formatos: 1:1 (1080×1080) + 9:16 (1080×1920)<br>
-        Codec: H.264 MP4 ou PNG/JPG<br>
-        P1 primeiro: 6 copys × 2 = 12 peças
+    <div>
+      <div style="font-size:12px;color:#555;line-height:2">
+        Foto André Franco em <strong>70%+</strong> das peças<br>
+        Hierarquia: <strong>Headline > Foto > Bullets > CTA > Logo</strong><br>
+        Legível em thumbnail <strong>200×200px</strong><br>
+        Formatos: <strong>1:1 (1080×1080)</strong> + <strong>9:16 (1080×1920)</strong><br>
+        Máx. <strong>20%</strong> texto na imagem (Meta penaliza)<br>
+        Sombra: <strong>6px 6px 9px rgba(0,0,0,0.2)</strong><br>
+        Badge <span style="background:#19c6b5;color:#12191D;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">P1</span> = fazer primeiro
       </div>
     </div>
   </div>
 </div>
 
 <!-- Prioridade -->
-<div class="section section-light">
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:28px;box-shadow:6px 6px 9px rgba(0,0,0,0.2)">
   <h2>Prioridade de Produção</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div style="background:var(--white);border:2px solid var(--teal);border-radius:var(--radius);padding:20px">
-      <div style="font-size:12px;font-weight:600;color:var(--teal);margin-bottom:10px">P1 — FAZER PRIMEIRO (12 peças)</div>
-      <div style="font-size:12px;color:var(--dim);line-height:2">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    <div style="border:2px solid #19c6b5;border-radius:16px;padding:20px">
+      <div style="font-size:13px;font-weight:700;color:#19c6b5;margin-bottom:10px">P1 — FAZER PRIMEIRO (6 copys × 2 = 12 peças)</div>
+      <div style="font-size:12px;color:#555;line-height:2.2">
         E1#1: "Mais de R$100 mil e sem regra de saída?"<br>
         E1#4: "Comprei na alta, não vendi no topo."<br>
         E2#1: "Novas regras cripto 2026: preparado?"<br>
@@ -306,12 +117,12 @@ Framework Motivadores Criativos (Meta Blueprint) &middot; Boost Research &middot
         E4#2: "100% em reais é um risco."
       </div>
     </div>
-    <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:20px">
-      <div style="font-size:12px;font-weight:600;color:var(--dim);margin-bottom:10px">P2 — DEPOIS (26 peças)</div>
-      <div style="font-size:12px;color:var(--dim);line-height:2">
-        13 copys restantes × 2 formatos<br>
-        Produzir após validar P1<br>
-        Escalar vencedores, pausar perdedores
+    <div style="border:1px solid #e0e0e0;border-radius:16px;padding:20px">
+      <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:10px">P2 — DEPOIS (13 copys × 2 = 26 peças)</div>
+      <div style="font-size:12px;color:#555;line-height:2.2">
+        Produzir após validar performance do P1<br>
+        Escalar vencedores, pausar perdedores<br>
+        13 copys restantes nos 4 e-books
       </div>
     </div>
   </div>
@@ -319,641 +130,964 @@ Framework Motivadores Criativos (Meta Blueprint) &middot; Boost Research &middot
 
 <!-- COPYS -->
 
-<div class="section section-white" style="border-left:4px solid var(--teal)">
-  <h2>Copys — E-book 1: Portfólio Tradicional + Cripto</h2>
-  <p style="font-size:13px;color:var(--dim);margin-bottom:8px">LP: ebook-portfolio.boostresearch.com.br · Botão Meta: DOWNLOAD</p>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:20px 28px;margin-bottom:16px;margin-top:40px;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-left:4px solid #19c6b5">
+  <h2 style="font-size:20px;font-weight:600;color:#32373c;margin:0;padding:0;border:none">E-book 1: Portfólio Tradicional + Cripto</h2>
+  <p style="font-size:13px;color:#555;margin-top:4px">LP: ebook-portfolio.boostresearch.com.br · 5 copys · Botão Meta: DOWNLOAD</p>
 </div>
 
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #1</span>
-    <span class="badge b-orange">Barreira (Inércia)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Não sabe quando vender · Dor #1 · 145 menções</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #19c6b5">
   
-  <div class="copy-split">
-    <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Mais de R$100 mil investidos e sem regra de saída?</div>
-        <div class="cz-sub">E-book gratuito: Portfólio Tradicional + Cripto</div>
-        <div class="cz-bullets">✔ Método de alocação<br>✔ Regras de rebalanceamento<br>✔ André Franco desde 2016</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Foto André Franco à direita ou no fundo. Hierarquia: headline > foto > bullets > CTA > logo.</div>
-      </div>
-    </div>
-    <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Mais de R$100 mil investidos e ainda sem uma regra clara de quando vender?<br><br>Você não está sozinho. Em 228 reuniões com investidores, essa foi a dor mais citada: "passaram 8 topos e eu não realizei."<br><br>A Boost Research preparou um e-book gratuito que mostra como montar um portfólio tradicional + cripto com método de entrada e saída definido.<br><br>O que você vai encontrar:<br>- Como definir percentuais de alocação entre renda fixa, ações e cripto<br>- Regras de rebalanceamento que funcionam em qualquer cenário<br>- O método que André Franco usa desde 2016<br><br>Sem custo. Sem compromisso. E-book enviado direto no seu e-mail.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">E-book gratuito: Portfólio Tradicional + Cripto</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">Método de alocação para investidores com mais de R$100 mil</div></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #1</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Barreira (Inércia)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    <span style="background:#19c6b5;color:#12191D;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;margin-left:8px">P1</span>
   </div>
-</div>
-
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #2</span>
-    <span class="badge b-orange">Barreira (Inércia)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Sem tempo pra estudar · Dor #2 · 134 menções</div>
   
-  <div class="copy-split">
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Não sabe quando vender · Dor #1 · 145 menções</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Você trabalha 12h por dia. Quando sobra tempo pra cripto?</div>
-        <div class="cz-sub">40 páginas. 20 minutos. E-book gratuito.</div>
-        <div class="cz-bullets">✔ Alocação por perfil<br>✔ Classes além do Bitcoin<br>✔ Sem virar trader</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: relógio ou executivo. Foco em praticidade e tempo.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Mais de R$100 mil investidos e sem regra de saída?</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">E-book gratuito: Portfólio Tradicional + Cripto</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Método de alocação<br>✔ Regras de rebalanceamento<br>✔ André Franco desde 2016</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Foto André Franco à direita ou no fundo. Hierarquia: headline > foto > bullets > CTA > logo.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Você trabalha 12 horas por dia. Quando sobra tempo pra estudar cripto?<br><br>A maioria dos investidores com patrimônio relevante não tem problema de dinheiro. Tem problema de atenção. Quer saber o que fazer, mas não tem 4 horas por dia pra acompanhar mercado.<br><br>A Boost Research criou um e-book que condensa em 40 páginas o que um Advisor explicaria em 3 reuniões:<br><br>- Quanto do seu patrimônio deveria estar em cripto (com base no seu perfil)<br>- Quais classes de criptoativos existem além do Bitcoin<br>- Como estruturar sem precisar virar trader<br><br>Baixe agora. Leitura de 20 minutos.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">E-book gratuito para quem investe mas não tem tempo</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">40 páginas. 20 minutos. O essencial sobre portfólio cripto.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Mais de R$100 mil investidos e ainda sem uma regra clara de quando vender?<br><br>Você não está sozinho. Em 228 reuniões com investidores, essa foi a dor mais citada: "passaram 8 topos e eu não realizei."<br><br>A Boost Research preparou um e-book gratuito que mostra como montar um portfólio tradicional + cripto com método de entrada e saída definido.<br><br>O que você vai encontrar:<br>- Como definir percentuais de alocação entre renda fixa, ações e cripto<br>- Regras de rebalanceamento que funcionam em qualquer cenário<br>- O método que André Franco usa desde 2016<br><br>Sem custo. Sem compromisso. E-book enviado direto no seu e-mail.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">E-book gratuito: Portfólio Tradicional + Cripto</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">Método de alocação para investidores com mais de R$100 mil</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #3</span>
-    <span class="badge b-orange">Barreira (Inércia)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Investidor tradicional curioso</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #19c6b5">
   
-  <div class="copy-split">
-    <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Mais de R$200 mil no tradicional. Cripto faz sentido?</div>
-        <div class="cz-sub">E-book gratuito com dados reais, não promessas</div>
-        <div class="cz-bullets">✔ Correlação cripto × tradicional<br>✔ Alocação por perfil de risco<br>✔ Cenários com e sem cripto</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: gráfico de alocação ou balança. Tom anti-vendedor: honestidade.</div>
-      </div>
-    </div>
-    <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Mais de R$200 mil no mercado tradicional e cripto ainda não faz sentido pra você?<br><br>Talvez faça. Talvez não. E essa honestidade é rara no mercado.<br><br>A Boost Research, consultoria independente de cripto liderada por André Franco desde 2016, criou um e-book que mostra com números reais quando faz sentido alocar em cripto e quando não faz.<br><br>O que o e-book cobre:<br>- Correlação histórica entre cripto e ativos tradicionais<br>- Percentuais de alocação por perfil de risco<br>- Cenários com e sem cripto na carteira<br><br>Se cripto não fizer sentido pro seu caso, o e-book vai te dizer isso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Cripto faz sentido pra quem já tem patrimônio tradicional?</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito com dados reais, não promessas</div></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #2</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Barreira (Inércia)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
   </div>
-</div>
-
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #4</span>
-    <span class="badge b-orange">Desejo (Advisor)</span>
-    <span class="badge b-blue">3 - Solution Aware</span>
-    <span class="badge b-green">Morno</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Trauma de altcoin · Dor #6 · 52 menções</div>
   
-  <div class="copy-split">
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Sem tempo pra estudar · Dor #2 · 134 menções</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">"Comprei na alta, não vendi no topo."</div>
-        <div class="cz-sub">54% dos investidores passam por isso. O problema não foi a moeda.</div>
-        <div class="cz-bullets">✔ Regra de saída antes de entrar<br>✔ Método desde 2016<br>✔ Dois ciclos completos</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: André Franco com expressão séria. Tom confessional. Citação como headline.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Você trabalha 12h por dia. Quando sobra tempo pra cripto?</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">40 páginas. 20 minutos. E-book gratuito.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Alocação por perfil<br>✔ Classes além do Bitcoin<br>✔ Sem virar trader</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: relógio ou executivo. Foco em praticidade e tempo.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">"Comprei na alta, não vendi no topo, e agora tô com um gostinho amargo."<br><br>Se você se identificou, faz parte dos 54% dos investidores que passam por isso.<br><br>O problema não foi a moeda que você escolheu. Foi a falta de critério pra decidir quando sair.<br><br>A Boost Research criou um e-book gratuito que ensina como montar um portfólio com regra de saída definida antes de entrar. Sem emoção, sem achismo.<br><br>André Franco aplica esse método desde 2016. Dois ciclos completos.<br><br>Baixe gratuitamente.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">E-book gratuito: pare de errar o timing em cripto</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">O método de um Advisor com dois ciclos completos de mercado</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Você trabalha 12 horas por dia. Quando sobra tempo pra estudar cripto?<br><br>A maioria dos investidores com patrimônio relevante não tem problema de dinheiro. Tem problema de atenção. Quer saber o que fazer, mas não tem 4 horas por dia pra acompanhar mercado.<br><br>A Boost Research criou um e-book que condensa em 40 páginas o que um Advisor explicaria em 3 reuniões:<br><br>- Quanto do seu patrimônio deveria estar em cripto (com base no seu perfil)<br>- Quais classes de criptoativos existem além do Bitcoin<br>- Como estruturar sem precisar virar trader<br><br>Baixe agora. Leitura de 20 minutos.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">E-book gratuito para quem investe mas não tem tempo</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">40 páginas. 20 minutos. O essencial sobre portfólio cripto.</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #5</span>
-    <span class="badge b-orange">Desejo (Advisor)</span>
-    <span class="badge b-blue">3 - Solution Aware</span>
-    <span class="badge b-green">Morno/Quente</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Posicionamento Boost · Autoridade</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #19c6b5">
   
-  <div class="copy-split">
-    <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">O método que 228 investidores pediram antes da primeira reunião.</div>
-        <div class="cz-sub">Consultoria independente de cripto. Sem conflito de interesse.</div>
-        <div class="cz-bullets">✔ Alocação tradicional + cripto<br>✔ Independência > rentabilidade passada<br>✔ Advisor ≠ influenciador</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: André Franco profissional. Número "228" em destaque. Tom institucional com prova social.</div>
-      </div>
-    </div>
-    <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">A Boost Research é uma consultoria independente de cripto. Sem vínculo com exchange. Sem fundo próprio. Sem conflito de interesse.<br><br>André Franco fundou a Boost em 2016 e acompanha investidores com patrimônio relevante com Advisor dedicado.<br><br>Antes de marcar uma reunião, a Boost preparou um e-book gratuito pra você entender o método:<br><br>- Como a consultoria define alocação entre tradicional e cripto<br>- Por que independência importa mais do que rentabilidade passada<br>- O que diferencia um Advisor de um influenciador<br><br>Leia. Depois decida se faz sentido conversar.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Antes da reunião, entenda o método</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito da Boost Research, consultoria independente desde 2016</div></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #3</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Barreira (Inércia)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
   </div>
-</div>
-
-<div class="section section-white" style="border-left:4px solid var(--teal)">
-  <h2>Copys — E-book 2: Novas Regras Cripto 2026</h2>
-  <p style="font-size:13px;color:var(--dim);margin-bottom:8px">LP: ebook-regras-cripto.boostresearch.com.br · Botão Meta: DOWNLOAD</p>
-</div>
-
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #1</span>
-    <span class="badge b-orange">Necessidade (Fiscal)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Urgência regulatória · Dor #4 · 72 menções</div>
   
-  <div class="copy-split">
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Investidor tradicional curioso</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Novas regras cripto 2026: você está preparado?</div>
-        <div class="cz-sub">DeCripto · CARF/OCDE · Fiscalização automatizada</div>
-        <div class="cz-bullets">✔ Árvore decisória de tributação<br>✔ Checklist de 7 passos<br>✔ Prazo: julho de 2026</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: deadline "JULHO 2026" em destaque. Tom sério. Ícone Receita Federal ou documento oficial.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Mais de R$200 mil no tradicional. Cripto faz sentido?</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">E-book gratuito com dados reais, não promessas</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Correlação cripto × tradicional<br>✔ Alocação por perfil de risco<br>✔ Cenários com e sem cripto</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: gráfico de alocação ou balança. Tom anti-vendedor: honestidade.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Em julho de 2026, o Brasil começa a fiscalizar criptoativos de forma automatizada.<br><br>DeCripto, CARF/OCDE, novas obrigações de reporte. Se você tem cripto e não sabe o que muda, precisa saber antes que mude.<br><br>A Boost Research preparou um e-book gratuito que explica, artigo por artigo, o que está mudando:<br><br>- O que é o DeCripto e como funciona a coleta automatizada<br>- CARF/OCDE: troca internacional de dados a partir de 2027<br>- Árvore decisória de tributação: quando você paga, quanto, e como declarar<br>- Checklist de 7 passos pra ficar em conformidade<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>E-book gratuito. Baixe agora.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Novas regras cripto 2026: você está preparado?</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito. DeCripto, CARF, tributação explicados artigo por artigo.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Mais de R$200 mil no mercado tradicional e cripto ainda não faz sentido pra você?<br><br>Talvez faça. Talvez não. E essa honestidade é rara no mercado.<br><br>A Boost Research, consultoria independente de cripto liderada por André Franco desde 2016, criou um e-book que mostra com números reais quando faz sentido alocar em cripto e quando não faz.<br><br>O que o e-book cobre:<br>- Correlação histórica entre cripto e ativos tradicionais<br>- Percentuais de alocação por perfil de risco<br>- Cenários com e sem cripto na carteira<br><br>Se cripto não fizer sentido pro seu caso, o e-book vai te dizer isso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Cripto faz sentido pra quem já tem patrimônio tradicional?</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito com dados reais, não promessas</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #2</span>
-    <span class="badge b-orange">Necessidade (Fiscal)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Multa de 3% · Consequência concreta</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #19c6b5">
   
-  <div class="copy-split">
-    <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Multas de até 3% sobre operações não declaradas.</div>
-        <div class="cz-sub">A Receita Federal vai receber dados automaticamente.</div>
-        <div class="cz-bullets">✔ R$35 mil/mês = obrigação de reporte<br>✔ CARF/OCDE: troca entre 50+ países<br>✔ E-book gratuito com checklist</div>
-        <div class="cz-cta">Baixar antes de julho</div>
-        <div class="cz-note">Visual: número "3%" grande em destaque. Vermelho/urgência. Contraste com teal.</div>
-      </div>
-    </div>
-    <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Multa de 3% sobre o valor da operação. Esse é o custo de não declarar criptoativos corretamente a partir de 2026.<br><br>A maioria dos investidores com cripto não sabe que:<br>- Vendas acima de R$35 mil no mês já têm obrigação de reporte<br>- A Receita Federal vai receber dados automaticamente das exchanges<br>- Operações no exterior entram na troca internacional de dados (CARF/OCDE)<br><br>A Boost Research criou um e-book que traduz a legislação em linguagem de investidor:<br><br>Árvore decisória, checklist, cenários práticos.<br><br>Gratuito. Baixe antes de julho.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">3% de multa por operação. Você sabia?</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito sobre as novas regras de declaração de cripto</div></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #4</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Desejo (Advisor)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">3 - Solution Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Morno</span>
+    <span style="background:#19c6b5;color:#12191D;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;margin-left:8px">P1</span>
   </div>
-</div>
-
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #3</span>
-    <span class="badge b-orange">Necessidade (Fiscal)</span>
-    <span class="badge b-blue">3 - Solution Aware</span>
-    <span class="badge b-green">Morno</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Quem já declara · Compliance</div>
   
-  <div class="copy-split">
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Trauma de altcoin · Dor #6 · 52 menções</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Declara cripto do jeito certo? Julho vai mostrar quem não declara.</div>
-        <div class="cz-sub">A fiscalização afeta quem declara errado também.</div>
-        <div class="cz-bullets">✔ DeCripto vs tributação<br>✔ Staking, DeFi, P2P, exchanges internacionais<br>✔ E-book gratuito</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: checklist ou documento. Tom informativo, foco em quem já tenta fazer certo.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">"Comprei na alta, não vendi no topo."</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">54% dos investidores passam por isso. O problema não foi a moeda.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Regra de saída antes de entrar<br>✔ Método desde 2016<br>✔ Dois ciclos completos</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: André Franco com expressão séria. Tom confessional. Citação como headline.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Você declara cripto no IR. Mas faz do jeito certo?<br><br>A fiscalização automatizada que começa em julho de 2026 não afeta só quem sonega. Afeta quem declara errado também.<br><br>A Boost Research preparou um e-book com foco em quem já tenta fazer certo:<br><br>- Diferença entre DeCripto (coleta) e tributação (pagamento)<br>- O que muda na IN 1888 vs. nova regulamentação<br>- Cenários específicos: staking, DeFi, P2P, exchanges internacionais<br><br>Gratuito. Para investidores que levam conformidade a sério.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Declara cripto? Julho muda tudo.</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito para quem quer estar 100% em conformidade</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">"Comprei na alta, não vendi no topo, e agora tô com um gostinho amargo."<br><br>Se você se identificou, faz parte dos 54% dos investidores que passam por isso.<br><br>O problema não foi a moeda que você escolheu. Foi a falta de critério pra decidir quando sair.<br><br>A Boost Research criou um e-book gratuito que ensina como montar um portfólio com regra de saída definida antes de entrar. Sem emoção, sem achismo.<br><br>André Franco aplica esse método desde 2016. Dois ciclos completos.<br><br>Baixe gratuitamente.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">E-book gratuito: pare de errar o timing em cripto</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">O método de um Advisor com dois ciclos completos de mercado</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #4</span>
-    <span class="badge b-orange">Necessidade (Fiscal)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Cripto no exterior · Offshore · 72 menções</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #19c6b5">
   
-  <div class="copy-split">
-    <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Cripto no exterior? A Receita agora sabe antes de você declarar.</div>
-        <div class="cz-sub">CARF/OCDE: troca automática de dados entre 50+ países</div>
-        <div class="cz-bullets">✔ Troca internacional de dados<br>✔ Exchanges no exterior<br>✔ Planejamento tributário legal</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: mapa mundial ou globo. Conexões entre países. Tom sério, sem alarmismo.</div>
-      </div>
-    </div>
-    <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">"Quero estar longe das garras do governo brasileiro."<br><br>Essa frase apareceu em 72 reuniões com investidores da Boost Research. Não é radicalismo. É um desejo legítimo de quem tem patrimônio e quer protegê-lo.<br><br>O problema: a partir de 2026, a troca automática de dados entre países (CARF/OCDE) torna a fuga fiscal quase impossível.<br><br>A solução não é fugir. É entender as regras e usar a legislação a seu favor.<br><br>A Boost Research preparou um e-book gratuito que explica:<br>- Como funciona a troca internacional de dados<br>- O que muda pra quem opera em exchanges no exterior<br>- Estratégias legais de planejamento tributário em cripto<br><br>Gratuito. Sem custo. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Cripto no exterior? As regras mudaram.</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito: CARF/OCDE e o que muda pra quem opera fora do Brasil</div></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #5</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Desejo (Advisor)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">3 - Solution Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Morno/Quente</span>
+    
   </div>
-</div>
-
-<div class="section section-white" style="border-left:4px solid var(--teal)">
-  <h2>Copys — E-book 3: Quanto Rende 1 Milhão em 2026</h2>
-  <p style="font-size:13px;color:var(--dim);margin-bottom:8px">LP: ebook-quanto-rende.boostresearch.com.br · Botão Meta: DOWNLOAD</p>
-</div>
-
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #1</span>
-    <span class="badge b-orange">Barreira (Inércia)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Paradoxo Selic · Rende mais, ganha menos</div>
   
-  <div class="copy-split">
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Posicionamento Boost · Autoridade</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Seu R$1 milhão rendeu 14% no ano. Ou será que foi 7%?</div>
-        <div class="cz-sub">E-book gratuito com 6 cenários reais de R$1M</div>
-        <div class="cz-bullets">✔ Renda fixa, ações, FIIs, cripto<br>✔ Retorno real após inflação e IR<br>✔ Modelo de Alocação Boost</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: número grande "14%" riscado, "7%" ao lado. André Franco. Contraste impactante.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">O método que 228 investidores pediram antes da primeira reunião.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">Consultoria independente de cripto. Sem conflito de interesse.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Alocação tradicional + cripto<br>✔ Independência > rentabilidade passada<br>✔ Advisor ≠ influenciador</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: André Franco profissional. Número "228" em destaque. Tom institucional com prova social.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Seu R$1 milhão rendeu algo próximo de 14% no último ano. Pelo menos é o que diz o extrato.<br><br>O que ele não mostra é que, depois de inflação, impostos e custos, o ganho real ficou mais perto de 7%.<br><br>A Boost Research criou um e-book gratuito com 6 cenários de R$1 milhão, do ultra-conservador ao arrojado:<br><br>- Renda fixa: CDB, Tesouro, LCI/LCA<br>- Ações, FIIs e ETFs<br>- Criptoativos: quanto alocar e por quê<br>- Dolarização parcial via stablecoins<br>- O que sobra no bolso depois de inflação, IR e custos<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>E-book gratuito. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Quanto rende R$1 milhão em 2026?</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">6 cenários reais. Do conservador ao arrojado. E-book gratuito.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">A Boost Research é uma consultoria independente de cripto. Sem vínculo com exchange. Sem fundo próprio. Sem conflito de interesse.<br><br>André Franco fundou a Boost em 2016 e acompanha investidores com patrimônio relevante com Advisor dedicado.<br><br>Antes de marcar uma reunião, a Boost preparou um e-book gratuito pra você entender o método:<br><br>- Como a consultoria define alocação entre tradicional e cripto<br>- Por que independência importa mais do que rentabilidade passada<br>- O que diferencia um Advisor de um influenciador<br><br>Leia. Depois decida se faz sentido conversar.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Antes da reunião, entenda o método</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito da Boost Research, consultoria independente desde 2016</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #2</span>
-    <span class="badge b-orange">Barreira (Inércia)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Sem tempo · Executivos e profissionais</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:20px 28px;margin-bottom:16px;margin-top:40px;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-left:4px solid #D64545">
+  <h2 style="font-size:20px;font-weight:600;color:#32373c;margin:0;padding:0;border:none">E-book 2: Novas Regras Cripto 2026</h2>
+  <p style="font-size:13px;color:#555;margin-top:4px">LP: ebook-regras-cripto.boostresearch.com.br · 4 copys · Botão Meta: DOWNLOAD</p>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #D64545">
   
-  <div class="copy-split">
-    <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">R$1 milhão no CDI rende R$70 mil. Deveria render R$101 mil.</div>
-        <div class="cz-sub">A diferença de R$31 mil por ano está na alocação.</div>
-        <div class="cz-bullets">✔ 6 cenários comparados<br>✔ Custo real de deixar no CDI<br>✔ Diversificação com método</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: dois números lado a lado (R$70k vs R$101k). Seta ou contraste. Clean, impactante.</div>
-      </div>
-    </div>
-    <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">R$1 milhão rendendo 100% do CDI parece suficiente. Até você calcular o retorno real.<br><br>Depois de inflação, IR e custos, o ganho real fica na faixa de 7%. Isso significa R$70 mil de poder de compra adicional por ano.<br><br>Com diversificação inteligente entre renda fixa, ações, FIIs, cripto e dólar, o retorno real pode chegar a R$101 mil. São R$31 mil de diferença por ano. R$155 mil em 5 anos.<br><br>A Boost Research criou um e-book gratuito que mostra exatamente como cada cenário funciona.<br><br>Leitura de 30 minutos. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">R$70 mil ou R$101 mil? A diferença está no método.</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito: 6 cenários de R$1 milhão comparados</div></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #1</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Fiscal)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    <span style="background:#19c6b5;color:#12191D;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;margin-left:8px">P1</span>
   </div>
-</div>
-
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #3</span>
-    <span class="badge b-orange">Desejo (Advisor)</span>
-    <span class="badge b-blue">3 - Solution Aware</span>
-    <span class="badge b-green">Morno</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Método Boost · Autoridade</div>
   
-  <div class="copy-split">
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Urgência regulatória · Dor #4 · 72 menções</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Seu portfólio rende menos que deveria. O Modelo Boost mostra quanto.</div>
-        <div class="cz-sub">Consultoria independente. Advisor dedicado desde 2016.</div>
-        <div class="cz-bullets">✔ Renda fixa + ações + cripto + dólar<br>✔ Advisor dedicado desde 2016<br>✔ Consultoria independente</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: André Franco profissional. Gráfico de pizza ou alocação. Tom institucional.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Novas regras cripto 2026: você está preparado?</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">DeCripto · CARF/OCDE · Fiscalização automatizada</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Árvore decisória de tributação<br>✔ Checklist de 7 passos<br>✔ Prazo: julho de 2026</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: deadline "JULHO 2026" em destaque. Tom sério. Ícone Receita Federal ou documento oficial.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">A maioria dos investidores com R$1 milhão deixa tudo em renda fixa porque parece seguro. E é. Mas "seguro" custa caro quando a inflação corrói 5,5% ao ano e os custos ocultos consomem mais 2%.<br><br>A Boost Research é uma consultoria independente de cripto. André Franco fundou a Boost em 2016 e acompanha investidores com patrimônio relevante com Advisor dedicado.<br><br>Neste e-book gratuito, você encontra o Modelo de Alocação Boost aplicado a R$1 milhão:<br><br>- Como a consultoria equilibra renda fixa, ações, cripto e dólar<br>- Por que diversificação com método rende mais que concentração por inércia<br>- 6 cenários comparados com retorno real<br><br>Leia. Depois decida se faz sentido conversar com um Advisor.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Modelo de Alocação Boost para R$1 milhão</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito. Consultoria independente desde 2016.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Em julho de 2026, o Brasil começa a fiscalizar criptoativos de forma automatizada.<br><br>DeCripto, CARF/OCDE, novas obrigações de reporte. Se você tem cripto e não sabe o que muda, precisa saber antes que mude.<br><br>A Boost Research preparou um e-book gratuito que explica, artigo por artigo, o que está mudando:<br><br>- O que é o DeCripto e como funciona a coleta automatizada<br>- CARF/OCDE: troca internacional de dados a partir de 2027<br>- Árvore decisória de tributação: quando você paga, quanto, e como declarar<br>- Checklist de 7 passos pra ficar em conformidade<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>E-book gratuito. Baixe agora.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Novas regras cripto 2026: você está preparado?</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito. DeCripto, CARF, tributação explicados artigo por artigo.</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #4</span>
-    <span class="badge b-orange">Barreira (Inércia)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Inflação corroendo retornos · Custo oculto</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #D64545">
   
-  <div class="copy-split">
-    <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Seu R$1 milhão perdeu R$55 mil de poder de compra este ano.</div>
-        <div class="cz-sub">E-book gratuito mostra o retorno REAL depois de inflação, IR e custos.</div>
-        <div class="cz-bullets">✔ IPCA corrói 5,5% ao ano<br>✔ IR reduz mais 2-3%<br>✔ Custos ocultos: taxas, come-cotas, spread</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: número R$55 mil em vermelho (perda). Gráfico de erosão. Impacto visual direto.</div>
-      </div>
-    </div>
-    <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Seu R$1 milhão perdeu R$55 mil de poder de compra este ano. Isso antes de considerar taxas de administração, come-cotas e spread.<br><br>A maioria dos investidores olha para o rendimento bruto e assume que está ganhando dinheiro. Mas o retorno real, depois de inflação, IR e custos, costuma ser metade do que aparece no extrato.<br><br>A Boost Research criou um e-book gratuito com 6 cenários de R$1 milhão que mostram exatamente o que sobra no bolso:<br><br>- Retorno bruto vs retorno real em cada classe de ativo<br>- O impacto invisível da inflação, IR progressivo e custos operacionais<br>- Quanto você precisa render apenas para NÃO perder dinheiro<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>E-book gratuito. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Quanto seu R$1 milhão REALMENTE rendeu?</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito: retorno real depois de inflação, IR e custos.</div></div>
-      </div>
-    </div>
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #2</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Fiscal)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    <span style="background:#19c6b5;color:#12191D;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;margin-left:8px">P1</span>
   </div>
-</div>
-
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #5</span>
-    <span class="badge b-orange">Desejo (Advisor)</span>
-    <span class="badge b-blue">3 - Solution Aware</span>
-    <span class="badge b-green">Morno</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Assessor não mostra · Prova social/autoridade</div>
   
-  <div class="copy-split">
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Multa de 3% · Consequência concreta</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Seu assessor já mostrou esse cálculo?</div>
-        <div class="cz-sub">A diferença entre deixar no CDI e diversificar com método: R$31 mil por ano.</div>
-        <div class="cz-bullets">✔ 6 cenários comparados<br>✔ Retorno real, não nominal<br>✔ Modelo de Alocação Boost</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: André Franco com expressão provocativa. Número R$31k em destaque. Tom "desafiando o status quo".</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Multas de até 3% sobre operações não declaradas.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">A Receita Federal vai receber dados automaticamente.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ R$35 mil/mês = obrigação de reporte<br>✔ CARF/OCDE: troca entre 50+ países<br>✔ E-book gratuito com checklist</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar antes de julho</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: número "3%" grande em destaque. Vermelho/urgência. Contraste com teal.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">A maioria dos assessores mostra o rendimento bruto. CDB a 14%. Tesouro a 12%. Parece ótimo.<br><br>Mas quando você desconta inflação de 5,5%, IR de 15-22,5% e custos de administração, o retorno real cai pela metade.<br><br>Seu assessor já fez essa conta pra você?<br><br>A Boost Research criou um e-book gratuito com 6 cenários de R$1 milhão que mostram a diferença entre retorno nominal e retorno real:<br><br>- O cenário ultra-conservador (100% renda fixa) rende R$70 mil reais<br>- O Modelo de Alocação Boost chega a R$101 mil reais<br>- São R$31 mil de diferença por ano. R$155 mil em 5 anos.<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Sem compromisso. E-book enviado direto no seu e-mail.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Seu assessor já fez essa conta?</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito: 6 cenários de R$1 milhão com retorno real.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Multa de 3% sobre o valor da operação. Esse é o custo de não declarar criptoativos corretamente a partir de 2026.<br><br>A maioria dos investidores com cripto não sabe que:<br>- Vendas acima de R$35 mil no mês já têm obrigação de reporte<br>- A Receita Federal vai receber dados automaticamente das exchanges<br>- Operações no exterior entram na troca internacional de dados (CARF/OCDE)<br><br>A Boost Research criou um e-book que traduz a legislação em linguagem de investidor:<br><br>Árvore decisória, checklist, cenários práticos.<br><br>Gratuito. Baixe antes de julho.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">3% de multa por operação. Você sabia?</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito sobre as novas regras de declaração de cripto</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-white" style="border-left:4px solid var(--teal)">
-  <h2>Copys — E-book 4: Stablecoins — Dolarização de Portfólio</h2>
-  <p style="font-size:13px;color:var(--dim);margin-bottom:8px">LP: ebook-stablecoins.boostresearch.com.br · Botão Meta: DOWNLOAD</p>
-</div>
-
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #1</span>
-    <span class="badge b-orange">Necessidade (Dolarização)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">O que são stablecoins · Educacional</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #D64545">
   
-  <div class="copy-split">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #3</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Fiscal)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">3 - Solution Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Morno</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Quem já declara · Compliance</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Dólar digital: por que investidores acima de R$100 mil estão migrando.</div>
-        <div class="cz-sub">Stablecoins explicadas para quem tem patrimônio real.</div>
-        <div class="cz-bullets">✔ USDT vs USDC: qual é mais seguro?<br>✔ Rendimento em dólar (4-8% a.a.)<br>✔ Riscos que ninguém explica</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: símbolo do dólar digital ou moeda. Fundo dark. Teal accent. Tom informativo, não impositivo.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Declara cripto do jeito certo? Julho vai mostrar quem não declara.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">A fiscalização afeta quem declara errado também.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ DeCripto vs tributação<br>✔ Staking, DeFi, P2P, exchanges internacionais<br>✔ E-book gratuito</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: checklist ou documento. Tom informativo, foco em quem já tenta fazer certo.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">O real brasileiro se desvaloriza de forma consistente. Em 10 anos, o poder de compra de R$1 milhão caiu quase pela metade em dólares.<br><br>Stablecoins são criptoativos pareados ao dólar. Funcionam como exposição cambial sem precisar abrir conta no exterior.<br><br>A Boost Research criou um e-book gratuito que explica stablecoins para investidores com patrimônio relevante:<br><br>- O que são e como funcionam na prática<br>- USDT vs USDC: transparência, regulação e riscos de cada uma<br>- Rendimentos em dólar (4-8% a.a.) e os riscos envolvidos<br>- Tributação no Brasil (DeCripto, IN 1888)<br>- Custódia: onde guardar com segurança<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Gratuito. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Stablecoins: o guia para quem tem patrimônio</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito. Dolarização, rendimento, riscos e tributação explicados.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Você declara cripto no IR. Mas faz do jeito certo?<br><br>A fiscalização automatizada que começa em julho de 2026 não afeta só quem sonega. Afeta quem declara errado também.<br><br>A Boost Research preparou um e-book com foco em quem já tenta fazer certo:<br><br>- Diferença entre DeCripto (coleta) e tributação (pagamento)<br>- O que muda na IN 1888 vs. nova regulamentação<br>- Cenários específicos: staking, DeFi, P2P, exchanges internacionais<br><br>Gratuito. Para investidores que levam conformidade a sério.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Declara cripto? Julho muda tudo.</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito para quem quer estar 100% em conformidade</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #2</span>
-    <span class="badge b-orange">Necessidade (Dolarização)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Proteção cambial · Real se desvaloriza</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #D64545">
   
-  <div class="copy-split">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #4</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Fiscal)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Cripto no exterior · Offshore · 72 menções</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">100% do seu patrimônio em reais. Isso é um risco.</div>
-        <div class="cz-sub">E-book gratuito sobre dolarização via stablecoins.</div>
-        <div class="cz-bullets">✔ Real perdeu 50%+ em 10 anos vs dólar<br>✔ Stablecoins como proteção cambial<br>✔ Sem abrir conta no exterior</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: gráfico USD/BRL subindo ao longo dos anos. Impacto visual da desvalorização.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Cripto no exterior? A Receita agora sabe antes de você declarar.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">CARF/OCDE: troca automática de dados entre 50+ países</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Troca internacional de dados<br>✔ Exchanges no exterior<br>✔ Planejamento tributário legal</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: mapa mundial ou globo. Conexões entre países. Tom sério, sem alarmismo.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Manter 100% do patrimônio em reais é uma decisão. E como toda decisão de investimento, tem consequências.<br><br>Nos últimos 10 anos, o real se desvalorizou mais de 50% frente ao dólar. Quem não tinha exposição cambial perdeu poder de compra mesmo com rendimentos de dois dígitos na renda fixa.<br><br>Stablecoins oferecem uma forma prática de dolarizar parte do portfólio sem abrir conta no exterior, sem burocracia de câmbio e com liquidez imediata.<br><br>A Boost Research criou um e-book gratuito que explica como funciona, quanto custa, quais os riscos e como se encaixa no seu portfólio.<br><br>Leitura de 25 minutos. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Por que manter 100% em reais é um risco</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito. Dolarização de portfólio via stablecoins.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">"Quero estar longe das garras do governo brasileiro."<br><br>Essa frase apareceu em 72 reuniões com investidores da Boost Research. Não é radicalismo. É um desejo legítimo de quem tem patrimônio e quer protegê-lo.<br><br>O problema: a partir de 2026, a troca automática de dados entre países (CARF/OCDE) torna a fuga fiscal quase impossível.<br><br>A solução não é fugir. É entender as regras e usar a legislação a seu favor.<br><br>A Boost Research preparou um e-book gratuito que explica:<br>- Como funciona a troca internacional de dados<br>- O que muda pra quem opera em exchanges no exterior<br>- Estratégias legais de planejamento tributário em cripto<br><br>Gratuito. Sem custo. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Cripto no exterior? As regras mudaram.</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito: CARF/OCDE e o que muda pra quem opera fora do Brasil</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #3</span>
-    <span class="badge b-orange">Desejo (Advisor)</span>
-    <span class="badge b-blue">3 - Solution Aware</span>
-    <span class="badge b-green">Morno</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Rendimento em dólar · DeFi vs CeFi</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:20px 28px;margin-bottom:16px;margin-top:40px;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-left:4px solid #3B7DD8">
+  <h2 style="font-size:20px;font-weight:600;color:#32373c;margin:0;padding:0;border:none">E-book 3: Quanto Rende 1 Milhão em 2026</h2>
+  <p style="font-size:13px;color:#555;margin-top:4px">LP: ebook-quanto-rende.boostresearch.com.br · 5 copys · Botão Meta: DOWNLOAD</p>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #3B7DD8">
   
-  <div class="copy-split">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #1</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Barreira (Inércia)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    <span style="background:#19c6b5;color:#12191D;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;margin-left:8px">P1</span>
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Paradoxo Selic · Rende mais, ganha menos</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">4% a 8% ao ano. Em dólar. Sem sair do Brasil.</div>
-        <div class="cz-sub">Stablecoins rendem mais que poupança americana.</div>
-        <div class="cz-bullets">✔ Lending institucional (Aave, Compound)<br>✔ Riscos reais: smart contract, depeg<br>✔ Análise Boost Research</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: números de yield em destaque. Disclaimer de risco visível. André Franco sério.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Seu R$1 milhão rendeu 14% no ano. Ou será que foi 7%?</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">E-book gratuito com 6 cenários reais de R$1M</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Renda fixa, ações, FIIs, cripto<br>✔ Retorno real após inflação e IR<br>✔ Modelo de Alocação Boost</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: número grande "14%" riscado, "7%" ao lado. André Franco. Contraste impactante.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Stablecoins podem render entre 4% e 8% ao ano em dólar através de protocolos de lending.<br><br>Isso é mais do que a poupança americana paga. Mas rendimento alto em cripto sempre vem com riscos que precisam ser compreendidos antes.<br><br>A Boost Research criou um e-book gratuito que separa o que é seguro do que é arriscado:<br><br>- Lending institucional (Aave, Compound) vs DeFi experimental<br>- Riscos: smart contract, depeg, regulatório<br>- Casos reais de perdas (Terra/Luna, Euler Finance)<br>- Como a Boost avalia protocolos antes de considerar qualquer rendimento<br><br>Rendimentos em DeFi não são garantidos e podem resultar em perda total.<br><br>E-book gratuito. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Rendimento em dólar: o que é seguro e o que não é</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito. Stablecoins, DeFi e riscos explicados com clareza.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Seu R$1 milhão rendeu algo próximo de 14% no último ano. Pelo menos é o que diz o extrato.<br><br>O que ele não mostra é que, depois de inflação, impostos e custos, o ganho real ficou mais perto de 7%.<br><br>A Boost Research criou um e-book gratuito com 6 cenários de R$1 milhão, do ultra-conservador ao arrojado:<br><br>- Renda fixa: CDB, Tesouro, LCI/LCA<br>- Ações, FIIs e ETFs<br>- Criptoativos: quanto alocar e por quê<br>- Dolarização parcial via stablecoins<br>- O que sobra no bolso depois de inflação, IR e custos<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>E-book gratuito. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Quanto rende R$1 milhão em 2026?</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">6 cenários reais. Do conservador ao arrojado. E-book gratuito.</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-white">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #4</span>
-    <span class="badge b-orange">Necessidade (Dolarização)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Real se desvaloriza · Macro/histórico</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #3B7DD8">
   
-  <div class="copy-split">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #2</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Barreira (Inércia)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Sem tempo · Executivos e profissionais</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">O real perdeu mais de 50% frente ao dólar em 10 anos.</div>
-        <div class="cz-sub">E seu portfólio está 100% em reais?</div>
-        <div class="cz-bullets">✔ Desvalorização histórica BRL/USD<br>✔ Stablecoins como proteção<br>✔ Sem abrir conta no exterior</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: gráfico USD/BRL de 10 anos subindo. Linha vermelha do real caindo. Impacto visual macro.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">R$1 milhão no CDI rende R$70 mil. Deveria render R$101 mil.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">A diferença de R$31 mil por ano está na alocação.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ 6 cenários comparados<br>✔ Custo real de deixar no CDI<br>✔ Diversificação com método</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: dois números lado a lado (R$70k vs R$101k). Seta ou contraste. Clean, impactante.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Em 10 anos, o real perdeu mais de 50% do seu valor frente ao dólar.<br><br>Isso significa que R$1 milhão em 2016 tem hoje o poder de compra de menos de R$500 mil em dólares. Mesmo com rendimentos de dois dígitos na renda fixa brasileira.<br><br>A maioria dos investidores brasileiros mantém 100% do patrimônio em reais. Não por estratégia, mas por inércia.<br><br>Stablecoins oferecem exposição ao dólar sem abrir conta no exterior, sem burocracia de câmbio e com liquidez imediata.<br><br>A Boost Research criou um e-book gratuito que explica como stablecoins funcionam, quais são os riscos e como se encaixam em um portfólio diversificado.<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Gratuito. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">O real perdeu 50% em 10 anos. E seu portfólio?</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito. Stablecoins como proteção cambial.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">R$1 milhão rendendo 100% do CDI parece suficiente. Até você calcular o retorno real.<br><br>Depois de inflação, IR e custos, o ganho real fica na faixa de 7%. Isso significa R$70 mil de poder de compra adicional por ano.<br><br>Com diversificação inteligente entre renda fixa, ações, FIIs, cripto e dólar, o retorno real pode chegar a R$101 mil. São R$31 mil de diferença por ano. R$155 mil em 5 anos.<br><br>A Boost Research criou um e-book gratuito que mostra exatamente como cada cenário funciona.<br><br>Leitura de 30 minutos. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">R$70 mil ou R$101 mil? A diferença está no método.</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito: 6 cenários de R$1 milhão comparados</div>
+        </div>
       </div>
     </div>
+    
   </div>
 </div>
 
-<div class="section section-light">
-  <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
-    <span class="badge b-teal">Copy #5</span>
-    <span class="badge b-orange">Necessidade (Dolarização)</span>
-    <span class="badge b-blue">2 - Problem Aware</span>
-    <span class="badge b-green">Frio</span>
-  </div>
-  <div style="font-size:13px;color:var(--dim);margin-bottom:16px">Praticidade · Sem burocracia</div>
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #3B7DD8">
   
-  <div class="copy-split">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #3</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Desejo (Advisor)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">3 - Solution Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Morno</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Método Boost · Autoridade</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
     <div>
-      <span class="anatomy-label criativo">NO CRIATIVO (imagem)</span>
-      <div class="creative-zone">
-        <div class="cz-logo">BOOST RESEARCH</div>
-        <div class="cz-headline">Exposição ao dólar sem abrir conta no exterior.</div>
-        <div class="cz-sub">Stablecoins: a forma mais prática de dolarizar seu portfólio.</div>
-        <div class="cz-bullets">✔ Compra em exchange brasileira<br>✔ Liquidez imediata<br>✔ Rendimento de 4-8% a.a. em USD*</div>
-        <div class="cz-cta">Baixar e-book gratuito</div>
-        <div class="cz-note">Visual: comparativo visual "Câmbio tradicional" (burocracia, docs) vs "Stablecoins" (app, 5 min). Clean.</div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Seu portfólio rende menos que deveria. O Modelo Boost mostra quanto.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">Consultoria independente. Advisor dedicado desde 2016.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Renda fixa + ações + cripto + dólar<br>✔ Advisor dedicado desde 2016<br>✔ Consultoria independente</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: André Franco profissional. Gráfico de pizza ou alocação. Tom institucional.</div>
       </div>
     </div>
+    
+    <!-- LEGENDA -->
     <div>
-      <span class="anatomy-label legenda">NA LEGENDA (Meta Ads)</span>
-      <div class="caption-zone">
-        <div class="cap-field"><div class="cap-key">Texto principal</div><div class="cap-val">Dolarizar parte do patrimônio costumava exigir conta no exterior, documentação e custos de câmbio.<br><br>Stablecoins mudaram isso. Você compra USDC ou USDT em uma exchange brasileira, em minutos, e passa a ter exposição ao dólar com liquidez imediata.<br><br>Mas stablecoins não são todas iguais. Existem riscos que precisam ser compreendidos: smart contract, depeg, regulação.<br><br>A Boost Research criou um e-book gratuito que explica:<br><br>- Como funciona a dolarização via stablecoins na prática<br>- USDT vs USDC: transparência e riscos de cada uma<br>- Rendimentos possíveis (4-8% a.a. em USD) e os riscos envolvidos<br>- Tributação no Brasil<br><br>*Rendimentos em protocolos DeFi não são garantidos e podem variar. Risco de perda do capital.<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Gratuito. Sem compromisso.</div></div>
-        <div class="cap-field"><div class="cap-key">Headline</div><div class="cap-val">Dolarize sem sair do Brasil</div></div>
-        <div class="cap-field"><div class="cap-key">Descrição</div><div class="cap-val">E-book gratuito. Stablecoins: como funciona, riscos e tributação.</div></div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">A maioria dos investidores com R$1 milhão deixa tudo em renda fixa porque parece seguro. E é. Mas "seguro" custa caro quando a inflação corrói 5,5% ao ano e os custos ocultos consomem mais 2%.<br><br>A Boost Research é uma consultoria independente de cripto. André Franco fundou a Boost em 2016 e acompanha investidores com patrimônio relevante com Advisor dedicado.<br><br>Neste e-book gratuito, você encontra o Modelo de Alocação Boost aplicado a R$1 milhão:<br><br>- Como a consultoria equilibra renda fixa, ações, cripto e dólar<br>- Por que diversificação com método rende mais que concentração por inércia<br>- 6 cenários comparados com retorno real<br><br>Leia. Depois decida se faz sentido conversar com um Advisor.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Modelo de Alocação Boost para R$1 milhão</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito. Consultoria independente desde 2016.</div>
+        </div>
       </div>
     </div>
+    
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #3B7DD8">
+  
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #4</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Barreira (Inércia)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Inflação corroendo retornos · Custo oculto</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
+    <div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Seu R$1 milhão perdeu R$55 mil de poder de compra este ano.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">E-book gratuito mostra o retorno REAL depois de inflação, IR e custos.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ IPCA corrói 5,5% ao ano<br>✔ IR reduz mais 2-3%<br>✔ Custos ocultos: taxas, come-cotas, spread</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: número R$55 mil em vermelho (perda). Gráfico de erosão. Impacto visual direto.</div>
+      </div>
+    </div>
+    
+    <!-- LEGENDA -->
+    <div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Seu R$1 milhão perdeu R$55 mil de poder de compra este ano. Isso antes de considerar taxas de administração, come-cotas e spread.<br><br>A maioria dos investidores olha para o rendimento bruto e assume que está ganhando dinheiro. Mas o retorno real, depois de inflação, IR e custos, costuma ser metade do que aparece no extrato.<br><br>A Boost Research criou um e-book gratuito com 6 cenários de R$1 milhão que mostram exatamente o que sobra no bolso:<br><br>- Retorno bruto vs retorno real em cada classe de ativo<br>- O impacto invisível da inflação, IR progressivo e custos operacionais<br>- Quanto você precisa render apenas para NÃO perder dinheiro<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>E-book gratuito. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Quanto seu R$1 milhão REALMENTE rendeu?</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito: retorno real depois de inflação, IR e custos.</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #3B7DD8">
+  
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #5</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Desejo (Advisor)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">3 - Solution Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Morno</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Assessor não mostra · Prova social/autoridade</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
+    <div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Seu assessor já mostrou esse cálculo?</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">A diferença entre deixar no CDI e diversificar com método: R$31 mil por ano.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ 6 cenários comparados<br>✔ Retorno real, não nominal<br>✔ Modelo de Alocação Boost</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: André Franco com expressão provocativa. Número R$31k em destaque. Tom "desafiando o status quo".</div>
+      </div>
+    </div>
+    
+    <!-- LEGENDA -->
+    <div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">A maioria dos assessores mostra o rendimento bruto. CDB a 14%. Tesouro a 12%. Parece ótimo.<br><br>Mas quando você desconta inflação de 5,5%, IR de 15-22,5% e custos de administração, o retorno real cai pela metade.<br><br>Seu assessor já fez essa conta pra você?<br><br>A Boost Research criou um e-book gratuito com 6 cenários de R$1 milhão que mostram a diferença entre retorno nominal e retorno real:<br><br>- O cenário ultra-conservador (100% renda fixa) rende R$70 mil reais<br>- O Modelo de Alocação Boost chega a R$101 mil reais<br>- São R$31 mil de diferença por ano. R$155 mil em 5 anos.<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Sem compromisso. E-book enviado direto no seu e-mail.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Seu assessor já fez essa conta?</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito: 6 cenários de R$1 milhão com retorno real.</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:20px 28px;margin-bottom:16px;margin-top:40px;box-shadow:6px 6px 9px rgba(0,0,0,0.2);border-left:4px solid #E8873D">
+  <h2 style="font-size:20px;font-weight:600;color:#32373c;margin:0;padding:0;border:none">E-book 4: Stablecoins — Dolarização de Portfólio</h2>
+  <p style="font-size:13px;color:#555;margin-top:4px">LP: ebook-stablecoins.boostresearch.com.br · 5 copys · Botão Meta: DOWNLOAD</p>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #E8873D">
+  
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #1</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Dolarização)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">O que são stablecoins · Educacional</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
+    <div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Dólar digital: por que investidores acima de R$100 mil estão migrando.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">Stablecoins explicadas para quem tem patrimônio real.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ USDT vs USDC: qual é mais seguro?<br>✔ Rendimento em dólar (4-8% a.a.)<br>✔ Riscos que ninguém explica</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: símbolo do dólar digital ou moeda. Fundo dark. Teal accent. Tom informativo, não impositivo.</div>
+      </div>
+    </div>
+    
+    <!-- LEGENDA -->
+    <div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">O real brasileiro se desvaloriza de forma consistente. Em 10 anos, o poder de compra de R$1 milhão caiu quase pela metade em dólares.<br><br>Stablecoins são criptoativos pareados ao dólar. Funcionam como exposição cambial sem precisar abrir conta no exterior.<br><br>A Boost Research criou um e-book gratuito que explica stablecoins para investidores com patrimônio relevante:<br><br>- O que são e como funcionam na prática<br>- USDT vs USDC: transparência, regulação e riscos de cada uma<br>- Rendimentos em dólar (4-8% a.a.) e os riscos envolvidos<br>- Tributação no Brasil (DeCripto, IN 1888)<br>- Custódia: onde guardar com segurança<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Gratuito. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Stablecoins: o guia para quem tem patrimônio</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito. Dolarização, rendimento, riscos e tributação explicados.</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #E8873D">
+  
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #2</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Dolarização)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    <span style="background:#19c6b5;color:#12191D;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;margin-left:8px">P1</span>
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Proteção cambial · Real se desvaloriza</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
+    <div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">100% do seu patrimônio em reais. Isso é um risco.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">E-book gratuito sobre dolarização via stablecoins.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Real perdeu 50%+ em 10 anos vs dólar<br>✔ Stablecoins como proteção cambial<br>✔ Sem abrir conta no exterior</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: gráfico USD/BRL subindo ao longo dos anos. Impacto visual da desvalorização.</div>
+      </div>
+    </div>
+    
+    <!-- LEGENDA -->
+    <div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Manter 100% do patrimônio em reais é uma decisão. E como toda decisão de investimento, tem consequências.<br><br>Nos últimos 10 anos, o real se desvalorizou mais de 50% frente ao dólar. Quem não tinha exposição cambial perdeu poder de compra mesmo com rendimentos de dois dígitos na renda fixa.<br><br>Stablecoins oferecem uma forma prática de dolarizar parte do portfólio sem abrir conta no exterior, sem burocracia de câmbio e com liquidez imediata.<br><br>A Boost Research criou um e-book gratuito que explica como funciona, quanto custa, quais os riscos e como se encaixa no seu portfólio.<br><br>Leitura de 25 minutos. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Por que manter 100% em reais é um risco</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito. Dolarização de portfólio via stablecoins.</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #E8873D">
+  
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #3</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Desejo (Advisor)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">3 - Solution Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Morno</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Rendimento em dólar · DeFi vs CeFi</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
+    <div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">4% a 8% ao ano. Em dólar. Sem sair do Brasil.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">Stablecoins rendem mais que poupança americana.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Lending institucional (Aave, Compound)<br>✔ Riscos reais: smart contract, depeg<br>✔ Análise Boost Research</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: números de yield em destaque. Disclaimer de risco visível. André Franco sério.</div>
+      </div>
+    </div>
+    
+    <!-- LEGENDA -->
+    <div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Stablecoins podem render entre 4% e 8% ao ano em dólar através de protocolos de lending.<br><br>Isso é mais do que a poupança americana paga. Mas rendimento alto em cripto sempre vem com riscos que precisam ser compreendidos antes.<br><br>A Boost Research criou um e-book gratuito que separa o que é seguro do que é arriscado:<br><br>- Lending institucional (Aave, Compound) vs DeFi experimental<br>- Riscos: smart contract, depeg, regulatório<br>- Casos reais de perdas (Terra/Luna, Euler Finance)<br>- Como a Boost avalia protocolos antes de considerar qualquer rendimento<br><br>Rendimentos em DeFi não são garantidos e podem resultar em perda total.<br><br>E-book gratuito. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Rendimento em dólar: o que é seguro e o que não é</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito. Stablecoins, DeFi e riscos explicados com clareza.</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #E8873D">
+  
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #4</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Dolarização)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Real se desvaloriza · Macro/histórico</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
+    <div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">O real perdeu mais de 50% frente ao dólar em 10 anos.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">E seu portfólio está 100% em reais?</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Desvalorização histórica BRL/USD<br>✔ Stablecoins como proteção<br>✔ Sem abrir conta no exterior</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: gráfico USD/BRL de 10 anos subindo. Linha vermelha do real caindo. Impacto visual macro.</div>
+      </div>
+    </div>
+    
+    <!-- LEGENDA -->
+    <div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Em 10 anos, o real perdeu mais de 50% do seu valor frente ao dólar.<br><br>Isso significa que R$1 milhão em 2016 tem hoje o poder de compra de menos de R$500 mil em dólares. Mesmo com rendimentos de dois dígitos na renda fixa brasileira.<br><br>A maioria dos investidores brasileiros mantém 100% do patrimônio em reais. Não por estratégia, mas por inércia.<br><br>Stablecoins oferecem exposição ao dólar sem abrir conta no exterior, sem burocracia de câmbio e com liquidez imediata.<br><br>A Boost Research criou um e-book gratuito que explica como stablecoins funcionam, quais são os riscos e como se encaixam em um portfólio diversificado.<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Gratuito. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">O real perdeu 50% em 10 anos. E seu portfólio?</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito. Stablecoins como proteção cambial.</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div style="background:#fff;border:1px solid #e0e0e0;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);border-left:4px solid #E8873D">
+  
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+    <span style="background:#e6fffb;color:#19c6b5;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Copy #5</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700">Necessidade (Dolarização)</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">2 - Problem Aware</span>
+    <span style="background:#f5f5f5;color:#555;padding:4px 12px;border-radius:20px;font-size:11px">Frio</span>
+    
+  </div>
+  
+  <div style="font-size:13px;color:#555;margin-bottom:18px">Praticidade · Sem burocracia</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+    
+    <!-- CRIATIVO -->
+    <div>
+      <div style="background:#12191D;color:#19c6b5;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NO CRIATIVO (imagem)</div>
+      <div style="background:#12191D;border-radius:0 0 16px 16px;padding:24px;color:#fff;position:relative;min-height:220px">
+        <div style="position:absolute;top:12px;right:14px;font-size:9px;color:#19c6b5;font-weight:700;letter-spacing:1px;opacity:.6">BOOST RESEARCH</div>
+        <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;line-height:1.3">Exposição ao dólar sem abrir conta no exterior.</div>
+        <div style="font-size:13px;color:#19c6b5;margin-bottom:14px;line-height:1.4">Stablecoins: a forma mais prática de dolarizar seu portfólio.</div>
+        <div style="font-size:12px;color:#ccc;line-height:1.8;margin-bottom:16px">✔ Compra em exchange brasileira<br>✔ Liquidez imediata<br>✔ Rendimento de 4-8% a.a. em USD*</div>
+        <div style="display:inline-block;padding:8px 20px;background:#19c6b5;color:#12191D;font-weight:700;font-size:12px;border-radius:6px;text-transform:uppercase;letter-spacing:.5px">Baixar e-book gratuito</div>
+        <div style="font-size:10px;color:#666;margin-top:14px;font-style:italic;border-top:1px solid #333;padding-top:10px">Visual: comparativo visual "Câmbio tradicional" (burocracia, docs) vs "Stablecoins" (app, 5 min). Clean.</div>
+      </div>
+    </div>
+    
+    <!-- LEGENDA -->
+    <div>
+      <div style="background:#f5f5f5;color:#32373c;padding:6px 14px;border-radius:8px 8px 0 0;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">NA LEGENDA (Meta Ads)</div>
+      <div style="background:#f5f5f5;border:1px solid #e0e0e0;border-top:none;border-radius:0 0 16px 16px;padding:20px">
+        <div style="margin-bottom:14px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Texto principal</div>
+          <div style="font-size:12px;color:#32373c;line-height:1.7">Dolarizar parte do patrimônio costumava exigir conta no exterior, documentação e custos de câmbio.<br><br>Stablecoins mudaram isso. Você compra USDC ou USDT em uma exchange brasileira, em minutos, e passa a ter exposição ao dólar com liquidez imediata.<br><br>Mas stablecoins não são todas iguais. Existem riscos que precisam ser compreendidos: smart contract, depeg, regulação.<br><br>A Boost Research criou um e-book gratuito que explica:<br><br>- Como funciona a dolarização via stablecoins na prática<br>- USDT vs USDC: transparência e riscos de cada uma<br>- Rendimentos possíveis (4-8% a.a. em USD) e os riscos envolvidos<br>- Tributação no Brasil<br><br>*Rendimentos em protocolos DeFi não são garantidos e podem variar. Risco de perda do capital.<br><br>André Franco, fundador da Boost Research, consultoria independente desde 2016.<br><br>Gratuito. Sem compromisso.</div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Headline</div>
+          <div style="font-size:13px;color:#32373c;font-weight:600">Dolarize sem sair do Brasil</div>
+        </div>
+        <div>
+          <div style="font-size:10px;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Descrição</div>
+          <div style="font-size:12px;color:#555">E-book gratuito. Stablecoins: como funciona, riscos e tributação.</div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </div>
 
 
 <!-- Disclaimer -->
-<div style="margin:24px 0;padding:16px 20px;border:1px dashed var(--border);border-radius:var(--radius);font-size:11px;color:var(--dim);text-align:center;background:var(--white)">
-  <strong style="color:var(--dark)">Disclaimer:</strong> Conteúdo educacional sobre criptoativos. Não constitui recomendação de investimento. Rentabilidade passada não garante resultados futuros. Boost Research — Consultoria de Investimentos em Cripto.
+<div style="margin:32px 0;padding:16px 24px;border:1px dashed #e0e0e0;border-radius:16px;font-size:11px;color:#555;text-align:center;background:#fff">
+  <strong style="color:#32373c">Disclaimer:</strong> Conteúdo educacional sobre criptoativos. Não constitui recomendação de investimento. Rentabilidade passada não garante resultados futuros. Boost Research, Consultoria de Investimentos em Cripto.
 </div>
 
-<p class="footer">Briefing Criativos Estáticos v2.0 · 4 e-books · 19 copys · Revisado por 5 agentes · Boost Research · 13/mai/2026</p>
+<p style="text-align:center;color:#555;font-size:12px;margin-top:24px;padding-top:16px;border-top:1px solid #e0e0e0">Briefing Criativos Estáticos v3.0 · 4 e-books · 19 copys · 38 peças · Revisado por 5 agentes · Boost Research · 13/mai/2026</p>
 
 </body>
 </html>
