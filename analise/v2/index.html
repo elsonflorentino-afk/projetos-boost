@@ -1218,12 +1218,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       btnEl.disabled = true;
       btnEl.textContent = 'Enviando...';
 
+      /* Tag de lead morno: investidor disposto a destinar >= R$15k/ano */
+      var disposicaoVal = document.getElementById('f-disposicao').value;
+      var tagsLead = [];
+      if (disposicaoVal === '15k_30k' || disposicaoVal === 'acima_30k') {
+        tagsLead.push('lead-morno-investimento-15k');
+      }
+
       /* RD Station Conversions API */
       var payload = {
         event_type: 'CONVERSION',
         event_family: 'CDP',
         payload: {
           conversion_identifier: 'lp_mentoria_boost_v2',
+          tags: tagsLead.length > 0 ? tagsLead : undefined,
           name:         nome,
           email:        email,
           mobile_phone: wpp,
