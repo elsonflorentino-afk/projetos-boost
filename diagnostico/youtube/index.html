@@ -170,6 +170,9 @@ section{padding:80px 0;}
 .alloc-bar>div{min-width:4px;transition:width 0.3s;}
 .alloc-labels{display:flex;gap:8px;flex-wrap:wrap;}
 .alloc-labels span{font-size:11px;color:var(--text-muted);}
+.alloc-legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;padding:10px 14px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;}
+.alloc-legend span{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-secondary);}
+.alloc-legend .dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
 
 /* ===== BUTTONS ===== */
 .btn-primary{width:100%;padding:calc(0.667em + 2px) calc(1.333em + 2px);background:var(--text-secondary);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:0;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
@@ -376,6 +379,12 @@ section{padding:80px 0;}
               <div class="f-group">
                 <label class="f-label">Qual perfil mais se parece com sua carteira cripto?</label>
                 <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Selecione o mais pr&oacute;ximo. A barra mostra a distribui&ccedil;&atilde;o.</p>
+                <div class="alloc-legend">
+                  <span><span class="dot" style="background:#F7931A;"></span>Bitcoin</span>
+                  <span><span class="dot" style="background:#627EEA;"></span>Ethereum</span>
+                  <span><span class="dot" style="background:#8B5CF6;"></span>Altcoins</span>
+                  <span><span class="dot" style="background:#10B981;"></span>Stablecoins</span>
+                </div>
                 <div class="alloc-cards" id="composicao-grid">
 
                   <div class="alloc-card" data-value="quase_tudo_btc" onclick="selectAlloc(this)">
