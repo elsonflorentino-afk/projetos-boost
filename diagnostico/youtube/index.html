@@ -362,6 +362,19 @@ section{padding:80px 0;}
               </div>
 
               <div class="f-group">
+                <label class="f-label">Como est&aacute; a composi&ccedil;&atilde;o do seu portf&oacute;lio cripto?</label>
+                <div class="card-grid" id="composicao-grid" data-field="f-composicao" style="grid-template-columns:1fr;">
+                  <div class="card-option" data-value="quase_tudo_btc" style="text-align:left;">Quase tudo em Bitcoin <span style="color:var(--text-muted);font-size:11px;">(mais de 70%)</span></div>
+                  <div class="card-option" data-value="maioria_btc" style="text-align:left;">Maioria Bitcoin, um pouco de ETH e altcoins <span style="color:var(--text-muted);font-size:11px;">(50-70% BTC)</span></div>
+                  <div class="card-option" data-value="dividido" style="text-align:left;">Bem dividido entre BTC, ETH e altcoins</div>
+                  <div class="card-option" data-value="mais_altcoins" style="text-align:left;">Mais altcoins do que Bitcoin</div>
+                  <div class="card-option" data-value="maioria_stablecoins" style="text-align:left;">Maioria em stablecoins / dolarizado</div>
+                  <div class="card-option" data-value="nao_sei" style="text-align:left;">N&atilde;o sei dizer exatamente</div>
+                </div>
+                <input type="hidden" id="f-composicao" value="">
+              </div>
+
+              <div class="f-group">
                 <label class="f-label">Qual seu maior desafio hoje?</label>
                 <div class="card-grid" id="desafio-grid" data-field="f-desafio">
                   <div class="card-option" data-value="Não sei quando vender ou realizar lucro">N&atilde;o sei quando vender ou realizar lucro</div>
@@ -719,6 +732,16 @@ window.setToggle=function(btn,group){
 document.addEventListener('DOMContentLoaded',function(){
   fillUTMs();
 
+  /* Card Select (composição - single) */
+  document.querySelectorAll('#composicao-grid .card-option').forEach(function(card){
+    card.addEventListener('click',function(){
+      document.querySelectorAll('#composicao-grid .card-option').forEach(function(c){c.classList.remove('selected');});
+      card.classList.add('selected');
+      document.getElementById('f-composicao').value=card.getAttribute('data-value');
+      checkStep1();
+    });
+  });
+
   document.querySelectorAll('#desafio-grid .card-option').forEach(function(card){
     card.addEventListener('click',function(){
       document.querySelectorAll('#desafio-grid .card-option').forEach(function(c){c.classList.remove('selected');});
@@ -755,8 +778,9 @@ document.addEventListener('DOMContentLoaded',function(){
 function checkStep1(){
   var cripto=document.getElementById('f-cripto').value;
   var trad=document.getElementById('f-tradicional').value;
+  var composicao=document.getElementById('f-composicao').value;
   var desafio=document.getElementById('f-desafio').value;
-  var valid=cripto&&trad&&desafio;
+  var valid=cripto&&trad&&composicao&&desafio;
   if(cripto==='sim'&&!document.getElementById('f-patrimonio-cripto').value)valid=false;
   if(trad==='sim'&&!document.getElementById('f-patrimonio-tradicional').value)valid=false;
   document.getElementById('btn-step1').disabled=!valid;
@@ -840,6 +864,7 @@ document.addEventListener('DOMContentLoaded',function(){
         cf_qual_seu_patrimonio_investido_no_mercado_tradicional:document.getElementById('f-patrimonio-tradicional').value||'',
         cf_desafio_cripto:document.getElementById('f-desafio').value,
         cf_classes_ativos_portfolio:document.getElementById('f-classes-ativos').value,
+        cf_composicao_portfolio_cripto:document.getElementById('f-composicao').value,
         traffic_source:getCookie('boost_utm_source'),
         traffic_medium:getCookie('boost_utm_medium'),
         traffic_campaign:getCookie('boost_utm_campaign'),
