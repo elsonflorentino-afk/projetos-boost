@@ -10,13 +10,15 @@ Usar como referencia obrigatoria para todas as LPs e paginas do projeto.
 | --teal | #19c6b5 | Acento primario, CTAs, graficos, destaques |
 | --teal-light | #e6fffb | Background de labels, pills, badges |
 | --teal-dark | #0f766e | Texto sobre teal-light |
-| --text | #000000 | Headlines, texto principal |
-| --text-secondary | #32373c | Corpo de texto, botoes |
-| --text-muted | #6b7280 | Texto secundario, captions |
-| --bg | #ffffff | Background principal |
-| --bg-alt | #f5f5f5 | Background alternativo (secoes pares) |
-| --border | #e5e5e5 | Bordas de cards, divisores, inputs |
-| --divider | #D8D8D8 | Linhas divisorias finas |
+| --text | #FFFFFF | Headlines, texto principal |
+| --text-secondary | rgba(255,255,255,0.7) | Corpo de texto |
+| --text-muted | rgba(255,255,255,0.4) | Texto secundario, captions |
+| --bg | #0B0E13 | Background principal (dark) |
+| --bg-alt | #111620 | Background alternativo (secoes pares) |
+| --bg-dark | #080A0F | Background mais escuro |
+| --card-bg | rgba(255,255,255,0.04) | Background de cards |
+| --border | rgba(255,255,255,0.1) | Bordas de cards, divisores, inputs |
+| --divider | rgba(255,255,255,0.06) | Linhas divisorias finas |
 
 ## Tipografia
 
