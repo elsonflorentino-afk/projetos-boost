@@ -39,7 +39,7 @@ a{color:inherit;text-decoration:none;}
 /* Navbar */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-dim);transition:background 0.3s;}
 .navbar .container{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:960px;}
-.nav-logo{font-size:0.85rem;font-weight:700;color:var(--green);letter-spacing:0.5px;}
+.nav-logo img{height:28px;width:auto;}
 .nav-cta{background:var(--green);color:#000;font-weight:700;font-size:0.78rem;padding:8px 16px;border-radius:6px;cursor:pointer;border:none;transition:opacity 0.2s;}
 .nav-cta:hover{opacity:0.85;}
 
@@ -82,6 +82,8 @@ section{padding:64px 0;}
 
 /* Authority */
 .authority{text-align:center;}
+.authority-photo{width:120px;height:120px;border-radius:50%;overflow:hidden;margin:0 auto 20px;border:3px solid var(--green-dim);box-shadow:0 0 40px rgba(0,179,126,0.15);}
+.authority-photo img{width:100%;height:100%;object-fit:cover;}
 .authority-name{font-size:1.4rem;font-weight:800;margin-bottom:8px;}
 .authority-bio{font-size:0.9rem;color:var(--gray);line-height:1.7;max-width:540px;margin:0 auto 20px;}
 .cred-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
@@ -214,7 +216,7 @@ section{padding:64px 0;}
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="container">
-    <span class="nav-logo">BOOST RESEARCH</span>
+    <a href="https://boostresearch.com.br" class="nav-logo"><img src="assets/logo.png" alt="Boost Research" loading="eager"></a>
     <a href="#formulario" class="nav-cta" onclick="dataLayer.push({event:'cta_click',cta_id:'navbar'});">Quero minha an&aacute;lise &rarr;</a>
   </div>
 </nav>
@@ -289,6 +291,9 @@ section{padding:64px 0;}
 <section class="section--bg2">
   <div class="container authority">
     <div class="tag">Quem analisa sua carteira</div>
+    <div class="authority-photo">
+      <img src="assets/andre-franco.jpg" alt="André Franco" width="120" height="120" loading="lazy">
+    </div>
     <h2 class="authority-name">Andr&eacute; Franco</h2>
     <p class="authority-bio">Acompanha cripto desde 2016. Dois ciclos completos de alta e baixa, com o mesmo m&eacute;todo. A Boost Research n&atilde;o nasceu no bull market. Nasceu dentro do mercado e permanece aqui, independente de onde o pre&ccedil;o est&aacute;.</p>
     <div class="cred-pills">
@@ -461,36 +466,38 @@ section{padding:64px 0;}
 
     <!-- Post-Submit -->
     <div class="glass-card" id="post-submit" style="margin-top:24px;">
-      <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:6px;">Carteira recebida!</h2>
-      <p class="sub" style="margin-bottom:28px;">Seu Advisor entra em contato em at&eacute; 48 horas pelo WhatsApp.</p>
-
-      <p class="f-label" style="margin-bottom:4px;">Para agilizar sua an&aacute;lise, conte mais sobre seus ativos:</p>
-      <div class="card-grid" id="assets-grid" style="margin-bottom:16px;">
-        <div class="card-option multi" data-value="Bitcoin">Bitcoin</div>
-        <div class="card-option multi" data-value="Ethereum">Ethereum</div>
-        <div class="card-option multi" data-value="Altcoins">Altcoins</div>
-        <div class="card-option multi" data-value="Stablecoins">Stablecoins</div>
-        <div class="card-option multi" data-value="DeFi/Yield">DeFi/Yield</div>
-        <div class="card-option multi" data-value="Renda Fixa">Renda Fixa</div>
-        <div class="card-option multi" data-value="Ações/FIIs">A&ccedil;&otilde;es/FIIs</div>
-        <div class="card-option multi" data-value="Imóveis">Im&oacute;veis</div>
-      </div>
-      <input type="hidden" id="f-classes-ativos" value="">
-
-      <div class="f-group">
-        <textarea id="f-notas" rows="3" placeholder="Ex: tenho BTC desde 2020, nunca vendi, preocupado com IR..."></textarea>
+      <div style="text-align:center;margin-bottom:24px;">
+        <div style="width:56px;height:56px;background:rgba(0,179,126,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00B37E" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        </div>
+        <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:6px;">Dados recebidos!</h2>
+        <p style="font-size:0.9rem;color:var(--gray);line-height:1.6;">Seu Advisor entra em contato em at&eacute; 48 horas pelo WhatsApp para agendar sua an&aacute;lise ao vivo.</p>
       </div>
 
-      <button type="button" class="btn-primary" id="btn-enrichment" onclick="sendEnrichment()">Enviar detalhes adicionais</button>
+      <div style="background:rgba(0,179,126,0.06);border:1px solid rgba(0,179,126,0.15);border-radius:12px;padding:20px;margin-bottom:20px;">
+        <p style="font-size:0.85rem;font-weight:600;margin-bottom:12px;">O que acontece agora:</p>
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">
+          <span style="color:var(--green);font-weight:700;flex-shrink:0;">1.</span>
+          <span style="font-size:0.82rem;color:var(--gray);">Um Advisor analisa seu perfil e prepara recomenda&ccedil;&otilde;es espec&iacute;ficas</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;">
+          <span style="color:var(--green);font-weight:700;flex-shrink:0;">2.</span>
+          <span style="font-size:0.82rem;color:var(--gray);">Entra em contato pelo WhatsApp para agendar a conversa</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="color:var(--green);font-weight:700;flex-shrink:0;">3.</span>
+          <span style="font-size:0.82rem;color:var(--gray);">Na reuni&atilde;o (45 min), compara sua carteira com a do Andr&eacute; Franco</span>
+        </div>
+      </div>
 
-      <div class="divider-or">ou</div>
+      <p style="font-size:0.82rem;color:var(--gray);text-align:center;margin-bottom:16px;">Quer adiantar? Envie detalhes da sua carteira pelo WhatsApp:</p>
 
       <a href="#" class="btn-wa" id="btn-wa-post" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'post_submit'});">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Enviar prints da carteira pelo WhatsApp &rarr;
+        Conversar pelo WhatsApp &rarr;
       </a>
 
-      <p class="post-note">N&atilde;o se preocupe se n&atilde;o quiser detalhar agora. O Advisor pergunta na conversa.</p>
+      <p class="post-note">O Advisor pede os detalhes na conversa. Sem pressa.</p>
     </div>
   </div>
 </section>
@@ -538,7 +545,7 @@ section{padding:64px 0;}
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
-    <div style="font-size:0.75rem;color:var(--gray);font-weight:600;">BOOST RESEARCH</div>
+    <img src="assets/logo.png" alt="Boost Research" style="height:32px;opacity:0.5;margin-bottom:8px;" loading="lazy">
     <p class="disclaimer">
       Conte&uacute;do informativo. N&atilde;o constitui recomenda&ccedil;&atilde;o de investimento. As an&aacute;lises da Boost Research, consultoria de investimentos em criptoativos, t&ecirc;m car&aacute;ter educativo e informativo, em conformidade com as normas da CVM e ANBIMA, e n&atilde;o substituem a orienta&ccedil;&atilde;o de um profissional certificado para sua situa&ccedil;&atilde;o espec&iacute;fica. Rentabilidade passada n&atilde;o &eacute; garantia de rentabilidade futura. Investimentos em criptoativos envolvem riscos significativos, incluindo a possibilidade de perda total do capital investido. Boost Research &middot; 2026.
     </p>
@@ -739,32 +746,6 @@ document.addEventListener('DOMContentLoaded',function(){
     }).catch(function(err){console.error('RD error:',err);});
   });
 });
-
-/* Enrichment submit */
-window.sendEnrichment=function(){
-  var assets=document.getElementById('f-classes-ativos').value;
-  var notas=document.getElementById('f-notas').value.trim();
-  var email=document.getElementById('f-email').value.trim();
-  var btn=document.getElementById('btn-enrichment');
-  btn.disabled=true;btn.textContent='Enviado!';
-
-  dataLayer.push({event:'enrichment_submit'});
-
-  var payload={
-    event_type:'CONVERSION',
-    event_family:'CDP',
-    payload:{
-      conversion_identifier:'lp_youtube_ads_enrichment',
-      email:email,
-      cf_classes_ativos_portfolio:assets,
-      cf_notas_carteira:notas
-    }
-  };
-
-  fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea',{
-    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
-  }).catch(function(err){console.error('RD enrichment error:',err);});
-};
 
 /* Navbar scroll opacity */
 window.addEventListener('scroll',function(){
