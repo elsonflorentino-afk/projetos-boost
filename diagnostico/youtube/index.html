@@ -643,18 +643,18 @@ function fillUTMs(){['source','medium','campaign','content','term'].forEach(func
 
 /* ── Dynamic Headline by utm_content ── */
 var headlines={
-  tema_01:{h:'Seu portfólio cripto tem<br>estratégia de saída?',s:'Descubra em 2 minutos se você está protegido para o próximo ciclo.'},
-  tema_02:{h:'Sem tempo para acompanhar<br>o mercado cripto?',s:'Receba um diagnóstico rápido e saiba se sua carteira está bem posicionada.'},
-  tema_03:{h:'Cripto e Imposto de Renda:<br>você está em dia?',s:'Faça o diagnóstico gratuito do seu portfólio.'},
-  tema_04:{h:'Hold não é estratégia<br><em>— e seu portfólio sabe disso</em>',s:'Faça o diagnóstico e descubra onde estão os riscos ocultos.'},
-  tema_05:{h:'Sua cripto está segura<br>na corretora?',s:'Analise a composição do seu portfólio em 2 minutos.'},
-  tema_06:{h:'Perdeu dinheiro<br>com altcoins?',s:'Não está sozinho. Veja como seu portfólio está posicionado hoje.'},
-  tema_07:{h:'O que a IA não conta<br>sobre seus investimentos',s:'Um Advisor humano analisa o que nenhum algoritmo consegue.'},
-  tema_08:{h:'3 erros que destroem<br>portfólios cripto',s:'Descubra se você está cometendo algum deles.'},
-  tema_09:{h:'Desde 2016 analisando<br><em>portfólios cripto</em>',s:'Faça o diagnóstico gratuito com quem já viu 2 ciclos inteiros.'},
-  tema_10:{h:'93% dos brasileiros vão<br>depender do INSS',s:'Seu portfólio cripto pode mudar isso. Faça o diagnóstico.'},
-  tema_11:{h:'Consultoria independente,<br><em>sem conflito de interesse</em>',s:'Diagnóstico do seu portfólio em 2 minutos.'},
-  tema_12:{h:'Renda fixa digital:<br>seu portfólio já tem?',s:'Descubra o que está faltando na sua carteira.'}
+  tema_01:{h:'Você viu o Bitcoin subir 300%,<br>não vendeu, e viu cair 80%?',s:'Sem regras de saída, decisões viram emoção. Descubra se seu portfólio tem estratégia.'},
+  tema_02:{h:'Você trabalha 12h por dia<br>e não tem tempo pra cripto?',s:'Investidor profissional precisa de análise curada, não de tela de exchange aberta.'},
+  tema_03:{h:'Você declarou cripto<br>no IR este ano?',s:'Se não, a Receita já sabe. Faça o diagnóstico e entenda sua situação.'},
+  tema_04:{h:'Hold não é estratégia.<br><em>É fé.</em>',s:'Segurar indefinidamente sem regras é aposta, não plano. Veja onde estão os riscos.'},
+  tema_05:{h:'Se a sua corretora fechar<br>amanhã, o que acontece?',s:'Sua cripto na corretora não é sua. Analise sua custódia em 2 minutos.'},
+  tema_06:{h:'Comprou altcoin a 42,<br>vendeu a 19?',s:'Não está sozinho. A maioria das altcoins falha. Veja como seu portfólio está posicionado.'},
+  tema_07:{h:'O ChatGPT te dá resposta.<br><em>O André te dá contexto.</em>',s:'IA não conhece seu patrimônio, seu risco, seu horizonte. Um Advisor humano conhece.'},
+  tema_08:{h:'Três erros com cripto.<br>A maioria comete dois.',s:'Sem regras de saída, sem monitoramento, altcoins sem critério. Descubra seu score.'},
+  tema_09:{h:'Em 2016 quase ninguém<br>falava de Bitcoin a sério.',s:'O André estava lá. Dois ciclos completos depois, ele analisa a sua carteira.'},
+  tema_10:{h:'93% dos aposentados<br>dependem do INSS.',s:'Dado ANBIMA 2026. Seu portfólio cripto pode mudar isso. Faça o diagnóstico.'},
+  tema_11:{h:'Sem vínculo com banco.<br><em>Sem vínculo com corretora.</em>',s:'Consultoria independente elimina conflito de interesse nas recomendações.'},
+  tema_12:{h:'Renda fixa digital:<br>você já ouviu mas não entende?',s:'Stablecoins com rendimento não são cripto volátil. Descubra o que falta no seu portfólio.'}
 };
 var utmContent=getCookie('boost_utm_content')||params.get('utm_content')||'';
 if(utmContent && headlines[utmContent]){
