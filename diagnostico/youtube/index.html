@@ -49,11 +49,22 @@ body{font-family:var(--font);background:var(--bg);color:var(--white);line-height
 img{max-width:100%;height:auto;}
 a{color:inherit;text-decoration:none;}
 
+/* ── Noise texture overlay ── */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:9999;
+  opacity:0.35;
+}
+
 /* ── Container ── */
 .container{max-width:var(--container);margin:0 auto;padding:0 20px;}
 
 /* ── Navbar ── */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-dim);}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-dim);transition:background 0.3s ease;}
 .navbar .container{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:960px;}
 .navbar-logo{font-size:0.85rem;font-weight:700;color:var(--green);letter-spacing:0.5px;}
 .navbar-cta{background:var(--green);color:#000;font-weight:700;font-size:0.78rem;padding:8px 16px;border-radius:6px;cursor:pointer;transition:opacity 0.2s;}
@@ -69,33 +80,83 @@ a{color:inherit;text-decoration:none;}
 .hero-check{font-size:0.78rem;color:var(--gray);display:flex;align-items:center;gap:4px;}
 .hero-check span{color:var(--green);font-weight:700;}
 
-/* ── Quiz Card ── */
-.quiz-card{background:var(--bg3);border:1px solid var(--green-dim);border-radius:16px;padding:32px 24px;position:relative;overflow:hidden;}
-.quiz-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-dim));}
+/* ── Quiz Card (Glassmorphism) ── */
+#quiz{position:relative;padding-bottom:64px;}
+#quiz::before{
+  content:'';
+  position:absolute;
+  width:500px;height:500px;
+  background:radial-gradient(circle, rgba(0,179,126,0.06) 0%, transparent 70%);
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.quiz-card{
+  background:rgba(13,16,32,0.7);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(0,179,126,0.12);
+  border-radius:20px;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.03), 0 8px 40px rgba(0,0,0,0.5), 0 0 80px -20px rgba(0,179,126,0.15);
+  padding:32px 24px;
+  position:relative;
+  overflow:hidden;
+}
 
-/* ── Progress ── */
-.progress-bar{display:flex;gap:6px;margin-bottom:24px;}
-.progress-bar span{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,0.08);transition:background 0.3s;}
-.progress-bar span.active{background:var(--green);}
+/* ── Progress (continuous bar) ── */
+.progress-track{height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;margin-bottom:24px;}
+.progress-fill{height:100%;background:linear-gradient(90deg,#00B37E,#00D492);border-radius:2px;transition:width 0.6s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 0 12px rgba(0,179,126,0.4);}
 .step-label{font-size:0.75rem;color:var(--gray);margin-bottom:16px;font-weight:600;}
 
-/* ── Quiz Steps ── */
-.quiz-step{display:none;}
+/* ── Quiz Steps (slide transitions) ── */
+.quiz-step{display:none;opacity:0;transform:translateX(30px);transition:opacity 0.35s ease, transform 0.35s ease;}
 .quiz-step.active{display:block;}
+.quiz-step.entering{opacity:1;transform:translateX(0);}
 .quiz-question{font-size:0.95rem;font-weight:700;margin-bottom:16px;line-height:1.4;}
 .quiz-question small{font-size:0.78rem;color:var(--gray);font-weight:400;display:block;margin-top:4px;}
 
-/* ── Card Selectors ── */
+/* ── Card Selectors (hover lift + glow) ── */
 .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;}
 .card-grid.single-col{grid-template-columns:1fr;}
-.card-option{background:var(--bg2);border:1px solid var(--gray-dim);border-radius:10px;padding:14px 16px;cursor:pointer;font-size:0.85rem;color:var(--gray);transition:all 0.15s;text-align:left;font-family:var(--font);line-height:1.4;display:flex;align-items:center;gap:10px;min-height:48px;}
-.card-option:hover{border-color:var(--green);color:var(--white);}
-.card-option.selected{background:rgba(0,179,126,0.1);border-color:var(--green);color:var(--white);}
+.card-option{
+  background:rgba(10,10,20,0.6);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:10px;
+  padding:14px 16px;
+  cursor:pointer;
+  font-size:0.85rem;
+  color:var(--gray);
+  transition:all 0.2s cubic-bezier(0.4,0,0.2,1);
+  text-align:left;
+  font-family:var(--font);
+  line-height:1.4;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-height:48px;
+  will-change:transform;
+}
+.card-option:hover{
+  transform:translateY(-2px);
+  border-color:rgba(0,179,126,0.5);
+  box-shadow:0 4px 16px rgba(0,179,126,0.1);
+  color:var(--white);
+}
+.card-option.selected{
+  background:rgba(0,179,126,0.08);
+  border-color:#00B37E;
+  box-shadow:0 0 0 1px #00B37E, 0 4px 20px rgba(0,179,126,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+  color:var(--white);
+}
 .card-option.selected::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0;}
-.card-option .card-icon{font-size:1.2rem;flex-shrink:0;}
 
 /* ── Multi-select ── */
-.card-option.multi.checked{background:rgba(0,179,126,0.1);border-color:var(--green);color:var(--white);}
+.card-option.multi.checked{
+  background:rgba(0,179,126,0.08);
+  border-color:#00B37E;
+  box-shadow:0 0 0 1px #00B37E, 0 4px 20px rgba(0,179,126,0.15), inset 0 1px 0 rgba(255,255,255,0.05);
+  color:var(--white);
+}
 .card-option.multi .check-box{width:18px;height:18px;border:2px solid var(--gray-dim);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
 .card-option.multi.checked .check-box{background:var(--green);border-color:var(--green);}
 .card-option.multi.checked .check-box::after{content:'';width:5px;height:9px;border:solid #000;border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-2px;}
@@ -103,70 +164,104 @@ a{color:inherit;text-decoration:none;}
 /* ── Form Inputs ── */
 .f-group{margin-bottom:14px;}
 .f-group label{display:block;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.7);margin-bottom:5px;letter-spacing:0.3px;}
-.f-group input,.f-group select{width:100%;background:var(--bg2);border:1px solid var(--gray-dim);color:var(--white);padding:12px 14px;border-radius:8px;font-size:0.88rem;font-family:var(--font);outline:none;transition:border-color 0.15s;}
-.f-group input:focus,.f-group select:focus{border-color:var(--green);}
+.f-group input,.f-group select{width:100%;background:var(--bg2);border:1px solid var(--gray-dim);color:var(--white);padding:12px 14px;border-radius:8px;font-size:0.88rem;font-family:var(--font);outline:none;transition:border-color 0.15s, box-shadow 0.15s;}
+.f-group input:focus,.f-group select:focus{border-color:#00B37E;box-shadow:0 0 0 3px rgba(0,179,126,0.1);outline:none;}
 .f-group input::placeholder{color:rgba(160,160,192,0.5);}
 .f-select-wrap{position:relative;}
 .f-select-wrap select{appearance:none;-webkit-appearance:none;padding-right:36px;cursor:pointer;}
 .f-select-wrap::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);border:5px solid transparent;border-top:6px solid var(--gray);pointer-events:none;}
 
-/* ── Toggle Sim/Nao ── */
-.f-toggle{display:flex;gap:8px;margin-top:4px;}
-.toggle-btn{flex:1;padding:10px;border-radius:8px;border:1px solid var(--gray-dim);background:transparent;color:var(--gray);font-size:0.85rem;font-weight:600;cursor:pointer;font-family:var(--font);transition:all 0.15s;}
-.toggle-btn:hover{border-color:var(--green);color:var(--white);}
-.toggle-btn.active{background:var(--green);color:#000;border-color:var(--green);}
-.f-conditional{display:none;margin-top:12px;}
-
 /* ── Buttons ── */
-.btn-next{width:100%;padding:14px;background:var(--green);color:#000;font-weight:800;font-size:0.95rem;border:none;border-radius:8px;cursor:pointer;font-family:var(--font);transition:opacity 0.2s;margin-top:8px;}
+.btn-next{width:100%;padding:14px;background:var(--green);color:#000;font-weight:800;font-size:0.95rem;border:none;border-radius:8px;cursor:pointer;font-family:var(--font);transition:opacity 0.2s, box-shadow 0.2s, transform 0.1s;margin-top:8px;}
 .btn-next:hover{opacity:0.85;}
-.btn-next:disabled{opacity:0.5;cursor:not-allowed;}
+.btn-next:disabled{opacity:0.5;cursor:not-allowed;box-shadow:none;}
+.btn-next:not(:disabled){box-shadow:0 4px 20px rgba(0,179,126,0.25);}
+.btn-next:not(:disabled):active{transform:scale(0.98);}
 .btn-back{width:100%;padding:10px;background:transparent;color:var(--gray);font-weight:600;font-size:0.82rem;border:none;cursor:pointer;font-family:var(--font);margin-top:6px;}
 .btn-back:hover{color:var(--white);}
-.btn-submit{width:100%;padding:16px;background:var(--green);color:#000;font-weight:800;font-size:1rem;border:none;border-radius:8px;cursor:pointer;font-family:var(--font);transition:opacity 0.2s;margin-top:8px;letter-spacing:0.3px;}
+.btn-submit{width:100%;padding:16px;background:var(--green);color:#000;font-weight:800;font-size:1rem;border:none;border-radius:8px;cursor:pointer;font-family:var(--font);transition:opacity 0.2s, box-shadow 0.2s, transform 0.1s;margin-top:8px;letter-spacing:0.3px;}
 .btn-submit:hover{opacity:0.85;}
-.btn-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.btn-submit:disabled{opacity:0.5;cursor:not-allowed;box-shadow:none;}
+.btn-submit:not(:disabled){box-shadow:0 4px 20px rgba(0,179,126,0.25);}
+.btn-submit:not(:disabled):active{transform:scale(0.98);}
 
 /* ── Error ── */
 .form-error{display:none;background:rgba(255,77,79,0.1);border:1px solid var(--red);color:var(--red);padding:10px 14px;border-radius:8px;font-size:0.82rem;margin-bottom:12px;}
 
-/* ── Trust Signals ── */
+/* ── Trust Signals (SVG icons) ── */
 .trust{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:14px;font-size:0.72rem;color:var(--gray);}
 .trust span{display:flex;align-items:center;gap:4px;}
+.trust svg{opacity:0.7;}
 
-/* ── Consent ── */
+/* ── Trust Inline (patrimony steps) ── */
+.trust-inline{text-align:center;font-size:0.7rem;color:rgba(160,160,192,0.5);margin-top:8px;}
+
+/* ── Consent (custom checkbox) ── */
 .consent{margin-top:14px;display:flex;align-items:flex-start;gap:8px;font-size:0.72rem;color:var(--gray);line-height:1.5;}
-.consent input[type="checkbox"]{margin-top:2px;accent-color:var(--green);flex-shrink:0;}
+.consent input[type="checkbox"]{
+  appearance:none;-webkit-appearance:none;
+  width:18px;height:18px;
+  border:2px solid rgba(255,255,255,0.15);
+  border-radius:4px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+  position:relative;
+  flex-shrink:0;
+  margin-top:2px;
+}
+.consent input[type="checkbox"]:checked{background:#00B37E;border-color:#00B37E;}
+.consent input[type="checkbox"]:checked::after{
+  content:'';
+  position:absolute;
+  left:4px;top:1px;
+  width:5px;height:9px;
+  border:solid #000;
+  border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
 
 /* ── RESULTADO ── */
 .result-screen{display:none;}
 .result-screen.active{display:block;}
 
-/* Gauge */
-.gauge-wrap{text-align:center;margin-bottom:24px;padding:24px 0;}
-.gauge-score{font-size:4rem;font-weight:800;line-height:1;margin-bottom:4px;}
-.gauge-score.red{color:var(--red);}
-.gauge-score.yellow{color:var(--yellow);}
-.gauge-score.green{color:var(--green);}
-.gauge-label{font-size:1.1rem;font-weight:700;margin-bottom:4px;}
-.gauge-sublabel{font-size:0.82rem;color:var(--gray);}
-.gauge-bar{width:100%;height:8px;background:var(--bg2);border-radius:4px;overflow:hidden;margin:16px 0;}
-.gauge-fill{height:100%;border-radius:4px;transition:width 1.5s ease-out;}
-.gauge-fill.red{background:linear-gradient(90deg,var(--red),#FF7875);}
-.gauge-fill.yellow{background:linear-gradient(90deg,#FF8C00,var(--yellow));}
-.gauge-fill.green{background:linear-gradient(90deg,var(--green-dim),var(--green));}
+/* Gauge SVG */
+.gauge-wrap{text-align:center;padding:20px 0;}
+.gauge-svg{width:240px;max-width:100%;}
+.gauge-label{font-size:1.1rem;font-weight:700;margin-top:8px;}
+.gauge-sublabel{font-size:0.82rem;color:var(--gray);margin-top:4px;}
+
+/* Staggered result reveal */
+.result-screen .insight{opacity:0;transform:translateY(12px);transition:opacity 0.4s ease, transform 0.4s ease;}
+.result-screen.revealed .insight:nth-child(1){transition-delay:0.8s;}
+.result-screen.revealed .insight:nth-child(2){transition-delay:1.0s;}
+.result-screen.revealed .insight:nth-child(3){transition-delay:1.2s;}
+.result-screen.revealed .insight{opacity:1;transform:translateY(0);}
+.result-screen .result-cta{opacity:0;transform:translateY(8px);transition:opacity 0.4s ease 1.6s, transform 0.4s ease 1.6s;}
+.result-screen.revealed .result-cta{opacity:1;transform:translateY(0);}
+.result-screen .result-sub{opacity:0;transition:opacity 0.4s ease 1.8s;}
+.result-screen.revealed .result-sub{opacity:1;}
+
+/* CTA pulse on result */
+@keyframes ctaPulse{
+  0%,100%{box-shadow:0 4px 20px rgba(0,179,126,0.25);}
+  50%{box-shadow:0 4px 30px rgba(0,179,126,0.45);}
+}
+.result-screen.revealed .result-cta{animation:ctaPulse 3s ease-in-out infinite;animation-delay:2.5s;}
 
 /* Insights */
 .insight-list{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
 .insight{background:var(--bg2);border:1px solid var(--gray-dim);border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:14px 16px;font-size:0.88rem;color:#d0d0e8;line-height:1.6;}
 .insight strong{color:var(--white);}
+.insight[data-type="risk"]{border-left-color:#FF4D4F;}
+.insight[data-type="caution"]{border-left-color:#FFB800;}
+.insight[data-type="strength"]{border-left-color:#00B37E;}
 
 /* CTA resultado */
 .result-cta{display:block;width:100%;padding:16px;background:var(--green);color:#000;font-weight:800;font-size:1rem;border:none;border-radius:8px;text-align:center;cursor:pointer;font-family:var(--font);transition:opacity 0.2s;text-decoration:none;letter-spacing:0.3px;}
 .result-cta:hover{opacity:0.85;}
 .result-sub{text-align:center;font-size:0.78rem;color:var(--gray);margin-top:10px;line-height:1.5;}
 
-/* ── Seções de conteúdo ── */
+/* ── Secoes de conteudo ── */
 .section{padding:64px 0;}
 .section--bg2{background:var(--bg2);}
 .section--bg3{background:var(--bg3);}
@@ -212,6 +307,7 @@ a{color:inherit;text-decoration:none;}
   .brand-stat{gap:20px;}
   .quiz-card{padding:24px 16px;}
   .hero{padding:72px 0 32px;}
+  .btn-next,.btn-submit{position:sticky;bottom:0;z-index:10;margin-top:12px;}
 }
 </style>
 </head>
@@ -224,25 +320,25 @@ a{color:inherit;text-decoration:none;}
 <nav class="navbar">
   <div class="container">
     <div class="navbar-logo">BOOST RESEARCH</div>
-    <a href="#quiz" class="navbar-cta" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'});dataLayer.push({event:'cta_click',cta_id:'navbar_cta'});return false;">Fazer Diagnóstico →</a>
+    <a href="#quiz" class="navbar-cta" onclick="document.getElementById('quiz').scrollIntoView({behavior:'smooth'});dataLayer.push({event:'cta_click',cta_id:'navbar_cta'});return false;">Fazer Diagn&oacute;stico &rarr;</a>
   </div>
 </nav>
 
 <!-- ════ HERO ════ -->
 <section class="hero">
   <div class="container">
-    <div class="tag">Consultoria de Investimentos em Cripto · desde 2016</div>
+    <div class="tag">Consultoria de Investimentos em Cripto &middot; desde 2016</div>
 
     <h1 class="h1" id="hero-headline">
-      Diagnóstico gratuito do<br>seu portfólio cripto
+      Diagn&oacute;stico gratuito do<br>seu portf&oacute;lio cripto
     </h1>
     <p class="sub" id="hero-sub">
-      Descubra seu score em 2 minutos. Sem compromisso, sem dados bancários.
+      Descubra seu score em 2 minutos. Sem compromisso, sem dados banc&aacute;rios.
     </p>
 
     <div class="hero-checks">
       <div class="hero-check"><span>&#10003;</span> 100% gratuito</div>
-      <div class="hero-check"><span>&#10003;</span> Resultado instantâneo</div>
+      <div class="hero-check"><span>&#10003;</span> Resultado instant&acirc;neo</div>
       <div class="hero-check"><span>&#10003;</span> Sem compromisso</div>
       <div class="hero-check"><span>&#10003;</span> 2 minutos</div>
     </div>
@@ -250,43 +346,35 @@ a{color:inherit;text-decoration:none;}
 </section>
 
 <!-- ════ QUIZ ════ -->
-<section id="quiz" style="padding-bottom:64px;">
+<section id="quiz">
   <div class="container">
     <div class="quiz-card">
 
-      <div class="progress-bar" id="progress">
-        <span class="active"></span><span></span><span></span><span></span><span></span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:12.5%"></div>
       </div>
 
       <div class="form-error" id="quiz-error"></div>
 
       <!-- ═══ STEP 1: Tempo de mercado ═══ -->
-      <div class="quiz-step active" id="step-1" data-step="1">
-        <div class="step-label">Passo 1 de 5</div>
-        <div class="quiz-question">Há quanto tempo você investe em criptoativos?</div>
+      <div class="quiz-step active entering" id="step-1" data-step="1">
+        <div class="step-label">1 / 8</div>
+        <div class="quiz-question">H&aacute; quanto tempo voc&ecirc; investe em criptoativos?</div>
         <div class="card-grid" data-field="f-tempo-investindo">
-          <button type="button" class="card-option" data-value="menos_1a">
-            <span class="card-icon">🌱</span> Menos de 1 ano
-          </button>
-          <button type="button" class="card-option" data-value="1a_3a">
-            <span class="card-icon">📈</span> 1 a 3 anos
-          </button>
-          <button type="button" class="card-option" data-value="3a_5a">
-            <span class="card-icon">💎</span> 3 a 5 anos
-          </button>
-          <button type="button" class="card-option" data-value="mais_5a">
-            <span class="card-icon">🏛️</span> Mais de 5 anos
-          </button>
+          <button type="button" class="card-option" data-value="menos_1a">Menos de 1 ano</button>
+          <button type="button" class="card-option" data-value="1a_3a">1 a 3 anos</button>
+          <button type="button" class="card-option" data-value="3a_5a">3 a 5 anos</button>
+          <button type="button" class="card-option" data-value="mais_5a">Mais de 5 anos</button>
         </div>
         <input type="hidden" id="f-tempo-investindo">
-        <button type="button" class="btn-next" onclick="goStep(2)" disabled id="btn-step1">Continuar →</button>
+        <button type="button" class="btn-next" onclick="goStep(2)" disabled id="btn-step1">Continuar &rarr;</button>
       </div>
 
       <!-- ═══ STEP 2: Composição da carteira ═══ -->
       <div class="quiz-step" id="step-2" data-step="2">
-        <div class="step-label">Passo 2 de 5</div>
+        <div class="step-label">2 / 8</div>
         <div class="quiz-question">
-          Onde está seu patrimônio hoje?
+          Onde est&aacute; seu patrim&ocirc;nio hoje?
           <small>Selecione todas as classes que possui.</small>
         </div>
         <div class="card-grid" id="assets-grid" data-field="f-classes-ativos">
@@ -296,13 +384,19 @@ a{color:inherit;text-decoration:none;}
           <button type="button" class="card-option multi" data-value="stablecoins"><span class="check-box"></span> Stablecoins</button>
           <button type="button" class="card-option multi" data-value="defi"><span class="check-box"></span> DeFi / Yield</button>
           <button type="button" class="card-option multi" data-value="renda_fixa"><span class="check-box"></span> Renda Fixa / CDI</button>
-          <button type="button" class="card-option multi" data-value="acoes_fiis"><span class="check-box"></span> Ações / FIIs</button>
-          <button type="button" class="card-option multi" data-value="imoveis"><span class="check-box"></span> Imóveis</button>
-          <button type="button" class="card-option multi" data-value="poupanca"><span class="check-box"></span> Poupança</button>
+          <button type="button" class="card-option multi" data-value="acoes_fiis"><span class="check-box"></span> A&ccedil;&otilde;es / FIIs</button>
+          <button type="button" class="card-option multi" data-value="imoveis"><span class="check-box"></span> Im&oacute;veis</button>
+          <button type="button" class="card-option multi" data-value="poupanca"><span class="check-box"></span> Poupan&ccedil;a</button>
         </div>
         <input type="hidden" id="f-classes-ativos">
+        <button type="button" class="btn-next" onclick="goStep(3)" disabled id="btn-step2">Continuar &rarr;</button>
+        <button type="button" class="btn-back" onclick="goStep(1)">&larr; Voltar</button>
+      </div>
 
-        <div class="quiz-question" style="margin-top:20px;">Qual o peso aproximado de cripto no seu patrimônio total?</div>
+      <!-- ═══ STEP 3: Peso cripto ═══ -->
+      <div class="quiz-step" id="step-3" data-step="3">
+        <div class="step-label">3 / 8</div>
+        <div class="quiz-question">Qual o peso aproximado de cripto no seu patrim&ocirc;nio total?</div>
         <div class="card-grid" data-field="f-peso-cripto">
           <button type="button" class="card-option" data-value="menos_10">Menos de 10%</button>
           <button type="button" class="card-option" data-value="10_30">10% a 30%</button>
@@ -311,80 +405,80 @@ a{color:inherit;text-decoration:none;}
           <button type="button" class="card-option" data-value="mais_80">Mais de 80%</button>
         </div>
         <input type="hidden" id="f-peso-cripto">
-
-        <button type="button" class="btn-next" onclick="goStep(3)" disabled id="btn-step2">Continuar →</button>
-        <button type="button" class="btn-back" onclick="goStep(1)">← Voltar</button>
+        <button type="button" class="btn-next" onclick="goStep(4)" disabled id="btn-step3">Continuar &rarr;</button>
+        <button type="button" class="btn-back" onclick="goStep(2)">&larr; Voltar</button>
       </div>
 
-      <!-- ═══ STEP 3: Patrimônio + Dor ═══ -->
-      <div class="quiz-step" id="step-3" data-step="3">
-        <div class="step-label">Passo 3 de 5</div>
-
-        <div class="quiz-question">Quanto aproximadamente você tem investido em criptoativos?</div>
+      <!-- ═══ STEP 4: Patrimônio cripto ═══ -->
+      <div class="quiz-step" id="step-4" data-step="4">
+        <div class="step-label">4 / 8</div>
+        <div class="quiz-question">Quanto aproximadamente voc&ecirc; tem investido em criptoativos?</div>
         <div class="card-grid single-col" data-field="f-patrimonio-cripto">
-          <button type="button" class="card-option" data-value="Até R$ 10 mil">Até R$ 10 mil</button>
+          <button type="button" class="card-option" data-value="Até R$ 10 mil">At&eacute; R$ 10 mil</button>
           <button type="button" class="card-option" data-value="Entre R$ 10 mil e R$ 50 mil">R$ 10 mil a R$ 50 mil</button>
           <button type="button" class="card-option" data-value="Entre R$ 50 mil a R$ 200 mil">R$ 50 mil a R$ 200 mil</button>
           <button type="button" class="card-option" data-value="Entre R$ 200 mil e R$500 mil">R$ 200 mil a R$ 500 mil</button>
           <button type="button" class="card-option" data-value="Acima de R$500 mil">Acima de R$ 500 mil</button>
         </div>
         <input type="hidden" id="f-patrimonio-cripto">
+        <div class="trust-inline">Seus dados s&atilde;o protegidos e nunca compartilhados.</div>
+        <button type="button" class="btn-next" onclick="goStep(5)" disabled id="btn-step4">Continuar &rarr;</button>
+        <button type="button" class="btn-back" onclick="goStep(3)">&larr; Voltar</button>
+      </div>
 
-        <div class="quiz-question" style="margin-top:20px;">E no mercado tradicional (renda fixa, ações, FIIs)?</div>
+      <!-- ═══ STEP 5: Patrimônio tradicional ═══ -->
+      <div class="quiz-step" id="step-5" data-step="5">
+        <div class="step-label">5 / 8</div>
+        <div class="quiz-question">E no mercado tradicional (renda fixa, a&ccedil;&otilde;es, FIIs)?</div>
         <div class="card-grid single-col" data-field="f-patrimonio-tradicional">
-          <button type="button" class="card-option" data-value="nao_invisto">Não invisto</button>
-          <button type="button" class="card-option" data-value="Até R$ 10 mil">Até R$ 10 mil</button>
+          <button type="button" class="card-option" data-value="nao_invisto">N&atilde;o invisto</button>
+          <button type="button" class="card-option" data-value="Até R$ 10 mil">At&eacute; R$ 10 mil</button>
           <button type="button" class="card-option" data-value="Entre R$ 10 mil e R$ 50 mil">R$ 10 mil a R$ 50 mil</button>
           <button type="button" class="card-option" data-value="Entre R$ 50 mil a R$ 200 mil">R$ 50 mil a R$ 200 mil</button>
           <button type="button" class="card-option" data-value="Entre R$ 200 mil e R$500 mil">R$ 200 mil a R$ 500 mil</button>
           <button type="button" class="card-option" data-value="Acima de R$500 mil">Acima de R$ 500 mil</button>
         </div>
         <input type="hidden" id="f-patrimonio-tradicional">
-
-        <div class="quiz-question" style="margin-top:20px;">Qual seu maior desafio hoje com investimentos em cripto?</div>
-        <div class="card-grid single-col" data-field="f-desafio">
-          <button type="button" class="card-option" data-value="nao_sei_vender">Não sei quando vender ou realizar lucro</button>
-          <button type="button" class="card-option" data-value="sem_tempo">Sem tempo para acompanhar o mercado</button>
-          <button type="button" class="card-option" data-value="receio_decisoes">Tenho receio de tomar decisões erradas</button>
-          <button type="button" class="card-option" data-value="diversificar">Quero diversificar mas não sei como</button>
-          <button type="button" class="card-option" data-value="preso_ciclo">Sinto que estou preso no ciclo</button>
-          <button type="button" class="card-option" data-value="declarar_ir">Não sei como declarar cripto no IR</button>
-        </div>
-        <input type="hidden" id="f-desafio">
-
-        <button type="button" class="btn-next" onclick="goStep(4)" disabled id="btn-step3">Continuar →</button>
-        <button type="button" class="btn-back" onclick="goStep(2)">← Voltar</button>
+        <div class="trust-inline">Seus dados s&atilde;o protegidos e nunca compartilhados.</div>
+        <button type="button" class="btn-next" onclick="goStep(6)" disabled id="btn-step5">Continuar &rarr;</button>
+        <button type="button" class="btn-back" onclick="goStep(4)">&larr; Voltar</button>
       </div>
 
-      <!-- ═══ STEP 4: Contexto (lead scoring) ═══ -->
-      <div class="quiz-step" id="step-4" data-step="4">
-        <div class="step-label">Passo 4 de 5</div>
+      <!-- ═══ STEP 6: Desafio ═══ -->
+      <div class="quiz-step" id="step-6" data-step="6">
+        <div class="step-label">6 / 8</div>
+        <div class="quiz-question">Qual seu maior desafio hoje com investimentos em cripto?</div>
+        <div class="card-grid single-col" data-field="f-desafio">
+          <button type="button" class="card-option" data-value="nao_sei_vender">N&atilde;o sei quando vender ou realizar lucro</button>
+          <button type="button" class="card-option" data-value="sem_tempo">Sem tempo para acompanhar o mercado</button>
+          <button type="button" class="card-option" data-value="receio_decisoes">Tenho receio de tomar decis&otilde;es erradas</button>
+          <button type="button" class="card-option" data-value="diversificar">Quero diversificar mas n&atilde;o sei como</button>
+          <button type="button" class="card-option" data-value="preso_ciclo">Sinto que estou preso no ciclo</button>
+          <button type="button" class="card-option" data-value="declarar_ir">N&atilde;o sei como declarar cripto no IR</button>
+        </div>
+        <input type="hidden" id="f-desafio">
+        <button type="button" class="btn-next" onclick="goStep(7)" disabled id="btn-step6">Continuar &rarr;</button>
+        <button type="button" class="btn-back" onclick="goStep(5)">&larr; Voltar</button>
+      </div>
 
-        <div class="quiz-question">Há quanto tempo você conhece o trabalho do André Franco?</div>
+      <!-- ═══ STEP 7: Conhece André ═══ -->
+      <div class="quiz-step" id="step-7" data-step="7">
+        <div class="step-label">7 / 8</div>
+        <div class="quiz-question">H&aacute; quanto tempo voc&ecirc; conhece o trabalho do Andr&eacute; Franco?</div>
         <div class="card-grid" data-field="f-tempo-andre">
-          <button type="button" class="card-option" data-value="nao_conheco">Ainda não conheço</button>
+          <button type="button" class="card-option" data-value="nao_conheco">Ainda n&atilde;o conhe&ccedil;o</button>
           <button type="button" class="card-option" data-value="menos_6m">Menos de 6 meses</button>
           <button type="button" class="card-option" data-value="6m_1a">6 meses a 1 ano</button>
           <button type="button" class="card-option" data-value="mais_1a">Mais de 1 ano</button>
         </div>
         <input type="hidden" id="f-tempo-andre">
-
-        <div class="quiz-question" style="margin-top:20px;">Quanto você consideraria destinar por ano a um Advisor dedicado?</div>
-        <div class="card-grid" data-field="f-disposicao">
-          <button type="button" class="card-option" data-value="ate_5k">Até R$ 5 mil</button>
-          <button type="button" class="card-option" data-value="5k_15k">R$ 5 mil a R$ 15 mil</button>
-          <button type="button" class="card-option" data-value="15k_30k">R$ 15 mil a R$ 30 mil</button>
-          <button type="button" class="card-option" data-value="acima_30k">Acima de R$ 30 mil</button>
-        </div>
-        <input type="hidden" id="f-disposicao">
-
-        <button type="button" class="btn-next" onclick="goStep(5)" disabled id="btn-step4">Continuar →</button>
-        <button type="button" class="btn-back" onclick="goStep(3)">← Voltar</button>
+        <button type="button" class="btn-next" onclick="goStep(8)" disabled id="btn-step7">Continuar &rarr;</button>
+        <button type="button" class="btn-back" onclick="goStep(6)">&larr; Voltar</button>
       </div>
 
-      <!-- ═══ STEP 5: Contato ═══ -->
-      <div class="quiz-step" id="step-5" data-step="5">
-        <div class="step-label">Passo 5 de 5 — Seus dados para receber o diagnóstico</div>
+      <!-- ═══ STEP 8: Contato ═══ -->
+      <div class="quiz-step" id="step-8" data-step="8">
+        <div class="step-label">8 / 8 &mdash; Receba a an&aacute;lise personalizada</div>
 
         <form id="form-diagnostico" novalidate>
           <div class="f-group">
@@ -409,16 +503,16 @@ a{color:inherit;text-decoration:none;}
 
           <div class="consent">
             <input type="checkbox" id="f-consent" required>
-            <label for="f-consent">Concordo em receber a análise por e-mail e WhatsApp. Meus dados serão usados exclusivamente para personalizar o diagnóstico. <a href="https://boostresearch.com.br/politica-de-privacidade" target="_blank" style="color:var(--green);text-decoration:underline;">Política de Privacidade</a>.</label>
+            <label for="f-consent">Concordo em receber a an&aacute;lise por e-mail e WhatsApp. Meus dados ser&atilde;o usados exclusivamente para personalizar o diagn&oacute;stico. <a href="https://boostresearch.com.br/politica-de-privacidade" target="_blank" style="color:var(--green);text-decoration:underline;">Pol&iacute;tica de Privacidade</a>.</label>
           </div>
 
-          <button type="submit" class="btn-submit" id="btn-enviar">Ver meu diagnóstico →</button>
-          <button type="button" class="btn-back" onclick="goStep(4)">← Voltar</button>
+          <button type="submit" class="btn-submit" id="btn-enviar">Ver meu diagn&oacute;stico &rarr;</button>
+          <button type="button" class="btn-back" onclick="goStep(7)">&larr; Voltar</button>
 
           <div class="trust">
-            <span>🔒 Dados criptografados</span>
-            <span>📋 LGPD</span>
-            <span>🏛️ Consultoria autorizada CVM</span>
+            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Dados criptografados</span>
+            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> LGPD</span>
+            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/><path d="M9 21v-4h6v4"/></svg> CVM</span>
           </div>
         </form>
       </div>
@@ -426,20 +520,22 @@ a{color:inherit;text-decoration:none;}
       <!-- ═══ RESULTADO ═══ -->
       <div class="result-screen" id="result-screen">
         <div class="gauge-wrap">
-          <div class="gauge-score" id="score-number">0</div>
+          <svg viewBox="0 0 200 120" class="gauge-svg">
+            <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10" stroke-linecap="round"/>
+            <path d="M20,100 A80,80 0 0,1 180,100" fill="none" stroke="url(#gauge-grad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" id="gauge-arc" style="transition:stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1);"/>
+            <defs><linearGradient id="gauge-grad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FF4D4F"/><stop offset="50%" stop-color="#FFB800"/><stop offset="100%" stop-color="#00B37E"/></linearGradient></defs>
+            <text x="100" y="82" text-anchor="middle" font-size="40" font-weight="800" fill="#fff" id="gauge-number" font-family="Inter,sans-serif">0</text>
+            <text x="100" y="100" text-anchor="middle" font-size="11" fill="#A0A0C0" id="gauge-sublabel" font-family="Inter,sans-serif">de 100</text>
+          </svg>
           <div class="gauge-label" id="score-label">Calculando...</div>
-          <div class="gauge-sublabel" id="score-sublabel"></div>
-          <div class="gauge-bar">
-            <div class="gauge-fill" id="score-fill" style="width:0%"></div>
-          </div>
         </div>
 
         <div class="insight-list" id="insights"></div>
 
         <a href="#" class="result-cta" id="result-cta" target="_blank">
-          Agendar análise gratuita com Advisor →
+          Agendar an&aacute;lise gratuita com Advisor &rarr;
         </a>
-        <p class="result-sub">Um Advisor sênior entra em contato pelo WhatsApp em até 48h para analisar sua carteira ao vivo.</p>
+        <p class="result-sub">Um Advisor s&ecirc;nior entra em contato pelo WhatsApp em at&eacute; 48h para analisar sua carteira ao vivo.</p>
       </div>
 
     </div>
@@ -451,29 +547,29 @@ a{color:inherit;text-decoration:none;}
 <section class="section section--bg2">
   <div class="container">
     <div class="tag">Processo transparente</div>
-    <h2>O que acontece depois<br>do diagnóstico.</h2>
-    <p class="sub">Sem surpresa, sem pressão, sem script de vendas.</p>
+    <h2>O que acontece depois<br>do diagn&oacute;stico.</h2>
+    <p class="sub">Sem surpresa, sem press&atilde;o, sem script de vendas.</p>
 
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-num">1</div>
-        <div class="step-title">Você faz o diagnóstico</div>
-        <div class="step-body">Responde 5 perguntas sobre sua carteira e recebe o score instantâneo. Sem dados bancários.</div>
+        <div class="step-title">Voc&ecirc; faz o diagn&oacute;stico</div>
+        <div class="step-body">Responde 5 perguntas sobre sua carteira e recebe o score instant&acirc;neo. Sem dados banc&aacute;rios.</div>
       </div>
       <div class="step-card">
         <div class="step-num">2</div>
         <div class="step-title">Um Advisor analisa seu perfil</div>
-        <div class="step-body">Não é triagem comercial. O Advisor lê sua composição e prepara perguntas específicas para seu caso.</div>
+        <div class="step-body">N&atilde;o &eacute; triagem comercial. O Advisor l&ecirc; sua composi&ccedil;&atilde;o e prepara perguntas espec&iacute;ficas para seu caso.</div>
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
-        <div class="step-title">Conversa diagnóstica (45 min)</div>
-        <div class="step-body">Composição, critério de entrada, risco, horizonte, tributação, custódia. Sem script de vendas.</div>
+        <div class="step-title">Conversa diagn&oacute;stica (45 min)</div>
+        <div class="step-body">Composi&ccedil;&atilde;o, crit&eacute;rio de entrada, risco, horizonte, tributa&ccedil;&atilde;o, cust&oacute;dia. Sem script de vendas.</div>
       </div>
       <div class="step-card">
         <div class="step-num">4</div>
-        <div class="step-title">Diagnóstico ao vivo</div>
-        <div class="step-body">O Advisor compara sua carteira com a do André. O que está bem, o que expõe risco, onde há oportunidade.</div>
+        <div class="step-title">Diagn&oacute;stico ao vivo</div>
+        <div class="step-body">O Advisor compara sua carteira com a do Andr&eacute;. O que est&aacute; bem, o que exp&otilde;e risco, onde h&aacute; oportunidade.</div>
       </div>
     </div>
   </div>
@@ -483,19 +579,19 @@ a{color:inherit;text-decoration:none;}
 <section class="section">
   <div class="container">
     <div class="tag">Modelo sem conflito de interesse</div>
-    <h2>Honorário fixo.<br><em>Porque alinhamento de interesses<br>não é detalhe.</em></h2>
-    <p class="sub">A maioria dos advisors de cripto ganha comissão de exchanges ou protocolos. A Boost Research cobra honorário fixo pelo serviço.</p>
+    <h2>Honor&aacute;rio fixo.<br><em>Porque alinhamento de interesses<br>n&atilde;o &eacute; detalhe.</em></h2>
+    <p class="sub">A maioria dos advisors de cripto ganha comiss&atilde;o de exchanges ou protocolos. A Boost Research cobra honor&aacute;rio fixo pelo servi&ccedil;o.</p>
 
     <div class="dif-grid">
       <div class="dif-card">
         <div class="dif-icon">&#9878;&#65039;</div>
-        <div class="dif-title">Honorário Fixo</div>
-        <div class="dif-body">Não importa se você compra, vende ou não faz nada. O nosso honorário não muda. O único critério para a recomendação é o que acreditamos ser <strong>correto para a sua carteira</strong>.</div>
+        <div class="dif-title">Honor&aacute;rio Fixo</div>
+        <div class="dif-body">N&atilde;o importa se voc&ecirc; compra, vende ou n&atilde;o faz nada. O nosso honor&aacute;rio n&atilde;o muda. O &uacute;nico crit&eacute;rio para a recomenda&ccedil;&atilde;o &eacute; o que acreditamos ser <strong>correto para a sua carteira</strong>.</div>
       </div>
       <div class="dif-card">
         <div class="dif-icon">&#127963;&#65039;</div>
-        <div class="dif-title">Consultoria, não Advisor Individual</div>
-        <div class="dif-body">A Boost Research tem <strong>processo</strong>. Especialização distribuída. Método de validação que não depende de um único analista. Você está contratando um processo.</div>
+        <div class="dif-title">Consultoria, n&atilde;o Advisor Individual</div>
+        <div class="dif-body">A Boost Research tem <strong>processo</strong>. Especializa&ccedil;&atilde;o distribu&iacute;da. M&eacute;todo de valida&ccedil;&atilde;o que n&atilde;o depende de um &uacute;nico analista. Voc&ecirc; est&aacute; contratando um processo.</div>
       </div>
     </div>
   </div>
@@ -505,15 +601,15 @@ a{color:inherit;text-decoration:none;}
 <section class="brand-section">
   <div class="container">
     <div style="width:3px;height:40px;background:var(--green);margin:0 auto 20px;border-radius:2px;"></div>
-    <h2 style="margin-bottom:12px;">A consultoria de investimentos em cripto<br>com a maior <em style="font-style:normal;color:var(--green);">experiência de mercado</em></h2>
+    <h2 style="margin-bottom:12px;">A consultoria de investimentos em cripto<br>com a maior <em style="font-style:normal;color:var(--green);">experi&ecirc;ncia de mercado</em></h2>
     <p style="font-size:0.9rem;color:var(--gray);line-height:1.7;max-width:520px;margin:0 auto;">
-      André Franco acompanha cripto desde 2016. Dois ciclos completos de alta e baixa, com o mesmo método. A Boost Research nasceu dentro do mercado e permanece aqui, independente de onde o preço está.
+      Andr&eacute; Franco acompanha cripto desde 2016. Dois ciclos completos de alta e baixa, com o mesmo m&eacute;todo. A Boost Research nasceu dentro do mercado e permanece aqui, independente de onde o pre&ccedil;o est&aacute;.
     </p>
     <div class="brand-stat">
       <div class="brand-stat-item"><div class="num">+10</div><div class="label">anos de mercado</div></div>
       <div class="brand-stat-item"><div class="num">2</div><div class="label">ciclos completos</div></div>
-      <div class="brand-stat-item"><div class="num">fixo</div><div class="label">honorário independente</div></div>
-      <div class="brand-stat-item"><div class="num">zero</div><div class="label">comissão de exchange</div></div>
+      <div class="brand-stat-item"><div class="num">fixo</div><div class="label">honor&aacute;rio independente</div></div>
+      <div class="brand-stat-item"><div class="num">zero</div><div class="label">comiss&atilde;o de exchange</div></div>
     </div>
   </div>
 </section>
@@ -523,7 +619,7 @@ a{color:inherit;text-decoration:none;}
   <div class="container">
     <div style="font-size:0.75rem;color:var(--gray);font-weight:600;">BOOST RESEARCH</div>
     <p class="disclaimer">
-      Conteúdo informativo. Não constitui recomendação de investimento. As análises da Boost Research, consultoria de investimentos em criptoativos, têm caráter educativo e informativo, em conformidade com as normas da CVM e ANBIMA, e não substituem a orientação de um profissional certificado para sua situação específica. Rentabilidade passada não é garantia de rentabilidade futura. Investimentos em criptoativos envolvem riscos significativos, incluindo a possibilidade de perda total do capital investido. Boost Research &middot; 2026.
+      Conte&uacute;do informativo. N&atilde;o constitui recomenda&ccedil;&atilde;o de investimento. As an&aacute;lises da Boost Research, consultoria de investimentos em criptoativos, t&ecirc;m car&aacute;ter educativo e informativo, em conformidade com as normas da CVM e ANBIMA, e n&atilde;o substituem a orienta&ccedil;&atilde;o de um profissional certificado para sua situa&ccedil;&atilde;o espec&iacute;fica. Rentabilidade passada n&atilde;o &eacute; garantia de rentabilidade futura. Investimentos em criptoativos envolvem riscos significativos, incluindo a possibilidade de perda total do capital investido. Boost Research &middot; 2026.
     </p>
   </div>
 </footer>
@@ -613,29 +709,55 @@ function checkStepComplete(){
   var s1=document.getElementById('f-tempo-investindo').value;
   document.getElementById('btn-step1').disabled=!s1;
 
-  var s2a=document.getElementById('f-classes-ativos').value;
-  var s2b=document.getElementById('f-peso-cripto').value;
-  document.getElementById('btn-step2').disabled=!(s2a&&s2b);
+  var s2=document.getElementById('f-classes-ativos').value;
+  document.getElementById('btn-step2').disabled=!s2;
 
-  var s3a=document.getElementById('f-patrimonio-cripto').value;
-  var s3b=document.getElementById('f-patrimonio-tradicional').value;
-  var s3c=document.getElementById('f-desafio').value;
-  document.getElementById('btn-step3').disabled=!(s3a&&s3b&&s3c);
+  var s3=document.getElementById('f-peso-cripto').value;
+  document.getElementById('btn-step3').disabled=!s3;
 
-  var s4a=document.getElementById('f-tempo-andre').value;
-  var s4b=document.getElementById('f-disposicao').value;
-  document.getElementById('btn-step4').disabled=!(s4a&&s4b);
+  var s4=document.getElementById('f-patrimonio-cripto').value;
+  document.getElementById('btn-step4').disabled=!s4;
+
+  var s5=document.getElementById('f-patrimonio-tradicional').value;
+  document.getElementById('btn-step5').disabled=!s5;
+
+  var s6=document.getElementById('f-desafio').value;
+  document.getElementById('btn-step6').disabled=!s6;
+
+  var s7=document.getElementById('f-tempo-andre').value;
+  document.getElementById('btn-step7').disabled=!s7;
 }
 
-/* ── Multi-Step Navigation ── */
+/* ── Multi-Step Navigation with slide transitions ── */
+var currentStep=1;
 window.goStep=function(n){
   var err=document.getElementById('quiz-error');
   err.style.display='none';
 
-  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active');});
-  document.getElementById('step-'+n).classList.add('active');
+  // Remove entering from current step
+  var currentEl=document.getElementById('step-'+currentStep);
+  if(currentEl){
+    currentEl.classList.remove('entering');
+    // Short delay then hide
+    setTimeout(function(){currentEl.classList.remove('active');},50);
+  }
 
-  document.querySelectorAll('.progress-bar span').forEach(function(s,i){s.classList.toggle('active',i<n);});
+  // Update progress bar
+  document.getElementById('progress-fill').style.width=(n/8*100)+'%';
+
+  // Show new step with 2-frame approach
+  setTimeout(function(){
+    var newEl=document.getElementById('step-'+n);
+    newEl.style.transform=n>currentStep?'translateX(30px)':'translateX(-30px)';
+    newEl.classList.add('active');
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        newEl.classList.add('entering');
+        newEl.style.transform='';
+      });
+    });
+    currentStep=n;
+  },100);
 
   document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
 
@@ -644,11 +766,11 @@ window.goStep=function(n){
   if(n===1)dataLayer.push({event:'quiz_start'});
 };
 
-/* ── Score Calculation ── */
+/* ── Score Calculation (redistributed weights, no "disposicao") ── */
 function calcScore(){
   var score=0;
 
-  // 1. Diversificação (25 pts)
+  // 1. Diversification (25 pts)
   var assets=(document.getElementById('f-classes-ativos').value||'').split(',').filter(Boolean);
   if(assets.length>=5)score+=25;
   else if(assets.length>=3)score+=15;
@@ -672,13 +794,13 @@ function calcScore(){
   else if(desafio==='nao_sei_vender')score+=8;
   else score+=6; // preso_ciclo
 
-  // 4. Patrimônio cripto (15 pts)
+  // 4. Patrimônio cripto (20 pts — was 15)
   var patCripto=document.getElementById('f-patrimonio-cripto').value;
-  if(patCripto==='Acima de R$500 mil')score+=15;
-  else if(patCripto==='Entre R$ 200 mil e R$500 mil')score+=13;
-  else if(patCripto==='Entre R$ 50 mil a R$ 200 mil')score+=10;
-  else if(patCripto==='Entre R$ 10 mil e R$ 50 mil')score+=7;
-  else score+=4;
+  if(patCripto==='Acima de R$500 mil')score+=20;
+  else if(patCripto==='Entre R$ 200 mil e R$500 mil')score+=17;
+  else if(patCripto==='Entre R$ 50 mil a R$ 200 mil')score+=13;
+  else if(patCripto==='Entre R$ 10 mil e R$ 50 mil')score+=9;
+  else score+=5;
 
   // 5. Tempo de mercado (10 pts)
   var tempo=document.getElementById('f-tempo-investindo').value;
@@ -687,14 +809,27 @@ function calcScore(){
   else if(tempo==='1a_3a')score+=5;
   else score+=2;
 
-  // 6. Conhece André (10 pts)
+  // 6. Conhece André (5 pts — was 10)
   var andre=document.getElementById('f-tempo-andre').value;
-  if(andre==='mais_1a')score+=10;
-  else if(andre==='6m_1a')score+=7;
-  else if(andre==='menos_6m')score+=4;
-  else score+=2;
+  if(andre==='mais_1a')score+=5;
+  else if(andre==='6m_1a')score+=4;
+  else if(andre==='menos_6m')score+=2;
+  else score+=1;
 
   return Math.min(score,100);
+}
+
+/* ── Score animation with easing ── */
+function animateScore(target, el, duration){
+  duration=duration||1800;
+  var start=performance.now();
+  function ease(t){return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function tick(now){
+    var p=Math.min((now-start)/duration,1);
+    el.textContent=Math.round(ease(p)*target);
+    if(p<1)requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 }
 
 /* ── Insights Generator ── */
@@ -705,57 +840,52 @@ function getInsights(score){
   var insights=[];
 
   if(score<=40){
-    if(assets.length<=2)insights.push('<strong>Concentração alta:</strong> seu portfólio está em poucas classes de ativos. Isso amplifica perdas em quedas de mercado.');
-    if(desafio==='nao_sei_vender'||desafio==='preso_ciclo')insights.push('<strong>Sem estratégia de saída:</strong> sem critérios definidos para realizar lucro, você fica vulnerável ao próximo ciclo de baixa.');
-    insights.push('Um Advisor dedicado pode reorganizar sua carteira e definir regras claras de entrada e saída em uma sessão.');
+    if(assets.length<=2)insights.push({text:'<strong>Concentração alta:</strong> seu portfólio está em poucas classes de ativos. Isso amplifica perdas em quedas de mercado.',type:'risk'});
+    if(desafio==='nao_sei_vender'||desafio==='preso_ciclo')insights.push({text:'<strong>Sem estratégia de saída:</strong> sem critérios definidos para realizar lucro, você fica vulnerável ao próximo ciclo de baixa.',type:'risk'});
+    insights.push({text:'Um Advisor dedicado pode reorganizar sua carteira e definir regras claras de entrada e saída em uma sessão.',type:'strength'});
   }else if(score<=70){
-    insights.push('<strong>Base sólida, mas há espaço:</strong> você tem diversificação básica, mas a alocação pode ser otimizada para seu perfil de risco.');
-    if(peso==='50_80'||peso==='mais_80')insights.push('<strong>Peso elevado em cripto:</strong> portfólios com mais de 50% em cripto tendem a sofrer mais em correções. Um rebalanceamento pode proteger seu patrimônio.');
-    if(!assets.includes('stablecoins')&&!assets.includes('defi'))insights.push('Você pode estar perdendo oportunidades em stablecoins e renda fixa digital, que combinam segurança com exposição ao ecossistema cripto.');
+    insights.push({text:'<strong>Base sólida, mas há espaço:</strong> você tem diversificação básica, mas a alocação pode ser otimizada para seu perfil de risco.',type:'caution'});
+    if(peso==='50_80'||peso==='mais_80')insights.push({text:'<strong>Peso elevado em cripto:</strong> portfólios com mais de 50% em cripto tendem a sofrer mais em correções. Um rebalanceamento pode proteger seu patrimônio.',type:'caution'});
+    if(!assets.includes('stablecoins')&&!assets.includes('defi'))insights.push({text:'Você pode estar perdendo oportunidades em stablecoins e renda fixa digital, que combinam segurança com exposição ao ecossistema cripto.',type:'strength'});
   }else{
-    insights.push('<strong>Portfólio maduro:</strong> sua composição mostra diversificação e maturidade. Poucas pessoas chegam a esse nível sozinhas.');
-    insights.push('Mesmo portfólios bem estruturados se beneficiam de validação profissional. Ajustes finos em alocação podem gerar diferença significativa em ciclos longos.');
-    if(desafio==='declarar_ir')insights.push('<strong>IR estruturado:</strong> com patrimônio relevante, a complexidade tributária exige acompanhamento profissional para evitar problemas com a Receita.');
+    insights.push({text:'<strong>Portfólio maduro:</strong> sua composição mostra diversificação e maturidade. Poucas pessoas chegam a esse nível sozinhas.',type:'strength'});
+    insights.push({text:'Mesmo portfólios bem estruturados se beneficiam de validação profissional. Ajustes finos em alocação podem gerar diferença significativa em ciclos longos.',type:'strength'});
+    if(desafio==='declarar_ir')insights.push({text:'<strong>IR estruturado:</strong> com patrimônio relevante, a complexidade tributária exige acompanhamento profissional para evitar problemas com a Receita.',type:'caution'});
   }
   return insights.slice(0,3);
 }
 
 /* ── Show Result ── */
 function showResult(score){
-  var scoreEl=document.getElementById('score-number');
+  var gaugeNumber=document.getElementById('gauge-number');
   var labelEl=document.getElementById('score-label');
-  var subEl=document.getElementById('score-sublabel');
-  var fillEl=document.getElementById('score-fill');
+  var gaugeArc=document.getElementById('gauge-arc');
   var insightsEl=document.getElementById('insights');
+  var resultScreen=document.getElementById('result-screen');
 
-  var faixa,colorClass;
-  if(score<=40){faixa='Risco Alto';colorClass='red';}
-  else if(score<=70){faixa='Pode Melhorar';colorClass='yellow';}
-  else{faixa='Bem Posicionado';colorClass='green';}
+  var faixa;
+  if(score<=40){faixa='Risco Alto';}
+  else if(score<=70){faixa='Pode Melhorar';}
+  else{faixa='Bem Posicionado';}
 
-  // Animate score
-  scoreEl.className='gauge-score '+colorClass;
-  fillEl.className='gauge-fill '+colorClass;
+  // Animate score number with easing
+  animateScore(score, gaugeNumber, 1800);
 
-  var current=0;
-  var interval=setInterval(function(){
-    current+=2;
-    if(current>=score){current=score;clearInterval(interval);}
-    scoreEl.textContent=current;
-  },20);
-
-  setTimeout(function(){fillEl.style.width=score+'%';},100);
+  // Animate gauge arc
+  setTimeout(function(){
+    gaugeArc.style.strokeDashoffset=251-(251*score/100);
+  },100);
 
   labelEl.textContent=faixa;
-  subEl.textContent='Seu portfólio cripto recebeu nota '+score+' de 100';
 
-  // Insights
+  // Insights with data-type
   var insights=getInsights(score);
   insightsEl.innerHTML='';
-  insights.forEach(function(txt){
+  insights.forEach(function(item){
     var div=document.createElement('div');
     div.className='insight';
-    div.innerHTML=txt;
+    div.setAttribute('data-type',item.type);
+    div.innerHTML=item.text;
     insightsEl.appendChild(div);
   });
 
@@ -765,9 +895,14 @@ function showResult(score){
   ctaEl.href='https://wa.me/5521965622891?text='+encodeURIComponent('Olá, fiz o diagnóstico de portfólio e meu score foi '+score+'/100 ('+faixa+'). Quero agendar minha análise gratuita.');
 
   // Show result, hide steps
-  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.progress-bar span').forEach(function(s){s.classList.add('active');});
-  document.getElementById('result-screen').classList.add('active');
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active','entering');});
+  document.getElementById('progress-fill').style.width='100%';
+  resultScreen.classList.add('active');
+
+  // Trigger staggered reveal after 200ms
+  setTimeout(function(){
+    resultScreen.classList.add('revealed');
+  },200);
 
   return faixa;
 }
@@ -814,9 +949,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var patTrad=document.getElementById('f-patrimonio-tradicional').value;
     var temTrad=patTrad&&patTrad!=='nao_invisto'?'sim':'não';
 
-    var disposicao=document.getElementById('f-disposicao').value;
-
-    // RD Station payload (tags via automação RD, não no payload)
+    // RD Station payload (same fields, same endpoint)
     var payload={
       event_type:'CONVERSION',
       event_family:'CDP',
@@ -830,7 +963,7 @@ document.addEventListener('DOMContentLoaded',function(){
       cf_qual_seu_patrimonio_investido_no_mercado_tradicional:patTrad==='nao_invisto'?'':patTrad,
       cf_tempo_conhece_andre:document.getElementById('f-tempo-andre').value,
       cf_desafio_cripto:document.getElementById('f-desafio').value,
-      cf_disposicao_investimento_anual:disposicao,
+      cf_disposicao_investimento_anual:'',
       cf_tempo_investindo_cripto:document.getElementById('f-tempo-investindo').value,
       cf_classes_ativos_portfolio:document.getElementById('f-classes-ativos').value,
       cf_peso_cripto_portfolio:document.getElementById('f-peso-cripto').value,
@@ -879,6 +1012,13 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 });
+
+/* ── Navbar scroll opacity ── */
+window.addEventListener('scroll',function(){
+  var nav=document.querySelector('.navbar');
+  var opacity=Math.min(0.95,0.6+window.scrollY/500);
+  nav.style.background='rgba(0,0,0,'+opacity+')';
+},{passive:true});
 
 /* ── WA Float show on scroll ── */
 window.addEventListener('scroll',function(){
