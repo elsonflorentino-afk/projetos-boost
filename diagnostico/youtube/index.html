@@ -158,26 +158,7 @@ section{padding:80px 0;}
 .card-option:hover{transform:translateY(-1px);border-color:var(--teal);box-shadow:0 2px 8px rgba(25,198,181,0.1);}
 .card-option.selected,.card-option.checked{background:rgba(25,198,181,0.06);border-color:var(--teal);color:var(--teal);font-weight:600;}
 
-/* ===== ALLOCATION CARDS ===== */
-.alloc-cards{display:flex;flex-direction:column;gap:10px;}
-.alloc-card{border:1px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all 0.2s;background:var(--card-bg);}
-.alloc-card:hover{border-color:rgba(25,198,181,0.4);transform:translateY(-1px);}
-.alloc-card.selected{border-color:var(--teal);background:rgba(25,198,181,0.06);box-shadow:0 0 0 1px var(--teal);}
-.alloc-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.alloc-name{font-size:14px;font-weight:600;color:var(--text);}
-.alloc-card.selected .alloc-name::after{content:' \2713';color:var(--teal);}
-.alloc-bar{display:flex;height:24px;border-radius:6px;overflow:hidden;margin-bottom:6px;}
-.alloc-bar>div{min-width:4px;transition:width 0.3s;}
-.alloc-labels{display:flex;gap:10px;flex-wrap:wrap;}
-.alloc-labels span{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px;}
-.alloc-labels span::before{content:'';width:8px;height:8px;border-radius:2px;flex-shrink:0;}
-.alloc-labels span:nth-child(1)::before{background:#F7931A;}
-.alloc-labels span:nth-child(2)::before{background:#627EEA;}
-.alloc-labels span:nth-child(3)::before{background:#8B5CF6;}
-.alloc-labels span:nth-child(4)::before{background:#10B981;}
-.alloc-legend{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;padding:10px 14px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;}
-.alloc-legend span{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-secondary);}
-.alloc-legend .dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+/* ===== ALLOCATION (removed visual cards, using progressive disclosure) ===== */
 
 /* ===== BUTTONS ===== */
 .btn-primary{width:100%;padding:calc(0.667em + 2px) calc(1.333em + 2px);background:var(--text-secondary);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:0;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
@@ -381,78 +362,30 @@ section{padding:80px 0;}
                 <input type="hidden" id="f-classes-ativos" value="">
               </div>
 
-              <div class="f-group">
-                <label class="f-label">Qual perfil mais se parece com sua carteira cripto?</label>
-                <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Selecione o mais pr&oacute;ximo. A barra mostra a distribui&ccedil;&atilde;o.</p>
-                <div class="alloc-legend">
-                  <span><span class="dot" style="background:#F7931A;"></span>Bitcoin</span>
-                  <span><span class="dot" style="background:#627EEA;"></span>Ethereum</span>
-                  <span><span class="dot" style="background:#8B5CF6;"></span>Altcoins</span>
-                  <span><span class="dot" style="background:#10B981;"></span>Stablecoins</span>
+              <!-- Q1: Maior posição (dinâmico baseado nos ativos selecionados) -->
+              <div class="f-group" id="q-maior" style="display:none;">
+                <label class="f-label">Qual desses &eacute; sua maior posi&ccedil;&atilde;o em cripto?</label>
+                <div class="card-grid" id="maior-grid" style="grid-template-columns:1fr 1fr;"></div>
+                <input type="hidden" id="f-maior-posicao" value="">
+              </div>
+
+              <!-- Q2: Peso do maior (aparece após Q1) -->
+              <div class="f-group" id="q-peso" style="display:none;">
+                <label class="f-label" id="q-peso-label">Quanto aproximadamente representa do seu total em cripto?</label>
+                <div class="card-grid" id="peso-grid" style="grid-template-columns:1fr 1fr;">
+                  <div class="card-option" data-value="menos_25" onclick="selectPeso(this)">Menos de 25%</div>
+                  <div class="card-option" data-value="25_50" onclick="selectPeso(this)">25% a 50%</div>
+                  <div class="card-option" data-value="50_75" onclick="selectPeso(this)">50% a 75%</div>
+                  <div class="card-option" data-value="mais_75" onclick="selectPeso(this)">Mais de 75%</div>
                 </div>
-                <div class="alloc-cards" id="composicao-grid">
+                <input type="hidden" id="f-peso-maior" value="">
+              </div>
 
-                  <div class="alloc-card" data-value="quase_tudo_btc" onclick="selectAlloc(this)">
-                    <div class="alloc-header"><span class="alloc-name">Bitcoin First</span></div>
-                    <div class="alloc-bar">
-                      <div style="width:75%;background:#F7931A;"></div>
-                      <div style="width:15%;background:#627EEA;"></div>
-                      <div style="width:10%;background:#8B5CF6;"></div>
-                    </div>
-                    <div class="alloc-labels"><span>BTC 75%</span><span>ETH 15%</span><span>Alts 10%</span></div>
-                  </div>
-
-                  <div class="alloc-card" data-value="maioria_btc" onclick="selectAlloc(this)">
-                    <div class="alloc-header"><span class="alloc-name">Maioria Bitcoin</span></div>
-                    <div class="alloc-bar">
-                      <div style="width:55%;background:#F7931A;"></div>
-                      <div style="width:25%;background:#627EEA;"></div>
-                      <div style="width:15%;background:#8B5CF6;"></div>
-                      <div style="width:5%;background:#10B981;"></div>
-                    </div>
-                    <div class="alloc-labels"><span>BTC 55%</span><span>ETH 25%</span><span>Alts 15%</span><span>Stables 5%</span></div>
-                  </div>
-
-                  <div class="alloc-card" data-value="dividido" onclick="selectAlloc(this)">
-                    <div class="alloc-header"><span class="alloc-name">Diversificado</span></div>
-                    <div class="alloc-bar">
-                      <div style="width:30%;background:#F7931A;"></div>
-                      <div style="width:25%;background:#627EEA;"></div>
-                      <div style="width:30%;background:#8B5CF6;"></div>
-                      <div style="width:15%;background:#10B981;"></div>
-                    </div>
-                    <div class="alloc-labels"><span>BTC 30%</span><span>ETH 25%</span><span>Alts 30%</span><span>Stables 15%</span></div>
-                  </div>
-
-                  <div class="alloc-card" data-value="mais_altcoins" onclick="selectAlloc(this)">
-                    <div class="alloc-header"><span class="alloc-name">Mais Altcoins</span></div>
-                    <div class="alloc-bar">
-                      <div style="width:15%;background:#F7931A;"></div>
-                      <div style="width:20%;background:#627EEA;"></div>
-                      <div style="width:55%;background:#8B5CF6;"></div>
-                      <div style="width:10%;background:#10B981;"></div>
-                    </div>
-                    <div class="alloc-labels"><span>BTC 15%</span><span>ETH 20%</span><span>Alts 55%</span><span>Stables 10%</span></div>
-                  </div>
-
-                  <div class="alloc-card" data-value="maioria_stablecoins" onclick="selectAlloc(this)">
-                    <div class="alloc-header"><span class="alloc-name">Conservador / Dolarizado</span></div>
-                    <div class="alloc-bar">
-                      <div style="width:30%;background:#F7931A;"></div>
-                      <div style="width:10%;background:#627EEA;"></div>
-                      <div style="width:5%;background:#8B5CF6;"></div>
-                      <div style="width:55%;background:#10B981;"></div>
-                    </div>
-                    <div class="alloc-labels"><span>BTC 30%</span><span>ETH 10%</span><span>Alts 5%</span><span>Stables 55%</span></div>
-                  </div>
-
-                  <div class="alloc-card" data-value="nao_sei" onclick="selectAlloc(this)">
-                    <div class="alloc-header"><span class="alloc-name">N&atilde;o tenho certeza</span></div>
-                    <p style="font-size:12px;color:var(--text-muted);margin:4px 0 0;">Ainda estou come&ccedil;ando ou n&atilde;o acompanho a distribui&ccedil;&atilde;o</p>
-                  </div>
-
-                </div>
-                <input type="hidden" id="f-composicao" value="">
+              <!-- Q3: Segundo ativo relevante (aparece após Q2, se 3+ ativos) -->
+              <div class="f-group" id="q-segundo" style="display:none;">
+                <label class="f-label">Algum outro ativo representa mais de 25% do total?</label>
+                <div class="card-grid" id="segundo-grid" style="grid-template-columns:1fr 1fr;"></div>
+                <input type="hidden" id="f-segundo-ativo" value="">
               </div>
 
               <div class="f-group">
@@ -794,11 +727,74 @@ if(utmContent&&headlines[utmContent]){
 /* Stored lead name for WA link */
 var leadName='';
 
-/* Allocation profile select */
-window.selectAlloc=function(card){
-  document.querySelectorAll('.alloc-card').forEach(function(c){c.classList.remove('selected');});
+/* Portfolio allocation — progressive disclosure */
+var cryptoAssets=['Bitcoin','Ethereum','Altcoins','Stablecoins','DeFi/Yield'];
+
+function buildMaiorGrid(){
+  var selected=(document.getElementById('f-classes-ativos').value||'').split(',').filter(Boolean);
+  var cryptoSelected=selected.filter(function(a){return cryptoAssets.indexOf(a)!==-1;});
+  var qMaior=document.getElementById('q-maior');
+  var grid=document.getElementById('maior-grid');
+  if(cryptoSelected.length<2){qMaior.style.display='none';return;}
+  grid.innerHTML='';
+  cryptoSelected.forEach(function(asset){
+    var div=document.createElement('div');
+    div.className='card-option';
+    div.setAttribute('data-value',asset);
+    div.textContent=asset;
+    div.onclick=function(){selectMaior(div);};
+    grid.appendChild(div);
+  });
+  qMaior.style.display='block';
+}
+
+window.selectMaior=function(card){
+  document.querySelectorAll('#maior-grid .card-option').forEach(function(c){c.classList.remove('selected');});
   card.classList.add('selected');
-  document.getElementById('f-composicao').value=card.getAttribute('data-value');
+  var val=card.getAttribute('data-value');
+  document.getElementById('f-maior-posicao').value=val;
+  document.getElementById('q-peso-label').textContent='Quanto aproximadamente '+val+' representa do seu total em cripto?';
+  document.getElementById('q-peso').style.display='block';
+  document.getElementById('f-peso-maior').value='';
+  document.querySelectorAll('#peso-grid .card-option').forEach(function(c){c.classList.remove('selected');});
+  document.getElementById('q-segundo').style.display='none';
+  document.getElementById('f-segundo-ativo').value='';
+  checkStep1();
+};
+
+window.selectPeso=function(card){
+  document.querySelectorAll('#peso-grid .card-option').forEach(function(c){c.classList.remove('selected');});
+  card.classList.add('selected');
+  document.getElementById('f-peso-maior').value=card.getAttribute('data-value');
+  var selected=(document.getElementById('f-classes-ativos').value||'').split(',').filter(Boolean);
+  var cryptoSelected=selected.filter(function(a){return cryptoAssets.indexOf(a)!==-1;});
+  var maior=document.getElementById('f-maior-posicao').value;
+  if(cryptoSelected.length>=3){
+    var grid2=document.getElementById('segundo-grid');
+    grid2.innerHTML='';
+    cryptoSelected.filter(function(a){return a!==maior;}).forEach(function(asset){
+      var div=document.createElement('div');
+      div.className='card-option';
+      div.setAttribute('data-value',asset);
+      div.textContent=asset;
+      div.onclick=function(){selectSegundo(div);};
+      grid2.appendChild(div);
+    });
+    var nenhum=document.createElement('div');
+    nenhum.className='card-option';
+    nenhum.setAttribute('data-value','nenhum');
+    nenhum.textContent='Nenhum com mais de 25%';
+    nenhum.onclick=function(){selectSegundo(nenhum);};
+    grid2.appendChild(nenhum);
+    document.getElementById('q-segundo').style.display='block';
+  }
+  checkStep1();
+};
+
+window.selectSegundo=function(card){
+  document.querySelectorAll('#segundo-grid .card-option').forEach(function(c){c.classList.remove('selected');});
+  card.classList.add('selected');
+  document.getElementById('f-segundo-ativo').value=card.getAttribute('data-value');
   checkStep1();
 };
 
@@ -836,6 +832,8 @@ document.addEventListener('DOMContentLoaded',function(){
       var vals=[];
       document.querySelectorAll('#assets-grid .card-option.checked').forEach(function(c){vals.push(c.getAttribute('data-value'));});
       document.getElementById('f-classes-ativos').value=vals.join(',');
+      buildMaiorGrid();
+      checkStep1();
     });
   });
 
@@ -856,11 +854,18 @@ document.addEventListener('DOMContentLoaded',function(){
 function checkStep1(){
   var cripto=document.getElementById('f-cripto').value;
   var trad=document.getElementById('f-tradicional').value;
-  var composicao=document.getElementById('f-composicao').value;
   var desafio=document.getElementById('f-desafio').value;
-  var valid=cripto&&trad&&composicao&&desafio;
+  var valid=cripto&&trad&&desafio;
   if(cripto==='sim'&&!document.getElementById('f-patrimonio-cripto').value)valid=false;
   if(trad==='sim'&&!document.getElementById('f-patrimonio-tradicional').value)valid=false;
+  /* Allocation questions: only require if visible */
+  var qMaior=document.getElementById('q-maior');
+  if(qMaior.style.display!=='none'){
+    if(!document.getElementById('f-maior-posicao').value)valid=false;
+    if(!document.getElementById('f-peso-maior').value)valid=false;
+    var qSegundo=document.getElementById('q-segundo');
+    if(qSegundo.style.display!=='none'&&!document.getElementById('f-segundo-ativo').value)valid=false;
+  }
   document.getElementById('btn-step1').disabled=!valid;
 }
 
@@ -942,7 +947,9 @@ document.addEventListener('DOMContentLoaded',function(){
         cf_qual_seu_patrimonio_investido_no_mercado_tradicional:document.getElementById('f-patrimonio-tradicional').value||'',
         cf_desafio_cripto:document.getElementById('f-desafio').value,
         cf_classes_ativos_portfolio:document.getElementById('f-classes-ativos').value,
-        cf_composicao_portfolio_cripto:document.getElementById('f-composicao').value,
+        cf_maior_posicao_cripto:document.getElementById('f-maior-posicao').value||'',
+        cf_peso_maior_posicao:document.getElementById('f-peso-maior').value||'',
+        cf_segundo_ativo_relevante:document.getElementById('f-segundo-ativo').value||'',
         traffic_source:getCookie('boost_utm_source'),
         traffic_medium:getCookie('boost_utm_medium'),
         traffic_campaign:getCookie('boost_utm_campaign'),
