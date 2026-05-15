@@ -39,8 +39,8 @@ a{color:inherit;text-decoration:none;}
 /* Navbar */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
 .navbar.scrolled{box-shadow:0 1px 8px rgba(0,0,0,0.06);}
-.navbar .container{display:flex;align-items:center;justify-content:space-between;height:56px;}
-.nav-logo img{height:28px;width:auto;}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo img{height:42px;width:auto;}
 .nav-cta{background:var(--teal);color:#fff;font-weight:700;font-size:0.78rem;padding:8px 16px;border-radius:8px;cursor:pointer;border:none;transition:filter 0.2s;}
 .nav-cta:hover{filter:brightness(0.9);}
 
@@ -90,8 +90,8 @@ section{padding:72px 0;}
 .step-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.6;}
 
 /* André Franco — split layout */
-.andre-grid{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:center;}
-.andre-photo{width:300px;height:300px;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);}
+.andre-grid{display:grid;grid-template-columns:400px 1fr;gap:56px;align-items:center;}
+.andre-photo{width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.12);border:1px solid var(--border);}
 .andre-photo img{width:100%;height:100%;object-fit:cover;}
 .andre-bio{text-align:left;}
 .andre-bio h2{font-size:1.6rem;font-weight:800;margin-bottom:6px;color:var(--text);}
@@ -228,7 +228,7 @@ section{padding:72px 0;}
   .pain-grid{grid-template-columns:1fr;}
   .steps-grid{grid-template-columns:1fr;}
   .andre-grid{grid-template-columns:1fr;text-align:center;gap:24px;}
-  .andre-photo{width:200px;height:200px;margin:0 auto;}
+  .andre-photo{width:280px;aspect-ratio:3/4;margin:0 auto;}
   .andre-bio{text-align:left;}
   .andre-bio h2{text-align:center;}
   .andre-bio .andre-role{text-align:center;}
@@ -495,7 +495,7 @@ section{padding:72px 0;}
     <div style="text-align:center;margin-bottom:32px;"><div class="tag">Quem analisa sua carteira</div></div>
     <div class="andre-grid">
       <div class="andre-photo">
-        <img src="assets/andre-franco.jpg" alt="André Franco" width="300" height="300" loading="lazy">
+        <img src="assets/andre-franco.jpg" alt="André Franco" width="600" height="800" loading="lazy">
       </div>
       <div class="andre-bio">
         <h2>Andr&eacute; Franco</h2>
@@ -615,7 +615,7 @@ section{padding:72px 0;}
 <!-- FOOTER -->
 <footer class="footer">
   <div class="container">
-    <img src="assets/logo.png" alt="Boost Research" style="height:32px;opacity:0.5;margin-bottom:8px;" loading="lazy">
+    <img src="assets/logo.png" alt="Boost Research" style="height:44px;opacity:0.6;margin-bottom:12px;" loading="lazy">
     <p class="disclaimer">
       Conte&uacute;do informativo. N&atilde;o constitui recomenda&ccedil;&atilde;o de investimento. As an&aacute;lises da Boost Research, consultoria de investimentos em criptoativos, t&ecirc;m car&aacute;ter educativo e informativo, em conformidade com as normas da CVM e ANBIMA, e n&atilde;o substituem a orienta&ccedil;&atilde;o de um profissional certificado para sua situa&ccedil;&atilde;o espec&iacute;fica. Rentabilidade passada n&atilde;o &eacute; garantia de rentabilidade futura. Investimentos em criptoativos envolvem riscos significativos, incluindo a possibilidade de perda total do capital investido. Boost Research &middot; 2026.
     </p>
