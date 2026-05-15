@@ -158,7 +158,24 @@ section{padding:80px 0;}
 .card-option:hover{transform:translateY(-1px);border-color:var(--teal);box-shadow:0 2px 8px rgba(25,198,181,0.1);}
 .card-option.selected,.card-option.checked{background:rgba(25,198,181,0.06);border-color:var(--teal);color:var(--teal);font-weight:600;}
 
-/* ===== ALLOCATION (removed visual cards, using progressive disclosure) ===== */
+/* ===== PORTFOLIO BUILDER ===== */
+.pb-select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font);font-size:16px;padding:12px 36px 12px 16px;cursor:pointer;outline:none;transition:border-color 0.2s;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A0A0C0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.pb-select:focus{border-color:var(--teal);}
+.pb-select option{background:#1a1d24;color:#fff;}
+.pb-range-label{font-size:13px;color:var(--text-secondary);margin-bottom:8px;}
+.pb-ranges{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.pb-range-btn{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;color:var(--text-secondary);font-family:var(--font);font-size:13px;font-weight:500;padding:11px 8px;cursor:pointer;transition:all 0.15s;text-align:center;-webkit-tap-highlight-color:transparent;}
+.pb-range-btn:hover{background:rgba(25,198,181,0.08);border-color:rgba(25,198,181,0.4);color:var(--text);}
+.pb-range-btn:active{transform:scale(0.97);}
+.pb-asset-row{display:flex;align-items:center;padding:10px 14px;gap:10px;border-bottom:1px solid rgba(255,255,255,0.04);}
+.pb-asset-row:last-child{border-bottom:none;}
+.pb-asset-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.pb-asset-info{flex:1;min-width:0;}
+.pb-asset-name{font-size:13px;font-weight:600;color:var(--text);}
+.pb-asset-ticker{font-size:10px;color:var(--text-muted);margin-left:4px;}
+.pb-asset-range{font-size:12px;color:var(--teal);font-weight:600;flex-shrink:0;}
+.pb-asset-remove{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:16px;padding:4px;flex-shrink:0;transition:color 0.15s;}
+.pb-asset-remove:hover{color:#EF4444;}
 
 /* ===== BUTTONS ===== */
 .btn-primary{width:100%;padding:calc(0.667em + 2px) calc(1.333em + 2px);background:var(--text-secondary);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:0;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
@@ -347,45 +364,47 @@ section{padding:80px 0;}
                 </div>
               </div>
 
+              <!-- Mini Portfolio Builder -->
               <div class="f-group">
-                <label class="f-label">Quais ativos voc&ecirc; possui hoje? <span style="font-weight:400;color:var(--text-muted);font-size:11px;">(selecione todos que se aplicam)</span></label>
-                <div class="card-grid" id="assets-grid">
-                  <div class="card-option multi" data-value="Bitcoin">Bitcoin</div>
-                  <div class="card-option multi" data-value="Ethereum">Ethereum</div>
-                  <div class="card-option multi" data-value="Altcoins">Altcoins</div>
-                  <div class="card-option multi" data-value="Stablecoins">Stablecoins</div>
-                  <div class="card-option multi" data-value="DeFi/Yield">DeFi / Yield</div>
-                  <div class="card-option multi" data-value="Renda Fixa">Renda Fixa / CDI</div>
-                  <div class="card-option multi" data-value="Ações/FIIs">A&ccedil;&otilde;es / FIIs</div>
-                  <div class="card-option multi" data-value="Outros">Outros</div>
+                <label class="f-label">Quais ativos voc&ecirc; possui e quanto em cada um?</label>
+                <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Selecione o ativo e a faixa de valor. Adicione quantos precisar.</p>
+
+                <div id="portfolio-builder" class="pb">
+                  <!-- Asset selector -->
+                  <div class="pb-select-wrap" style="margin-bottom:12px;">
+                    <select id="pb-asset-select" class="pb-select">
+                      <option value="" disabled selected>Escolha um ativo...</option>
+                    </select>
+                  </div>
+
+                  <!-- Range picker (hidden until asset selected) -->
+                  <div id="pb-step-range" style="display:none;margin-bottom:12px;">
+                    <p class="pb-range-label">Quanto investiu em <span id="pb-range-asset-name" style="color:var(--teal);font-weight:700;"></span>?</p>
+                    <div class="pb-ranges" id="pb-ranges">
+                      <button type="button" class="pb-range-btn" data-range="ate_5k">At&eacute; R$ 5 mil</button>
+                      <button type="button" class="pb-range-btn" data-range="5k_20k">R$ 5 a 20 mil</button>
+                      <button type="button" class="pb-range-btn" data-range="20k_50k">R$ 20 a 50 mil</button>
+                      <button type="button" class="pb-range-btn" data-range="50k_100k">R$ 50 a 100 mil</button>
+                      <button type="button" class="pb-range-btn" data-range="100k_200k">R$ 100 a 200 mil</button>
+                      <button type="button" class="pb-range-btn" data-range="acima_200k">Acima de R$ 200 mil</button>
+                    </div>
+                  </div>
+
+                  <!-- Asset list -->
+                  <div id="pb-list-section" style="display:none;margin-bottom:12px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                      <span style="font-size:12px;font-weight:600;color:var(--text-secondary);">Seus ativos</span>
+                      <span id="pb-count" style="font-size:11px;color:var(--text-muted);"></span>
+                    </div>
+                    <div id="pb-list" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;"></div>
+                  </div>
+
+                  <div id="pb-skip" style="text-align:center;margin-top:8px;">
+                    <button type="button" style="background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;text-decoration:underline;font-family:var(--font);" id="pb-skip-btn">Ainda n&atilde;o sei detalhar minha carteira</button>
+                  </div>
+
+                  <input type="hidden" id="cf_carteira_detalhada" value="">
                 </div>
-                <input type="hidden" id="f-classes-ativos" value="">
-              </div>
-
-              <!-- Q1: Maior posição (dinâmico baseado nos ativos selecionados) -->
-              <div class="f-group" id="q-maior" style="display:none;">
-                <label class="f-label">Qual desses &eacute; sua maior posi&ccedil;&atilde;o em cripto?</label>
-                <div class="card-grid" id="maior-grid" style="grid-template-columns:1fr 1fr;"></div>
-                <input type="hidden" id="f-maior-posicao" value="">
-              </div>
-
-              <!-- Q2: Peso do maior (aparece após Q1) -->
-              <div class="f-group" id="q-peso" style="display:none;">
-                <label class="f-label" id="q-peso-label">Quanto aproximadamente representa do seu total em cripto?</label>
-                <div class="card-grid" id="peso-grid" style="grid-template-columns:1fr 1fr;">
-                  <div class="card-option" data-value="menos_25" onclick="selectPeso(this)">Menos de 25%</div>
-                  <div class="card-option" data-value="25_50" onclick="selectPeso(this)">25% a 50%</div>
-                  <div class="card-option" data-value="50_75" onclick="selectPeso(this)">50% a 75%</div>
-                  <div class="card-option" data-value="mais_75" onclick="selectPeso(this)">Mais de 75%</div>
-                </div>
-                <input type="hidden" id="f-peso-maior" value="">
-              </div>
-
-              <!-- Q3: Segundo ativo relevante (aparece após Q2, se 3+ ativos) -->
-              <div class="f-group" id="q-segundo" style="display:none;">
-                <label class="f-label">Algum outro ativo representa mais de 25% do total?</label>
-                <div class="card-grid" id="segundo-grid" style="grid-template-columns:1fr 1fr;"></div>
-                <input type="hidden" id="f-segundo-ativo" value="">
               </div>
 
               <div class="f-group">
@@ -727,76 +746,94 @@ if(utmContent&&headlines[utmContent]){
 /* Stored lead name for WA link */
 var leadName='';
 
-/* Portfolio allocation — progressive disclosure */
-var cryptoAssets=['Bitcoin','Ethereum','Altcoins','Stablecoins','DeFi/Yield'];
+/* ===== PORTFOLIO BUILDER JS ===== */
+var PB_ASSETS=[
+  {name:'Bitcoin',ticker:'BTC',color:'#F7931A'},{name:'Ethereum',ticker:'ETH',color:'#627EEA'},
+  {name:'BNB',ticker:'BNB',color:'#F3BA2F'},{name:'Solana',ticker:'SOL',color:'#9945FF'},
+  {name:'XRP',ticker:'XRP',color:'#23292F'},{name:'Cardano',ticker:'ADA',color:'#0033AD'},
+  {name:'Avalanche',ticker:'AVAX',color:'#E84142'},{name:'Polkadot',ticker:'DOT',color:'#E6007A'},
+  {name:'Chainlink',ticker:'LINK',color:'#2A5ADA'},{name:'Polygon',ticker:'POL',color:'#8247E5'},
+  {name:'Uniswap',ticker:'UNI',color:'#FF007A'},{name:'Litecoin',ticker:'LTC',color:'#BFBBBB'},
+  {name:'USDT',ticker:'USDT',color:'#26A17B'},{name:'USDC',ticker:'USDC',color:'#2775CA'},
+  {name:'DAI',ticker:'DAI',color:'#F5AC37'},{name:'Cosmos',ticker:'ATOM',color:'#6F7390'},
+  {name:'Near',ticker:'NEAR',color:'#00C08B'},{name:'Aave',ticker:'AAVE',color:'#B6509E'},
+  {name:'Arbitrum',ticker:'ARB',color:'#28A0F0'},{name:'Outro',ticker:'',color:'#888'}
+];
+var PB_RANGE_LABELS={'ate_5k':'Ate R$5k','5k_20k':'R$5-20k','20k_50k':'R$20-50k','50k_100k':'R$50-100k','100k_200k':'R$100-200k','acima_200k':'+R$200k'};
+var pbPortfolio=[];
+var pbSelectedAsset=null;
 
-function buildMaiorGrid(){
-  var selected=(document.getElementById('f-classes-ativos').value||'').split(',').filter(Boolean);
-  var cryptoSelected=selected.filter(function(a){return cryptoAssets.indexOf(a)!==-1;});
-  var qMaior=document.getElementById('q-maior');
-  var grid=document.getElementById('maior-grid');
-  if(cryptoSelected.length<2){qMaior.style.display='none';return;}
-  grid.innerHTML='';
-  cryptoSelected.forEach(function(asset){
-    var div=document.createElement('div');
-    div.className='card-option';
-    div.setAttribute('data-value',asset);
-    div.textContent=asset;
-    div.onclick=function(){selectMaior(div);};
-    grid.appendChild(div);
+function pbPopulateSelect(){
+  var sel=document.getElementById('pb-asset-select');
+  while(sel.options.length>1)sel.remove(1);
+  PB_ASSETS.forEach(function(a){
+    if(pbPortfolio.some(function(p){return p.asset===a.name;}))return;
+    var opt=document.createElement('option');
+    opt.value=a.name;opt.textContent=a.name+(a.ticker?' ('+a.ticker+')':'');
+    sel.appendChild(opt);
   });
-  qMaior.style.display='block';
+  sel.value='';
 }
 
-window.selectMaior=function(card){
-  document.querySelectorAll('#maior-grid .card-option').forEach(function(c){c.classList.remove('selected');});
-  card.classList.add('selected');
-  var val=card.getAttribute('data-value');
-  document.getElementById('f-maior-posicao').value=val;
-  document.getElementById('q-peso-label').textContent='Quanto aproximadamente '+val+' representa do seu total em cripto?';
-  document.getElementById('q-peso').style.display='block';
-  document.getElementById('f-peso-maior').value='';
-  document.querySelectorAll('#peso-grid .card-option').forEach(function(c){c.classList.remove('selected');});
-  document.getElementById('q-segundo').style.display='none';
-  document.getElementById('f-segundo-ativo').value='';
-  checkStep1();
-};
+function pbRenderList(){
+  var list=document.getElementById('pb-list');
+  var count=document.getElementById('pb-count');
+  list.innerHTML='';count.textContent=pbPortfolio.length+'/10';
+  pbPortfolio.forEach(function(item){
+    var a=PB_ASSETS.find(function(x){return x.name===item.asset;})||{color:'#888'};
+    var row=document.createElement('div');row.className='pb-asset-row';
+    row.innerHTML='<span class="pb-asset-dot" style="background:'+a.color+'"></span>'+
+      '<span class="pb-asset-info"><span class="pb-asset-name">'+item.asset+'<span class="pb-asset-ticker">'+item.ticker+'</span></span></span>'+
+      '<span class="pb-asset-range">'+(PB_RANGE_LABELS[item.range]||item.range)+'</span>'+
+      '<button type="button" class="pb-asset-remove" data-asset="'+item.asset+'">&times;</button>';
+    list.appendChild(row);
+  });
+}
 
-window.selectPeso=function(card){
-  document.querySelectorAll('#peso-grid .card-option').forEach(function(c){c.classList.remove('selected');});
-  card.classList.add('selected');
-  document.getElementById('f-peso-maior').value=card.getAttribute('data-value');
-  var selected=(document.getElementById('f-classes-ativos').value||'').split(',').filter(Boolean);
-  var cryptoSelected=selected.filter(function(a){return cryptoAssets.indexOf(a)!==-1;});
-  var maior=document.getElementById('f-maior-posicao').value;
-  if(cryptoSelected.length>=3){
-    var grid2=document.getElementById('segundo-grid');
-    grid2.innerHTML='';
-    cryptoSelected.filter(function(a){return a!==maior;}).forEach(function(asset){
-      var div=document.createElement('div');
-      div.className='card-option';
-      div.setAttribute('data-value',asset);
-      div.textContent=asset;
-      div.onclick=function(){selectSegundo(div);};
-      grid2.appendChild(div);
-    });
-    var nenhum=document.createElement('div');
-    nenhum.className='card-option';
-    nenhum.setAttribute('data-value','nenhum');
-    nenhum.textContent='Nenhum com mais de 25%';
-    nenhum.onclick=function(){selectSegundo(nenhum);};
-    grid2.appendChild(nenhum);
-    document.getElementById('q-segundo').style.display='block';
-  }
+function pbUpdateHidden(){
+  document.getElementById('cf_carteira_detalhada').value=JSON.stringify(pbPortfolio);
   checkStep1();
-};
+}
 
-window.selectSegundo=function(card){
-  document.querySelectorAll('#segundo-grid .card-option').forEach(function(c){c.classList.remove('selected');});
-  card.classList.add('selected');
-  document.getElementById('f-segundo-ativo').value=card.getAttribute('data-value');
-  checkStep1();
-};
+document.addEventListener('DOMContentLoaded',function(){
+  pbPopulateSelect();
+
+  document.getElementById('pb-asset-select').addEventListener('change',function(){
+    var name=this.value;if(!name)return;
+    pbSelectedAsset=PB_ASSETS.find(function(a){return a.name===name;});
+    if(!pbSelectedAsset)return;
+    document.getElementById('pb-range-asset-name').textContent=pbSelectedAsset.name;
+    document.querySelectorAll('.pb-range-btn').forEach(function(b){b.classList.remove('selected');});
+    document.getElementById('pb-step-range').style.display='block';
+    setTimeout(function(){document.getElementById('pb-step-range').scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+  });
+
+  document.getElementById('pb-ranges').addEventListener('click',function(e){
+    var btn=e.target.closest('.pb-range-btn');
+    if(!btn||!pbSelectedAsset)return;
+    if(pbPortfolio.length>=10)return;
+    pbPortfolio.push({asset:pbSelectedAsset.name,ticker:pbSelectedAsset.ticker,range:btn.getAttribute('data-range')});
+    pbSelectedAsset=null;
+    document.getElementById('pb-step-range').style.display='none';
+    pbPopulateSelect();pbRenderList();pbUpdateHidden();
+    document.getElementById('pb-list-section').style.display='block';
+    document.getElementById('pb-skip').style.display=pbPortfolio.length>0?'none':'block';
+  });
+
+  document.getElementById('pb-list').addEventListener('click',function(e){
+    var btn=e.target.closest('.pb-asset-remove');if(!btn)return;
+    var name=btn.getAttribute('data-asset');
+    pbPortfolio=pbPortfolio.filter(function(p){return p.asset!==name;});
+    pbPopulateSelect();pbRenderList();pbUpdateHidden();
+    if(pbPortfolio.length===0){document.getElementById('pb-list-section').style.display='none';document.getElementById('pb-skip').style.display='block';}
+  });
+
+  document.getElementById('pb-skip-btn').addEventListener('click',function(){
+    pbPortfolio=[{asset:'nao_sabe',ticker:'',range:''}];
+    pbUpdateHidden();
+    document.getElementById('pb-skip').innerHTML='<span style="font-size:12px;color:var(--teal);">Ok, o Advisor pergunta na conversa.</span>';
+  });
+});
 
 /* Toggle Sim/Não */
 window.setToggle=function(btn,group){
@@ -825,17 +862,7 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  /* Multi-select (assets) */
-  document.querySelectorAll('#assets-grid .card-option.multi').forEach(function(card){
-    card.addEventListener('click',function(){
-      card.classList.toggle('checked');
-      var vals=[];
-      document.querySelectorAll('#assets-grid .card-option.checked').forEach(function(c){vals.push(c.getAttribute('data-value'));});
-      document.getElementById('f-classes-ativos').value=vals.join(',');
-      buildMaiorGrid();
-      checkStep1();
-    });
-  });
+  /* Portfolio builder initialized above */
 
   /* WhatsApp Mask */
   var wpp=document.getElementById('f-whatsapp');
@@ -855,17 +882,10 @@ function checkStep1(){
   var cripto=document.getElementById('f-cripto').value;
   var trad=document.getElementById('f-tradicional').value;
   var desafio=document.getElementById('f-desafio').value;
-  var valid=cripto&&trad&&desafio;
+  var carteira=document.getElementById('cf_carteira_detalhada').value;
+  var valid=cripto&&trad&&desafio&&carteira;
   if(cripto==='sim'&&!document.getElementById('f-patrimonio-cripto').value)valid=false;
   if(trad==='sim'&&!document.getElementById('f-patrimonio-tradicional').value)valid=false;
-  /* Allocation questions: only require if visible */
-  var qMaior=document.getElementById('q-maior');
-  if(qMaior.style.display!=='none'){
-    if(!document.getElementById('f-maior-posicao').value)valid=false;
-    if(!document.getElementById('f-peso-maior').value)valid=false;
-    var qSegundo=document.getElementById('q-segundo');
-    if(qSegundo.style.display!=='none'&&!document.getElementById('f-segundo-ativo').value)valid=false;
-  }
   document.getElementById('btn-step1').disabled=!valid;
 }
 
@@ -946,10 +966,7 @@ document.addEventListener('DOMContentLoaded',function(){
         cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:document.getElementById('f-tradicional').value,
         cf_qual_seu_patrimonio_investido_no_mercado_tradicional:document.getElementById('f-patrimonio-tradicional').value||'',
         cf_desafio_cripto:document.getElementById('f-desafio').value,
-        cf_classes_ativos_portfolio:document.getElementById('f-classes-ativos').value,
-        cf_maior_posicao_cripto:document.getElementById('f-maior-posicao').value||'',
-        cf_peso_maior_posicao:document.getElementById('f-peso-maior').value||'',
-        cf_segundo_ativo_relevante:document.getElementById('f-segundo-ativo').value||'',
+        cf_carteira_detalhada:document.getElementById('cf_carteira_detalhada').value||'',
         traffic_source:getCookie('boost_utm_source'),
         traffic_medium:getCookie('boost_utm_medium'),
         traffic_campaign:getCookie('boost_utm_campaign'),

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test — Mini Portfolio Builder</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:#0B0E13;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.test-container{
+  width:100%;
+  max-width:460px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  padding:32px 24px;
+}
+.test-debug{
+  margin-top:24px;
+  padding:16px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:8px;
+  font-size:12px;
+  color:rgba(255,255,255,0.5);
+  word-break:break-all;
+  display:none;
+}
+.test-debug.active{display:block;}
+.test-debug strong{color:rgba(255,255,255,0.7);}
+</style>
+</head>
+<body>
+
+<div class="test-container">
+
+  <!-- The component will be included here -->
+  <!-- In production, this is inside a <form> tag -->
+  <form id="test-form" onsubmit="return false;">
+
+    <!--#include virtual="mini-portfolio-builder.html" -->
+    <!-- For testing, we inline it below -->
+
+  </form>
+
+  <div class="test-debug" id="debug-output">
+    <strong>cf_carteira_detalhada:</strong><br>
+    <span id="debug-json"></span>
+  </div>
+</div>
+
+<script>
+// Load the component
+fetch('mini-portfolio-builder.html')
+  .then(function(r){ return r.text(); })
+  .then(function(html){
+    document.getElementById('test-form').innerHTML = html;
+
+    // Extract and execute scripts
+    var temp = document.createElement('div');
+    temp.innerHTML = html;
+    var scripts = temp.querySelectorAll('script');
+    scripts.forEach(function(s){
+      var newScript = document.createElement('script');
+      newScript.textContent = s.textContent;
+      document.body.appendChild(newScript);
+    });
+
+    // Extract and apply styles
+    var styles = temp.querySelectorAll('style');
+    styles.forEach(function(s){
+      var newStyle = document.createElement('style');
+      newStyle.textContent = s.textContent;
+      document.head.appendChild(newStyle);
+    });
+
+    // Listen for the complete event
+    setTimeout(function(){
+      var builder = document.getElementById('portfolio-builder');
+      if(builder){
+        builder.addEventListener('portfolio-complete', function(e){
+          var debugEl = document.getElementById('debug-output');
+          var jsonEl = document.getElementById('debug-json');
+          debugEl.classList.add('active');
+          jsonEl.textContent = document.getElementById('cf_carteira_detalhada').value;
+          console.log('Portfolio complete:', e.detail);
+          alert('portfolio-complete event fired!\n\n' + document.getElementById('cf_carteira_detalhada').value);
+        });
+      }
+    }, 500);
+
+    // Show debug panel on every change
+    var observer = new MutationObserver(function(){
+      var input = document.getElementById('cf_carteira_detalhada');
+      if(input && input.value){
+        var debugEl = document.getElementById('debug-output');
+        var jsonEl = document.getElementById('debug-json');
+        debugEl.classList.add('active');
+        jsonEl.textContent = input.value;
+      }
+    });
+    setTimeout(function(){
+      var list = document.getElementById('pb-list');
+      if(list) observer.observe(list, {childList:true, subtree:true});
+    }, 500);
+  });
+</script>
+
+</body>
+</html>

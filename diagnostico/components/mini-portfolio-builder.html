@@ -1,0 +1,532 @@
+<!--
+  Mini Portfolio Builder — Lead Form Component
+  Boost Research | diagnostico.boostresearch.com.br
+
+  Self-contained component. Drop into any form.
+  Data output: hidden input cf_carteira_detalhada (JSON string)
+
+  Usage:
+    1. Include this HTML block inside your <form>
+    2. On form submit, cf_carteira_detalhada will contain JSON like:
+       [{"asset":"Bitcoin","ticker":"BTC","range":"50k_100k"},{"asset":"Ethereum","ticker":"ETH","range":"20k_50k"}]
+    3. The "Continuar" button dispatches a custom event: 'portfolio-complete'
+       Listen for it to advance your form flow.
+-->
+
+<!-- ===== MINI PORTFOLIO BUILDER ===== -->
+<div id="portfolio-builder" class="pb">
+
+  <div class="pb-header">
+    <h3 class="pb-title">Monte sua carteira cripto</h3>
+    <p class="pb-subtitle">Selecione os ativos que possui e a faixa de valor investido em cada um.</p>
+  </div>
+
+  <!-- Step 1: Asset selector -->
+  <div class="pb-step pb-step--active" id="pb-step-select">
+    <label class="pb-label" for="pb-asset-select">Ativo</label>
+    <div class="pb-select-wrap">
+      <select id="pb-asset-select" class="pb-select" aria-label="Selecione um ativo cripto">
+        <option value="" disabled selected>Escolha um ativo...</option>
+      </select>
+      <svg class="pb-select-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+
+  <!-- Step 2: Range picker (hidden until asset selected) -->
+  <div class="pb-step" id="pb-step-range" style="display:none;">
+    <label class="pb-label">Quanto investiu em <span id="pb-range-asset-name" class="pb-accent"></span>?</label>
+    <div class="pb-ranges" id="pb-ranges">
+      <button type="button" class="pb-range-btn" data-range="ate_5k">Até R$ 5 mil</button>
+      <button type="button" class="pb-range-btn" data-range="5k_20k">R$ 5 a 20 mil</button>
+      <button type="button" class="pb-range-btn" data-range="20k_50k">R$ 20 a 50 mil</button>
+      <button type="button" class="pb-range-btn" data-range="50k_100k">R$ 50 a 100 mil</button>
+      <button type="button" class="pb-range-btn" data-range="100k_200k">R$ 100 a 200 mil</button>
+      <button type="button" class="pb-range-btn" data-range="acima_200k">Acima de R$ 200 mil</button>
+    </div>
+  </div>
+
+  <!-- Asset list -->
+  <div class="pb-list-section" id="pb-list-section" style="display:none;">
+    <div class="pb-list-header">
+      <span class="pb-label">Seus ativos</span>
+      <span class="pb-count" id="pb-count"></span>
+    </div>
+    <div class="pb-list" id="pb-list"></div>
+  </div>
+
+  <!-- Skip option -->
+  <div class="pb-skip" id="pb-skip">
+    <button type="button" class="pb-skip-btn" id="pb-skip-btn">Ainda não sei detalhar minha carteira</button>
+  </div>
+
+  <!-- Hidden input for RD Station -->
+  <input type="hidden" name="cf_carteira_detalhada" id="cf_carteira_detalhada" value="">
+
+  <!-- Continue button -->
+  <div class="pb-actions" id="pb-actions" style="display:none;">
+    <button type="button" class="pb-continue-btn" id="pb-continue-btn">
+      Continuar
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+</div>
+
+<style>
+/* ===== PORTFOLIO BUILDER ===== */
+.pb{
+  --pb-bg:#0B0E13;
+  --pb-card:rgba(255,255,255,0.04);
+  --pb-border:rgba(255,255,255,0.1);
+  --pb-border-focus:rgba(25,198,181,0.4);
+  --pb-teal:#19c6b5;
+  --pb-teal-bg:rgba(25,198,181,0.1);
+  --pb-teal-hover:rgba(25,198,181,0.15);
+  --pb-text:#FFFFFF;
+  --pb-text2:rgba(255,255,255,0.7);
+  --pb-text3:rgba(255,255,255,0.4);
+  --pb-red:#EF4444;
+  --pb-radius:12px;
+  --pb-font:Arial,'Helvetica Neue',Helvetica,sans-serif;
+  font-family:var(--pb-font);
+  max-width:100%;
+}
+.pb *,.pb *::before,.pb *::after{box-sizing:border-box;}
+
+/* Header */
+.pb-header{margin-bottom:24px;text-align:center;}
+.pb-title{font-size:18px;font-weight:700;color:var(--pb-text);margin:0 0 8px;line-height:1.3;}
+.pb-subtitle{font-size:14px;color:var(--pb-text2);margin:0;line-height:1.5;}
+
+/* Labels */
+.pb-label{display:block;font-size:13px;font-weight:600;color:var(--pb-text2);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+.pb-accent{color:var(--pb-teal);font-weight:700;}
+
+/* Select wrapper */
+.pb-select-wrap{position:relative;}
+.pb-select{
+  width:100%;
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  background:var(--pb-card);
+  border:1px solid var(--pb-border);
+  border-radius:var(--pb-radius);
+  color:var(--pb-text);
+  font-family:var(--pb-font);
+  font-size:16px; /* prevents iOS zoom */
+  padding:14px 40px 14px 16px;
+  cursor:pointer;
+  transition:border-color 0.2s;
+  outline:none;
+}
+.pb-select:focus{border-color:var(--pb-border-focus);}
+.pb-select option{background:#1a1d24;color:#fff;}
+.pb-select-arrow{position:absolute;right:16px;top:50%;transform:translateY(-50%);pointer-events:none;}
+
+/* Step container */
+.pb-step{margin-bottom:20px;animation:pbFadeIn 0.25s ease;}
+@keyframes pbFadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* Range buttons grid */
+.pb-ranges{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.pb-range-btn{
+  background:var(--pb-card);
+  border:1px solid var(--pb-border);
+  border-radius:10px;
+  color:var(--pb-text2);
+  font-family:var(--pb-font);
+  font-size:14px;
+  font-weight:500;
+  padding:12px 8px;
+  cursor:pointer;
+  transition:all 0.15s ease;
+  text-align:center;
+  line-height:1.3;
+  -webkit-tap-highlight-color:transparent;
+}
+.pb-range-btn:hover{
+  background:var(--pb-teal-bg);
+  border-color:var(--pb-border-focus);
+  color:var(--pb-text);
+}
+.pb-range-btn:active{
+  transform:scale(0.97);
+}
+.pb-range-btn.selected{
+  background:var(--pb-teal-bg);
+  border-color:var(--pb-teal);
+  color:var(--pb-teal);
+  font-weight:700;
+}
+
+/* Asset list */
+.pb-list-section{margin-top:20px;animation:pbFadeIn 0.25s ease;}
+.pb-list-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.pb-count{font-size:12px;color:var(--pb-text3);font-weight:500;}
+.pb-list{
+  background:var(--pb-card);
+  border:1px solid var(--pb-border);
+  border-radius:var(--pb-radius);
+  overflow:hidden;
+}
+
+/* Individual asset row */
+.pb-asset-row{
+  display:flex;
+  align-items:center;
+  padding:12px 14px;
+  gap:10px;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  animation:pbSlideIn 0.2s ease;
+}
+.pb-asset-row:last-child{border-bottom:none;}
+@keyframes pbSlideIn{from{opacity:0;transform:translateX(-10px);}to{opacity:1;transform:translateX(0);}}
+
+.pb-asset-dot{
+  width:10px;height:10px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+.pb-asset-info{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0;}
+.pb-asset-name{font-size:14px;font-weight:600;color:var(--pb-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pb-asset-ticker{font-size:11px;color:var(--pb-text3);font-weight:500;text-transform:uppercase;}
+.pb-asset-range{font-size:13px;color:var(--pb-teal);font-weight:600;white-space:nowrap;flex-shrink:0;}
+.pb-asset-remove{
+  background:none;
+  border:none;
+  color:var(--pb-text3);
+  cursor:pointer;
+  padding:4px;
+  font-size:18px;
+  line-height:1;
+  flex-shrink:0;
+  transition:color 0.15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.pb-asset-remove:hover{color:var(--pb-red);}
+
+/* Skip */
+.pb-skip{text-align:center;margin-top:16px;}
+.pb-skip-btn{
+  background:none;
+  border:none;
+  color:var(--pb-text3);
+  font-family:var(--pb-font);
+  font-size:13px;
+  cursor:pointer;
+  padding:8px;
+  text-decoration:underline;
+  text-underline-offset:2px;
+  transition:color 0.15s;
+}
+.pb-skip-btn:hover{color:var(--pb-text2);}
+
+/* Continue */
+.pb-actions{margin-top:20px;text-align:center;}
+.pb-continue-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--pb-teal);
+  color:#fff;
+  font-family:var(--pb-font);
+  font-size:16px;
+  font-weight:700;
+  padding:14px 32px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:filter 0.2s,transform 0.1s;
+  width:100%;
+  justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+}
+.pb-continue-btn:hover{filter:brightness(0.9);}
+.pb-continue-btn:active{transform:scale(0.98);}
+
+/* Toast feedback */
+.pb-toast{
+  position:fixed;
+  bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:#1a1d24;
+  border:1px solid var(--pb-teal);
+  color:var(--pb-text);
+  font-family:var(--pb-font);
+  font-size:14px;
+  padding:12px 24px;
+  border-radius:10px;
+  z-index:9999;
+  opacity:0;
+  transition:all 0.3s ease;
+  pointer-events:none;
+  box-shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+.pb-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* Responsive: single column on small screens */
+@media(max-width:400px){
+  .pb-ranges{grid-template-columns:1fr;}
+  .pb-range-btn{padding:14px 12px;font-size:15px;}
+}
+</style>
+
+<script>
+(function(){
+  'use strict';
+
+  // ===== CRYPTO ASSETS DATABASE =====
+  var ASSETS = [
+    {name:'Bitcoin',       ticker:'BTC',   color:'#F7931A'},
+    {name:'Ethereum',      ticker:'ETH',   color:'#627EEA'},
+    {name:'BNB',           ticker:'BNB',   color:'#F3BA2F'},
+    {name:'Solana',        ticker:'SOL',   color:'#9945FF'},
+    {name:'XRP',           ticker:'XRP',   color:'#23292F'},
+    {name:'Cardano',       ticker:'ADA',   color:'#0033AD'},
+    {name:'Avalanche',     ticker:'AVAX',  color:'#E84142'},
+    {name:'Polkadot',      ticker:'DOT',   color:'#E6007A'},
+    {name:'Chainlink',     ticker:'LINK',  color:'#2A5ADA'},
+    {name:'Polygon',       ticker:'POL',   color:'#8247E5'},
+    {name:'Uniswap',       ticker:'UNI',   color:'#FF007A'},
+    {name:'Litecoin',      ticker:'LTC',   color:'#BFBBBB'},
+    {name:'USDT',          ticker:'USDT',  color:'#26A17B'},
+    {name:'USDC',          ticker:'USDC',  color:'#2775CA'},
+    {name:'DAI',           ticker:'DAI',   color:'#F5AC37'},
+    {name:'Cosmos',        ticker:'ATOM',  color:'#2E3148'},
+    {name:'Near',          ticker:'NEAR',  color:'#00C08B'},
+    {name:'Algorand',      ticker:'ALGO',  color:'#000000'},
+    {name:'Aave',          ticker:'AAVE',  color:'#B6509E'},
+    {name:'Arbitrum',      ticker:'ARB',   color:'#28A0F0'}
+  ];
+
+  var RANGE_LABELS = {
+    'ate_5k':     'Até R$ 5 mil',
+    '5k_20k':     'R$ 5–20 mil',
+    '20k_50k':    'R$ 20–50 mil',
+    '50k_100k':   'R$ 50–100 mil',
+    '100k_200k':  'R$ 100–200 mil',
+    'acima_200k': '+ R$ 200 mil'
+  };
+
+  var MAX_ASSETS = 10;
+
+  // ===== STATE =====
+  var portfolio = [];
+  var selectedAsset = null;
+
+  // ===== DOM REFS =====
+  var selectEl       = document.getElementById('pb-asset-select');
+  var stepRange      = document.getElementById('pb-step-range');
+  var rangeAssetName = document.getElementById('pb-range-asset-name');
+  var rangesEl       = document.getElementById('pb-ranges');
+  var listSection    = document.getElementById('pb-list-section');
+  var listEl         = document.getElementById('pb-list');
+  var countEl        = document.getElementById('pb-count');
+  var actionsEl      = document.getElementById('pb-actions');
+  var continueBtn    = document.getElementById('pb-continue-btn');
+  var hiddenInput    = document.getElementById('cf_carteira_detalhada');
+  var skipBtn        = document.getElementById('pb-skip-btn');
+  var skipWrap       = document.getElementById('pb-skip');
+
+  // ===== INIT: Populate select =====
+  function populateSelect(){
+    // Clear existing options except placeholder
+    while(selectEl.options.length > 1) selectEl.remove(1);
+    ASSETS.forEach(function(a){
+      if(isInPortfolio(a.name)) return; // skip already added
+      var opt = document.createElement('option');
+      opt.value = a.name;
+      opt.textContent = a.name + ' (' + a.ticker + ')';
+      selectEl.appendChild(opt);
+    });
+    selectEl.value = '';
+  }
+
+  function isInPortfolio(name){
+    return portfolio.some(function(p){ return p.asset === name; });
+  }
+
+  function getAssetData(name){
+    return ASSETS.find(function(a){ return a.name === name; });
+  }
+
+  // ===== SELECT CHANGE =====
+  selectEl.addEventListener('change', function(){
+    var name = selectEl.value;
+    if(!name) return;
+    var asset = getAssetData(name);
+    if(!asset) return;
+
+    selectedAsset = asset;
+    rangeAssetName.textContent = asset.name;
+
+    // Reset range selection
+    var btns = rangesEl.querySelectorAll('.pb-range-btn');
+    for(var i=0;i<btns.length;i++) btns[i].classList.remove('selected');
+
+    stepRange.style.display = 'block';
+    // Scroll range into view on mobile
+    setTimeout(function(){
+      stepRange.scrollIntoView({behavior:'smooth', block:'nearest'});
+    }, 100);
+  });
+
+  // ===== RANGE SELECTION =====
+  rangesEl.addEventListener('click', function(e){
+    var btn = e.target.closest('.pb-range-btn');
+    if(!btn || !selectedAsset) return;
+
+    var range = btn.getAttribute('data-range');
+    addAsset(selectedAsset, range);
+  });
+
+  // ===== ADD ASSET =====
+  function addAsset(asset, range){
+    if(portfolio.length >= MAX_ASSETS){
+      showToast('Limite de ' + MAX_ASSETS + ' ativos atingido');
+      return;
+    }
+    if(isInPortfolio(asset.name)){
+      showToast(asset.name + ' já adicionado');
+      return;
+    }
+
+    portfolio.push({
+      asset: asset.name,
+      ticker: asset.ticker,
+      range: range
+    });
+
+    // Reset selection state
+    selectedAsset = null;
+    stepRange.style.display = 'none';
+    populateSelect();
+
+    // Update UI
+    renderList();
+    updateHiddenInput();
+    showToast(asset.name + ' adicionado');
+
+    // Show/hide sections
+    listSection.style.display = 'block';
+    actionsEl.style.display = 'block';
+
+    // Hide skip if has assets
+    skipWrap.style.display = portfolio.length > 0 ? 'none' : 'block';
+
+    // Check if max reached
+    if(portfolio.length >= MAX_ASSETS){
+      selectEl.disabled = true;
+    }
+  }
+
+  // ===== REMOVE ASSET =====
+  function removeAsset(name){
+    portfolio = portfolio.filter(function(p){ return p.asset !== name; });
+    populateSelect();
+    renderList();
+    updateHiddenInput();
+
+    if(portfolio.length === 0){
+      listSection.style.display = 'none';
+      actionsEl.style.display = 'none';
+      skipWrap.style.display = 'block';
+    }
+
+    selectEl.disabled = false;
+  }
+
+  // ===== RENDER LIST =====
+  function renderList(){
+    listEl.innerHTML = '';
+    countEl.textContent = portfolio.length + '/' + MAX_ASSETS;
+
+    portfolio.forEach(function(item){
+      var assetData = getAssetData(item.asset);
+      var color = assetData ? assetData.color : '#888';
+      var rangeLabel = RANGE_LABELS[item.range] || item.range;
+
+      var row = document.createElement('div');
+      row.className = 'pb-asset-row';
+      row.innerHTML =
+        '<span class="pb-asset-dot" style="background:' + color + '"></span>' +
+        '<span class="pb-asset-info">' +
+          '<span class="pb-asset-name">' + item.asset + '</span>' +
+          '<span class="pb-asset-ticker">' + item.ticker + '</span>' +
+        '</span>' +
+        '<span class="pb-asset-range">' + rangeLabel + '</span>' +
+        '<button type="button" class="pb-asset-remove" data-asset="' + item.asset + '" aria-label="Remover ' + item.asset + '">&times;</button>';
+
+      listEl.appendChild(row);
+    });
+  }
+
+  // ===== REMOVE CLICK (delegated) =====
+  listEl.addEventListener('click', function(e){
+    var btn = e.target.closest('.pb-asset-remove');
+    if(!btn) return;
+    var name = btn.getAttribute('data-asset');
+    removeAsset(name);
+  });
+
+  // ===== UPDATE HIDDEN INPUT =====
+  function updateHiddenInput(){
+    var data = portfolio.map(function(p){
+      return {asset: p.asset, ticker: p.ticker, range: p.range};
+    });
+    hiddenInput.value = JSON.stringify(data);
+  }
+
+  // ===== CONTINUE =====
+  continueBtn.addEventListener('click', function(){
+    if(portfolio.length === 0) return;
+    // Dispatch custom event for form flow integration
+    var event;
+    try{
+      event = new CustomEvent('portfolio-complete', {detail: {portfolio: portfolio}});
+    } catch(e){
+      event = document.createEvent('CustomEvent');
+      event.initCustomEvent('portfolio-complete', true, true, {portfolio: portfolio});
+    }
+    document.getElementById('portfolio-builder').dispatchEvent(event);
+  });
+
+  // ===== SKIP =====
+  skipBtn.addEventListener('click', function(){
+    hiddenInput.value = JSON.stringify([{asset:'nao_sabe', ticker:'', range:''}]);
+    var event;
+    try{
+      event = new CustomEvent('portfolio-complete', {detail: {portfolio: [{asset:'nao_sabe'}], skipped: true}});
+    } catch(e){
+      event = document.createEvent('CustomEvent');
+      event.initCustomEvent('portfolio-complete', true, true, {portfolio: [{asset:'nao_sabe'}], skipped: true});
+    }
+    document.getElementById('portfolio-builder').dispatchEvent(event);
+  });
+
+  // ===== TOAST =====
+  var toastEl = null;
+  var toastTimer = null;
+  function showToast(msg){
+    if(!toastEl){
+      toastEl = document.createElement('div');
+      toastEl.className = 'pb-toast';
+      document.body.appendChild(toastEl);
+    }
+    clearTimeout(toastTimer);
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    toastTimer = setTimeout(function(){
+      toastEl.classList.remove('show');
+    }, 2000);
+  }
+
+  // ===== INIT =====
+  populateSelect();
+
+})();
+</script>
+<!-- ===== END MINI PORTFOLIO BUILDER ===== -->
