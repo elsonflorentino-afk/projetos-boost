@@ -158,24 +158,29 @@ section{padding:80px 0;}
 .card-option:hover{transform:translateY(-1px);border-color:var(--teal);box-shadow:0 2px 8px rgba(25,198,181,0.1);}
 .card-option.selected,.card-option.checked{background:rgba(25,198,181,0.06);border-color:var(--teal);color:var(--teal);font-weight:600;}
 
-/* ===== PORTFOLIO BUILDER ===== */
-.pb-select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--font);font-size:16px;padding:12px 36px 12px 16px;cursor:pointer;outline:none;transition:border-color 0.2s;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A0A0C0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
-.pb-select:focus{border-color:var(--teal);}
-.pb-select option{background:#1a1d24;color:#fff;}
-.pb-range-label{font-size:13px;color:var(--text-secondary);margin-bottom:8px;}
-.pb-ranges{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.pb-range-btn{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;color:var(--text-secondary);font-family:var(--font);font-size:13px;font-weight:500;padding:11px 8px;cursor:pointer;transition:all 0.15s;text-align:center;-webkit-tap-highlight-color:transparent;}
-.pb-range-btn:hover{background:rgba(25,198,181,0.08);border-color:rgba(25,198,181,0.4);color:var(--text);}
-.pb-range-btn:active{transform:scale(0.97);}
-.pb-asset-row{display:flex;align-items:center;padding:10px 14px;gap:10px;border-bottom:1px solid rgba(255,255,255,0.04);}
-.pb-asset-row:last-child{border-bottom:none;}
-.pb-asset-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.pb-asset-info{flex:1;min-width:0;}
-.pb-asset-name{font-size:13px;font-weight:600;color:var(--text);}
-.pb-asset-ticker{font-size:10px;color:var(--text-muted);margin-left:4px;}
-.pb-asset-range{font-size:12px;color:var(--teal);font-weight:600;flex-shrink:0;}
-.pb-asset-remove{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:16px;padding:4px;flex-shrink:0;transition:color 0.15s;}
-.pb-asset-remove:hover{color:#EF4444;}
+/* ===== ASSET GRID (Visual Portfolio) ===== */
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.asset-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
+.asset-card.selected{border-color:#19c6b5;background:rgba(25,198,181,0.06);}
+.asset-card:hover{border-color:rgba(255,255,255,0.25);}
+.asset-card.selected:hover{border-color:#19c6b5;}
+.asset-logo{width:32px;height:32px;border-radius:50%;margin-bottom:6px;opacity:0.6;transition:opacity 0.2s;}
+.asset-card.selected .asset-logo{opacity:1;}
+.asset-card:hover .asset-logo{opacity:0.85;}
+.asset-name{display:block;font-size:11px;color:rgba(255,255,255,0.7);font-weight:600;}
+.asset-card.selected .asset-name{color:#fff;}
+.asset-check{display:none;position:absolute;top:6px;right:6px;width:16px;height:16px;background:#19c6b5;border-radius:50%;align-items:center;justify-content:center;}
+.asset-card.selected .asset-check{display:flex;}
+.asset-card{position:relative;}
+.asset-ranges{display:none;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px;}
+.asset-card.selected .asset-ranges{display:grid;}
+.range-pill{font-size:10px;padding:4px 2px;border:1px solid rgba(255,255,255,0.1);border-radius:6px;background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;font-family:Arial,sans-serif;transition:all 0.15s;-webkit-tap-highlight-color:transparent;}
+.range-pill:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);}
+.range-pill.active{background:rgba(25,198,181,0.15);border-color:#19c6b5;color:#19c6b5;font-weight:700;}
+.asset-card-outro{grid-column:1/-1;}
+.asset-card-outro .outro-input{display:none;margin-top:8px;width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:6px 8px;color:#fff;font-family:Arial,sans-serif;font-size:12px;outline:none;}
+.asset-card-outro .outro-input:focus{border-color:#19c6b5;}
+.asset-card-outro.selected .outro-input{display:block;}
 
 /* ===== BUTTONS ===== */
 .btn-primary{width:100%;padding:calc(0.667em + 2px) calc(1.333em + 2px);background:var(--text-secondary);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:0;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
@@ -275,6 +280,7 @@ section{padding:80px 0;}
   .brand-stat{gap:24px;}
   section{padding:48px 0;}
   .card-grid{grid-template-columns:1fr;}
+  .asset-grid{grid-template-columns:repeat(3,1fr);}
   .mobile-sticky-cta{display:block;position:fixed;bottom:0;left:0;right:0;z-index:998;padding:12px 16px;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-top:1px solid var(--border);}
   .mobile-sticky-cta a{display:block;width:100%;padding:14px;background:var(--teal);color:#fff;font-weight:700;font-size:16px;text-align:center;border-radius:8px;text-decoration:none;}
 }
@@ -364,47 +370,117 @@ section{padding:80px 0;}
                 </div>
               </div>
 
-              <!-- Mini Portfolio Builder -->
+              <!-- Visual Asset Grid -->
               <div class="f-group">
-                <label class="f-label">Quais ativos voc&ecirc; possui e quanto em cada um?</label>
-                <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Selecione o ativo e a faixa de valor. Adicione quantos precisar.</p>
+                <label class="f-label">Quais criptoativos voc&ecirc; possui?</label>
 
-                <div id="portfolio-builder" class="pb">
-                  <!-- Asset selector -->
-                  <div class="pb-select-wrap" style="margin-bottom:12px;">
-                    <select id="pb-asset-select" class="pb-select">
-                      <option value="" disabled selected>Escolha um ativo...</option>
-                    </select>
-                  </div>
-
-                  <!-- Range picker (hidden until asset selected) -->
-                  <div id="pb-step-range" style="display:none;margin-bottom:12px;">
-                    <p class="pb-range-label">Quanto investiu em <span id="pb-range-asset-name" style="color:var(--teal);font-weight:700;"></span>?</p>
-                    <div class="pb-ranges" id="pb-ranges">
-                      <button type="button" class="pb-range-btn" data-range="ate_5k">At&eacute; R$ 5 mil</button>
-                      <button type="button" class="pb-range-btn" data-range="5k_20k">R$ 5 a 20 mil</button>
-                      <button type="button" class="pb-range-btn" data-range="20k_50k">R$ 20 a 50 mil</button>
-                      <button type="button" class="pb-range-btn" data-range="50k_100k">R$ 50 a 100 mil</button>
-                      <button type="button" class="pb-range-btn" data-range="100k_200k">R$ 100 a 200 mil</button>
-                      <button type="button" class="pb-range-btn" data-range="acima_200k">Acima de R$ 200 mil</button>
+                <div class="asset-grid">
+                  <div class="asset-card" data-asset="Bitcoin" data-ticker="BTC" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" class="asset-logo">
+                    <span class="asset-name">Bitcoin</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
                     </div>
                   </div>
-
-                  <!-- Asset list -->
-                  <div id="pb-list-section" style="display:none;margin-bottom:12px;">
-                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-                      <span style="font-size:12px;font-weight:600;color:var(--text-secondary);">Seus ativos</span>
-                      <span id="pb-count" style="font-size:11px;color:var(--text-muted);"></span>
+                  <div class="asset-card" data-asset="Ethereum" data-ticker="ETH" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" class="asset-logo">
+                    <span class="asset-name">Ethereum</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
                     </div>
-                    <div id="pb-list" style="background:var(--card-bg);border:1px solid var(--border);border-radius:12px;overflow:hidden;"></div>
                   </div>
-
-                  <div id="pb-skip" style="text-align:center;margin-top:8px;">
-                    <button type="button" style="background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;text-decoration:underline;font-family:var(--font);" id="pb-skip-btn">Ainda n&atilde;o sei detalhar minha carteira</button>
+                  <div class="asset-card" data-asset="BNB" data-ticker="BNB" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png" alt="BNB" class="asset-logo">
+                    <span class="asset-name">BNB</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    </div>
                   </div>
-
-                  <input type="hidden" id="cf_carteira_detalhada" value="">
+                  <div class="asset-card" data-asset="Solana" data-ticker="SOL" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" class="asset-logo">
+                    <span class="asset-name">Solana</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    </div>
+                  </div>
+                  <div class="asset-card" data-asset="XRP" data-ticker="XRP" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png" alt="XRP" class="asset-logo">
+                    <span class="asset-name">XRP</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    </div>
+                  </div>
+                  <div class="asset-card" data-asset="Cardano" data-ticker="ADA" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="ADA" class="asset-logo">
+                    <span class="asset-name">Cardano</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    </div>
+                  </div>
+                  <div class="asset-card" data-asset="USDT" data-ticker="USDT" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" class="asset-logo">
+                    <span class="asset-name">USDT</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    </div>
+                  </div>
+                  <div class="asset-card" data-asset="USDC" data-ticker="USDC" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <img src="https://assets.coingecko.com/coins/images/6319/small/usdc.png" alt="USDC" class="asset-logo">
+                    <span class="asset-name">USDC</span>
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    </div>
+                  </div>
+                  <div class="asset-card asset-card-outro" data-asset="Outro" data-ticker="" onclick="toggleAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <span class="asset-name" style="font-size:12px;">+ Outro ativo</span>
+                    <input type="text" class="outro-input" placeholder="Nome do ativo" onclick="event.stopPropagation();" oninput="this.closest('.asset-card').setAttribute('data-asset',this.value||'Outro');updatePortfolioData();">
+                    <div class="asset-ranges">
+                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
+                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
+                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
+                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    </div>
+                  </div>
                 </div>
+
+                <div id="pb-skip" style="text-align:center;margin-top:8px;">
+                  <button type="button" style="background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;text-decoration:underline;font-family:var(--font);" id="pb-skip-btn">Ainda n&atilde;o sei detalhar</button>
+                </div>
+
+                <input type="hidden" id="cf_carteira_detalhada" value="">
               </div>
 
               <div class="f-group">
@@ -746,92 +822,43 @@ if(utmContent&&headlines[utmContent]){
 /* Stored lead name for WA link */
 var leadName='';
 
-/* ===== PORTFOLIO BUILDER JS ===== */
-var PB_ASSETS=[
-  {name:'Bitcoin',ticker:'BTC',color:'#F7931A'},{name:'Ethereum',ticker:'ETH',color:'#627EEA'},
-  {name:'BNB',ticker:'BNB',color:'#F3BA2F'},{name:'Solana',ticker:'SOL',color:'#9945FF'},
-  {name:'XRP',ticker:'XRP',color:'#23292F'},{name:'Cardano',ticker:'ADA',color:'#0033AD'},
-  {name:'Avalanche',ticker:'AVAX',color:'#E84142'},{name:'Polkadot',ticker:'DOT',color:'#E6007A'},
-  {name:'Chainlink',ticker:'LINK',color:'#2A5ADA'},{name:'Polygon',ticker:'POL',color:'#8247E5'},
-  {name:'Uniswap',ticker:'UNI',color:'#FF007A'},{name:'Litecoin',ticker:'LTC',color:'#BFBBBB'},
-  {name:'USDT',ticker:'USDT',color:'#26A17B'},{name:'USDC',ticker:'USDC',color:'#2775CA'},
-  {name:'DAI',ticker:'DAI',color:'#F5AC37'},{name:'Cosmos',ticker:'ATOM',color:'#6F7390'},
-  {name:'Near',ticker:'NEAR',color:'#00C08B'},{name:'Aave',ticker:'AAVE',color:'#B6509E'},
-  {name:'Arbitrum',ticker:'ARB',color:'#28A0F0'},{name:'Outro',ticker:'',color:'#888'}
-];
-var PB_RANGE_LABELS={'ate_5k':'Ate R$5k','5k_20k':'R$5-20k','20k_50k':'R$20-50k','50k_100k':'R$50-100k','100k_200k':'R$100-200k','acima_200k':'+R$200k'};
-var pbPortfolio=[];
-var pbSelectedAsset=null;
+/* ===== ASSET GRID JS ===== */
+window.toggleAsset=function(card){
+  card.classList.toggle('selected');
+  if(!card.classList.contains('selected')){
+    card.querySelectorAll('.range-pill').forEach(function(p){p.classList.remove('active');});
+    card.removeAttribute('data-range');
+  }
+  updatePortfolioData();
+};
 
-function pbPopulateSelect(){
-  var sel=document.getElementById('pb-asset-select');
-  while(sel.options.length>1)sel.remove(1);
-  PB_ASSETS.forEach(function(a){
-    if(pbPortfolio.some(function(p){return p.asset===a.name;}))return;
-    var opt=document.createElement('option');
-    opt.value=a.name;opt.textContent=a.name+(a.ticker?' ('+a.ticker+')':'');
-    sel.appendChild(opt);
+function updatePortfolioData(){
+  var data=[];
+  document.querySelectorAll('.asset-card.selected').forEach(function(card){
+    var range=card.getAttribute('data-range')||'';
+    data.push({asset:card.getAttribute('data-asset'),ticker:card.getAttribute('data-ticker'),range:range});
   });
-  sel.value='';
-}
-
-function pbRenderList(){
-  var list=document.getElementById('pb-list');
-  var count=document.getElementById('pb-count');
-  list.innerHTML='';count.textContent=pbPortfolio.length+'/10';
-  pbPortfolio.forEach(function(item){
-    var a=PB_ASSETS.find(function(x){return x.name===item.asset;})||{color:'#888'};
-    var row=document.createElement('div');row.className='pb-asset-row';
-    row.innerHTML='<span class="pb-asset-dot" style="background:'+a.color+'"></span>'+
-      '<span class="pb-asset-info"><span class="pb-asset-name">'+item.asset+'<span class="pb-asset-ticker">'+item.ticker+'</span></span></span>'+
-      '<span class="pb-asset-range">'+(PB_RANGE_LABELS[item.range]||item.range)+'</span>'+
-      '<button type="button" class="pb-asset-remove" data-asset="'+item.asset+'">&times;</button>';
-    list.appendChild(row);
-  });
-}
-
-function pbUpdateHidden(){
-  document.getElementById('cf_carteira_detalhada').value=JSON.stringify(pbPortfolio);
+  document.getElementById('cf_carteira_detalhada').value=data.length>0?JSON.stringify(data):'';
   checkStep1();
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  pbPopulateSelect();
-
-  document.getElementById('pb-asset-select').addEventListener('change',function(){
-    var name=this.value;if(!name)return;
-    pbSelectedAsset=PB_ASSETS.find(function(a){return a.name===name;});
-    if(!pbSelectedAsset)return;
-    document.getElementById('pb-range-asset-name').textContent=pbSelectedAsset.name;
-    document.querySelectorAll('.pb-range-btn').forEach(function(b){b.classList.remove('selected');});
-    document.getElementById('pb-step-range').style.display='block';
-    setTimeout(function(){document.getElementById('pb-step-range').scrollIntoView({behavior:'smooth',block:'nearest'});},100);
-  });
-
-  document.getElementById('pb-ranges').addEventListener('click',function(e){
-    var btn=e.target.closest('.pb-range-btn');
-    if(!btn||!pbSelectedAsset)return;
-    if(pbPortfolio.length>=10)return;
-    pbPortfolio.push({asset:pbSelectedAsset.name,ticker:pbSelectedAsset.ticker,range:btn.getAttribute('data-range')});
-    pbSelectedAsset=null;
-    document.getElementById('pb-step-range').style.display='none';
-    pbPopulateSelect();pbRenderList();pbUpdateHidden();
-    document.getElementById('pb-list-section').style.display='block';
-    document.getElementById('pb-skip').style.display=pbPortfolio.length>0?'none':'block';
-  });
-
-  document.getElementById('pb-list').addEventListener('click',function(e){
-    var btn=e.target.closest('.pb-asset-remove');if(!btn)return;
-    var name=btn.getAttribute('data-asset');
-    pbPortfolio=pbPortfolio.filter(function(p){return p.asset!==name;});
-    pbPopulateSelect();pbRenderList();pbUpdateHidden();
-    if(pbPortfolio.length===0){document.getElementById('pb-list-section').style.display='none';document.getElementById('pb-skip').style.display='block';}
+  document.querySelectorAll('.range-pill').forEach(function(pill){
+    pill.addEventListener('click',function(e){
+      e.stopPropagation();
+      var card=pill.closest('.asset-card');
+      if(!card.classList.contains('selected')){card.classList.add('selected');}
+      card.querySelectorAll('.range-pill').forEach(function(p){p.classList.remove('active');});
+      pill.classList.add('active');
+      card.setAttribute('data-range',pill.getAttribute('data-range'));
+      updatePortfolioData();
+    });
   });
 
   document.getElementById('pb-skip-btn').addEventListener('click',function(){
-    pbPortfolio=[{asset:'nao_sabe',ticker:'',range:''}];
-    pbUpdateHidden();
+    document.getElementById('cf_carteira_detalhada').value=JSON.stringify([{asset:'nao_sabe',ticker:'',range:''}]);
     document.getElementById('pb-skip').innerHTML='<span style="font-size:12px;color:var(--teal);">Ok, o Advisor pergunta na conversa.</span>';
+    checkStep1();
   });
 });
 
@@ -862,8 +889,6 @@ document.addEventListener('DOMContentLoaded',function(){
     });
   });
 
-  /* Portfolio builder initialized above */
-
   /* WhatsApp Mask */
   var wpp=document.getElementById('f-whatsapp');
   if(wpp)wpp.addEventListener('input',function(){
@@ -882,10 +907,16 @@ function checkStep1(){
   var cripto=document.getElementById('f-cripto').value;
   var trad=document.getElementById('f-tradicional').value;
   var desafio=document.getElementById('f-desafio').value;
-  var carteira=document.getElementById('cf_carteira_detalhada').value;
-  var valid=cripto&&trad&&desafio&&carteira;
+  var valid=cripto&&trad&&desafio;
   if(cripto==='sim'&&!document.getElementById('f-patrimonio-cripto').value)valid=false;
   if(trad==='sim'&&!document.getElementById('f-patrimonio-tradicional').value)valid=false;
+  /* If assets are selected, each must have a range chosen */
+  var selectedCards=document.querySelectorAll('.asset-card.selected');
+  if(selectedCards.length>0){
+    selectedCards.forEach(function(card){
+      if(!card.getAttribute('data-range'))valid=false;
+    });
+  }
   document.getElementById('btn-step1').disabled=!valid;
 }
 
