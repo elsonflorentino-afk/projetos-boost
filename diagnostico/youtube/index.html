@@ -347,6 +347,21 @@ section{padding:80px 0;}
               </div>
 
               <div class="f-group">
+                <label class="f-label">Quais ativos voc&ecirc; possui hoje? <span style="font-weight:400;color:var(--text-muted);font-size:11px;">(selecione todos que se aplicam)</span></label>
+                <div class="card-grid" id="assets-grid">
+                  <div class="card-option multi" data-value="Bitcoin">Bitcoin</div>
+                  <div class="card-option multi" data-value="Ethereum">Ethereum</div>
+                  <div class="card-option multi" data-value="Altcoins">Altcoins</div>
+                  <div class="card-option multi" data-value="Stablecoins">Stablecoins</div>
+                  <div class="card-option multi" data-value="DeFi/Yield">DeFi / Yield</div>
+                  <div class="card-option multi" data-value="Renda Fixa">Renda Fixa / CDI</div>
+                  <div class="card-option multi" data-value="Ações/FIIs">A&ccedil;&otilde;es / FIIs</div>
+                  <div class="card-option multi" data-value="Outros">Outros</div>
+                </div>
+                <input type="hidden" id="f-classes-ativos" value="">
+              </div>
+
+              <div class="f-group">
                 <label class="f-label">Qual seu maior desafio hoje?</label>
                 <div class="card-grid" id="desafio-grid" data-field="f-desafio">
                   <div class="card-option" data-value="Não sei quando vender ou realizar lucro">N&atilde;o sei quando vender ou realizar lucro</div>
@@ -824,6 +839,7 @@ document.addEventListener('DOMContentLoaded',function(){
         cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:document.getElementById('f-tradicional').value,
         cf_qual_seu_patrimonio_investido_no_mercado_tradicional:document.getElementById('f-patrimonio-tradicional').value||'',
         cf_desafio_cripto:document.getElementById('f-desafio').value,
+        cf_classes_ativos_portfolio:document.getElementById('f-classes-ativos').value,
         traffic_source:getCookie('boost_utm_source'),
         traffic_medium:getCookie('boost_utm_medium'),
         traffic_campaign:getCookie('boost_utm_campaign'),
