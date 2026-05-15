@@ -82,11 +82,9 @@ section{padding:80px 0;}
 .section-header .sub{color:var(--text-secondary);font-size:16px;line-height:1.7;margin-bottom:0;}
 
 /* ===== CREDIBILITY BAR ===== */
-.cred-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;padding:24px 40px;background:var(--card-bg);border:1px solid var(--border);border-radius:16px;max-width:800px;margin:0 auto;}
-.cred-stat{text-align:center;}
-.cred-stat .cred-num{font-size:20px;font-weight:800;color:var(--teal);display:block;}
-.cred-stat .cred-label{font-size:11px;color:var(--text-muted);margin-top:4px;display:block;text-transform:uppercase;letter-spacing:0.5px;}
-.cred-divider{width:1px;background:var(--border);align-self:stretch;min-height:32px;}
+.cred-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px;margin:0 auto;}
+.cred-item{display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1px solid var(--border);border-radius:50px;padding:10px 20px;font-size:13px;color:var(--text-secondary);}
+.cred-item svg{color:var(--teal);flex-shrink:0;}
 
 /* ===== PAIN CARDS ===== */
 .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
@@ -252,7 +250,8 @@ section{padding:80px 0;}
   .cred-pills{justify-content:center;}
   .profile-grid{grid-template-columns:1fr;}
   .dif-grid{grid-template-columns:1fr;}
-  .cred-bar{gap:24px;}
+  .cred-bar{gap:8px;}
+  .cred-item{font-size:12px;padding:8px 14px;}
   .form-card{padding:24px 20px;}
   .brand-stat{gap:24px;}
   section{padding:48px 0;}
@@ -471,24 +470,21 @@ section{padding:80px 0;}
 <section class="section--alt" style="padding:48px 0;">
   <div class="container">
     <div class="cred-bar">
-      <div class="cred-stat">
-        <span class="cred-num">2016</span>
-        <span class="cred-label">Desde</span>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        No mercado desde 2016
       </div>
-      <div class="cred-divider"></div>
-      <div class="cred-stat">
-        <span class="cred-num">2</span>
-        <span class="cred-label">Ciclos completos</span>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        2 ciclos completos de alta e baixa
       </div>
-      <div class="cred-divider"></div>
-      <div class="cred-stat">
-        <span class="cred-num">Zero</span>
-        <span class="cred-label">Comiss&atilde;o de exchange</span>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Sem comiss&atilde;o de exchange
       </div>
-      <div class="cred-divider"></div>
-      <div class="cred-stat">
-        <span class="cred-num">CVM</span>
-        <span class="cred-label">Consultoria autorizada</span>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        Consultoria independente e regulamentada
       </div>
     </div>
   </div>
