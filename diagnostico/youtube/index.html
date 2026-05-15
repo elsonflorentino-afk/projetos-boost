@@ -158,6 +158,19 @@ section{padding:80px 0;}
 .card-option:hover{transform:translateY(-1px);border-color:var(--teal);box-shadow:0 2px 8px rgba(25,198,181,0.1);}
 .card-option.selected,.card-option.checked{background:rgba(25,198,181,0.06);border-color:var(--teal);color:var(--teal);font-weight:600;}
 
+/* ===== ALLOCATION CARDS ===== */
+.alloc-cards{display:flex;flex-direction:column;gap:10px;}
+.alloc-card{border:1px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;transition:all 0.2s;background:var(--card-bg);}
+.alloc-card:hover{border-color:rgba(25,198,181,0.4);transform:translateY(-1px);}
+.alloc-card.selected{border-color:var(--teal);background:rgba(25,198,181,0.06);box-shadow:0 0 0 1px var(--teal);}
+.alloc-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.alloc-name{font-size:14px;font-weight:600;color:var(--text);}
+.alloc-card.selected .alloc-name::after{content:' \2713';color:var(--teal);}
+.alloc-bar{display:flex;height:24px;border-radius:6px;overflow:hidden;margin-bottom:6px;}
+.alloc-bar>div{min-width:4px;transition:width 0.3s;}
+.alloc-labels{display:flex;gap:8px;flex-wrap:wrap;}
+.alloc-labels span{font-size:11px;color:var(--text-muted);}
+
 /* ===== BUTTONS ===== */
 .btn-primary{width:100%;padding:calc(0.667em + 2px) calc(1.333em + 2px);background:var(--text-secondary);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:0;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
 .btn-primary:not(:disabled):hover{filter:brightness(1.2);}
@@ -361,14 +374,69 @@ section{padding:80px 0;}
               </div>
 
               <div class="f-group">
-                <label class="f-label">Como est&aacute; a composi&ccedil;&atilde;o do seu portf&oacute;lio cripto?</label>
-                <div class="card-grid" id="composicao-grid" data-field="f-composicao" style="grid-template-columns:1fr;">
-                  <div class="card-option" data-value="quase_tudo_btc" style="text-align:left;">Quase tudo em Bitcoin <span style="color:var(--text-muted);font-size:11px;">(mais de 70%)</span></div>
-                  <div class="card-option" data-value="maioria_btc" style="text-align:left;">Maioria Bitcoin, um pouco de ETH e altcoins <span style="color:var(--text-muted);font-size:11px;">(50-70% BTC)</span></div>
-                  <div class="card-option" data-value="dividido" style="text-align:left;">Bem dividido entre BTC, ETH e altcoins</div>
-                  <div class="card-option" data-value="mais_altcoins" style="text-align:left;">Mais altcoins do que Bitcoin</div>
-                  <div class="card-option" data-value="maioria_stablecoins" style="text-align:left;">Maioria em stablecoins / dolarizado</div>
-                  <div class="card-option" data-value="nao_sei" style="text-align:left;">N&atilde;o sei dizer exatamente</div>
+                <label class="f-label">Qual perfil mais se parece com sua carteira cripto?</label>
+                <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Selecione o mais pr&oacute;ximo. A barra mostra a distribui&ccedil;&atilde;o.</p>
+                <div class="alloc-cards" id="composicao-grid">
+
+                  <div class="alloc-card" data-value="quase_tudo_btc" onclick="selectAlloc(this)">
+                    <div class="alloc-header"><span class="alloc-name">Bitcoin First</span></div>
+                    <div class="alloc-bar">
+                      <div style="width:75%;background:#F7931A;"></div>
+                      <div style="width:15%;background:#627EEA;"></div>
+                      <div style="width:10%;background:#8B5CF6;"></div>
+                    </div>
+                    <div class="alloc-labels"><span>BTC 75%</span><span>ETH 15%</span><span>Alts 10%</span></div>
+                  </div>
+
+                  <div class="alloc-card" data-value="maioria_btc" onclick="selectAlloc(this)">
+                    <div class="alloc-header"><span class="alloc-name">Maioria Bitcoin</span></div>
+                    <div class="alloc-bar">
+                      <div style="width:55%;background:#F7931A;"></div>
+                      <div style="width:25%;background:#627EEA;"></div>
+                      <div style="width:15%;background:#8B5CF6;"></div>
+                      <div style="width:5%;background:#10B981;"></div>
+                    </div>
+                    <div class="alloc-labels"><span>BTC 55%</span><span>ETH 25%</span><span>Alts 15%</span><span>Stables 5%</span></div>
+                  </div>
+
+                  <div class="alloc-card" data-value="dividido" onclick="selectAlloc(this)">
+                    <div class="alloc-header"><span class="alloc-name">Diversificado</span></div>
+                    <div class="alloc-bar">
+                      <div style="width:30%;background:#F7931A;"></div>
+                      <div style="width:25%;background:#627EEA;"></div>
+                      <div style="width:30%;background:#8B5CF6;"></div>
+                      <div style="width:15%;background:#10B981;"></div>
+                    </div>
+                    <div class="alloc-labels"><span>BTC 30%</span><span>ETH 25%</span><span>Alts 30%</span><span>Stables 15%</span></div>
+                  </div>
+
+                  <div class="alloc-card" data-value="mais_altcoins" onclick="selectAlloc(this)">
+                    <div class="alloc-header"><span class="alloc-name">Mais Altcoins</span></div>
+                    <div class="alloc-bar">
+                      <div style="width:15%;background:#F7931A;"></div>
+                      <div style="width:20%;background:#627EEA;"></div>
+                      <div style="width:55%;background:#8B5CF6;"></div>
+                      <div style="width:10%;background:#10B981;"></div>
+                    </div>
+                    <div class="alloc-labels"><span>BTC 15%</span><span>ETH 20%</span><span>Alts 55%</span><span>Stables 10%</span></div>
+                  </div>
+
+                  <div class="alloc-card" data-value="maioria_stablecoins" onclick="selectAlloc(this)">
+                    <div class="alloc-header"><span class="alloc-name">Conservador / Dolarizado</span></div>
+                    <div class="alloc-bar">
+                      <div style="width:30%;background:#F7931A;"></div>
+                      <div style="width:10%;background:#627EEA;"></div>
+                      <div style="width:5%;background:#8B5CF6;"></div>
+                      <div style="width:55%;background:#10B981;"></div>
+                    </div>
+                    <div class="alloc-labels"><span>BTC 30%</span><span>ETH 10%</span><span>Alts 5%</span><span>Stables 55%</span></div>
+                  </div>
+
+                  <div class="alloc-card" data-value="nao_sei" onclick="selectAlloc(this)">
+                    <div class="alloc-header"><span class="alloc-name">N&atilde;o tenho certeza</span></div>
+                    <p style="font-size:12px;color:var(--text-muted);margin:4px 0 0;">Ainda estou come&ccedil;ando ou n&atilde;o acompanho a distribui&ccedil;&atilde;o</p>
+                  </div>
+
                 </div>
                 <input type="hidden" id="f-composicao" value="">
               </div>
@@ -712,6 +780,14 @@ if(utmContent&&headlines[utmContent]){
 /* Stored lead name for WA link */
 var leadName='';
 
+/* Allocation profile select */
+window.selectAlloc=function(card){
+  document.querySelectorAll('.alloc-card').forEach(function(c){c.classList.remove('selected');});
+  card.classList.add('selected');
+  document.getElementById('f-composicao').value=card.getAttribute('data-value');
+  checkStep1();
+};
+
 /* Toggle Sim/Não */
 window.setToggle=function(btn,group){
   var parent=btn.parentElement;
@@ -728,15 +804,7 @@ window.setToggle=function(btn,group){
 document.addEventListener('DOMContentLoaded',function(){
   fillUTMs();
 
-  /* Card Select (composição - single) */
-  document.querySelectorAll('#composicao-grid .card-option').forEach(function(card){
-    card.addEventListener('click',function(){
-      document.querySelectorAll('#composicao-grid .card-option').forEach(function(c){c.classList.remove('selected');});
-      card.classList.add('selected');
-      document.getElementById('f-composicao').value=card.getAttribute('data-value');
-      checkStep1();
-    });
-  });
+  /* selectAlloc is global, called via onclick */
 
   document.querySelectorAll('#desafio-grid .card-option').forEach(function(card){
     card.addEventListener('click',function(){
