@@ -814,14 +814,9 @@ document.addEventListener('DOMContentLoaded',function(){
     var patTrad=document.getElementById('f-patrimonio-tradicional').value;
     var temTrad=patTrad&&patTrad!=='nao_invisto'?'sim':'não';
 
-    // Tags
-    var tags=[];
-    tags.push('diagnostico-youtube');
-    tags.push('score-'+faixaScore);
     var disposicao=document.getElementById('f-disposicao').value;
-    if(disposicao==='15k_30k'||disposicao==='acima_30k')tags.push('lead-morno-investimento-15k');
 
-    // RD Station payload
+    // RD Station payload (tags via automação RD, não no payload)
     var payload={
       event_type:'CONVERSION',
       event_family:'CDP',
@@ -841,7 +836,6 @@ document.addEventListener('DOMContentLoaded',function(){
       cf_peso_cripto_portfolio:document.getElementById('f-peso-cripto').value,
       cf_score_diagnostico_portfolio:String(score),
       cf_faixa_score_portfolio:faixaScore,
-      tags:tags,
       traffic_source:getCookie('boost_utm_source')||'direct',
       traffic_medium:getCookie('boost_utm_medium')||'none',
       traffic_campaign:getCookie('boost_utm_campaign')||'',
@@ -854,43 +848,34 @@ document.addEventListener('DOMContentLoaded',function(){
       cf_utm_term:getCookie('boost_utm_term')||''
     };
 
-    // Send to RD Station
+    // dataLayer + tracking (fire before RD to not block result)
+    var eventId='lead_'+Date.now()+'_'+Math.random().toString(36).slice(2,9);
+    dataLayer.push({
+      event:'generate_lead',
+      form_id:'lp_diagnostico_youtube',
+      event_id:eventId,
+      user_email:email,
+      user_phone:'+55'+wppDigits,
+      user_name:nome,
+      score:score,
+      faixa:faixaScore
+    });
+    dataLayer.push({event:'quiz_complete',score:score,faixa:faixaScore});
+    fbq('track','Lead',{content_name:'diagnostico_youtube',value:score},{eventID:eventId});
+    gtag('event','conversion',{send_to:'AW-17899489316/diagnostico_lead',value:score,currency:'BRL'});
+
+    // Show result immediately (não depende do RD)
+    showResult(score);
+
+    // Send to RD Station in background
     fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(payload)
     }).then(function(r){
-      if(!r.ok)throw new Error('RD error');
-      return r.text();
-    }).then(function(){
-      // dataLayer events
-      var eventId='lead_'+Date.now()+'_'+Math.random().toString(36).slice(2,9);
-      dataLayer.push({
-        event:'generate_lead',
-        form_id:'lp_diagnostico_youtube',
-        event_id:eventId,
-        user_email:email,
-        user_phone:'+55'+wppDigits,
-        user_name:nome,
-        score:score,
-        faixa:faixaScore
-      });
-      dataLayer.push({event:'quiz_complete',score:score,faixa:faixaScore});
-
-      // Meta Pixel Lead
-      fbq('track','Lead',{content_name:'diagnostico_youtube',value:score},{eventID:eventId});
-
-      // Google Ads conversion
-      gtag('event','conversion',{send_to:'AW-17899489316/diagnostico_lead',value:score,currency:'BRL'});
-
-      // Show result
-      showResult(score);
-
-    }).catch(function(){
-      err.textContent='Erro ao enviar. Tente novamente.';
-      err.style.display='block';
-      btn.disabled=false;
-      btn.textContent='Ver meu diagnóstico →';
+      if(!r.ok)return r.text().then(function(t){console.warn('RD Station:',r.status,t);});
+    }).catch(function(e){
+      console.warn('RD Station error:',e);
     });
   });
 });
