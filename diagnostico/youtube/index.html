@@ -1051,8 +1051,15 @@ document.addEventListener('DOMContentLoaded',function(){
     /* Hide form, show post-submit */
     var fc=document.getElementById('form-card');
     var ps=document.getElementById('post-submit');
-    if(fc){fc.style.cssText='display:none !important';}
-    if(ps){ps.style.cssText='display:block !important';ps.classList.add('show');window.scrollTo({top:ps.offsetTop-100,behavior:'smooth'});}
+    if(fc){
+      fc.setAttribute('style','display:none !important;visibility:hidden;height:0;overflow:hidden;padding:0;margin:0;border:0;');
+      fc.innerHTML='';
+    }
+    if(ps){
+      ps.setAttribute('style','display:block !important;margin-top:0;');
+      ps.classList.add('show');
+      window.scrollTo({top:ps.offsetTop-100,behavior:'smooth'});
+    }
 
     var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
 
