@@ -396,20 +396,20 @@ section{padding:80px 0;}
                 </div>
               </div>
 
-              <!-- Contextual messages by profile (hidden by default, JS shows the right one) -->
-
-              <!-- Scenario C: No crypto + Has traditional (1 frase, sem palestra) -->
-              <div class="f-group" id="msg-trad-only" style="display:none;">
-                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:14px 20px;">
-                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;">Sem problema. Muitos clientes da Boost come&ccedil;aram com patrim&ocirc;nio tradicional antes de explorar cripto. A conversa com o Advisor mostra se faz sentido para o seu momento.</p>
+              <!-- Scenario C: No crypto + Has traditional (aparece DENTRO do bloco tradicional) -->
+              <div id="msg-trad-only" style="display:none;margin-top:16px;">
+                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:20px;">
+                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:10px;">Vimos que voc&ecirc; investe no mercado tradicional, mas ainda n&atilde;o em cripto.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Esse &eacute; o perfil de boa parte dos nossos clientes. Eles tinham as mesmas d&uacute;vidas: "faz sentido pra mim?", "quanto alocar?", "como come&ccedil;ar sem risco?"</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">Na conversa com o Advisor, voc&ecirc; descobre <strong style="color:#fff;">se cripto faz sentido para o seu patrim&ocirc;nio</strong> e, se fizer, qual o percentual adequado. Sem compromisso.</p>
                 </div>
               </div>
 
-              <!-- Scenario B: Has crypto + No traditional (sem mensagem, form normal) -->
+              <!-- Scenario B: sem mensagem -->
               <div id="msg-crypto-only" style="display:none;"></div>
 
-              <!-- Scenario D: No crypto + No traditional (redirect com dignidade) -->
-              <div class="f-group" id="msg-no-invest" style="display:none;">
+              <!-- Scenario D: No crypto + No traditional -->
+              <div id="msg-no-invest" style="display:none;margin-top:16px;">
                 <div style="background:rgba(25,198,181,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;">
                   <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;">Parece que voc&ecirc; est&aacute; no come&ccedil;o da jornada.</p>
                   <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">Preparamos um material gratuito para te ajudar a dar os primeiros passos com seguran&ccedil;a.</p>
@@ -934,8 +934,10 @@ function updateProfileMessages(){
     document.querySelectorAll('.asset-card.done').forEach(function(c){c.classList.remove('done');c.removeAttribute('data-range');var lbl=c.querySelector('.asset-done-label');if(lbl)lbl.textContent='';});
     document.getElementById('cf_carteira_detalhada').value='';
     if(trad==='sim'){
-      /* Scenario C: no crypto + has traditional */
-      document.getElementById('msg-trad-only').style.display='block';
+      /* Scenario C: no crypto + has traditional — show msg inside traditional block */
+      var msg=document.getElementById('msg-trad-only');
+      msg.style.display='block';
+      document.getElementById('cond-tradicional').appendChild(msg);
     }else{
       /* Scenario D: no crypto + no traditional */
       document.getElementById('msg-no-invest').style.display='block';
