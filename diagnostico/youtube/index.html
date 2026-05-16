@@ -1053,23 +1053,19 @@ document.addEventListener('DOMContentLoaded',function(){
     var btn=document.getElementById('btn-submit');
     btn.disabled=true;btn.textContent='Enviando...';
 
-    var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
-
-    /* dataLayer */
-    dataLayer.push({event:'generate_lead',event_id:eventId,lead_name:nome,lead_email:email});
-
-    /* Meta Pixel */
-    fbq('track','Lead',{},{eventID:eventId});
-
-    /* Google Ads */
-    gtag('event','conversion',{send_to:'AW-17899489316/lead_youtube_ads',event_callback:function(){}});
-
-    /* Show post-submit, hide form */
+    /* Show post-submit FIRST (never blocked by tracking errors) */
     var formCard=document.getElementById('form-card');
-    formCard.style.display='none';
     var ps=document.getElementById('post-submit');
+    formCard.style.display='none';
     ps.classList.add('show');
     ps.scrollIntoView({behavior:'smooth',block:'start'});
+
+    var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+
+    /* Tracking (wrapped in try/catch — must never block UI) */
+    try{dataLayer.push({event:'generate_lead',event_id:eventId,lead_name:nome,lead_email:email});}catch(e){}
+    try{fbq('track','Lead',{},{eventID:eventId});}catch(e){}
+    try{gtag('event','conversion',{send_to:'AW-17899489316/lead_youtube_ads'});}catch(e){}
     var waLink='https://wa.me/5521965622891?text='+encodeURIComponent('Olá, sou '+nome+'. Vim pelo vídeo do YouTube sobre "sem tempo pra cripto" e preenchi o formulário de análise. Gostaria de falar com um Advisor sobre meu portfólio.');
     document.getElementById('btn-wa-post').href=waLink;
 
