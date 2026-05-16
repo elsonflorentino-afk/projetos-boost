@@ -396,8 +396,30 @@ section{padding:80px 0;}
                 </div>
               </div>
 
-              <!-- Visual Asset Grid -->
-              <div class="f-group">
+              <!-- Message for non-crypto investors (hidden by default) -->
+              <div class="f-group" id="no-crypto-msg" style="display:none;">
+                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:20px;">
+                  <p style="font-size:14px;font-weight:600;color:var(--teal);margin-bottom:12px;">Por que investidores com patrim&ocirc;nio tradicional est&atilde;o considerando cripto:</p>
+                  <div style="display:flex;flex-direction:column;gap:12px;">
+                    <div style="display:flex;gap:10px;align-items:flex-start;">
+                      <span style="color:var(--teal);font-weight:700;flex-shrink:0;">1.</span>
+                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Diversifica&ccedil;&atilde;o real.</strong> Cripto tem baixa correla&ccedil;&atilde;o com a&ccedil;&otilde;es, renda fixa e im&oacute;veis. Adicionar 3 a 5% ao portf&oacute;lio pode melhorar o retorno ajustado ao risco.</p>
+                    </div>
+                    <div style="display:flex;gap:10px;align-items:flex-start;">
+                      <span style="color:var(--teal);font-weight:700;flex-shrink:0;">2.</span>
+                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Consenso institucional.</strong> BlackRock, Fidelity, Morgan Stanley, Ita&uacute; e BTG j&aacute; oferecem cripto aos seus clientes. A pergunta deixou de ser "se" e passou a ser "como" alocar.</p>
+                    </div>
+                    <div style="display:flex;gap:10px;align-items:flex-start;">
+                      <span style="color:var(--teal);font-weight:700;flex-shrink:0;">3.</span>
+                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Regulamentado no Brasil.</strong> Desde 2023, criptoativos s&atilde;o regulamentados pelo Marco Legal. Voc&ecirc; n&atilde;o precisa entender blockchain. Precisa de um Advisor que entenda voc&ecirc;.</p>
+                    </div>
+                  </div>
+                  <p style="font-size:12px;color:var(--text-muted);margin-top:14px;text-align:center;">Agende uma conversa para entender se cripto faz sentido para o seu momento.</p>
+                </div>
+              </div>
+
+              <!-- Visual Asset Grid (only when has crypto) -->
+              <div class="f-group" id="crypto-assets-section">
                 <label class="f-label">Quais criptoativos voc&ecirc; possui e quanto em cada?</label>
                 <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Toque na moeda para informar o valor aproximado.</p>
 
@@ -887,6 +909,21 @@ window.setToggle=function(btn,group){
   document.getElementById('f-'+group).value=val;
   var cond=document.getElementById('cond-'+group);
   if(val==='sim'){cond.classList.add('show');}else{cond.classList.remove('show');}
+  /* Show/hide crypto assets section vs no-crypto message */
+  if(group==='cripto'){
+    var assetsSection=document.getElementById('crypto-assets-section');
+    var noMsg=document.getElementById('no-crypto-msg');
+    if(val==='sim'){
+      assetsSection.style.display='block';
+      noMsg.style.display='none';
+    }else{
+      assetsSection.style.display='none';
+      noMsg.style.display='block';
+      /* Clear any selected assets */
+      document.querySelectorAll('.asset-card.done').forEach(function(c){c.classList.remove('done');c.removeAttribute('data-range');c.querySelector('.asset-done-label').textContent='';});
+      document.getElementById('cf_carteira_detalhada').value='';
+    }
+  }
   checkStep1();
 };
 
