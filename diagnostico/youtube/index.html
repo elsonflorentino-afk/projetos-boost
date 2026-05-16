@@ -158,29 +158,46 @@ section{padding:80px 0;}
 .card-option:hover{transform:translateY(-1px);border-color:var(--teal);box-shadow:0 2px 8px rgba(25,198,181,0.1);}
 .card-option.selected,.card-option.checked{background:rgba(25,198,181,0.06);border-color:var(--teal);color:var(--teal);font-weight:600;}
 
-/* ===== ASSET GRID (Visual Portfolio) ===== */
-.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.asset-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.2s;-webkit-tap-highlight-color:transparent;}
-.asset-card.selected{border-color:#19c6b5;background:rgba(25,198,181,0.06);}
+/* ===== ASSET PICKER (expand on tap) ===== */
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;transition:all 0.3s;}
+.asset-grid.picking .asset-card:not(.picking){display:none;}
+.asset-grid.picking{grid-template-columns:1fr;}
+.asset-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.25s;-webkit-tap-highlight-color:transparent;position:relative;}
 .asset-card:hover{border-color:rgba(255,255,255,0.25);}
-.asset-card.selected:hover{border-color:#19c6b5;}
-.asset-logo{width:32px;height:32px;border-radius:50%;margin-bottom:6px;opacity:0.6;transition:opacity 0.2s;}
-.asset-card.selected .asset-logo{opacity:1;}
-.asset-card:hover .asset-logo{opacity:0.85;}
-.asset-name{display:block;font-size:11px;color:rgba(255,255,255,0.7);font-weight:600;}
-.asset-card.selected .asset-name{color:#fff;}
-.asset-check{display:none;position:absolute;top:6px;right:6px;width:16px;height:16px;background:#19c6b5;border-radius:50%;align-items:center;justify-content:center;}
-.asset-card.selected .asset-check{display:flex;}
-.asset-card{position:relative;}
-.asset-ranges{display:none;grid-template-columns:1fr 1fr;gap:4px;margin-top:8px;}
-.asset-card.selected .asset-ranges{display:grid;}
-.range-pill{font-size:10px;padding:4px 2px;border:1px solid rgba(255,255,255,0.1);border-radius:6px;background:transparent;color:rgba(255,255,255,0.5);cursor:pointer;font-family:Arial,sans-serif;transition:all 0.15s;-webkit-tap-highlight-color:transparent;}
-.range-pill:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.7);}
-.range-pill.active{background:rgba(25,198,181,0.15);border-color:#19c6b5;color:#19c6b5;font-weight:700;}
+.asset-card.done{border-color:var(--teal);background:rgba(25,198,181,0.06);}
+.asset-logo{width:36px;height:36px;border-radius:50%;margin-bottom:6px;opacity:0.5;transition:opacity 0.2s;}
+.asset-card:hover .asset-logo,.asset-card.done .asset-logo,.asset-card.picking .asset-logo{opacity:1;}
+.asset-name{display:block;font-size:12px;color:rgba(255,255,255,0.6);font-weight:600;}
+.asset-card.done .asset-name,.asset-card.picking .asset-name{color:#fff;}
+.asset-done-label{display:none;font-size:11px;color:var(--teal);font-weight:600;margin-top:4px;}
+.asset-card.done .asset-done-label{display:block;}
+/* Expanded state */
+.asset-card.picking{border-color:var(--teal);background:rgba(25,198,181,0.04);padding:20px;}
+.asset-card.picking .asset-top{display:flex;align-items:center;gap:12px;margin-bottom:16px;text-align:left;}
+.asset-top{display:none;}
+.asset-card.picking .asset-logo{margin-bottom:0;}
+.asset-card.picking .asset-name{font-size:16px;}
+.asset-card.picking .asset-default{display:none;}
+.asset-card:not(.picking) .asset-top{display:none;}
+.asset-default{display:block;}
+.asset-ranges{display:none;}
+.asset-card.picking .asset-ranges{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.range-pill{font-size:14px;padding:12px 8px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);cursor:pointer;font-family:var(--font);font-weight:500;transition:all 0.15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.range-pill:hover{border-color:rgba(25,198,181,0.4);background:rgba(25,198,181,0.06);color:#fff;}
+.range-pill:active{transform:scale(0.97);}
+/* Check on done card */
+.asset-check{display:none;position:absolute;top:6px;right:6px;width:18px;height:18px;background:var(--teal);border-radius:50%;align-items:center;justify-content:center;}
+.asset-card.done .asset-check{display:flex;}
+.asset-check svg{width:10px;height:10px;}
+/* Outro */
 .asset-card-outro{grid-column:1/-1;}
-.asset-card-outro .outro-input{display:none;margin-top:8px;width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:6px 8px;color:#fff;font-family:Arial,sans-serif;font-size:12px;outline:none;}
-.asset-card-outro .outro-input:focus{border-color:#19c6b5;}
-.asset-card-outro.selected .outro-input{display:block;}
+.asset-card-outro .outro-input{display:none;margin-top:8px;width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;color:#fff;font-family:var(--font);font-size:14px;outline:none;}
+.asset-card-outro .outro-input:focus{border-color:var(--teal);}
+.asset-card-outro.picking .outro-input{display:block;}
+/* Back button inside expanded card */
+.asset-back{display:none;background:none;border:none;color:rgba(255,255,255,0.4);font-size:12px;cursor:pointer;font-family:var(--font);margin-top:12px;padding:4px;}
+.asset-back:hover{color:#fff;}
+.asset-card.picking .asset-back{display:block;}
 
 /* ===== BUTTONS ===== */
 .btn-primary{width:100%;padding:calc(0.667em + 2px) calc(1.333em + 2px);background:var(--text-secondary);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:0;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
@@ -378,106 +395,73 @@ section{padding:80px 0;}
 
               <!-- Visual Asset Grid -->
               <div class="f-group">
-                <label class="f-label">Quais criptoativos voc&ecirc; possui?</label>
+                <label class="f-label">Quais criptoativos voc&ecirc; possui e quanto em cada?</label>
+                <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Toque na moeda para informar o valor aproximado.</p>
 
-                <div class="asset-grid">
-                  <div class="asset-card" data-asset="Bitcoin" data-ticker="BTC" onclick="toggleAsset(this)">
+                <div class="asset-grid" id="asset-grid">
+                  <div class="asset-card" data-asset="Bitcoin" data-ticker="BTC" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" class="asset-logo">
-                    <span class="asset-name">Bitcoin</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" class="asset-logo"><span class="asset-name">Bitcoin</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" class="asset-logo"><span class="asset-name">Quanto tem em Bitcoin?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card" data-asset="Ethereum" data-ticker="ETH" onclick="toggleAsset(this)">
+                  <div class="asset-card" data-asset="Ethereum" data-ticker="ETH" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" class="asset-logo">
-                    <span class="asset-name">Ethereum</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" class="asset-logo"><span class="asset-name">Ethereum</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" class="asset-logo"><span class="asset-name">Quanto tem em Ethereum?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card" data-asset="BNB" data-ticker="BNB" onclick="toggleAsset(this)">
+                  <div class="asset-card" data-asset="BNB" data-ticker="BNB" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png" alt="BNB" class="asset-logo">
-                    <span class="asset-name">BNB</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png" alt="BNB" class="asset-logo"><span class="asset-name">BNB</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png" alt="BNB" class="asset-logo"><span class="asset-name">Quanto tem em BNB?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card" data-asset="Solana" data-ticker="SOL" onclick="toggleAsset(this)">
+                  <div class="asset-card" data-asset="Solana" data-ticker="SOL" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" class="asset-logo">
-                    <span class="asset-name">Solana</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" class="asset-logo"><span class="asset-name">Solana</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" class="asset-logo"><span class="asset-name">Quanto tem em Solana?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card" data-asset="XRP" data-ticker="XRP" onclick="toggleAsset(this)">
+                  <div class="asset-card" data-asset="XRP" data-ticker="XRP" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png" alt="XRP" class="asset-logo">
-                    <span class="asset-name">XRP</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png" alt="XRP" class="asset-logo"><span class="asset-name">XRP</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png" alt="XRP" class="asset-logo"><span class="asset-name">Quanto tem em XRP?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card" data-asset="Cardano" data-ticker="ADA" onclick="toggleAsset(this)">
+                  <div class="asset-card" data-asset="Cardano" data-ticker="ADA" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="ADA" class="asset-logo">
-                    <span class="asset-name">Cardano</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="ADA" class="asset-logo"><span class="asset-name">Cardano</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="ADA" class="asset-logo"><span class="asset-name">Quanto tem em Cardano?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card" data-asset="USDT" data-ticker="USDT" onclick="toggleAsset(this)">
+                  <div class="asset-card" data-asset="USDT" data-ticker="USDT" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" class="asset-logo">
-                    <span class="asset-name">USDT</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" class="asset-logo"><span class="asset-name">USDT</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" class="asset-logo"><span class="asset-name">Quanto tem em USDT?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card" data-asset="USDC" data-ticker="USDC" onclick="toggleAsset(this)">
+                  <div class="asset-card" data-asset="USDC" data-ticker="USDC" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <img src="https://assets.coingecko.com/coins/images/6319/small/usdc.png" alt="USDC" class="asset-logo">
-                    <span class="asset-name">USDC</span>
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
-                    </div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/6319/small/usdc.png" alt="USDC" class="asset-logo"><span class="asset-name">USDC</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/6319/small/usdc.png" alt="USDC" class="asset-logo"><span class="asset-name">Quanto tem em USDC?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                   </div>
-                  <div class="asset-card asset-card-outro" data-asset="Outro" data-ticker="" onclick="toggleAsset(this)">
+                  <div class="asset-card asset-card-outro" data-asset="Outro" data-ticker="" onclick="pickAsset(this)">
                     <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
-                    <span class="asset-name" style="font-size:12px;">+ Outro ativo</span>
+                    <div class="asset-default"><span class="asset-name" style="font-size:13px;">+ Outro ativo</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><span class="asset-name">Qual ativo e quanto?</span></div>
                     <input type="text" class="outro-input" placeholder="Nome do ativo" onclick="event.stopPropagation();" oninput="this.closest('.asset-card').setAttribute('data-asset',this.value||'Outro');updatePortfolioData();">
-                    <div class="asset-ranges">
-                      <button type="button" class="range-pill" data-range="ate_50k">&lt;R$50k</button>
-                      <button type="button" class="range-pill" data-range="50k_200k">R$50-200k</button>
-                      <button type="button" class="range-pill" data-range="200k_1m">R$200k-1M</button>
-                      <button type="button" class="range-pill" data-range="acima_1m">&gt;R$1M</button>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
                     </div>
                   </div>
                 </div>
@@ -834,39 +818,56 @@ if(utmContent&&headlines[utmContent]){
 /* Stored lead name for WA link */
 var leadName='';
 
-/* ===== ASSET GRID JS ===== */
-window.toggleAsset=function(card){
-  card.classList.toggle('selected');
-  if(!card.classList.contains('selected')){
-    card.querySelectorAll('.range-pill').forEach(function(p){p.classList.remove('active');});
+/* ===== ASSET PICKER JS (expand/collapse) ===== */
+var RANGE_LABELS={'ate_50k':'Até R$50k','50k_200k':'R$50-200k','200k_1m':'R$200k-1M','acima_1m':'+R$1M'};
+
+window.pickAsset=function(card){
+  if(card.classList.contains('picking'))return;
+  if(card.classList.contains('done')){
+    /* Re-open to change */
+    card.classList.remove('done');
     card.removeAttribute('data-range');
+    card.querySelectorAll('.range-pill').forEach(function(p){p.classList.remove('active');});
+    card.querySelector('.asset-done-label').textContent='';
   }
+  /* Collapse any other open card */
+  document.querySelectorAll('.asset-card.picking').forEach(function(c){c.classList.remove('picking');});
+  /* Expand this card */
+  card.classList.add('picking');
+  document.getElementById('asset-grid').classList.add('picking');
+  setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+};
+
+window.pickRange=function(pill,e){
+  e.stopPropagation();
+  var card=pill.closest('.asset-card');
+  var range=pill.getAttribute('data-range');
+  card.setAttribute('data-range',range);
+  card.querySelector('.asset-done-label').textContent=RANGE_LABELS[range]||range;
+  /* Mark done, collapse */
+  card.classList.remove('picking');
+  card.classList.add('done');
+  document.getElementById('asset-grid').classList.remove('picking');
   updatePortfolioData();
+};
+
+window.cancelPick=function(e){
+  e.stopPropagation();
+  var card=e.target.closest('.asset-card');
+  card.classList.remove('picking');
+  document.getElementById('asset-grid').classList.remove('picking');
 };
 
 function updatePortfolioData(){
   var data=[];
-  document.querySelectorAll('.asset-card.selected').forEach(function(card){
-    var range=card.getAttribute('data-range')||'';
-    data.push({asset:card.getAttribute('data-asset'),ticker:card.getAttribute('data-ticker'),range:range});
+  document.querySelectorAll('.asset-card.done').forEach(function(card){
+    data.push({asset:card.getAttribute('data-asset'),ticker:card.getAttribute('data-ticker'),range:card.getAttribute('data-range')||''});
   });
   document.getElementById('cf_carteira_detalhada').value=data.length>0?JSON.stringify(data):'';
   checkStep1();
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('.range-pill').forEach(function(pill){
-    pill.addEventListener('click',function(e){
-      e.stopPropagation();
-      var card=pill.closest('.asset-card');
-      if(!card.classList.contains('selected')){card.classList.add('selected');}
-      card.querySelectorAll('.range-pill').forEach(function(p){p.classList.remove('active');});
-      pill.classList.add('active');
-      card.setAttribute('data-range',pill.getAttribute('data-range'));
-      updatePortfolioData();
-    });
-  });
-
   document.getElementById('pb-skip-btn').addEventListener('click',function(){
     document.getElementById('cf_carteira_detalhada').value=JSON.stringify([{asset:'nao_sabe',ticker:'',range:''}]);
     document.getElementById('pb-skip').innerHTML='<span style="font-size:12px;color:var(--teal);">Ok, o Advisor pergunta na conversa.</span>';
