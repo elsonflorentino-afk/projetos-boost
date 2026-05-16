@@ -934,10 +934,7 @@ function updateProfileMessages(){
     document.querySelectorAll('.asset-card.done').forEach(function(c){c.classList.remove('done');c.removeAttribute('data-range');var lbl=c.querySelector('.asset-done-label');if(lbl)lbl.textContent='';});
     document.getElementById('cf_carteira_detalhada').value='';
     if(trad==='sim'){
-      /* Scenario C: no crypto + has traditional — show msg inside traditional block */
-      var msg=document.getElementById('msg-trad-only');
-      msg.style.display='block';
-      document.getElementById('cond-tradicional').appendChild(msg);
+      /* Scenario C: msg appears when patrimony dropdown is filled (see listener below) */
     }else{
       /* Scenario D: no crypto + no traditional */
       document.getElementById('msg-no-invest').style.display='block';
@@ -997,7 +994,21 @@ function checkStep1(){
 document.addEventListener('DOMContentLoaded',function(){
   ['f-patrimonio-cripto','f-patrimonio-tradicional'].forEach(function(id){
     var el=document.getElementById(id);
-    if(el)el.addEventListener('change',checkStep1);
+    if(el)el.addEventListener('change',function(){
+      checkStep1();
+      /* Scenario C: show msg after traditional patrimony selected + no crypto */
+      if(id==='f-patrimonio-tradicional'){
+        var cripto=document.getElementById('f-cripto').value;
+        var msg=document.getElementById('msg-trad-only');
+        if(cripto==='não'&&el.value){
+          msg.style.display='block';
+          document.getElementById('cond-tradicional').appendChild(msg);
+          msg.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }else{
+          msg.style.display='none';
+        }
+      }
+    });
   });
 });
 
