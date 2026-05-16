@@ -396,41 +396,23 @@ section{padding:80px 0;}
                 </div>
               </div>
 
-              <!-- Contextual messages by profile (all hidden by default, JS shows the right one) -->
+              <!-- Contextual messages by profile (hidden by default, JS shows the right one) -->
 
-              <!-- Scenario C: No crypto + Has traditional -->
+              <!-- Scenario C: No crypto + Has traditional (1 frase, sem palestra) -->
               <div class="f-group" id="msg-trad-only" style="display:none;">
-                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:20px;">
-                  <p style="font-size:14px;font-weight:600;color:var(--teal);margin-bottom:12px;">89% dos investidores brasileiros ainda n&atilde;o t&ecirc;m cripto. Voc&ecirc; est&aacute; no grupo certo para entender se faz sentido:</p>
-                  <div style="display:flex;flex-direction:column;gap:10px;">
-                    <div style="display:flex;gap:10px;align-items:flex-start;">
-                      <span style="color:var(--teal);font-weight:700;flex-shrink:0;">1.</span>
-                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Diversifica&ccedil;&atilde;o real.</strong> Cripto tem baixa correla&ccedil;&atilde;o com a&ccedil;&otilde;es e renda fixa. Adicionar 3 a 5% pode melhorar o retorno ajustado ao risco.</p>
-                    </div>
-                    <div style="display:flex;gap:10px;align-items:flex-start;">
-                      <span style="color:var(--teal);font-weight:700;flex-shrink:0;">2.</span>
-                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Consenso institucional.</strong> BlackRock, Fidelity, Ita&uacute; e BTG j&aacute; oferecem cripto. A pergunta deixou de ser "se" e passou a ser "como".</p>
-                    </div>
-                    <div style="display:flex;gap:10px;align-items:flex-start;">
-                      <span style="color:var(--teal);font-weight:700;flex-shrink:0;">3.</span>
-                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Regulamentado no Brasil.</strong> Desde 2023, criptoativos t&ecirc;m Marco Legal. Voc&ecirc; n&atilde;o precisa entender blockchain.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Scenario B: Has crypto + No traditional -->
-              <div class="f-group" id="msg-crypto-only" style="display:none;">
                 <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:14px 20px;">
-                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;">Sem problema. Muitos dos nossos clientes constru&iacute;ram patrim&ocirc;nio exclusivamente em cripto. A an&aacute;lise &eacute; adaptada ao seu perfil.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;">Sem problema. Muitos clientes da Boost come&ccedil;aram com patrim&ocirc;nio tradicional antes de explorar cripto. A conversa com o Advisor mostra se faz sentido para o seu momento.</p>
                 </div>
               </div>
 
-              <!-- Scenario D: No crypto + No traditional -->
+              <!-- Scenario B: Has crypto + No traditional (sem mensagem, form normal) -->
+              <div id="msg-crypto-only" style="display:none;"></div>
+
+              <!-- Scenario D: No crypto + No traditional (redirect com dignidade) -->
               <div class="f-group" id="msg-no-invest" style="display:none;">
-                <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:12px;padding:20px;text-align:center;">
-                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;">A an&aacute;lise de carteira &eacute; voltada para quem j&aacute; tem patrim&ocirc;nio investido.</p>
-                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">Se voc&ecirc; est&aacute; come&ccedil;ando, temos conte&uacute;dos gratuitos que podem ajudar a dar os primeiros passos.</p>
+                <div style="background:rgba(25,198,181,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;">
+                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;">Parece que voc&ecirc; est&aacute; no come&ccedil;o da jornada.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">Preparamos um material gratuito para te ajudar a dar os primeiros passos com seguran&ccedil;a.</p>
                   <a href="https://elsonflorentino-afk.github.io/projetos-boost/ebook-portfolio/" style="display:inline-block;padding:10px 24px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;">Acessar conte&uacute;dos gratuitos &rarr;</a>
                 </div>
               </div>
