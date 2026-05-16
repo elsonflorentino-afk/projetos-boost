@@ -991,10 +991,12 @@ document.addEventListener('DOMContentLoaded',function(){
     /* Google Ads */
     gtag('event','conversion',{send_to:'AW-17899489316/lead_youtube_ads',event_callback:function(){}});
 
-    /* Show post-submit */
-    document.getElementById('form-card').style.display='none';
+    /* Show post-submit, hide form */
+    var formCard=document.getElementById('form-card');
+    formCard.style.display='none';
     var ps=document.getElementById('post-submit');
     ps.classList.add('show');
+    ps.scrollIntoView({behavior:'smooth',block:'start'});
     var waLink='https://wa.me/5521965622891?text='+encodeURIComponent('Olá, sou '+nome+'. Vim pelo vídeo do YouTube sobre "sem tempo pra cripto" e preenchi o formulário de análise. Gostaria de falar com um Advisor sobre meu portfólio.');
     document.getElementById('btn-wa-post').href=waLink;
 
@@ -1003,28 +1005,26 @@ document.addEventListener('DOMContentLoaded',function(){
     var payload={
       event_type:'CONVERSION',
       event_family:'CDP',
-      payload:{
-        conversion_identifier:'lp_youtube_ads',
-        name:nome,
-        email:email,
-        mobile_phone:phone,
-        cf_voce_ja_possui_investimentos_em_bitcoin_cripto:document.getElementById('f-cripto').value,
-        cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho:document.getElementById('f-patrimonio-cripto').value||'',
-        cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:document.getElementById('f-tradicional').value,
-        cf_qual_seu_patrimonio_investido_no_mercado_tradicional:document.getElementById('f-patrimonio-tradicional').value||'',
-        cf_desafio_cripto:document.getElementById('f-desafio').value,
-        cf_carteira_detalhada:document.getElementById('cf_carteira_detalhada').value||'',
-        traffic_source:getCookie('boost_utm_source'),
-        traffic_medium:getCookie('boost_utm_medium'),
-        traffic_campaign:getCookie('boost_utm_campaign'),
-        traffic_value:getCookie('boost_utm_content'),
-        traffic_term:getCookie('boost_utm_term'),
-        cf_utm_source:getCookie('boost_utm_source'),
-        cf_utm_medium:getCookie('boost_utm_medium'),
-        cf_utm_campaign:getCookie('boost_utm_campaign'),
-        cf_utm_content:getCookie('boost_utm_content'),
-        cf_utm_term:getCookie('boost_utm_term')
-      }
+      conversion_identifier:'lp_youtube_ads',
+      name:nome,
+      email:email,
+      mobile_phone:phone,
+      cf_voce_ja_possui_investimentos_em_bitcoin_cripto:document.getElementById('f-cripto').value,
+      cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho:document.getElementById('f-patrimonio-cripto').value||'',
+      cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:document.getElementById('f-tradicional').value,
+      cf_qual_seu_patrimonio_investido_no_mercado_tradicional:document.getElementById('f-patrimonio-tradicional').value||'',
+      cf_desafio_cripto:document.getElementById('f-desafio').value,
+      cf_carteira_detalhada:document.getElementById('cf_carteira_detalhada').value||'',
+      traffic_source:getCookie('boost_utm_source')||'direct',
+      traffic_medium:getCookie('boost_utm_medium')||'none',
+      traffic_campaign:getCookie('boost_utm_campaign')||'',
+      traffic_value:getCookie('boost_utm_content')||'',
+      traffic_term:getCookie('boost_utm_term')||'',
+      cf_utm_source:getCookie('boost_utm_source')||'direct',
+      cf_utm_medium:getCookie('boost_utm_medium')||'none',
+      cf_utm_campaign:getCookie('boost_utm_campaign')||'',
+      cf_utm_content:getCookie('boost_utm_content')||'',
+      cf_utm_term:getCookie('boost_utm_term')||''
     };
 
     fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea',{
