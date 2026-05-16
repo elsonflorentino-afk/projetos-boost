@@ -1060,8 +1060,8 @@ document.addEventListener('DOMContentLoaded',function(){
     /* Hide form, show post-submit */
     var fc=document.getElementById('form-card');
     var ps=document.getElementById('post-submit');
-    if(fc)fc.style.cssText='display:none !important';
-    if(ps){ps.style.cssText='display:block !important';ps.classList.add('show');window.scrollTo({top:ps.offsetTop-100,behavior:'smooth'});}
+    if(fc){fc.hidden=true;fc.style.display='none';fc.setAttribute('aria-hidden','true');}
+    if(ps){ps.hidden=false;ps.style.display='block';ps.classList.add('show');setTimeout(function(){window.scrollTo({top:ps.offsetTop-100,behavior:'smooth'});},50);}
 
     var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
 
@@ -1074,6 +1074,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
     /* RD Station */
     var phone='+55'+wpp;
+    /* Simplify carteira for RD (plain text, not JSON) */
+    var carteiraSimple='';
+    try{
+      var arr=JSON.parse(carteiraVal||'[]');
+      carteiraSimple=arr.map(function(a){return a.asset+(a.range?' ('+a.range+')':'');}).join(', ');
+    }catch(e){carteiraSimple=carteiraVal;}
+
     var payload={
       event_type:'CONVERSION',
       event_family:'CDP',
@@ -1086,12 +1093,10 @@ document.addEventListener('DOMContentLoaded',function(){
       cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:tradVal,
       cf_qual_seu_patrimonio_investido_no_mercado_tradicional:patTradVal,
       cf_desafio_cripto:desafioVal,
-      cf_carteira_detalhada:carteiraVal,
+      cf_carteira_detalhada:carteiraSimple,
       traffic_source:getCookie('boost_utm_source')||'direct',
       traffic_medium:getCookie('boost_utm_medium')||'none',
       traffic_campaign:getCookie('boost_utm_campaign')||'',
-      traffic_value:getCookie('boost_utm_content')||'',
-      traffic_term:getCookie('boost_utm_term')||'',
       cf_utm_source:getCookie('boost_utm_source')||'direct',
       cf_utm_medium:getCookie('boost_utm_medium')||'none',
       cf_utm_campaign:getCookie('boost_utm_campaign')||'',
