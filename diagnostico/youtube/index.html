@@ -202,6 +202,18 @@ section{padding:80px 0;}
 .asset-back:hover{color:#fff;}
 .asset-card.picking .asset-back{display:block;}
 
+@keyframes assetHighlight{
+  0%{border-color:rgba(255,255,255,0.1);box-shadow:none;}
+  50%{border-color:rgba(25,198,181,0.4);box-shadow:0 0 16px rgba(25,198,181,0.15);}
+  100%{border-color:rgba(255,255,255,0.1);box-shadow:none;}
+}
+#crypto-assets-section.highlight .asset-grid{
+  animation:assetHighlight 1.5s ease 2;
+  border:1px solid rgba(25,198,181,0.2);
+  border-radius:16px;
+  padding:12px;
+}
+
 /* ===== BUTTONS ===== */
 .btn-primary{width:100%;padding:14px;background:var(--teal);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
 .btn-primary:not(:disabled):hover{filter:brightness(1.2);}
@@ -379,47 +391,6 @@ section{padding:80px 0;}
                 </div>
               </div>
 
-              <div class="f-group">
-                <label class="f-label">E no mercado tradicional (Tesouro, CDI, a&ccedil;&otilde;es, fundos)?</label>
-                <div class="toggle-group" data-group="tradicional">
-                  <button type="button" class="toggle-btn" data-val="sim" onclick="setToggle(this,'tradicional')">Sim</button>
-                  <button type="button" class="toggle-btn" data-val="não" onclick="setToggle(this,'tradicional')">N&atilde;o</button>
-                </div>
-                <input type="hidden" id="f-tradicional" name="tradicional" value="">
-                <div class="conditional" id="cond-tradicional">
-                  <label class="f-label">Qual seu patrim&ocirc;nio no mercado tradicional?</label>
-                  <select id="f-patrimonio-tradicional">
-                    <option value="">Selecione</option>
-                    <option value="Até R$ 10 mil">At&eacute; R$ 10 mil</option>
-                    <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
-                    <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
-                    <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
-                    <option value="Acima de R$500 mil">Acima de R$500 mil</option>
-                  </select>
-                </div>
-              </div>
-
-              <!-- Scenario C: No crypto + Has traditional (aparece DENTRO do bloco tradicional) -->
-              <div id="msg-trad-only" style="display:none;margin-top:16px;">
-                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:20px;">
-                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:10px;">Vimos que voc&ecirc; investe no mercado tradicional, mas ainda n&atilde;o em cripto.</p>
-                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Esse &eacute; o perfil de boa parte dos nossos clientes. Eles tinham as mesmas d&uacute;vidas: "faz sentido pra mim?", "quanto alocar?", "como come&ccedil;ar sem risco?"</p>
-                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">Na conversa com o Advisor, voc&ecirc; descobre <strong style="color:#fff;">se cripto faz sentido para o seu patrim&ocirc;nio</strong> e, se fizer, qual o percentual adequado. Sem compromisso.</p>
-                </div>
-              </div>
-
-              <!-- Scenario B: sem mensagem -->
-              <div id="msg-crypto-only" style="display:none;"></div>
-
-              <!-- Scenario D: No crypto + No traditional -->
-              <div id="msg-no-invest" style="display:none;margin-top:16px;">
-                <div style="background:rgba(25,198,181,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;">
-                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;">Parece que voc&ecirc; est&aacute; no come&ccedil;o da jornada.</p>
-                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">Preparamos um material gratuito para te ajudar a dar os primeiros passos com seguran&ccedil;a.</p>
-                  <a href="https://elsonflorentino-afk.github.io/projetos-boost/ebook-portfolio/" style="display:inline-block;padding:10px 24px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;">Acessar conte&uacute;dos gratuitos &rarr;</a>
-                </div>
-              </div>
-
               <!-- Visual Asset Grid (only when has crypto) -->
               <div class="f-group" id="crypto-assets-section">
                 <label class="f-label">Quais criptoativos voc&ecirc; possui e quanto em cada?</label>
@@ -498,6 +469,47 @@ section{padding:80px 0;}
                 </div>
 
                 <input type="hidden" id="cf_carteira_detalhada" value="">
+              </div>
+
+              <div class="f-group">
+                <label class="f-label">E no mercado tradicional (Tesouro, CDI, a&ccedil;&otilde;es, fundos)?</label>
+                <div class="toggle-group" data-group="tradicional">
+                  <button type="button" class="toggle-btn" data-val="sim" onclick="setToggle(this,'tradicional')">Sim</button>
+                  <button type="button" class="toggle-btn" data-val="não" onclick="setToggle(this,'tradicional')">N&atilde;o</button>
+                </div>
+                <input type="hidden" id="f-tradicional" name="tradicional" value="">
+                <div class="conditional" id="cond-tradicional">
+                  <label class="f-label">Qual seu patrim&ocirc;nio no mercado tradicional?</label>
+                  <select id="f-patrimonio-tradicional">
+                    <option value="">Selecione</option>
+                    <option value="Até R$ 10 mil">At&eacute; R$ 10 mil</option>
+                    <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
+                    <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
+                    <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
+                    <option value="Acima de R$500 mil">Acima de R$500 mil</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Scenario C: No crypto + Has traditional (aparece DENTRO do bloco tradicional) -->
+              <div id="msg-trad-only" style="display:none;margin-top:16px;">
+                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:20px;">
+                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:10px;">Vimos que voc&ecirc; investe no mercado tradicional, mas ainda n&atilde;o em cripto.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Esse &eacute; o perfil de boa parte dos nossos clientes. Eles tinham as mesmas d&uacute;vidas: "faz sentido pra mim?", "quanto alocar?", "como come&ccedil;ar sem risco?"</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">Na conversa com o Advisor, voc&ecirc; descobre <strong style="color:#fff;">se cripto faz sentido para o seu patrim&ocirc;nio</strong> e, se fizer, qual o percentual adequado. Sem compromisso.</p>
+                </div>
+              </div>
+
+              <!-- Scenario B: sem mensagem -->
+              <div id="msg-crypto-only" style="display:none;"></div>
+
+              <!-- Scenario D: No crypto + No traditional -->
+              <div id="msg-no-invest" style="display:none;margin-top:16px;">
+                <div style="background:rgba(25,198,181,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;">
+                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;">Parece que voc&ecirc; est&aacute; no come&ccedil;o da jornada.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">Preparamos um material gratuito para te ajudar a dar os primeiros passos com seguran&ccedil;a.</p>
+                  <a href="https://elsonflorentino-afk.github.io/projetos-boost/ebook-portfolio/" style="display:inline-block;padding:10px 24px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;">Acessar conte&uacute;dos gratuitos &rarr;</a>
+                </div>
               </div>
 
               <div class="f-group">
@@ -1015,6 +1027,12 @@ document.addEventListener('DOMContentLoaded',function(){
         var assets=document.getElementById('crypto-assets-section');
         if(assets&&assets.style.display!=='none'){
           setTimeout(function(){assets.scrollIntoView({behavior:'smooth',block:'nearest'});},200);
+          // Highlight the asset section
+          var section = document.getElementById('crypto-assets-section');
+          if(section) {
+            section.classList.add('highlight');
+            setTimeout(function(){ section.classList.remove('highlight'); }, 3000);
+          }
         }
       }
       /* Scenario C: show msg after traditional patrimony selected + no crypto */
