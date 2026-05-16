@@ -855,10 +855,21 @@ window.pickAsset=function(card){
     card.classList.remove('done');
     card.removeAttribute('data-range');
     card.querySelectorAll('.range-pill').forEach(function(p){p.classList.remove('active');});
-    card.querySelector('.asset-done-label').textContent='';
+    var doneLabel=card.querySelector('.asset-done-label');if(doneLabel)doneLabel.textContent='';
+    updatePortfolioData();
   }
-  /* Collapse any other open card */
+  /* Collapse any other open card (and clear its picking state) */
   document.querySelectorAll('.asset-card.picking').forEach(function(c){c.classList.remove('picking');});
+  /* Clear "nao_sabe" skip if user starts picking */
+  var skip=document.getElementById('pb-skip');
+  if(skip&&skip.innerHTML.indexOf('Ok,')>-1){
+    skip.innerHTML='<button type="button" style="background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;text-decoration:underline;font-family:var(--font);" id="pb-skip-btn">Ainda n\u00e3o sei detalhar</button>';
+    document.getElementById('pb-skip-btn').addEventListener('click',function(){
+      document.getElementById('cf_carteira_detalhada').value=JSON.stringify([{asset:'nao_sabe',ticker:'',range:''}]);
+      skip.innerHTML='<span style="font-size:12px;color:var(--teal);">Ok, o Advisor pergunta na conversa.</span>';
+      checkStep1();
+    });
+  }
   /* Expand this card */
   card.classList.add('picking');
   document.getElementById('asset-grid').classList.add('picking');
@@ -883,6 +894,8 @@ window.cancelPick=function(e){
   var card=e.target.closest('.asset-card');
   card.classList.remove('picking');
   document.getElementById('asset-grid').classList.remove('picking');
+  updatePortfolioData();
+  checkStep1();
 };
 
 function updatePortfolioData(){
@@ -997,6 +1010,13 @@ document.addEventListener('DOMContentLoaded',function(){
     var el=document.getElementById(id);
     if(el)el.addEventListener('change',function(){
       checkStep1();
+      /* After selecting crypto patrimony, scroll to assets section */
+      if(id==='f-patrimonio-cripto'&&el.value){
+        var assets=document.getElementById('crypto-assets-section');
+        if(assets&&assets.style.display!=='none'){
+          setTimeout(function(){assets.scrollIntoView({behavior:'smooth',block:'nearest'});},200);
+        }
+      }
       /* Scenario C: show msg after traditional patrimony selected + no crypto */
       if(id==='f-patrimonio-tradicional'){
         var cripto=document.getElementById('f-cripto').value;
