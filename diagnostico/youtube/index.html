@@ -1048,12 +1048,14 @@ document.addEventListener('DOMContentLoaded',function(){
     var btn=document.getElementById('btn-submit');
     btn.disabled=true;btn.textContent='Enviando...';
 
-    /* Show post-submit FIRST (never blocked by tracking errors) */
-    var formCard=document.getElementById('form-card');
-    var ps=document.getElementById('post-submit');
-    formCard.style.display='none';
-    ps.classList.add('show');
-    ps.scrollIntoView({behavior:'smooth',block:'start'});
+    /* Show post-submit FIRST — hide entire form wrapper */
+    try{
+      document.getElementById('form-card').style.display='none';
+      var ps=document.getElementById('post-submit');
+      ps.style.display='block';
+      ps.classList.add('show');
+      window.scrollTo({top:ps.offsetTop-100,behavior:'smooth'});
+    }catch(err){console.error('UI switch error:',err);}
 
     var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
 
