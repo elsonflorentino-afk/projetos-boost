@@ -396,25 +396,42 @@ section{padding:80px 0;}
                 </div>
               </div>
 
-              <!-- Message for non-crypto investors (hidden by default) -->
-              <div class="f-group" id="no-crypto-msg" style="display:none;">
+              <!-- Contextual messages by profile (all hidden by default, JS shows the right one) -->
+
+              <!-- Scenario C: No crypto + Has traditional -->
+              <div class="f-group" id="msg-trad-only" style="display:none;">
                 <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:20px;">
-                  <p style="font-size:14px;font-weight:600;color:var(--teal);margin-bottom:12px;">Por que investidores com patrim&ocirc;nio tradicional est&atilde;o considerando cripto:</p>
-                  <div style="display:flex;flex-direction:column;gap:12px;">
+                  <p style="font-size:14px;font-weight:600;color:var(--teal);margin-bottom:12px;">89% dos investidores brasileiros ainda n&atilde;o t&ecirc;m cripto. Voc&ecirc; est&aacute; no grupo certo para entender se faz sentido:</p>
+                  <div style="display:flex;flex-direction:column;gap:10px;">
                     <div style="display:flex;gap:10px;align-items:flex-start;">
                       <span style="color:var(--teal);font-weight:700;flex-shrink:0;">1.</span>
-                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Diversifica&ccedil;&atilde;o real.</strong> Cripto tem baixa correla&ccedil;&atilde;o com a&ccedil;&otilde;es, renda fixa e im&oacute;veis. Adicionar 3 a 5% ao portf&oacute;lio pode melhorar o retorno ajustado ao risco.</p>
+                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Diversifica&ccedil;&atilde;o real.</strong> Cripto tem baixa correla&ccedil;&atilde;o com a&ccedil;&otilde;es e renda fixa. Adicionar 3 a 5% pode melhorar o retorno ajustado ao risco.</p>
                     </div>
                     <div style="display:flex;gap:10px;align-items:flex-start;">
                       <span style="color:var(--teal);font-weight:700;flex-shrink:0;">2.</span>
-                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Consenso institucional.</strong> BlackRock, Fidelity, Morgan Stanley, Ita&uacute; e BTG j&aacute; oferecem cripto aos seus clientes. A pergunta deixou de ser "se" e passou a ser "como" alocar.</p>
+                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Consenso institucional.</strong> BlackRock, Fidelity, Ita&uacute; e BTG j&aacute; oferecem cripto. A pergunta deixou de ser "se" e passou a ser "como".</p>
                     </div>
                     <div style="display:flex;gap:10px;align-items:flex-start;">
                       <span style="color:var(--teal);font-weight:700;flex-shrink:0;">3.</span>
-                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Regulamentado no Brasil.</strong> Desde 2023, criptoativos s&atilde;o regulamentados pelo Marco Legal. Voc&ecirc; n&atilde;o precisa entender blockchain. Precisa de um Advisor que entenda voc&ecirc;.</p>
+                      <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;"><strong style="color:#fff;">Regulamentado no Brasil.</strong> Desde 2023, criptoativos t&ecirc;m Marco Legal. Voc&ecirc; n&atilde;o precisa entender blockchain.</p>
                     </div>
                   </div>
-                  <p style="font-size:12px;color:var(--text-muted);margin-top:14px;text-align:center;">Agende uma conversa para entender se cripto faz sentido para o seu momento.</p>
+                </div>
+              </div>
+
+              <!-- Scenario B: Has crypto + No traditional -->
+              <div class="f-group" id="msg-crypto-only" style="display:none;">
+                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:14px 20px;">
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin:0;">Sem problema. Muitos dos nossos clientes constru&iacute;ram patrim&ocirc;nio exclusivamente em cripto. A an&aacute;lise &eacute; adaptada ao seu perfil.</p>
+                </div>
+              </div>
+
+              <!-- Scenario D: No crypto + No traditional -->
+              <div class="f-group" id="msg-no-invest" style="display:none;">
+                <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.15);border-radius:12px;padding:20px;text-align:center;">
+                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;">A an&aacute;lise de carteira &eacute; voltada para quem j&aacute; tem patrim&ocirc;nio investido.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">Se voc&ecirc; est&aacute; come&ccedil;ando, temos conte&uacute;dos gratuitos que podem ajudar a dar os primeiros passos.</p>
+                  <a href="https://elsonflorentino-afk.github.io/projetos-boost/ebook-portfolio/" style="display:inline-block;padding:10px 24px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;">Acessar conte&uacute;dos gratuitos &rarr;</a>
                 </div>
               </div>
 
@@ -909,23 +926,40 @@ window.setToggle=function(btn,group){
   document.getElementById('f-'+group).value=val;
   var cond=document.getElementById('cond-'+group);
   if(val==='sim'){cond.classList.add('show');}else{cond.classList.remove('show');}
-  /* Show/hide crypto assets section vs no-crypto message */
-  if(group==='cripto'){
-    var assetsSection=document.getElementById('crypto-assets-section');
-    var noMsg=document.getElementById('no-crypto-msg');
-    if(val==='sim'){
-      assetsSection.style.display='block';
-      noMsg.style.display='none';
-    }else{
-      assetsSection.style.display='none';
-      noMsg.style.display='block';
-      /* Clear any selected assets */
-      document.querySelectorAll('.asset-card.done').forEach(function(c){c.classList.remove('done');c.removeAttribute('data-range');c.querySelector('.asset-done-label').textContent='';});
-      document.getElementById('cf_carteira_detalhada').value='';
-    }
-  }
+  updateProfileMessages();
   checkStep1();
 };
+
+function updateProfileMessages(){
+  var cripto=document.getElementById('f-cripto').value;
+  var trad=document.getElementById('f-tradicional').value;
+  /* Hide all contextual messages */
+  document.getElementById('msg-trad-only').style.display='none';
+  document.getElementById('msg-crypto-only').style.display='none';
+  document.getElementById('msg-no-invest').style.display='none';
+  var assetsSection=document.getElementById('crypto-assets-section');
+  /* Only evaluate when both toggles have been answered */
+  if(!cripto||!trad)return;
+  if(cripto==='sim'){
+    /* Scenario A or B: has crypto */
+    assetsSection.style.display='block';
+    if(trad==='não'){
+      document.getElementById('msg-crypto-only').style.display='block';
+    }
+  }else{
+    /* No crypto: hide asset picker, clear selections */
+    assetsSection.style.display='none';
+    document.querySelectorAll('.asset-card.done').forEach(function(c){c.classList.remove('done');c.removeAttribute('data-range');var lbl=c.querySelector('.asset-done-label');if(lbl)lbl.textContent='';});
+    document.getElementById('cf_carteira_detalhada').value='';
+    if(trad==='sim'){
+      /* Scenario C: no crypto + has traditional */
+      document.getElementById('msg-trad-only').style.display='block';
+    }else{
+      /* Scenario D: no crypto + no traditional */
+      document.getElementById('msg-no-invest').style.display='block';
+    }
+  }
+}
 
 /* Card Select (desafio - single) */
 document.addEventListener('DOMContentLoaded',function(){
@@ -963,6 +997,8 @@ function checkStep1(){
   var valid=cripto&&trad&&desafio;
   if(cripto==='sim'&&!document.getElementById('f-patrimonio-cripto').value)valid=false;
   if(trad==='sim'&&!document.getElementById('f-patrimonio-tradicional').value)valid=false;
+  /* Scenario D: no crypto + no traditional → block (redirect to free content) */
+  if(cripto==='não'&&trad==='não')valid=false;
   /* If assets are selected, each must have a range chosen */
   var selectedCards=document.querySelectorAll('.asset-card.done');
   if(selectedCards.length>0){
