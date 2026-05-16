@@ -347,7 +347,7 @@ section{padding:80px 0;}
       </div>
 
       <!-- Right: form card -->
-      <div>
+      <div id="form-wrapper">
         <div class="form-card" id="form-card">
           <div class="tag" style="margin-bottom:12px;">Solicite sua an&aacute;lise</div>
           <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;color:var(--text);">An&aacute;lise gratuita do seu portf&oacute;lio</h3>
@@ -981,14 +981,12 @@ function checkStep1(){
   var valid=cripto&&trad&&desafio;
   if(cripto==='sim'&&!document.getElementById('f-patrimonio-cripto').value)valid=false;
   if(trad==='sim'&&!document.getElementById('f-patrimonio-tradicional').value)valid=false;
-  /* Scenario D: no crypto + no traditional → block (redirect to free content) */
+  /* Scenario D: no crypto + no traditional → block */
   if(cripto==='não'&&trad==='não')valid=false;
-  /* If assets are selected, each must have a range chosen */
-  var selectedCards=document.querySelectorAll('.asset-card.done');
-  if(selectedCards.length>0){
-    selectedCards.forEach(function(card){
-      if(!card.getAttribute('data-range'))valid=false;
-    });
+  /* If has crypto, MUST select at least 1 asset with range (or skip) */
+  if(cripto==='sim'){
+    var carteiraVal=document.getElementById('cf_carteira_detalhada').value;
+    if(!carteiraVal)valid=false;
   }
   document.getElementById('btn-step1').disabled=!valid;
 }
@@ -1057,11 +1055,15 @@ document.addEventListener('DOMContentLoaded',function(){
     var desafioVal=(document.getElementById('f-desafio')||{}).value||'';
     var carteiraVal=(document.getElementById('cf_carteira_detalhada')||{}).value||'';
 
-    /* Hide form, show post-submit */
-    var fc=document.getElementById('form-card');
+    /* Hide form, show post-submit — replace wrapper content */
+    var wrapper=document.getElementById('form-wrapper');
     var ps=document.getElementById('post-submit');
-    if(fc){fc.hidden=true;fc.style.display='none';fc.setAttribute('aria-hidden','true');}
-    if(ps){ps.hidden=false;ps.style.display='block';ps.classList.add('show');setTimeout(function(){window.scrollTo({top:ps.offsetTop-100,behavior:'smooth'});},50);}
+    if(wrapper&&ps){
+      var psHtml=ps.outerHTML.replace('display:none','display:block').replace('id="post-submit"','id="post-submit" style="display:block;"');
+      wrapper.innerHTML=psHtml;
+      wrapper.querySelector('#post-submit').classList.add('show');
+      setTimeout(function(){wrapper.scrollIntoView({behavior:'smooth',block:'start'});},50);
+    }
 
     var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
 
@@ -1070,7 +1072,7 @@ document.addEventListener('DOMContentLoaded',function(){
     try{fbq('track','Lead',{},{eventID:eventId});}catch(e){}
     try{gtag('event','conversion',{send_to:'AW-17899489316/lead_youtube_ads'});}catch(e){}
     var waLink='https://wa.me/5521965622891?text='+encodeURIComponent('Olá, sou '+nome+'. Vim pelo vídeo do YouTube sobre "sem tempo pra cripto" e preenchi o formulário de análise. Gostaria de falar com um Advisor sobre meu portfólio.');
-    document.getElementById('btn-wa-post').href=waLink;
+    var waBtn=document.getElementById('btn-wa-post');if(waBtn)waBtn.href=waLink;
 
     /* RD Station */
     var phone='+55'+wpp;
