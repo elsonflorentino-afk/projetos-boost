@@ -242,15 +242,20 @@ section{padding:80px 0;}
 .disclaimer{font-size:11px;color:var(--text-muted);line-height:1.7;max-width:600px;margin:0 auto;}
 
 /* ===== AVATAR FLUTUANTE WHATSAPP ===== */
-.avatar-float{position:fixed;bottom:24px;right:24px;z-index:9999;text-decoration:none;display:flex;align-items:center;gap:0;transition:transform 0.2s;}
-.avatar-float:hover{transform:scale(1.05);}
-.avatar-float-img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #25D366;box-shadow:0 4px 20px rgba(37,211,102,0.4),0 2px 8px rgba(0,0,0,0.3);transition:box-shadow 0.3s;}
-.avatar-float:hover .avatar-float-img{box-shadow:0 6px 28px rgba(37,211,102,0.55),0 2px 8px rgba(0,0,0,0.3);}
-.avatar-float-badge{position:absolute;bottom:2px;right:2px;width:20px;height:20px;background:#25D366;border-radius:50%;border:2px solid var(--bg);display:flex;align-items:center;justify-content:center;}
-.avatar-float-badge svg{width:12px;height:12px;fill:#fff;}
-@keyframes avatarPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4),0 2px 8px rgba(0,0,0,0.3);}50%{box-shadow:0 4px 28px rgba(37,211,102,0.6),0 2px 8px rgba(0,0,0,0.3);}}
-.avatar-float-img{animation:avatarPulse 3s ease-in-out infinite;}
-@media(max-width:600px){.avatar-float{bottom:calc(16px + env(safe-area-inset-bottom,0px));right:16px;}.avatar-float-img{width:56px;height:56px;}}
+.avatar-float{position:fixed;bottom:24px;right:24px;z-index:9999;text-decoration:none;display:flex;align-items:center;gap:12px;background:rgba(26,31,43,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.08);border-radius:50px;padding:8px 20px 8px 8px;box-shadow:0 8px 32px rgba(0,0,0,0.4),0 0 20px rgba(37,211,102,0.15);transition:transform 0.2s,box-shadow 0.2s;color:#fff;font-family:var(--font);}
+.avatar-float:hover{transform:translateY(-2px);box-shadow:0 10px 40px rgba(0,0,0,0.5),0 0 28px rgba(37,211,102,0.25);}
+.avatar-float-photo{position:relative;flex-shrink:0;}
+.avatar-float-img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #25D366;display:block;}
+.avatar-float-dot{position:absolute;bottom:1px;right:1px;width:12px;height:12px;background:#4ADE80;border-radius:50%;border:2px solid rgba(26,31,43,0.95);}
+@keyframes dotBreathe{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.5);}50%{box-shadow:0 0 0 4px rgba(74,222,128,0);}}
+.avatar-float-dot{animation:dotBreathe 2s ease-in-out infinite;}
+.avatar-float-text{display:flex;flex-direction:column;gap:1px;}
+.avatar-float-name{font-size:13px;font-weight:700;color:#fff;white-space:nowrap;}
+.avatar-float-msg{font-size:11px;color:rgba(255,255,255,0.6);white-space:nowrap;}
+.avatar-float-wa{display:flex;align-items:center;gap:4px;margin-top:2px;}
+.avatar-float-wa svg{width:14px;height:14px;fill:#25D366;}
+.avatar-float-wa span{font-size:11px;color:#25D366;font-weight:600;}
+@media(max-width:600px){.avatar-float{bottom:calc(16px + env(safe-area-inset-bottom,0px));right:12px;padding:6px 14px 6px 6px;gap:10px;}.avatar-float-img{width:42px;height:42px;}.avatar-float-name{font-size:12px;}.avatar-float-msg{font-size:10px;}}
 
 /* Error */
 .f-error{border-color:var(--red) !important;box-shadow:0 0 0 2px rgba(239,68,68,0.15) !important;}
@@ -780,10 +785,17 @@ section{padding:80px 0;}
 
 <!-- Avatar flutuante WhatsApp -->
 <a href="https://wa.me/5521965622891?text=Ol%C3%A1%2C%20vim%20pelo%20v%C3%ADdeo%20do%20YouTube%20sobre%20%22sem%20tempo%20pra%20cripto%22%20e%20gostaria%20de%20falar%20com%20um%20Advisor." class="avatar-float" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'avatar_float'});">
-  <img src="assets/avatar-andre.png" alt="Fale com a equipe" class="avatar-float-img" width="64" height="64" onerror="this.src='assets/andre-franco.jpg'">
-  <span class="avatar-float-badge">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-  </span>
+  <div class="avatar-float-photo">
+    <img src="assets/avatar-andre.png" alt="Fale com a equipe" class="avatar-float-img" width="48" height="48" onerror="this.src='assets/andre-franco.jpg'">
+    <span class="avatar-float-dot"></span>
+  </div>
+  <div class="avatar-float-text">
+    <span class="avatar-float-name">Fale com um Advisor</span>
+    <span class="avatar-float-wa">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+      <span>WhatsApp</span>
+    </span>
+  </div>
 </a>
 
 <script>
