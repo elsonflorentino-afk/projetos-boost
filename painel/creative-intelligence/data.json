@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T13:06:36.424454",
+  "generated_at": "2026-05-17T19:00:55.158219",
   "period": {
     "since": "2026-04-17",
     "until": "2026-05-17"
@@ -36,14 +36,14 @@
       "ctr": 1.352665,
       "leads": 4,
       "cpl": 264.475,
-      "qualified_leads": 32,
-      "qualified_50k_500k": 25,
+      "qualified_leads": 33,
+      "qualified_50k_500k": 26,
       "qualified_above_500k": 7,
-      "pct_cripto": 59.375,
-      "pct_trad": 53.125,
-      "cpl_qualificado": 33.059375,
-      "taxa_qualificacao": 800.0,
-      "thumbnail": "https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/653994601_122219902214050031_8446650983890494001_n.png?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=8xax9-20iigQ7kNvwE9RJSf&_nc_oc=Adpa7D7By6cH4P_2XHGsJEXky2PgPcPICgQwr5RhyYPou68EU5K753I4kTTG9bxOGx8&_nc_zt=1&_nc_ht=scontent-atl3-1.xx&edm=AAT1rw8EAAAA&_nc_gid=Q39v91rZSrEE9ENNQeT0NA&_nc_tpa=Q5bMBQHGEhSXJi8T40PLVFTF9QmvdMWuPUVDO0S0oPd2iq1fWTPvzB5JqCVl6P_pitMu1rEFYu3JCx9HFA&oh=00_Af7tHPw2tb6bKr6-Xxnu8lJk96aTrES8NA0YnLG0jagdFA&oe=6A0F8254"
+      "pct_cripto": 57.57575757575758,
+      "pct_trad": 51.515151515151516,
+      "cpl_qualificado": 32.05757575757576,
+      "taxa_qualificacao": 825.0,
+      "thumbnail": "https://scontent-sin6-3.xx.fbcdn.net/v/t45.1600-4/653994601_122219902214050031_8446650983890494001_n.png?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=8xax9-20iigQ7kNvwGeefgW&_nc_oc=Adq3xbRDohnsTtGABeOjFUqDjZ-RDorqmSnxrBUwA5sn--VXFDfRFDGMkxE732xCX1M&_nc_zt=1&_nc_ht=scontent-sin6-3.xx&edm=AAT1rw8EAAAA&_nc_gid=p1PSq19kvdnikJa7-BdScA&_nc_tpa=Q5bMBQESr4IAPE8pclvWx73DsefPqLqq_cNI29qP1RpChSjD48t33ZpvkX1p9J1yibib6btA3wZTeFDsYg&oh=00_Af6lhwUOw05Xlpn5CeWaN71C7aCP3ihohwa26aMEFwHJQw&oe=6A0FF2D4"
     },
     {
       "ad_id": "120245573957450651",
@@ -103,7 +103,7 @@
       "pct_trad": 100.0,
       "cpl_qualificado": 146.1,
       "taxa_qualificacao": 47.05882352941176,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/653962116_122219903978050031_1791281280992965259_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=NM74elpQq0oQ7kNvwHxHXR7&_nc_oc=Adp4hkT5X40l6RQqagqmlOyOv5NPYUf0lWHUPK7jvFm9P0vXYE920I4ewJ4jUEI-9uM&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=YZdtJZZU9Z0-4hgzq9W9kw&_nc_tpa=Q5bMBQGA-N89Ro71LG_hK7LFZy32R_vz2mT2jXh-m4kn44gAT_y_vO4okrckbfR98aRlY-_2AKmdbtfMNA&oh=00_Af7RZyK0cwywCHJoomw-50exALDa89Pxy4M0RTPSa262pQ&oe=6A0FA614"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t45.1600-4/653962116_122219903978050031_1791281280992965259_n.png?stp=dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=-ss06Eoxb2IQ7kNvwF3R3ry&_nc_oc=AdqBeGa3vYOrq66w1uBy5pW_6GuH4kIG2dAkcVq5QtdvxoUYmIABr_DA4XNzpIqJHCE&_nc_zt=1&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=j7WifHWPS8zgr7D9i4YiHA&_nc_tpa=Q5bMBQHn2d6haAY9yNiq3QMnw118Ay_P3-gsNkV054e5Q7GDocf5Wlwi5wNRNEEi1AnABowUj1_aOyQlVA&oh=00_Af4LaV65sdzO34ohrm5lT_Yr_je1h2001GjtsTJ5sbdWcw&oe=6A0FDE54"
     },
     {
       "ad_id": "120245674895220651",
@@ -143,7 +143,7 @@
       "pct_trad": 100.0,
       "cpl_qualificado": 97.92777777777778,
       "taxa_qualificacao": 47.368421052631575,
-      "thumbnail": "https://www.facebook.com/ads/image/?d=AQJbcN3QzWAOH8h3MnlqZ9VBdMXNCa81oY1VxzOud8HO9FnvbHyK0qs6dWczNpCvg-ysgSdXYz5T-X4sdoRXjdPk81Bo2j_sCTezbWjr6Zvyj6tvou_9Ar8ccAfcRrqqxzlpAttM6pwBez6Acq-riaYg"
+      "thumbnail": "https://www.facebook.com/ads/image/?d=AQKVnFpl5MPv7INaxSKQUbTC1p2KQtDLSI3W7IDd5GA7vBR1SGOjU-HEZMya6GJi-V6LHI75yRTM_IJtyGIdFCStBmDRJM4QRl6fsM4OKun4mjRe61Z6RBC7zSFPFGdL1iGS-TWC7syWJdINUQzT2_sf"
     },
     {
       "ad_id": "120245738220080651",
@@ -163,17 +163,17 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/656020079_122220193556050031_149600977200819737_n.png?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=4jNXccqQrOQQ7kNvwHE3Hbs&_nc_oc=Adq-XOVK8CspP3VIA0UjQYhBLkHgd3bNrsem2jR3EvRrI1flaxANvW1ycy1fQhF3g-c&_nc_zt=1&_nc_ht=scontent-atl3-1.xx&edm=AAT1rw8EAAAA&_nc_gid=XOwGLu-M-1lZDbc3robO2w&_nc_tpa=Q5bMBQFhvVYBDR-9PVo6SoVujtxGVOYboLdfTWVCWCH5hbV0-0gs9hybFipv6I3pK-xrChNefsJMSwleug&oh=00_Af5qERemh6yrWoolchXXFzU4QChYIslYOYjoQCc5PwqyOg&oe=6A0F7764"
+      "thumbnail": "https://scontent-sin6-3.xx.fbcdn.net/v/t45.1600-4/656020079_122220193556050031_149600977200819737_n.png?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=7auOB2fgMVkQ7kNvwGXbNRd&_nc_oc=AdopqKWuQYsYs5c_9m06TvjP4OXXAX3geUhGLqQgc9B69bYVCTL7wPkC0gdBePZqEBE&_nc_zt=1&_nc_ht=scontent-sin6-3.xx&edm=AAT1rw8EAAAA&_nc_gid=Al2T2qBwSSHUHFrkYSiDvw&_nc_tpa=Q5bMBQE0eyrSIAzPnLT8ULrwaWOJy9oeJE4jS8MFhS75pa3ajlzo_5keXL96f7Ts5tVCjdP_SbuiaJZ1pw&oh=00_Af6hTznVrqv6NxsHwAY7UjzJIuvrYvDmwu8JwzE3W2hvAg&oe=6A0FE7E4"
     },
     {
       "ad_id": "120245738231830651",
       "ad_name": "[BR][FRIO][IR-CRIPTO][V1A-STORIES]",
       "campaign_name": "IR Cripto 2026 — Leads | Boost Research",
       "adset_name": "CJ1-FORM — Frio | IR Cripto Ebook",
-      "spend": 5.51,
-      "impressions": 139,
+      "spend": 5.63,
+      "impressions": 140,
       "clicks": 6,
-      "ctr": 4.316547,
+      "ctr": 4.285714,
       "leads": 0,
       "cpl": 0,
       "qualified_leads": 0,
@@ -263,7 +263,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/654069212_122220193664050031_7306148205662258466_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=RHWCYxPkmVMQ7kNvwEvn4lm&_nc_oc=Adpmp7CLXqc79hjFCWd-AmPwCb-n7CXXJzBl2rsOJ_oDkmpXeAX4x52OjLMckFlZlb0&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=GYogaQaMng-ZqAOGbzppAA&_nc_tpa=Q5bMBQGSuKUBMovH6Z_CucM_BrnATQr0dk_C-1Gt1wBQQIvn_Bi7_w9zkTv6OK4XmAlZL7dUFcXVzPVGJw&oh=00_Af5sj2IubYieHkS77cXGi7qKk_VFnkwuYVlcGdc0G7qguA&oe=6A0F907F"
+      "thumbnail": "https://scontent-sin6-3.xx.fbcdn.net/v/t45.1600-4/654069212_122220193664050031_7306148205662258466_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=3gz-EKQ9srQQ7kNvwEJRwsB&_nc_oc=AdrqPhs5d5tIH1B4F3KA8Py8NPRJBEyKZtsSJhGfspguaaGzNXUQODeQt6YabpKMCUQ&_nc_zt=1&_nc_ht=scontent-sin6-3.xx&edm=AAT1rw8EAAAA&_nc_gid=bODTmEQx3xlTou8UrsASxQ&_nc_tpa=Q5bMBQGwPGAE-C9Xvmd3PqwUN8_p12mjd_0TUfRf8zmB-FPMktbAQM5_3lROun6YNv6wpXQT-U27tPaYgA&oh=00_Af6jn9kABEDDnJoJc9zryEa4uMsSzJN5GQRuYIMUqQvigQ&oe=6A0FC8BF"
     },
     {
       "ad_id": "120245738252220651",
@@ -283,7 +283,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/656013932_122220193718050031_858443027845823871_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=twVA8AkzjdEQ7kNvwHrmeWd&_nc_oc=AdpGfTuOiUpmtvRphHRQCFhI4D5a3XWLlg6TjMWaY9WUA0Tm2wEU_5wHgDTxJQ_8_yI&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=GQdnpBF_-MfhEBJaiM7k3Q&_nc_tpa=Q5bMBQFV-NZNuSVyk6g6PiFUJfVRm3pCh0k293KJ3PUcqacy_uVTelBnEDL6YygWU4Pju_3hiUTah0rMMg&oh=00_Af7Egt7S2W1FgQhfkhcQovr2rgzZP8KUWTVaAK7b3rTixA&oe=6A0F8DAF"
+      "thumbnail": "https://scontent-sin2-3.xx.fbcdn.net/v/t45.1600-4/656013932_122220193718050031_858443027845823871_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=twVA8AkzjdEQ7kNvwEa6SKJ&_nc_oc=Adq7KVx93n4hAv0uDVO7kzLRODQnw9AzYzpyjOAb0hme2a60dLAQXV8WDgV8lYvTJS0&_nc_zt=1&_nc_ht=scontent-sin2-3.xx&edm=AAT1rw8EAAAA&_nc_gid=fDo8nzL4trTewcVkwXGUjg&_nc_tpa=Q5bMBQHxoUBRlRLWud6jvJ8fynAjhogvH7pj8ddpYnAx5bgaNr-E2E9sDY3i4WechEyl0XdYJCxeTOpEeQ&oh=00_Af7JeIc25mEcEbU-M-NN3f_NLCFnfxTTNNCtbkh5jz5u1w&oe=6A0FFE2F"
     },
     {
       "ad_id": "120245738256310651",
@@ -323,17 +323,17 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/656074793_122220193682050031_2139391532191308456_n.png?stp=dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=z0cSdlj9RrYQ7kNvwG4qA46&_nc_oc=AdpZZewiwr1u9I5ANzlz7-uRsR-Lu0y3fmTbCsf3vQ3iFKyi10SECxdBxOXCykeaI0Q&_nc_zt=1&_nc_ht=scontent-atl3-1.xx&edm=AAT1rw8EAAAA&_nc_gid=3R_rNJERKGgG3OD_sFo-ww&_nc_tpa=Q5bMBQHspPkYMzNPo1DvKrX8_K_n6zwjiSzeRL-5ieQe87stVh3iEttHWJkh6SFTSzjgomI-5BGMQjHT4Q&oh=00_Af65r93DXj4zAStRKJjJs_zvxIVMjT4JThX8P2nkWuprmA&oe=6A0FA21F"
+      "thumbnail": "https://scontent-sin2-2.xx.fbcdn.net/v/t45.1600-4/656074793_122220193682050031_2139391532191308456_n.png?stp=dst-jpg_tt6&_nc_cat=103&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=z0cSdlj9RrYQ7kNvwHKy2XF&_nc_oc=AdpLY3Aia20I6bGrIcUY8jAWnKrDT-j9euAuoy_GqJy2_c1nZR6TKVwPkFLuSnG7PxA&_nc_zt=1&_nc_ht=scontent-sin2-2.xx&edm=AAT1rw8EAAAA&_nc_gid=_BT8pqs1ZBwlS3TyAzBFjg&_nc_tpa=Q5bMBQEGHdTOvrvcckVRP5RXiFIvlT0j8R3E3TYt4y2uxLQ9cBHMJE1tYhF8uYJzsNr8FtJOhjFIcvuLFQ&oh=00_Af4U9sJkmBh6fQnSuZDLHjuf82QkYpUNlxjqOSe_7mO87Q&oe=6A0FDA5F"
     },
     {
       "ad_id": "120245738264470651",
       "ad_name": "[BR][RET][IR-CRIPTO][V1D-FEED]",
       "campaign_name": "IR Cripto 2026 — Leads | Boost Research",
       "adset_name": "CJ3-FORM — Retargeting | IR Cripto Ebook",
-      "spend": 3.36,
-      "impressions": 149,
+      "spend": 4.06,
+      "impressions": 151,
       "clicks": 1,
-      "ctr": 0.671141,
+      "ctr": 0.662252,
       "leads": 0,
       "cpl": 0,
       "qualified_leads": 0,
@@ -370,12 +370,12 @@
       "ad_name": "V1-NYSE-CURA-INIMIGO",
       "campaign_name": "[BR][BOOST][AQUECIMENTO][CBO][QUIZ-PATRIMONIO][Abr2026]",
       "adset_name": "FRIO|ADVANTAGE+|FEED+STORIES",
-      "spend": 252.67,
-      "impressions": 1729,
+      "spend": 252.89,
+      "impressions": 1731,
       "clicks": 105,
-      "ctr": 6.072874,
+      "ctr": 6.065858,
       "leads": 3,
-      "cpl": 84.22333333333333,
+      "cpl": 84.29666666666667,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -383,39 +383,39 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/664958948_122221207538050031_7686372459038787137_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=mOmlBY0na5kQ7kNvwENC55q&_nc_oc=AdpSUiIB_KvDwvPPzF9PjHdFqIJREWqdRoQBrT_nTPEkogoH-OWqNZDtXCD4GNThd7o&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=sDTZYVar0C5C192teVfpBQ&_nc_tpa=Q5bMBQF-s1BOubb2xM0hrwzIakSBGDgAFWlfEcsWterKFGs4cqptM1hw2bs0SXQGfsj2bp6z5o5Y5x5DSA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4k9hrSfthuCOsO7byX37d97XfieEZIhNyaP5emONptoQ&oe=6A0F7AC2"
+      "thumbnail": "https://scontent-sin11-1.xx.fbcdn.net/v/t45.1600-4/664958948_122221207538050031_7686372459038787137_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=mOmlBY0na5kQ7kNvwF4rCSF&_nc_oc=AdpmGYWTApoxk8GkqA4M-9YCfnUHpi9PHW3Stp3jLruv3BtmJcippdi7r0DofOA4yfs&_nc_zt=1&_nc_ht=scontent-sin11-1.xx&edm=AAT1rw8EAAAA&_nc_gid=2qonx2Dt4R7N0H1WSEZHCg&_nc_tpa=Q5bMBQGyzFo_fYML8ZOKc-0RiSBLIj0uZMhhKsQtsLEoIoxeX2cGWMlKroiRBgeYlbh0KxEzSIYVhcAbPA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af51P1S982O3kGSfllBWy1JzHVuK9fgEFk3wpmfdVhdUJg&oe=6A0FEB42"
     },
     {
       "ad_id": "120246530407670651",
       "ad_name": "V2-OCULUS-3SIMS",
       "campaign_name": "[BR][BOOST][AQUECIMENTO][CBO][QUIZ-PATRIMONIO][Abr2026]",
       "adset_name": "FRIO|ADVANTAGE+|FEED+STORIES",
-      "spend": 2026.61,
-      "impressions": 12480,
-      "clicks": 936,
-      "ctr": 7.5,
+      "spend": 2040.69,
+      "impressions": 12515,
+      "clicks": 939,
+      "ctr": 7.502996,
       "leads": 41,
-      "cpl": 49.42951219512195,
+      "cpl": 49.77292682926829,
       "qualified_leads": 1,
       "qualified_50k_500k": 1,
       "qualified_above_500k": 0,
       "pct_cripto": 0.0,
       "pct_trad": 0.0,
-      "cpl_qualificado": 2026.61,
+      "cpl_qualificado": 2040.69,
       "taxa_qualificacao": 2.4390243902439024,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/666487290_122221207706050031_7056717917367021339_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=GC0Fec2sKJ8Q7kNvwGQf3LP&_nc_oc=AdpNH7QRyPxfG508bS_sdfIE9rsgcp0LveP2ZRZwWSXDbB3Taa05miTLdI1Kka8uhNY&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=4byWVtWusIB2bMOiVWR5JQ&_nc_tpa=Q5bMBQE8oROC1L_gvugO9OpnZEYrMc_TD3Ko7vYJ5YR-aSJpEUk1ElUa3Gz0Fl2WJuuzL91QWcxKDLa8sg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af66y-SuZawNxRhj2cJEB4QtaKBAFulZsVABHbTEdAmAEg&oe=6A0F8DA8"
+      "thumbnail": "https://scontent-sin11-1.xx.fbcdn.net/v/t45.1600-4/666487290_122221207706050031_7056717917367021339_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=GC0Fec2sKJ8Q7kNvwFJO_79&_nc_oc=AdoGDeT5cHORFgz1lovpGtfKRz9aOicRWrNUOFPMOA2n0UUt9YzLtQqg7ei8gOfcrVU&_nc_zt=1&_nc_ht=scontent-sin11-1.xx&edm=AAT1rw8EAAAA&_nc_gid=wJ12x-IBaNjJ_kGpcW2dgg&_nc_tpa=Q5bMBQHYAxlv3xoXMHZKkZyBrdX7iPlUdZc_8O4yPH6kgYw5DOKIFaAKmNa5h8bSJE73w6G5c9exLDcNfw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af60BbB9g8uwsBpPQNPrdSS4n6MrYEmD5e4BebmGV0TWUQ&oe=6A0FFE28"
     },
     {
       "ad_id": "120246530409850651",
       "ad_name": "V3-PARQUE-MASC",
       "campaign_name": "[BR][BOOST][AQUECIMENTO][CBO][QUIZ-PATRIMONIO][Abr2026]",
       "adset_name": "FRIO|ADVANTAGE+|FEED+STORIES",
-      "spend": 881.45,
-      "impressions": 6263,
-      "clicks": 394,
-      "ctr": 6.290915,
+      "spend": 888.61,
+      "impressions": 6321,
+      "clicks": 400,
+      "ctr": 6.328113,
       "leads": 4,
-      "cpl": 220.3625,
+      "cpl": 222.1525,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -423,7 +423,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/664735237_122221207742050031_7505009798254657852_n.png?_nc_cat=101&ccb=1-7&_nc_ohc=bkk1JN3_RCcQ7kNvwGFgDNF&_nc_oc=AdqH42_hc3A-GTlL8RDCi-DNXmI8xFIwwODkqOHfX-mCcKC9nW__o1UQ6JygcF3FqYY&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=LRKpqMZnq9766oulZ3hFKA&_nc_tpa=Q5bMBQE06vCbC22uZWNs87OvkEXvGrCBIigR9UB8jc7oJSj9ojE9w2CdMX0230yVRB5em1nqtpsNu6vp4A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4j0diyuH_MQfzgyZtobjDzFsQEs7R4XHtsIGKsgDtxVQ&oe=6A0F7B1E"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t45.1600-4/664735237_122221207742050031_7505009798254657852_n.png?_nc_cat=101&ccb=1-7&_nc_ohc=bkk1JN3_RCcQ7kNvwEAhlfz&_nc_oc=AdortkFaEqaXf2wxI0iIhNirmz94oM2FBS_CGDAGzGeTpfF-svspeyAHbIK_XelF5ik&_nc_zt=1&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=sfVPPsb52JLeeY255jpDqA&_nc_tpa=Q5bMBQH51GKMyUOC_myod69VRR7cR-LxhyUDzknzUhIdBiyLXgmSIGYQUB5AklVZHgPTTlZ_oRZEtT_Pyw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4RYxEjX9hZd0KdbYT6Cd041dT3p2qLtF0tehXhfKSsoA&oe=6A0FEB9E"
     },
     {
       "ad_id": "120246533277250651",
@@ -450,70 +450,70 @@
       "ad_name": "[NOVO] E06-PRAZO",
       "campaign_name": "IR Cripto 2026 — Leads | Boost Research",
       "adset_name": "CJ3-FORM — Retargeting | IR Cripto Ebook",
-      "spend": 888.61,
-      "impressions": 30116,
-      "clicks": 294,
-      "ctr": 0.976225,
-      "leads": 51,
-      "cpl": 17.42372549019608,
+      "spend": 899.45,
+      "impressions": 30472,
+      "clicks": 298,
+      "ctr": 0.977947,
+      "leads": 52,
+      "cpl": 17.297115384615385,
       "qualified_leads": 5,
       "qualified_50k_500k": 5,
       "qualified_above_500k": 0,
       "pct_cripto": 0.0,
       "pct_trad": 0.0,
-      "cpl_qualificado": 177.722,
-      "taxa_qualificacao": 9.803921568627452,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/664025356_122221215134050031_4790082580917903744_n.png?stp=dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=if1eKoV6QeoQ7kNvwHDUdYL&_nc_oc=AdrwMhxkvqWgy9na6EmlEc9MDhzHrtUOxh-0IA22zVvQMksKgAqr_oCY68GlkNfYvbc&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=6fsiaULZRZYlKvFL0ZielA&_nc_tpa=Q5bMBQG6_gEdeeUGtG6H1D8NyMNqW5vDUg-9xK4b7PXDpNS5Op4UNmiGZuS0VD5n07V1AzTNZWFn32_pSQ&oh=00_Af5glXKB28n7vpiQjIc67yR10r9_sJ2-X68djvnS7wk8wA&oe=6A0F8742"
+      "cpl_qualificado": 179.89000000000001,
+      "taxa_qualificacao": 9.615384615384617,
+      "thumbnail": "https://scontent-sin2-1.xx.fbcdn.net/v/t45.1600-4/664025356_122221215134050031_4790082580917903744_n.png?stp=dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=if1eKoV6QeoQ7kNvwHQRzxP&_nc_oc=AdrZFEUhDSU7ni9LK5DMQpRi16J_bpif-ZSek8Fh1aQ7UecrAYuqOXvfVZucY0-o6wU&_nc_zt=1&_nc_ht=scontent-sin2-1.xx&edm=AAT1rw8EAAAA&_nc_gid=LETphW_rmamfNz-ymV7mnQ&_nc_tpa=Q5bMBQEjMzUXKVUg8RraazVZAACuaGuGyfTtacHJakthz6_HT9TBVn78ioYYYKrhX7HqF6PEYR2VEj_J1A&oh=00_Af7n_5B5OCec6ZkC0GMLhlgG5iz4A7Ik_mfsxQg-JTFoAw&oe=6A0FF7C2"
     },
     {
       "ad_id": "120246533284320651",
       "ad_name": "[NOVO] E02-SIMPLES",
       "campaign_name": "IR Cripto 2026 — Leads | Boost Research",
       "adset_name": "CJ2-FORM — LAL | IR Cripto Ebook",
-      "spend": 783.64,
-      "impressions": 22478,
+      "spend": 783.65,
+      "impressions": 22479,
       "clicks": 343,
-      "ctr": 1.525936,
+      "ctr": 1.525869,
       "leads": 59,
-      "cpl": 13.282033898305084,
+      "cpl": 13.282203389830508,
       "qualified_leads": 5,
       "qualified_50k_500k": 5,
       "qualified_above_500k": 0,
       "pct_cripto": 0.0,
       "pct_trad": 0.0,
-      "cpl_qualificado": 156.728,
+      "cpl_qualificado": 156.73,
       "taxa_qualificacao": 8.47457627118644,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/665763600_122221215152050031_685834137775473957_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=at3RC9xdnEAQ7kNvwH20-yH&_nc_oc=AdoSJSg5ShWQ__J6wq6k6nsmGaFlczsqBGO2lom1hcrMRIkvyBf3vf6cETZPeOkgsCc&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=ekaHk_j0XerPmo3edUt0PA&_nc_tpa=Q5bMBQFZlZJC14nY1CHQskA8rmSaC14VsyBcVFe4DBJzBGMc91rQ3lErMVEA1oXJau8Cx5qtffL4hHKHqA&oh=00_Af7dplcu_TafPgGjX8FbY1-S06c5sjM-PQKJrcrwKDhXDA&oe=6A0FA3C1"
+      "thumbnail": "https://scontent-sin2-1.xx.fbcdn.net/v/t45.1600-4/665763600_122221215152050031_685834137775473957_n.png?stp=dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=at3RC9xdnEAQ7kNvwFpRZFH&_nc_oc=AdqK9ZG45hUTynZ5jvq_qq6wx8fYrW4RLBqGK8YrZkzLSBWNATjGuLg_n7Ea3L4bGSI&_nc_zt=1&_nc_ht=scontent-sin2-1.xx&edm=AAT1rw8EAAAA&_nc_gid=8p8Lhm4EXqGxG0OU6cpkfg&_nc_tpa=Q5bMBQE4kYdv_XNSyIrwrxOpuT-S5CYJScIXBhUVMoh64QA8dLxYsgc8ELvBVrxTENMA9-uZPtQtNkubTw&oh=00_Af5BjO_Dg_NgTmAiTCzWioxsPryJ96NCkcUkTv2TpRi30w&oe=6A0FDC01"
     },
     {
       "ad_id": "120246533286120651",
       "ad_name": "[NOVO] E05-10ANOS",
       "campaign_name": "IR Cripto 2026 — Leads | Boost Research",
       "adset_name": "CJ2-FORM — LAL | IR Cripto Ebook",
-      "spend": 3310.5,
-      "impressions": 95534,
-      "clicks": 1167,
-      "ctr": 1.221555,
-      "leads": 222,
-      "cpl": 14.912162162162161,
+      "spend": 3388.76,
+      "impressions": 97357,
+      "clicks": 1190,
+      "ctr": 1.222306,
+      "leads": 226,
+      "cpl": 14.994513274336285,
       "qualified_leads": 20,
       "qualified_50k_500k": 20,
       "qualified_above_500k": 0,
       "pct_cripto": 25.0,
       "pct_trad": 25.0,
-      "cpl_qualificado": 165.525,
-      "taxa_qualificacao": 9.00900900900901,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/667610479_122221215188050031_1028205597578763324_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=ljFHyyCPG9MQ7kNvwFBrxNP&_nc_oc=AdqALqeWfk9FqHouyhAQS037TL7SsVP250n0WcLvJA--fLsMNzuUa6SZWIQVKGz4-ao&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=UD4N_KldEaA74Fiizw9okg&_nc_tpa=Q5bMBQG9OrJUI-sHndCpgHzFsCZoRfuFpJCZ7wSqiy7d7_WGY9ObyxnNNRhtCJW2TFsO2jebbNNmPee3oQ&oh=00_Af4k9mY3RRFP01k1PB4_jtZ9PjKJP__qnKIwzmrORLvqow&oe=6A0FA2EA"
+      "cpl_qualificado": 169.43800000000002,
+      "taxa_qualificacao": 8.849557522123893,
+      "thumbnail": "https://scontent-sin6-1.xx.fbcdn.net/v/t45.1600-4/667610479_122221215188050031_1028205597578763324_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=ljFHyyCPG9MQ7kNvwEZ5GYB&_nc_oc=AdrvkuO93HX1kfKs0s-8VVem39N5RQZwPZYxSop11fnuFjKsWcqEvhr01-NhDhW8JeY&_nc_zt=1&_nc_ht=scontent-sin6-1.xx&edm=AAT1rw8EAAAA&_nc_gid=Co5iNjuBmadRHLE4Pk-lLw&_nc_tpa=Q5bMBQGpm57AdWbfBwA6-4az8NFp_N0_2tvxsO7VFVk77UWuJ9WNG1nBBhukazmMltbJZchR1SYsgOSHnw&oh=00_Af7nCi8GrzitA6d9Xh3oXAvxw7R4xsFDF3zfnygpJkVcNQ&oe=6A0FDB2A"
     },
     {
       "ad_id": "120246533287990651",
       "ad_name": "[NOVO] E01-RECEITA-FEDERAL",
       "campaign_name": "IR Cripto 2026 — Leads | Boost Research",
       "adset_name": "CJ1-FORM — Frio | IR Cripto Ebook",
-      "spend": 33.53,
-      "impressions": 1029,
+      "spend": 33.61,
+      "impressions": 1031,
       "clicks": 14,
-      "ctr": 1.360544,
+      "ctr": 1.357905,
       "leads": 0,
       "cpl": 0,
       "qualified_leads": 0,
@@ -530,20 +530,20 @@
       "ad_name": "[NOVO] E03-MULTA-75",
       "campaign_name": "IR Cripto 2026 — Leads | Boost Research",
       "adset_name": "CJ1-FORM — Frio | IR Cripto Ebook",
-      "spend": 329.66,
-      "impressions": 10491,
+      "spend": 330.28,
+      "impressions": 10505,
       "clicks": 120,
-      "ctr": 1.143838,
+      "ctr": 1.142313,
       "leads": 19,
-      "cpl": 17.350526315789477,
+      "cpl": 17.38315789473684,
       "qualified_leads": 2,
       "qualified_50k_500k": 2,
       "qualified_above_500k": 0,
       "pct_cripto": 0.0,
       "pct_trad": 0.0,
-      "cpl_qualificado": 164.83,
+      "cpl_qualificado": 165.14,
       "taxa_qualificacao": 10.526315789473683,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/665924317_122221215116050031_3984570233552765166_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=EcKGrXSJUiUQ7kNvwHEoRcc&_nc_oc=AdrjVOR_t2QeK08oLLih7wvPM-AzKO5yriug7lT1r85NimYT42ddKpqyJsxO5-YO0eo&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=--GffMkYq9OslvqxTn4qqQ&_nc_tpa=Q5bMBQFSbgFpaqIArK4iTFY2k1ERiOuqiDK9Adf2TbEOMMeDGDTfRe64FX-TnnMbs7EuYN_ar4KtOo0v_w&oh=00_Af6_sQ44NMeU2IgAUxJvYDHjV0OvtNRJBrmAFiqHU4d1-A&oe=6A0F8A9F"
+      "thumbnail": "https://scontent-sin2-3.xx.fbcdn.net/v/t45.1600-4/665924317_122221215116050031_3984570233552765166_n.png?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=EcKGrXSJUiUQ7kNvwFOkLX1&_nc_oc=Adpa9aYyFbBCFFRV-npy9gHGNkYdgqxTCzRFiCFz4VX0kcT4NdPsg58QHnUlWrzwjd4&_nc_zt=1&_nc_ht=scontent-sin2-3.xx&edm=AAT1rw8EAAAA&_nc_gid=6xnkVPtxWhtrOUYLlRU-4g&_nc_tpa=Q5bMBQGqZaPVFZf0nnfDMyvws495d45hRsnZEDuGKbk94lYeyKB8eNf-Q0CBdgYs4s2Zt5YPlq9rCo4Z1w&oh=00_Af5mipRuOQAWikSzEeUzxI309kKa_IWvH7q4nMr-xugjvA&oe=6A0FFB1F"
     },
     {
       "ad_id": "120246588845090651",
@@ -563,7 +563,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://www.facebook.com/ads/image/?d=AQIoct8wCDxbHW5ZGtXUprqtJ-7Yhg-77sLmrhbBKHuI1BVR5CUCF988eRHy9BJif0iaiDYaP7UIlFr6RiPO9pyQ6LN1YZ4iGTzyjK0qjlXPvWDPdrlYJu7wdW8i4Nu3QFExFVOBjHfYXjjXIlGwUBkM"
+      "thumbnail": "https://www.facebook.com/ads/image/?d=AQIfukmvyKYdgcungWxYQ3_piJYoNgwnamJEdwoK3ZHX8jJUbEP-AU-kpsk5fWqfUs2xyFlfwBOJzWguv1eBo9kOd_TgiSKL4t2sFjq7gxN0NtvWb9gEn6_AGCnMpkLC9HgCrwJtXKbK9cND_aRYn_KK"
     },
     {
       "ad_id": "120246588913790651",
@@ -583,7 +583,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/653999686_122219902598050031_17808101342220308_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TcWyFFEkRIoQ7kNvwGgQpMk&_nc_oc=AdpTqNh_E3pk0VM1BM4VrjERYoxfUglEwnu2V9r4X-YeC90VdJeMNRoaOK1Zo63Rhzk&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=fUqA5iWheemHiyfydqMjJg&_nc_tpa=Q5bMBQEl2s5ZB8m73bt1cN3KRvA2pM8vesOZtXBgKuorAS22Pg56nGubCKr156iFKhFnOpRSVtY3dgdwog&oh=00_Af5iGCvYMrrr6O6g7RjUCpqWMKFnaXzjOh3o4DOLWJfAug&oe=6A0FA2D2"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t45.1600-4/653999686_122219902598050031_17808101342220308_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TcWyFFEkRIoQ7kNvwFJBZfG&_nc_oc=AdoIc4FKIMnWHhVsFl4qGbcFL4bXL43fjBdj9zYKbAlTt3PmV8akkzbs1jV0Gac2rug&_nc_zt=1&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=lndsh6VpVJvhhbUWi3cAMg&_nc_tpa=Q5bMBQGq52Q4IzuDcsmwaZTC3WwdB4wq4-E4J68jcNu452PnATcuCuGRoXBFSdkHPJ7yUBMYtCZocrJ1XQ&oh=00_Af5LoOSnaGg2Wom_MGSeYzk5cFbfB6ybn2krzWUhxr1QlQ&oe=6A0FDB12"
     },
     {
       "ad_id": "120246588946820651",
@@ -603,7 +603,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://www.facebook.com/ads/image/?d=AQKz31XAifOlO-iMOSL8ycg-4XLiE2_ccUrPtqHlQR-zTyoybp8FJahbyV6L_fJJOXuay6LCnMY7KoOCJkl7CNLK9mAXcb5TVxCsRb1tS6UcGGm4VHJlYsM8VjIjgVAwl1Sz5oDdmzi6xwcT-hSkmtXQ"
+      "thumbnail": "https://www.facebook.com/ads/image/?d=AQIrGv2JNqZ85hbScnL7FiDK771ic1Hgl-jpB_LN2kzSNWI4UZKA0ibCPFD0ejYv6N7upSs_VIER_F0CRhkuvAnpyfJBgveq0RTT46SkggHJx0MyCUhW0WPvusPhLumUXJfHyc9TWpwHDpWxjbJ2XXGX"
     },
     {
       "ad_id": "120246588986490651",
@@ -643,7 +643,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://www.facebook.com/ads/image/?d=AQKCXtc5XHSMRjHdNf15YdFWD6jLbBjuGQDjx4W02tkl-pj6JlvJNMnzdqhjEITd6OIOQNNZCM1NE5dXaU61xvDUoO6RtPLK9oN0VEozzIazDb98gIu-xYXHXtIoegjmXksA969bqv74GJe1wUxMopwK"
+      "thumbnail": "https://www.facebook.com/ads/image/?d=AQLvPw5QTHsi3M27fb29O8fA3myLJ1fNcLg5tl7XcQ6IWbMZ5hvExwecI-YRRVPj9Xx-4VhJmhIbqG_k1Tx3lvV7mXmMOy2T9YxXr04Ncbem2jaIvzwGmWYJVU-ZP1M4xOv3_rTmerJqy4bWzLVxwwNq"
     },
     {
       "ad_id": "120246589078720651",
@@ -663,7 +663,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/653999686_122219902598050031_17808101342220308_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TcWyFFEkRIoQ7kNvwGgQpMk&_nc_oc=AdpTqNh_E3pk0VM1BM4VrjERYoxfUglEwnu2V9r4X-YeC90VdJeMNRoaOK1Zo63Rhzk&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=8MX-XvXWhYohlvH0Sqij_g&_nc_tpa=Q5bMBQGlILxiPs2dePkE9yMChYZETZ-GG5EYzgxw4H5Fz2tKhH9FIzpH5JyTWbnl-7RYLfMs2COZnaBwJQ&oh=00_Af6lIf5CPWifYz5yTAuVaR2ZcC4AWe8Shqpxu9xU_fBb7A&oe=6A0FA2D2"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t45.1600-4/653999686_122219902598050031_17808101342220308_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TcWyFFEkRIoQ7kNvwFJBZfG&_nc_oc=AdoIc4FKIMnWHhVsFl4qGbcFL4bXL43fjBdj9zYKbAlTt3PmV8akkzbs1jV0Gac2rug&_nc_zt=1&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=HhC2mxNlWpiei2_dskXiEg&_nc_tpa=Q5bMBQFoDczXF57nu1HyTsbgZbI4RENzQ7mCPA4q2w2Aux85iuNmK0woEQl21P06Cpfi83Z7Lwgqxb7gnw&oh=00_Af4vpYfTVBMTWjR8HbdWqWnkVSqdoCoi5FeTAz69EH_zBA&oe=6A0FDB12"
     },
     {
       "ad_id": "120246598217060651",
@@ -703,7 +703,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://www.facebook.com/ads/image/?d=AQJt73M-Q2AWo73nkB7z-uPWAUsurFr9w7otUXmGfrONAGTM0ylDyYTqFIyN5y9ycdH4Sn-u1H1a7YA6BnArp72pBA_z8mM-sMpSfcVAzQD93PtoCIAFq5sPPeVhnEXcCJ2wKB-PU7BT5IAXmsrw3e5r"
+      "thumbnail": "https://www.facebook.com/ads/image/?d=AQLgkfklvMpKD4GxlYp_XJ1-EAr_S-6ldB_2PbRldmhv1kEFBFu_EVW20S7ZZT8wkcyZVBaPEq2glBjcL07oROeDliQr3eua8uANSg5NM8ZuPKG4YZj-T4H1st7y9ROn6dcobj29FV0zzg7ESMyEW94k"
     },
     {
       "ad_id": "120246598239010651",
@@ -723,7 +723,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/653999686_122219902598050031_17808101342220308_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TcWyFFEkRIoQ7kNvwGgQpMk&_nc_oc=AdpTqNh_E3pk0VM1BM4VrjERYoxfUglEwnu2V9r4X-YeC90VdJeMNRoaOK1Zo63Rhzk&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=zg6Y1z0haEhz5FjxBqBZ2g&_nc_tpa=Q5bMBQGbcYbKoAAxUuJ2wVOJAfJ2yV5gRRU7xsao2D1shvwICFchMbo66xpIqx8apMmFwzFuWmC9aYtcDw&oh=00_Af5EucCrb7K9Jd92UduL5Ljfe1ndVOE3JTTBzYY4nQ9XzQ&oe=6A0FA2D2"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t45.1600-4/653999686_122219902598050031_17808101342220308_n.png?stp=dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=TcWyFFEkRIoQ7kNvwFJBZfG&_nc_oc=AdoIc4FKIMnWHhVsFl4qGbcFL4bXL43fjBdj9zYKbAlTt3PmV8akkzbs1jV0Gac2rug&_nc_zt=1&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=U-VZLYT0H2_l3Ho3UUrvSw&_nc_tpa=Q5bMBQEbTXdFblvAACEhEItrX4pAJSFEfFtFrS10_foUoTiBhm9IsszmvGIANwBexFq358_xVuA5LzCdiQ&oh=00_Af60c0W46UrzkQBNo1d6t1lbpQy9gYxuFySUozwkaylBKA&oe=6A0FDB12"
     },
     {
       "ad_id": "120246598271960651",
@@ -743,7 +743,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://www.facebook.com/ads/image/?d=AQJSeO-TawoPDksAaiVacRSwCz1IcEQIqZxSUHcMtObVD73Jz6Zajt_GbuxGH9qSdVNKgFe6c_d9dFr0KmUE09oFmCtC28EM625slLe9HqfuBaB71PU4lIIMTrQBjazFETqqn6BaAfPsdaSvqHCku0DM"
+      "thumbnail": "https://www.facebook.com/ads/image/?d=AQI8B6OqIv_MWxjKQQq45I-1ogwW2vaf5di-4efi9FfQ0pXKlmekSmnZNSuw1SV7JvBNqVtolXNfLDniA7Rc6zCMocitH9aOP0bAbk2IQMfidJs9gPGXeQVgoELAiezE6jN1VuFWqdOI2IekGuiaUsOg"
     },
     {
       "ad_id": "120246598278970651",
@@ -783,7 +783,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://www.facebook.com/ads/image/?d=AQKD0RSKq5lCFl2H05SYZFQi-vE8Af9bgx3fmRiR91KiVdTyi2HwF9Rqfl9BYg4t4b5b8z53NY4HN0HT1ZI6UjCkKlb4cKOSSrDYW0gj9RgtmAvCpeJ_DDS1fyNHgXhvLlRaVG29ghhF_4sIfUmqhhJq"
+      "thumbnail": "https://www.facebook.com/ads/image/?d=AQJFsvYdFeWvDBCru35HrORpkiJbXTlYX_1R5OraxodtMSsrLVt3sndeXMxrX9ebKlWZhRS3bRWHQAL1ZUP42ZRhHzN-Xp8oTmG6SMI2TT07g8gjnoEVYyoN4aExUulrLbAy0PU8g06cNP1mAOTGubcz"
     },
     {
       "ad_id": "120246949727910651",
@@ -823,7 +823,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0,
-      "thumbnail": "https://scontent-atl3-1.xx.fbcdn.net/v/t15.5256-10/677804514_1100259909833719_2628945915487487604_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=oHVKznyN0W0Q7kNvwFWQ_V2&_nc_oc=AdpD_RAfgQwCdC5ntCyfZgmlGnr8wqEJM0JR7XTsIT1AcW1YbWJAsCHXqJEyKF0QsWM&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&edm=AAT1rw8EAAAA&_nc_gid=39WjwRT25X36GjWr_rh23g&_nc_tpa=Q5bMBQHFedlW6hO1gg9pdvYWSxmsHi8k9mB8vxnNNQJoHSjKoGdklJEM-U2xpQzng4M5C-AqQibu0tAMcw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Af6olWuIYGFrowm_UilpzanMLL8qXbsLLptTSk5NWFR_2g&oe=6A0FAB00"
+      "thumbnail": "https://scontent-sin2-2.xx.fbcdn.net/v/t15.5256-10/677804514_1100259909833719_2628945915487487604_n.jpg?_nc_cat=103&ccb=1-7&_nc_ohc=oHVKznyN0W0Q7kNvwG4_xdf&_nc_oc=AdoEsVy3Bu1fkhKOTUP2P6F4lt5sN38O27v_ZFv8OHEAKsW2MIb3EuNA6HKEjIEnLgk&_nc_zt=23&_nc_ht=scontent-sin2-2.xx&edm=AAT1rw8EAAAA&_nc_gid=xhAzBWQkt2_oeOop0Nhc7A&_nc_tpa=Q5bMBQEtqhvy2J69LFogp8oX5ks76-26EMPOeDLQ4Bkvzd62qsIC7qfIRFFaK-ikzaz3A_TzU11S29px0A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Af4ESbP3wulutSUjNqn1o2kVLMlYMsZE7toMo6h5YWDu6w&oe=6A0FE340"
     },
     {
       "ad_id": "120248279790140651",
@@ -843,7 +843,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0,
-      "thumbnail": "https://scontent-atl3-1.xx.fbcdn.net/v/t15.5256-10/686041051_1343559774329597_1046540511283306019_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=3abyk-AYye4Q7kNvwF3TPZ0&_nc_oc=AdrpM-kbFmM5opbLduDEriC9YBkNrsUzzJn9lYvFRsqVwwgfjjerbD3QF1_Rich8xBM&_nc_zt=23&_nc_ht=scontent-atl3-1.xx&edm=AAT1rw8EAAAA&_nc_gid=NXt3joUOsD4VTEJBCcp1zw&_nc_tpa=Q5bMBQHME_B24ihoQ_H4DzbmrnLuZf6Wzynka4DrZgpZMYaS3Tmf0Jhxc9426p2jnoND--nH5UwYDp-jIQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Af4Io70tdnpDEjrqFpRSjf4WlnmHunkhJsEGyj-EoY4v3Q&oe=6A0F8169"
+      "thumbnail": "https://scontent-sin6-3.xx.fbcdn.net/v/t15.5256-10/686041051_1343559774329597_1046540511283306019_n.jpg?_nc_cat=106&ccb=1-7&_nc_ohc=3abyk-AYye4Q7kNvwFLe_Tz&_nc_oc=AdrZWO6AuuWxsQd_8iM8hs0ez_G2pNyquUHeYIOIIg0Xfo1w-RR6rTrIPw8FKJerueA&_nc_zt=23&_nc_ht=scontent-sin6-3.xx&edm=AAT1rw8EAAAA&_nc_gid=Dg9HOvd190_ZztA5GCI4bw&_nc_tpa=Q5bMBQGsAC8Ufu5HscUnMU40gwFudqTZcNFrf21bBfjShPn-tQY6imOdJF7aJ0arrI1vOR_Kcl0rNcQz7Q&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Af5rDojGwwQawdtF5co9cC6xIs2dYxcravaU6QDDDQmZbw&oe=6A0FF1E9"
     },
     {
       "ad_id": "120248393595450651",
@@ -863,7 +863,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/686733406_1544668593956011_4824695537255247931_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=CM5vWeAIz0IQ7kNvwG7xIl9&_nc_oc=AdrkLrdzztSoDjOwMy6bac3z_8oK3Tj8z_f5C5HDvfkgCySumSZX_Wbg9Ys5qPwok-w&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=CreOBlAsNpc8PxArAopcQA&_nc_tpa=Q5bMBQF9-5g8g3zX6jwUG5kWB5IrXMhwwj74u0GCiMdYzzNRLpDNyUFNDdJuh5n03a3uFJ9h8UXncYMFhw&oh=00_Af6FfU-Jo4F8jXe6KsVbLqOsEoK3vzJ7DSCnnpscCV9pbQ&oe=6A0F91EC"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t45.1600-4/686733406_1544668593956011_4824695537255247931_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=d5bd00&_nc_ohc=CM5vWeAIz0IQ7kNvwFdfYd-&_nc_oc=AdrW-yLQFgfRc-pIJCTbjhrPO6-e2wLC63m12BHtCANG-8yJx25Xamn5pPyInyBbOk8&_nc_zt=1&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=Chk0_qeGtk8UjEU7plq6sg&_nc_tpa=Q5bMBQGiYGAdTnGx0MPXZB74kvogVJYrA4lVc5KOYKl8OaCvyjFiXqyKxU8tR5f2Nk1mZKyGVXoRRPR9-A&oh=00_Af70NLv2OPzXEuullSJGW4GxoTVx8Os0kuIRhGP7xPKdzA&oe=6A0FCA2C"
     },
     {
       "ad_id": "120248447852680651",
@@ -883,7 +883,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t15.5256-10/689804774_1272600088405193_6241608190259619455_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=aukMHV3J05kQ7kNvwGqyjbt&_nc_oc=Adqz9tPGfphGAVL9gR1B1WaJM2k-XRr3KXw11dwXDdS3TB_oJcdR89MucO3u-f0VBTo&_nc_zt=23&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=Ma0tH--kOV8Xt01p_JqAOQ&_nc_tpa=Q5bMBQG8tMS1VZ4ljAr9wvEZXOuWlAymkMGfmMSRR0s5KzDV6kl0VD4jch8u1ylEO-zW8YJDCqpJnvkkZQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Af5NZgPyKOABUYjOGJwKoGhCAjBItXiPtxZF01cbllyTaw&oe=6A0F9537"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t15.5256-10/689804774_1272600088405193_6241608190259619455_n.jpg?_nc_cat=101&ccb=1-7&_nc_ohc=aukMHV3J05kQ7kNvwFFBUbH&_nc_oc=AdrLy6HRecMsG1ilAsa1r6QGjZTYfv7Yv7c56hNggsYjwanzSfu9l406QIN1OdGht_c&_nc_zt=23&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=Fpq8clUOnCYt-9OrPkS4dQ&_nc_tpa=Q5bMBQHcojoXNAY9cycSvTI5KmRAtPeX3AFRLDVtovZtusW6Zc-TsZDbqKPx5Jo3D3dyvKJTU6es7VC5YA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=a7ce7f&_nc_sid=58080a&oh=00_Af7lsveV19tGygvQ0dY_7eYrxJOOpEcFaNbHAd_hzNockw&oe=6A0FCD77"
     },
     {
       "ad_id": "120248447877050651",
@@ -1003,19 +1003,19 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/687566492_122223637676050031_8631295137381793010_n.png?_nc_cat=105&ccb=1-7&_nc_ohc=m_zHQqEgvvIQ7kNvwGF_olR&_nc_oc=AdoV86pRlOtGVn5hbRF34Q3tiCHRNX5gItZDiTZvM5Jrcm5sViprWD4FTMZQVo8VoaU&_nc_zt=1&_nc_ht=scontent-atl3-1.xx&edm=AAT1rw8EAAAA&_nc_gid=lhTq2WBvgdUyu8eQV8h0Pw&_nc_tpa=Q5bMBQFgju8L4p1GhfhNoNEmgatcYBHjYD22aEKQt702N-9obARsKO0eOj6g5YhZzBCh13ey8Bp6CCQQfw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af6NG_FkG8P8g1RhmNTGzUVXre2KY5HVyky5dqGSSVkpEw&oe=6A0F9C09"
+      "thumbnail": "https://scontent-sin11-1.xx.fbcdn.net/v/t45.1600-4/687566492_122223637676050031_8631295137381793010_n.png?_nc_cat=105&ccb=1-7&_nc_ohc=OIzK5W9ESlcQ7kNvwFJyt4U&_nc_oc=AdoAXUJc9iUDc9et1voEw4H7TWxtbY-s73JdGEcT1w2Mk3Ox2vq7XnSMNOvu0bG4T-k&_nc_zt=1&_nc_ht=scontent-sin11-1.xx&edm=AAT1rw8EAAAA&_nc_gid=hhD78lWa0H4yF4J5wfa27w&_nc_tpa=Q5bMBQHy489c80iWDFCENJPU7nFt13nJQI0roxin06Orlu32IY1ZcTasCYzdDdoovKtoeICZ2EB2d5GQTA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4xvySDdWAnzCEl99we_1cL1DHzsFdl6PACwkMPjAkeZQ&oe=6A0FD449"
     },
     {
       "ad_id": "120248585460030651",
       "ad_name": "[C9][07] Trauma altcoin",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP][Mai2026]",
       "adset_name": "[C9][QUENTE] Morno+Quente",
-      "spend": 1433.31,
-      "impressions": 15344,
-      "clicks": 277,
-      "ctr": 1.805266,
+      "spend": 1513.86,
+      "impressions": 15884,
+      "clicks": 291,
+      "ctr": 1.832032,
       "leads": 17,
-      "cpl": 84.31235294117647,
+      "cpl": 89.05058823529411,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1023,7 +1023,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/684923673_122223637724050031_1352731953032149588_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=hSi5tL4IW7cQ7kNvwEngqtY&_nc_oc=AdqBuhJMf6fA5c42Y-W7ZePd9eP93P77jwGNgzQWKYoMBlOMv46vs3SwkZ2TcetFJ1M&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=FEe4oQTE4Ik3-a72ZwskKw&_nc_tpa=Q5bMBQFtYmSePxQHSs0-Ir93Y1BfgeaRPL_vo9mvdiLohLM1l7ECT3ZolKoFVhP-KgOng8KnrqqKUS1M9A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af5yYf8zGsA91jLg7_vvADtkx1Gwx6ha-mlG6nenLHtQ7Q&oe=6A0F8740"
+      "thumbnail": "https://scontent-sin11-1.xx.fbcdn.net/v/t45.1600-4/684923673_122223637724050031_1352731953032149588_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=hSi5tL4IW7cQ7kNvwGVusYH&_nc_oc=AdpYY30LR7MyqVseCUpb_GRWQZgr2XQFBHQVStJpATAbUFlSfUkHkivn5y0pI07hlHs&_nc_zt=1&_nc_ht=scontent-sin11-1.xx&edm=AAT1rw8EAAAA&_nc_gid=lJnd7xIjDHScD6YsXw9WzQ&_nc_tpa=Q5bMBQENqbkpNn30MWW18yihbnbFlQYQw-rSEDRkblSsgOqWj6mf5bFwp0DnRcBRO-UpLeLIaGo8TdoNxw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7BPGGcn3XelLdK-YxdJ-MrGg2JDq_X-I4TDUhswj_tCw&oe=6A0FF7C0"
     },
     {
       "ad_id": "120248585462580651",
@@ -1043,7 +1043,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/689069559_27130868416506555_987362375817183518_n.png?_nc_cat=111&ccb=1-7&_nc_ohc=z827TuX77OUQ7kNvwFzmfJP&_nc_oc=AdrWfWz4uA0Xxpy5ExhaqRz12fVukqWGaNPsmlLT4iAiJoBU_21dZRNqvSFX7ZI6Cds&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=0uNiOkh2iT3ttZe7O-xv-A&_nc_tpa=Q5bMBQF_wSTi6spevS7lSV9Hn_wGkUrrFQp_QhU0Xcyn5h8d_y7v9h3GSg8tQ0JDtC4WjgY-0ajRlVE2vQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7JWVVFM7GX_LCR8r-1PXAOvgPZN7k2bMRRhAobP3g9_w&oe=6A0F93CA"
+      "thumbnail": "https://scontent-sin6-1.xx.fbcdn.net/v/t45.1600-4/689069559_27130868416506555_987362375817183518_n.png?_nc_cat=111&ccb=1-7&_nc_ohc=z827TuX77OUQ7kNvwG-kHz1&_nc_oc=Adr3h6Yax785vTLuEqj14uyEHTr_wTdi0_khNbwlsuylhew16vkS2_zeI0eIfXH7lGU&_nc_zt=1&_nc_ht=scontent-sin6-1.xx&edm=AAT1rw8EAAAA&_nc_gid=4pqDJcJfNWtHqvdaRwoImQ&_nc_tpa=Q5bMBQFuvUXbFsSPR6vpXPppYbRaiTDiiC73Qjf-tvrPrJig-tOGJHFkzowiEFPDMi3yxMHVB2jU3TrMjg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af5-qvgU23ButeHxfaxh9DwczMAdL389KYeTxNS0I6Mi2w&oe=6A0FCC0A"
     },
     {
       "ad_id": "120248585465470651",
@@ -1063,19 +1063,19 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/691430119_122223637982050031_6036626015470862742_n.png?_nc_cat=111&ccb=1-7&_nc_ohc=ALhjoyvFHd4Q7kNvwG18Bb7&_nc_oc=AdqvNbFY7yAbN9A-gKkzSM-QhwBaYnGf0ETuBaovLh7hocRBluUieIxc8wL0RG-E91w&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=LjTiBzD7WD0by_O_zR0ENw&_nc_tpa=Q5bMBQHjuPztsv7C8tbHonBzB9QdvfIYpPUm-Oy95DmH9SQoPfNxs4ujqh8tHWEt1GBMCUYafRy9vrrO1Q&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af6fwySWdNBLWss-wBJj8DEyeyj6QMpKWpRmhFSquxlgXw&oe=6A0F770A"
+      "thumbnail": "https://scontent-sin6-1.xx.fbcdn.net/v/t45.1600-4/691430119_122223637982050031_6036626015470862742_n.png?_nc_cat=111&ccb=1-7&_nc_ohc=ALhjoyvFHd4Q7kNvwGlNg8e&_nc_oc=AdpMaJfW4McjFWtNjvJH6Jtvx_hm6QTHWdLSOyF-3S1VusHqnMO7CsaeXqqrtLEfV6k&_nc_zt=1&_nc_ht=scontent-sin6-1.xx&edm=AAT1rw8EAAAA&_nc_gid=CZSlMoKYsG13UBh-pWpebA&_nc_tpa=Q5bMBQGtlqI17qGGHqve_imyRsFa071LDJDmCabiupA1-aL9pKkXgqEkrjm4ZCdnuWu-b2gWFYrbBP6dfQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7WFk-EmnKkzmGESw4wE3DaT1YZ2Cm4ybkBUgm9zM-FaA&oe=6A0FE78A"
     },
     {
       "ad_id": "120248585468640651",
       "ad_name": "[C9][10] Sem tempo",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP][Mai2026]",
       "adset_name": "[C9][CLEVEL] Decisores",
-      "spend": 886.78,
-      "impressions": 9597,
-      "clicks": 125,
-      "ctr": 1.30249,
-      "leads": 9,
-      "cpl": 98.5311111111111,
+      "spend": 934.76,
+      "impressions": 10027,
+      "clicks": 129,
+      "ctr": 1.286526,
+      "leads": 10,
+      "cpl": 93.476,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1083,19 +1083,19 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/687496082_122223638384050031_3786325413660314593_n.png?_nc_cat=110&ccb=1-7&_nc_ohc=zUPfKyHMWpIQ7kNvwHcoWEY&_nc_oc=AdqKEjLf70EbtW8LHt9FcEax7pZTKTUd3VR6s1ZO86GKfOPxmUd9fJwg1KNoMCviKdw&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=fzUV00gI9x3MgK6S1-0_aQ&_nc_tpa=Q5bMBQHhcXsP5Gsiyhsh6wqMw4h4Zwzqe7ol_iojBOC6zTpq2MPgc2cuJTU6y9S6SEvUmSYKuxL1E9YEVQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4UTXExKzKUNiKMFKL_ZEYyrresak-JB7DeJOu26e4_Qg&oe=6A0F8B5F"
+      "thumbnail": "https://scontent-sin6-3.xx.fbcdn.net/v/t45.1600-4/687496082_122223638384050031_3786325413660314593_n.png?_nc_cat=110&ccb=1-7&_nc_ohc=zUPfKyHMWpIQ7kNvwGO3Z8g&_nc_oc=AdoAukXPgJtX4gSLaeYVdLdKbCgUkXtbcgQNCddaKdu6apmNe21Bfc4SF9s60cQ0LTA&_nc_zt=1&_nc_ht=scontent-sin6-3.xx&edm=AAT1rw8EAAAA&_nc_gid=zmBjgR2czc_oiEgUi97lQw&_nc_tpa=Q5bMBQEdHxGT2ANtZ5k-krzLPO_dRGuCm5kGjQib0rMY8CJk5S9S5tVgp9oQkS8eCS9O3u9oC_Jt0DXEgw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af47Q2V8rYP7DJR4jOwFvr1Oe2dZF3Yrb5TJmhr8mKxW9Q&oe=6A0FFBDF"
     },
     {
       "ad_id": "120248585620750651",
       "ad_name": "[C9][05] Método não palpite",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP][Mai2026]",
       "adset_name": "[C9][FRIO-CRIPTO] Broad+LAL",
-      "spend": 2185.57,
-      "impressions": 14580,
-      "clicks": 1249,
-      "ctr": 8.566529,
-      "leads": 141,
-      "cpl": 15.50049645390071,
+      "spend": 2273.77,
+      "impressions": 14885,
+      "clicks": 1306,
+      "ctr": 8.773933,
+      "leads": 150,
+      "cpl": 15.158466666666667,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1103,19 +1103,19 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/687691628_122223639662050031_5786181299190870219_n.png?_nc_cat=100&ccb=1-7&_nc_ohc=s7z8-4cTBV0Q7kNvwF9Jy2x&_nc_oc=Adqhz1VTv04Oce66bGz6Rpkxn6LB88AKGWEMzqUAN5SMaGT3UKl61H_rmDEGoF7T97U&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=clIjvj8JZRgSZ9TorV9xtw&_nc_tpa=Q5bMBQFbJvGEQRbMmQ76eFj5A-AggPmMNUQSrsaOHUBofVnLoSZQFZOW1AnRp0Z98OJGOVBUBva0y0fwNw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4r3iH_tXkMQqVerEFWrOJ3dn1btdKORDmasM4IcOPwFQ&oe=6A0F7620"
+      "thumbnail": "https://scontent-sin2-1.xx.fbcdn.net/v/t45.1600-4/687691628_122223639662050031_5786181299190870219_n.png?_nc_cat=100&ccb=1-7&_nc_ohc=s7z8-4cTBV0Q7kNvwFrBFeq&_nc_oc=AdqEwCP0T58mN02Hr9y6XSOSP5vL9QfHIe-3-z1LzpFUAiTzVHY-ULYViJhT5tdylcQ&_nc_zt=1&_nc_ht=scontent-sin2-1.xx&edm=AAT1rw8EAAAA&_nc_gid=MsXobk3yvKRrWGSpVKbiqQ&_nc_tpa=Q5bMBQHs2U4rAq_d_z9hyoviSLqrvh3W_2lFqANHQdU6HwOtxQXUvt6clwTNFEc_w8gl2h0kOmDyB1uB7Q&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af6WhoJXeiYo8CPgY9vP8eL7VXISANqxzR8tc6IXonw1Bg&oe=6A0FE6A0"
     },
     {
       "ad_id": "120248588222880651",
       "ad_name": "[C9][07] Trauma altcoin",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP-V2][Mai2026]",
       "adset_name": "[C9][QUENTE] Morno+Quente",
-      "spend": 344.25,
-      "impressions": 3817,
+      "spend": 345.98,
+      "impressions": 3823,
       "clicks": 71,
-      "ctr": 1.8601,
+      "ctr": 1.85718,
       "leads": 5,
-      "cpl": 68.85,
+      "cpl": 69.196,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1123,19 +1123,19 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/684923673_122223637724050031_1352731953032149588_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=hSi5tL4IW7cQ7kNvwEngqtY&_nc_oc=AdqBuhJMf6fA5c42Y-W7ZePd9eP93P77jwGNgzQWKYoMBlOMv46vs3SwkZ2TcetFJ1M&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=qh37mOedKPt4wov4GXumAw&_nc_tpa=Q5bMBQHIWyVHwMwqzih6Q83e21ByMq14Ou1JEyRM04Nh1ane59f-8mqjhYO1t8nCtSGKZ2iiDXEmLatsAg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4Z1ZZKZL9IlpdSyW5SChGKZUxKGehhxHJyMAJbY8hiWA&oe=6A0F8740"
+      "thumbnail": "https://scontent-sin11-1.xx.fbcdn.net/v/t45.1600-4/684923673_122223637724050031_1352731953032149588_n.png?_nc_cat=104&ccb=1-7&_nc_ohc=hSi5tL4IW7cQ7kNvwGVusYH&_nc_oc=AdpYY30LR7MyqVseCUpb_GRWQZgr2XQFBHQVStJpATAbUFlSfUkHkivn5y0pI07hlHs&_nc_zt=1&_nc_ht=scontent-sin11-1.xx&edm=AAT1rw8EAAAA&_nc_gid=01ntaRP_TMJgJ7f2Po6giA&_nc_tpa=Q5bMBQGVh4SIbYm3n7Im4xaaDuiNrNpvoyCl0Fr_z0wcd04a94lucBtMfSBnt6mTA1SBYbP_Zb6GOKfLVQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7etFV3v9vxzbkYip1QiRm0weNN878weqPoKkYr12YPhw&oe=6A0FF7C0"
     },
     {
       "ad_id": "120248588222890651",
       "ad_name": "[C9][01] Cripto sem regra de saída",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP-V2][Mai2026]",
       "adset_name": "[C9][QUENTE] Morno+Quente",
-      "spend": 287.83,
-      "impressions": 2328,
+      "spend": 287.97,
+      "impressions": 2332,
       "clicks": 44,
-      "ctr": 1.890034,
+      "ctr": 1.886792,
       "leads": 1,
-      "cpl": 287.83,
+      "cpl": 287.97,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1143,7 +1143,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/695469769_27130899783170085_5171762915223185786_n.png?_nc_cat=108&ccb=1-7&_nc_ohc=WGoPouHdZ74Q7kNvwGasVtH&_nc_oc=AdopG_Q-riHYLhlh3e6S_Ft5NH4yzxVdtrIuQpyDKoxZpbohanmgNwYlge5YVjp3C-8&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=ohl642fGAV7QUoCKqArWfA&_nc_tpa=Q5bMBQGQigrtoMZL8j-cNiE3dZ0CLl8e09HGSSchB6NStq2xWTyc6i9Aa-aednOKpdNoHcfGyvuezOE7bw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7VN7kHHvlqgnip92pMuSlYMShxc3N0oQQaYWdiBjupXQ&oe=6A0F7F07"
+      "thumbnail": "https://scontent-sin11-2.xx.fbcdn.net/v/t45.1600-4/695469769_27130899783170085_5171762915223185786_n.png?_nc_cat=108&ccb=1-7&_nc_ohc=WGoPouHdZ74Q7kNvwH6IgrM&_nc_oc=Adq0--SvGMnzPb-EMiim295QGOGBhunwDp25WA4bBGp6134G7vBxFoF-4C_XQUJUjUQ&_nc_zt=1&_nc_ht=scontent-sin11-2.xx&edm=AAT1rw8EAAAA&_nc_gid=qOYdbX_CPUi0ikhQ2jDs6Q&_nc_tpa=Q5bMBQG17RX0Bpot6Z7DDZyzueWTjs6-lshHxtt8zcl8Bqk5le5sUZny6MCU00nNkEtgiZeglaLLh8cI2A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7n6l_oFtOmMPOMTxFgeDDN8C6cJ8aUTn7YrN-SH0lVcA&oe=6A0FEF87"
     },
     {
       "ad_id": "120248588222900651",
@@ -1163,7 +1163,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-2.xx.fbcdn.net/v/t45.1600-4/687691628_122223639662050031_5786181299190870219_n.png?_nc_cat=100&ccb=1-7&_nc_ohc=s7z8-4cTBV0Q7kNvwF9Jy2x&_nc_oc=Adqhz1VTv04Oce66bGz6Rpkxn6LB88AKGWEMzqUAN5SMaGT3UKl61H_rmDEGoF7T97U&_nc_zt=1&_nc_ht=scontent-atl3-2.xx&edm=AAT1rw8EAAAA&_nc_gid=xg0c5CvzVwBT8D98eAijAA&_nc_tpa=Q5bMBQGhLCcCPlBL1dx5PUNFanlpOFTM31L7JtXDzUzCVAeS7xa4OfOqGaJmpeaV9dH_jLrk9JXCNElnLw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af61gQiliGvpaWtElEjV7i56PxWbmCnyVkg1nF_fWwQWWw&oe=6A0F7620"
+      "thumbnail": "https://scontent-sin2-1.xx.fbcdn.net/v/t45.1600-4/687691628_122223639662050031_5786181299190870219_n.png?_nc_cat=100&ccb=1-7&_nc_ohc=s7z8-4cTBV0Q7kNvwFrBFeq&_nc_oc=AdqEwCP0T58mN02Hr9y6XSOSP5vL9QfHIe-3-z1LzpFUAiTzVHY-ULYViJhT5tdylcQ&_nc_zt=1&_nc_ht=scontent-sin2-1.xx&edm=AAT1rw8EAAAA&_nc_gid=tKbeVBTrfNnz5tfw47S2PQ&_nc_tpa=Q5bMBQFj7Mh-w3OEo7_aToUBLVa8yFQPiZhSILOA_8DTusd8SnyGTiLiMzYYReG8c9VYIaWWcdfHxQAUtQ&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af5Iupj0_FpiPsl9lBcLI04b9FGtBJccWijZsAUNtIm2rw&oe=6A0FE6A0"
     },
     {
       "ad_id": "120248588222910651",
@@ -1183,7 +1183,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/689069559_27130868416506555_987362375817183518_n.png?_nc_cat=111&ccb=1-7&_nc_ohc=z827TuX77OUQ7kNvwFzmfJP&_nc_oc=AdrWfWz4uA0Xxpy5ExhaqRz12fVukqWGaNPsmlLT4iAiJoBU_21dZRNqvSFX7ZI6Cds&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=LL_FcT45rgGn-mgN4gqtLg&_nc_tpa=Q5bMBQGsECwCk-YeZDlbqp7uTFpY42gnXtSNFnymSpri73BrUZV7BUZTljqQ5Dj2l6KHDI3haw0RSNrPhw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af5bKK0CBRknivD17BRbGLss6URAChQXiG8nVXilF1RPrg&oe=6A0F93CA"
+      "thumbnail": "https://scontent-sin6-1.xx.fbcdn.net/v/t45.1600-4/689069559_27130868416506555_987362375817183518_n.png?_nc_cat=111&ccb=1-7&_nc_ohc=z827TuX77OUQ7kNvwG-kHz1&_nc_oc=Adr3h6Yax785vTLuEqj14uyEHTr_wTdi0_khNbwlsuylhew16vkS2_zeI0eIfXH7lGU&_nc_zt=1&_nc_ht=scontent-sin6-1.xx&edm=AAT1rw8EAAAA&_nc_gid=BEYew4SAimq3bkY7Uzwd2w&_nc_tpa=Q5bMBQElLJFN9tRgbu3utIHnuf91ExVhU0dHvwnxAeLVvkLxRKg87YWodiNo3jLywaJ_k2x0p3vGU9k5-A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4tDnaZlVRj9wfUuGGw7h4QOVmvGLr02TpgV9XfHbsmYA&oe=6A0FCC0A"
     },
     {
       "ad_id": "120248588222920651",
@@ -1210,12 +1210,12 @@
       "ad_name": "[C9][02] Lucro foi e voltou",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP-V2][Mai2026]",
       "adset_name": "[C9][QUENTE] Morno+Quente",
-      "spend": 930.65,
-      "impressions": 8914,
-      "clicks": 100,
-      "ctr": 1.121831,
+      "spend": 962.76,
+      "impressions": 9256,
+      "clicks": 111,
+      "ctr": 1.199222,
       "leads": 9,
-      "cpl": 103.40555555555555,
+      "cpl": 106.97333333333333,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1223,19 +1223,19 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/686348234_122223637334050031_5743441668738215459_n.png?_nc_cat=107&ccb=1-7&_nc_ohc=ibSFr-0h0lcQ7kNvwGtsD0I&_nc_oc=Ado_MEUsN80tf9UMB7zm__IrIBi-j64qAZo6DZ5PngCUjxK6Pc0Bhlcujb1lNv62kyU&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=phJY29UDDzXS_gZav-Cclw&_nc_tpa=Q5bMBQGXfxSPGEzqMrLTC7vF9l1_VxoCSp5nRI5sjBSqOutDZR3_ZkQw4T46Q79Po64kfi_XnVNBIcdGHA&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af5mDCW8s7FhTJiwIbBefPiMkfWzf3yj3M0SJQtiW2nXJg&oe=6A0F7F70"
+      "thumbnail": "https://scontent-sin2-3.xx.fbcdn.net/v/t45.1600-4/686348234_122223637334050031_5743441668738215459_n.png?_nc_cat=107&ccb=1-7&_nc_ohc=ibSFr-0h0lcQ7kNvwGqx3US&_nc_oc=Adq1f965Cq8GTnSgBinWp3u41HqkPncbVCh6tL2ei0VVi0JnIDFjL9W1LRHENYsgdog&_nc_zt=1&_nc_ht=scontent-sin2-3.xx&edm=AAT1rw8EAAAA&_nc_gid=rwsKQowSWr1UFtvbcOQKBg&_nc_tpa=Q5bMBQEpfXQokR6juipDbzab4O_AZ-mVcAztX4adqrcTafB4_7Bf6BPagO0O_ArT61GO253vZwQppu6ENw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af7Yiaf9iCMujTV7sL2CQWqYGMPLCUouglFIfBnG2gkAOw&oe=6A0FEFF0"
     },
     {
       "ad_id": "120248588222940651",
       "ad_name": "[C9][10] Sem tempo",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP-V2][Mai2026]",
       "adset_name": "[C9][CLEVEL] Decisores",
-      "spend": 1003.72,
-      "impressions": 8807,
-      "clicks": 113,
-      "ctr": 1.28307,
+      "spend": 1050.63,
+      "impressions": 9336,
+      "clicks": 117,
+      "ctr": 1.253213,
       "leads": 11,
-      "cpl": 91.24727272727273,
+      "cpl": 95.51181818181819,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1243,7 +1243,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-3.xx.fbcdn.net/v/t45.1600-4/687496082_122223638384050031_3786325413660314593_n.png?_nc_cat=110&ccb=1-7&_nc_ohc=zUPfKyHMWpIQ7kNvwHcoWEY&_nc_oc=AdqKEjLf70EbtW8LHt9FcEax7pZTKTUd3VR6s1ZO86GKfOPxmUd9fJwg1KNoMCviKdw&_nc_zt=1&_nc_ht=scontent-atl3-3.xx&edm=AAT1rw8EAAAA&_nc_gid=kpk3AnJR7kB-lT_Wk6wnwQ&_nc_tpa=Q5bMBQEnZQlTn6WGaHljB4MfbOWV-PZuE-K4AXf0-1JJQrJAwOUjgVn5NyFn1D-DjFGW5nOPzjfvJ7qG3A&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af5L6EbX8GUcDxmuJYp5Jlqm04VdfpATdG1SZB5i2p2OjA&oe=6A0F8B5F"
+      "thumbnail": "https://scontent-sin6-3.xx.fbcdn.net/v/t45.1600-4/687496082_122223638384050031_3786325413660314593_n.png?_nc_cat=110&ccb=1-7&_nc_ohc=zUPfKyHMWpIQ7kNvwGO3Z8g&_nc_oc=AdoAukXPgJtX4gSLaeYVdLdKbCgUkXtbcgQNCddaKdu6apmNe21Bfc4SF9s60cQ0LTA&_nc_zt=1&_nc_ht=scontent-sin6-3.xx&edm=AAT1rw8EAAAA&_nc_gid=2JN6gW2ty4iLVm6F0ZJ_WQ&_nc_tpa=Q5bMBQEJKc9J49ovF7CtW0A2MtqRsy1VfOKIAIhqWUUP2viqAVSY9cRAH6A1gPIEsIIgI2tF3BvSO17s-w&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af6jpfYNatUddW9SEMr2cJwgsK8KPleg1wu0jMJdopP-Qw&oe=6A0FFBDF"
     },
     {
       "ad_id": "120248588222950651",
@@ -1290,12 +1290,12 @@
       "ad_name": "[C9][06] Confessional André",
       "campaign_name": "[BR][BOOST][C9-MAIO][CBO][ANALISE-LP-V2][Mai2026]",
       "adset_name": "[C9][FRIO-CRIPTO] Broad+LAL",
-      "spend": 1942.14,
-      "impressions": 12153,
-      "clicks": 703,
-      "ctr": 5.78458,
-      "leads": 28,
-      "cpl": 69.36214285714286,
+      "spend": 2029.39,
+      "impressions": 12553,
+      "clicks": 731,
+      "ctr": 5.823309,
+      "leads": 30,
+      "cpl": 67.64633333333333,
       "qualified_leads": 0,
       "qualified_50k_500k": 0,
       "qualified_above_500k": 0,
@@ -1303,7 +1303,7 @@
       "pct_trad": 0.0,
       "cpl_qualificado": 0,
       "taxa_qualificacao": 0.0,
-      "thumbnail": "https://scontent-atl3-1.xx.fbcdn.net/v/t45.1600-4/687566492_122223637676050031_8631295137381793010_n.png?_nc_cat=105&ccb=1-7&_nc_ohc=m_zHQqEgvvIQ7kNvwGF_olR&_nc_oc=AdoV86pRlOtGVn5hbRF34Q3tiCHRNX5gItZDiTZvM5Jrcm5sViprWD4FTMZQVo8VoaU&_nc_zt=1&_nc_ht=scontent-atl3-1.xx&edm=AAT1rw8EAAAA&_nc_gid=q19dSlAv7tM75oyF5wA_aw&_nc_tpa=Q5bMBQGjPyFX_iOnjMAeocs3_nuERwwzNMzb7SkPHHfTzsFd3cwr79nZURgjec74ZlwmkmjIXoSWbjUxeg&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4H-KgNTuV6BX52L8YT0Y6l6TLVmGX_OjBNukJEtm7JZg&oe=6A0F9C09"
+      "thumbnail": "https://scontent-sin11-1.xx.fbcdn.net/v/t45.1600-4/687566492_122223637676050031_8631295137381793010_n.png?_nc_cat=105&ccb=1-7&_nc_ohc=OIzK5W9ESlcQ7kNvwFJyt4U&_nc_oc=AdoAXUJc9iUDc9et1voEw4H7TWxtbY-s73JdGEcT1w2Mk3Ox2vq7XnSMNOvu0bG4T-k&_nc_zt=1&_nc_ht=scontent-sin11-1.xx&edm=AAT1rw8EAAAA&_nc_gid=l_6gwbVgnvdrCdvvLbemGw&_nc_tpa=Q5bMBQFfsj22ixt6Qg5w6Ni8xxLrFHLoGXgIpMoDZhfSJlb7fOCAqd07I4Fp9ztUEyNaxlYoHyzcViT2Sw&stp=c0.5000x0.5000f_dst-emg0_p64x64_q75_tt6&ur=52f3c4&_nc_sid=58080a&oh=00_Af4X_1CERpWJrOaoY77JDX2-f4Ma6JZdm_G46rMDSN2szw&oe=6A0FD449"
     },
     {
       "ad_id": "120249119288380651",
@@ -1327,13 +1327,13 @@
     }
   ],
   "summary": {
-    "total_spend": 30177.969999999998,
-    "total_leads": 830,
-    "total_qualified": 140,
-    "total_50k_500k": 113,
+    "total_spend": 30674.929999999993,
+    "total_leads": 847,
+    "total_qualified": 141,
+    "total_50k_500k": 114,
     "total_above_500k": 27,
-    "pct_cripto": 33.6,
-    "pct_trad": 31.4,
+    "pct_cripto": 33.3,
+    "pct_trad": 31.2,
     "leads_no_utm": 0
   }
 }
