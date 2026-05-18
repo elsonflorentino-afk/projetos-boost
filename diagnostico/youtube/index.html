@@ -1124,28 +1124,32 @@ document.addEventListener('DOMContentLoaded',function(){
     var payload={
       event_type:'CONVERSION',
       event_family:'CDP',
-      conversion_identifier:'lp_youtube_ads',
-      name:nome,
-      email:email,
-      mobile_phone:phone,
-      cf_voce_ja_possui_investimentos_em_bitcoin_cripto:criptoVal,
-      cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho:patCriptoVal,
-      cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:tradVal,
-      cf_qual_seu_patrimonio_investido_no_mercado_tradicional:patTradVal,
-      cf_desafio_cripto:desafioVal,
-      cf_carteira_detalhada:carteiraSimple,
-      traffic_source:getCookie('boost_utm_source')||'direct',
-      traffic_medium:getCookie('boost_utm_medium')||'none',
-      traffic_campaign:getCookie('boost_utm_campaign')||'',
-      cf_utm_source:getCookie('boost_utm_source')||'direct',
-      cf_utm_medium:getCookie('boost_utm_medium')||'none',
-      cf_utm_campaign:getCookie('boost_utm_campaign')||'',
-      cf_utm_content:getCookie('boost_utm_content')||'',
-      cf_utm_term:getCookie('boost_utm_term')||''
+      payload:{
+        conversion_identifier:'lp_youtube_ads',
+        name:nome,
+        email:email,
+        mobile_phone:phone,
+        cf_voce_ja_possui_investimentos_em_bitcoin_cripto:criptoVal,
+        cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho:patCriptoVal,
+        cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:tradVal,
+        cf_qual_seu_patrimonio_investido_no_mercado_tradicional:patTradVal,
+        cf_desafio_cripto:desafioVal,
+        cf_carteira_detalhada:carteiraSimple,
+        traffic_source:getCookie('boost_utm_source')||'direct',
+        traffic_medium:getCookie('boost_utm_medium')||'none',
+        traffic_campaign:getCookie('boost_utm_campaign')||undefined,
+        traffic_value:getCookie('boost_utm_content')||undefined,
+        traffic_term:getCookie('boost_utm_term')||undefined,
+        cf_utm_source:getCookie('boost_utm_source')||'direct',
+        cf_utm_medium:getCookie('boost_utm_medium')||'none',
+        cf_utm_campaign:getCookie('boost_utm_campaign')||undefined,
+        cf_utm_content:getCookie('boost_utm_content')||undefined,
+        cf_utm_term:getCookie('boost_utm_term')||undefined
+      }
     };
 
     fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea',{
-      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+      method:'POST',headers:{'Content-Type':'application/json','accept':'application/json'},body:JSON.stringify(payload)
     }).catch(function(err){console.error('RD error:',err);});
   });
 });
