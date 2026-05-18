@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playbook de Replicacao — Tracking WhatsApp + Google Ads</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --color-header: #1a1a2e;
+      --color-accent: #2563eb;
+      --color-accent-light: #dbeafe;
+      --color-code-bg: #f8f9fa;
+      --color-code-border: #e2e8f0;
+      --color-text: #1e293b;
+      --color-text-light: #64748b;
+      --color-success: #16a34a;
+      --color-warning: #d97706;
+      --color-danger: #dc2626;
+      --color-border: #e2e8f0;
+      --color-sidebar-bg: #f1f5f9;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+      --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: #fff;
+      line-height: 1.7;
+      font-size: 15px;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ===== SIDEBAR ===== */
+    .sidebar {
+      width: 280px;
+      min-width: 280px;
+      background: var(--color-sidebar-bg);
+      border-right: 1px solid var(--color-border);
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      overflow-y: auto;
+      padding: 24px 0;
+      z-index: 50;
+    }
+
+    .sidebar-header {
+      padding: 0 20px 20px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 16px;
+    }
+
+    .sidebar-header h2 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-header);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .sidebar-header p {
+      font-size: 12px;
+      color: var(--color-text-light);
+      margin-top: 4px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      padding: 7px 20px;
+      font-size: 13px;
+      color: var(--color-text-light);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.15s;
+    }
+
+    .sidebar nav a:hover {
+      color: var(--color-accent);
+      background: rgba(37, 99, 235, 0.04);
+      border-left-color: var(--color-accent);
+    }
+
+    .sidebar nav a.step {
+      font-weight: 600;
+      color: var(--color-text);
+      padding-top: 12px;
+    }
+
+    .sidebar nav a .step-num {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ===== MAIN ===== */
+    .main {
+      margin-left: 280px;
+      flex: 1;
+      max-width: 900px;
+      padding: 40px 48px 80px;
+    }
+
+    /* ===== HEADER ===== */
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid var(--color-header);
+    }
+
+    .page-header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-header);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .page-header .subtitle {
+      font-size: 16px;
+      color: var(--color-text-light);
+      font-weight: 400;
+    }
+
+    .page-header .meta {
+      margin-top: 16px;
+      display: flex;
+      gap: 24px;
+      font-size: 13px;
+      color: var(--color-text-light);
+    }
+
+    .page-header .meta strong {
+      color: var(--color-text);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      margin-bottom: 56px;
+    }
+
+    .section h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-header);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .section h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-header);
+      margin: 24px 0 12px;
+    }
+
+    .section h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin: 16px 0 8px;
+    }
+
+    p { margin-bottom: 12px; }
+
+    /* ===== CODE BLOCKS ===== */
+    pre {
+      background: var(--color-code-bg);
+      border: 1px solid var(--color-code-border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      overflow-x: auto;
+      margin: 12px 0 16px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    pre code {
+      font-family: var(--font-mono);
+      color: var(--color-text);
+      background: none;
+      padding: 0;
+      border: none;
+      font-size: 13px;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      background: var(--color-code-bg);
+      border: 1px solid var(--color-code-border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #b91c1c;
+    }
+
+    /* ===== SQL SYNTAX ===== */
+    .kw { color: #7c3aed; font-weight: 600; }
+    .fn { color: #2563eb; }
+    .str { color: #16a34a; }
+    .cm { color: #94a3b8; font-style: italic; }
+    .type { color: #d97706; }
+
+    /* ===== TABLES ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 20px;
+      font-size: 13px;
+    }
+
+    thead th {
+      background: var(--color-header);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    thead th:first-child { border-radius: 6px 0 0 0; }
+    thead th:last-child { border-radius: 0 6px 0 0; }
+
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    tbody tr:hover { background: #f8fafc; }
+
+    tbody td code {
+      font-size: 12px;
+    }
+
+    /* ===== LISTS ===== */
+    ul, ol {
+      margin: 8px 0 16px 24px;
+    }
+
+    li { margin-bottom: 6px; }
+
+    /* ===== CHECKLIST ===== */
+    .checklist {
+      list-style: none;
+      margin-left: 0;
+      padding: 0;
+    }
+
+    .checklist li {
+      padding: 8px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+    }
+
+    .checklist li .check {
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--color-border);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ===== CALLOUTS ===== */
+    .callout {
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin: 16px 0;
+      font-size: 14px;
+      border-left: 4px solid;
+    }
+
+    .callout-info {
+      background: #eff6ff;
+      border-color: var(--color-accent);
+      color: #1e40af;
+    }
+
+    .callout-warning {
+      background: #fffbeb;
+      border-color: var(--color-warning);
+      color: #92400e;
+    }
+
+    .callout-danger {
+      background: #fef2f2;
+      border-color: var(--color-danger);
+      color: #991b1b;
+    }
+
+    .callout-success {
+      background: #f0fdf4;
+      border-color: var(--color-success);
+      color: #166534;
+    }
+
+    .callout strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ===== DIAGRAM ===== */
+    .diagram {
+      background: var(--color-header);
+      color: #e2e8f0;
+      padding: 24px 28px;
+      border-radius: 10px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.8;
+      overflow-x: auto;
+      margin: 16px 0 24px;
+    }
+
+    .diagram .highlight { color: #60a5fa; font-weight: 600; }
+    .diagram .arrow { color: #94a3b8; }
+    .diagram .service { color: #34d399; }
+    .diagram .label { color: #fbbf24; }
+
+    /* ===== BADGE ===== */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-free { background: #dcfce7; color: #166534; }
+    .badge-required { background: #fee2e2; color: #991b1b; }
+
+    /* ===== STEP HEADER ===== */
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .step-header .step-circle {
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      background: var(--color-accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .step-header h2 {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 960px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 24px 20px 60px; }
+    }
+
+    @media print {
+      .sidebar { display: none; }
+      .main { margin-left: 0; max-width: 100%; }
+      pre { white-space: pre-wrap; word-break: break-all; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h2>Playbook de Replicacao</h2>
+      <p>Tracking WhatsApp + Google Ads</p>
+    </div>
+    <nav>
+      <a href="#visao-geral">Visao Geral da Arquitetura</a>
+      <a href="#pre-requisitos">Checklist de Pre-requisitos</a>
+      <a href="#passo-1" class="step"><span class="step-num">1</span> Supabase Setup</a>
+      <a href="#passo-2" class="step"><span class="step-num">2</span> Bridge Page</a>
+      <a href="#passo-3" class="step"><span class="step-num">3</span> Dashboard</a>
+      <a href="#passo-4" class="step"><span class="step-num">4</span> GitHub Pages</a>
+      <a href="#passo-5" class="step"><span class="step-num">5</span> Google Tag Manager</a>
+      <a href="#passo-6" class="step"><span class="step-num">6</span> Google Ads</a>
+      <a href="#passo-7" class="step"><span class="step-num">7</span> Teste End-to-End</a>
+      <a href="#personalizacao">Personalizacao por Cliente</a>
+      <a href="#troubleshooting">Troubleshooting</a>
+      <a href="#custos">Custos</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <div class="page-header">
+      <h1>Playbook de Replicacao</h1>
+      <p class="subtitle">Sistema completo de tracking WhatsApp + Google Ads Offline Conversions</p>
+      <div class="meta">
+        <span><strong>Referencia:</strong> Clinica Dra. Roseli Andrade</span>
+        <span><strong>Versao:</strong> 1.0</span>
+        <span><strong>Data:</strong> Maio 2026</span>
+      </div>
+    </div>
+
+    <!-- ========== 1. VISAO GERAL ========== -->
+    <div class="section" id="visao-geral">
+      <h2>1. Visao Geral da Arquitetura</h2>
+
+      <p>Este sistema conecta cliques em Google Ads com agendamentos reais no WhatsApp, permitindo otimizar campanhas com base em conversoes offline verificadas. Toda a infraestrutura utiliza servicos gratuitos.</p>
+
+      <div class="diagram">
+<span class="label">[FLUXO DO VISITANTE]</span>
+
+<span class="highlight">Google Ads</span> <span class="arrow">--></span> <span class="highlight">Site do cliente</span> <span class="arrow">--></span> <span class="service">GTM</span> (cookies gclid + UTMs)
+                                         <span class="arrow">|</span>
+                              Clique no WhatsApp
+                                         <span class="arrow">|</span>
+                                         <span class="arrow">v</span>
+                              <span class="service">GTM Tag 2</span> (intercepta link)
+                                         <span class="arrow">|</span>
+                                         <span class="arrow">v</span>
+                              <span class="highlight">Bridge Page</span> (GitHub Pages)
+                              <span class="arrow">|</span>                    <span class="arrow">|</span>
+                    <span class="service">Supabase</span> (grava lead)     <span class="highlight">WhatsApp</span> (abre com protocolo)
+                              <span class="arrow">|</span>
+                              <span class="arrow">v</span>
+
+<span class="label">[FLUXO DO ATENDENTE]</span>
+
+<span class="highlight">Dashboard</span> (GitHub Pages) <span class="arrow"><--</span> <span class="service">Supabase</span> (Auth + REST API)
+      <span class="arrow">|</span>
+      Gerencia funil: Clique <span class="arrow">-></span> Conversa <span class="arrow">-></span> Agendamento <span class="arrow">-></span> Compareceu
+      <span class="arrow">|</span>
+      Exporta CSV
+      <span class="arrow">|</span>
+      <span class="arrow">v</span>
+<span class="highlight">Google Ads</span> (upload conversao offline)
+      </div>
+
+      <h3>Componentes do Sistema</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Funcao</th>
+            <th>Hospedagem</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>GTM Tag 1</strong> — UTM Cookie Writer</td>
+            <td>Captura gclid e UTMs da URL, salva em cookies persistentes (30 dias)</td>
+            <td>Google Tag Manager</td>
+          </tr>
+          <tr>
+            <td><strong>GTM Tag 2</strong> — WA Link Interceptor</td>
+            <td>Intercepta cliques em links WhatsApp e redireciona para a Bridge Page</td>
+            <td>Google Tag Manager</td>
+          </tr>
+          <tr>
+            <td><strong>Bridge Page</strong></td>
+            <td>Gera protocolo unico, grava no Supabase via RPC, dispara conversao gtag, redireciona para WhatsApp</td>
+            <td>GitHub Pages</td>
+          </tr>
+          <tr>
+            <td><strong>Supabase</strong></td>
+            <td>Banco de dados (3 tabelas), triggers de validacao, views de funil e CSV, RLS, autenticacao</td>
+            <td>Supabase Free Tier</td>
+          </tr>
+          <tr>
+            <td><strong>Dashboard</strong></td>
+            <td>Painel do atendente com login, funil, tabela de leads, acoes de status, exportacao CSV</td>
+            <td>GitHub Pages</td>
+          </tr>
+          <tr>
+            <td><strong>Google Ads</strong></td>
+            <td>Recebe CSV de conversoes offline (Agendamento + Consulta Realizada) para otimizar lances</td>
+            <td>Google Ads</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========== 2. PRE-REQUISITOS ========== -->
+    <div class="section" id="pre-requisitos">
+      <h2>2. Checklist de Pre-requisitos</h2>
+
+      <p>Antes de iniciar a implementacao para um novo cliente, confirme que todos os itens abaixo estao disponiveis:</p>
+
+      <ul class="checklist">
+        <li><span class="check"></span> <span><strong>Conta Google Ads ativa</strong> — ID da conta (formato: xxx-xxx-xxxx). Acesso de administrador para criar acoes de conversao.</span></li>
+        <li><span class="check"></span> <span><strong>Container GTM instalado no site</strong> — Se o cliente ja possui GTM, anotar o ID (GTM-XXXXXXX). Caso contrario, criar e instalar.</span></li>
+        <li><span class="check"></span> <span><strong>Numero WhatsApp do cliente</strong> — Formato internacional sem simbolos: 55 + DDD + numero (ex: 551332242131).</span></li>
+        <li><span class="check"></span> <span><strong>Conta GitHub</strong> — Para hospedar Bridge Page e Dashboard via GitHub Pages. Pode ser a sua conta ou a do cliente.</span></li>
+        <li><span class="check"></span> <span><strong>Conta Supabase Free</strong> — Criar em <a href="https://supabase.com" target="_blank">supabase.com</a>. Free tier suporta 50.000 rows e 500MB.</span></li>
+        <li><span class="check"></span> <span><strong>Acao de conversao no Google Ads</strong> — Sera criada no Passo 6. Necessario acesso de administrador.</span></li>
+      </ul>
+
+      <div class="callout callout-info">
+        <strong>Tempo estimado de implementacao</strong>
+        Com todos os pre-requisitos prontos, a implementacao completa leva entre 45 minutos e 1 hora.
+      </div>
+    </div>
+
+    <!-- ========== PASSO 1 — SUPABASE ========== -->
+    <div class="section" id="passo-1">
+      <div class="step-header">
+        <span class="step-circle">1</span>
+        <h2>Supabase Setup</h2>
+      </div>
+
+      <h3>1.1 Criar projeto no Supabase</h3>
+      <ol>
+        <li>Acesse <a href="https://supabase.com/dashboard" target="_blank">supabase.com/dashboard</a></li>
+        <li>Clique em <strong>New Project</strong></li>
+        <li>Escolha um nome (ex: <code>tracking-{nome-cliente}</code>)</li>
+        <li>Selecione a regiao <strong>South America (Sao Paulo)</strong></li>
+        <li>Defina uma senha para o banco de dados e guarde-a</li>
+      </ol>
+
+      <h3>1.2 Anotar credenciais</h3>
+      <p>Apos a criacao do projeto, va em <strong>Settings &gt; API</strong> e anote:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Credencial</th>
+            <th>Onde encontrar</th>
+            <th>Uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Project URL</strong></td>
+            <td>Settings &gt; API &gt; URL</td>
+            <td>Bridge Page, Dashboard</td>
+          </tr>
+          <tr>
+            <td><strong>Anon Key</strong> (<code>sb_publishable_</code>)</td>
+            <td>Settings &gt; API &gt; anon public</td>
+            <td>Bridge Page, Dashboard</td>
+          </tr>
+          <tr>
+            <td><strong>Service Key</strong> (<code>sb_secret_</code>)</td>
+            <td>Settings &gt; API &gt; service_role</td>
+            <td>SOMENTE admin (criar usuario)</td>
+          </tr>
+          <tr>
+            <td><strong>DB Password</strong></td>
+            <td>Definida na criacao</td>
+            <td>Conexao direta (se necessario)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-danger">
+        <strong>NUNCA exponha a Service Key</strong>
+        A service_role key tem acesso total ao banco e ignora RLS. Nunca inclua em codigo HTML, repositorios publicos ou compartilhe com o cliente. Use somente para operacoes administrativas (criar usuario).
+      </div>
+
+      <h3>1.3 Executar SQL — Schema completo</h3>
+      <p>Acesse <strong>SQL Editor</strong> no painel do Supabase e execute o SQL abaixo na integra. Ele cria 3 tabelas, 6 indices, 4 triggers, 7 views e todas as policies de RLS.</p>
+
+      <pre><code><span class="cm">-- ============================================================</span>
+<span class="cm">-- Tracking WhatsApp + Google Ads</span>
+<span class="cm">-- Supabase Setup Completo</span>
+<span class="cm">-- ============================================================</span>
+
+<span class="cm">-- 1. ENUM de status do funil</span>
+<span class="kw">CREATE TYPE</span> <span class="type">conversion_status</span> <span class="kw">AS ENUM</span> (
+  <span class="str">'clique'</span>,
+  <span class="str">'conversa'</span>,
+  <span class="str">'agendamento'</span>,
+  <span class="str">'compareceu'</span>,
+  <span class="str">'nao_compareceu'</span>
+);
+
+<span class="cm">-- 2. TABELA PRINCIPAL: wa_conversions</span>
+<span class="kw">CREATE TABLE</span> wa_conversions (
+  id <span class="type">UUID</span> <span class="kw">DEFAULT</span> <span class="fn">gen_random_uuid</span>() <span class="kw">PRIMARY KEY</span>,
+  protocolo <span class="type">TEXT</span> <span class="kw">UNIQUE NOT NULL</span>,          <span class="cm">-- ex: RA-3K7X9</span>
+  visitor_id <span class="type">TEXT</span>,                          <span class="cm">-- ID anonimo do visitante</span>
+  nome <span class="type">TEXT</span>,                               <span class="cm">-- Nome do paciente/lead</span>
+  phone <span class="type">TEXT</span>,                              <span class="cm">-- Telefone</span>
+  status <span class="type">conversion_status</span> <span class="kw">DEFAULT</span> <span class="str">'clique'</span>,
+  gclid <span class="type">TEXT</span>,                              <span class="cm">-- Google Click ID</span>
+  utm_source <span class="type">TEXT</span>,
+  utm_medium <span class="type">TEXT</span>,
+  utm_campaign <span class="type">TEXT</span>,
+  utm_term <span class="type">TEXT</span>,
+  utm_content <span class="type">TEXT</span>,
+  procedimento <span class="type">TEXT</span>,                       <span class="cm">-- Servico/produto</span>
+  valor_consulta <span class="type">DECIMAL</span>(10,2) <span class="kw">DEFAULT</span> 0,  <span class="cm">-- Valor em R$</span>
+  notas <span class="type">TEXT</span>,                              <span class="cm">-- Observacoes do atendente</span>
+  created_at <span class="type">TIMESTAMPTZ</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>(),
+  updated_at <span class="type">TIMESTAMPTZ</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>()
+);
+
+<span class="cm">-- 3. TABELA DE LOG: conversion_status_log (auditoria)</span>
+<span class="kw">CREATE TABLE</span> conversion_status_log (
+  id <span class="type">BIGINT</span> <span class="kw">GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span>,
+  conversion_id <span class="type">UUID</span> <span class="kw">REFERENCES</span> wa_conversions(id) <span class="kw">ON DELETE CASCADE</span>,
+  status_anterior <span class="type">conversion_status</span>,
+  status_novo <span class="type">conversion_status</span> <span class="kw">NOT NULL</span>,
+  changed_at <span class="type">TIMESTAMPTZ</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>()
+);
+
+<span class="cm">-- 4. TABELA: ga_offline_uploads (controle de uploads Google Ads)</span>
+<span class="kw">CREATE TABLE</span> ga_offline_uploads (
+  id <span class="type">BIGINT</span> <span class="kw">GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span>,
+  upload_date <span class="type">TIMESTAMPTZ</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>(),
+  conversions_count <span class="type">INTEGER</span> <span class="kw">DEFAULT</span> 0,
+  status <span class="type">TEXT</span> <span class="kw">DEFAULT</span> <span class="str">'pending'</span>,           <span class="cm">-- pending, uploaded, error</span>
+  file_name <span class="type">TEXT</span>,
+  notas <span class="type">TEXT</span>
+);
+
+<span class="cm">-- ============================================================</span>
+<span class="cm">-- INDICES</span>
+<span class="cm">-- ============================================================</span>
+
+<span class="kw">CREATE INDEX</span> idx_wa_conversions_gclid <span class="kw">ON</span> wa_conversions(gclid);
+<span class="kw">CREATE INDEX</span> idx_wa_conversions_status <span class="kw">ON</span> wa_conversions(status);
+<span class="kw">CREATE INDEX</span> idx_wa_conversions_created <span class="kw">ON</span> wa_conversions(created_at);
+<span class="kw">CREATE INDEX</span> idx_wa_conversions_protocolo <span class="kw">ON</span> wa_conversions(protocolo);
+<span class="kw">CREATE INDEX</span> idx_wa_conversions_campaign <span class="kw">ON</span> wa_conversions(utm_campaign);
+<span class="kw">CREATE INDEX</span> idx_status_log_conversion <span class="kw">ON</span> conversion_status_log(conversion_id);
+
+<span class="cm">-- ============================================================</span>
+<span class="cm">-- TRIGGERS</span>
+<span class="cm">-- ============================================================</span>
+
+<span class="cm">-- Trigger 1: Atualizar updated_at automaticamente</span>
+<span class="kw">CREATE OR REPLACE FUNCTION</span> <span class="fn">fn_update_timestamp</span>()
+<span class="kw">RETURNS TRIGGER AS</span> $$
+<span class="kw">BEGIN</span>
+  NEW.updated_at = <span class="fn">now</span>();
+  <span class="kw">RETURN</span> NEW;
+<span class="kw">END</span>;
+$$ <span class="kw">LANGUAGE</span> plpgsql;
+
+<span class="kw">CREATE TRIGGER</span> trg_update_timestamp
+  <span class="kw">BEFORE UPDATE ON</span> wa_conversions
+  <span class="kw">FOR EACH ROW</span>
+  <span class="kw">EXECUTE FUNCTION</span> <span class="fn">fn_update_timestamp</span>();
+
+<span class="cm">-- Trigger 2: Log de transicao de status</span>
+<span class="kw">CREATE OR REPLACE FUNCTION</span> <span class="fn">fn_log_status_change</span>()
+<span class="kw">RETURNS TRIGGER AS</span> $$
+<span class="kw">BEGIN</span>
+  <span class="kw">IF</span> OLD.status <span class="kw">IS DISTINCT FROM</span> NEW.status <span class="kw">THEN</span>
+    <span class="kw">INSERT INTO</span> conversion_status_log (conversion_id, status_anterior, status_novo)
+    <span class="kw">VALUES</span> (NEW.id, OLD.status, NEW.status);
+  <span class="kw">END IF</span>;
+  <span class="kw">RETURN</span> NEW;
+<span class="kw">END</span>;
+$$ <span class="kw">LANGUAGE</span> plpgsql;
+
+<span class="kw">CREATE TRIGGER</span> trg_log_status_change
+  <span class="kw">AFTER UPDATE ON</span> wa_conversions
+  <span class="kw">FOR EACH ROW</span>
+  <span class="kw">EXECUTE FUNCTION</span> <span class="fn">fn_log_status_change</span>();
+
+<span class="cm">-- Trigger 3: Log inicial na criacao</span>
+<span class="kw">CREATE OR REPLACE FUNCTION</span> <span class="fn">fn_log_initial_status</span>()
+<span class="kw">RETURNS TRIGGER AS</span> $$
+<span class="kw">BEGIN</span>
+  <span class="kw">INSERT INTO</span> conversion_status_log (conversion_id, status_anterior, status_novo)
+  <span class="kw">VALUES</span> (NEW.id, <span class="kw">NULL</span>, NEW.status);
+  <span class="kw">RETURN</span> NEW;
+<span class="kw">END</span>;
+$$ <span class="kw">LANGUAGE</span> plpgsql;
+
+<span class="kw">CREATE TRIGGER</span> trg_log_initial_status
+  <span class="kw">AFTER INSERT ON</span> wa_conversions
+  <span class="kw">FOR EACH ROW</span>
+  <span class="kw">EXECUTE FUNCTION</span> <span class="fn">fn_log_initial_status</span>();
+
+<span class="cm">-- Trigger 4: Validacao de transicao (impede pular etapas)</span>
+<span class="kw">CREATE OR REPLACE FUNCTION</span> <span class="fn">fn_validate_status_transition</span>()
+<span class="kw">RETURNS TRIGGER AS</span> $$
+<span class="kw">BEGIN</span>
+  <span class="cm">-- Transicoes permitidas:</span>
+  <span class="cm">-- clique -> conversa</span>
+  <span class="cm">-- conversa -> agendamento</span>
+  <span class="cm">-- agendamento -> compareceu | nao_compareceu</span>
+  <span class="cm">-- nao_compareceu -> agendamento (remarcacao)</span>
+  <span class="kw">IF</span> OLD.status = <span class="str">'clique'</span> <span class="kw">AND</span> NEW.status <span class="kw">NOT IN</span> (<span class="str">'conversa'</span>) <span class="kw">THEN</span>
+    <span class="kw">RAISE EXCEPTION</span> <span class="str">'Transicao invalida: % -> %'</span>, OLD.status, NEW.status;
+  <span class="kw">END IF</span>;
+  <span class="kw">IF</span> OLD.status = <span class="str">'conversa'</span> <span class="kw">AND</span> NEW.status <span class="kw">NOT IN</span> (<span class="str">'agendamento'</span>) <span class="kw">THEN</span>
+    <span class="kw">RAISE EXCEPTION</span> <span class="str">'Transicao invalida: % -> %'</span>, OLD.status, NEW.status;
+  <span class="kw">END IF</span>;
+  <span class="kw">IF</span> OLD.status = <span class="str">'agendamento'</span> <span class="kw">AND</span> NEW.status <span class="kw">NOT IN</span> (<span class="str">'compareceu'</span>, <span class="str">'nao_compareceu'</span>) <span class="kw">THEN</span>
+    <span class="kw">RAISE EXCEPTION</span> <span class="str">'Transicao invalida: % -> %'</span>, OLD.status, NEW.status;
+  <span class="kw">END IF</span>;
+  <span class="kw">IF</span> OLD.status = <span class="str">'nao_compareceu'</span> <span class="kw">AND</span> NEW.status <span class="kw">NOT IN</span> (<span class="str">'agendamento'</span>) <span class="kw">THEN</span>
+    <span class="kw">RAISE EXCEPTION</span> <span class="str">'Transicao invalida: % -> %'</span>, OLD.status, NEW.status;
+  <span class="kw">END IF</span>;
+  <span class="kw">IF</span> OLD.status = <span class="str">'compareceu'</span> <span class="kw">THEN</span>
+    <span class="kw">RAISE EXCEPTION</span> <span class="str">'Status "compareceu" e final, nao pode ser alterado'</span>;
+  <span class="kw">END IF</span>;
+  <span class="kw">RETURN</span> NEW;
+<span class="kw">END</span>;
+$$ <span class="kw">LANGUAGE</span> plpgsql;
+
+<span class="kw">CREATE TRIGGER</span> trg_validate_status_transition
+  <span class="kw">BEFORE UPDATE OF</span> status <span class="kw">ON</span> wa_conversions
+  <span class="kw">FOR EACH ROW</span>
+  <span class="kw">EXECUTE FUNCTION</span> <span class="fn">fn_validate_status_transition</span>();
+
+<span class="cm">-- ============================================================</span>
+<span class="cm">-- VIEWS</span>
+<span class="cm">-- ============================================================</span>
+
+<span class="cm">-- View 1: CSV para Google Ads (formato de upload offline)</span>
+<span class="kw">CREATE OR REPLACE VIEW</span> v_google_ads_csv <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+  gclid <span class="kw">AS</span> <span class="str">"Google Click ID"</span>,
+  <span class="str">'Agendamento WhatsApp'</span> <span class="kw">AS</span> <span class="str">"Conversion Name"</span>,
+  <span class="fn">TO_CHAR</span>(updated_at, <span class="str">'YYYY-MM-DD HH24:MI:SS'</span>) <span class="kw">AS</span> <span class="str">"Conversion Time"</span>,
+  <span class="str">'0.00'</span> <span class="kw">AS</span> <span class="str">"Conversion Value"</span>,
+  <span class="str">'BRL'</span> <span class="kw">AS</span> <span class="str">"Conversion Currency"</span>
+<span class="kw">FROM</span> wa_conversions
+<span class="kw">WHERE</span> status = <span class="str">'agendamento'</span> <span class="kw">AND</span> gclid <span class="kw">IS NOT NULL</span>;
+
+<span class="cm">-- View 2: CSV para Google Ads (consulta realizada com valor)</span>
+<span class="kw">CREATE OR REPLACE VIEW</span> v_google_ads_consulta <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+  gclid <span class="kw">AS</span> <span class="str">"Google Click ID"</span>,
+  <span class="str">'Consulta Realizada'</span> <span class="kw">AS</span> <span class="str">"Conversion Name"</span>,
+  <span class="fn">TO_CHAR</span>(updated_at, <span class="str">'YYYY-MM-DD HH24:MI:SS'</span>) <span class="kw">AS</span> <span class="str">"Conversion Time"</span>,
+  <span class="fn">COALESCE</span>(valor_consulta, 0)::<span class="type">TEXT</span> <span class="kw">AS</span> <span class="str">"Conversion Value"</span>,
+  <span class="str">'BRL'</span> <span class="kw">AS</span> <span class="str">"Conversion Currency"</span>
+<span class="kw">FROM</span> wa_conversions
+<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span> <span class="kw">AND</span> gclid <span class="kw">IS NOT NULL</span>;
+
+<span class="cm">-- View 3: Funil completo</span>
+<span class="kw">CREATE OR REPLACE VIEW</span> v_funil <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'clique'</span>,<span class="str">'conversa'</span>,<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) <span class="kw">AS</span> cliques,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'conversa'</span>,<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) <span class="kw">AS</span> conversas,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) <span class="kw">AS</span> agendamentos,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>) <span class="kw">AS</span> compareceram,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'nao_compareceu'</span>) <span class="kw">AS</span> nao_compareceram,
+  <span class="kw">CASE WHEN</span> <span class="fn">COUNT</span>(*) > 0
+    <span class="kw">THEN</span> <span class="fn">ROUND</span>(100.0 * <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) / <span class="fn">COUNT</span>(*), 1)
+    <span class="kw">ELSE</span> 0
+  <span class="kw">END AS</span> taxa_agendamento_pct,
+  <span class="kw">CASE WHEN</span> <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) > 0
+    <span class="kw">THEN</span> <span class="fn">ROUND</span>(100.0 * <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>) / <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)), 1)
+    <span class="kw">ELSE</span> 0
+  <span class="kw">END AS</span> taxa_comparecimento_pct
+<span class="kw">FROM</span> wa_conversions;
+
+<span class="cm">-- View 4: Performance por campanha</span>
+<span class="kw">CREATE OR REPLACE VIEW</span> v_performance_campanha <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+  <span class="fn">COALESCE</span>(utm_campaign, <span class="str">'(sem campanha)'</span>) <span class="kw">AS</span> campanha,
+  <span class="fn">COUNT</span>(*) <span class="kw">AS</span> total_cliques,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'conversa'</span>,<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) <span class="kw">AS</span> conversas,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) <span class="kw">AS</span> agendamentos,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>) <span class="kw">AS</span> compareceram,
+  <span class="fn">SUM</span>(valor_consulta) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>) <span class="kw">AS</span> receita_total
+<span class="kw">FROM</span> wa_conversions
+<span class="kw">GROUP BY</span> utm_campaign
+<span class="kw">ORDER BY</span> agendamentos <span class="kw">DESC</span>;
+
+<span class="cm">-- View 5: Tendencia diaria</span>
+<span class="kw">CREATE OR REPLACE VIEW</span> v_tendencia_diaria <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+  <span class="fn">DATE</span>(created_at) <span class="kw">AS</span> dia,
+  <span class="fn">COUNT</span>(*) <span class="kw">AS</span> cliques,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status <span class="kw">IN</span> (<span class="str">'agendamento'</span>,<span class="str">'compareceu'</span>,<span class="str">'nao_compareceu'</span>)) <span class="kw">AS</span> agendamentos,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>) <span class="kw">AS</span> compareceram
+<span class="kw">FROM</span> wa_conversions
+<span class="kw">GROUP BY</span> <span class="fn">DATE</span>(created_at)
+<span class="kw">ORDER BY</span> dia <span class="kw">DESC</span>;
+
+<span class="cm">-- View 6: Performance por procedimento</span>
+<span class="kw">CREATE OR REPLACE VIEW</span> v_performance_procedimento <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+  <span class="fn">COALESCE</span>(procedimento, <span class="str">'(nao informado)'</span>) <span class="kw">AS</span> procedimento,
+  <span class="fn">COUNT</span>(*) <span class="kw">AS</span> total,
+  <span class="fn">COUNT</span>(*) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>) <span class="kw">AS</span> compareceram,
+  <span class="fn">SUM</span>(valor_consulta) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>) <span class="kw">AS</span> receita,
+  <span class="fn">ROUND</span>(<span class="fn">AVG</span>(valor_consulta) <span class="kw">FILTER</span> (<span class="kw">WHERE</span> status = <span class="str">'compareceu'</span>), 2) <span class="kw">AS</span> ticket_medio
+<span class="kw">FROM</span> wa_conversions
+<span class="kw">GROUP BY</span> procedimento
+<span class="kw">ORDER BY</span> receita <span class="kw">DESC NULLS LAST</span>;
+
+<span class="cm">-- View 7: Leads recentes</span>
+<span class="kw">CREATE OR REPLACE VIEW</span> v_leads_recentes <span class="kw">AS</span>
+<span class="kw">SELECT</span>
+  protocolo, nome, phone, status, procedimento,
+  utm_campaign, valor_consulta, created_at, updated_at
+<span class="kw">FROM</span> wa_conversions
+<span class="kw">ORDER BY</span> created_at <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> 50;
+
+<span class="cm">-- ============================================================</span>
+<span class="cm">-- RLS (Row Level Security)</span>
+<span class="cm">-- ============================================================</span>
+
+<span class="kw">ALTER TABLE</span> wa_conversions <span class="kw">ENABLE ROW LEVEL SECURITY</span>;
+<span class="kw">ALTER TABLE</span> conversion_status_log <span class="kw">ENABLE ROW LEVEL SECURITY</span>;
+<span class="kw">ALTER TABLE</span> ga_offline_uploads <span class="kw">ENABLE ROW LEVEL SECURITY</span>;
+
+<span class="cm">-- Policy: Bridge Page (anon) so pode INSERIR com status 'clique'</span>
+<span class="kw">CREATE POLICY</span> <span class="str">"bridge_page_insert"</span>
+  <span class="kw">ON</span> wa_conversions
+  <span class="kw">FOR INSERT TO</span> anon
+  <span class="kw">WITH CHECK</span> (status = <span class="str">'clique'</span>);
+
+<span class="cm">-- Policy: authenticated pode tudo (dashboard)</span>
+<span class="kw">CREATE POLICY</span> <span class="str">"dashboard_full_access"</span>
+  <span class="kw">ON</span> wa_conversions
+  <span class="kw">FOR ALL TO</span> authenticated
+  <span class="kw">USING</span> (<span class="kw">true</span>)
+  <span class="kw">WITH CHECK</span> (<span class="kw">true</span>);
+
+<span class="cm">-- Policy: service_role pode tudo (admin/scripts)</span>
+<span class="kw">CREATE POLICY</span> <span class="str">"service_role_full"</span>
+  <span class="kw">ON</span> wa_conversions
+  <span class="kw">FOR ALL TO</span> service_role
+  <span class="kw">USING</span> (<span class="kw">true</span>)
+  <span class="kw">WITH CHECK</span> (<span class="kw">true</span>);
+
+<span class="cm">-- Log: so authenticated e service_role podem ler</span>
+<span class="kw">CREATE POLICY</span> <span class="str">"log_read_authenticated"</span>
+  <span class="kw">ON</span> conversion_status_log
+  <span class="kw">FOR SELECT TO</span> authenticated
+  <span class="kw">USING</span> (<span class="kw">true</span>);
+
+<span class="kw">CREATE POLICY</span> <span class="str">"log_read_service"</span>
+  <span class="kw">ON</span> conversion_status_log
+  <span class="kw">FOR SELECT TO</span> service_role
+  <span class="kw">USING</span> (<span class="kw">true</span>);
+
+<span class="cm">-- Uploads: so authenticated e service_role</span>
+<span class="kw">CREATE POLICY</span> <span class="str">"uploads_full_authenticated"</span>
+  <span class="kw">ON</span> ga_offline_uploads
+  <span class="kw">FOR ALL TO</span> authenticated
+  <span class="kw">USING</span> (<span class="kw">true</span>)
+  <span class="kw">WITH CHECK</span> (<span class="kw">true</span>);
+
+<span class="kw">CREATE POLICY</span> <span class="str">"uploads_full_service"</span>
+  <span class="kw">ON</span> ga_offline_uploads
+  <span class="kw">FOR ALL TO</span> service_role
+  <span class="kw">USING</span> (<span class="kw">true</span>)
+  <span class="kw">WITH CHECK</span> (<span class="kw">true</span>);</code></pre>
+
+      <h3>1.4 Executar SQL adicional — RLS do log para dashboard</h3>
+      <p>O trigger de log de status precisa de permissao INSERT para o role <code>authenticated</code>. Execute este SQL adicional:</p>
+
+      <pre><code><span class="kw">CREATE POLICY</span> <span class="str">"log_insert_authenticated"</span>
+  <span class="kw">ON</span> conversion_status_log <span class="kw">FOR INSERT TO</span> authenticated <span class="kw">WITH CHECK</span> (<span class="kw">true</span>);
+
+<span class="kw">CREATE POLICY</span> <span class="str">"log_full_authenticated"</span>
+  <span class="kw">ON</span> conversion_status_log <span class="kw">FOR ALL TO</span> authenticated <span class="kw">USING</span> (<span class="kw">true</span>) <span class="kw">WITH CHECK</span> (<span class="kw">true</span>);</code></pre>
+
+      <h3>1.5 Criar a funcao RPC register_wa_click</h3>
+      <p>A Bridge Page utiliza uma RPC (Remote Procedure Call) ao inves de INSERT direto. Isso permite usar <code>SECURITY DEFINER</code> para contornar restricoes de RLS no role <code>anon</code>.</p>
+
+      <pre><code><span class="kw">CREATE OR REPLACE FUNCTION</span> <span class="fn">register_wa_click</span>(
+  p_protocolo <span class="type">TEXT</span>,
+  p_visitor_id <span class="type">TEXT</span> <span class="kw">DEFAULT NULL</span>,
+  p_gclid <span class="type">TEXT</span> <span class="kw">DEFAULT NULL</span>,
+  p_utm_source <span class="type">TEXT</span> <span class="kw">DEFAULT NULL</span>,
+  p_utm_medium <span class="type">TEXT</span> <span class="kw">DEFAULT NULL</span>,
+  p_utm_campaign <span class="type">TEXT</span> <span class="kw">DEFAULT NULL</span>,
+  p_utm_term <span class="type">TEXT</span> <span class="kw">DEFAULT NULL</span>,
+  p_utm_content <span class="type">TEXT</span> <span class="kw">DEFAULT NULL</span>
+)
+<span class="kw">RETURNS</span> <span class="type">JSON</span>
+<span class="kw">LANGUAGE</span> plpgsql
+<span class="kw">SECURITY DEFINER</span>
+<span class="kw">AS</span> $$
+<span class="kw">DECLARE</span>
+  v_id <span class="type">UUID</span>;
+<span class="kw">BEGIN</span>
+  <span class="kw">INSERT INTO</span> wa_conversions (protocolo, visitor_id, gclid, utm_source, utm_medium, utm_campaign, utm_term, utm_content)
+  <span class="kw">VALUES</span> (p_protocolo, p_visitor_id, p_gclid, p_utm_source, p_utm_medium, p_utm_campaign, p_utm_term, p_utm_content)
+  <span class="kw">RETURNING</span> id <span class="kw">INTO</span> v_id;
+  <span class="kw">RETURN</span> <span class="fn">json_build_object</span>(<span class="str">'id'</span>, v_id, <span class="str">'protocolo'</span>, p_protocolo);
+<span class="kw">END</span>;
+$$;
+
+<span class="kw">GRANT EXECUTE ON FUNCTION</span> <span class="fn">register_wa_click</span> <span class="kw">TO</span> anon;
+<span class="kw">GRANT EXECUTE ON FUNCTION</span> <span class="fn">register_wa_click</span> <span class="kw">TO</span> public;</code></pre>
+
+      <h3>1.6 Criar usuario para o Dashboard</h3>
+      <p>O dashboard usa Supabase Auth (email/senha) para autenticacao. Crie o usuario via API com a Service Key:</p>
+
+      <pre><code>curl -X POST '{SUPABASE_URL}/auth/v1/admin/users' \
+  -H 'apikey: {SERVICE_KEY}' \
+  -H 'Authorization: Bearer {SERVICE_KEY}' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "email": "dashboard@{cliente}.local",
+    "password": "{SENHA_SEGURA}",
+    "email_confirm": true
+  }'</code></pre>
+
+      <div class="callout callout-warning">
+        <strong>Substitua as variaveis</strong>
+        <code>{SUPABASE_URL}</code> = URL do projeto (ex: https://xxx.supabase.co)<br>
+        <code>{SERVICE_KEY}</code> = service_role key<br>
+        <code>{cliente}</code> = identificador do cliente (ex: clinicaroseli)<br>
+        <code>{SENHA_SEGURA}</code> = senha que o atendente usara para acessar o dashboard
+      </div>
+    </div>
+
+    <!-- ========== PASSO 2 — BRIDGE PAGE ========== -->
+    <div class="section" id="passo-2">
+      <div class="step-header">
+        <span class="step-circle">2</span>
+        <h2>Bridge Page</h2>
+      </div>
+
+      <p>A Bridge Page e o componente central do sistema. E uma pagina HTML intermediaria que intercepta o clique no WhatsApp, gera um protocolo unico, grava os dados no Supabase, dispara a conversao no Google Ads e redireciona para o WhatsApp com o protocolo na mensagem.</p>
+
+      <h3>2.1 Codigo completo — bridge.html</h3>
+      <p>Crie o arquivo <code>bridge.html</code> com o conteudo abaixo. Os trechos marcados com <code>/* PERSONALIZAR */</code> devem ser ajustados para cada cliente.</p>
+
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Redirecionando para WhatsApp...&lt;/title&gt;
+  &lt;meta name="robots" content="noindex, nofollow"&gt;
+  &lt;style&gt;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #333;
+    }
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .spinner {
+      width: 48px; height: 48px;
+      border: 4px solid #e0e0e0;
+      border-top-color: #25D366;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 24px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-size: 20px; margin-bottom: 8px; }
+    p { font-size: 14px; color: #666; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="spinner"&gt;&lt;/div&gt;
+    &lt;h1&gt;Conectando ao WhatsApp...&lt;/h1&gt;
+    &lt;p&gt;Voce sera redirecionado em instantes.&lt;/p&gt;
+  &lt;/div&gt;
+
+  <span class="cm">&lt;!-- Google Ads gtag --&gt;</span>
+  &lt;script async src="https://www.googletagmanager.com/gtag/js?id=<strong>AW-XXXXXXXXXX</strong>"&gt;&lt;/script&gt;  <span class="cm">&lt;!-- PERSONALIZAR: Google Ads ID --&gt;</span>
+  &lt;script&gt;
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '<strong>AW-XXXXXXXXXX</strong>');  <span class="cm">// PERSONALIZAR: Google Ads ID</span>
+  &lt;/script&gt;
+
+  &lt;script&gt;
+    (function() {
+      'use strict';
+
+      <span class="cm">// ========== CONFIG — PERSONALIZAR TUDO AQUI ==========</span>
+      var CONFIG = {
+        supabaseUrl: '<strong>https://xxx.supabase.co</strong>',          <span class="cm">// PERSONALIZAR</span>
+        supabaseAnonKey: '<strong>sb_publishable_xxx</strong>',            <span class="cm">// PERSONALIZAR</span>
+        whatsappNumber: '<strong>55XXXXXXXXXXX</strong>',                  <span class="cm">// PERSONALIZAR</span>
+        googleAdsConversionId: '<strong>AW-XXXXXXXXXX</strong>',           <span class="cm">// PERSONALIZAR</span>
+        googleAdsConversionLabel: '<strong>XXXXXXXXXXXXXXXXXXXX</strong>', <span class="cm">// PERSONALIZAR</span>
+        redirectDelay: 800
+      };
+
+      <span class="cm">// ========== HELPERS ==========</span>
+      function getCookie(name) {
+        var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? decodeURIComponent(match[2]) : null;
+      }
+
+      function getUrlParam(name) {
+        var params = new URLSearchParams(window.location.search);
+        return params.get(name) || '';
+      }
+
+      function generateProtocol() {
+        var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        var code = '';
+        for (var i = 0; i &lt; 5; i++) {
+          code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        return '<strong>XX</strong>-' + code;  <span class="cm">// PERSONALIZAR: prefixo (RA- para Roseli, etc.)</span>
+      }
+
+      <span class="cm">// ========== COLLECT DATA ==========</span>
+      var PREFIX = '<strong>_ra_</strong>';  <span class="cm">// PERSONALIZAR: mesmo prefixo usado no GTM Tag 1</span>
+      var data = {
+        protocolo: generateProtocol(),
+        visitor_id: getCookie(PREFIX + 'visitor') || ('v_' + Date.now()),
+        gclid: getCookie(PREFIX + 'gclid') || getUrlParam('gclid') || null,
+        utm_source: getCookie(PREFIX + 'utm_source') || getUrlParam('utm_source') || null,
+        utm_medium: getCookie(PREFIX + 'utm_medium') || getUrlParam('utm_medium') || null,
+        utm_campaign: getCookie(PREFIX + 'utm_campaign') || getUrlParam('utm_campaign') || null,
+        utm_term: getCookie(PREFIX + 'utm_term') || getUrlParam('utm_term') || null,
+        utm_content: getCookie(PREFIX + 'utm_content') || getUrlParam('utm_content') || null
+      };
+
+      <span class="cm">// ========== REDIRECT FUNCTION ==========</span>
+      var message = 'Ola, gostaria de agendar uma consulta. (ref: ' + data.protocolo + ')';
+      var waUrl = 'https://wa.me/' + CONFIG.whatsappNumber + '?text=' + encodeURIComponent(message);
+
+      function redirectToWhatsApp() {
+        if (typeof gtag === 'function') {
+          gtag('event', 'conversion', {
+            send_to: CONFIG.googleAdsConversionId + '/' + CONFIG.googleAdsConversionLabel,
+            value: 0,
+            currency: 'BRL'
+          });
+        }
+        setTimeout(function() {
+          window.location.href = waUrl;
+        }, 300);
+      }
+
+      <span class="cm">// ========== SAVE TO SUPABASE (via RPC) — then redirect ==========</span>
+      if (CONFIG.supabaseAnonKey) {
+        fetch(CONFIG.supabaseUrl + '/rest/v1/rpc/register_wa_click', {
+          method: 'POST',
+          headers: {
+            'apikey': CONFIG.supabaseAnonKey,
+            'Authorization': 'Bearer ' + CONFIG.supabaseAnonKey,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            p_protocolo: data.protocolo,
+            p_visitor_id: data.visitor_id,
+            p_gclid: data.gclid,
+            p_utm_source: data.utm_source,
+            p_utm_medium: data.utm_medium,
+            p_utm_campaign: data.utm_campaign,
+            p_utm_term: data.utm_term,
+            p_utm_content: data.utm_content
+          })
+        }).then(function() {
+          redirectToWhatsApp();
+        }).catch(function(err) {
+          console.error('Supabase error:', err);
+          redirectToWhatsApp(); <span class="cm">// redireciona mesmo se falhar</span>
+        });
+      } else {
+        redirectToWhatsApp();
+      }
+
+    })();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+      <h3>2.2 Variaveis para personalizar</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Variavel</th>
+            <th>Descricao</th>
+            <th>Exemplo (Roseli)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>CONFIG.supabaseUrl</code></td>
+            <td>URL do projeto Supabase</td>
+            <td><code>https://xjngdyhzpgktddxfmdgq.supabase.co</code></td>
+          </tr>
+          <tr>
+            <td><code>CONFIG.supabaseAnonKey</code></td>
+            <td>Anon key (publica)</td>
+            <td><code>sb_publishable_gS5lC6Jhugq73v-...</code></td>
+          </tr>
+          <tr>
+            <td><code>CONFIG.whatsappNumber</code></td>
+            <td>Numero internacional</td>
+            <td><code>551332242131</code></td>
+          </tr>
+          <tr>
+            <td><code>CONFIG.googleAdsConversionId</code></td>
+            <td>ID da conta Google Ads</td>
+            <td><code>AW-18004522237</code></td>
+          </tr>
+          <tr>
+            <td><code>CONFIG.googleAdsConversionLabel</code></td>
+            <td>Label da acao de conversao</td>
+            <td><code>i7tcCK30hJwcEP3pnIlD</code></td>
+          </tr>
+          <tr>
+            <td>Prefixo do protocolo</td>
+            <td>2 letras identificadoras</td>
+            <td><code>RA-</code> (Roseli Andrade)</td>
+          </tr>
+          <tr>
+            <td>Prefixo dos cookies (<code>PREFIX</code>)</td>
+            <td>Deve ser igual ao GTM Tag 1</td>
+            <td><code>_ra_</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========== PASSO 3 — DASHBOARD ========== -->
+    <div class="section" id="passo-3">
+      <div class="step-header">
+        <span class="step-circle">3</span>
+        <h2>Dashboard</h2>
+      </div>
+
+      <p>O dashboard e uma pagina HTML autocontida que o atendente do cliente usa para gerenciar o funil de conversao. Funcionalidades: login com senha, cards de funil, tabela de leads, filtros, busca, edicao de dados, avanco de status e exportacao CSV para Google Ads.</p>
+
+      <h3>3.1 Variaveis para personalizar</h3>
+      <p>O dashboard completo esta no arquivo <code>dashboard.html</code> (734 linhas). As unicas variaveis que precisam ser personalizadas estao no bloco CONFIG no inicio do JavaScript:</p>
+
+      <pre><code>var CONFIG = {
+  supabaseUrl: '<strong>https://xxx.supabase.co</strong>',              <span class="cm">// PERSONALIZAR: URL do Supabase</span>
+  anonKey: '<strong>sb_publishable_xxx</strong>',                        <span class="cm">// PERSONALIZAR: Anon key</span>
+  authEmail: '<strong>dashboard@{cliente}.local</strong>',               <span class="cm">// PERSONALIZAR: email criado no passo 1.6</span>
+  accessToken: ''                                       <span class="cm">// nao alterar (preenchido no login)</span>
+};</code></pre>
+
+      <h3>3.2 Personalizacoes visuais (opcionais)</h3>
+      <p>Alem das variaveis de configuracao, voce pode querer personalizar:</p>
+      <ul>
+        <li><strong>Titulo da pagina:</strong> <code>&lt;title&gt;Painel -- {Nome do Cliente}&lt;/title&gt;</code></li>
+        <li><strong>Header:</strong> <code>Clinica Dra. Roseli</code> &rarr; nome do cliente</li>
+        <li><strong>Tela de login:</strong> texto do titulo e subtitulo</li>
+        <li><strong>Lista de procedimentos:</strong> select <code>#editProcedimento</code> — adaptar os options para os servicos do cliente</li>
+        <li><strong>Mensagem do WhatsApp:</strong> variavel <code>message</code> na bridge.html (ex: "Ola, gostaria de agendar uma consulta")</li>
+      </ul>
+
+      <h3>3.3 Senha do dashboard</h3>
+      <p>A senha de acesso e definida na criacao do usuario Supabase Auth (Passo 1.6). Compartilhe somente a senha com o atendente — o email (<code>dashboard@{cliente}.local</code>) ja esta hardcoded no HTML.</p>
+
+      <div class="callout callout-info">
+        <strong>Por que Supabase Auth em vez de senha hardcoded?</strong>
+        O dashboard usa Supabase Auth para obter um JWT token de role <code>authenticated</code>. Isso ativa as RLS policies que dao acesso completo ao dashboard, enquanto bloqueiam acesso anonimo (bridge page) a dados existentes.
+      </div>
+    </div>
+
+    <!-- ========== PASSO 4 — GITHUB PAGES ========== -->
+    <div class="section" id="passo-4">
+      <div class="step-header">
+        <span class="step-circle">4</span>
+        <h2>GitHub Pages</h2>
+      </div>
+
+      <h3>4.1 Criar repositorio</h3>
+      <ol>
+        <li>Acesse <a href="https://github.com/new" target="_blank">github.com/new</a></li>
+        <li>Nome do repositorio: <code>tracking-{cliente}</code> (ex: <code>clinicaroseli</code>)</li>
+        <li>Visibilidade: <strong>Public</strong> (necessario para GitHub Pages gratuito)</li>
+        <li>Clique em <strong>Create repository</strong></li>
+      </ol>
+
+      <h3>4.2 Upload dos arquivos</h3>
+      <ol>
+        <li>Clique em <strong>Add file &gt; Upload files</strong></li>
+        <li>Faca upload de: <code>bridge.html</code> e <code>dashboard.html</code></li>
+        <li>Commit: "feat: setup tracking WhatsApp + Google Ads"</li>
+      </ol>
+
+      <h3>4.3 Ativar GitHub Pages</h3>
+      <ol>
+        <li>Va em <strong>Settings &gt; Pages</strong></li>
+        <li>Source: <strong>Deploy from a branch</strong></li>
+        <li>Branch: <strong>main</strong>, pasta: <strong>/ (root)</strong></li>
+        <li>Clique em <strong>Save</strong></li>
+        <li>Aguarde ~30 segundos para o deploy</li>
+      </ol>
+
+      <h3>4.4 Testar URLs</h3>
+      <p>Apos o deploy, as URLs serao:</p>
+      <pre><code>Bridge:    https://{usuario}.github.io/{repositorio}/bridge.html
+Dashboard: https://{usuario}.github.io/{repositorio}/dashboard.html</code></pre>
+
+      <div class="callout callout-warning">
+        <strong>Anon Key no codigo publico</strong>
+        A anon key (<code>sb_publishable_</code>) e segura para expor em codigo publico. Ela so permite operacoes que as RLS policies permitem (no caso, apenas INSERT via RPC). A service_role key NUNCA deve aparecer no repositorio.
+      </div>
+    </div>
+
+    <!-- ========== PASSO 5 — GTM ========== -->
+    <div class="section" id="passo-5">
+      <div class="step-header">
+        <span class="step-circle">5</span>
+        <h2>Google Tag Manager</h2>
+      </div>
+
+      <p>Sao necessarias 2 tags Custom HTML no GTM do cliente. Alem disso, verifique se ja existe uma tag <strong>Conversion Linker</strong> (necessaria para o Google Ads).</p>
+
+      <h3>5.1 TAG 1: UTM Cookie Writer</h3>
+      <table>
+        <thead><tr><th>Configuracao</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Nome no GTM</strong></td><td><code>UTM Cookie Writer - {INICIAIS}</code></td></tr>
+          <tr><td><strong>Tipo</strong></td><td>Custom HTML</td></tr>
+          <tr><td><strong>Trigger</strong></td><td>All Pages (Page View)</td></tr>
+          <tr><td><strong>Prioridade</strong></td><td>Alta (executa primeiro)</td></tr>
+        </tbody>
+      </table>
+
+      <p>Codigo da tag:</p>
+
+      <pre><code>&lt;script&gt;
+(function() {
+  'use strict';
+
+  var COOKIE_DAYS = 30;
+  var PREFIX = '<strong>_ra_</strong>';  <span class="cm">// PERSONALIZAR: prefixo unico por cliente</span>
+
+  function setCookie(name, value, days) {
+    if (!value) return;
+    var d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    document.cookie = name + '=' + encodeURIComponent(value) +
+      ';expires=' + d.toUTCString() +
+      ';path=/;SameSite=Lax';
+  }
+
+  function getParam(name) {
+    var params = new URLSearchParams(window.location.search);
+    return params.get(name) || '';
+  }
+
+  <span class="cm">// Salvar gclid (Google Click ID)</span>
+  var gclid = getParam('gclid');
+  if (gclid) {
+    setCookie(PREFIX + 'gclid', gclid, COOKIE_DAYS);
+  }
+
+  <span class="cm">// Salvar UTMs</span>
+  var utms = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+  for (var i = 0; i &lt; utms.length; i++) {
+    var val = getParam(utms[i]);
+    if (val) {
+      setCookie(PREFIX + utms[i], val, COOKIE_DAYS);
+    }
+  }
+
+  <span class="cm">// Gerar visitor_id se nao existir</span>
+  if (!document.cookie.match(/(^| )_ra_visitor=/)) {  <span class="cm">// PERSONALIZAR: trocar _ra_ pelo PREFIX</span>
+    setCookie(PREFIX + 'visitor', 'v_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6), COOKIE_DAYS);
+  }
+
+})();
+&lt;/script&gt;</code></pre>
+
+      <h3>5.2 TAG 2: WA Link Interceptor</h3>
+      <table>
+        <thead><tr><th>Configuracao</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Nome no GTM</strong></td><td><code>WA Link Interceptor - {INICIAIS}</code></td></tr>
+          <tr><td><strong>Tipo</strong></td><td>Custom HTML</td></tr>
+          <tr><td><strong>Trigger</strong></td><td>DOM Ready</td></tr>
+          <tr><td><strong>Prioridade</strong></td><td>Normal</td></tr>
+        </tbody>
+      </table>
+
+      <p>Codigo da tag:</p>
+
+      <pre><code>&lt;script&gt;
+(function() {
+  'use strict';
+
+  <span class="cm">// PERSONALIZAR: URL da Bridge Page no GitHub Pages</span>
+  var BRIDGE_URL = '<strong>https://{usuario}.github.io/{repo}/bridge.html</strong>';
+
+  function interceptWaLinks() {
+    <span class="cm">// Selecionar todos os links que apontam para WhatsApp</span>
+    var links = document.querySelectorAll(
+      'a[href*="wa.me"], a[href*="whatsapp.com"], a[href*="api.whatsapp.com"]'
+    );
+
+    for (var i = 0; i &lt; links.length; i++) {
+      links[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = BRIDGE_URL;
+      });
+    }
+
+    <span class="cm">// PERSONALIZAR: interceptar links tel: com o numero do cliente</span>
+    var telLinks = document.querySelectorAll(
+      'a[href*="<strong>NUMERO-COM-HIFEN</strong>"], a[href*="<strong>NUMERO-SEM-HIFEN</strong>"]'
+    );
+    for (var j = 0; j &lt; telLinks.length; j++) {
+      telLinks[j].addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = BRIDGE_URL;
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', interceptWaLinks);
+  } else {
+    interceptWaLinks();
+  }
+
+})();
+&lt;/script&gt;</code></pre>
+
+      <h3>5.3 Checklist de implementacao GTM</h3>
+      <ul class="checklist">
+        <li><span class="check"></span> Criar tag "UTM Cookie Writer" com trigger All Pages</li>
+        <li><span class="check"></span> Criar tag "WA Link Interceptor" com trigger DOM Ready</li>
+        <li><span class="check"></span> Verificar que Conversion Linker ja existe (se nao, criar)</li>
+        <li><span class="check"></span> Abrir Preview no GTM</li>
+        <li><span class="check"></span> Testar com URL: <code>?gclid=test123&amp;utm_source=google&amp;utm_campaign=teste</code></li>
+        <li><span class="check"></span> Verificar cookies no DevTools (Application &gt; Cookies)</li>
+        <li><span class="check"></span> Clicar no botao WhatsApp — deve redirecionar para bridge.html</li>
+        <li><span class="check"></span> Bridge Page deve redirecionar para wa.me com protocolo</li>
+        <li><span class="check"></span> Verificar registro no Supabase (tabela wa_conversions)</li>
+        <li><span class="check"></span> Publicar container GTM</li>
+      </ul>
+
+      <div class="callout callout-success">
+        <strong>Reversibilidade</strong>
+        Se algo der errado: pause as 2 tags novas no GTM e reative o fluxo antigo em 2 minutos. Zero impacto ao site.
+      </div>
+    </div>
+
+    <!-- ========== PASSO 6 — GOOGLE ADS ========== -->
+    <div class="section" id="passo-6">
+      <div class="step-header">
+        <span class="step-circle">6</span>
+        <h2>Google Ads</h2>
+      </div>
+
+      <h3>6.1 Criar acoes de conversao offline</h3>
+
+      <h4>Acao 1: Agendamento WhatsApp (primaria)</h4>
+      <ol>
+        <li>Google Ads &gt; <strong>Goals &gt; Conversions &gt; Summary</strong></li>
+        <li>Clique em <strong>+ New conversion action</strong></li>
+        <li>Selecione <strong>Import &gt; Other data sources or CRMs &gt; Track conversions from clicks</strong></li>
+        <li>Nome: <strong>Agendamento WhatsApp</strong></li>
+        <li>Categoria: <strong>Submit lead form</strong></li>
+        <li>Valor: <strong>Don't use a value</strong></li>
+        <li>Contagem: <strong>Every</strong></li>
+        <li>Janela de conversao: <strong>30 dias</strong></li>
+        <li>Inclusao em "Conversions": <strong>Sim</strong> (primaria, otimiza lances)</li>
+      </ol>
+
+      <h4>Acao 2: Consulta Realizada (secundaria)</h4>
+      <ol>
+        <li>Repetir os passos acima</li>
+        <li>Nome: <strong>Consulta Realizada</strong></li>
+        <li>Categoria: <strong>Purchase</strong></li>
+        <li>Valor: <strong>Use different values for each conversion</strong></li>
+        <li>Inclusao em "Conversions": <strong>Nao</strong> (secundaria, somente observacao)</li>
+      </ol>
+
+      <h3>6.2 Formato do CSV para upload</h3>
+      <p>O CSV exportado pelo dashboard segue exatamente o formato exigido pelo Google Ads:</p>
+
+      <pre><code>Parameters:TimeZone=America/Sao_Paulo
+Google Click ID,Conversion Name,Conversion Time,Conversion Value,Conversion Currency
+GCLID123,Agendamento WhatsApp,2026-05-18 14:30:00,0.00,BRL
+GCLID456,Consulta Realizada,2026-05-18 16:00:00,350.00,BRL</code></pre>
+
+      <h3>6.3 Upload do CSV</h3>
+      <ol>
+        <li>Google Ads &gt; <strong>Goals &gt; Conversions &gt; Uploads</strong></li>
+        <li>Clique em <strong>+ Upload</strong></li>
+        <li>Selecione o arquivo CSV exportado do dashboard</li>
+        <li>Revise o preview e confirme</li>
+      </ol>
+
+      <div class="callout callout-info">
+        <strong>Frequencia recomendada de upload</strong>
+        Faca o upload pelo menos 1x por semana. Quanto mais frequente, melhor o algoritmo do Google Ads otimiza os lances. O ideal e diario ou a cada 2-3 dias.
+      </div>
+    </div>
+
+    <!-- ========== PASSO 7 — TESTE END-TO-END ========== -->
+    <div class="section" id="passo-7">
+      <div class="step-header">
+        <span class="step-circle">7</span>
+        <h2>Teste End-to-End</h2>
+      </div>
+
+      <p>Execute todos os itens abaixo para validar que o sistema esta funcionando de ponta a ponta:</p>
+
+      <ul class="checklist">
+        <li><span class="check"></span> <span><strong>1.</strong> Acessar o site com parametros: <code>?gclid=test123&amp;utm_source=google&amp;utm_campaign=teste</code></span></li>
+        <li><span class="check"></span> <span><strong>2.</strong> Abrir DevTools &gt; Application &gt; Cookies e verificar que existem: <code>_XX_gclid</code>, <code>_XX_utm_source</code>, <code>_XX_utm_campaign</code>, <code>_XX_visitor</code></span></li>
+        <li><span class="check"></span> <span><strong>3.</strong> Clicar no botao WhatsApp do site</span></li>
+        <li><span class="check"></span> <span><strong>4.</strong> Verificar que o browser redirecionou para bridge.html (e nao direto para wa.me)</span></li>
+        <li><span class="check"></span> <span><strong>5.</strong> Verificar que o WhatsApp abriu com mensagem contendo protocolo (ex: "ref: RA-3K7X9")</span></li>
+        <li><span class="check"></span> <span><strong>6.</strong> Abrir o Supabase &gt; Table Editor &gt; wa_conversions e verificar que o registro apareceu com gclid=test123</span></li>
+        <li><span class="check"></span> <span><strong>7.</strong> Acessar a URL do dashboard e fazer login com a senha definida</span></li>
+        <li><span class="check"></span> <span><strong>8.</strong> Verificar que o lead aparece na tabela com protocolo, status "Clique" e campanha "teste"</span></li>
+        <li><span class="check"></span> <span><strong>9.</strong> Testar o fluxo completo: clicar "Conversa" &rarr; "Agendado" &rarr; "Compareceu"</span></li>
+        <li><span class="check"></span> <span><strong>10.</strong> Clicar em "Exportar CSV" e verificar que o formato esta correto (nota: gclid de teste e filtrado automaticamente)</span></li>
+      </ul>
+    </div>
+
+    <!-- ========== 10. PERSONALIZACAO ========== -->
+    <div class="section" id="personalizacao">
+      <h2>Personalizacao por Cliente</h2>
+
+      <p>Tabela consolidada de TODAS as variaveis que mudam de um cliente para outro:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Variavel</th>
+            <th>Onde alterar</th>
+            <th>Exemplo (Roseli)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supabase URL</strong></td>
+            <td>bridge.html, dashboard.html</td>
+            <td><code>https://xjngdyhzpgktddxfmdgq.supabase.co</code></td>
+          </tr>
+          <tr>
+            <td><strong>Anon Key</strong></td>
+            <td>bridge.html, dashboard.html</td>
+            <td><code>sb_publishable_gS5lC6Jhugq73v-...</code></td>
+          </tr>
+          <tr>
+            <td><strong>Service Key</strong></td>
+            <td>Somente admin (criar usuario via curl)</td>
+            <td><code>sb_secret_xxx</code></td>
+          </tr>
+          <tr>
+            <td><strong>WhatsApp number</strong></td>
+            <td>bridge.html</td>
+            <td><code>551332242131</code></td>
+          </tr>
+          <tr>
+            <td><strong>Google Ads ID</strong></td>
+            <td>bridge.html (gtag config + CONFIG)</td>
+            <td><code>AW-18004522237</code></td>
+          </tr>
+          <tr>
+            <td><strong>Conversion Label</strong></td>
+            <td>bridge.html (CONFIG)</td>
+            <td><code>i7tcCK30hJwcEP3pnIlD</code></td>
+          </tr>
+          <tr>
+            <td><strong>Prefixo do protocolo</strong></td>
+            <td>bridge.html (funcao generateProtocol)</td>
+            <td><code>RA-</code></td>
+          </tr>
+          <tr>
+            <td><strong>Prefixo dos cookies</strong></td>
+            <td>GTM Tag 1 (PREFIX), bridge.html (PREFIX)</td>
+            <td><code>_ra_</code></td>
+          </tr>
+          <tr>
+            <td><strong>Bridge URL</strong></td>
+            <td>GTM Tag 2 (BRIDGE_URL)</td>
+            <td><code>https://elsonflorentino.github.io/clinicaroseli/bridge.html</code></td>
+          </tr>
+          <tr>
+            <td><strong>Dashboard URL</strong></td>
+            <td>Compartilhar com atendente</td>
+            <td><code>https://elsonflorentino.github.io/clinicaroseli/dashboard.html</code></td>
+          </tr>
+          <tr>
+            <td><strong>Auth email</strong></td>
+            <td>dashboard.html (CONFIG.authEmail)</td>
+            <td><code>dashboard@clinicaroseli.local</code></td>
+          </tr>
+          <tr>
+            <td><strong>Auth password</strong></td>
+            <td>Compartilhar com atendente</td>
+            <td>(definida na criacao do usuario)</td>
+          </tr>
+          <tr>
+            <td><strong>GTM Container</strong></td>
+            <td>Site do cliente</td>
+            <td><code>GTM-5C7C3HGQ</code></td>
+          </tr>
+          <tr>
+            <td><strong>Seletores tel:</strong></td>
+            <td>GTM Tag 2 (querySelectorAll tel)</td>
+            <td><code>13-3224-2131</code>, <code>1332242131</code></td>
+          </tr>
+          <tr>
+            <td><strong>Lista de procedimentos</strong></td>
+            <td>dashboard.html (select #editProcedimento)</td>
+            <td>Botox, Peeling, Preenchimento, ...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========== 11. TROUBLESHOOTING ========== -->
+    <div class="section" id="troubleshooting">
+      <h2>Troubleshooting</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th style="width:35%">Problema</th>
+            <th>Causa</th>
+            <th>Solucao</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. RLS bloqueando INSERT anonimo</strong></td>
+            <td>A policy <code>bridge_page_insert</code> restringe INSERT direto. Se o campo <code>status</code> nao for <code>'clique'</code>, o INSERT falha.</td>
+            <td>Usar a funcao RPC <code>register_wa_click</code> com <code>SECURITY DEFINER</code>. A RPC executa como owner do schema, ignorando RLS.</td>
+          </tr>
+          <tr>
+            <td><strong>2. Fetch cancelado pelo redirect</strong></td>
+            <td>Se o <code>window.location.href</code> for executado antes do fetch completar, o browser cancela a requisicao.</td>
+            <td>O redirect so ocorre dentro do <code>.then()</code> do fetch. Nunca mover o redirect para fora da Promise.</td>
+          </tr>
+          <tr>
+            <td><strong>3. Conexao PostgreSQL direta nao funciona</strong></td>
+            <td>O Supabase Free tier bloqueia conexoes diretas de IPs nao listados.</td>
+            <td>Sempre usar a API REST (<code>/rest/v1/</code>). Nunca tentar conectar diretamente ao PostgreSQL pelo browser.</td>
+          </tr>
+          <tr>
+            <td><strong>4. Service Key retornando 401 no browser</strong></td>
+            <td>A service_role key nao deve ser usada no frontend.</td>
+            <td>Usar Supabase Auth (email/senha) para obter um JWT de role <code>authenticated</code>. Usar esse JWT no header Authorization.</td>
+          </tr>
+          <tr>
+            <td><strong>5. Trigger de log bloqueado por RLS</strong></td>
+            <td>O trigger <code>fn_log_status_change</code> executa INSERT na tabela <code>conversion_status_log</code>, mas nao ha policy de INSERT para <code>authenticated</code>.</td>
+            <td>Executar o SQL adicional do passo 1.4 que cria as policies <code>log_insert_authenticated</code> e <code>log_full_authenticated</code>.</td>
+          </tr>
+          <tr>
+            <td><strong>6. GitHub bloqueando push (secret scanning)</strong></td>
+            <td>O GitHub detecta a service_role key e bloqueia o push.</td>
+            <td>NUNCA incluir a service_role key em arquivos do repositorio. A anon key (<code>sb_publishable_</code>) e segura e nao dispara o scanner.</td>
+          </tr>
+          <tr>
+            <td><strong>7. Cookies nao aparecem no DevTools</strong></td>
+            <td>A URL de teste nao continha parametros UTM, ou o GTM Preview nao foi atualizado.</td>
+            <td>Acessar com <code>?gclid=test123&amp;utm_source=google</code>. No GTM, clicar em "Preview" novamente apos cada alteracao.</td>
+          </tr>
+          <tr>
+            <td><strong>8. Bridge Page nao redireciona para WhatsApp</strong></td>
+            <td>Possivel erro de CORS ou falha no fetch.</td>
+            <td>Abrir Console no DevTools e verificar erros. O sistema redireciona mesmo com falha no Supabase (catch faz redirect).</td>
+          </tr>
+          <tr>
+            <td><strong>9. Dashboard mostra "Senha incorreta"</strong></td>
+            <td>Email ou senha errados no Supabase Auth.</td>
+            <td>Verificar que o <code>authEmail</code> no CONFIG do dashboard.html bate com o email criado via curl. Recriar usuario se necessario.</td>
+          </tr>
+          <tr>
+            <td><strong>10. CSV exportado sem conversoes</strong></td>
+            <td>Nenhum lead possui gclid real (nao-teste) com status agendamento ou superior.</td>
+            <td>O filtro exclui gclid que comeca com "test". Aguardar leads reais do Google Ads ou testar com gclid falso mas realista.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ========== 12. CUSTOS ========== -->
+    <div class="section" id="custos">
+      <h2>Custos</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Servico</th>
+            <th>Plano</th>
+            <th>Custo mensal</th>
+            <th>Limites</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supabase</strong></td>
+            <td>Free</td>
+            <td><span class="badge badge-free">R$ 0</span></td>
+            <td>50.000 rows, 500MB, 2 projetos</td>
+          </tr>
+          <tr>
+            <td><strong>GitHub Pages</strong></td>
+            <td>Free</td>
+            <td><span class="badge badge-free">R$ 0</span></td>
+            <td>1GB armazenamento, 100GB bandwidth/mes</td>
+          </tr>
+          <tr>
+            <td><strong>Google Tag Manager</strong></td>
+            <td>Free</td>
+            <td><span class="badge badge-free">R$ 0</span></td>
+            <td>Ilimitado</td>
+          </tr>
+          <tr>
+            <td><strong>Google Ads</strong></td>
+            <td>Pay-per-click</td>
+            <td><span class="badge badge-required">Variavel</span></td>
+            <td>Somente o investimento em anuncios</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-success">
+        <strong>Total de infraestrutura: R$ 0 por mes</strong>
+        Todo o sistema de tracking, banco de dados, bridge page e dashboard roda em servicos gratuitos. O unico custo e o proprio investimento em anuncios no Google Ads.
+      </div>
+
+      <h3>Quando os limites sao atingidos?</h3>
+      <p>Para referencia: o free tier do Supabase (50.000 rows) suporta aproximadamente 50.000 cliques unicos no WhatsApp. Considerando uma media de 10-50 cliques por dia para um negocio local, o free tier dura entre 3 e 14 anos sem precisar de upgrade.</p>
+    </div>
+
+  </main>
+
+</body>
+</html>

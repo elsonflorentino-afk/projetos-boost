@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel — Clínica Dra. Roseli</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f2f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    .header {
+      background: #fff;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .header h1 span { color: #25D366; }
+    .header-actions { display: flex; gap: 8px; }
+
+    /* BUTTONS */
+    .btn {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: #25D366; color: #fff; }
+    .btn-secondary { background: #e8e8e8; color: #333; }
+    .btn-danger { background: #ff4d4f; color: #fff; }
+    .btn-sm { padding: 4px 10px; font-size: 12px; }
+
+    /* FUNNEL CARDS */
+    .funnel {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      padding: 20px 24px;
+    }
+    .funnel-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .funnel-card .number {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .funnel-card .label {
+      font-size: 12px;
+      color: #888;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .funnel-card .pct {
+      font-size: 11px;
+      color: #25D366;
+      margin-top: 2px;
+      font-weight: 600;
+    }
+    .funnel-card.clique .number { color: #1890ff; }
+    .funnel-card.conversa .number { color: #722ed1; }
+    .funnel-card.agendamento .number { color: #fa8c16; }
+    .funnel-card.compareceu .number { color: #25D366; }
+    .funnel-card.nao .number { color: #ff4d4f; }
+    .funnel-card.receita .number { color: #1a1a1a; font-size: 24px; }
+
+    /* FILTERS */
+    .filters {
+      padding: 0 24px 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-btn {
+      padding: 6px 14px;
+      border: 1px solid #d9d9d9;
+      border-radius: 20px;
+      background: #fff;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn.active {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
+    }
+    .filter-btn:hover { border-color: #25D366; }
+    .search-input {
+      padding: 6px 14px;
+      border: 1px solid #d9d9d9;
+      border-radius: 20px;
+      font-size: 13px;
+      width: 200px;
+      outline: none;
+    }
+    .search-input:focus { border-color: #25D366; }
+
+    /* TABLE */
+    .table-container {
+      padding: 0 24px 24px;
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    th {
+      background: #fafafa;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 12px;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    td {
+      padding: 10px 12px;
+      font-size: 13px;
+      border-bottom: 1px solid #f5f5f5;
+      vertical-align: middle;
+    }
+    tr:hover td { background: #fafffe; }
+    tr:last-child td { border-bottom: none; }
+
+    /* STATUS BADGES */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .badge-clique { background: #e6f7ff; color: #1890ff; }
+    .badge-conversa { background: #f9f0ff; color: #722ed1; }
+    .badge-agendamento { background: #fff7e6; color: #fa8c16; }
+    .badge-compareceu { background: #f6ffed; color: #25D366; }
+    .badge-nao_compareceu { background: #fff1f0; color: #ff4d4f; }
+
+    /* PROTOCOLO */
+    .protocolo {
+      font-family: 'SF Mono', 'Consolas', monospace;
+      font-weight: 700;
+      color: #1a1a1a;
+      font-size: 14px;
+    }
+
+    /* ACTIONS */
+    .actions { display: flex; gap: 4px; flex-wrap: wrap; }
+    .action-btn {
+      padding: 4px 8px;
+      border: 1px solid #d9d9d9;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .action-btn:hover { border-color: #25D366; background: #f6ffed; }
+    .action-btn.next { border-color: #25D366; color: #25D366; font-weight: 600; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      width: 90%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .modal label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #888;
+      margin-bottom: 4px;
+      margin-top: 12px;
+      text-transform: uppercase;
+    }
+    .modal input, .modal select, .modal textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #d9d9d9;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+    }
+    .modal input:focus, .modal select:focus, .modal textarea:focus {
+      border-color: #25D366;
+    }
+    .modal textarea { resize: vertical; min-height: 60px; }
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+      justify-content: flex-end;
+    }
+
+    /* TOAST */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 20px;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      z-index: 300;
+      display: none;
+      animation: fadeIn 0.2s;
+    }
+    .toast.success { background: #25D366; }
+    .toast.error { background: #ff4d4f; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* EMPTY */
+    .empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: #999;
+    }
+    .empty-icon { font-size: 48px; margin-bottom: 12px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .funnel { grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px; }
+      .funnel-card { padding: 12px; }
+      .funnel-card .number { font-size: 24px; }
+      .table-container { padding: 0 12px 12px; }
+      .header { padding: 12px; }
+      .filters { padding: 0 12px 8px; }
+      td, th { padding: 8px 6px; font-size: 12px; }
+      .actions { flex-direction: column; }
+    }
+
+    /* LOGIN */
+    .login-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .login-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+    .login-box h1 { font-size: 22px; margin-bottom: 8px; }
+    .login-box p { color: #888; font-size: 14px; margin-bottom: 24px; }
+    .login-box input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      font-size: 15px;
+      margin-bottom: 12px;
+      outline: none;
+    }
+    .login-box input:focus { border-color: #25D366; }
+    .login-box .btn { width: 100%; padding: 12px; font-size: 15px; }
+    .login-error { color: #ff4d4f; font-size: 13px; margin-top: 8px; display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN SCREEN -->
+  <div id="loginScreen" class="login-container">
+    <div class="login-box">
+      <h1>Clínica Dra. Roseli</h1>
+      <p>Painel de Atendimento</p>
+      <input type="password" id="loginPassword" placeholder="Senha" onkeydown="if(event.key==='Enter')doLogin()">
+      <button class="btn btn-primary" onclick="doLogin()">Entrar</button>
+      <div id="loginError" class="login-error">Senha incorreta</div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" style="display:none">
+    <div class="header">
+      <h1>Clínica Dra. Roseli <span>WhatsApp</span></h1>
+      <div class="header-actions">
+        <button class="btn btn-secondary" onclick="exportCSV()">Exportar CSV</button>
+        <button class="btn btn-secondary" onclick="loadData()">Atualizar</button>
+      </div>
+    </div>
+
+    <!-- FUNNEL -->
+    <div class="funnel" id="funnelCards"></div>
+
+    <!-- FILTERS -->
+    <div class="filters">
+      <button class="filter-btn active" data-filter="todos" onclick="setFilter('todos',this)">Todos</button>
+      <button class="filter-btn" data-filter="clique" onclick="setFilter('clique',this)">Cliques</button>
+      <button class="filter-btn" data-filter="conversa" onclick="setFilter('conversa',this)">Conversas</button>
+      <button class="filter-btn" data-filter="agendamento" onclick="setFilter('agendamento',this)">Agendamentos</button>
+      <button class="filter-btn" data-filter="compareceu" onclick="setFilter('compareceu',this)">Compareceram</button>
+      <button class="filter-btn" data-filter="nao_compareceu" onclick="setFilter('nao_compareceu',this)">Faltaram</button>
+      <input type="text" class="search-input" placeholder="Buscar nome, protocolo..." oninput="filterTable(this.value)">
+    </div>
+
+    <!-- TABLE -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Protocolo</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Status</th>
+            <th>Campanha</th>
+            <th>Procedimento</th>
+            <th>Valor</th>
+            <th>Data</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+      <div id="emptyState" class="empty" style="display:none">
+        <div class="empty-icon">📋</div>
+        <p>Nenhum lead encontrado</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal">
+      <h2 id="modalTitle">Editar Lead</h2>
+      <input type="hidden" id="editId">
+
+      <label>Nome do Paciente</label>
+      <input type="text" id="editNome" placeholder="Nome completo">
+
+      <label>Telefone</label>
+      <input type="tel" id="editPhone" placeholder="(13) 99999-9999">
+
+      <label>Procedimento</label>
+      <select id="editProcedimento">
+        <option value="">Selecione...</option>
+        <option value="Botox">Botox</option>
+        <option value="Peeling">Peeling</option>
+        <option value="Preenchimento">Preenchimento</option>
+        <option value="Limpeza de pele">Limpeza de pele</option>
+        <option value="Rinoplastia">Rinoplastia</option>
+        <option value="Harmonização facial">Harmonização facial</option>
+        <option value="Depilação a laser">Depilação a laser</option>
+        <option value="Microagulhamento">Microagulhamento</option>
+        <option value="Consulta geral">Consulta geral</option>
+        <option value="Outro">Outro</option>
+      </select>
+
+      <label>Valor da Consulta (R$)</label>
+      <input type="number" id="editValor" placeholder="0.00" step="0.01">
+
+      <label>Observações</label>
+      <textarea id="editNotas" placeholder="Anotações sobre o paciente..."></textarea>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="saveEdit()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    'use strict';
+
+    // ========== CONFIG ==========
+    var CONFIG = {
+      supabaseUrl: 'https://xjngdyhzpgktddxfmdgq.supabase.co',
+      anonKey: 'sb_publishable_gS5lC6Jhugq73v-_MMzM7g_GGWFDNZc',
+      authEmail: 'dashboard@clinicaroseli.local',
+      accessToken: ''
+    };
+
+    var allLeads = [];
+    var currentFilter = 'todos';
+    var searchTerm = '';
+
+    // ========== LOGIN (Supabase Auth) ==========
+    function doLogin() {
+      var pwd = document.getElementById('loginPassword').value;
+      if (!pwd) return;
+      fetch(CONFIG.supabaseUrl + '/auth/v1/token?grant_type=password', {
+        method: 'POST',
+        headers: {
+          'apikey': CONFIG.anonKey,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: CONFIG.authEmail,
+          password: pwd.trim()
+        })
+      }).then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).then(function(data) {
+        CONFIG.accessToken = data.access_token;
+        document.getElementById('loginScreen').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        loadData();
+      }).catch(function(err) {
+        console.error('Login error:', err);
+        document.getElementById('loginError').style.display = 'block';
+      });
+    }
+
+    // ========== API ==========
+    function api(path, options) {
+      var opts = options || {};
+      var headers = {
+        'apikey': CONFIG.anonKey,
+        'Authorization': 'Bearer ' + CONFIG.accessToken,
+        'Content-Type': 'application/json'
+      };
+      if (opts.prefer) headers['Prefer'] = opts.prefer;
+
+      return fetch(CONFIG.supabaseUrl + '/rest/v1/' + path, {
+        method: opts.method || 'GET',
+        headers: headers,
+        body: opts.body ? JSON.stringify(opts.body) : undefined
+      }).then(function(r) {
+        if (!r.ok) return r.json().then(function(e) { throw e; });
+        if (r.status === 204) return null;
+        return r.json();
+      });
+    }
+
+    // ========== LOAD DATA ==========
+    function loadData() {
+      Promise.all([
+        api('wa_conversions?select=*&order=created_at.desc'),
+        api('v_funil?select=*')
+      ]).then(function(results) {
+        allLeads = results[0] || [];
+        renderFunnel(results[1] ? results[1][0] : {});
+        renderTable();
+        showToast('Dados atualizados', 'success');
+      }).catch(function(err) {
+        showToast('Erro ao carregar: ' + (err.message || err), 'error');
+      });
+    }
+
+    // ========== FUNNEL ==========
+    function renderFunnel(f) {
+      if (!f) f = {};
+      var receita = allLeads.reduce(function(sum, l) {
+        return l.status === 'compareceu' ? sum + (parseFloat(l.valor_consulta) || 0) : sum;
+      }, 0);
+
+      document.getElementById('funnelCards').innerHTML =
+        card('clique', f.cliques || 0, 'Cliques', '') +
+        card('conversa', f.conversas || 0, 'Conversas', '') +
+        card('agendamento', f.agendamentos || 0, 'Agendamentos', f.taxa_agendamento_pct ? f.taxa_agendamento_pct + '%' : '') +
+        card('compareceu', f.compareceram || 0, 'Compareceram', f.taxa_comparecimento_pct ? f.taxa_comparecimento_pct + '%' : '') +
+        card('nao', f.nao_compareceram || 0, 'Faltaram', '') +
+        '<div class="funnel-card receita"><div class="number">R$ ' + receita.toFixed(0) + '</div><div class="label">Receita</div></div>';
+    }
+
+    function card(cls, num, label, pct) {
+      return '<div class="funnel-card ' + cls + '"><div class="number">' + num + '</div><div class="label">' + label + '</div>' +
+        (pct ? '<div class="pct">' + pct + '</div>' : '') + '</div>';
+    }
+
+    // ========== TABLE ==========
+    function renderTable() {
+      var filtered = allLeads.filter(function(l) {
+        if (currentFilter !== 'todos' && l.status !== currentFilter) return false;
+        if (searchTerm) {
+          var s = searchTerm.toLowerCase();
+          return (l.protocolo || '').toLowerCase().includes(s) ||
+                 (l.nome || '').toLowerCase().includes(s) ||
+                 (l.phone || '').toLowerCase().includes(s) ||
+                 (l.utm_campaign || '').toLowerCase().includes(s);
+        }
+        return true;
+      });
+
+      var tbody = document.getElementById('tableBody');
+      var empty = document.getElementById('emptyState');
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+
+      tbody.innerHTML = filtered.map(function(l) {
+        var dt = new Date(l.created_at);
+        var dateStr = dt.toLocaleDateString('pt-BR') + ' ' + dt.toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'});
+        return '<tr>' +
+          '<td><span class="protocolo">' + l.protocolo + '</span></td>' +
+          '<td>' + (l.nome || '<em style="color:#ccc">—</em>') + '</td>' +
+          '<td>' + (l.phone || '<em style="color:#ccc">—</em>') + '</td>' +
+          '<td><span class="badge badge-' + l.status + '">' + statusLabel(l.status) + '</span></td>' +
+          '<td>' + (l.utm_campaign || '—') + '</td>' +
+          '<td>' + (l.procedimento || '—') + '</td>' +
+          '<td>' + (l.valor_consulta > 0 ? 'R$ ' + parseFloat(l.valor_consulta).toFixed(0) : '—') + '</td>' +
+          '<td style="white-space:nowrap;font-size:12px;color:#888">' + dateStr + '</td>' +
+          '<td><div class="actions">' + actionButtons(l) + '</div></td>' +
+          '</tr>';
+      }).join('');
+    }
+
+    function statusLabel(s) {
+      var map = {
+        'clique': 'Clique',
+        'conversa': 'Conversa',
+        'agendamento': 'Agendado',
+        'compareceu': 'Compareceu',
+        'nao_compareceu': 'Faltou'
+      };
+      return map[s] || s;
+    }
+
+    function nextStatus(s) {
+      var map = {
+        'clique': 'conversa',
+        'conversa': 'agendamento',
+        'agendamento': 'compareceu'
+      };
+      return map[s] || null;
+    }
+
+    function actionButtons(l) {
+      var html = '<button class="action-btn" onclick="openEdit(\'' + l.id + '\')">Editar</button>';
+      var next = nextStatus(l.status);
+      if (next) {
+        html += '<button class="action-btn next" onclick="advanceStatus(\'' + l.id + '\',\'' + next + '\')">' + statusLabel(next) + '</button>';
+      }
+      if (l.status === 'agendamento') {
+        html += '<button class="action-btn" style="color:#ff4d4f;border-color:#ff4d4f" onclick="advanceStatus(\'' + l.id + '\',\'nao_compareceu\')">Faltou</button>';
+      }
+      if (l.status === 'nao_compareceu') {
+        html += '<button class="action-btn next" onclick="advanceStatus(\'' + l.id + '\',\'agendamento\')">Remarcar</button>';
+      }
+      return html;
+    }
+
+    // ========== FILTERS ==========
+    function setFilter(f, btn) {
+      currentFilter = f;
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      renderTable();
+    }
+
+    function filterTable(term) {
+      searchTerm = term;
+      renderTable();
+    }
+
+    // ========== STATUS UPDATE ==========
+    function advanceStatus(id, newStatus) {
+      api('wa_conversions?id=eq.' + id, {
+        method: 'PATCH',
+        body: { status: newStatus },
+        prefer: 'return=representation'
+      }).then(function() {
+        showToast('Status atualizado para ' + statusLabel(newStatus), 'success');
+        loadData();
+      }).catch(function(err) {
+        showToast('Erro: ' + (err.message || 'Transição inválida'), 'error');
+      });
+    }
+
+    // ========== EDIT MODAL ==========
+    function openEdit(id) {
+      var lead = allLeads.find(function(l) { return l.id === id; });
+      if (!lead) return;
+
+      document.getElementById('editId').value = id;
+      document.getElementById('editNome').value = lead.nome || '';
+      document.getElementById('editPhone').value = lead.phone || '';
+      document.getElementById('editProcedimento').value = lead.procedimento || '';
+      document.getElementById('editValor').value = lead.valor_consulta || '';
+      document.getElementById('editNotas').value = lead.notas || '';
+      document.getElementById('modalTitle').textContent = 'Editar ' + lead.protocolo;
+      document.getElementById('editModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('editModal').classList.remove('active');
+    }
+
+    function saveEdit() {
+      var id = document.getElementById('editId').value;
+      var data = {
+        nome: document.getElementById('editNome').value || null,
+        phone: document.getElementById('editPhone').value || null,
+        procedimento: document.getElementById('editProcedimento').value || null,
+        valor_consulta: parseFloat(document.getElementById('editValor').value) || 0,
+        notas: document.getElementById('editNotas').value || null
+      };
+
+      api('wa_conversions?id=eq.' + id, {
+        method: 'PATCH',
+        body: data,
+        prefer: 'return=representation'
+      }).then(function() {
+        closeModal();
+        showToast('Lead atualizado', 'success');
+        loadData();
+      }).catch(function(err) {
+        showToast('Erro ao salvar: ' + (err.message || err), 'error');
+      });
+    }
+
+    // ========== EXPORT CSV ==========
+    function exportCSV() {
+      var agendamentos = allLeads.filter(function(l) {
+        return ['agendamento','compareceu','nao_compareceu'].includes(l.status) && l.gclid && !l.gclid.startsWith('test');
+      });
+
+      var compareceram = allLeads.filter(function(l) {
+        return l.status === 'compareceu' && l.gclid && !l.gclid.startsWith('test');
+      });
+
+      var lines = ['Parameters:TimeZone=America/Sao_Paulo'];
+      lines.push('Google Click ID,Conversion Name,Conversion Time,Conversion Value,Conversion Currency');
+
+      agendamentos.forEach(function(l) {
+        var dt = new Date(l.updated_at);
+        var timeStr = dt.getFullYear() + '-' +
+          String(dt.getMonth()+1).padStart(2,'0') + '-' +
+          String(dt.getDate()).padStart(2,'0') + ' ' +
+          String(dt.getHours()).padStart(2,'0') + ':' +
+          String(dt.getMinutes()).padStart(2,'0') + ':' +
+          String(dt.getSeconds()).padStart(2,'0');
+        lines.push(l.gclid + ',Reservar horario,' + timeStr + ',0.00,BRL');
+      });
+
+      compareceram.forEach(function(l) {
+        var dt = new Date(l.updated_at);
+        var timeStr = dt.getFullYear() + '-' +
+          String(dt.getMonth()+1).padStart(2,'0') + '-' +
+          String(dt.getDate()).padStart(2,'0') + ' ' +
+          String(dt.getHours()).padStart(2,'0') + ':' +
+          String(dt.getMinutes()).padStart(2,'0') + ':' +
+          String(dt.getSeconds()).padStart(2,'0');
+        lines.push(l.gclid + ',Consulta Realizada,' + timeStr + ',' + (parseFloat(l.valor_consulta) || 0).toFixed(2) + ',BRL');
+      });
+
+      if (lines.length <= 2) {
+        showToast('Nenhuma conversão para exportar (precisa de gclid real)', 'error');
+        return;
+      }
+
+      var blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'google_ads_conversions_' + new Date().toISOString().slice(0,10) + '.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('CSV exportado com ' + (lines.length - 2) + ' conversões', 'success');
+    }
+
+    // ========== TOAST ==========
+    function showToast(msg, type) {
+      var t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = 'toast ' + (type || '');
+      t.style.display = 'block';
+      setTimeout(function() { t.style.display = 'none'; }, 3000);
+    }
+
+    // ========== CLICK OUTSIDE MODAL ==========
+    document.getElementById('editModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia de Treinamento - Atendentes | Clinica Dra. Roseli Andrade</title>
+  <style>
+    /* Reset & Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      color: #2d3436;
+      background: #ffffff;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* Print styles */
+    @media print {
+      body { font-size: 12px; line-height: 1.5; }
+      .page-break { page-break-before: always; }
+      .no-print { display: none !important; }
+      .container { max-width: 100%; padding: 0; }
+      section { break-inside: avoid; }
+      h2 { break-after: avoid; }
+      .tip-box, .warning-box, .info-box, .step-card { break-inside: avoid; }
+    }
+
+    @page {
+      size: A4;
+      margin: 2cm;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 32px;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 48px 32px 40px;
+      border-bottom: 3px solid #25D366;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2d3436;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .header .subtitle {
+      font-size: 16px;
+      color: #636e72;
+      font-weight: 400;
+    }
+
+    .header .version {
+      font-size: 12px;
+      color: #b2bec3;
+      margin-top: 12px;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2d3436;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e9ecef;
+    }
+
+    h2 .section-number {
+      display: inline-block;
+      background: #25D366;
+      color: #fff;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 14px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d3436;
+      margin: 20px 0 10px;
+    }
+
+    p {
+      margin-bottom: 12px;
+    }
+
+    /* Boxes */
+    .info-box {
+      background: #f0faf5;
+      border-left: 4px solid #25D366;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+    }
+
+    .warning-box {
+      background: #fff8f0;
+      border-left: 4px solid #e17055;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+    }
+
+    .warning-box strong {
+      color: #e17055;
+    }
+
+    .tip-box {
+      background: #f0f4ff;
+      border-left: 4px solid #6c5ce7;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+    }
+
+    .tip-box strong {
+      color: #6c5ce7;
+    }
+
+    /* Step cards */
+    .step-card {
+      background: #fafafa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .step-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #25D366;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    /* Lists */
+    ul, ol {
+      margin: 8px 0 16px 24px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    li strong {
+      color: #2d3436;
+    }
+
+    /* Flow diagram */
+    .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 24px 0;
+      padding: 20px;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+
+    .flow-step {
+      background: #fff;
+      border: 1px solid #dfe6e9;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+      min-width: 120px;
+    }
+
+    .flow-step.highlight {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
+    }
+
+    .flow-arrow {
+      font-size: 18px;
+      color: #b2bec3;
+      font-weight: 700;
+    }
+
+    /* Credentials box */
+    .credentials {
+      background: #2d3436;
+      color: #dfe6e9;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 16px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .credentials .label {
+      color: #b2bec3;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .credentials .value {
+      color: #55efc4;
+      font-weight: 700;
+    }
+
+    /* Protocol example */
+    .protocol-example {
+      background: #e8f5e9;
+      border: 2px dashed #25D366;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 14px;
+      color: #2d3436;
+    }
+
+    .protocol-example .msg {
+      font-style: italic;
+      color: #636e72;
+    }
+
+    .protocol-code {
+      display: inline-block;
+      background: #25D366;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    /* Summary table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 14px;
+    }
+
+    thead th {
+      background: #2d3436;
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    thead th:first-child {
+      border-radius: 8px 0 0 0;
+    }
+
+    thead th:last-child {
+      border-radius: 0 8px 0 0;
+    }
+
+    tbody td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e9ecef;
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    tbody tr:last-child td:first-child {
+      border-radius: 0 0 0 8px;
+    }
+
+    tbody tr:last-child td:last-child {
+      border-radius: 0 0 8px 0;
+    }
+
+    /* Funnel cards description */
+    .funnel-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .funnel-card {
+      background: #fafafa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .funnel-card .card-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: #2d3436;
+      margin-bottom: 4px;
+    }
+
+    .funnel-card .card-desc {
+      font-size: 12px;
+      color: #636e72;
+    }
+
+    /* Action buttons simulation */
+    .btn-sim {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 2px 4px;
+      border: none;
+    }
+
+    .btn-conversa { background: #0984e3; color: #fff; }
+    .btn-agendar { background: #6c5ce7; color: #fff; }
+    .btn-compareceu { background: #00b894; color: #fff; }
+    .btn-faltou { background: #e17055; color: #fff; }
+    .btn-editar { background: #636e72; color: #fff; }
+
+    /* Footer */
+    .footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid #e9ecef;
+      text-align: center;
+      font-size: 12px;
+      color: #b2bec3;
+    }
+
+    /* Separator */
+    hr {
+      border: none;
+      border-top: 1px solid #e9ecef;
+      margin: 32px 0;
+    }
+
+    /* Code inline */
+    code {
+      background: #f1f2f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-family: 'Courier New', monospace;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Guia de Treinamento para Atendentes</h1>
+    <div class="subtitle">Sistema de Tracking de Pacientes &mdash; Clinica Dra. Roseli Andrade</div>
+    <div class="version">Versao 1.0 &mdash; Maio 2026 | Documento confidencial</div>
+  </div>
+
+  <!-- 1. INTRODUCAO -->
+  <section>
+    <h2><span class="section-number">1</span> Introducao</h2>
+
+    <p>A Clinica Dra. Roseli Andrade utiliza um <strong>sistema de rastreamento de pacientes</strong> que conecta os anuncios do Google Ads ao atendimento via WhatsApp. Esse sistema permite saber exatamente de onde veio cada paciente que entrou em contato.</p>
+
+    <div class="info-box">
+      <strong>Por que isso e importante?</strong><br>
+      Quando sabemos quais anuncios geram mais pacientes, conseguimos investir melhor o orcamento de publicidade. Isso significa mais pacientes, menos desperdicio de verba e anuncios cada vez mais eficientes.
+    </div>
+
+    <h3>O Protocolo RA-XXXXX</h3>
+    <p>Cada paciente que chega ao site da clinica atraves de um anuncio do Google recebe automaticamente um <strong>codigo unico de rastreamento</strong>, no formato:</p>
+
+    <div style="text-align: center; margin: 16px 0;">
+      <span class="protocol-code">RA-12345</span>
+    </div>
+
+    <p>Esse codigo acompanha o paciente desde o clique no anuncio ate o atendimento final, permitindo medir o resultado real de cada campanha.</p>
+  </section>
+
+  <!-- 2. COMO FUNCIONA O FLUXO -->
+  <section>
+    <h2><span class="section-number">2</span> Como Funciona o Fluxo</h2>
+
+    <div class="flow">
+      <div class="flow-step">Paciente ve o anuncio no Google</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Clica e chega ao site</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step highlight">Clica no botao WhatsApp</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Sistema gera protocolo RA-XXXXX</div>
+      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-step">Mensagem chega no WhatsApp com o codigo</div>
+    </div>
+
+    <p>Quando o paciente clica no botao de WhatsApp do site, o sistema automaticamente:</p>
+    <ol>
+      <li>Gera um protocolo unico (ex: <span class="protocol-code">RA-48721</span>)</li>
+      <li>Registra o clique no banco de dados</li>
+      <li>Abre o WhatsApp com uma mensagem pre-preenchida contendo o protocolo</li>
+    </ol>
+
+    <div class="protocol-example">
+      <strong>Exemplo de mensagem que chega no WhatsApp:</strong><br><br>
+      <span class="msg">"Ola, gostaria de agendar uma consulta. (ref: RA-48721)"</span>
+    </div>
+
+    <div class="tip-box">
+      <strong>Ponto-chave:</strong> O atendente nao precisa fazer nada nessa etapa. O protocolo e gerado e enviado automaticamente pelo sistema. Basta identificar o codigo na mensagem recebida.
+    </div>
+  </section>
+
+  <!-- 3. ACESSANDO O DASHBOARD -->
+  <section class="page-break">
+    <h2><span class="section-number">3</span> Acessando o Dashboard</h2>
+
+    <p>O dashboard e o painel onde voce visualiza todos os pacientes rastreados, atualiza o status de cada um e acompanha os resultados da clinica.</p>
+
+    <div class="credentials">
+      <div class="label">Endereco do Dashboard</div>
+      <div class="value">https://elsonflorentino.github.io/clinicaroseli/dashboard.html</div>
+      <br>
+      <div class="label">Senha de Acesso</div>
+      <div class="value">roseli2026!</div>
+    </div>
+
+    <div class="step-card">
+      <h4>Passo 1 &mdash; Abrir o link</h4>
+      <p>Abra o navegador (Chrome, Safari ou outro) e digite ou cole o endereco do dashboard na barra de enderecos. Voce tambem pode salvar como favorito para acesso rapido.</p>
+    </div>
+
+    <div class="step-card">
+      <h4>Passo 2 &mdash; Digitar a senha</h4>
+      <p>Na tela de login, digite a senha <code>roseli2026!</code> no campo indicado. Atencao ao ponto de exclamacao no final.</p>
+    </div>
+
+    <div class="step-card">
+      <h4>Passo 3 &mdash; Clicar em Entrar</h4>
+      <p>Clique no botao <strong>Entrar</strong>. Voce sera direcionado(a) para a tela principal do dashboard.</p>
+    </div>
+
+    <h3>Tela Inicial &mdash; O Funil</h3>
+    <p>Ao acessar, voce vera no topo uma serie de cards com os numeros do funil de atendimento:</p>
+
+    <div class="funnel-cards">
+      <div class="funnel-card">
+        <div class="card-title">Cliques</div>
+        <div class="card-desc">Pacientes que clicaram no WhatsApp</div>
+      </div>
+      <div class="funnel-card">
+        <div class="card-title">Conversas</div>
+        <div class="card-desc">Pacientes que iniciaram conversa</div>
+      </div>
+      <div class="funnel-card">
+        <div class="card-title">Agendamentos</div>
+        <div class="card-desc">Consultas marcadas</div>
+      </div>
+      <div class="funnel-card">
+        <div class="card-title">Compareceram</div>
+        <div class="card-desc">Pacientes que foram a consulta</div>
+      </div>
+      <div class="funnel-card">
+        <div class="card-title">Faltaram</div>
+        <div class="card-desc">Pacientes que nao compareceram</div>
+      </div>
+      <div class="funnel-card">
+        <div class="card-title">Receita</div>
+        <div class="card-desc">Valor total gerado</div>
+      </div>
+    </div>
+
+    <p>Abaixo dos cards, voce encontra a <strong>lista de leads</strong> com todos os pacientes rastreados e seus dados.</p>
+  </section>
+
+  <!-- 4. FLUXO DO ATENDENTE -->
+  <section class="page-break">
+    <h2><span class="section-number">4</span> Fluxo do Atendente &mdash; Passo a Passo</h2>
+
+    <!-- 4.1 -->
+    <h3>4.1 Quando receber mensagem no WhatsApp com protocolo</h3>
+
+    <p>Ao receber uma mensagem contendo um codigo <span class="protocol-code">RA-XXXXX</span>, siga estes passos:</p>
+
+    <div class="step-card">
+      <h4>A &mdash; Localizar o lead no dashboard</h4>
+      <p>Use o campo de busca para digitar o codigo do protocolo (ex: <code>RA-48721</code>). O sistema encontrara o registro correspondente.</p>
+    </div>
+
+    <div class="step-card">
+      <h4>B &mdash; Marcar como Conversa Iniciada</h4>
+      <p>Clique no botao <span class="btn-sim btn-conversa">Conversa</span> para registrar que o atendimento foi iniciado. Isso atualiza o status do paciente no funil.</p>
+    </div>
+
+    <div class="step-card">
+      <h4>C &mdash; Preencher dados do paciente</h4>
+      <p>Clique no botao <span class="btn-sim btn-editar">Editar</span> e preencha as informacoes:</p>
+      <ul>
+        <li><strong>Nome completo</strong> do paciente</li>
+        <li><strong>Telefone</strong> de contato</li>
+        <li><strong>Procedimento desejado</strong> (ex: botox, peeling, preenchimento, harmonizacao, limpeza de pele, etc.)</li>
+        <li><strong>Observacoes</strong> &mdash; qualquer informacao adicional relevante</li>
+      </ul>
+    </div>
+
+    <!-- 4.2 -->
+    <h3>4.2 Quando agendar a consulta</h3>
+
+    <div class="step-card">
+      <h4>Registrar o agendamento</h4>
+      <p>Assim que a consulta for marcada, clique no botao <span class="btn-sim btn-agendar">Agendar</span> no registro do paciente. Se ja souber o valor da consulta, preencha o campo de valor clicando em <span class="btn-sim btn-editar">Editar</span>.</p>
+    </div>
+
+    <!-- 4.3 -->
+    <h3>4.3 Apos a consulta</h3>
+
+    <div class="step-card">
+      <h4>Paciente compareceu</h4>
+      <p>Se o paciente <strong>foi a consulta</strong>, clique no botao <span class="btn-sim btn-compareceu">Compareceu</span>. Isso registra a conversao completa.</p>
+    </div>
+
+    <div class="step-card">
+      <h4>Paciente faltou</h4>
+      <p>Se o paciente <strong>nao compareceu</strong>, clique no botao <span class="btn-sim btn-faltou">Faltou</span>. Caso o paciente entre em contato novamente para remarcar, o sistema permite reagendar a consulta.</p>
+    </div>
+
+    <!-- 4.4 -->
+    <h3>4.4 Editando informacoes</h3>
+
+    <p>Voce pode clicar em <span class="btn-sim btn-editar">Editar</span> a qualquer momento para:</p>
+    <ul>
+      <li>Corrigir ou completar o nome do paciente</li>
+      <li>Atualizar o telefone</li>
+      <li>Preencher ou alterar o valor da consulta</li>
+      <li>Adicionar ou editar observacoes</li>
+      <li>Alterar o procedimento desejado</li>
+    </ul>
+  </section>
+
+  <!-- 5. FILTROS E BUSCA -->
+  <section class="page-break">
+    <h2><span class="section-number">5</span> Filtros e Busca</h2>
+
+    <p>O dashboard oferece ferramentas para localizar pacientes rapidamente:</p>
+
+    <ul>
+      <li><strong>Filtrar por status:</strong> use os botoes de filtro para exibir apenas pacientes em determinado estagio (Todos, Cliques, Conversas, Agendamentos, Compareceram, Faltaram)</li>
+      <li><strong>Buscar:</strong> digite no campo de busca o <strong>nome</strong>, o <strong>protocolo</strong> (RA-XXXXX) ou o <strong>nome da campanha</strong> para encontrar registros especificos</li>
+      <li><strong>Atualizar:</strong> clique no botao <strong>Atualizar</strong> para recarregar os dados mais recentes do sistema</li>
+    </ul>
+
+    <div class="tip-box">
+      <strong>Dica:</strong> Apos registrar uma acao (conversa, agendamento, etc.), clique em Atualizar para ver os cards do funil refletindo a mudanca.
+    </div>
+  </section>
+
+  <!-- 6. EXPORTAR CSV -->
+  <section>
+    <h2><span class="section-number">6</span> Exportar CSV (Responsavel / Gerente)</h2>
+
+    <p>O dashboard possui um botao <strong>Exportar CSV</strong> que gera um arquivo com os dados de conversao. Esse arquivo e utilizado pelo gestor de trafego para importar as conversoes no Google Ads e otimizar as campanhas.</p>
+
+    <div class="step-card">
+      <h4>Procedimento de exportacao</h4>
+      <ol>
+        <li>Clique no botao <strong>Exportar CSV</strong> no dashboard</li>
+        <li>O arquivo sera baixado automaticamente para o computador</li>
+        <li>Envie o arquivo para o gestor de trafego</li>
+      </ol>
+    </div>
+
+    <div class="info-box">
+      <strong>Frequencia recomendada:</strong> A exportacao deve ser feita <strong>semanalmente, toda segunda-feira</strong>. O gestor de trafego cuidara do upload no Google Ads.
+    </div>
+  </section>
+
+  <!-- 7. DICAS IMPORTANTES -->
+  <section>
+    <h2><span class="section-number">7</span> Dicas Importantes</h2>
+
+    <div class="warning-box">
+      <strong>NUNCA apague o protocolo da mensagem do WhatsApp.</strong><br>
+      O codigo RA-XXXXX e a unica forma de conectar o paciente ao anuncio que gerou o contato. Sem ele, perdemos o rastreamento.
+    </div>
+
+    <div class="info-box">
+      <strong>Mensagem SEM protocolo:</strong> Se um paciente enviar mensagem para o WhatsApp <code>(13) 3224-2131</code> sem nenhum codigo RA-XXXXX, significa que ele <strong>nao veio do Google Ads</strong>. Pode ter vindo por indicacao, busca organica ou outras fontes. Atenda normalmente, mas nao e necessario registrar no dashboard.
+    </div>
+
+    <ul>
+      <li><strong>Mantenha o dashboard atualizado</strong> &mdash; Quanto mais dados corretos, melhor o Google Ads consegue otimizar os anuncios automaticamente. Isso gera mais pacientes com o mesmo investimento.</li>
+      <li><strong>Preencha o valor da consulta sempre que possivel</strong> &mdash; Essa informacao ajuda a calcular o retorno sobre o investimento em publicidade.</li>
+      <li><strong>Atualize o status no mesmo dia</strong> &mdash; Registre conversas, agendamentos e comparecimentos o mais rapido possivel para manter os dados precisos.</li>
+      <li><strong>Em caso de duvida</strong> &mdash; Entre em contato com o gestor de trafego para esclarecimentos sobre o sistema.</li>
+    </ul>
+  </section>
+
+  <!-- 8. RESUMO RAPIDO -->
+  <section class="page-break">
+    <h2><span class="section-number">8</span> Resumo Rapido</h2>
+
+    <p>Tabela de referencia rapida para o dia a dia:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 45%;">Situacao</th>
+          <th style="width: 55%;">Acao no Dashboard</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Recebeu mensagem no WhatsApp com protocolo RA-XXXXX</td>
+          <td>Buscar pelo protocolo, clicar <span class="btn-sim btn-conversa">Conversa</span>, clicar <span class="btn-sim btn-editar">Editar</span> e preencher nome, telefone e procedimento</td>
+        </tr>
+        <tr>
+          <td>Consulta foi agendada</td>
+          <td>Clicar <span class="btn-sim btn-agendar">Agendar</span> e preencher valor se souber</td>
+        </tr>
+        <tr>
+          <td>Paciente compareceu a consulta</td>
+          <td>Clicar <span class="btn-sim btn-compareceu">Compareceu</span></td>
+        </tr>
+        <tr>
+          <td>Paciente faltou a consulta</td>
+          <td>Clicar <span class="btn-sim btn-faltou">Faltou</span></td>
+        </tr>
+        <tr>
+          <td>Paciente faltou e remarcou</td>
+          <td>O sistema permite reagendar &mdash; clicar <span class="btn-sim btn-agendar">Agendar</span> novamente</td>
+        </tr>
+        <tr>
+          <td>Precisa corrigir dados de um paciente</td>
+          <td>Clicar <span class="btn-sim btn-editar">Editar</span> no registro e atualizar as informacoes</td>
+        </tr>
+        <tr>
+          <td>Mensagem no WhatsApp SEM protocolo</td>
+          <td>Atender normalmente &mdash; paciente nao veio do Google Ads, nao precisa registrar no dashboard</td>
+        </tr>
+        <tr>
+          <td>Segunda-feira (semanal)</td>
+          <td>Clicar <strong>Exportar CSV</strong> e enviar ao gestor de trafego</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr>
+
+  <!-- DADOS DE ACESSO RAPIDO -->
+  <section>
+    <h3>Dados de Acesso Rapido</h3>
+    <div class="credentials">
+      <div class="label">Dashboard</div>
+      <div class="value">https://elsonflorentino.github.io/clinicaroseli/dashboard.html</div>
+      <br>
+      <div class="label">Senha</div>
+      <div class="value">roseli2026!</div>
+      <br>
+      <div class="label">WhatsApp da Clinica</div>
+      <div class="value">(13) 3224-2131</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Clinica Dra. Roseli Andrade &mdash; Documento interno e confidencial</p>
+    <p>Versao 1.0 &mdash; Maio 2026</p>
+  </div>
+
+</div>
+
+</body>
+</html>
