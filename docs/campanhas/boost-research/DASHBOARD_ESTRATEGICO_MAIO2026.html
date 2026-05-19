@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boost Research — Dashboard Estrategico Maio 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --teal: #19c6b5;
+    --teal-light: #03E4D0;
+    --dark: #12191D;
+    --bg: #0A0F14;
+    --card: #141B22;
+    --border: #1E2A35;
+    --text: #FFFFFF;
+    --text-sec: #94A3B8;
+    --green: #22C55E;
+    --red: #EF4444;
+    --amber: #F59E0B;
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 24px 32px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .header-logo {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-light));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; color: var(--dark);
+  }
+  .header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+  .header-sub { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .live-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .header-date { font-size: 13px; color: var(--text-sec); }
+
+  /* ── ALERT BANNER ── */
+  .alert-banner {
+    background: linear-gradient(90deg, rgba(239,68,68,0.12) 0%, rgba(239,68,68,0.04) 100%);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: var(--radius);
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .alert-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: rgba(239,68,68,0.15);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: 14px; font-weight: 700; color: var(--red);
+  }
+  .alert-text { font-size: 14px; color: #FCA5A5; }
+  .alert-text strong { color: var(--red); font-weight: 700; }
+  .alert-value { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
+
+  /* ── KPI HERO ROW ── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+  .card:hover {
+    border-color: rgba(25,198,181,0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .card-label {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.8px; color: var(--text-sec); margin-bottom: 8px;
+  }
+  .card-value { font-size: 36px; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+  .card-value.hero { font-size: 48px; }
+  .card-delta { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 600; margin-top: 6px; }
+  .card-delta.down { color: var(--red); }
+  .card-delta.up { color: var(--green); }
+  .card-sub { font-size: 13px; color: var(--text-sec); margin-top: 4px; }
+
+  .hero-card {
+    background: linear-gradient(135deg, rgba(25,198,181,0.08) 0%, var(--card) 60%);
+    border-color: rgba(25,198,181,0.25);
+  }
+
+  .sparkline-row { margin-top: 12px; height: 32px; }
+
+  /* ── COUNTDOWN ── */
+  .countdown-card {
+    background: linear-gradient(135deg, rgba(245,158,11,0.1) 0%, var(--card) 60%);
+    border-color: rgba(245,158,11,0.25);
+  }
+  .countdown-value { color: var(--amber); }
+  .countdown-bar {
+    height: 4px; border-radius: 2px; background: rgba(245,158,11,0.15);
+    margin-top: 12px; overflow: hidden;
+  }
+  .countdown-fill {
+    height: 100%; border-radius: 2px;
+    background: linear-gradient(90deg, var(--amber), #F97316);
+    transition: width 0.6s ease;
+  }
+
+  /* ── LEVEL 2: PERFORMANCE ── */
+  .grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .campaign-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .campaign-row:last-child { border-bottom: none; }
+  .campaign-rank {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  .rank-1 { background: rgba(25,198,181,0.15); color: var(--teal); }
+  .rank-2 { background: rgba(245,158,11,0.15); color: var(--amber); }
+  .rank-3 { background: rgba(239,68,68,0.15); color: var(--red); }
+  .campaign-info { flex: 1; min-width: 0; }
+  .campaign-name { font-size: 14px; font-weight: 600; }
+  .campaign-stats { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+  .campaign-bar-wrap {
+    height: 6px; border-radius: 3px; background: var(--border); margin-top: 8px; overflow: hidden;
+  }
+  .campaign-bar {
+    height: 100%; border-radius: 3px; transition: width 0.8s ease;
+  }
+  .campaign-rate { font-size: 20px; font-weight: 800; width: 72px; text-align: right; flex-shrink: 0; }
+
+  /* ── HEATMAP ── */
+  .heatmap-grid {
+    display: grid;
+    grid-template-columns: 40px repeat(24, 1fr);
+    gap: 3px;
+    margin-top: 12px;
+  }
+  .heatmap-label {
+    font-size: 11px; color: var(--text-sec); display: flex;
+    align-items: center; justify-content: flex-end; padding-right: 6px;
+  }
+  .heatmap-hour-label {
+    font-size: 10px; color: var(--text-sec); text-align: center;
+    padding-bottom: 4px;
+  }
+  .heatmap-cell {
+    aspect-ratio: 1; border-radius: 4px;
+    transition: transform 0.15s;
+    cursor: default;
+    position: relative;
+  }
+  .heatmap-cell:hover { transform: scale(1.3); z-index: 2; }
+
+  .heatmap-legend {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 12px; justify-content: flex-end;
+  }
+  .heatmap-legend span { font-size: 11px; color: var(--text-sec); }
+  .legend-block { width: 14px; height: 14px; border-radius: 3px; }
+
+  /* ── CHARTS ── */
+  .chart-wrap { position: relative; height: 260px; margin-top: 8px; }
+  .chart-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .chart-subtitle { font-size: 12px; color: var(--text-sec); }
+
+  /* ── LEVEL 4: TABLE ── */
+  .table-section { margin-top: 8px; }
+  .table-toggle {
+    background: none; border: 1px solid var(--border); color: var(--text-sec);
+    padding: 8px 16px; border-radius: 8px; font-size: 13px; cursor: pointer;
+    transition: all 0.2s; font-family: inherit;
+  }
+  .table-toggle:hover { border-color: var(--teal); color: var(--teal); }
+  .table-content { margin-top: 16px; overflow-x: auto; }
+  .table-content.collapsed { display: none; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    text-align: left; padding: 10px 12px; font-weight: 600;
+    color: var(--text-sec); font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.6px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: var(--card);
+  }
+  td { padding: 10px 12px; border-bottom: 1px solid rgba(30,42,53,0.5); }
+  tr:hover td { background: rgba(25,198,181,0.04); }
+  .rate-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 12px; font-weight: 600;
+  }
+  .rate-good { background: rgba(34,197,94,0.12); color: var(--green); }
+  .rate-mid { background: rgba(245,158,11,0.12); color: var(--amber); }
+  .rate-bad { background: rgba(239,68,68,0.12); color: var(--red); }
+
+  /* ── INSIGHTS ── */
+  .insight-box {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 16px; border-radius: 10px; margin-top: 10px;
+  }
+  .insight-green { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); }
+  .insight-amber { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+  .insight-red { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); }
+  .insight-icon { font-size: 13px; font-weight: 700; margin-top: 1px; flex-shrink: 0; }
+  .insight-text { font-size: 13px; color: var(--text-sec); }
+  .insight-text strong { color: var(--text); }
+
+  /* ── FUNNEL ── */
+  .funnel-wrap { padding: 8px 0; }
+  .funnel-step {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+  }
+  .funnel-bar-bg {
+    flex: 1; height: 32px; border-radius: 6px; background: var(--border);
+    overflow: hidden; position: relative;
+  }
+  .funnel-bar-fill {
+    height: 100%; border-radius: 6px;
+    transition: width 0.8s ease;
+    display: flex; align-items: center; padding-left: 12px;
+    font-size: 12px; font-weight: 600;
+  }
+  .funnel-label { width: 100px; font-size: 12px; color: var(--text-sec); text-align: right; flex-shrink: 0; }
+  .funnel-num { width: 60px; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+  .funnel-drop { font-size: 11px; color: var(--red); width: 60px; text-align: right; flex-shrink: 0; }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.2px; color: var(--text-sec); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── TOOLTIP ── */
+  .tooltip-custom {
+    position: fixed; pointer-events: none; z-index: 999;
+    background: var(--dark); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 12px; font-size: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4); display: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .kpi-row { grid-template-columns: 1fr 1fr; }
+    .grid-2col { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .kpi-row { grid-template-columns: 1fr; }
+    .container { padding: 16px; }
+    .card-value.hero { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-logo">B</div>
+      <div>
+        <h1>Boost Research — War Room</h1>
+        <div class="header-sub">Dashboard Estrategico | Maio 2026 | Meta Ads</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="live-dot"></div>
+      <div class="header-date">Atualizado 19/mai 23:59</div>
+    </div>
+  </div>
+
+  <!-- ALERT BANNER -->
+  <div class="alert-banner">
+    <div class="alert-icon">!</div>
+    <div>
+      <div class="alert-text"><strong>C9 Frio esta diluindo a qualidade geral.</strong> 286 leads com apenas 2,4% de qualificacao — 279 leads nao-qualificados consumindo budget.</div>
+      <div class="alert-value">Sem C9, a taxa de qualificacao seria 21,6% (vs 11,9% atual). Decisao: pausar, segmentar ou aceitar volume.</div>
+    </div>
+  </div>
+
+  <!-- LEVEL 1: KPI HERO -->
+  <div class="kpi-row">
+    <div class="card hero-card">
+      <div class="card-label">Taxa de Qualificacao</div>
+      <div class="card-value hero" style="color: var(--amber);">11,9%</div>
+      <div class="card-delta down">
+        <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        -11,1pp vs Semana 1 (23,0%)
+      </div>
+      <div class="card-sub">67 qualificados de 564 leads | Meta: >15%</div>
+      <div class="sparkline-row"><canvas id="sparkRate"></canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Leads Totais</div>
+      <div class="card-value">564</div>
+      <div class="card-sub">~30/dia media</div>
+      <div class="card-delta up" style="margin-top:4px;">
+        <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 10V2M3 5l3-3 3 3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        Volume crescente
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Qualificados (>=R$50k)</div>
+      <div class="card-value" style="color: var(--teal);">67</div>
+      <div class="card-sub">S1: 37 | S2: 14 | S3: 16</div>
+      <div class="card-delta down" style="margin-top:4px;">
+        <svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 2v8M3 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        -57% S2 vs S1
+      </div>
+    </div>
+
+    <div class="card countdown-card">
+      <div class="card-label">Prazo IR</div>
+      <div class="card-value countdown-value" id="countdown-days">10</div>
+      <div class="card-sub">dias ate 29/mai — urgencia maxima</div>
+      <div class="countdown-bar"><div class="countdown-fill" id="countdown-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- LEVEL 2: WHAT'S WORKING -->
+  <div class="section-title">Performance por Campanha<span class="section-line"></span></div>
+  <div class="grid-2col">
+
+    <!-- Campaign Scorecard -->
+    <div class="card">
+      <div class="chart-title">Ranking de Qualificacao</div>
+      <div class="chart-subtitle">Qual campanha entrega leads que viram reuniao?</div>
+
+      <div class="campaign-row">
+        <div class="campaign-rank rank-1">1</div>
+        <div class="campaign-info">
+          <div class="campaign-name">IR Cripto</div>
+          <div class="campaign-stats">177 leads | 46 qualificados</div>
+          <div class="campaign-bar-wrap">
+            <div class="campaign-bar" style="width:100%; background: linear-gradient(90deg, var(--teal), var(--teal-light));"></div>
+          </div>
+        </div>
+        <div class="campaign-rate" style="color: var(--teal);">26,0%</div>
+      </div>
+
+      <div class="campaign-row">
+        <div class="campaign-rank rank-2">2</div>
+        <div class="campaign-info">
+          <div class="campaign-name">Outros</div>
+          <div class="campaign-stats">101 leads | 14 qualificados</div>
+          <div class="campaign-bar-wrap">
+            <div class="campaign-bar" style="width:53%; background: linear-gradient(90deg, var(--amber), #FBBF24);"></div>
+          </div>
+        </div>
+        <div class="campaign-rate" style="color: var(--amber);">13,9%</div>
+      </div>
+
+      <div class="campaign-row">
+        <div class="campaign-rank rank-3">3</div>
+        <div class="campaign-info">
+          <div class="campaign-name">C9 Frio</div>
+          <div class="campaign-stats">286 leads | 7 qualificados</div>
+          <div class="campaign-bar-wrap">
+            <div class="campaign-bar" style="width:9%; background: linear-gradient(90deg, var(--red), #F87171);"></div>
+          </div>
+        </div>
+        <div class="campaign-rate" style="color: var(--red);">2,4%</div>
+      </div>
+
+      <div class="insight-box insight-green">
+        <div class="insight-icon" style="color:var(--green);">+</div>
+        <div class="insight-text"><strong>IR Cripto</strong> qualifica 10,6x mais que C9. Com prazo IR em 10 dias, concentrar budget aqui.</div>
+      </div>
+      <div class="insight-box insight-red" style="margin-top:8px;">
+        <div class="insight-icon" style="color:var(--red);">!</div>
+        <div class="insight-text"><strong>C9 Frio</strong> consome ~51% dos leads mas entrega apenas 10% dos qualificados.</div>
+      </div>
+    </div>
+
+    <!-- Heatmap: Hour Quality -->
+    <div class="card">
+      <div class="chart-title">Qualidade por Horario</div>
+      <div class="chart-subtitle">Quando os leads qualificados chegam? Verde escuro = concentrar budget</div>
+
+      <div style="margin-top:16px;">
+        <div class="heatmap-grid" id="hour-heatmap">
+          <!-- generated by JS -->
+        </div>
+        <div class="heatmap-legend">
+          <span>0%</span>
+          <div class="legend-block" style="background: rgba(25,198,181,0.05);"></div>
+          <div class="legend-block" style="background: rgba(25,198,181,0.2);"></div>
+          <div class="legend-block" style="background: rgba(25,198,181,0.45);"></div>
+          <div class="legend-block" style="background: rgba(25,198,181,0.75);"></div>
+          <div class="legend-block" style="background: var(--teal);"></div>
+          <span>40%+</span>
+        </div>
+      </div>
+
+      <div class="insight-box insight-green" style="margin-top:14px;">
+        <div class="insight-icon" style="color:var(--green);">+</div>
+        <div class="insight-text"><strong>07h-08h e 00h-01h</strong> sao os horarios premium (26-40% qualif). Programar entrega de anuncios nesses blocos.</div>
+      </div>
+      <div class="insight-box insight-amber" style="margin-top:8px;">
+        <div class="insight-icon" style="color:var(--amber);">~</div>
+        <div class="insight-text"><strong>15h-22h</strong> alto volume mas baixa qualidade (2,8-6,1%). Reduzir bid ou excluir horarios.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEVEL 3: TRENDS -->
+  <div class="section-title">Tendencia e Contexto<span class="section-line"></span></div>
+  <div class="grid-2col">
+    <div class="card">
+      <div class="chart-title">Taxa de Qualificacao vs BTC/USD</div>
+      <div class="chart-subtitle">A qualidade caiu com a entrada do C9 Frio (07/mai), nao com o BTC</div>
+      <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="chart-title">Funil de Qualificacao</div>
+      <div class="chart-subtitle">Onde os leads estao se perdendo?</div>
+      <div class="funnel-wrap" style="margin-top:16px;">
+        <div class="funnel-step">
+          <div class="funnel-label">Leads Meta</div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:100%; background: linear-gradient(90deg, #334155, #475569);">564</div></div>
+          <div class="funnel-num">564</div>
+          <div class="funnel-drop"></div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">Responderam</div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:98.8%; background: linear-gradient(90deg, #334155, #475569);">557</div></div>
+          <div class="funnel-num">557</div>
+          <div class="funnel-drop">-1,2%</div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">Investem</div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:36.2%; background: linear-gradient(90deg, var(--amber), #FBBF24);">204</div></div>
+          <div class="funnel-num" style="color:var(--amber);">204</div>
+          <div class="funnel-drop">-63,4%</div>
+        </div>
+        <div class="funnel-step">
+          <div class="funnel-label">Qualificados</div>
+          <div class="funnel-bar-bg"><div class="funnel-bar-fill" style="width:11.9%; background: linear-gradient(90deg, var(--teal), var(--teal-light));">67</div></div>
+          <div class="funnel-num" style="color:var(--teal);">67</div>
+          <div class="funnel-drop">-67,2%</div>
+        </div>
+      </div>
+
+      <div class="insight-box insight-amber" style="margin-top:8px;">
+        <div class="insight-icon" style="color:var(--amber);">~</div>
+        <div class="insight-text"><strong>63,4% nao investem.</strong> 353 leads descartados antes do filtro de patrimonio. Possiveis causas: copy muito ampla no C9 ou segmentacao fraca.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEVEL 3.5: WEEKLY TREND -->
+  <div class="grid-2col" style="margin-top:16px;">
+    <div class="card">
+      <div class="chart-title">Evolucao Semanal</div>
+      <div class="chart-subtitle">Volume vs Qualidade — o trade-off esta claro</div>
+      <div class="chart-wrap"><canvas id="weeklyChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <div class="chart-title">Volume por Hora do Dia</div>
+      <div class="chart-subtitle">Barras = total leads | Linha = taxa qualificacao</div>
+      <div class="chart-wrap"><canvas id="hourlyChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- LEVEL 4: DEEP DIVE -->
+  <div class="section-title" style="margin-top:24px;">Deep Dive<span class="section-line"></span></div>
+  <div class="card">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div>
+        <div class="chart-title">Dados Diarios Detalhados</div>
+        <div class="chart-subtitle">16 dias de operacao</div>
+      </div>
+      <button class="table-toggle" id="tableToggle" onclick="toggleTable()">Expandir tabela</button>
+    </div>
+    <div class="table-content collapsed" id="tableContent">
+      <table>
+        <thead>
+          <tr>
+            <th>Dia</th>
+            <th>Total</th>
+            <th>Qualif</th>
+            <th>Taxa</th>
+            <th>IR Total</th>
+            <th>IR Qual</th>
+            <th>C9 Total</th>
+            <th>C9 Qual</th>
+            <th>BTC/USD</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center; padding: 32px 0 16px; color: var(--text-sec); font-size: 11px;">
+    Boost Research &mdash; Dashboard Estrategico Maio 2026 &mdash; Dados: Meta Ads + RD Station + Supabase
+  </div>
+
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip-custom" id="tooltip"></div>
+
+<script>
+// ── DATA ──
+const days = [1,2,3,4,5,6,7,8,12,13,14,15,16,17,18,19];
+const dayLabels = days.map(d => d + '/mai');
+const total =    [10,11,14,32,20,24,50,41,41,36,45,53,55,65,55,11];
+const qual =     [2,4,3,12,5,4,7,8,0,2,4,4,4,2,5,1];
+const irTotal =  [9,10,12,16,16,17,9,9,5,8,8,16,13,12,13,4];
+const irQual =   [2,4,2,8,4,4,3,5,0,2,2,4,2,1,2,1];
+const c9Total =  [1,0,0,0,1,0,26,23,32,21,32,31,34,44,35,6];
+const c9Qual =   [0,0,0,0,0,0,1,1,0,0,1,0,1,0,3,0];
+const btc =      [78178,78500,78700,78975,81286,82320,81023,79743,80861,80304,79574,80120,79500,78500,77348,76565];
+const rates = total.map((t,i) => t > 0 ? (qual[i]/t*100) : 0);
+
+const hourData = [
+  {h:0,t:24,q:5},{h:1,t:15,q:4},{h:2,t:14,q:1},{h:3,t:4,q:0},
+  {h:4,t:7,q:1},{h:5,t:13,q:2},{h:6,t:25,q:2},{h:7,t:30,q:12},
+  {h:8,t:34,q:9},{h:9,t:24,q:0},{h:10,t:22,q:2},{h:11,t:27,q:6},
+  {h:12,t:28,q:6},{h:13,t:11,q:1},{h:14,t:31,q:3},{h:15,t:17,q:1},
+  {h:16,t:26,q:1},{h:17,t:21,q:1},{h:18,t:38,q:3},{h:19,t:29,q:1},
+  {h:20,t:33,q:2},{h:21,t:36,q:1},{h:22,t:27,q:1},{h:23,t:28,q:2}
+];
+
+// ── COUNTDOWN ──
+const deadline = new Date(2026, 4, 29); // May 29
+const now = new Date(2026, 4, 19);
+const daysLeft = Math.ceil((deadline - now) / 86400000);
+document.getElementById('countdown-days').textContent = daysLeft;
+const totalDays = 29; // May 1 to May 29
+const elapsed = 19;
+document.getElementById('countdown-fill').style.width = (elapsed / totalDays * 100) + '%';
+
+// ── CHART DEFAULTS ──
+Chart.defaults.color = '#94A3B8';
+Chart.defaults.borderColor = 'rgba(30,42,53,0.6)';
+Chart.defaults.font.family = "system-ui, -apple-system, Arial, sans-serif";
+Chart.defaults.font.size = 12;
+
+// ── SPARKLINE (Hero card) ──
+new Chart(document.getElementById('sparkRate'), {
+  type: 'line',
+  data: {
+    labels: dayLabels,
+    datasets: [{
+      data: rates,
+      borderColor: rates[rates.length-1] < 15 ? '#F59E0B' : '#19c6b5',
+      borderWidth: 2,
+      fill: true,
+      backgroundColor: 'rgba(245,158,11,0.08)',
+      pointRadius: 0,
+      tension: 0.4
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+    scales: { x: { display: false }, y: { display: false } }
+  }
+});
+
+// ── TREND CHART ──
+new Chart(document.getElementById('trendChart'), {
+  type: 'line',
+  data: {
+    labels: dayLabels,
+    datasets: [
+      {
+        label: 'Taxa Qualif (%)',
+        data: rates,
+        borderColor: '#19c6b5',
+        backgroundColor: 'rgba(25,198,181,0.1)',
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.35,
+        pointRadius: 4,
+        pointBackgroundColor: '#19c6b5',
+        pointBorderColor: '#141B22',
+        pointBorderWidth: 2,
+        yAxisID: 'y'
+      },
+      {
+        label: 'BTC/USD',
+        data: btc,
+        borderColor: 'rgba(148,163,184,0.3)',
+        borderWidth: 1.5,
+        borderDash: [4,4],
+        fill: false,
+        tension: 0.35,
+        pointRadius: 0,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } },
+      tooltip: {
+        backgroundColor: '#12191D', borderColor: '#1E2A35', borderWidth: 1,
+        titleColor: '#FFFFFF', bodyColor: '#94A3B8', padding: 12,
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.datasetIndex === 0) return 'Qualif: ' + ctx.parsed.y.toFixed(1) + '%';
+            return 'BTC: $' + ctx.parsed.y.toLocaleString();
+          }
+        }
+      },
+      annotation: {
+        annotations: {
+          c9Line: {
+            type: 'line', xMin: 6, xMax: 6, borderColor: 'rgba(239,68,68,0.4)',
+            borderWidth: 1, borderDash: [4,4],
+            label: { content: 'C9 Frio entra', enabled: true, position: 'start',
+              backgroundColor: 'rgba(239,68,68,0.15)', color: '#F87171', font: { size: 10 } }
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: {
+        position: 'left',
+        title: { display: true, text: 'Taxa Qualif (%)', color: '#19c6b5' },
+        min: 0, max: 45,
+        ticks: { callback: v => v + '%' },
+        grid: { color: 'rgba(30,42,53,0.4)' }
+      },
+      y1: {
+        position: 'right',
+        title: { display: true, text: 'BTC/USD', color: '#64748B' },
+        grid: { display: false },
+        ticks: { callback: v => '$' + (v/1000).toFixed(0) + 'k' }
+      }
+    }
+  }
+});
+
+// ── WEEKLY CHART ──
+new Chart(document.getElementById('weeklyChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Semana 1\n(01-07)', 'Semana 2\n(08-14)', 'Semana 3\n(15-19)'],
+    datasets: [
+      {
+        label: 'Leads',
+        data: [161, 164, 239],
+        backgroundColor: 'rgba(148,163,184,0.2)',
+        borderColor: 'rgba(148,163,184,0.4)',
+        borderWidth: 1,
+        borderRadius: 6,
+        yAxisID: 'y'
+      },
+      {
+        label: 'Qualificados',
+        data: [37, 14, 16],
+        backgroundColor: 'rgba(25,198,181,0.6)',
+        borderColor: 'var(--teal)',
+        borderWidth: 1,
+        borderRadius: 6,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'Taxa Qualif (%)',
+        data: [23.0, 8.5, 6.7],
+        borderColor: '#F59E0B',
+        borderWidth: 2.5,
+        pointRadius: 6,
+        pointBackgroundColor: '#F59E0B',
+        pointBorderColor: '#141B22',
+        pointBorderWidth: 2,
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } },
+      tooltip: {
+        backgroundColor: '#12191D', borderColor: '#1E2A35', borderWidth: 1,
+        titleColor: '#FFFFFF', bodyColor: '#94A3B8', padding: 12
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: {
+        position: 'left',
+        title: { display: true, text: 'Leads' },
+        grid: { color: 'rgba(30,42,53,0.4)' }
+      },
+      y1: {
+        position: 'right',
+        title: { display: true, text: 'Taxa %', color: '#F59E0B' },
+        min: 0, max: 30,
+        ticks: { callback: v => v + '%' },
+        grid: { display: false }
+      }
+    }
+  }
+});
+
+// ── HOURLY CHART ──
+const hourRates = hourData.map(h => h.t > 0 ? (h.q / h.t * 100) : 0);
+const barColors = hourRates.map(r => r >= 20 ? 'rgba(25,198,181,0.6)' : r >= 10 ? 'rgba(245,158,11,0.4)' : 'rgba(148,163,184,0.2)');
+
+new Chart(document.getElementById('hourlyChart'), {
+  type: 'bar',
+  data: {
+    labels: hourData.map(h => h.h + 'h'),
+    datasets: [
+      {
+        label: 'Total leads',
+        data: hourData.map(h => h.t),
+        backgroundColor: barColors,
+        borderRadius: 4,
+        yAxisID: 'y'
+      },
+      {
+        type: 'line',
+        label: 'Taxa qualif (%)',
+        data: hourRates,
+        borderColor: '#19c6b5',
+        borderWidth: 2,
+        pointRadius: 3,
+        pointBackgroundColor: '#19c6b5',
+        tension: 0.35,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { boxWidth: 12, padding: 16 } },
+      tooltip: {
+        backgroundColor: '#12191D', borderColor: '#1E2A35', borderWidth: 1,
+        titleColor: '#FFFFFF', bodyColor: '#94A3B8', padding: 12,
+        callbacks: {
+          afterBody: function(ctx) {
+            const i = ctx[0].dataIndex;
+            return 'Qualificados: ' + hourData[i].q;
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false } },
+      y: {
+        position: 'left',
+        title: { display: true, text: 'Leads' },
+        grid: { color: 'rgba(30,42,53,0.4)' }
+      },
+      y1: {
+        position: 'right',
+        title: { display: true, text: 'Taxa %', color: '#19c6b5' },
+        min: 0, max: 45,
+        ticks: { callback: v => v + '%' },
+        grid: { display: false }
+      }
+    }
+  }
+});
+
+// ── HEATMAP ──
+(function() {
+  const grid = document.getElementById('hour-heatmap');
+  // Header row
+  const corner = document.createElement('div');
+  grid.appendChild(corner);
+  for (let h = 0; h < 24; h++) {
+    const lbl = document.createElement('div');
+    lbl.className = 'heatmap-hour-label';
+    lbl.textContent = h;
+    grid.appendChild(lbl);
+  }
+
+  // Group data by period
+  const periods = [
+    { label: 'Manhã', hours: [6,7,8,9,10,11] },
+    { label: 'Tarde', hours: [12,13,14,15,16,17] },
+    { label: 'Noite', hours: [18,19,20,21,22,23] },
+    { label: 'Madrug', hours: [0,1,2,3,4,5] }
+  ];
+
+  periods.forEach(p => {
+    const lbl = document.createElement('div');
+    lbl.className = 'heatmap-label';
+    lbl.textContent = p.label;
+    grid.appendChild(lbl);
+
+    for (let h = 0; h < 24; h++) {
+      const cell = document.createElement('div');
+      cell.className = 'heatmap-cell';
+      if (p.hours.includes(h)) {
+        const hd = hourData.find(x => x.h === h);
+        const rate = hd && hd.t > 0 ? hd.q / hd.t : 0;
+        const opacity = Math.min(rate / 0.4, 1);
+        cell.style.background = `rgba(25,198,181,${0.05 + opacity * 0.95})`;
+        cell.title = h + 'h: ' + (rate * 100).toFixed(1) + '% (' + (hd ? hd.q : 0) + '/' + (hd ? hd.t : 0) + ')';
+      } else {
+        cell.style.background = 'rgba(30,42,53,0.3)';
+      }
+      grid.appendChild(cell);
+    }
+  });
+})();
+
+// ── TABLE ──
+function toggleTable() {
+  const el = document.getElementById('tableContent');
+  const btn = document.getElementById('tableToggle');
+  el.classList.toggle('collapsed');
+  btn.textContent = el.classList.contains('collapsed') ? 'Expandir tabela' : 'Recolher tabela';
+}
+
+(function() {
+  const tbody = document.getElementById('tableBody');
+  for (let i = 0; i < days.length; i++) {
+    const rate = total[i] > 0 ? (qual[i] / total[i] * 100) : 0;
+    let badgeClass = 'rate-bad';
+    if (rate >= 20) badgeClass = 'rate-good';
+    else if (rate >= 10) badgeClass = 'rate-mid';
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600;">${days[i]}/mai</td>
+      <td>${total[i]}</td>
+      <td style="color:var(--teal);font-weight:600;">${qual[i]}</td>
+      <td><span class="rate-badge ${badgeClass}">${rate.toFixed(1)}%</span></td>
+      <td>${irTotal[i]}</td>
+      <td>${irQual[i]}</td>
+      <td>${c9Total[i]}</td>
+      <td>${c9Qual[i]}</td>
+      <td>$${btc[i].toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  // Totals row
+  const sumT = total.reduce((a,b)=>a+b,0);
+  const sumQ = qual.reduce((a,b)=>a+b,0);
+  const sumIR = irTotal.reduce((a,b)=>a+b,0);
+  const sumIRQ = irQual.reduce((a,b)=>a+b,0);
+  const sumC9 = c9Total.reduce((a,b)=>a+b,0);
+  const sumC9Q = c9Qual.reduce((a,b)=>a+b,0);
+  const avgRate = (sumQ/sumT*100).toFixed(1);
+  const tr = document.createElement('tr');
+  tr.style.fontWeight = '700';
+  tr.style.borderTop = '2px solid var(--teal)';
+  tr.innerHTML = `
+    <td>TOTAL</td><td>${sumT}</td><td style="color:var(--teal);">${sumQ}</td>
+    <td><span class="rate-badge rate-mid">${avgRate}%</span></td>
+    <td>${sumIR}</td><td>${sumIRQ}</td><td>${sumC9}</td><td>${sumC9Q}</td><td>--</td>
+  `;
+  tbody.appendChild(tr);
+})();
+</script>
+</body>
+</html>
