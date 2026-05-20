@@ -10,27 +10,53 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);padding:24px;min-height:100vh}
 h1{font-size:22px;color:var(--white);margin-bottom:4px}
 .sub{color:var(--dim);font-size:13px;margin-bottom:20px}
+
+/* Stats */
 .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
 .sv{font-size:24px;font-weight:800}.sl{font-size:9px;color:var(--dim);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
 
-/* Filters */
-.filters{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
-.filter-btn{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--dim);font-size:12px;cursor:pointer;transition:all .2s}
-.filter-btn:hover,.filter-btn.active{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+/* Task selector */
+.task-selector{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px}
+.task-selector h2{font-size:14px;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.task-btn{padding:14px 16px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text);font-size:13px;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:10px}
+.task-btn:hover{border-color:var(--teal);background:rgba(3,228,208,.05)}
+.task-btn.active{border-color:var(--teal);background:rgba(3,228,208,.1);color:var(--white)}
+.task-icon{font-size:20px;width:32px;text-align:center}
+.task-label{font-weight:600;line-height:1.3}
+.task-label small{display:block;font-weight:400;font-size:11px;color:var(--dim);margin-top:2px}
+.task-count{margin-left:auto;background:var(--teal);color:var(--bg);font-size:10px;font-weight:800;padding:2px 8px;border-radius:10px;opacity:0}
+.task-btn.active .task-count{opacity:1}
 
-/* Agent Grid */
-.agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-bottom:24px}
-.agent-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px;cursor:pointer;transition:all .2s;position:relative}
+/* Workflow panel */
+.workflow-panel{background:var(--card);border:1px solid var(--teal);border-radius:12px;padding:24px;margin-bottom:24px;display:none}
+.workflow-panel.visible{display:block}
+.workflow-panel h2{font-size:16px;color:var(--white);margin-bottom:4px}
+.workflow-panel .wf-desc{font-size:13px;color:var(--dim);margin-bottom:20px}
+.workflow-steps{display:flex;flex-direction:column;gap:6px}
+.workflow-step{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.02);font-size:13px}
+.workflow-step .step-num{width:24px;height:24px;border-radius:50%;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+.workflow-step .step-agent{color:var(--teal);font-weight:600;min-width:70px}
+.workflow-step .step-action{color:var(--text)}
+.gate{color:var(--red);font-weight:700}
+.validate{color:var(--orange);font-weight:600}
+
+/* Agent grid */
+.agent-section-title{font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:2px;margin:24px 0 12px;display:none}
+.agent-section-title.visible{display:block}
+.agent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-bottom:16px}
+.agent-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;position:relative}
 .agent-card:hover{border-color:var(--teal);transform:translateY(-2px)}
-.agent-card.selected{border-color:var(--teal);box-shadow:0 0 20px rgba(3,228,208,.1)}
-.agent-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.agent-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:var(--bg)}
-.agent-name{font-size:15px;font-weight:700;color:var(--white)}
+.agent-card.highlight{border-color:var(--teal);box-shadow:0 0 20px rgba(3,228,208,.15)}
+.agent-card.dimmed{opacity:.3}
+.agent-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.agent-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:var(--bg)}
+.agent-name{font-size:14px;font-weight:700;color:var(--white)}
 .agent-role{font-size:11px;color:var(--dim)}
-.agent-scope{font-size:12px;color:var(--text);line-height:1.5;margin-bottom:10px}
+.agent-scope{font-size:12px;color:var(--text);line-height:1.5;margin-bottom:8px}
 .agent-tags{display:flex;gap:4px;flex-wrap:wrap}
-.tag{padding:2px 8px;border-radius:4px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.tag{padding:2px 7px;border-radius:4px;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
 .tag-green{background:rgba(0,200,83,.12);color:var(--green)}
 .tag-blue{background:rgba(68,138,255,.12);color:var(--blue)}
 .tag-purple{background:rgba(179,136,255,.12);color:var(--purple)}
@@ -38,9 +64,11 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 .tag-red{background:rgba(255,82,82,.12);color:var(--red)}
 .tag-gold{background:rgba(255,214,0,.12);color:var(--gold)}
 .tag-teal{background:rgba(3,228,208,.12);color:var(--teal)}
-.report-line{font-size:10px;color:var(--dim);margin-top:8px}
+.step-badge{position:absolute;top:8px;right:8px;background:var(--teal);color:var(--bg);font-size:10px;font-weight:800;width:22px;height:22px;border-radius:50%;display:none;align-items:center;justify-content:center}
+.agent-card.highlight .step-badge{display:flex}
+.report-line{font-size:10px;color:var(--dim);margin-top:6px}
 
-/* Detail Panel */
+/* Detail */
 .detail-panel{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px;display:none}
 .detail-panel.visible{display:block}
 .detail-panel h2{font-size:18px;color:var(--white);margin-bottom:4px}
@@ -51,218 +79,325 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 .detail-section li{font-size:13px;color:var(--text);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03)}
 .detail-section li:before{content:"→ ";color:var(--teal)}
 
-/* Hierarchy */
-.hierarchy{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
-.hierarchy h2{font-size:14px;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
-.org-level{margin-left:24px;border-left:1px solid var(--border);padding-left:16px;margin-bottom:8px}
-.org-node{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px}
-.org-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.org-name{color:var(--white);font-weight:600}
-.org-role{color:var(--dim);font-size:11px}
-
-/* Workflow */
-.workflow-section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
-.workflow-section h2{font-size:14px;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
-.workflow-steps{display:flex;flex-direction:column;gap:6px}
-.workflow-step{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,.02);font-size:13px}
-.workflow-step .step-num{width:24px;height:24px;border-radius:50%;background:var(--teal);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
-.workflow-step .step-agent{color:var(--teal);font-weight:600;min-width:60px}
-.workflow-step .step-action{color:var(--text)}
-
 /* Command */
-.cmd-section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px}
-.cmd-section h2{font-size:14px;color:var(--white);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.cmd-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:16px;font-family:'SF Mono',Monaco,monospace;font-size:13px;color:var(--teal);line-height:1.6;margin-bottom:12px;cursor:pointer;transition:border-color .2s}
+.cmd-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-family:'SF Mono',Monaco,monospace;font-size:12px;color:var(--teal);line-height:1.6;cursor:pointer;transition:border-color .2s;margin-top:8px}
 .cmd-box:hover{border-color:var(--teal)}
-.cmd-box .cmd-comment{color:var(--dim)}
-.cmd-label{font-size:11px;color:var(--dim);margin-bottom:6px}
+.cmd-comment{color:var(--dim)}
 
-@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.agent-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.agent-grid{grid-template-columns:1fr}.filters{overflow-x:auto;flex-wrap:nowrap}}
+/* All agents btn */
+.show-all{text-align:center;margin:16px 0}
+.show-all button{padding:8px 24px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--dim);font-size:12px;cursor:pointer;transition:all .2s}
+.show-all button:hover{border-color:var(--teal);color:var(--teal)}
+
+@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.agent-grid{grid-template-columns:1fr 1fr}.task-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.agent-grid{grid-template-columns:1fr}.task-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <h1>Boost Growth Squad — Painel de Agentes</h1>
-<p class="sub">25 agentes + Atlas (orquestrador) | Boost Research | Crypto Intelligence PRO</p>
+<p class="sub">27 agentes + Atlas | Organizado por fluxo de trabalho | Boost Research</p>
 
-<!-- Stats -->
 <div class="stats">
-  <div class="stat"><div class="sv" style="color:var(--teal)">26</div><div class="sl">Agentes</div></div>
-  <div class="stat"><div class="sv" style="color:var(--green)">2</div><div class="sl">Skills</div></div>
-  <div class="stat"><div class="sv" style="color:var(--blue)">5</div><div class="sl">Workflows</div></div>
-  <div class="stat"><div class="sv" style="color:var(--purple)">6</div><div class="sl">Áreas</div></div>
+  <div class="stat"><div class="sv" style="color:var(--teal)">27</div><div class="sl">Agentes</div></div>
+  <div class="stat"><div class="sv" style="color:var(--green)">9</div><div class="sl">Fluxos</div></div>
+  <div class="stat"><div class="sv" style="color:var(--blue)">4</div><div class="sl">Squads</div></div>
+  <div class="stat"><div class="sv" style="color:var(--red)">3</div><div class="sl">Gates</div></div>
   <div class="stat"><div class="sv" style="color:var(--gold)">1</div><div class="sl">Orquestrador</div></div>
 </div>
 
-<!-- Como acionar -->
-<div class="cmd-section">
-  <h2>Como acionar a squad</h2>
-  <p style="font-size:13px;color:var(--dim);margin-bottom:16px">Sempre comece pelo Atlas. Ele delega pro agente certo. Cada entrega é validada pelo agente revisor antes de seguir.</p>
-
-  <div class="cmd-label">Demanda genérica (Atlas decide quem faz)</div>
-  <div class="cmd-box" onclick="copyCmd(this)">
-    <span class="cmd-comment"># Atlas analisa a demanda e delega</span><br>
-    @atlas [descreva o que precisa]
-  </div>
-
-  <div class="cmd-label">Demanda específica (você sabe quem precisa)</div>
-  <div class="cmd-box" onclick="copyCmd(this)">
-    <span class="cmd-comment"># Aciona direto com validação cruzada</span><br>
-    @atlas acione @vera pra escrever copy da C9, @helena valida, @juri revisa compliance
-  </div>
-
-  <div class="cmd-label">Workflow completo (campanha nova)</div>
-  <div class="cmd-box" onclick="copyCmd(this)">
-    @atlas nova campanha C9: @nina pesquisa → @vera copy → @helena aprova → @juri compliance → @rafa design → @tag tracking → @kai auditoria → @cris sobe
-  </div>
-
-  <div class="cmd-label">Dados e relatórios</div>
-  <div class="cmd-box" onclick="copyCmd(this)">
-    @atlas preciso de relatório de performance: @enzo puxa dados → @dani monta dashboard → @bruno analisa
-  </div>
+<!-- TASK SELECTOR -->
+<div class="task-selector">
+  <h2>O que voce precisa fazer?</h2>
+  <div class="task-grid" id="taskGrid"></div>
 </div>
 
-<!-- Filters -->
-<div class="filters">
-  <button class="filter-btn active" onclick="filterAgents('all')">Todos (26)</button>
-  <button class="filter-btn" onclick="filterAgents('lideranca')">Liderança</button>
-  <button class="filter-btn" onclick="filterAgents('aquisicao')">Aquisição</button>
-  <button class="filter-btn" onclick="filterAgents('criativo')">Criativo</button>
-  <button class="filter-btn" onclick="filterAgents('conversao')">Conversão</button>
-  <button class="filter-btn" onclick="filterAgents('dados')">Dados</button>
-  <button class="filter-btn" onclick="filterAgents('nurturing')">Nurturing</button>
-  <button class="filter-btn" onclick="filterAgents('vendas')">Vendas</button>
-  <button class="filter-btn" onclick="filterAgents('skill1')">Skill: Mensuração</button>
-  <button class="filter-btn" onclick="filterAgents('skill2')">Skill: UX Analytics</button>
-</div>
+<!-- WORKFLOW PANEL -->
+<div class="workflow-panel" id="workflowPanel"></div>
 
-<!-- Detail Panel -->
+<!-- DETAIL PANEL -->
 <div class="detail-panel" id="detailPanel"></div>
 
-<!-- Agent Grid -->
-<div class="agent-grid" id="agentGrid"></div>
+<!-- AGENT GRID -->
+<div id="agentContainer"></div>
 
-<!-- Hierarchy -->
-<div class="hierarchy">
-  <h2>Hierarquia e validação cruzada</h2>
-  <div class="org-node"><div class="org-dot" style="background:var(--gold)"></div><span class="org-name">Você (User)</span></div>
-  <div class="org-level">
-    <div class="org-node"><div class="org-dot" style="background:var(--teal)"></div><span class="org-name">Atlas</span><span class="org-role">— Orquestrador Mestre</span></div>
-    <div class="org-level">
-      <div class="org-node"><div class="org-dot" style="background:var(--blue)"></div><span class="org-name">Tati</span><span class="org-role">— CMO → Leo, Nina, Cris, Helena, Theo, Lia, Bruno, Aura</span></div>
-      <div class="org-level">
-        <div class="org-node"><div class="org-dot" style="background:var(--purple)"></div><span class="org-name">Helena</span><span class="org-role">— Criativa → Vera, Zeca, Max</span></div>
-        <div class="org-node"><div class="org-dot" style="background:var(--orange)"></div><span class="org-name">Bruno</span><span class="org-role">— Performance → Rex, Dani, Enzo</span></div>
-        <div class="org-node"><div class="org-dot" style="background:var(--purple)"></div><span class="org-name">Aura</span><span class="org-role">— Brand Awareness (valida split budget com Cris)</span></div>
-      </div>
-      <div class="org-node"><div class="org-dot" style="background:var(--blue)"></div><span class="org-name">Gabi</span><span class="org-role">— PM → Rafa, Dev, Otto</span></div>
-      <div class="org-node"><div class="org-dot" style="background:var(--red)"></div><span class="org-name">Kai</span><span class="org-role">— Auditoria → Tag (poder de BLOQUEIO)</span></div>
-      <div class="org-node"><div class="org-dot" style="background:var(--red)"></div><span class="org-name">Juri</span><span class="org-role">— Compliance (poder de VETO)</span></div>
-    </div>
-  </div>
-</div>
+<div class="show-all"><button onclick="showAll()">Mostrar todos os agentes</button></div>
 
-<!-- Workflows -->
-<div class="workflow-section">
-  <h2>Workflow: Campanha nova (validação cruzada)</h2>
-  <div class="workflow-steps">
-    <div class="workflow-step"><div class="step-num">1</div><span class="step-agent">Nina</span><span class="step-action">Pesquisa ICP e mercado</span></div>
-    <div class="workflow-step"><div class="step-num">2</div><span class="step-agent">Leo</span><span class="step-action">Estratégia comercial e posicionamento</span></div>
-    <div class="workflow-step"><div class="step-num">3</div><span class="step-agent">Vera</span><span class="step-action">Escreve copy → <strong style="color:var(--orange)">Zeca valida hooks</strong></span></div>
-    <div class="workflow-step"><div class="step-num">4</div><span class="step-agent">Helena</span><span class="step-action"><strong style="color:var(--red)">Aprova criativo</strong> (quality gate 15 pontos)</span></div>
-    <div class="workflow-step"><div class="step-num">5</div><span class="step-agent">Juri</span><span class="step-action"><strong style="color:var(--red)">Compliance check</strong> (poder de VETO)</span></div>
-    <div class="workflow-step"><div class="step-num">6</div><span class="step-agent">Rafa</span><span class="step-action">Design (Track by Design com IDs) → <strong style="color:var(--orange)">Helena valida visual</strong></span></div>
-    <div class="workflow-step"><div class="step-num">7</div><span class="step-agent">Tag</span><span class="step-action">Implementa tracking</span></div>
-    <div class="workflow-step"><div class="step-num">8</div><span class="step-agent">Kai</span><span class="step-action"><strong style="color:var(--red)">Auditoria data quality</strong> (poder de BLOQUEIO)</span></div>
-    <div class="workflow-step"><div class="step-num">9</div><span class="step-agent">Cris</span><span class="step-action">Sobe campanha no Meta</span></div>
-    <div class="workflow-step"><div class="step-num">10</div><span class="step-agent">Rex</span><span class="step-action">Configura kill rules</span></div>
-    <div class="workflow-step"><div class="step-num">11</div><span class="step-agent">Bruno</span><span class="step-action">Monitora performance</span></div>
-    <div class="workflow-step"><div class="step-num">12</div><span class="step-agent">Atlas</span><span class="step-action">Consolida status e reporta</span></div>
-  </div>
-</div>
-
-<div class="workflow-section">
-  <h2>Workflow: Dados e relatórios</h2>
-  <div class="workflow-steps">
-    <div class="workflow-step"><div class="step-num">1</div><span class="step-agent">Enzo</span><span class="step-action">Puxa dados das APIs e limpa</span></div>
-    <div class="workflow-step"><div class="step-num">2</div><span class="step-agent">Kai</span><span class="step-action"><strong style="color:var(--red)">Valida qualidade</strong></span></div>
-    <div class="workflow-step"><div class="step-num">3</div><span class="step-agent">Dani</span><span class="step-action">Monta dashboard/relatório</span></div>
-    <div class="workflow-step"><div class="step-num">4</div><span class="step-agent">Bruno</span><span class="step-action">Analisa e recomenda</span></div>
-    <div class="workflow-step"><div class="step-num">5</div><span class="step-agent">Atlas</span><span class="step-action">Consolida e entrega</span></div>
-  </div>
-</div>
-
-<div class="workflow-section">
-  <h2>Workflow: Motivadores Criativos (Meta Blueprint)</h2>
-  <p style="font-size:12px;color:var(--dim);margin-bottom:12px">3 motivadores × 3 conceitos × 8 formatos (Lo-fi + Hi-fi) = 24 peças por ciclo</p>
-  <div class="workflow-steps">
-    <div class="workflow-step"><div class="step-num">1</div><span class="step-agent">Nina</span><span class="step-action">Mineração de motivadores (ICP, CRM, RD segmentações)</span></div>
-    <div class="workflow-step"><div class="step-num">2</div><span class="step-agent">Max</span><span class="step-action">Redige briefing por conceito (ângulo + narrativa + prova)</span></div>
-    <div class="workflow-step"><div class="step-num">3</div><span class="step-agent">Vera</span><span class="step-action">Escreve copy por conceito → <strong style="color:var(--orange)">Zeca valida hooks (3s)</strong></span></div>
-    <div class="workflow-step"><div class="step-num">4</div><span class="step-agent">Helena</span><span class="step-action"><strong style="color:var(--red)">Quality Gate 15 pontos</strong> (brand + mensagem + craft)</span></div>
-    <div class="workflow-step"><div class="step-num">5</div><span class="step-agent">Juri</span><span class="step-action"><strong style="color:var(--red)">Compliance CVM/ANBIMA</strong> (poder de VETO)</span></div>
-    <div class="workflow-step"><div class="step-num">6</div><span class="step-agent">Rafa</span><span class="step-action">Produz visuais Lo-fi + Hi-fi (8 formatos por conceito)</span></div>
-    <div class="workflow-step"><div class="step-num">7</div><span class="step-agent">Helena</span><span class="step-action"><strong style="color:var(--red)">Quality Gate 2</strong> (pré-upload)</span></div>
-    <div class="workflow-step"><div class="step-num">8</div><span class="step-agent">Kai</span><span class="step-action"><strong style="color:var(--red)">Auditoria tracking</strong> (UTMs, pixel, CAPI)</span></div>
-    <div class="workflow-step"><div class="step-num">9</div><span class="step-agent">Cris</span><span class="step-action">Sobe no Meta Ads (Fase 1: 10 peças, 7 dias)</span></div>
-    <div class="workflow-step"><div class="step-num">10</div><span class="step-agent">Bruno</span><span class="step-action">Analisa por conceito × fidelidade → escala vencedores</span></div>
-  </div>
-</div>
-
-<div class="workflow-section">
-  <h2>Workflow: Nurturing (e-mail / automação)</h2>
-  <div class="workflow-steps">
-    <div class="workflow-step"><div class="step-num">1</div><span class="step-agent">Lia</span><span class="step-action">Define estratégia e cadência</span></div>
-    <div class="workflow-step"><div class="step-num">2</div><span class="step-agent">Vera</span><span class="step-action">Escreve copy → <strong style="color:var(--orange)">Helena valida tom</strong></span></div>
-    <div class="workflow-step"><div class="step-num">3</div><span class="step-agent">Mel</span><span class="step-action">Implementa no RD Station</span></div>
-    <div class="workflow-step"><div class="step-num">4</div><span class="step-agent">Juri</span><span class="step-action"><strong style="color:var(--red)">Valida LGPD</strong></span></div>
-    <div class="workflow-step"><div class="step-num">5</div><span class="step-agent">Dani</span><span class="step-action">Monitora métricas</span></div>
-    <div class="workflow-step"><div class="step-num">6</div><span class="step-agent">Rick</span><span class="step-action">Follow-up dos leads quentes</span></div>
-  </div>
-</div>
-
-<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Growth Squad v1.3 | 25 agentes + Atlas | 5 workflows | 12/mai/2026</p>
+<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Growth Squad v2.0 | 27 agentes + Atlas | 9 fluxos | 20/mai/2026</p>
 
 <script>
 const agents = [
-  {id:"atlas",name:"Atlas",role:"Orquestrador Mestre",area:"lideranca",color:"var(--gold)",scope:"Orquestra todas as demandas, delega, monitora status, sincroniza squads",skills:[],reports:"User",validates:"Todos",tags:["orquestrador"],responsibilities:["Recebe toda demanda do user","Decide qual agente executa","Garante validação cruzada","Consolida status","Escala bloqueios"]},
-  {id:"tati",name:"Tati",role:"CMO",area:"lideranca",color:"var(--blue)",scope:"Posicionamento de mercado, mix de canais, diretrizes de comunicação",skills:[],reports:"Atlas",validates:"Leo, Nina, Cris",tags:["estratégia"],responsibilities:["Visão macro de marketing","Posicionamento da marca","Aprovar diretrizes","Mix de canais"]},
-  {id:"leo",name:"Leo",role:"Estrategista Comercial",area:"lideranca",color:"var(--blue)",scope:"Pricing, funil de venda, ofertas, posicionamento competitivo",skills:[],reports:"Tati",validates:"Rick",tags:["estratégia","vendas"],responsibilities:["Estratégia de pricing","Design do funil","Unit economics","Posicionamento competitivo"]},
-  {id:"nina",name:"Nina",role:"Pesquisa de Mercado",area:"lideranca",color:"var(--purple)",scope:"ICP, concorrentes, tendências, validação de hipóteses",skills:[],reports:"Tati",validates:"",tags:["pesquisa","icp"],responsibilities:["Pesquisa de ICP","Análise de concorrentes","Tendências de mercado","Validação com dados"]},
-  {id:"gabi",name:"Gabi",role:"Product Manager",area:"lideranca",color:"var(--blue)",scope:"Roadmap produto digital, requisitos, ciclo de vida, Definition of Done",skills:["ux-analytics"],reports:"Atlas",validates:"Dev, Rafa",tags:["produto","skill-2"],responsibilities:["Roadmap digital","Priorização","Definition of Done","Governança de dados"]},
-  {id:"cris",name:"Cris",role:"Tráfego",area:"aquisicao",color:"var(--green)",scope:"Media buying Meta/Google/LinkedIn, budget, lances, segmentação, escala",skills:[],reports:"Tati",validates:"",tags:["mídia","meta-ads"],responsibilities:["Media buying","Gestão de budget","Segmentação","Remarketing","Escala"]},
-  {id:"bruno",name:"Bruno",role:"Performance",area:"aquisicao",color:"var(--green)",scope:"Atribuição multi-touch, incrementalidade, CPL/CPR/ROAS",skills:["mensuracao-avancada"],reports:"Tati",validates:"Rex, Dani",tags:["performance","skill-1"],responsibilities:["Análise de métricas","Atribuição (analogia futebol)","Incrementalidade","Otimização"]},
-  {id:"rex",name:"Rex",role:"Kill Rules",area:"aquisicao",color:"var(--orange)",scope:"Regras de kill/scale, monitoramento, alertas, framework de decisão",skills:[],reports:"Bruno",validates:"",tags:["kill-rules","automação"],responsibilities:["Kill rules (Mandali, Hubbard)","Alertas de corte","Decisão pausar/escalar","Framework de decisão"]},
-  {id:"zeca",name:"Zeca",role:"Hooks",area:"aquisicao",color:"var(--orange)",scope:"Hooks de vídeo/copy, pattern interrupts, retention curves, A/B",skills:[],reports:"Helena",validates:"",tags:["hooks","criativo"],responsibilities:["Hooks primeiros 3s","Pattern interrupts","Análise de retenção","A/B de aberturas"]},
-  {id:"helena",name:"Helena",role:"Diretora Criativa",area:"criativo",color:"var(--purple)",scope:"Brand consistency, quality gate 12 pontos, validação visual",skills:[],reports:"Tati",validates:"Vera, Rafa, Zeca",tags:["brand","quality-gate"],responsibilities:["Quality gate 12 pontos","Brand consistency","Validação visual","Briefing pré-produção"]},
-  {id:"vera",name:"Vera",role:"Copywriter",area:"criativo",color:"var(--purple)",scope:"Copy ads, LPs, e-mails, headlines, CTAs, scripts, A/B",skills:[],reports:"Helena",validates:"",tags:["copy","ads"],responsibilities:["Copy de ads","Copy de LPs e e-mails","Headlines e CTAs","Checklist 8 pontos (4 livros + Ícaro)"]},
-  {id:"max",name:"Max",role:"Redator Financeiro Elite",area:"criativo",color:"var(--purple)",scope:"Redação financeira elite: artigos, newsletters, e-books, whitepapers, análises de mercado, conteúdo regulatório, scripts de vídeo",skills:[],reports:"Helena",validates:"",tags:["redação","finanças","cripto"],responsibilities:["Artigos e newsletters de mercado","E-books e whitepapers","Análises de mercado com rigor de dados","Conteúdo regulatório (DeCripto, CARF, CVM)","Thought leadership para André Franco","Scripts de vídeo com precisão técnica","5 pilares: jornalismo financeiro + mestres da escrita + frameworks + finanças comportamentais + regulatório"]},
-  {id:"theo",name:"Theo",role:"Conteúdo / SEO",area:"criativo",color:"var(--purple)",scope:"Conteúdo orgânico, e-books, blog, YouTube, SEO",skills:[],reports:"Tati",validates:"",tags:["conteúdo","seo"],responsibilities:["E-books","Blog posts","YouTube content","SEO on-page/técnico"]},
-  {id:"otto",name:"Otto",role:"CRO",area:"conversao",color:"var(--teal)",scope:"Otimização conversão, testes A/B, análise funil, cross-device",skills:["mensuracao-avancada","ux-analytics"],reports:"Gabi",validates:"",tags:["cro","skill-1","skill-2"],responsibilities:["Testes A/B","Análise de funil","Invalidação de hipóteses","Cross-device"]},
-  {id:"rafa",name:"Rafa",role:"Designer UX/UI",area:"conversao",color:"var(--teal)",scope:"UX de LPs, forms, quiz, dashboards, Track by Design",skills:["ux-analytics"],reports:"Gabi + Helena",validates:"",tags:["ux","design","skill-2"],responsibilities:["Design de LPs","Track by Design (IDs no Figma)","Métricas UX","Acessibilidade"]},
-  {id:"tag",name:"Tag",role:"Rastreamento",area:"dados",color:"var(--red)",scope:"GTM web/SS, pixels, CAPI, GA4, User ID, cross-domain",skills:["mensuracao-avancada"],reports:"Kai",validates:"",tags:["tracking","gtm","skill-1"],responsibilities:["GTM Server-Side (catraca)","Meta Pixel + CAPI","User ID cross-device","Prevenção Silent Deploys"]},
-  {id:"kai",name:"Kai",role:"Auditoria",area:"dados",color:"var(--red)",scope:"Auditoria tags, UTMs, taxonomia, QA eventos, data quality",skills:["mensuracao-avancada"],reports:"Atlas",validates:"Tag, Enzo, Dev",tags:["auditoria","bloqueio","skill-1"],responsibilities:["Checklist data quality","Auditoria UTMs (91% falham)","QA de tagueamento","PODER DE BLOQUEIO"]},
-  {id:"enzo",name:"Enzo",role:"Engenheiro de Dados",area:"dados",color:"var(--orange)",scope:"Ingestão, ETL, schema, pipelines, GitHub Actions, sync APIs",skills:[],reports:"Bruno",validates:"",tags:["etl","pipeline","schema"],responsibilities:["Schema design Supabase","Pipelines ETL","GitHub Actions","Sync Meta/RD/LinkedIn","Limpeza e normalização"]},
-  {id:"dani",name:"Dani",role:"BI / Dados",area:"dados",color:"var(--blue)",scope:"Dashboards, SQL, cruzamento Meta+RD, relatórios, lead scoring",skills:[],reports:"Bruno",validates:"",tags:["bi","dashboard","sql"],responsibilities:["Dashboards","Queries SQL","Relatórios executivos","Cruzamento Meta+RD","Lead scoring"]},
-  {id:"lia",name:"Lia",role:"Nutrição de Leads",area:"nurturing",color:"var(--green)",scope:"Estratégia nurturing, lead scoring, segmentação, cadência",skills:[],reports:"Tati",validates:"Mel",tags:["nurturing","automação"],responsibilities:["Estratégia de nurturing","Lead scoring","Segmentação por estágio","Régua de relacionamento"]},
-  {id:"mel",name:"Mel",role:"E-mail / Automação",area:"nurturing",color:"var(--green)",scope:"E-mails RD Station, templates, deliverability, fluxos, A/B",skills:[],reports:"Lia",validates:"",tags:["e-mail","rd-station"],responsibilities:["Templates de e-mail","Implementação no RD","Deliverability","Fluxos de automação"]},
-  {id:"rick",name:"Rick",role:"Closer / Sales",area:"vendas",color:"var(--gold)",scope:"Scripts reunião, objeções, follow-up, playbook, win/loss",skills:[],reports:"Leo",validates:"",tags:["vendas","closer"],responsibilities:["Scripts de reunião","Mapeamento de objeções","Follow-up","Win/loss analysis"]},
-  {id:"juri",name:"Juri",role:"Compliance",area:"vendas",color:"var(--red)",scope:"CVM/ANBIMA/LGPD, disclaimers, revisão claims, PODER DE VETO",skills:[],reports:"Atlas",validates:"Vera, Theo, Helena, Mel",tags:["compliance","veto"],responsibilities:["Revisão CVM/ANBIMA","LGPD","Disclaimers obrigatórios","PODER DE VETO"]},
-  {id:"dev",name:"Dev",role:"Desenvolvedor",area:"conversao",color:"var(--teal)",scope:"HTML/CSS/JS, integração RD, GTM tags, deploy, scripts",skills:[],reports:"Gabi",validates:"",tags:["dev","front-end"],responsibilities:["Implementação de LPs","Integração RD Station","GTM tags","Deploy Cloudflare/GitHub Pages"]},
-  {id:"aura",name:"Aura",role:"Brand Awareness",area:"aquisicao",color:"var(--purple)",scope:"Mensuração de marca, brand tracking, MMM, mental availability, Share of Search, split brand/activation",skills:["mensuracao-avancada"],reports:"Tati",validates:"Cris (split budget)",tags:["brand","awareness","skill-1"],responsibilities:["Brand Score (5 perguntas recorrente)","Share of Search semanal (proxy de brand health)","Category Entry Points (CEPs) da Boost","Distinctive Brand Assets (DAG grid)","Split brand building vs activation (Binet & Field)","Diagnóstico plateau de performance","MMM — atribuição brand-to-revenue","Auditoria criativos (right-brain Orlando Wood)","Conectar métricas de marca a resultados de negócio","Monitorar mental availability e salience"]}
+  {id:"atlas-orq",name:"Atlas",role:"Orquestrador Mestre",color:"var(--gold)",scope:"Orquestra demandas, delega, monitora status, sincroniza squads",tags:["orquestrador"],reports:"User",validates:"Todos",responsibilities:["Recebe toda demanda do user","Decide qual agente executa","Garante validacao cruzada","Consolida status"]},
+  {id:"atlas-seo",name:"Atlas SEO",role:"SEO/GEO Strategist",color:"var(--teal)",scope:"SEO tecnico, GEO (AI Overviews), content strategy, schema, Core Web Vitals, 15 disciplinas",tags:["seo","geo","tecnico"],reports:"Atlas",validates:"Theo, Dev",responsibilities:["Auditoria tecnica completa","GEO (visibilidade em AI)","Schema markup","Content strategy (Hub & Spoke)","Core Web Vitals","Keyword research","Competitor analysis"]},
+  {id:"tati",name:"Tati",role:"CMO",color:"var(--blue)",scope:"Posicionamento, mix de canais, diretrizes de comunicacao",tags:["estrategia"],reports:"Atlas",validates:"Leo, Nina, Cris",responsibilities:["Visao macro de marketing","Posicionamento da marca","Mix de canais"]},
+  {id:"leo",name:"Leo",role:"Estrategista Comercial",color:"var(--blue)",scope:"Pricing, funil de venda, ofertas, posicionamento competitivo",tags:["estrategia","vendas"],reports:"Tati",validates:"Rick",responsibilities:["Estrategia de pricing","Design do funil","Unit economics"]},
+  {id:"nina",name:"Nina",role:"Pesquisa de Mercado",color:"var(--purple)",scope:"ICP, concorrentes, tendencias, validacao de hipoteses",tags:["pesquisa","icp"],reports:"Tati",validates:"",responsibilities:["Pesquisa de ICP","Analise de concorrentes","Tendencias de mercado"]},
+  {id:"gabi",name:"Gabi",role:"Product Manager",color:"var(--blue)",scope:"Roadmap produto digital, requisitos, Definition of Done",tags:["produto"],reports:"Atlas",validates:"Dev, Rafa",responsibilities:["Roadmap digital","Priorizacao","Definition of Done"]},
+  {id:"cris",name:"Cris",role:"Trafego / Media Buyer",color:"var(--green)",scope:"Media buying Meta/Google/LinkedIn, budget, lances, segmentacao, escala",tags:["midia","meta-ads"],reports:"Tati",validates:"",responsibilities:["Media buying","Gestao de budget","Segmentacao","Upload campanhas"]},
+  {id:"bruno",name:"Bruno",role:"Performance",color:"var(--green)",scope:"Atribuicao, incrementalidade, CPL/ROAS, analise de metricas",tags:["performance"],reports:"Tati",validates:"Rex, Dani",responsibilities:["Analise de metricas","Atribuicao","Otimizacao","Recomendacoes"]},
+  {id:"rex",name:"Rex",role:"Kill Rules",color:"var(--orange)",scope:"Regras kill/scale, alertas, framework de decisao (Mandali, Hubbard)",tags:["kill-rules"],reports:"Bruno",validates:"",responsibilities:["Kill rules automaticas","Alertas de corte","Decisao pausar/escalar"]},
+  {id:"zeca",name:"Zeca",role:"Hooks",color:"var(--orange)",scope:"Hooks video/copy, pattern interrupts, retencao 3s",tags:["hooks","criativo"],reports:"Helena",validates:"",responsibilities:["Hooks primeiros 3s","Pattern interrupts","A/B de aberturas"]},
+  {id:"helena",name:"Helena",role:"Diretora Criativa",color:"var(--purple)",scope:"Quality gate 15 pontos, brand consistency, validacao visual",tags:["brand","quality-gate"],reports:"Tati",validates:"Vera, Rafa, Zeca, Max",responsibilities:["Quality gate 15 pontos","Brand consistency","Validacao visual","Briefing pre-producao"]},
+  {id:"vera",name:"Vera",role:"Copywriter",color:"var(--purple)",scope:"Copy ads, LPs, e-mails, headlines, CTAs (4 livros + Icaro + Schwartz)",tags:["copy","ads"],reports:"Helena",validates:"",responsibilities:["Copy de ads","Copy de LPs e e-mails","Headlines e CTAs","Checklist 8 pontos"]},
+  {id:"max",name:"Max",role:"Redator Financeiro Elite",color:"var(--purple)",scope:"E-books, artigos, newsletters, whitepapers, analises, roteiros video",tags:["redacao","financas"],reports:"Helena",validates:"",responsibilities:["E-books e whitepapers","Artigos de mercado","Scripts de video","Conteudo regulatorio"]},
+  {id:"theo",name:"Theo",role:"Conteudo / SEO",color:"var(--purple)",scope:"Conteudo organico, blog, YouTube, SEO on-page",tags:["conteudo","seo"],reports:"Atlas SEO",validates:"",responsibilities:["Blog posts","YouTube content","SEO on-page"]},
+  {id:"otto",name:"Otto",role:"CRO",color:"var(--teal)",scope:"Testes A/B, analise funil, invalidacao de hipoteses",tags:["cro"],reports:"Gabi",validates:"",responsibilities:["Testes A/B","Analise de funil","Invalidacao de hipoteses"]},
+  {id:"rafa",name:"Rafa",role:"Designer UX/UI",color:"var(--teal)",scope:"UX de LPs, forms, quiz, dashboards, Track by Design",tags:["ux","design"],reports:"Gabi + Helena",validates:"",responsibilities:["Design de LPs","Diagramacao e-books","Track by Design"]},
+  {id:"tag",name:"Tag",role:"Rastreamento",color:"var(--red)",scope:"GTM web/SS, pixels, CAPI, GA4, cross-domain, UTMs",tags:["tracking","gtm"],reports:"Kai",validates:"",responsibilities:["GTM Server-Side","Meta Pixel + CAPI","UTMs","Prevencao Silent Deploys"]},
+  {id:"kai",name:"Kai",role:"Auditoria",color:"var(--red)",scope:"Auditoria tags, UTMs, taxonomia, QA eventos, PODER DE BLOQUEIO",tags:["auditoria","bloqueio"],reports:"Atlas",validates:"Tag, Enzo, Dev",responsibilities:["Checklist data quality","Auditoria UTMs","QA de tagueamento","PODER DE BLOQUEIO"]},
+  {id:"enzo",name:"Enzo",role:"Engenheiro de Dados",color:"var(--orange)",scope:"ETL, schema Supabase, pipelines, GitHub Actions, sync APIs",tags:["etl","pipeline"],reports:"Bruno",validates:"",responsibilities:["Schema Supabase","Pipelines ETL","GitHub Actions","Sync Meta/RD/LinkedIn"]},
+  {id:"dani",name:"Dani",role:"BI / Dados",color:"var(--blue)",scope:"Dashboards, SQL, cruzamento Meta+RD, relatorios, lead scoring",tags:["bi","dashboard"],reports:"Bruno",validates:"",responsibilities:["Dashboards","Queries SQL","Relatorios executivos","Lead scoring"]},
+  {id:"lia",name:"Lia",role:"Nutricao de Leads",color:"var(--green)",scope:"Estrategia nurturing, lead scoring, segmentacao, cadencia",tags:["nurturing"],reports:"Tati",validates:"Mel",responsibilities:["Estrategia de nurturing","Lead scoring","Regua de relacionamento"]},
+  {id:"mel",name:"Mel",role:"E-mail / Automacao",color:"var(--green)",scope:"E-mails RD Station, templates, deliverability, fluxos",tags:["e-mail","rd-station"],reports:"Lia",validates:"",responsibilities:["Templates de e-mail","Implementacao no RD","Fluxos de automacao"]},
+  {id:"rick",name:"Rick",role:"Closer / Sales",color:"var(--gold)",scope:"Scripts reuniao, objecoes, follow-up, playbook",tags:["vendas","closer"],reports:"Leo",validates:"",responsibilities:["Scripts de reuniao","Follow-up","Win/loss analysis"]},
+  {id:"juri",name:"Juri",role:"Compliance",color:"var(--red)",scope:"CVM/ANBIMA/LGPD, disclaimers, revisao claims, PODER DE VETO",tags:["compliance","veto"],reports:"Atlas",validates:"Vera, Max, Helena, Mel",responsibilities:["Revisao CVM/ANBIMA","LGPD","Disclaimers","PODER DE VETO"]},
+  {id:"dev",name:"Dev",role:"Desenvolvedor",color:"var(--teal)",scope:"HTML/CSS/JS, integracao RD, GTM tags, deploy Cloudflare/GitHub",tags:["dev","front-end"],reports:"Gabi",validates:"",responsibilities:["Implementacao de LPs","Integracao RD","Deploy"]},
+  {id:"aura",name:"Aura",role:"Brand Awareness",color:"var(--purple)",scope:"Mensuracao de marca, MMM, Share of Search, split brand/activation",tags:["brand","awareness"],reports:"Tati",validates:"Cris (split budget)",responsibilities:["Brand Score","Share of Search","Category Entry Points","Split brand vs activation"]},
+  {id:"greg",name:"Greg",role:"Google Ads + YouTube Ads",color:"var(--green)",scope:"Search, Display, YouTube, Performance Max, compliance Google",tags:["google-ads","youtube"],reports:"Cris",validates:"",responsibilities:["Campanhas Google Ads","YouTube Ads","Performance Max","Compliance Google"]}
 ];
 
-function renderAgents(filter) {
-  const grid = document.getElementById('agentGrid');
-  let filtered = agents;
-  if (filter && filter !== 'all') {
-    if (filter === 'skill1') filtered = agents.filter(a => a.skills.includes('mensuracao-avancada'));
-    else if (filter === 'skill2') filtered = agents.filter(a => a.skills.includes('ux-analytics'));
-    else filtered = agents.filter(a => a.area === filter);
+const workflows = [
+  {
+    id:"revisar-criativos",
+    icon:"🎨",
+    label:"Revisar Criativos",
+    desc:"Quais copys e criativos estao prontos?",
+    agents:["helena","vera","max","juri","rafa","zeca"],
+    title:"Fluxo: Revisao de Criativos",
+    subdesc:"Helena lidera a revisao. Vera valida copy, Max valida conteudo financeiro, Juri checa compliance, Rafa valida visual, Zeca valida hooks.",
+    steps:[
+      {agent:"Helena",action:"Quality gate 15 pontos (brand + mensagem + craft)","gate":true},
+      {agent:"Vera",action:"Valida copy (Schwartz, Icaro, 4 livros, checklist 8 pontos)"},
+      {agent:"Max",action:"Valida dados financeiros, precisao tecnica, tom"},
+      {agent:"Juri",action:"Compliance CVM/ANBIMA, disclaimers","gate":true},
+      {agent:"Rafa",action:"Valida visual, safe zones, contraste, mobile-first"},
+      {agent:"Zeca",action:"Valida hooks (primeiros 3 segundos)"}
+    ]
+  },
+  {
+    id:"criar-campanha",
+    icon:"🚀",
+    label:"Criar Campanha",
+    desc:"Do zero ao Meta Ads",
+    agents:["nina","leo","vera","zeca","helena","juri","rafa","tag","kai","cris","rex","bruno"],
+    title:"Fluxo: Criar Campanha Nova",
+    subdesc:"12 etapas com validacao cruzada. Helena aprova criativo, Juri tem poder de veto, Kai pode bloquear se tracking estiver errado.",
+    steps:[
+      {agent:"Nina",action:"Pesquisa ICP e mercado"},
+      {agent:"Leo",action:"Estrategia comercial e posicionamento"},
+      {agent:"Vera",action:"Escreve copy"},
+      {agent:"Zeca",action:"Valida hooks (3 segundos)","validate":true},
+      {agent:"Helena",action:"Aprova criativo (quality gate 15 pontos)","gate":true},
+      {agent:"Juri",action:"Compliance check (PODER DE VETO)","gate":true},
+      {agent:"Rafa",action:"Design visual"},
+      {agent:"Tag",action:"Implementa tracking (GTM, UTMs, pixel)"},
+      {agent:"Kai",action:"Auditoria data quality (PODER DE BLOQUEIO)","gate":true},
+      {agent:"Cris",action:"Sobe campanha no Meta Ads"},
+      {agent:"Rex",action:"Configura kill rules"},
+      {agent:"Bruno",action:"Monitora performance"}
+    ]
+  },
+  {
+    id:"analisar-performance",
+    icon:"📊",
+    label:"Analisar Performance",
+    desc:"Metricas, CPL, qualificacao",
+    agents:["enzo","kai","dani","bruno","rex","cris"],
+    title:"Fluxo: Analise de Performance",
+    subdesc:"Enzo puxa dados, Kai valida qualidade, Dani monta dashboard, Bruno analisa e recomenda, Rex decide pausar/escalar.",
+    steps:[
+      {agent:"Enzo",action:"Puxa dados das APIs (Meta, RD, LinkedIn) e limpa"},
+      {agent:"Kai",action:"Valida qualidade dos dados","gate":true},
+      {agent:"Dani",action:"Monta dashboard / relatorio"},
+      {agent:"Bruno",action:"Analisa metricas e recomenda acoes"},
+      {agent:"Rex",action:"Aplica kill/scale rules"},
+      {agent:"Cris",action:"Executa ajustes no Meta Ads"}
+    ]
+  },
+  {
+    id:"produzir-conteudo",
+    icon:"📝",
+    label:"Produzir Conteudo",
+    desc:"E-books, artigos, roteiros",
+    agents:["nina","max","vera","helena","juri","rafa","atlas-seo"],
+    title:"Fluxo: Producao de Conteudo",
+    subdesc:"Max escreve, Vera refina copy, Helena aprova, Juri checa compliance, Rafa diagrama, Atlas SEO otimiza para busca.",
+    steps:[
+      {agent:"Nina",action:"Pesquisa de tema e dados de mercado"},
+      {agent:"Max",action:"Escreve conteudo (e-book, artigo, roteiro)"},
+      {agent:"Vera",action:"Refina copy, headlines, CTAs"},
+      {agent:"Helena",action:"Aprova tom e brand consistency","gate":true},
+      {agent:"Juri",action:"Compliance CVM/ANBIMA, fontes, disclaimers","gate":true},
+      {agent:"Rafa",action:"Diagramacao visual (PDF, LP, thumbnail)"},
+      {agent:"Atlas SEO",action:"Otimiza para SEO e GEO (schema, keywords, citabilidade)"}
+    ]
+  },
+  {
+    id:"seo-organico",
+    icon:"🔍",
+    label:"SEO / Trafego Organico",
+    desc:"Site, blog, schema, GEO",
+    agents:["atlas-seo","theo","dev","tag","kai","max"],
+    title:"Fluxo: SEO e Trafego Organico",
+    subdesc:"Atlas SEO lidera a estrategia. Theo produz conteudo, Dev implementa tecnico, Tag configura tracking, Kai audita.",
+    steps:[
+      {agent:"Atlas SEO",action:"Auditoria tecnica + keyword research + content brief"},
+      {agent:"Max",action:"Escreve artigo otimizado para SEO + GEO"},
+      {agent:"Theo",action:"Publica no blog, configura on-page (title, meta, H-tags)"},
+      {agent:"Dev",action:"Implementa schema JSON-LD, robots.txt, performance"},
+      {agent:"Tag",action:"Configura tracking (GA4, events, Search Console)"},
+      {agent:"Kai",action:"Auditoria de indexacao e data quality","gate":true}
+    ]
+  },
+  {
+    id:"landing-pages",
+    icon:"🖥️",
+    label:"Landing Pages",
+    desc:"Criar ou otimizar LPs",
+    agents:["vera","helena","rafa","dev","tag","kai","otto","juri"],
+    title:"Fluxo: Landing Pages",
+    subdesc:"Da copy ao deploy, com tracking e CRO.",
+    steps:[
+      {agent:"Vera",action:"Escreve copy da LP (headline, body, CTA)"},
+      {agent:"Helena",action:"Aprova copy e briefing visual","gate":true},
+      {agent:"Juri",action:"Compliance disclaimers","gate":true},
+      {agent:"Rafa",action:"Design UX/UI (Track by Design)"},
+      {agent:"Dev",action:"Implementa HTML/CSS/JS, integracao RD"},
+      {agent:"Tag",action:"Tracking (GTM, pixel, CAPI, UTMs)"},
+      {agent:"Kai",action:"Auditoria data quality","gate":true},
+      {agent:"Otto",action:"CRO: testes A/B, analise de funil"}
+    ]
+  },
+  {
+    id:"email-nurturing",
+    icon:"📧",
+    label:"E-mail / Nurturing",
+    desc:"Fluxos, automacao, RD Station",
+    agents:["lia","vera","helena","mel","juri","dani","rick"],
+    title:"Fluxo: E-mail e Nurturing",
+    subdesc:"Lia define estrategia, Vera escreve, Mel implementa no RD, Juri valida LGPD.",
+    steps:[
+      {agent:"Lia",action:"Define estrategia e cadencia"},
+      {agent:"Vera",action:"Escreve copy do e-mail"},
+      {agent:"Helena",action:"Valida tom e brand","validate":true},
+      {agent:"Mel",action:"Implementa no RD Station (template, fluxo, automacao)"},
+      {agent:"Juri",action:"Valida LGPD e opt-out","gate":true},
+      {agent:"Dani",action:"Monitora metricas (open rate, CTR, conversao)"},
+      {agent:"Rick",action:"Follow-up dos leads quentes"}
+    ]
+  },
+  {
+    id:"dados-relatorios",
+    icon:"📈",
+    label:"Dados / Relatorios",
+    desc:"Dashboards, SQL, exports",
+    agents:["enzo","kai","dani","bruno"],
+    title:"Fluxo: Dados e Relatorios",
+    subdesc:"Pipeline de dados: Enzo puxa e limpa, Kai valida, Dani visualiza, Bruno analisa.",
+    steps:[
+      {agent:"Enzo",action:"Puxa dados APIs, ETL, sync Supabase"},
+      {agent:"Kai",action:"Valida qualidade e consistencia","gate":true},
+      {agent:"Dani",action:"Monta dashboard / relatorio HTML"},
+      {agent:"Bruno",action:"Analisa e gera recomendacoes"}
+    ]
+  },
+  {
+    id:"vendas-reuniao",
+    icon:"🤝",
+    label:"Vendas / Reuniao",
+    desc:"Scripts, objecoes, follow-up",
+    agents:["leo","rick","lia","nina"],
+    title:"Fluxo: Vendas e Reuniao",
+    subdesc:"Leo define estrategia, Rick executa, Lia faz follow-up.",
+    steps:[
+      {agent:"Nina",action:"Briefing do lead (perfil, patrimonio, historico)"},
+      {agent:"Leo",action:"Estrategia comercial e posicionamento da oferta"},
+      {agent:"Rick",action:"Conduz reuniao (script, objecoes, fechamento)"},
+      {agent:"Lia",action:"Follow-up pos-reuniao e nutricao"}
+    ]
   }
-  grid.innerHTML = filtered.map(a => `
-    <div class="agent-card" data-id="${a.id}" onclick="showDetail('${a.id}')">
+];
+
+// ── RENDER TASKS ──────────────────────────────────────────────────────
+function renderTasks() {
+  const grid = document.getElementById('taskGrid');
+  grid.innerHTML = workflows.map(w => `
+    <button class="task-btn" data-wf="${w.id}" onclick="selectWorkflow('${w.id}')">
+      <span class="task-icon">${w.icon}</span>
+      <span class="task-label">${w.label}<small>${w.desc}</small></span>
+      <span class="task-count">${w.agents.length}</span>
+    </button>
+  `).join('');
+}
+
+// ── SELECT WORKFLOW ───────────────────────────────────────────────────
+function selectWorkflow(id) {
+  const wf = workflows.find(w => w.id === id);
+  if (!wf) return;
+
+  // Toggle buttons
+  document.querySelectorAll('.task-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-wf="${id}"]`)?.classList.add('active');
+
+  // Show workflow panel
+  const panel = document.getElementById('workflowPanel');
+  panel.className = 'workflow-panel visible';
+  panel.innerHTML = `
+    <h2>${wf.title}</h2>
+    <div class="wf-desc">${wf.subdesc}</div>
+    <div class="workflow-steps">
+      ${wf.steps.map((s, i) => `
+        <div class="workflow-step">
+          <div class="step-num">${i + 1}</div>
+          <span class="step-agent">${s.agent}</span>
+          <span class="step-action">${s.gate ? '<span class="gate">'+s.action+'</span>' : s.validate ? '<span class="validate">'+s.action+'</span>' : s.action}</span>
+        </div>
+      `).join('')}
+    </div>
+    <div class="cmd-box" onclick="copyCmd(this)" style="margin-top:16px">
+      <span class="cmd-comment"># Acionar este fluxo</span><br>
+      @atlas ${wf.label.toLowerCase()}: ${wf.steps.map(s => '@' + s.agent.toLowerCase().replace(' ','-')).join(' → ')}
+    </div>
+  `;
+
+  // Highlight agents
+  renderAgentsForWorkflow(wf);
+  document.getElementById('detailPanel').className = 'detail-panel';
+}
+
+// ── RENDER AGENTS ─────────────────────────────────────────────────────
+function renderAgentsForWorkflow(wf) {
+  const container = document.getElementById('agentContainer');
+  const involvedIds = wf.agents;
+  const stepMap = {};
+  wf.steps.forEach((s, i) => {
+    const matchAgent = agents.find(a => a.name === s.agent || a.name === s.agent.replace('-',' '));
+    if (matchAgent) stepMap[matchAgent.id] = i + 1;
+  });
+
+  const involved = agents.filter(a => involvedIds.includes(a.id));
+  const others = agents.filter(a => !involvedIds.includes(a.id));
+
+  container.innerHTML = `
+    <div class="agent-section-title visible">Agentes envolvidos neste fluxo (${involved.length})</div>
+    <div class="agent-grid">${involved.map(a => renderCard(a, true, stepMap[a.id])).join('')}</div>
+    <div class="agent-section-title visible" style="color:var(--dim)">Demais agentes</div>
+    <div class="agent-grid">${others.map(a => renderCard(a, false)).join('')}</div>
+  `;
+}
+
+function renderAllAgents() {
+  const container = document.getElementById('agentContainer');
+  container.innerHTML = `
+    <div class="agent-section-title visible">Todos os agentes (${agents.length})</div>
+    <div class="agent-grid">${agents.map(a => renderCard(a, false)).join('')}</div>
+  `;
+}
+
+function renderCard(a, highlight, step) {
+  return `
+    <div class="agent-card ${highlight ? 'highlight' : ''}" onclick="showDetail('${a.id}')">
+      ${step ? `<div class="step-badge">${step}</div>` : ''}
       <div class="agent-header">
         <div class="agent-avatar" style="background:${a.color}">${a.name[0]}</div>
         <div>
@@ -274,18 +409,20 @@ function renderAgents(filter) {
       <div class="agent-tags">
         ${a.tags.map(t => {
           let cls = 'tag-blue';
-          if(t.includes('skill')) cls='tag-teal';
           if(t==='veto'||t==='bloqueio') cls='tag-red';
           if(t==='quality-gate') cls='tag-purple';
           if(t==='orquestrador') cls='tag-gold';
+          if(t==='seo'||t==='geo'||t==='cro') cls='tag-teal';
+          if(t==='tracking'||t==='auditoria') cls='tag-red';
           return `<span class="tag ${cls}">${t}</span>`;
         }).join('')}
       </div>
       <div class="report-line">Reporta a: ${a.reports}${a.validates ? ' · Valida: '+a.validates : ''}</div>
     </div>
-  `).join('');
+  `;
 }
 
+// ── DETAIL ─────────────────────────────────────────────────────────────
 function showDetail(id) {
   const a = agents.find(x => x.id === id);
   if (!a) return;
@@ -300,34 +437,37 @@ function showDetail(id) {
     </div>
     <div class="detail-section">
       <h3>Report line</h3>
-      <ul><li>Reporta a: ${a.reports}</li>${a.validates ? `<li>Valida trabalho de: ${a.validates}</li>` : ''}</ul>
+      <ul><li>Reporta a: ${a.reports}</li>${a.validates ? `<li>Valida: ${a.validates}</li>` : ''}</ul>
     </div>
-    ${a.skills.length ? `<div class="detail-section"><h3>Skills</h3><ul>${a.skills.map(s => `<li>${s}</li>`).join('')}</ul></div>` : ''}
+    <div class="detail-section">
+      <h3>Participa dos fluxos</h3>
+      <ul>${workflows.filter(w => w.agents.includes(id)).map(w => `<li>${w.icon} ${w.label}`).join('')}</ul>
+    </div>
     <div class="detail-section">
       <h3>Como acionar</h3>
-      <div class="cmd-box" onclick="copyCmd(this)" style="margin-top:8px">@atlas acione @${a.id} [descreva a tarefa]</div>
+      <div class="cmd-box" onclick="copyCmd(this)">@atlas acione @${a.id.replace('-orq','').replace('-seo','-seo')} [descreva a tarefa]</div>
     </div>
   `;
   panel.scrollIntoView({behavior:'smooth',block:'start'});
-  document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('selected'));
-  document.querySelector(`[data-id="${id}"]`)?.classList.add('selected');
 }
 
-function filterAgents(filter) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  renderAgents(filter);
+function showAll() {
+  document.querySelectorAll('.task-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('workflowPanel').className = 'workflow-panel';
   document.getElementById('detailPanel').className = 'detail-panel';
+  renderAllAgents();
 }
 
 function copyCmd(el) {
-  const text = el.innerText.replace(/^#.*\n/gm, '').trim();
+  const text = el.innerText.replace(/^#.*\n/gm,'').trim();
   navigator.clipboard?.writeText(text);
-  el.style.borderColor = 'var(--green)';
-  setTimeout(() => el.style.borderColor = '', 1000);
+  el.style.borderColor='var(--green)';
+  setTimeout(() => el.style.borderColor='',1000);
 }
 
-renderAgents('all');
+// ── INIT ──────────────────────────────────────────────────────────────
+renderTasks();
+renderAllAgents();
 </script>
 </body>
 </html>
