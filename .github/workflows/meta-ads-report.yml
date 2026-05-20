@@ -1,0 +1,112 @@
+name: Meta Ads — Relatório Diário
+
+on:
+  schedule:
+    - cron: '0 12 * * 1-5'  # Seg-Sex 9h BRT (12h UTC)
+  workflow_dispatch: # Permite rodar manualmente
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Gerar relatório
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+        run: |
+          python3 << 'EOF'
+          import requests, json, os
+          from datetime import datetime
+
+          TOKEN = os.environ['META_ACCESS_TOKEN']
+          ACCOUNT = 'act_844208497068966'
+          BASE = 'https://graph.facebook.com/v19.0'
+
+          # Campanhas ativas
+          campaigns = {
+              '120249532341880651': 'C10 E-book 1 Portfólio',
+              '120249548737860651': 'C10 E-book 2 Regras Cripto',
+              '120245737303650651': 'IR Cripto LP',
+          }
+
+          report = []
+          report.append(f"📊 RELATÓRIO META ADS — {datetime.now().strftime('%d/%m/%Y')}")
+          report.append("=" * 50)
+
+          total_spend = 0
+          total_leads = 0
+
+          for cid, name in campaigns.items():
+              r = requests.get(f'{BASE}/{cid}/insights', params={
+                  'fields': 'campaign_name,spend,impressions,clicks,ctr,actions,cost_per_action_type,frequency',
+                  'date_preset': 'yesterday',
+                  'access_token': TOKEN,
+              })
+              data = r.json().get('data', [{}])
+              if not data:
+                  report.append(f"\n⏸️ {name}: sem dados ontem")
+                  continue
+              d = data[0]
+              spend = float(d.get('spend', 0))
+              leads = 0
+              cpl = 0
+              for a in d.get('actions', []):
+                  if 'lead' in a.get('action_type', ''):
+                      leads = int(a.get('value', 0))
+              for a in d.get('cost_per_action_type', []):
+                  if 'lead' in a.get('action_type', ''):
+                      cpl = float(a.get('value', 0))
+
+              total_spend += spend
+              total_leads += leads
+
+              cpl_str = f'R${cpl:.2f}' if cpl > 0 else '—'
+              freq = float(d.get('frequency', 0))
+              ctr = float(d.get('ctr', 0))
+
+              # Alertas
+              alerts = []
+              if cpl > 80 and leads > 0: alerts.append('⚠️ CPL alto')
+              if freq > 2.5: alerts.append('⚠️ Frequência alta')
+              if ctr < 0.5 and int(d.get('impressions', 0)) > 5000: alerts.append('⚠️ CTR baixo')
+              if spend > 150 and leads == 0: alerts.append('🔴 Gasto sem leads')
+
+              alert_str = ' | '.join(alerts) if alerts else '✅'
+
+              report.append(f"\n{'🟢' if not alerts else '⚠️'} {name}")
+              report.append(f"   Gasto: R${spend:.2f} | Leads: {leads} | CPL: {cpl_str}")
+              report.append(f"   CTR: {ctr:.2f}% | Freq: {freq:.1f} | {alert_str}")
+
+          report.append(f"\n{'=' * 50}")
+          report.append(f"TOTAL: R${total_spend:.2f} gasto | {total_leads} leads")
+          if total_leads > 0:
+              report.append(f"CPL médio: R${total_spend/total_leads:.2f}")
+
+          output = '\n'.join(report)
+          print(output)
+
+          # Salvar como artifact
+          with open('report.txt', 'w') as f:
+              f.write(output)
+          EOF
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: meta-ads-report
+          path: report.txt
+
+      - name: Enviar notificação
+        if: always()
+        run: |
+          echo "Relatório gerado. Verificar artifacts do workflow."
