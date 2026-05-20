@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Upload — Criativos Meta Ads</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,sans-serif;background:#0a0a14;color:#e0e0e0;line-height:1.7;padding:24px}
+.container{max-width:900px;margin:0 auto}
+h1{font-size:28px;color:#fff;margin-bottom:8px}
+.sub{color:#666;font-size:14px;margin-bottom:32px}
+h2{font-size:20px;color:#00b37e;margin:32px 0 16px;padding-top:24px;border-top:1px solid #1a1a2e}
+h3{font-size:16px;color:#fff;margin:20px 0 10px}
+p{font-size:14px;color:#a0a0c0;margin-bottom:12px}
+
+/* Visual diagram */
+.placement-diagram{background:#111122;border:2px solid #00b37e;border-radius:16px;padding:24px;margin:24px 0}
+.placement-row{display:flex;align-items:center;gap:16px;padding:16px;margin-bottom:8px;border-radius:10px;background:rgba(255,255,255,.03)}
+.placement-icon{font-size:32px;width:50px;text-align:center}
+.placement-info{flex:1}
+.placement-name{font-size:15px;font-weight:700;color:#fff}
+.placement-detail{font-size:12px;color:#888}
+.placement-file{font-family:monospace;font-size:12px;color:#00b37e;background:#0a0a14;padding:4px 10px;border-radius:6px;display:inline-block;margin-top:4px}
+.placement-size{background:#00b37e22;color:#00b37e;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;white-space:nowrap}
+.arrow{text-align:center;color:#00b37e;font-size:24px;margin:4px 0}
+
+/* Error vs correct */
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.comp-card{border-radius:12px;padding:20px;text-align:center}
+.comp-wrong{background:#1a0a0a;border:2px solid #ff4444}
+.comp-right{background:#0a1a14;border:2px solid #00b37e}
+.comp-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.comp-wrong .comp-label{color:#ff4444}
+.comp-right .comp-label{color:#00b37e}
+.comp-visual{display:flex;justify-content:center;gap:8px;margin-bottom:12px}
+.phone-frame{background:#222;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.phone-feed{width:80px;height:100px}
+.phone-story{width:60px;height:110px}
+.phone-frame .fill{background:#00b37e33;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#00b37e;font-weight:700}
+.phone-frame .bad{background:#ff444433;color:#ff4444}
+.comp-desc{font-size:12px;color:#888}
+
+/* Steps */
+.steps{counter-reset:step}
+.step{display:flex;gap:16px;margin-bottom:16px;align-items:flex-start}
+.step-num{counter-increment:step;width:32px;height:32px;background:#00b37e;color:#0a0a14;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.step-num::after{content:counter(step)}
+.step-content{flex:1}
+.step-title{font-weight:700;color:#fff;font-size:14px;margin-bottom:4px}
+.step-desc{font-size:13px;color:#a0a0c0}
+
+/* Table */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{background:#1a1a2e;color:#00b37e;padding:10px 12px;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+td{padding:10px 12px;border-bottom:1px solid #1a1a2e}
+.file-feed{color:#448AFF;font-family:monospace;font-size:11px}
+.file-story{color:#B388FF;font-family:monospace;font-size:11px}
+
+/* Checklist */
+.checklist{list-style:none;margin:16px 0}
+.checklist li{padding:8px 0;border-bottom:1px solid #1a1a2e;font-size:13px;display:flex;align-items:center;gap:10px}
+.check-box{width:18px;height:18px;border:2px solid #333;border-radius:4px;flex-shrink:0}
+
+/* Alert */
+.alert{background:#1a0a0a;border:1px solid #ff4444;border-radius:10px;padding:16px;margin:16px 0}
+.alert-title{color:#ff4444;font-weight:700;font-size:13px;margin-bottom:6px}
+.alert p{color:#ff8888;font-size:12px;margin:0}
+
+.tip{background:#0a1a14;border:1px solid #00b37e;border-radius:10px;padding:16px;margin:16px 0}
+.tip-title{color:#00b37e;font-weight:700;font-size:13px;margin-bottom:6px}
+.tip p{color:#88ffcc;font-size:12px;margin:0}
+
+@media(max-width:600px){.comparison{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Guia de Upload — Criativos Meta Ads</h1>
+<p class="sub">Como colocar a versão Feed e a versão Stories no lugar certo no Gerenciador de Anúncios</p>
+
+<!-- DIAGRAMA VISUAL -->
+<h2>Os dois slots de mídia</h2>
+<p>Na tela de criação do anúncio, a seção "Configuração do criativo" tem dois slots separados:</p>
+
+<div class="placement-diagram">
+  <div class="placement-row">
+    <span class="placement-icon">🖼️</span>
+    <div class="placement-info">
+      <div class="placement-name">Feeds</div>
+      <div class="placement-detail">Feed do Facebook, Feed do Instagram, Marketplace, Explorar</div>
+      <div class="placement-file">Ebook X - CRIATIVO Y.png</div>
+    </div>
+    <span class="placement-size">1080 × 1350 (4:5)</span>
+  </div>
+  <div class="arrow">↕</div>
+  <div class="placement-row">
+    <span class="placement-icon">📱</span>
+    <div class="placement-info">
+      <div class="placement-name">Stories, Status e Reels, Resultados da pesquisa</div>
+      <div class="placement-detail">Stories FB/IG, Reels FB/IG, Pesquisa IG</div>
+      <div class="placement-file">Ebook X - CRIATIVO Y - Storys.png</div>
+    </div>
+    <span class="placement-size">1080 × 1920 (9:16)</span>
+  </div>
+</div>
+
+<!-- ERRADO vs CERTO -->
+<h2>O que acontece se errar</h2>
+
+<div class="comparison">
+  <div class="comp-card comp-wrong">
+    <div class="comp-label">Errado — Só 1 imagem</div>
+    <div class="comp-visual">
+      <div class="phone-frame phone-feed"><div class="fill">Feed OK</div></div>
+      <div class="phone-frame phone-story"><div class="fill bad">Cortado!</div></div>
+    </div>
+    <div class="comp-desc">Se subir só a versão Feed, nos Stories ela fica com barras pretas ou cortada. Perde impacto e parece amador.</div>
+  </div>
+  <div class="comp-card comp-right">
+    <div class="comp-label">Correto — 2 imagens</div>
+    <div class="comp-visual">
+      <div class="phone-frame phone-feed"><div class="fill">Feed 4:5</div></div>
+      <div class="phone-frame phone-story"><div class="fill">Story 9:16</div></div>
+    </div>
+    <div class="comp-desc">Cada posicionamento recebe o criativo otimizado para ele. Feed ocupa máximo de tela, Stories usa tela cheia.</div>
+  </div>
+</div>
+
+<!-- PASSO A PASSO -->
+<h2>Passo a passo</h2>
+
+<div class="steps">
+  <div class="step"><div class="step-num"></div><div class="step-content"><div class="step-title">Ir ao nível de Anúncio</div><div class="step-desc">Na campanha, navegue até o anúncio específico. A configuração de criativos fica no nível do anúncio, não do conjunto.</div></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><div class="step-title">Clicar em "Editar" ao lado de "+ Mídia"</div><div class="step-desc">Na seção "Configuração do criativo", você verá os dois slots: Feeds e Stories.</div></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><div class="step-title">Upload no slot "Feeds"</div><div class="step-desc">Clique no slot Feeds → Adicionar mídia → Upload → selecione o arquivo <strong>SEM "Storys"</strong> no nome (ex: <code>Ebook 1 - CRIATIVO 1.png</code>).</div></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><div class="step-title">Upload no slot "Stories, Status e Reels"</div><div class="step-desc">Clique no slot Stories → Adicionar mídia → Upload → selecione o arquivo <strong>COM "Storys"</strong> no nome (ex: <code>Ebook 1 - CRIATIVO 1 - Storys.png</code>).</div></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><div class="step-title">Conferir preview</div><div class="step-desc">No painel direito, clique em "Prévia avançada" e alterne entre Feed e Stories. Confirme que cada um mostra o criativo correto.</div></div></div>
+  <div class="step"><div class="step-num"></div><div class="step-content"><div class="step-title">Preencher copy do anúncio</div><div class="step-desc">Texto primário + Headline + Descrição do link + CTA (Baixar) + URL de destino + UTMs.</div></div></div>
+</div>
+
+<div class="tip">
+  <div class="tip-title">Dica: Como identificar o arquivo</div>
+  <p><strong>Sem "Storys" no nome</strong> = versão Feed (4:5) → vai no slot "Feeds"<br>
+  <strong>Com "Storys" no nome</strong> = versão Stories (9:16) → vai no slot "Stories, Status e Reels"</p>
+</div>
+
+<!-- MAPEAMENTO -->
+<h2>Mapeamento de arquivos — E-book 1</h2>
+<table>
+  <tr><th>Anúncio</th><th>Slot Feeds (4:5)</th><th>Slot Stories (9:16)</th></tr>
+  <tr><td>Criativo 1 — Stress Test</td><td class="file-feed">Ebook 1 - CRIATIVO 1.png</td><td class="file-story">Ebook 1 - CRIATIVO 1 - Storys.png</td></tr>
+  <tr><td>Criativo 2 — Alocação</td><td class="file-feed">Ebook 1 - CRIATIVO 2.png</td><td class="file-story">Ebook 1 - CRIATIVO 2 - Storys.png</td></tr>
+  <tr><td>Criativo 3 — Tradicional</td><td class="file-feed">Ebook 1 - CRIATIVO 3.png</td><td class="file-story">Ebook 1 - CRIATIVO 3 - Storys.png</td></tr>
+  <tr><td>Criativo 4 — 7 Erros</td><td class="file-feed">Ebook 1 - CRIATIVO 4.png</td><td class="file-story">Ebook 1 - CRIATIVO 4 - Storys.png</td></tr>
+  <tr><td>Criativo 5 — Pergunta</td><td class="file-feed">Ebook 1 - CRIATIVO 5.png</td><td class="file-story">Ebook 1 - CRIATIVO 5 - Storys.png</td></tr>
+</table>
+
+<h2>Mapeamento — E-book 2</h2>
+<table>
+  <tr><th>Anúncio</th><th>Slot Feeds (4:5)</th><th>Slot Stories (9:16)</th></tr>
+  <tr><td>Criativo 1 — Novas Regras</td><td class="file-feed">Ebook 2 - CRIATIVO 1.png</td><td class="file-story">Ebook 2 - CRIATIVO 1 - Storys.png</td></tr>
+  <tr><td>Criativo 2 — Multas</td><td class="file-feed">Ebook 2 - CRIATIVO 2.png</td><td class="file-story">Ebook 2 - CRIATIVO 2 - Storys.png</td></tr>
+  <tr><td>Criativo 3 — Declara</td><td class="file-feed">Ebook 2 - CRIATIVO 3.png</td><td class="file-story">Ebook 2 - CRIATIVO 3 - Storys.png</td></tr>
+  <tr><td>Criativo 4 — Exterior</td><td class="file-feed">Ebook 2 - CRIATIVO 4.png</td><td class="file-story">Ebook 2 - CRIATIVO 4 - Storys.png</td></tr>
+</table>
+
+<h2>Mapeamento — E-book 3</h2>
+<table>
+  <tr><th>Anúncio</th><th>Slot Feeds (4:5)</th><th>Slot Stories (9:16)</th></tr>
+  <tr><td>Criativo 1 — 14% vs 7%</td><td class="file-feed">Ebook 3 - CRIATIVO 1.png</td><td class="file-story">Ebook 3 - CRIATIVO 1 - Storys.png</td></tr>
+  <tr><td>Criativo 2 — CDI R$70k</td><td class="file-feed">Ebook 3 - CRIATIVO 2.png</td><td class="file-story">Ebook 3 - CRIATIVO 2 - Storys.png</td></tr>
+  <tr><td>Criativo 3 — 6 Cenários</td><td class="file-feed">Ebook 3 - CRIATIVO 3.png</td><td class="file-story">Ebook 3 - CRIATIVO 3 - Storys.png</td></tr>
+  <tr><td>Criativo 4 — R$55k</td><td class="file-feed">Ebook 3 - CRIATIVO 4.png</td><td class="file-story">Ebook 3 - CRIATIVO 4 - Storys.png</td></tr>
+  <tr><td>Criativo 5 — Seu Banco</td><td class="file-feed">Ebook 3 - CRIATIVO 5.png</td><td class="file-story">Ebook 3 - CRIATIVO 5 - Storys.png</td></tr>
+</table>
+
+<!-- ERROS COMUNS -->
+<h2>Erros comuns a evitar</h2>
+
+<div class="alert">
+  <div class="alert-title">1. Subir só uma versão</div>
+  <p>Se colocar só o Feed, os Stories ficam com barras pretas. Se colocar só Stories, o Feed fica cortado. Sempre subir as duas versões.</p>
+</div>
+
+<div class="alert">
+  <div class="alert-title">2. Usar "Mídia relacionada" como slot principal</div>
+  <p>A seção "Mídia relacionada" que aparece embaixo é uma sugestão do Meta para adicionar MAIS variações ao Advantage+. Os slots corretos de posicionamento são os de cima: "Feeds" e "Stories, Status e Reels".</p>
+</div>
+
+<div class="alert">
+  <div class="alert-title">3. Inverter os arquivos</div>
+  <p>Arquivo sem "Storys" no nome = Feed. Arquivo com "Storys" = Stories. Se inverter, o criativo fica esticado/comprimido.</p>
+</div>
+
+<div class="alert">
+  <div class="alert-title">4. Não conferir a prévia</div>
+  <p>Sempre clicar em "Prévia avançada" (não apenas "Prévia do anúncio") para ver como fica em CADA posicionamento antes de publicar.</p>
+</div>
+
+<!-- CHECKLIST -->
+<h2>Checklist pré-upload (por anúncio)</h2>
+<ul class="checklist">
+  <li><span class="check-box"></span>Versão Feed (4:5) no slot "Feeds"</li>
+  <li><span class="check-box"></span>Versão Stories (9:16) no slot "Stories, Status e Reels"</li>
+  <li><span class="check-box"></span>Preview Feed conferido (Prévia avançada)</li>
+  <li><span class="check-box"></span>Preview Stories conferido (Prévia avançada)</li>
+  <li><span class="check-box"></span>Texto primário preenchido (copy)</li>
+  <li><span class="check-box"></span>Headline do anúncio preenchido</li>
+  <li><span class="check-box"></span>Descrição do link preenchida</li>
+  <li><span class="check-box"></span>CTA selecionado: "Baixar"</li>
+  <li><span class="check-box"></span>URL de destino = LP do e-book</li>
+  <li><span class="check-box"></span>UTMs configurados (source, medium, campaign, content)</li>
+  <li><span class="check-box"></span>Disclaimer no texto: "Investimentos em criptoativos envolvem riscos."</li>
+</ul>
+
+<p style="text-align:center;color:#444;font-size:11px;margin-top:40px">Boost Research — Guia de Upload Criativos Meta Ads — Mai/2026</p>
+
+</div>
+</body>
+</html>
