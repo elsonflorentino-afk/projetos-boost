@@ -1,4 +1,4 @@
-name: Meta Ads — Relatório Diário
+name: Meta Ads — Relatório Diário por E-mail
 
 on:
   schedule:
@@ -19,47 +19,55 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Gerar relatório
+      - name: Gerar relatório e enviar e-mail
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
-          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          NOTIFY_EMAIL: 'elsonflorentino@boostresearch.com.br'
         run: |
           python3 << 'EOF'
           import requests, json, os
           from datetime import datetime
 
-          TOKEN = os.environ['META_ACCESS_TOKEN']
+          TOKEN = os.environ.get('META_ACCESS_TOKEN', '')
+          SENDGRID_KEY = os.environ.get('SENDGRID_API_KEY', '')
+          EMAIL_TO = os.environ.get('NOTIFY_EMAIL', '')
           ACCOUNT = 'act_844208497068966'
           BASE = 'https://graph.facebook.com/v19.0'
 
-          # Campanhas ativas
           campaigns = {
               '120249532341880651': 'C10 E-book 1 Portfólio',
               '120249548737860651': 'C10 E-book 2 Regras Cripto',
               '120245737303650651': 'IR Cripto LP',
           }
 
-          report = []
-          report.append(f"📊 RELATÓRIO META ADS — {datetime.now().strftime('%d/%m/%Y')}")
-          report.append("=" * 50)
-
+          today = datetime.now().strftime('%d/%m/%Y')
           total_spend = 0
           total_leads = 0
+          alerts = []
+          rows_html = ''
 
           for cid, name in campaigns.items():
               r = requests.get(f'{BASE}/{cid}/insights', params={
-                  'fields': 'campaign_name,spend,impressions,clicks,ctr,actions,cost_per_action_type,frequency',
+                  'fields': 'campaign_name,spend,impressions,clicks,ctr,actions,cost_per_action_type,frequency,reach',
                   'date_preset': 'yesterday',
                   'access_token': TOKEN,
               })
-              data = r.json().get('data', [{}])
+              data = r.json().get('data', [])
               if not data:
-                  report.append(f"\n⏸️ {name}: sem dados ontem")
+                  rows_html += f'<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;">⏸️ {name}</td><td colspan="5" style="padding:8px 12px;border-bottom:1px solid #eee;color:#888;">Sem dados ontem</td></tr>'
                   continue
+
               d = data[0]
               spend = float(d.get('spend', 0))
+              impressions = int(d.get('impressions', 0))
+              clicks = int(d.get('clicks', 0))
+              ctr = float(d.get('ctr', 0))
+              freq = float(d.get('frequency', 0))
+              reach = int(d.get('reach', 0))
               leads = 0
               cpl = 0
+
               for a in d.get('actions', []):
                   if 'lead' in a.get('action_type', ''):
                       leads = int(a.get('value', 0))
@@ -69,35 +77,120 @@ jobs:
 
               total_spend += spend
               total_leads += leads
-
               cpl_str = f'R${cpl:.2f}' if cpl > 0 else '—'
-              freq = float(d.get('frequency', 0))
-              ctr = float(d.get('ctr', 0))
 
               # Alertas
-              alerts = []
-              if cpl > 80 and leads > 0: alerts.append('⚠️ CPL alto')
-              if freq > 2.5: alerts.append('⚠️ Frequência alta')
-              if ctr < 0.5 and int(d.get('impressions', 0)) > 5000: alerts.append('⚠️ CTR baixo')
-              if spend > 150 and leads == 0: alerts.append('🔴 Gasto sem leads')
+              row_alerts = []
+              if cpl > 80 and leads > 0:
+                  row_alerts.append('CPL alto')
+                  alerts.append(f'⚠️ {name}: CPL R${cpl:.2f} (acima de R$80)')
+              if freq > 2.5:
+                  row_alerts.append('Freq alta')
+                  alerts.append(f'⚠️ {name}: Frequência {freq:.1f} (acima de 2.5)')
+              if ctr < 0.5 and impressions > 5000:
+                  row_alerts.append('CTR baixo')
+                  alerts.append(f'⚠️ {name}: CTR {ctr:.2f}% (abaixo de 0.5%)')
+              if spend > 150 and leads == 0:
+                  row_alerts.append('Sem leads!')
+                  alerts.append(f'🔴 {name}: R${spend:.2f} gasto sem nenhum lead')
 
-              alert_str = ' | '.join(alerts) if alerts else '✅'
+              status_color = '#ff4444' if row_alerts else '#00b37e'
+              status_text = ', '.join(row_alerts) if row_alerts else '✅ OK'
 
-              report.append(f"\n{'🟢' if not alerts else '⚠️'} {name}")
-              report.append(f"   Gasto: R${spend:.2f} | Leads: {leads} | CPL: {cpl_str}")
-              report.append(f"   CTR: {ctr:.2f}% | Freq: {freq:.1f} | {alert_str}")
+              rows_html += f'''<tr>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;">{name}</td>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:right;">R${spend:.2f}</td>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">{leads}</td>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:right;">{cpl_str}</td>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">{ctr:.2f}%</td>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;color:{status_color};font-weight:600;">{status_text}</td>
+              </tr>'''
 
-          report.append(f"\n{'=' * 50}")
-          report.append(f"TOTAL: R${total_spend:.2f} gasto | {total_leads} leads")
-          if total_leads > 0:
-              report.append(f"CPL médio: R${total_spend/total_leads:.2f}")
+          avg_cpl = f'R${total_spend/total_leads:.2f}' if total_leads > 0 else '—'
 
-          output = '\n'.join(report)
-          print(output)
+          alerts_html = ''
+          if alerts:
+              alerts_html = '<div style="background:#fff3f3;border:1px solid #ff4444;border-radius:8px;padding:16px;margin:16px 0;">'
+              alerts_html += '<h3 style="color:#ff4444;margin:0 0 8px;">⚠️ Alertas</h3>'
+              for a in alerts:
+                  alerts_html += f'<p style="margin:4px 0;font-size:14px;">{a}</p>'
+              alerts_html += '</div>'
+          else:
+              alerts_html = '<div style="background:#f0fff4;border:1px solid #00b37e;border-radius:8px;padding:16px;margin:16px 0;"><p style="color:#00b37e;font-weight:600;margin:0;">✅ Todas as campanhas dentro dos parâmetros</p></div>'
 
-          # Salvar como artifact
+          html = f'''
+          <html>
+          <body style="font-family:Arial,sans-serif;background:#f4f4f4;padding:20px;">
+          <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden;">
+            <div style="background:#000;padding:24px;text-align:center;">
+              <img src="https://elsonflorentino-afk.github.io/projetos-boost/assets/logo-boost-white.png" alt="Boost Research" width="150">
+            </div>
+            <div style="background:#00b37e;height:3px;"></div>
+            <div style="padding:24px;">
+              <h2 style="color:#1a1a2e;margin:0 0 4px;">📊 Relatório Meta Ads</h2>
+              <p style="color:#888;font-size:13px;margin:0 0 20px;">{today} — Dados de ontem</p>
+
+              {alerts_html}
+
+              <table style="width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;">
+                <tr style="background:#1a1a2e;color:#fff;">
+                  <th style="padding:10px 12px;text-align:left;">Campanha</th>
+                  <th style="padding:10px 12px;text-align:right;">Gasto</th>
+                  <th style="padding:10px 12px;text-align:center;">Leads</th>
+                  <th style="padding:10px 12px;text-align:right;">CPL</th>
+                  <th style="padding:10px 12px;text-align:center;">CTR</th>
+                  <th style="padding:10px 12px;text-align:center;">Status</th>
+                </tr>
+                {rows_html}
+                <tr style="background:#f8f8f8;font-weight:700;">
+                  <td style="padding:10px 12px;">TOTAL</td>
+                  <td style="padding:10px 12px;text-align:right;">R${total_spend:.2f}</td>
+                  <td style="padding:10px 12px;text-align:center;">{total_leads}</td>
+                  <td style="padding:10px 12px;text-align:right;">{avg_cpl}</td>
+                  <td colspan="2"></td>
+                </tr>
+              </table>
+
+              <p style="color:#888;font-size:11px;margin-top:20px;">Relatório automático — Boost Growth Squad</p>
+            </div>
+          </div>
+          </body>
+          </html>
+          '''
+
+          # Imprimir no console
+          print(f"Relatório {today}: R${total_spend:.2f} gasto, {total_leads} leads, {len(alerts)} alertas")
+
+          # Enviar via SendGrid
+          if SENDGRID_KEY and EMAIL_TO:
+              subject = f"📊 Meta Ads {today}"
+              if alerts:
+                  subject += f" — {len(alerts)} alerta(s)"
+              else:
+                  subject += " — ✅ Tudo OK"
+
+              r = requests.post('https://api.sendgrid.com/v3/mail/send',
+                  headers={
+                      'Authorization': f'Bearer {SENDGRID_KEY}',
+                      'Content-Type': 'application/json',
+                  },
+                  json={
+                      'personalizations': [{'to': [{'email': EMAIL_TO}]}],
+                      'from': {'email': 'noreply@boostresearch.com.br', 'name': 'Boost Research'},
+                      'subject': subject,
+                      'content': [{'type': 'text/html', 'value': html}],
+                  })
+
+              if r.status_code == 202:
+                  print(f"✅ E-mail enviado para {EMAIL_TO}")
+              else:
+                  print(f"❌ Erro SendGrid: {r.status_code} {r.text[:200]}")
+          else:
+              print("⚠️ SENDGRID_API_KEY não configurada — e-mail não enviado")
+
+          # Salvar relatório como artifact
           with open('report.txt', 'w') as f:
-              f.write(output)
+              f.write(f"Relatório {today}: R${total_spend:.2f} gasto, {total_leads} leads, {len(alerts)} alertas")
           EOF
 
       - name: Upload report
@@ -105,8 +198,3 @@ jobs:
         with:
           name: meta-ads-report
           path: report.txt
-
-      - name: Enviar notificação
-        if: always()
-        run: |
-          echo "Relatório gerado. Verificar artifacts do workflow."
