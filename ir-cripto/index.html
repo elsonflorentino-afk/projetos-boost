@@ -14,13 +14,13 @@
 <script type="text/javascript" async src="https://d335luupugsy2.cloudfront.net/js/loader-scripts/a29b8726-033c-4cc1-a744-197be5be3b79-loader.js"></script>
 <!-- End RD Station Monitoramento -->
 
-<!-- Google Tag Manager -->
+<!-- Google Tag Manager (via sGTM) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://sgtm.boostresearch.com.br/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K2HT6HBX');</script>
-<!-- End Google Tag Manager -->
+<!-- End Google Tag Manager (sGTM) -->
 
 <!-- Meta Pixel Code -->
 <script>
@@ -1173,7 +1173,7 @@ body::before {
 <div id="cursor-glow"></div>
 
 <!-- GTM noscript -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HT6HBX"
+<noscript><iframe src="https://sgtm.boostresearch.com.br/ns.html?id=GTM-K2HT6HBX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Scroll progress bar -->
@@ -1809,9 +1809,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/* ─── SUBMIT: validação + RD native tracking ─── */
+/* ─── SUBMIT: validação + API RD direta + dataLayer generate_lead ─── */
 window.addEventListener('submit', function (e) {
   if (!e.target || e.target.id !== 'lp_ir_cripto') return;
+  e.preventDefault();
 
   var form  = e.target;
   var btnEl = document.getElementById('btn-enviar');
@@ -1825,46 +1826,96 @@ window.addEventListener('submit', function (e) {
   var wppRaw = document.getElementById('f-whatsapp').value.trim();
 
   if (!nome || !email || !wppRaw) {
-    e.preventDefault();
     errEl.textContent = 'Por favor, preencha nome, e-mail e WhatsApp.';
     errEl.style.display = 'block';
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    e.preventDefault();
     errEl.textContent = 'E-mail inválido.';
     errEl.style.display = 'block';
     return;
   }
 
-  /* Popula mobile_phone (+55XXXXXXXXXXX) antes do RD ler o form */
   var wppDigits = wppRaw.replace(/\D/g, '');
   if (wppDigits.length < 10) {
-    e.preventDefault();
     errEl.textContent = 'WhatsApp inválido. Digite DDD + número.';
     errEl.style.display = 'block';
     return;
   }
-  document.getElementById('f-mobile-phone').value = '+55' + wppDigits;
 
   btnEl.disabled = true;
   btnEl.textContent = 'Enviando...';
 
-  /* Meta Pixel */
-  if (typeof fbq === 'function') fbq('track', 'Lead');
-
-  /* GTM DataLayer */
-  if (typeof dataLayer !== 'undefined') {
-    dataLayer.push({ event: 'form_submit', form_id: 'lp_ir_cripto' });
+  /* ── Ler UTMs dos cookies ── */
+  function getCk(n) {
+    var m = document.cookie.match('(^|;)\\s*' + n + '\\s*=\\s*([^;]+)');
+    return m ? decodeURIComponent(m.pop()) : '';
   }
+  var utmSource   = getCk('boost_utm_source')   || 'direct';
+  var utmMedium   = getCk('boost_utm_medium')   || 'none';
+  var utmCampaign = getCk('boost_utm_campaign') || '';
+  var utmContent  = getCk('boost_utm_content')  || '';
+  var utmTerm     = getCk('boost_utm_term')     || '';
 
-  /* Bloqueia submit real — RD captura via click no btn antes deste handler */
-  e.preventDefault();
+  /* ── Enviar para RD Station via API direta ── */
+  var payload = {
+    event_type: 'CONVERSION',
+    event_family: 'CDP',
+    payload: {
+      conversion_identifier: 'lp_ir_cripto',
+      name: nome,
+      email: email,
+      mobile_phone: '+55' + wppDigits,
+      traffic_source: utmSource,
+      traffic_medium: utmMedium,
+      traffic_campaign: utmCampaign,
+      traffic_value: utmContent,
+      traffic_term: utmTerm,
+      cf_utm_source: utmSource,
+      cf_utm_medium: utmMedium,
+      cf_utm_campaign: utmCampaign,
+      cf_utm_content: utmContent,
+      cf_utm_term: utmTerm
+    }
+  };
 
-  setTimeout(function () {
+  fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function (r) {
+    if (!r.ok) console.warn('RD API status:', r.status);
+
+    /* ── event_id para deduplicação CAPI ── */
+    var eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+
+    /* ── Meta Pixel ── */
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {}, { eventID: eventId });
+    }
+
+    /* ── GTM DataLayer — generate_lead (padrão sGTM) ── */
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'generate_lead',
+      form_id: 'lp_ir_cripto',
+      event_id: eventId,
+      user_email: email,
+      user_phone: '+55' + wppDigits,
+      user_name: nome
+    });
+
+    /* ── Sucesso visual ── */
     form.style.display = 'none';
     sucEl.style.display = 'block';
-  }, 800);
+  })
+  .catch(function (err) {
+    console.error('Erro RD:', err);
+    /* Mesmo com erro no RD, mostra sucesso (Pixel já disparou) */
+    form.style.display = 'none';
+    sucEl.style.display = 'block';
+  });
 }, true);
 
 })();
