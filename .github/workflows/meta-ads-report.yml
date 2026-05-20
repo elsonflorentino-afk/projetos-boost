@@ -17,21 +17,23 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
 
       - name: Gerar relatório e enviar e-mail
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          GMAIL_CREDENTIALS: ${{ secrets.GMAIL_CREDENTIALS }}
+          GMAIL_TOKEN: ${{ secrets.GMAIL_TOKEN }}
           NOTIFY_EMAIL: 'elsonflorentino@boostresearch.com.br'
         run: |
-          python3 << 'EOF'
-          import requests, json, os
+          python3 << 'PYEOF'
+          import requests, json, os, base64
           from datetime import datetime
+          from email.mime.text import MIMEText
+          from email.mime.multipart import MIMEMultipart
 
           TOKEN = os.environ.get('META_ACCESS_TOKEN', '')
-          SENDGRID_KEY = os.environ.get('SENDGRID_API_KEY', '')
-          EMAIL_TO = os.environ.get('NOTIFY_EMAIL', '')
+          NOTIFY = os.environ.get('NOTIFY_EMAIL', '')
           ACCOUNT = 'act_844208497068966'
           BASE = 'https://graph.facebook.com/v19.0'
 
@@ -61,10 +63,8 @@ jobs:
               d = data[0]
               spend = float(d.get('spend', 0))
               impressions = int(d.get('impressions', 0))
-              clicks = int(d.get('clicks', 0))
               ctr = float(d.get('ctr', 0))
               freq = float(d.get('frequency', 0))
-              reach = int(d.get('reach', 0))
               leads = 0
               cpl = 0
 
@@ -79,7 +79,6 @@ jobs:
               total_leads += leads
               cpl_str = f'R${cpl:.2f}' if cpl > 0 else '—'
 
-              # Alertas
               row_alerts = []
               if cpl > 80 and leads > 0:
                   row_alerts.append('CPL alto')
@@ -118,7 +117,7 @@ jobs:
           else:
               alerts_html = '<div style="background:#f0fff4;border:1px solid #00b37e;border-radius:8px;padding:16px;margin:16px 0;"><p style="color:#00b37e;font-weight:600;margin:0;">✅ Todas as campanhas dentro dos parâmetros</p></div>'
 
-          html = f'''
+          html_body = f'''
           <html>
           <body style="font-family:Arial,sans-serif;background:#f4f4f4;padding:20px;">
           <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden;">
@@ -129,9 +128,7 @@ jobs:
             <div style="padding:24px;">
               <h2 style="color:#1a1a2e;margin:0 0 4px;">📊 Relatório Meta Ads</h2>
               <p style="color:#888;font-size:13px;margin:0 0 20px;">{today} — Dados de ontem</p>
-
               {alerts_html}
-
               <table style="width:100%;border-collapse:collapse;font-size:13px;margin:16px 0;">
                 <tr style="background:#1a1a2e;color:#fff;">
                   <th style="padding:10px 12px;text-align:left;">Campanha</th>
@@ -150,7 +147,6 @@ jobs:
                   <td colspan="2"></td>
                 </tr>
               </table>
-
               <p style="color:#888;font-size:11px;margin-top:20px;">Relatório automático — Boost Growth Squad</p>
             </div>
           </div>
@@ -158,40 +154,91 @@ jobs:
           </html>
           '''
 
-          # Imprimir no console
           print(f"Relatório {today}: R${total_spend:.2f} gasto, {total_leads} leads, {len(alerts)} alertas")
 
-          # Enviar via SendGrid
-          if SENDGRID_KEY and EMAIL_TO:
-              subject = f"📊 Meta Ads {today}"
-              if alerts:
-                  subject += f" — {len(alerts)} alerta(s)"
-              else:
-                  subject += " — ✅ Tudo OK"
+          # ── ENVIAR VIA GMAIL API ──
+          gmail_creds = os.environ.get('GMAIL_CREDENTIALS', '')
+          gmail_token = os.environ.get('GMAIL_TOKEN', '')
 
-              r = requests.post('https://api.sendgrid.com/v3/mail/send',
-                  headers={
-                      'Authorization': f'Bearer {SENDGRID_KEY}',
-                      'Content-Type': 'application/json',
-                  },
-                  json={
-                      'personalizations': [{'to': [{'email': EMAIL_TO}]}],
-                      'from': {'email': 'noreply@boostresearch.com.br', 'name': 'Boost Research'},
-                      'subject': subject,
-                      'content': [{'type': 'text/html', 'value': html}],
-                  })
+          if gmail_creds and gmail_token:
+              try:
+                  import json as j
+                  from google.oauth2.credentials import Credentials
+                  from googleapiclient.discovery import build
 
-              if r.status_code == 202:
-                  print(f"✅ E-mail enviado para {EMAIL_TO}")
-              else:
-                  print(f"❌ Erro SendGrid: {r.status_code} {r.text[:200]}")
+                  # Restaurar token do secret
+                  token_data = j.loads(gmail_token)
+                  creds = Credentials.from_authorized_user_info(token_data)
+
+                  service = build('gmail', 'v1', credentials=creds)
+
+                  subject = f"📊 Meta Ads {today}"
+                  if alerts:
+                      subject += f" — {len(alerts)} alerta(s)"
+                  else:
+                      subject += " — ✅ Tudo OK"
+
+                  msg = MIMEMultipart('alternative')
+                  msg['Subject'] = subject
+                  msg['From'] = 'elsonflorentino@boostresearch.com.br'
+                  msg['To'] = NOTIFY
+                  msg.attach(MIMEText(html_body, 'html'))
+
+                  raw = base64.urlsafe_b64encode(msg.as_bytes()).decode()
+                  service.users().messages().send(
+                      userId='me',
+                      body={'raw': raw}
+                  ).execute()
+
+                  print(f"✅ E-mail enviado para {NOTIFY} via Gmail API")
+              except Exception as e:
+                  print(f"❌ Erro Gmail API: {e}")
+                  # Fallback: SMTP simples
+                  try:
+                      import smtplib
+                      gmail_app_password = os.environ.get('GMAIL_APP_PASSWORD', '')
+                      gmail_sender = os.environ.get('GMAIL_SENDER', '')
+                      if gmail_app_password and gmail_sender:
+                          msg = MIMEMultipart('alternative')
+                          msg['Subject'] = subject
+                          msg['From'] = gmail_sender
+                          msg['To'] = NOTIFY
+                          msg.attach(MIMEText(html_body, 'html'))
+                          with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+                              server.login(gmail_sender, gmail_app_password)
+                              server.send_message(msg)
+                          print(f"✅ E-mail enviado via SMTP Gmail")
+                  except Exception as e2:
+                      print(f"❌ Erro SMTP: {e2}")
           else:
-              print("⚠️ SENDGRID_API_KEY não configurada — e-mail não enviado")
+              # Tentar SMTP com App Password (mais simples)
+              gmail_app_password = os.environ.get('GMAIL_APP_PASSWORD', '')
+              gmail_sender = os.environ.get('GMAIL_SENDER', '')
+              if gmail_app_password and gmail_sender:
+                  try:
+                      import smtplib
+                      subject = f"📊 Meta Ads {today}"
+                      if alerts:
+                          subject += f" — {len(alerts)} alerta(s)"
+                      else:
+                          subject += " — ✅ Tudo OK"
+                      msg = MIMEMultipart('alternative')
+                      msg['Subject'] = subject
+                      msg['From'] = gmail_sender
+                      msg['To'] = NOTIFY
+                      msg.attach(MIMEText(html_body, 'html'))
+                      with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+                          server.login(gmail_sender, gmail_app_password)
+                          server.send_message(msg)
+                      print(f"✅ E-mail enviado via SMTP Gmail")
+                  except Exception as e:
+                      print(f"❌ Erro SMTP: {e}")
+              else:
+                  print("⚠️ Nenhuma credencial Gmail configurada — e-mail não enviado")
 
-          # Salvar relatório como artifact
           with open('report.txt', 'w') as f:
               f.write(f"Relatório {today}: R${total_spend:.2f} gasto, {total_leads} leads, {len(alerts)} alertas")
-          EOF
+          PYEOF
 
       - name: Upload report
         uses: actions/upload-artifact@v4
