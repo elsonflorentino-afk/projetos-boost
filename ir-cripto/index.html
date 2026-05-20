@@ -415,6 +415,33 @@ body {
   box-shadow: 0 0 0 3px rgba(0,179,126,0.12), inset 0 0 12px rgba(0,179,126,0.04);
 }
 
+/* ── Toggle sim/não ── */
+.f-toggle { display: flex; gap: 8px; margin-top: 2px; }
+.toggle-btn {
+  padding: 8px 20px; border-radius: 4px; border: 1px solid var(--border);
+  background: transparent; color: var(--gray-2); font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s; font-family: var(--font);
+}
+.toggle-btn:hover { border-color: var(--green); color: var(--white); }
+.toggle-btn.active { background: var(--green); color: #000; border-color: var(--green); }
+.label-q { display: block; font-size: 11px; font-weight: 700; color: var(--gray-2);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.label-q small { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--gray); }
+.f-conditional { overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; }
+.f-select-wrap { position: relative; }
+.f-select-wrap select {
+  width: 100%; padding: 12px 14px; border-radius: 4px;
+  border: 1px solid var(--border); background: var(--bg2); color: var(--white);
+  font-size: 14px; font-family: var(--font); appearance: none;
+  -webkit-appearance: none; cursor: pointer;
+}
+.f-select-wrap select:focus { border-color: var(--green); outline: none;
+  box-shadow: 0 0 0 3px rgba(0,179,126,0.12); }
+.f-select-wrap::after {
+  content: '▾'; position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%); color: var(--gray); pointer-events: none;
+}
+
 /* ── Botão com shimmer de gradiente animado ── */
 .btn-submit {
   display: block; width: 100%;
@@ -1294,7 +1321,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <input type="tel" id="f-whatsapp" name="whatsapp" placeholder="+55 (11) 99999-9999" required autocomplete="tel">
         </div>
 
-        <!-- Hidden: mobile_phone populado pelo JS antes do RD ler o form -->
+        <!-- P1: Possui cripto? -->
+        <div class="f-group">
+          <label class="label-q">Você já possui investimentos em Bitcoin/Cripto?</label>
+          <div class="f-toggle">
+            <button type="button" class="toggle-btn" data-group="cripto" data-value="sim">Sim</button>
+            <button type="button" class="toggle-btn" data-group="cripto" data-value="não">Não</button>
+          </div>
+          <input type="hidden" id="f-tem-cripto" name="tem_cripto">
+        </div>
+
+        <!-- P1 condicional: patrimônio cripto -->
+        <div class="f-conditional" id="cond-cripto" style="display:none;">
+          <div class="f-group">
+            <label for="f-cripto">Qual seu patrimônio hoje em Bitcoin/Cripto?</label>
+            <div class="f-select-wrap">
+              <select id="f-cripto" name="patrimonio_cripto">
+                <option value="" disabled selected>Selecione uma faixa</option>
+                <option value="Até R$ 10 mil">Até R$ 10 mil</option>
+                <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
+                <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
+                <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
+                <option value="Acima de R$500 mil">Acima de R$500 mil</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2: Possui mercado tradicional? -->
+        <div class="f-group">
+          <label class="label-q">E você possui investimentos no mercado tradicional?<br><small>(Tesouro, CDI, ações, fundos)</small></label>
+          <div class="f-toggle">
+            <button type="button" class="toggle-btn" data-group="tradicional" data-value="sim">Sim</button>
+            <button type="button" class="toggle-btn" data-group="tradicional" data-value="não">Não</button>
+          </div>
+          <input type="hidden" id="f-tem-tradicional" name="tem_tradicional">
+        </div>
+
+        <!-- P2 condicional: patrimônio tradicional -->
+        <div class="f-conditional" id="cond-tradicional" style="display:none;">
+          <div class="f-group">
+            <label for="f-tradicional">Qual seu patrimônio investido no mercado tradicional?</label>
+            <div class="f-select-wrap">
+              <select id="f-tradicional" name="patrimonio_tradicional">
+                <option value="" disabled selected>Selecione uma faixa</option>
+                <option value="Até R$ 10 mil">Até R$ 10 mil</option>
+                <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
+                <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
+                <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
+                <option value="Acima de R$500 mil">Acima de R$500 mil</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hidden: mobile_phone -->
         <input type="hidden" id="f-mobile-phone" name="mobile_phone">
         <!-- UTMs ocultos -->
         <input type="hidden" id="f-utm-source"   name="utm_source">
@@ -1809,6 +1890,34 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+/* ─── TOGGLE SIM/NÃO + CONDICIONAL PATRIMÔNIO ─── */
+document.querySelectorAll('.toggle-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var group = this.getAttribute('data-group');
+    var value = this.getAttribute('data-value');
+    document.querySelectorAll('.toggle-btn[data-group="' + group + '"]').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    this.classList.add('active');
+    var hidden = document.getElementById('f-tem-' + group);
+    if (hidden) hidden.value = value;
+    var cond = document.getElementById('cond-' + group);
+    if (cond) {
+      if (value === 'sim') {
+        cond.style.display = 'block';
+        cond.style.maxHeight = '200px';
+        cond.style.opacity = '1';
+      } else {
+        cond.style.display = 'none';
+        cond.style.maxHeight = '0';
+        cond.style.opacity = '0';
+        var sel = cond.querySelector('select');
+        if (sel) sel.selectedIndex = 0;
+      }
+    }
+  });
+});
+
 /* ─── SUBMIT: validação + API RD direta + dataLayer generate_lead ─── */
 window.addEventListener('submit', function (e) {
   if (!e.target || e.target.id !== 'lp_ir_cripto') return;
@@ -1857,6 +1966,12 @@ window.addEventListener('submit', function (e) {
   var utmContent  = getCk('boost_utm_content')  || '';
   var utmTerm     = getCk('boost_utm_term')     || '';
 
+  /* ── Ler campos patrimônio ── */
+  var temCripto = (document.getElementById('f-tem-cripto') || {}).value || '';
+  var temTrad   = (document.getElementById('f-tem-tradicional') || {}).value || '';
+  var patCripto = (document.getElementById('f-cripto') || {}).value || '';
+  var patTrad   = (document.getElementById('f-tradicional') || {}).value || '';
+
   /* ── Enviar para RD Station via API direta ── */
   var payload = {
     event_type: 'CONVERSION',
@@ -1866,6 +1981,10 @@ window.addEventListener('submit', function (e) {
       name: nome,
       email: email,
       mobile_phone: '+55' + wppDigits,
+      cf_voce_ja_possui_investimentos_em_bitcoin_cripto: temCripto,
+      cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho: patCripto,
+      cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a: temTrad,
+      cf_qual_seu_patrimonio_investido_no_mercado_tradicional: patTrad,
       traffic_source: utmSource,
       traffic_medium: utmMedium,
       traffic_campaign: utmCampaign,
