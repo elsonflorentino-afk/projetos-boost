@@ -116,10 +116,10 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 <body>
 
 <h1>Boost Research — Painel Unificado de Agentes</h1>
-<p class="sub">39 agentes (29 squad + 10 AIOX) | 10 fluxos de trabalho | Knowledge Base BOOST.md | Boost Research</p>
+<p class="sub">40 agentes (29 squad + 11 AIOX) | 10 fluxos de trabalho | Knowledge Base BOOST.md | Boost Research</p>
 
 <div class="stats">
-  <div class="stat"><div class="sv" style="color:var(--teal)">39</div><div class="sl">Agentes</div></div>
+  <div class="stat"><div class="sv" style="color:var(--teal)">40</div><div class="sl">Agentes</div></div>
   <div class="stat"><div class="sv" style="color:var(--green)">10</div><div class="sl">Fluxos</div></div>
   <div class="stat"><div class="sv" style="color:var(--blue)">5</div><div class="sl">Squads</div></div>
   <div class="stat"><div class="sv" style="color:var(--red)">3</div><div class="sl">Gates</div></div>
@@ -177,7 +177,7 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 
 <div class="show-all"><button onclick="showAll()">Mostrar todos os agentes</button></div>
 
-<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Research v3.0 | 39 agentes (29 squad + 10 AIOX) | 10 fluxos | BOOST.md | 21/mai/2026</p>
+<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Research v3.0 | 40 agentes (29 squad + 11 AIOX) | 10 fluxos | BOOST.md | 21/mai/2026</p>
 
 <script>
 const squadAgents = [
@@ -220,7 +220,8 @@ const squadAgents = [
   {id:"alex",name:"Alex",role:"Analyst (@analyst)",color:"var(--blue)",scope:"Pesquisa tecnica, benchmarks, analise de ferramentas",tags:["aiox","pesquisa"],reports:"AIOX Master",validates:"",responsibilities:["Pesquisa tecnica","Comparar ferramentas","Benchmarks"],group:"aiox"},
   {id:"dara",name:"Dara",role:"Data Engineer (@data-engineer)",color:"var(--blue)",scope:"Database design, Supabase schema, migrations, RLS, queries",tags:["aiox","database"],reports:"Aria",validates:"",responsibilities:["Schema design","Migrations","RLS policies","Query optimization"],group:"aiox"},
   {id:"uma",name:"Uma",role:"UX Designer (@ux-design-expert)",color:"var(--blue)",scope:"UX/UI design, fluxos, wireframes, usabilidade",tags:["aiox","ux"],reports:"AIOX Master",validates:"",responsibilities:["UX flows","Wireframes","Usabilidade","Acessibilidade"],group:"aiox"},
-  {id:"gage",name:"Gage",role:"DevOps (@devops)",color:"var(--blue)",scope:"CI/CD, git push, GitHub Actions, deploy Cloudflare, EXCLUSIVO para push",tags:["aiox","devops","exclusivo"],reports:"AIOX Master",validates:"",responsibilities:["Git push (EXCLUSIVO)","GitHub Actions","Deploy","CI/CD pipelines"],group:"aiox"}
+  {id:"gage",name:"Gage",role:"DevOps (@devops)",color:"var(--blue)",scope:"CI/CD, git push, GitHub Actions, deploy Cloudflare, EXCLUSIVO para push",tags:["aiox","devops","exclusivo"],reports:"AIOX Master",validates:"",responsibilities:["Git push (EXCLUSIVO)","GitHub Actions","Deploy","CI/CD pipelines"],group:"aiox"},
+  {id:"aiox-master",name:"AIOX Master",role:"Orquestrador Framework (@aiox-master)",color:"var(--gold)",scope:"Governanca do framework AIOX, enforcement da Constitution, override de boundaries, mediacao entre agentes, executa qualquer task",tags:["aiox","orquestrador"],reports:"User",validates:"Todos AIOX",responsibilities:["Executa qualquer task diretamente","Enforcement constitucional","Override de boundaries","Mediacao de conflitos"],group:"aiox"}
 ];
 
 const agents = squadAgents;
