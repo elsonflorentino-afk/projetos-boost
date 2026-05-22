@@ -447,7 +447,7 @@ function selectWorkflow(id) {
     </div>
     <div class="cmd-box" onclick="copyCmd(this)" style="margin-top:16px">
       <span class="cmd-comment"># Acionar este fluxo</span><br>
-      @atlas ${wf.label.toLowerCase()}: ${wf.steps.map(s => '@' + s.agent.toLowerCase().replace(' ','-')).join(' → ')}
+      @nexus ${wf.label.toLowerCase()}: ${wf.steps.map(s => '@' + s.agent.toLowerCase().replace(' ','-')).join(' → ')}
     </div>
   `;
 
@@ -555,7 +555,7 @@ function showDetail(id) {
     </div>
     <div class="detail-section">
       <h3>Como acionar</h3>
-      <div class="cmd-box" onclick="copyCmd(this)">${a.group === 'aiox' ? '@'+a.role.match(/\(@(\w[\w-]*)\)/)?.[1]+' [descreva a tarefa]' : '@atlas acione @'+a.id.replace('-orq','').replace('-seo','-seo')+' [descreva a tarefa]'}</div>
+      <div class="cmd-box" onclick="copyCmd(this)">${a.group === 'aiox' ? '@'+a.role.match(/\(@(\w[\w-]*)\)/)?.[1]+' [descreva a tarefa]' : '@nexus acione @'+a.id.replace('-orq','').replace('-seo','-seo')+' [descreva a tarefa]'}</div>
     </div>
   `;
   panel.scrollIntoView({behavior:'smooth',block:'start'});
