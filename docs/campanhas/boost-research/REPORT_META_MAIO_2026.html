@@ -758,10 +758,12 @@
         </table>
       </div>
       <div class="insight-box" style="margin-top: 12px;">
-        <p><strong>Melhores dias:</strong> Quarta e Quinta (25 qualif cada = 36,8% do total juntos).</p>
-        <p><strong>Piores dias:</strong> Domingo (15) e Sabado/Terca (16 cada).</p>
-        <p><strong>Picos:</strong> 4-5h (24 leads = madrugada!), 13h (11) e 17h (12). Leads qualificados convertem de madrugada e no fim da tarde.</p>
-        <p><strong>Recomendacao Google Ads:</strong> Aumentar lances Qua-Qui e nos horarios 4-5h, 13h, 17h. Reduzir Dom.</p>
+        <p><strong>Melhores dias (qualificados):</strong> Quarta e Quinta (25 cada = 36,8% juntos).</p>
+        <p><strong>Melhor taxa de qualificacao:</strong> Sabado 8,0% (16/201) e Domingo 7,0% (15/215) — fim de semana converte melhor!</p>
+        <p><strong>Quinta:</strong> 7,4% taxa (25/338) — melhor dia util por taxa.</p>
+        <p><strong>Piores taxas:</strong> Sexta 0,9% e Quarta 1,0% — volume alto mas qualidade baixa.</p>
+        <p><strong>Picos horarios:</strong> 4-5h (24 qualif = madrugada!), 13h (11) e 17h (12).</p>
+        <p><strong>Recomendacao:</strong> Aumentar lances Qui-Sab e horarios 4-5h, 13h, 17h. Reduzir Sex (muito volume, pouca qualidade).</p>
       </div>
     </div>
   </div>
@@ -922,7 +924,7 @@ new Chart(document.getElementById('chartDiaSemana'), {
   });
 
   // 5. LINHA — Tendencia diaria
-  const dias = ['01','02','03','04','05','06','07','08','11','12','13','14','15','16','17','18','19'];
+  const dias = ['01 Qui','02 Sex','03 Sáb','04 Dom','05 Seg','06 Ter','07 Qua','08 Qui','11 Dom','12 Seg','13 Ter','14 Qua','15 Qui','16 Sex','17 Sáb','18 Dom','19 Seg'];
   const totalDia = [10,11,14,32,20,24,50,41,1,41,36,45,53,55,65,55,11];
   const qualifDia = [2,4,3,12,5,4,7,8,0,0,2,4,4,4,2,5,1];
   const taxaDia = [20.0,36.4,21.4,37.5,25.0,16.7,14.0,19.5,0,0,5.6,8.9,7.5,7.3,3.1,9.1,9.1];
@@ -930,7 +932,7 @@ new Chart(document.getElementById('chartDiaSemana'), {
   new Chart(document.getElementById('chartDiario'), {
     type: 'line',
     data: {
-      labels: dias.map(d => d + '/mai'),
+      labels: dias,
       datasets: [
         {
           label: 'Total leads',
