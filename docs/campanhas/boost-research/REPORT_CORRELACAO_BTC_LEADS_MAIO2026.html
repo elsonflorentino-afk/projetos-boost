@@ -928,5 +928,145 @@ new Chart(document.getElementById('chartComposition'), {
 })();
 </script>
 
+<!-- SEÇÃO ESTATÍSTICA -->
+<div class="container">
+
+<div class="card" style="margin-top:32px; border-left: 4px solid var(--teal);">
+  <h2 style="font-size:20px; margin-bottom:4px;">📊 Análise Estatística Formal</h2>
+  <p style="color:var(--gray); font-size:13px; margin-bottom:24px;">Pearson, Spearman, Regressão Linear — 17 dias, 564 leads, 67 qualificados</p>
+
+  <!-- Explicação dos conceitos -->
+  <div style="background:#f0faf9; border-radius:12px; padding:20px; margin-bottom:24px;">
+    <h3 style="font-size:15px; color:var(--dark); margin-bottom:12px;">🎓 O que significam esses números?</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:13px; line-height:1.7;">
+      <div>
+        <strong style="color:var(--teal);">R² (R-quadrado)</strong><br>
+        Mede <strong>quanto uma variável explica a outra</strong>. Vai de 0 a 1.<br>
+        • R² = 0.00 → BTC não explica nada dos leads<br>
+        • R² = 0.50 → BTC explica 50% da variação<br>
+        • R² = 1.00 → BTC explica 100% (correlação perfeita)<br>
+        <strong>Nosso R² = 0.001 → BTC explica apenas 0,1% dos leads.</strong>
+      </div>
+      <div>
+        <strong style="color:var(--teal);">p-value</strong><br>
+        Mede a <strong>probabilidade do resultado ser por acaso</strong>. Quanto menor, melhor.<br>
+        • p < 0.05 → resultado significativo (confiável) ✅<br>
+        • p < 0.01 → muito significativo ✅✅<br>
+        • p > 0.05 → pode ser acaso (não confiável) ❌<br>
+        <strong>Nosso p = 0.89 → 89% de chance de ser acaso.</strong>
+      </div>
+      <div>
+        <strong style="color:var(--teal);">r (Correlação de Pearson)</strong><br>
+        Mede a <strong>direção e força</strong> da relação linear. Vai de -1 a +1.<br>
+        • r = +1.0 → sobe junto (perfeito)<br>
+        • r = 0.0 → sem relação<br>
+        • r = -1.0 → um sobe, outro desce<br>
+        <strong>Nosso r = -0.04 → praticamente zero.</strong>
+      </div>
+      <div>
+        <strong style="color:var(--teal);">ρ (Correlação de Spearman)</strong><br>
+        Igual ao Pearson, mas <strong>não exige dados normais</strong>. Mais robusta para amostras pequenas.<br>
+        • Mesma escala: -1 a +1<br>
+        • Baseada em ranking (posições), não valores<br>
+        <strong>Nosso ρ = +0.11 → também sem correlação.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabela de resultados -->
+  <h3 style="font-size:15px; margin-bottom:12px;">Resultados dos Testes</h3>
+  <div style="overflow-x:auto;">
+    <table style="width:100%; border-collapse:collapse; font-size:13px;">
+      <thead>
+        <tr style="background:var(--dark); color:white;">
+          <th style="padding:10px 12px; text-align:left;">Teste</th>
+          <th style="padding:10px 12px; text-align:center;">r / ρ</th>
+          <th style="padding:10px 12px; text-align:center;">R²</th>
+          <th style="padding:10px 12px; text-align:center;">p-value</th>
+          <th style="padding:10px 12px; text-align:center;">Significativo?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:8px 12px;">Pearson: BTC preço × Total leads</td>
+          <td style="padding:8px 12px; text-align:center;">+0.311</td>
+          <td style="padding:8px 12px; text-align:center;">0.097</td>
+          <td style="padding:8px 12px; text-align:center;">0.225</td>
+          <td style="padding:8px 12px; text-align:center;"><span style="background:#fdecea; color:#e74c3c; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700;">NÃO</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:8px 12px;"><strong>Pearson: BTC preço × Qualificados</strong></td>
+          <td style="padding:8px 12px; text-align:center;"><strong>-0.036</strong></td>
+          <td style="padding:8px 12px; text-align:center;"><strong>0.001</strong></td>
+          <td style="padding:8px 12px; text-align:center;"><strong>0.891</strong></td>
+          <td style="padding:8px 12px; text-align:center;"><span style="background:#fdecea; color:#e74c3c; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700;">NÃO</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:8px 12px;">Pearson: BTC preço × Taxa qualif</td>
+          <td style="padding:8px 12px; text-align:center;">-0.358</td>
+          <td style="padding:8px 12px; text-align:center;">0.128</td>
+          <td style="padding:8px 12px; text-align:center;">0.159</td>
+          <td style="padding:8px 12px; text-align:center;"><span style="background:#fdecea; color:#e74c3c; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700;">NÃO</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:8px 12px;">Spearman: BTC preço × Qualificados</td>
+          <td style="padding:8px 12px; text-align:center;">+0.112</td>
+          <td style="padding:8px 12px; text-align:center;">—</td>
+          <td style="padding:8px 12px; text-align:center;">0.668</td>
+          <td style="padding:8px 12px; text-align:center;"><span style="background:#fdecea; color:#e74c3c; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700;">NÃO</span></td>
+        </tr>
+        <tr style="border-bottom:1px solid #eee;">
+          <td style="padding:8px 12px;">Pearson: BTC variação% × Qualif</td>
+          <td style="padding:8px 12px; text-align:center;">-0.193</td>
+          <td style="padding:8px 12px; text-align:center;">0.037</td>
+          <td style="padding:8px 12px; text-align:center;">0.474</td>
+          <td style="padding:8px 12px; text-align:center;"><span style="background:#fdecea; color:#e74c3c; padding:2px 10px; border-radius:10px; font-size:11px; font-weight:700;">NÃO</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Regressão -->
+  <div style="background:#fafafa; border-radius:12px; padding:20px; margin-top:20px;">
+    <h3 style="font-size:15px; margin-bottom:8px;">📈 Regressão Linear: BTC → Leads Qualificados</h3>
+    <p style="font-size:13px; color:var(--gray); margin-bottom:12px;">y = -0.000075x + 11.34 | R² = 0.001 | p = 0.891</p>
+    <p style="font-size:14px;"><strong>Traduzindo:</strong> cada +US$1.000 no preço do Bitcoin gera -0.07 leads qualificados. Ou seja: <strong>efeito zero</strong>. O preço do BTC não influencia a quantidade de leads qualificados.</p>
+  </div>
+
+  <!-- Análise por período -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px;">
+    <div style="background:#f0faf9; border-radius:12px; padding:20px;">
+      <h4 style="font-size:14px; color:var(--teal); margin-bottom:8px;">Semana 1 (antes da C9)</h4>
+      <p style="font-size:13px;">Dias 01-08/mai | r = +0.060 | p = 0.888</p>
+      <p style="font-size:13px;">Média: 5.6 qualif/dia | Taxa: 22.3%</p>
+      <p style="font-size:13px; color:var(--gray);">Mesmo sem C9, zero correlação com BTC.</p>
+    </div>
+    <div style="background:#fef4f4; border-radius:12px; padding:20px;">
+      <h4 style="font-size:14px; color:var(--red); margin-bottom:8px;">Semana 2+ (com C9 Frio)</h4>
+      <p style="font-size:13px;">Dias 11-19/mai | r = -0.059 | p = 0.880</p>
+      <p style="font-size:13px;">Média: 2.4 qualif/dia | Taxa: 6.1%</p>
+      <p style="font-size:13px; color:var(--gray);">Queda de qualidade = C9 Frio, não BTC.</p>
+    </div>
+  </div>
+
+  <!-- Conclusão -->
+  <div style="background:var(--dark); color:white; border-radius:12px; padding:24px; margin-top:20px;">
+    <h3 style="font-size:16px; color:var(--teal); margin-bottom:12px;">🎯 Conclusão</h3>
+    <p style="font-size:14px; line-height:1.8; margin-bottom:12px;">
+      <strong>Não existe correlação estatística entre o preço do Bitcoin e a quantidade de leads qualificados.</strong>
+      Todos os 5 testes retornaram p-value > 0.05 (não significativo). O R² de 0.001 confirma que o BTC explica apenas 0.1% da variação.
+    </p>
+    <p style="font-size:14px; line-height:1.8; margin-bottom:12px;">
+      <strong>O que realmente impacta a qualidade dos leads é a segmentação das campanhas:</strong>
+      IR Cripto (público broad + e-book) gera 3.7% de qualificação. C9 Frio (Advantage+) gera 0.2%. A diferença é de 18x — muito maior que qualquer variação do BTC.
+    </p>
+    <p style="font-size:13px; color:var(--gray);">
+      ⚠️ Limitações: amostra pequena (17 dias), BTC variou apenas 5% (US$96-102k), budget não controlado entre dias. Para conclusão definitiva seria necessário 90+ dias com variação >20% no BTC.
+    </p>
+  </div>
+</div>
+
+</div>
+
 </body>
 </html>
