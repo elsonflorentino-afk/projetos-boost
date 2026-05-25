@@ -80,9 +80,10 @@ img{max-width:100%;height:auto;}
 .nav-cta:hover{filter:brightness(0.9);transform:translateY(-1px);}
 
 /* ===== HERO ===== */
-.hero{width:100%;min-height:100vh;display:flex;align-items:center;position:relative;padding:160px 0 120px;background:url('andre-hero.jpg') no-repeat right 20% top;background-size:auto 100%;}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to right, rgba(13,17,23,0.85) 0%, rgba(13,17,23,0.4) 50%, rgba(13,17,23,0.2) 100%), linear-gradient(to bottom, transparent 0%, transparent 60%, #0D1117 100%);z-index:0;}
-.hero-content{text-align:center;max-width:720px;margin:0 auto;position:relative;z-index:1;}
+.hero{width:100%;min-height:100vh;display:flex;align-items:center;position:relative;padding:160px 0 120px;overflow:hidden;}
+.hero-photo{position:absolute;right:-40px;bottom:0;height:90%;width:auto;z-index:0;opacity:0.85;pointer-events:none;}
+@media(max-width:768px){.hero-photo{right:-80px;height:70%;opacity:0.5;}}
+.hero-content{text-align:left;max-width:580px;margin:0;position:relative;z-index:1;}
 .hero-label{
   display:inline-block;
   font-size:11px;
@@ -105,9 +106,7 @@ img{max-width:100%;height:auto;}
   color:var(--text-secondary);
   line-height:1.7;
   margin-bottom:40px;
-  max-width:580px;
-  margin-left:auto;
-  margin-right:auto;
+  max-width:480px;
 }
 .availability{
   margin-top:20px;
@@ -115,7 +114,7 @@ img{max-width:100%;height:auto;}
   color:var(--text-muted);
   display:flex;
   align-items:center;
-  justify-content:center;
+  justify-content:flex-start;
   gap:8px;
 }
 .availability strong{color:var(--text-secondary);}
@@ -397,6 +396,7 @@ section:first-of-type{border-top:none;}
 
 <!-- ===== HERO ===== -->
 <section class="hero">
+  <img src="andre-hero.png" alt="Andr&eacute; Franco" class="hero-photo" loading="eager">
   <div class="container">
     <div class="hero-content reveal">
       <span class="hero-label">BOOST INTENSIVE</span>
