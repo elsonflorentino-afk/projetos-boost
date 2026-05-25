@@ -170,6 +170,28 @@ section + section::before{
 .section-header h2 em{font-style:normal;color:var(--teal);}
 .section-header .sub{color:var(--text-secondary);font-size:17px;line-height:1.7;max-width:600px;margin:0 auto;}
 
+/* ===== ICON ALIGNMENT ===== */
+.section-header h2 svg, .col-card h3 svg {
+  vertical-align: -3px;
+  margin-right: 8px;
+}
+.glass-card .card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--teal-light);
+  border: 1px solid rgba(25,198,181,0.2);
+  border-radius: 14px;
+  margin-bottom: 20px;
+  color: var(--teal);
+}
+.pain-x {
+  flex-shrink: 0;
+  line-height: 1;
+}
+
 /* ===== PAIN POINTS ===== */
 .pain-list{max-width:680px;margin:0 auto;}
 .pain-item{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border-radius:12px;border-bottom:none;margin-bottom:8px;background:rgba(239,68,68,0.04);border-left:3px solid rgba(239,68,68,0.3);font-size:17px;color:var(--text-secondary);line-height:1.6;transition:transform 0.2s, background 0.2s;}
@@ -194,7 +216,6 @@ section + section::before{
   pointer-events:none;
 }
 .glass-card:hover{transform:translateY(-4px);border-color:rgba(25,198,181,0.3);}
-.glass-card .card-icon{font-size:36px;margin-bottom:18px;display:block;}
 .glass-card h3{font-size:18px;font-weight:700;margin-bottom:12px;color:var(--text);}
 .glass-card p{font-size:15px;color:var(--text-secondary);line-height:1.7;}
 
@@ -208,7 +229,7 @@ section + section::before{
   background:linear-gradient(90deg, #F5A623, #19c6b5);
 }
 .bonus-item{display:flex;align-items:flex-start;gap:12px;padding:14px 0;font-size:17px;color:var(--text-secondary);line-height:1.5;}
-.bonus-item .check{color:var(--green);font-size:20px;flex-shrink:0;}
+.bonus-item .check{flex-shrink:0;line-height:1;}
 .bonus-item .valor{color:var(--text-muted);font-size:14px;margin-left:4px;}
 .bonus-total{text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
 .bonus-total .old{font-size:18px;color:var(--text-muted);text-decoration:line-through;margin-bottom:4px;}
@@ -346,7 +367,7 @@ section + section::before{
   <div class="floating-dot"></div>
   <div class="container">
     <div class="hero-content reveal">
-      <div class="hero-badge">BOOST INTENSIVE</div>
+      <div class="hero-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#F5A623"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> BOOST INTENSIVE</div>
       <span class="tag">A Consultoria de 1 Hora que Pode Salvar Meses (ou Anos) da Sua Carteira</span>
       <h1 class="h1">1 hora de consultoria que vale mais que <em>meses de tentativa e erro</em></h1>
       <p class="sub">Voc&ecirc; j&aacute; se perguntou por que sua carteira cripto n&atilde;o performa como esperava? A resposta pode estar mais pr&oacute;xima do que imagina. &Agrave;s vezes, 1 hora com quem realmente entende vale mais que meses tentando descobrir sozinho.</p>
@@ -359,15 +380,15 @@ section + section::before{
 <section class="section--alt">
   <div class="container">
     <div class="section-header reveal">
-      <h2>Se voc&ecirc; se identifica com isso, <em>continue lendo</em></h2>
+      <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal);flex-shrink:0;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Se voc&ecirc; se identifica com isso, <em>continue lendo</em></h2>
     </div>
     <div class="pain-list reveal">
-      <div class="pain-item"><span class="pain-icon">&#10060;</span><span>Sua carteira est&aacute; &ldquo;parada&rdquo; h&aacute; meses</span></div>
-      <div class="pain-item"><span class="pain-icon">&#10060;</span><span>Voc&ecirc; compra na alta e vende no desespero</span></div>
-      <div class="pain-item"><span class="pain-icon">&#10060;</span><span>N&atilde;o sabe se deve segurar, vender ou comprar mais</span></div>
-      <div class="pain-item"><span class="pain-icon">&#10060;</span><span>Sente que est&aacute; &ldquo;atirando no escuro&rdquo; sem estrat&eacute;gia clara</span></div>
-      <div class="pain-item"><span class="pain-icon">&#10060;</span><span>Tem medo de estar perdendo oportunidades por falta de conhecimento</span></div>
-      <div class="pain-item"><span class="pain-icon">&#10060;</span><span>Gostaria de ter algu&eacute;m experiente analisando suas posi&ccedil;&otilde;es</span></div>
+      <div class="pain-item"><span class="pain-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span>Sua carteira est&aacute; &ldquo;parada&rdquo; h&aacute; meses</span></div>
+      <div class="pain-item"><span class="pain-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span>Voc&ecirc; compra na alta e vende no desespero</span></div>
+      <div class="pain-item"><span class="pain-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span>N&atilde;o sabe se deve segurar, vender ou comprar mais</span></div>
+      <div class="pain-item"><span class="pain-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span>Sente que est&aacute; &ldquo;atirando no escuro&rdquo; sem estrat&eacute;gia clara</span></div>
+      <div class="pain-item"><span class="pain-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span>Tem medo de estar perdendo oportunidades por falta de conhecimento</span></div>
+      <div class="pain-item"><span class="pain-x"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></span><span>Gostaria de ter algu&eacute;m experiente analisando suas posi&ccedil;&otilde;es</span></div>
     </div>
     <p class="pain-bottom reveal">Se voc&ecirc; marcou 2 ou mais, o BOOST INTENSIVE foi criado para voc&ecirc;.</p>
   </div>
@@ -377,22 +398,22 @@ section + section::before{
 <section>
   <div class="container">
     <div class="section-header reveal">
-      <h2>O que &eacute; o <em>BOOST INTENSIVE?</em></h2>
+      <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal);flex-shrink:0;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> O que &eacute; o <em>BOOST INTENSIVE?</em></h2>
       <p class="sub">&Eacute; uma consultoria intensiva de 60 minutos com um dos nossos advisors especialistas, onde voc&ecirc; recebe:</p>
     </div>
     <div class="cards-grid reveal">
       <div class="glass-card">
-        <span class="card-icon" style="font-size:28px;color:var(--teal);">01</span>
+        <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <h3>Diagn&oacute;stico Completo da Sua Carteira</h3>
         <p>An&aacute;lise detalhada de cada ativo que voc&ecirc; possui<br>Identifica&ccedil;&atilde;o de pontos fracos e oportunidades perdidas<br>Avalia&ccedil;&atilde;o do seu perfil de risco vs. estrat&eacute;gia atual</p>
       </div>
       <div class="glass-card">
-        <span class="card-icon" style="font-size:28px;color:var(--teal);">02</span>
+        <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
         <h3>Realinhamento Estrat&eacute;gico</h3>
         <p>Defini&ccedil;&atilde;o clara da sua estrat&eacute;gia personalizada<br>Ajustes na aloca&ccedil;&atilde;o baseados no momento do mercado<br>Pontos de entrada e sa&iacute;da para cada posi&ccedil;&atilde;o</p>
       </div>
       <div class="glass-card">
-        <span class="card-icon" style="font-size:28px;color:var(--teal);">03</span>
+        <div class="card-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <h3>Leitura Profissional do Mercado</h3>
         <p>An&aacute;lise do cen&aacute;rio atual macro e micro<br>Tend&ecirc;ncias que voc&ecirc; deve acompanhar<br>Sinais de alerta que podem proteger seu capital</p>
       </div>
@@ -404,12 +425,12 @@ section + section::before{
 <section class="section--alt">
   <div class="container">
     <div class="section-header reveal">
-      <h2>B&ocirc;nus <em>exclusivos inclusos</em></h2>
+      <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal);flex-shrink:0;"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg> B&ocirc;nus <em>exclusivos inclusos</em></h2>
     </div>
     <div class="bonus-section reveal">
-      <div class="bonus-item"><span class="check">&#10003;</span><span>Dashboard BOOST liberado gratuitamente <span class="valor">(valor R$119)</span></span></div>
-      <div class="bonus-item"><span class="check">&#10003;</span><span>15 dias de an&aacute;lises di&aacute;rias <span class="valor">(valor R$5.000)</span></span></div>
-      <div class="bonus-item"><span class="check">&#10003;</span><span>Plano personalizado <span class="valor">(valor R$9.000)</span></span></div>
+      <div class="bonus-item"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span>Dashboard BOOST liberado gratuitamente <span class="valor">(valor R$119)</span></span></div>
+      <div class="bonus-item"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span>15 dias de an&aacute;lises di&aacute;rias <span class="valor">(valor R$5.000)</span></span></div>
+      <div class="bonus-item"><span class="check"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span><span>Plano personalizado <span class="valor">(valor R$9.000)</span></span></div>
       <div class="bonus-total">
         <p class="old">Valor total: R$14.719</p>
         <p class="new">Voc&ecirc; paga apenas R$600</p>
@@ -423,7 +444,7 @@ section + section::before{
   <div class="container">
     <div class="two-cols reveal">
       <div class="col-card col-card--green">
-        <h3>&#9989; Perfeito para voc&ecirc; se:</h3>
+        <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Perfeito para voc&ecirc; se:</h3>
         <ul>
           <li>Tem acima de R$50 mil investidos em cripto</li>
           <li>Quer uma segunda opini&atilde;o profissional sobre sua carteira</li>
@@ -433,7 +454,7 @@ section + section::before{
         </ul>
       </div>
       <div class="col-card col-card--red">
-        <h3>&#10060; N&atilde;o &eacute; para voc&ecirc; se:</h3>
+        <h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> N&atilde;o &eacute; para voc&ecirc; se:</h3>
         <ul>
           <li>Busca &ldquo;dicas m&aacute;gicas&rdquo; de enriquecimento r&aacute;pido</li>
           <li>N&atilde;o est&aacute; disposto(a) a seguir orienta&ccedil;&otilde;es profissionais</li>
@@ -449,7 +470,7 @@ section + section::before{
 <section class="section--alt">
   <div class="container">
     <div class="section-header reveal">
-      <h2>Quem s&atilde;o nossos <em>Advisors?</em></h2>
+      <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal);flex-shrink:0;"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg> Quem s&atilde;o nossos <em>Advisors?</em></h2>
     </div>
     <div class="creds-grid reveal">
       <div class="cred-card">
@@ -477,7 +498,7 @@ section + section::before{
 <section>
   <div class="container">
     <div class="section-header reveal">
-      <h2>Como funciona</h2>
+      <h2><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal);flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Como funciona na pr&aacute;tica</h2>
     </div>
     <div class="steps-row reveal">
       <div class="step-item">
