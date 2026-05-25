@@ -82,9 +82,9 @@ img{max-width:100%;height:auto;}
 /* ===== HERO ===== */
 .hero{width:100%;min-height:100vh;display:flex;align-items:center;position:relative;padding:160px 0 120px;overflow:hidden;}
 .hero .container{max-width:1000px;}
-.hero-photo{position:absolute;right:0;top:72px;width:50%;height:auto;z-index:0;pointer-events:none;object-fit:contain;object-position:right top;}
-@media(max-width:1024px){.hero-photo{width:45%;right:0;}}
-@media(max-width:768px){.hero-photo{width:50%;right:-20px;opacity:0.3;top:100px;}}
+.hero-photo{position:absolute;right:2%;top:72px;height:auto;width:auto;max-width:45%;z-index:0;pointer-events:none;}
+@media(max-width:1024px){.hero-photo{max-width:40%;right:0;}}
+@media(max-width:768px){.hero-photo{max-width:45%;right:-20px;opacity:0.3;top:90px;}}
 .hero-content{text-align:left;max-width:55%;margin:0;position:relative;z-index:1;}
 .hero-label{
   display:inline-block;
