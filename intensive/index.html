@@ -83,6 +83,36 @@ img{max-width:100%;height:auto;}
 .nav-cta{background:var(--teal);color:#fff;font-weight:700;font-size:14px;padding:12px 24px;border-radius:8px;cursor:pointer;border:none;transition:all 0.2s;text-decoration:none;display:inline-block;}
 .nav-cta:hover{filter:brightness(0.9);transform:translateY(-1px);}
 
+/* ===== PRODUCT LOGO ===== */
+.product-logo{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:28px;
+  padding:12px 24px 12px 12px;
+  background:linear-gradient(135deg, rgba(25,198,181,0.08), rgba(245,166,35,0.06));
+  border:1px solid rgba(25,198,181,0.2);
+  border-radius:16px;
+  backdrop-filter:blur(8px);
+}
+.product-logo-mark{flex-shrink:0;}
+.product-logo-text{display:flex;flex-direction:column;line-height:1;}
+.product-logo-name{
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:0.08em;
+  background:linear-gradient(135deg, #19c6b5, #14d4c0);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.product-logo-sub{
+  font-size:13px;
+  font-weight:700;
+  letter-spacing:0.15em;
+  color:var(--gold);
+  margin-top:2px;
+}
+
 /* ===== TAG ===== */
 .tag{display:inline-block;background:var(--teal-light);color:var(--teal);font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;border-radius:50px;margin-bottom:20px;}
 
@@ -367,7 +397,19 @@ section + section::before{
   <div class="floating-dot"></div>
   <div class="container">
     <div class="hero-content reveal">
-      <div class="hero-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#F5A623"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg> BOOST INTENSIVE</div>
+      <div class="product-logo">
+        <div class="product-logo-mark">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="10" fill="url(#logo-gradient)"/>
+            <path d="M12 28V12h6.5c1.8 0 3.2.5 4.2 1.4 1 .9 1.5 2.1 1.5 3.5 0 1-.3 1.8-.8 2.5-.5.7-1.2 1.2-2 1.4v.1c1 .2 1.8.7 2.4 1.5.6.8.9 1.8.9 2.9 0 1.6-.6 2.9-1.7 3.8-1.1.9-2.6 1.4-4.5 1.4H12zm3.8-9.4h3c.9 0 1.6-.2 2.1-.7.5-.5.8-1.1.8-1.9 0-.8-.3-1.4-.8-1.8-.5-.4-1.2-.6-2.1-.6h-3v5zm0 6.8h3.3c1 0 1.8-.3 2.3-.8.5-.5.8-1.2.8-2 0-.9-.3-1.5-.8-2-.5-.5-1.3-.7-2.3-.7h-3.3v5.5z" fill="white"/>
+            <defs><linearGradient id="logo-gradient" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#19c6b5"/><stop offset="1" stop-color="#F5A623"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="product-logo-text">
+          <span class="product-logo-name">BOOST</span>
+          <span class="product-logo-sub">INTENSIVE</span>
+        </div>
+      </div>
       <span class="tag">A Consultoria de 1 Hora que Pode Salvar Meses (ou Anos) da Sua Carteira</span>
       <h1 class="h1">1 hora de consultoria que vale mais que <em>meses de tentativa e erro</em></h1>
       <p class="sub">Voc&ecirc; j&aacute; se perguntou por que sua carteira cripto n&atilde;o performa como esperava? A resposta pode estar mais pr&oacute;xima do que imagina. &Agrave;s vezes, 1 hora com quem realmente entende vale mais que meses tentando descobrir sozinho.</p>
