@@ -82,18 +82,18 @@ img{max-width:100%;height:auto;}
 /* ===== HERO ===== */
 .hero{width:100%;min-height:100vh;display:flex;align-items:center;position:relative;padding:160px 0 120px;overflow:hidden;}
 .hero .container{max-width:1000px;}
-.hero-photo{position:absolute;right:2%;top:72px;height:auto;width:auto;max-width:45%;z-index:0;pointer-events:none;}
+.hero-photo{position:absolute;right:2%;top:0;height:auto;width:auto;max-width:45%;z-index:0;pointer-events:none;}
 @media(max-width:1024px){.hero-photo{max-width:40%;right:0;}}
 @media(max-width:768px){.hero-photo{max-width:45%;right:-20px;opacity:0.3;top:90px;}}
 .hero-content{text-align:left;max-width:55%;margin:0;position:relative;z-index:1;}
 .hero-label{
   display:inline-block;
-  font-size:11px;
-  font-weight:700;
+  font-size:28px;
+  font-weight:900;
   color:var(--teal);
   text-transform:uppercase;
-  letter-spacing:2px;
-  margin-bottom:24px;
+  letter-spacing:0.08em;
+  margin-bottom:20px;
 }
 .hero-content .h1{
   font-size:clamp(36px,5vw,56px);
@@ -406,7 +406,7 @@ section:first-of-type{border-top:none;}
       <h1 class="h1">1 hora de consultoria que vale mais que meses de tentativa e erro</h1>
       <p class="sub">Voc&ecirc; j&aacute; se perguntou por que sua carteira cripto n&atilde;o performa como esperava? A resposta pode estar mais pr&oacute;xima do que imagina. &Agrave;s vezes, 1 hora com quem realmente entende vale mais que meses tentando descobrir sozinho.</p>
       <a href="#checkout" class="cta-btn cta-btn--large" onclick="dataLayer.push({event:'cta_click',cta_location:'hero'})">Quero minha consultoria &mdash; R$600</a>
-      <p class="availability"><span class="availability-dot"></span> Apenas <strong>4 vagas</strong> dispon&iacute;veis esta semana</p>
+      <p class="availability"><span class="availability-dot"></span> <strong>Vagas limitadas</strong></p>
     </div>
   </div>
 </section>
