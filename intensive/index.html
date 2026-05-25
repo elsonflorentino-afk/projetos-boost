@@ -82,10 +82,10 @@ img{max-width:100%;height:auto;}
 /* ===== HERO ===== */
 .hero{width:100%;min-height:100vh;display:flex;align-items:center;position:relative;padding:160px 0 120px;overflow:hidden;}
 .hero .container{max-width:1200px;}
-.hero-photo{position:absolute;right:5%;bottom:0;height:92%;width:auto;z-index:0;pointer-events:none;}
-@media(max-width:1200px){.hero-photo{right:2%;height:85%;}}
-@media(max-width:1024px){.hero-photo{right:0;height:75%;}}
-@media(max-width:768px){.hero-photo{right:-40px;height:60%;opacity:0.35;}}
+.hero-photo{position:absolute;right:5%;top:80px;bottom:auto;height:auto;max-height:calc(100% - 80px);width:auto;z-index:0;pointer-events:none;}
+@media(max-width:1200px){.hero-photo{right:2%;}}
+@media(max-width:1024px){.hero-photo{right:0;max-height:calc(100% - 100px);}}
+@media(max-width:768px){.hero-photo{right:-40px;max-height:calc(100% - 120px);opacity:0.35;}}
 .hero-content{text-align:left;max-width:55%;margin:0;position:relative;z-index:1;}
 .hero-label{
   display:inline-block;
