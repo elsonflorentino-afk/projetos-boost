@@ -82,10 +82,12 @@ img{max-width:100%;height:auto;}
 
 /* ===== HERO ===== */
 .hero{width:100%;min-height:100vh;display:flex;align-items:flex-start;position:relative;padding:140px 0 80px;overflow:hidden;}
-.hero .container{max-width:1000px;}
-.hero-photo{position:absolute;right:3%;top:140px;width:40%;z-index:0;pointer-events:none;}
-@media(max-width:1024px){.hero-photo{width:38%;right:1%;}}
-@media(max-width:768px){.hero-photo{width:45%;right:-20px;opacity:0.3;}}
+.hero .container{max-width:1200px;}
+.hero-photo{position:absolute;right:5%;top:120px;width:38%;max-width:480px;z-index:0;pointer-events:none;}
+@media(max-width:1024px){.hero-photo{width:36%;right:2%;}}
+@media(max-width:768px){.hero-photo--desktop{display:none;}}
+.hero-photo--mobile{display:none;width:50%;max-width:240px;margin:0 auto 24px;border-radius:50%;border:2px solid rgba(25,198,181,0.2);object-fit:cover;object-position:top center;aspect-ratio:1/1;}
+@media(max-width:768px){.hero-photo--mobile{display:block;}}
 .hero-content{text-align:left;max-width:55%;margin:0;position:relative;z-index:1;}
 .hero-label{
   display:inline-block;
@@ -131,6 +133,39 @@ img{max-width:100%;height:auto;}
 @keyframes pulse-dot{
   0%,100%{opacity:1;transform:scale(1);}
   50%{opacity:0.4;transform:scale(0.8);}
+}
+
+/* ===== VACANCY COUNTER ===== */
+.vacancy-counter{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:32px;
+  margin:32px auto 0;
+  padding:20px 32px;
+  background:rgba(25,198,181,0.04);
+  border:1px solid rgba(25,198,181,0.12);
+  border-radius:12px;
+  max-width:480px;
+}
+.vacancy-counter .vc-item{text-align:center;}
+.vacancy-counter .vc-number{
+  font-size:32px;
+  font-weight:900;
+  color:var(--teal);
+  line-height:1;
+  margin-bottom:4px;
+}
+.vacancy-counter .vc-label{
+  font-size:12px;
+  color:var(--text-muted);
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+.vacancy-counter .vc-divider{
+  width:1px;
+  height:40px;
+  background:var(--border);
 }
 
 /* ===== CTA BUTTON ===== */
@@ -366,8 +401,10 @@ section:first-of-type{border-top:none;}
 @media(max-width:768px){
   .container{padding:0 20px;}
   section{padding:80px 0;}
-  .hero{padding:140px 0 80px;min-height:auto;}
-  .hero-content{max-width:100%;}
+  .hero{padding:120px 0 60px;min-height:auto;flex-direction:column;align-items:center;}
+  .hero-content{max-width:100%;text-align:center;}
+  .hero-content .sub{margin-left:auto;margin-right:auto;}
+  .availability{justify-content:center;}
   .cards-grid{grid-template-columns:1fr;}
   .two-cols{grid-template-columns:1fr;gap:40px;}
   .two-cols-divider::before{display:none;}
@@ -377,6 +414,7 @@ section:first-of-type{border-top:none;}
   .nav-cta{padding:10px 16px;font-size:13px;}
   .checkout-box{padding:40px 24px;}
   .checkout-section{padding:80px 0;}
+  .vacancy-counter{flex-direction:column;gap:12px;padding:16px 20px;}
 }
 @media(max-width:480px){
   .hero-content .h1{font-size:32px;}
@@ -400,14 +438,21 @@ section:first-of-type{border-top:none;}
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <img src="andre-hero.png" alt="Andr&eacute; Franco" class="hero-photo" loading="eager">
+  <img src="andre-hero.png" alt="Andr&eacute; Franco" class="hero-photo hero-photo--desktop" loading="eager">
   <div class="container">
+    <img src="andre-hero.png" alt="Andr&eacute; Franco" class="hero-photo--mobile" loading="eager">
     <div class="hero-content reveal">
       <span class="hero-label">BOOST INTENSIVE</span>
       <h1 class="h1">1 hora de consultoria que vale mais que meses de tentativa e erro</h1>
       <p class="sub">Voc&ecirc; j&aacute; se perguntou por que sua carteira cripto n&atilde;o performa como esperava? A resposta pode estar mais pr&oacute;xima do que imagina. &Agrave;s vezes, 1 hora com quem realmente entende vale mais que meses tentando descobrir sozinho.</p>
       <a href="#checkout" class="cta-btn cta-btn--large" onclick="dataLayer.push({event:'cta_click',cta_location:'hero'})">Quero minha consultoria &mdash; R$600</a>
-      <p class="availability"><span class="availability-dot"></span> <strong>Vagas limitadas</strong></p>
+      <div class="vacancy-counter">
+        <div class="vc-item"><div class="vc-number" id="vacancyCount">7</div><div class="vc-label">Vagas restantes</div></div>
+        <div class="vc-divider"></div>
+        <div class="vc-item"><div class="vc-number">60</div><div class="vc-label">Minutos</div></div>
+        <div class="vc-divider"></div>
+        <div class="vc-item"><div class="vc-number">1:1</div><div class="vc-label">Exclusivo</div></div>
+      </div>
     </div>
   </div>
 </section>
