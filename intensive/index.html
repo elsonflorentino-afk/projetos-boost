@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOOST INTENSIVE &mdash; Consultoria Cripto de 60 minutos | Boost Research</title>
-<meta name="description" content="1 hora de consultoria com um Advisor especializado em cripto. Diagn&oacute;stico completo da sua carteira, estrat&eacute;gia personalizada e leitura de mercado. R$600.">
+<title>BOOST CRYPTO INTENSIVE &mdash; 1H de Consultoria Cripto | Boost Research</title>
+<meta name="description" content="1H de consultoria com um Advisor especializado em cripto. Diagn&oacute;stico completo da sua carteira, estrat&eacute;gia personalizada e leitura de mercado. 6x R$ 100,00.">
 <meta name="robots" content="index, follow">
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-<!-- v30 -->
+<meta property="og:title" content="BOOST CRYPTO INTENSIVE &mdash; 1H de Consultoria Cripto">
+<meta property="og:description" content="1H de consultoria com um Advisor especializado em cripto. Diagn&oacute;stico completo, estrat&eacute;gia personalizada e leitura de mercado. 6x R$ 100,00.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://intensive.boostresearch.com.br">
+<meta property="og:image" content="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png">
 
 <!-- GTM -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K2HT6HBX');</script>
@@ -26,7 +27,7 @@ fbq('init','1062572485162288');fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1062572485162288&ev=PageView&noscript=1"></noscript>
 
 <!-- DataLayer page_view -->
-<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'page_view',page_type:'sales_page',product:'boost_intensive'});</script>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'page_view',page_type:'sales_page',product:'boost_crypto_intensive'});</script>
 
 <!-- Inter Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,35 +138,46 @@ img{max-width:100%;height:auto;}
 
 /* ===== VACANCY COUNTER ===== */
 .vacancy-counter{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:32px 0 0;
+  max-width:420px;
+}
+.vc-card{
+  text-align:center;
+  padding:20px 12px;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  transition:border-color 0.2s;
+}
+.vc-card:first-child{border-color:rgba(25,198,181,0.25);}
+.vc-card:hover{border-color:rgba(25,198,181,0.3);}
+.vc-card .vc-icon{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:32px;
-  margin:32px auto 0;
-  padding:20px 32px;
-  background:rgba(25,198,181,0.04);
-  border:1px solid rgba(25,198,181,0.12);
-  border-radius:12px;
-  max-width:480px;
-}
-.vacancy-counter .vc-item{text-align:center;}
-.vacancy-counter .vc-number{
-  font-size:32px;
-  font-weight:900;
+  width:36px;height:36px;
+  margin:0 auto 10px;
+  background:rgba(25,198,181,0.08);
+  border-radius:50%;
   color:var(--teal);
+}
+.vc-card .vc-number{
+  font-size:24px;
+  font-weight:800;
+  color:var(--text);
   line-height:1;
   margin-bottom:4px;
 }
-.vacancy-counter .vc-label{
-  font-size:12px;
+.vc-card:first-child .vc-number{color:var(--teal);}
+.vc-card .vc-label{
+  font-size:11px;
   color:var(--text-muted);
   text-transform:uppercase;
-  letter-spacing:0.05em;
-}
-.vacancy-counter .vc-divider{
-  width:1px;
-  height:40px;
-  background:var(--border);
+  letter-spacing:0.06em;
+  font-weight:500;
 }
 
 /* ===== CTA BUTTON ===== */
@@ -241,19 +253,24 @@ section:first-of-type{border-top:none;}
 .glass-card p{font-size:15px;color:var(--text-secondary);line-height:1.7;}
 
 /* ===== BONUS ===== */
-.bonus-section{max-width:600px;margin:0 auto;}
+.bonus-section{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:16px;}
 .bonus-item{
   display:flex;
   align-items:flex-start;
-  gap:12px;
-  padding:14px 0;
+  gap:16px;
+  padding:24px;
   font-size:17px;
   color:var(--text-secondary);
   line-height:1.5;
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  transition:border-color 0.2s;
 }
-.bonus-item .check{flex-shrink:0;line-height:1;}
-.bonus-item .valor{color:var(--text-muted);font-size:14px;margin-left:4px;}
-.bonus-total{text-align:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);}
+.bonus-item:hover{border-color:rgba(25,198,181,0.2);}
+.bonus-item .check{flex-shrink:0;line-height:1;margin-top:2px;}
+.bonus-item .valor{color:var(--teal);font-size:14px;font-weight:600;display:block;margin-top:4px;}
+.bonus-total{text-align:center;margin-top:16px;padding:24px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);}
 .bonus-total .old{font-size:18px;color:var(--text-muted);text-decoration:line-through;margin-bottom:4px;}
 .bonus-total .new{font-size:32px;font-weight:800;color:var(--teal);}
 
@@ -292,7 +309,7 @@ section:first-of-type{border-top:none;}
 .advisor-note{text-align:center;font-size:15px;color:var(--text-muted);margin-top:32px;}
 
 /* ===== STEPS ===== */
-.steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;}
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;}
 .step-item{text-align:center;position:relative;z-index:1;}
 .step-num{
   width:48px;height:48px;border-radius:50%;
@@ -382,6 +399,20 @@ section:first-of-type{border-top:none;}
 .footer p{font-size:13px;color:var(--text-muted);line-height:1.7;max-width:560px;margin:0 auto;}
 .footer .brand{color:var(--text-secondary);font-weight:500;margin-top:12px;font-size:14px;}
 
+/* ===== AVATAR FLUTUANTE WHATSAPP ===== */
+.avatar-float{position:fixed;bottom:24px;right:24px;z-index:9999;text-decoration:none;display:flex;align-items:flex-end;gap:0;transition:transform 0.2s;color:#fff;font-family:var(--font);}
+.avatar-float:hover{transform:translateY(-3px);}
+.avatar-float-photo{position:relative;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));}
+.avatar-float-img{width:72px;height:72px;object-fit:cover;display:block;border-radius:50%;}
+.avatar-float-dot{position:absolute;bottom:4px;right:4px;width:14px;height:14px;background:#4ADE80;border-radius:50%;border:2px solid var(--bg);animation:dotBreathe 2s ease-in-out infinite;}
+@keyframes dotBreathe{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.5);}50%{box-shadow:0 0 0 4px rgba(74,222,128,0);}}
+.avatar-float-pill{background:rgba(26,31,43,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.08);border-radius:12px 12px 12px 0;padding:10px 16px;margin-bottom:8px;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:flex;flex-direction:column;gap:2px;}
+.avatar-float-name{font-size:13px;font-weight:700;color:#fff;white-space:nowrap;}
+.avatar-float-wa{display:flex;align-items:center;gap:4px;}
+.avatar-float-wa svg{width:14px;height:14px;fill:#25D366;}
+.avatar-float-wa span{font-size:12px;color:#25D366;font-weight:600;}
+@media(max-width:600px){.avatar-float{bottom:calc(16px + env(safe-area-inset-bottom,0px));right:12px;}.avatar-float-img{width:56px;height:56px;}.avatar-float-pill{padding:8px 12px;}.avatar-float-name{font-size:12px;}}
+
 /* ===== SCROLL REVEAL ===== */
 .reveal{
   opacity:0;
@@ -396,7 +427,7 @@ section:first-of-type{border-top:none;}
 /* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
   .cards-grid{grid-template-columns:repeat(2,1fr);}
-  .steps-row{grid-template-columns:repeat(2,1fr);gap:32px;}
+  .steps-row{grid-template-columns:repeat(2,1fr);gap:24px;}
 }
 @media(max-width:768px){
   .container{padding:0 20px;}
@@ -414,7 +445,7 @@ section:first-of-type{border-top:none;}
   .nav-cta{padding:10px 16px;font-size:13px;}
   .checkout-box{padding:40px 24px;}
   .checkout-section{padding:80px 0;}
-  .vacancy-counter{flex-direction:column;gap:12px;padding:16px 20px;}
+  .vacancy-counter{grid-template-columns:repeat(3,1fr);gap:8px;max-width:100%;margin:24px auto 0;}
 }
 @media(max-width:480px){
   .hero-content .h1{font-size:32px;}
@@ -432,7 +463,7 @@ section:first-of-type{border-top:none;}
     <div class="nav-logo">
       <img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" style="height:44px;width:auto;">
     </div>
-    <a href="#checkout" class="nav-cta" onclick="dataLayer.push({event:'cta_click',cta_location:'navbar'})">Agendar minha consultoria &rarr;</a>
+    <a href="#checkout" class="nav-cta" onclick="dataLayer.push({event:'cta_click',cta_location:'navbar'})">Agendar consultoria &rarr;</a>
   </div>
 </nav>
 
@@ -442,16 +473,26 @@ section:first-of-type{border-top:none;}
   <div class="container">
     <img src="andre-hero.png" alt="Andr&eacute; Franco" class="hero-photo--mobile" loading="eager">
     <div class="hero-content reveal">
-      <span class="hero-label">BOOST INTENSIVE</span>
-      <h1 class="h1">1 hora de consultoria que vale mais que meses de tentativa e erro</h1>
-      <p class="sub">Voc&ecirc; j&aacute; se perguntou por que sua carteira cripto n&atilde;o performa como esperava? A resposta pode estar mais pr&oacute;xima do que imagina. &Agrave;s vezes, 1 hora com quem realmente entende vale mais que meses tentando descobrir sozinho.</p>
-      <a href="#checkout" class="cta-btn cta-btn--large" onclick="dataLayer.push({event:'cta_click',cta_location:'hero'})">Quero minha consultoria &mdash; R$600</a>
+      <span class="hero-label">BOOST CRYPTO INTENSIVE</span>
+      <h1 class="h1">1H de consultoria que vale mais que meses de tentativa e erro</h1>
+      <p class="sub">Sua carteira cripto n&atilde;o performa como esperava? A resposta pode estar a uma conversa de dist&acirc;ncia. Um Advisor com experi&ecirc;ncia real analisa suas posi&ccedil;&otilde;es e monta um plano sob medida.</p>
+      <a href="#checkout" class="cta-btn cta-btn--large" onclick="dataLayer.push({event:'cta_click',cta_location:'hero'})">Quero minha consultoria</a>
       <div class="vacancy-counter">
-        <div class="vc-item"><div class="vc-number" id="vacancyCount">7</div><div class="vc-label">Vagas restantes</div></div>
-        <div class="vc-divider"></div>
-        <div class="vc-item"><div class="vc-number">60</div><div class="vc-label">Minutos</div></div>
-        <div class="vc-divider"></div>
-        <div class="vc-item"><div class="vc-number">1:1</div><div class="vc-label">Exclusivo</div></div>
+        <div class="vc-card">
+          <div class="vc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="vc-number" id="vacancyCount">7</div>
+          <div class="vc-label">Vagas restantes</div>
+        </div>
+        <div class="vc-card">
+          <div class="vc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="vc-number">1H</div>
+          <div class="vc-label">Consultoria</div>
+        </div>
+        <div class="vc-card">
+          <div class="vc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <div class="vc-number">1:1</div>
+          <div class="vc-label">Exclusivo</div>
+        </div>
       </div>
     </div>
   </div>
@@ -461,7 +502,7 @@ section:first-of-type{border-top:none;}
 <section>
   <div class="container">
     <div class="section-header reveal">
-      <h2>Se voc&ecirc; se identifica com isso, continue lendo</h2>
+      <h2>Voc&ecirc; reconhece algum desses sinais?</h2>
     </div>
     <div class="pain-list reveal">
       <div class="pain-item"><span class="pain-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted)"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span>Sua carteira est&aacute; &ldquo;parada&rdquo; h&aacute; meses</span></div>
@@ -471,7 +512,7 @@ section:first-of-type{border-top:none;}
       <div class="pain-item"><span class="pain-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted)"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span>Tem medo de estar perdendo oportunidades por falta de conhecimento</span></div>
       <div class="pain-item"><span class="pain-x"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted)"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span><span>Gostaria de ter algu&eacute;m experiente analisando suas posi&ccedil;&otilde;es</span></div>
     </div>
-    <p class="pain-bottom reveal">Se voc&ecirc; marcou 2 ou mais itens, o BOOST INTENSIVE foi criado para voc&ecirc;.</p>
+    <p class="pain-bottom reveal">Identificou 2 ou mais? Ent&atilde;o o pr&oacute;ximo passo &eacute; simples: 1H com um Advisor que j&aacute; ajudou centenas de investidores nessa mesma situa&ccedil;&atilde;o.</p>
   </div>
 </section>
 
@@ -479,8 +520,8 @@ section:first-of-type{border-top:none;}
 <section>
   <div class="container">
     <div class="section-header reveal">
-      <h2>O que &eacute; o BOOST INTENSIVE?</h2>
-      <p class="sub">&Eacute; uma consultoria intensiva de 60 minutos com um dos nossos advisors especialistas, onde voc&ecirc; recebe:</p>
+      <h2>O que voc&ecirc; recebe em 1 hora</h2>
+      <p class="sub">Uma consultoria intensiva com um dos nossos Advisors especialistas. Tudo personalizado para a sua carteira:</p>
     </div>
     <div class="cards-grid reveal">
       <div class="glass-card">
@@ -509,12 +550,12 @@ section:first-of-type{border-top:none;}
       <h2>B&ocirc;nus exclusivos inclusos</h2>
     </div>
     <div class="bonus-section reveal">
-      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dashboard BOOST liberado gratuitamente <span class="valor">(valor R$119)</span></span></div>
-      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>15 dias de an&aacute;lises di&aacute;rias do mercado <span class="valor">(valor R$5.000)</span></span></div>
-      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Plano personalizado da sua consultoria <span class="valor">(valor R$9.000)</span></span></div>
+      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dashboard BOOST liberado gratuitamente <span class="valor">(valor R$ 119,00)</span></span></div>
+      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>15 dias de conte&uacute;do exclusivo: 2 newsletters + 2 an&aacute;lises semanais <span class="valor">(valor R$ 5.000,00)</span></span></div>
+      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Plano de a&ccedil;&atilde;o personalizado para sua carteira <span class="valor">(valor R$ 9.000,00)</span></span></div>
       <div class="bonus-total">
-        <p class="old">Valor total: R$14.719</p>
-        <p class="new">Voc&ecirc; paga apenas R$600</p>
+        <p class="old">Valor total: R$ 14.719,00</p>
+        <p class="new">6x R$ 100,00</p>
       </div>
     </div>
   </div>
@@ -527,7 +568,7 @@ section:first-of-type{border-top:none;}
       <div class="col-card col-card--green">
         <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Perfeito para voc&ecirc; se:</h3>
         <ul>
-          <li>Tem acima de R$50 mil investidos em cripto</li>
+          <li>Tem mais de R$ 50 mil investidos em cripto</li>
           <li>Quer uma segunda opini&atilde;o profissional sobre sua carteira</li>
           <li>Busca clareza e dire&ccedil;&atilde;o na sua estrat&eacute;gia</li>
           <li>Deseja otimizar seus resultados com ajuda especializada</li>
@@ -539,8 +580,8 @@ section:first-of-type{border-top:none;}
         <ul>
           <li>Busca &ldquo;dicas m&aacute;gicas&rdquo; de enriquecimento r&aacute;pido</li>
           <li>N&atilde;o est&aacute; disposto(a) a seguir orienta&ccedil;&otilde;es profissionais</li>
-          <li>Quer apenas valida&ccedil;&atilde;o para decis&otilde;es j&aacute; tomadas</li>
-          <li>N&atilde;o tem pelo menos R$600 para investir</li>
+          <li>Ainda n&atilde;o tem uma carteira cripto montada</li>
+          <li>Prefere operar sozinho sem acompanhamento</li>
         </ul>
       </div>
     </div>
@@ -556,12 +597,12 @@ section:first-of-type{border-top:none;}
     </div>
     <div class="advisors-content reveal">
       <ul class="advisors-list">
-        <li><strong>+8 anos</strong> de experi&ecirc;ncia em mercados financeiros</li>
+        <li>Equipe liderada por <strong>Andr&eacute; Franco</strong>, analista de criptoativos desde 2016</li>
+        <li><strong>+8 anos</strong> de experi&ecirc;ncia em mercados financeiros e cripto</li>
         <li>Certifica&ccedil;&otilde;es profissionais reconhecidas</li>
-        <li>Hist&oacute;rico de resultados consistentes</li>
-        <li>Experi&ecirc;ncia com carteiras de <strong>R$50k at&eacute; R$10 milh&otilde;es</strong></li>
+        <li>Experi&ecirc;ncia com carteiras de <strong>R$ 50 mil at&eacute; R$ 10 milh&otilde;es</strong></li>
       </ul>
-      <p class="advisor-note">Voc&ecirc; ser&aacute; conectado ao advisor mais adequado ao seu perfil e objetivos.</p>
+      <p class="advisor-note">Voc&ecirc; ser&aacute; conectado ao Advisor mais adequado ao seu perfil e objetivos.</p>
     </div>
   </div>
 </section>
@@ -588,6 +629,11 @@ section:first-of-type{border-top:none;}
         <h4>Prepara&ccedil;&atilde;o</h4>
         <p>Prepara suas d&uacute;vidas e objetivos para a reuni&atilde;o</p>
       </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <h4>Consultoria</h4>
+        <p>1H ao vivo com seu Advisor: diagn&oacute;stico, estrat&eacute;gia e plano de a&ccedil;&atilde;o</p>
+      </div>
     </div>
   </div>
 </section>
@@ -598,11 +644,11 @@ section:first-of-type{border-top:none;}
     <div class="checkout-box reveal">
       <h2>Agendar minha consultoria</h2>
       <div class="price-display">
-        <div class="price-main">R$600,00</div>
-        <div class="price-installment">ou 12x de R$59,67</div>
+        <div class="price-main">6x R$ 100,00</div>
+        <div class="price-installment">ou R$ 600,00 &agrave; vista</div>
       </div>
-      <button class="checkout-btn" onclick="dataLayer.push({event:'checkout_initiated',product:'boost_intensive',value:600})">Pagar com PIX ou Cart&atilde;o &mdash; R$600</button>
-      <p class="checkout-note">Checkout em integra&ccedil;&atilde;o</p>
+      <a href="https://payment-link-v3.pagar.me/pl_Oq4lB1mKQZVNBQqIwLf6o8L9gv6p3ao2" class="checkout-btn" target="_blank" rel="noopener" onclick="fbq('track','InitiateCheckout',{content_name:'boost_crypto_intensive',value:600,currency:'BRL'});dataLayer.push({event:'checkout_initiated',product:'boost_crypto_intensive',value:600});">Agendar minha consultoria</a>
+      <p class="checkout-note">Pagamento seguro via Pagar.me</p>
       <div class="trust-badges">
         <div class="trust-badge">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -633,7 +679,7 @@ section:first-of-type{border-top:none;}
           <span>Quanto tempo dura a consultoria?</span>
           <span class="arrow">&#9660;</span>
         </button>
-        <div class="faq-answer"><p>A consultoria tem dura&ccedil;&atilde;o de 60 minutos. Tempo suficiente para diagn&oacute;stico completo, realinhamento e plano de a&ccedil;&atilde;o.</p></div>
+        <div class="faq-answer"><p>A consultoria tem dura&ccedil;&atilde;o de 1 hora. Tempo suficiente para diagn&oacute;stico completo, realinhamento e plano de a&ccedil;&atilde;o.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
@@ -647,7 +693,7 @@ section:first-of-type{border-top:none;}
           <span>Posso parcelar?</span>
           <span class="arrow">&#9660;</span>
         </button>
-        <div class="faq-answer"><p>Sim. At&eacute; 12x no cart&atilde;o de cr&eacute;dito. Pagamento via PIX tem valor &agrave; vista (R$600).</p></div>
+        <div class="faq-answer"><p>Sim. 6x de R$ 100,00 no cart&atilde;o de cr&eacute;dito. Pagamento via PIX: R$ 600,00 &agrave; vista.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
@@ -658,10 +704,10 @@ section:first-of-type{border-top:none;}
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Preciso ter quanto investido?</span>
+          <span>Preciso ter um valor m&iacute;nimo investido?</span>
           <span class="arrow">&#9660;</span>
         </button>
-        <div class="faq-answer"><p>Recomendamos acima de R$50k em criptoativos para que a consultoria gere o m&aacute;ximo de valor e retorno sobre o investimento.</p></div>
+        <div class="faq-answer"><p>N&atilde;o existe valor m&iacute;nimo. Basta j&aacute; ter uma carteira cripto montada. A consultoria &eacute; personalizada para o seu momento, independente do tamanho do portf&oacute;lio.</p></div>
       </div>
     </div>
   </div>
@@ -677,6 +723,21 @@ section:first-of-type{border-top:none;}
     <p class="brand">Boost Research &mdash; Consultoria de Investimentos em Cripto</p>
   </div>
 </footer>
+
+<!-- Avatar flutuante WhatsApp -->
+<a href="https://wa.me/5521965622891?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20Boost%20Crypto%20Intensive." class="avatar-float" target="_blank" rel="noopener" onclick="fbq('track','Contact',{content_name:'whatsapp_intensive'});dataLayer.push({event:'whatsapp_click',cta_id:'avatar_float_intensive'});">
+  <div class="avatar-float-pill">
+    <span class="avatar-float-name">Quero saber mais</span>
+    <span class="avatar-float-wa">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.627.616l4.584-1.207A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.239 0-4.329-.726-6.033-1.96l-.424-.316-2.732.72.732-2.672-.347-.553A9.963 9.963 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      <span>WhatsApp</span>
+    </span>
+  </div>
+  <div class="avatar-float-photo">
+    <img src="avatar-andre.png" alt="Fale com a equipe" class="avatar-float-img" width="72" height="72">
+    <span class="avatar-float-dot"></span>
+  </div>
+</a>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
