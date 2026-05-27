@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hold n&atilde;o &eacute; estrat&eacute;gia &mdash; Regras de sa&iacute;da para cripto | Boost Research</title>
+<meta name="description" content="Segurar cripto indefinidamente não é estratégia, é fé. Defina regras de saída com um Advisor dedicado da Boost Research. Consultoria desde 2016.">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<!-- GTM -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K2HT6HBX');</script>
+
+<!-- Google Ads gTag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17899489316"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17899489316');</script>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1062572485162288');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1062572485162288&ev=PageView&noscript=1"></noscript>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0B0E13;
+  --bg-alt:#111620;
+  --bg-dark:#080A0F;
+  --teal:#19c6b5;
+  --teal-light:rgba(25,198,181,0.1);
+  --teal-dark:#14a89a;
+  --teal-dim:rgba(25,198,181,0.15);
+  --text:#FFFFFF;
+  --text-secondary:rgba(255,255,255,0.7);
+  --text-muted:rgba(255,255,255,0.4);
+  --border:rgba(255,255,255,0.1);
+  --divider:rgba(255,255,255,0.06);
+  --card-bg:rgba(255,255,255,0.04);
+  --white:#FFFFFF;
+  --red:#EF4444;
+  --font:Arial,'Helvetica Neue',Helvetica,sans-serif;
+  --container:1200px;
+  --container-narrow:800px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:var(--container);margin:0 auto;padding:0 40px;}
+
+/* ===== NAVBAR ===== */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(11,14,19,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
+.navbar.scrolled{box-shadow:0 1px 12px rgba(0,0,0,0.3);}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-logo img{height:48px;width:auto;}
+.nav-cta{background:var(--teal);color:#fff;font-weight:700;font-size:14px;padding:10px 24px;border-radius:8px;cursor:pointer;border:none;transition:filter 0.2s;text-decoration:none;display:inline-block;}
+.nav-cta:hover{filter:brightness(0.9);}
+
+/* ===== TAG ===== */
+.tag{display:inline-block;background:rgba(25,198,181,0.1);color:var(--teal);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:16px;}
+
+/* ===== HERO ===== */
+.hero{width:100%;min-height:100vh;display:flex;align-items:center;background:var(--bg);position:relative;padding:120px 0 80px;}
+.hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(25,198,181,0.06) 0%,transparent 65%);top:15%;right:3%;pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 460px;gap:64px;align-items:start;}
+.hero-copy{text-align:left;padding-top:24px;}
+.hero-copy .h1{font-size:42px;font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:16px;color:var(--text);}
+.hero-copy .h1 em{font-style:normal;color:var(--teal);}
+.hero-copy .sub{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:28px;max-width:480px;}
+.hero-checks{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px;}
+.hero-check{font-size:13px;color:var(--text-secondary);display:flex;align-items:center;gap:6px;}
+.hero-check svg{color:var(--teal);flex-shrink:0;}
+.micro{font-size:13px;color:var(--text-muted);margin-top:14px;}
+
+/* ===== SECTIONS ===== */
+section{padding:80px 0;}
+.section--white{background:var(--bg);}
+.section--alt{background:var(--bg-alt);}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-header h2{font-size:20px;font-weight:700;line-height:1.35;margin-bottom:12px;color:var(--text);}
+.section-header h2 em{font-style:normal;color:var(--teal);}
+.section-header .sub{color:var(--text-secondary);font-size:16px;line-height:1.7;margin-bottom:0;}
+
+/* ===== CREDIBILITY BAR ===== */
+.cred-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px;margin:0 auto;}
+.cred-item{display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1px solid var(--border);border-radius:50px;padding:10px 20px;font-size:13px;color:var(--text-secondary);}
+.cred-item svg{color:var(--teal);flex-shrink:0;}
+
+/* ===== PAIN CARDS ===== */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.pain-card{border:1px solid var(--border);border-left:3px solid var(--teal);background:var(--card-bg);padding:24px 28px;border-radius:0 16px 16px 0;font-size:16px;color:var(--text-secondary);line-height:1.7;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:transform 0.2s;}
+.pain-card:hover{transform:translateY(-2px);}
+
+/* ===== STEPS ===== */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:border-color 0.25s,transform 0.2s;}
+.step-card:hover{border-color:rgba(25,198,181,0.4);transform:translateY(-2px);}
+.step-num{width:40px;height:40px;border-radius:50%;background:rgba(25,198,181,0.12);color:var(--teal);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.step-card h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--text);}
+.step-card p{font-size:16px;color:var(--text-secondary);line-height:1.6;}
+
+/* ===== ANDRÉ FRANCO ===== */
+.andre-grid{display:grid;grid-template-columns:400px 1fr;gap:56px;align-items:center;}
+.andre-photo{width:100%;aspect-ratio:3/4;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.12);border:1px solid var(--border);}
+.andre-photo img{width:100%;height:100%;object-fit:cover;}
+.andre-bio{text-align:left;}
+.andre-bio h2{font-size:36px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.andre-bio .andre-role{font-size:16px;color:var(--teal);margin-bottom:20px;font-weight:600;}
+.andre-bio p{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:24px;}
+.cred-pills{display:flex;flex-wrap:wrap;gap:10px;}
+.cred-pill{font-size:11px;font-weight:600;color:var(--teal-dark);background:var(--teal-light);padding:6px 16px;border-radius:20px;}
+
+/* ===== PROFILE CARDS ===== */
+.profile-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.profile-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:transform 0.2s;display:flex;flex-direction:column;}
+.profile-card:hover{transform:translateY(-2px);}
+.profile-card h3{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.5;color:var(--text);}
+.profile-card ul{list-style:none;margin-bottom:20px;}
+.profile-card li{font-size:16px;color:var(--text-secondary);padding:5px 0 5px 20px;position:relative;line-height:1.6;}
+.profile-card li::before{content:'';position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--teal-dim);}
+.profile-quote{font-size:16px;color:var(--teal);font-style:italic;border-left:2px solid var(--teal-dim);padding-left:14px;margin-top:auto;}
+
+/* ===== DIFERENCIAL ===== */
+.dif-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.dif-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:transform 0.2s;}
+.dif-card:hover{transform:translateY(-2px);}
+.dif-card h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--text);}
+.dif-card p{font-size:16px;color:var(--text-secondary);line-height:1.7;}
+
+/* ===== FORM CARD ===== */
+.form-card{background:rgba(17,22,32,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(25,198,181,0.12);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.4),0 0 60px -20px rgba(25,198,181,0.1);padding:36px;position:relative;z-index:1;}
+
+/* Progress bar */
+.progress{display:flex;gap:8px;margin-bottom:24px;}
+.progress-seg{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,0.1);transition:background 0.3s;}
+.progress-seg.active{background:var(--teal);}
+.step-label{font-size:13px;color:var(--text-secondary);margin-bottom:20px;}
+
+/* Form fields */
+.f-group{margin-bottom:20px;}
+.f-label{display:block;font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text);}
+.f-group input[type="text"],.f-group input[type="email"],.f-group input[type="tel"],.f-group select,.f-group textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-family:var(--font);font-size:16px;transition:border-color 0.2s,box-shadow 0.2s;outline:none;}
+.f-group input::placeholder{color:rgba(255,255,255,0.3);}
+.f-group input:focus,.f-group select:focus,.f-group textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(25,198,181,0.12);}
+.f-group select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23A0A0C0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;}
+.f-group select option{background:#1a1f2e;color:#fff;}
+
+/* Toggle buttons */
+.toggle-group{display:flex;gap:8px;}
+.toggle-btn{flex:1;padding:10px;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.04);color:var(--text-secondary);font-family:var(--font);font-size:16px;font-weight:600;cursor:pointer;text-align:center;transition:all 0.2s;}
+.toggle-btn.active{background:var(--teal-light);border-color:var(--teal);color:var(--teal);}
+.conditional{display:none;margin-top:12px;}
+.conditional.show{display:block;}
+
+/* Card select */
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.card-option{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:14px 16px;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all 0.2s;text-align:center;}
+.card-option:hover{transform:translateY(-1px);border-color:var(--teal);box-shadow:0 2px 8px rgba(25,198,181,0.1);}
+.card-option.selected,.card-option.checked{background:rgba(25,198,181,0.06);border-color:var(--teal);color:var(--teal);font-weight:600;}
+
+/* ===== ASSET PICKER (expand on tap) ===== */
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;transition:all 0.3s;}
+.asset-grid.picking .asset-card:not(.picking){display:none;}
+.asset-grid.picking{grid-template-columns:1fr;}
+.asset-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px 8px;text-align:center;cursor:pointer;transition:all 0.25s;-webkit-tap-highlight-color:transparent;position:relative;}
+.asset-card:hover{border-color:rgba(255,255,255,0.25);}
+.asset-card.done{border-color:var(--teal);background:rgba(25,198,181,0.06);}
+.asset-logo{width:36px;height:36px;border-radius:50%;margin-bottom:6px;opacity:0.5;transition:opacity 0.2s;}
+.asset-card:hover .asset-logo,.asset-card.done .asset-logo,.asset-card.picking .asset-logo{opacity:1;}
+.asset-name{display:block;font-size:12px;color:rgba(255,255,255,0.6);font-weight:600;}
+.asset-card.done .asset-name,.asset-card.picking .asset-name{color:#fff;}
+.asset-done-label{display:none;font-size:11px;color:var(--teal);font-weight:600;margin-top:4px;}
+.asset-card.done .asset-done-label{display:block;}
+/* Expanded state */
+.asset-card.picking{border-color:var(--teal);background:rgba(25,198,181,0.04);padding:20px;}
+.asset-card.picking .asset-top{display:flex;align-items:center;gap:12px;margin-bottom:16px;text-align:left;}
+.asset-top{display:none;}
+.asset-card.picking .asset-logo{margin-bottom:0;}
+.asset-card.picking .asset-name{font-size:16px;}
+.asset-card.picking .asset-default{display:none;}
+.asset-card:not(.picking) .asset-top{display:none;}
+.asset-default{display:block;}
+.asset-ranges{display:none;}
+.asset-card.picking .asset-ranges{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.range-pill{font-size:14px;padding:14px 8px;min-height:44px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.7);cursor:pointer;font-family:var(--font);font-weight:500;transition:all 0.15s;-webkit-tap-highlight-color:transparent;text-align:center;}
+.range-pill:hover{border-color:rgba(25,198,181,0.4);background:rgba(25,198,181,0.06);color:#fff;}
+.range-pill:active{transform:scale(0.97);}
+/* Check on done card */
+.asset-check{display:none;position:absolute;top:6px;right:6px;width:18px;height:18px;background:var(--teal);border-radius:50%;align-items:center;justify-content:center;}
+.asset-card.done .asset-check{display:flex;}
+.asset-check svg{width:10px;height:10px;}
+/* Outro */
+.asset-card-outro{grid-column:1/-1;}
+.asset-card-outro .outro-input{display:none;margin-top:8px;width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:8px 12px;color:#fff;font-family:var(--font);font-size:14px;outline:none;}
+.asset-card-outro .outro-input:focus{border-color:var(--teal);}
+.asset-card-outro.picking .outro-input{display:block;}
+/* Back button inside expanded card */
+.asset-back{display:none;background:none;border:none;color:rgba(255,255,255,0.4);font-size:12px;cursor:pointer;font-family:var(--font);margin-top:12px;padding:4px;}
+.asset-back:hover{color:#fff;}
+.asset-card.picking .asset-back{display:block;}
+
+@keyframes assetHighlight{
+  0%{border-color:rgba(255,255,255,0.1);box-shadow:none;}
+  50%{border-color:rgba(25,198,181,0.4);box-shadow:0 0 16px rgba(25,198,181,0.15);}
+  100%{border-color:rgba(255,255,255,0.1);box-shadow:none;}
+}
+#crypto-assets-section.highlight .asset-grid{
+  animation:assetHighlight 1.5s ease 2;
+  border:1px solid rgba(25,198,181,0.2);
+  border-radius:16px;
+  padding:12px;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary{width:100%;padding:14px;background:var(--teal);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
+.btn-primary:not(:disabled):hover{filter:brightness(1.2);}
+.btn-primary:not(:disabled):active{transform:scale(0.98);}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;}
+.btn-back{background:none;border:none;color:var(--text-secondary);font-family:var(--font);font-size:13px;cursor:pointer;padding:10px 0;margin-top:4px;}
+.btn-back:hover{color:var(--text);}
+.btn-wa{width:100%;padding:14px;background:#25D366;color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:filter 0.2s;text-decoration:none;}
+.btn-wa:hover{filter:brightness(0.9);}
+.btn-cta-large{display:inline-block;background:var(--teal);color:#fff;font-weight:700;font-size:16px;padding:16px 40px;border-radius:8px;transition:filter 0.2s;text-decoration:none;}
+.btn-cta-large:hover{filter:brightness(0.9);}
+
+/* Trust */
+.trust{display:flex;justify-content:center;gap:16px;margin-top:16px;}
+.trust span{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px;}
+.trust-inline{font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px;}
+
+/* Consent */
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:13px;color:var(--text-secondary);line-height:1.5;}
+.consent a{color:var(--teal);text-decoration:underline;}
+.consent input[type="checkbox"]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid rgba(255,255,255,0.2);border-radius:4px;cursor:pointer;transition:all 0.15s;position:relative;flex-shrink:0;margin-top:1px;background:transparent;}
+.consent input[type="checkbox"]:checked{background:var(--teal);border-color:var(--teal);}
+.consent input[type="checkbox"]:checked::after{content:'';position:absolute;left:4px;top:1px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);}
+
+/* Post-submit */
+#post-submit{display:none;}
+#post-submit.show{display:block;}
+.post-note{font-size:13px;color:var(--text-muted);text-align:center;margin-top:16px;}
+
+/* ===== FAQ ===== */
+.faq-list{max-width:var(--container-narrow);margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-question{padding:24px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:16px;color:var(--text);text-align:left;}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.faq-answer p{padding:0 0 24px;font-size:16px;color:var(--text-secondary);line-height:1.7;text-align:left;}
+.faq-item.open .faq-answer{max-height:300px;}
+.faq-chevron{transition:transform 0.3s;flex-shrink:0;margin-left:12px;color:var(--text-secondary);}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+
+/* ===== CTA FINAL ===== */
+.section--cta{background:linear-gradient(135deg,#12191D 0%,#1a2744 100%);padding:80px 0;text-align:center;}
+.section--cta h2{color:#fff;font-size:20px;font-weight:700;margin-bottom:14px;}
+.section--cta p{font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px;}
+.section--cta .btn-cta-large{background:var(--teal);color:#fff;padding:16px 40px;border-radius:8px;font-weight:700;font-size:16px;display:inline-block;}
+
+/* ===== BRAND ===== */
+.brand-section{background:var(--bg-dark);padding:80px 0;text-align:center;}
+.brand-section h2{color:#fff;font-size:20px;font-weight:700;margin-bottom:14px;}
+.brand-section h2 em{font-style:normal;color:var(--teal);}
+.brand-section p{color:rgba(255,255,255,0.6);font-size:16px;line-height:1.7;}
+.brand-stat{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px;}
+.brand-stat-item .num{font-size:36px;font-weight:800;color:var(--teal);line-height:1;}
+.brand-stat-item .label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.6);margin-top:6px;}
+
+/* ===== FOOTER ===== */
+.footer{padding:40px 0;background:var(--card-bg);border-top:1px solid var(--border);text-align:center;}
+.footer-logo{height:56px;width:auto;margin-bottom:16px;}
+.disclaimer{font-size:11px;color:var(--text-muted);line-height:1.7;max-width:600px;margin:0 auto;}
+
+/* ===== AVATAR FLUTUANTE WHATSAPP ===== */
+.avatar-float{position:fixed;bottom:24px;right:24px;z-index:9999;text-decoration:none;display:flex;align-items:flex-end;gap:0;transition:transform 0.2s;color:#fff;font-family:var(--font);}
+.avatar-float:hover{transform:translateY(-3px);}
+.avatar-float-photo{position:relative;flex-shrink:0;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));}
+.avatar-float-img{width:80px;height:80px;object-fit:cover;display:block;border-radius:0;}
+.avatar-float-dot{position:absolute;bottom:4px;right:4px;width:14px;height:14px;background:#4ADE80;border-radius:50%;border:2px solid var(--bg);}
+@keyframes dotBreathe{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.5);}50%{box-shadow:0 0 0 4px rgba(74,222,128,0);}}
+.avatar-float-dot{animation:dotBreathe 2s ease-in-out infinite;}
+.avatar-float-pill{background:rgba(26,31,43,0.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.08);border-radius:12px 12px 12px 0;padding:10px 16px;margin-bottom:8px;box-shadow:0 8px 24px rgba(0,0,0,0.4);display:flex;flex-direction:column;gap:2px;}
+.avatar-float-name{font-size:13px;font-weight:700;color:#fff;white-space:nowrap;}
+.avatar-float-wa{display:flex;align-items:center;gap:4px;}
+.avatar-float-wa svg{width:14px;height:14px;fill:#25D366;}
+.avatar-float-wa span{font-size:12px;color:#25D366;font-weight:600;}
+@media(max-width:600px){.avatar-float{bottom:calc(16px + env(safe-area-inset-bottom,0px));right:12px;}.avatar-float-img{width:64px;height:64px;}.avatar-float-pill{padding:8px 12px;}.avatar-float-name{font-size:12px;}}
+
+/* Error */
+.f-error{border-color:var(--red) !important;box-shadow:0 0 0 2px rgba(239,68,68,0.15) !important;}
+.error-msg{color:var(--red);font-size:13px;margin-top:4px;display:none;}
+
+/* ===== RESPONSIVE (880px per designer.md) ===== */
+@media(max-width:880px){
+  .container{padding:0 20px;}
+  .navbar .container{height:64px;}
+  .nav-logo img{height:36px;}
+  .nav-cta{font-size:13px;padding:8px 18px;}
+  .hero{min-height:auto;padding:100px 0 48px;}
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .hero-copy{text-align:left;padding-top:0;}
+  .hero-copy .h1{font-size:28px;}
+  .hero .form-card{max-width:500px;margin:0 auto;}
+  .pain-grid{grid-template-columns:1fr;}
+  .steps-grid{grid-template-columns:1fr;}
+  .andre-grid{grid-template-columns:1fr;text-align:center;gap:32px;}
+  .andre-photo{width:280px;aspect-ratio:3/4;margin:0 auto;}
+  .andre-bio{text-align:left;}
+  .andre-bio h2{text-align:center;font-size:28px;}
+  .andre-bio .andre-role{text-align:center;}
+  .cred-pills{justify-content:center;}
+  .profile-grid{grid-template-columns:1fr;}
+  .dif-grid{grid-template-columns:1fr;}
+  .cred-bar{gap:8px;}
+  .cred-item{font-size:12px;padding:8px 14px;}
+  .form-card{padding:24px 20px;}
+  .brand-stat{gap:24px;}
+  section{padding:48px 0;}
+  .card-grid{grid-template-columns:1fr;}
+  .asset-grid{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:480px){
+  .asset-grid{grid-template-columns:repeat(2,1fr);}
+  .range-pill{font-size:15px;padding:16px 10px;}
+}
+</style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HT6HBX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <span class="nav-logo" style="cursor:default;"><img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" style="height:48px;width:auto;" loading="eager"></span>
+    <a href="#form-card" class="nav-cta" onclick="dataLayer.push({event:'cta_click',cta_id:'navbar'});">Quero minha an&aacute;lise &rarr;</a>
+  </div>
+</nav>
+
+<!-- HERO — split: copy left, form right -->
+<section class="hero" id="formulario">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left: copy -->
+      <div class="hero-copy">
+        <div class="tag">Consultoria de Investimentos em Cripto &middot; desde 2016</div>
+        <h1 class="h1" id="hero-headline">Hold n&atilde;o &eacute; estrat&eacute;gia.<br><em>Regras de sa&iacute;da</em> s&atilde;o.</h1>
+        <p class="sub" id="hero-sub">Voc&ecirc; j&aacute; viu o lucro sumir enquanto esperava &ldquo;s&oacute; mais um pouco&rdquo;. Hold sem crit&eacute;rio n&atilde;o &eacute; gest&atilde;o &mdash; &eacute; f&eacute;. Um Advisor dedicado define, junto com voc&ecirc;, regras de sa&iacute;da para cada posi&ccedil;&atilde;o da sua carteira. Antes do mercado se mexer.</p>
+        <div class="hero-checks">
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Defina alvo de pre&ccedil;o, stop e % de realiza&ccedil;&atilde;o</span>
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Advisor dedicado desde 2015</span>
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> 3 ciclos completos de experi&ecirc;ncia</span>
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> An&aacute;lise personalizada gratuita</span>
+        </div>
+        <p class="micro">Leva menos de 2 minutos. Sem dados banc&aacute;rios.</p>
+      </div>
+
+      <!-- Right: form card -->
+      <div id="form-wrapper">
+        <div class="form-card" id="form-card">
+          <div class="tag" style="margin-bottom:12px;">Solicite sua an&aacute;lise</div>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;color:var(--text);">Monte sua regra de sa&iacute;da</h3>
+          <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;">Preencha seu portf&oacute;lio e um Advisor monta com voc&ecirc; em at&eacute; 48h.</p>
+          <div class="progress"><div class="progress-seg active" id="prog-1"></div><div class="progress-seg" id="prog-2"></div></div>
+
+          <form id="advisor-form" novalidate>
+            <!-- Step 1 -->
+            <div id="step-1">
+              <div class="step-label">1 / 2 - Seu perfil de investidor</div>
+
+              <div class="f-group">
+                <label class="f-label">Voc&ecirc; j&aacute; possui investimentos em Bitcoin/Cripto?</label>
+                <div class="toggle-group" data-group="cripto">
+                  <button type="button" class="toggle-btn" data-val="sim" onclick="setToggle(this,'cripto')">Sim</button>
+                  <button type="button" class="toggle-btn" data-val="não" onclick="setToggle(this,'cripto')">N&atilde;o</button>
+                </div>
+                <input type="hidden" id="f-cripto" name="cripto" value="">
+                <div class="conditional" id="cond-cripto">
+                  <label class="f-label">Qual seu patrim&ocirc;nio hoje em cripto?</label>
+                  <select id="f-patrimonio-cripto">
+                    <option value="">Selecione</option>
+                    <option value="Até R$ 10 mil">At&eacute; R$ 10 mil</option>
+                    <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
+                    <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
+                    <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
+                    <option value="Acima de R$500 mil">Acima de R$500 mil</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Visual Asset Grid (only when has crypto) -->
+              <div class="f-group" id="crypto-assets-section">
+                <label class="f-label">Quais criptoativos voc&ecirc; possui e quanto em cada?</label>
+                <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Toque na moeda para informar o valor aproximado.</p>
+
+                <div class="asset-grid" id="asset-grid">
+                  <div class="asset-card" data-asset="Bitcoin" data-ticker="BTC" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" class="asset-logo"><span class="asset-name">Bitcoin</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/1/small/bitcoin.png" alt="BTC" class="asset-logo"><span class="asset-name">Quanto tem em Bitcoin?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card" data-asset="Ethereum" data-ticker="ETH" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" class="asset-logo"><span class="asset-name">Ethereum</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/279/small/ethereum.png" alt="ETH" class="asset-logo"><span class="asset-name">Quanto tem em Ethereum?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card" data-asset="BNB" data-ticker="BNB" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png" alt="BNB" class="asset-logo"><span class="asset-name">BNB</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png" alt="BNB" class="asset-logo"><span class="asset-name">Quanto tem em BNB?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card" data-asset="Solana" data-ticker="SOL" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" class="asset-logo"><span class="asset-name">Solana</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/4128/small/solana.png" alt="SOL" class="asset-logo"><span class="asset-name">Quanto tem em Solana?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card" data-asset="XRP" data-ticker="XRP" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png" alt="XRP" class="asset-logo"><span class="asset-name">XRP</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png" alt="XRP" class="asset-logo"><span class="asset-name">Quanto tem em XRP?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card" data-asset="Cardano" data-ticker="ADA" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="ADA" class="asset-logo"><span class="asset-name">Cardano</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/975/small/cardano.png" alt="ADA" class="asset-logo"><span class="asset-name">Quanto tem em Cardano?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card" data-asset="USDT" data-ticker="USDT" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" class="asset-logo"><span class="asset-name">USDT</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/325/small/Tether.png" alt="USDT" class="asset-logo"><span class="asset-name">Quanto tem em USDT?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card" data-asset="USDC" data-ticker="USDC" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><img src="https://assets.coingecko.com/coins/images/6319/small/usdc.png" alt="USDC" class="asset-logo"><span class="asset-name">USDC</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><img src="https://assets.coingecko.com/coins/images/6319/small/usdc.png" alt="USDC" class="asset-logo"><span class="asset-name">Quanto tem em USDC?</span></div>
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                  </div>
+                  <div class="asset-card asset-card-outro" data-asset="Outro" data-ticker="" onclick="pickAsset(this)">
+                    <div class="asset-check"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+                    <div class="asset-default"><span class="asset-name" style="font-size:13px;">+ Outro ativo</span><span class="asset-done-label"></span></div>
+                    <div class="asset-top"><span class="asset-name">Qual ativo e quanto?</span></div>
+                    <input type="text" class="outro-input" placeholder="Nome do ativo" onclick="event.stopPropagation();" oninput="this.closest('.asset-card').setAttribute('data-asset',this.value||'Outro');updatePortfolioData();">
+                    <div class="asset-ranges"><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="ate_50k">At&eacute; R$ 50 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="50k_200k">R$ 50 a 200 mil</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="200k_1m">R$ 200 mil a 1M</button><button type="button" class="range-pill" onclick="pickRange(this,event);" data-range="acima_1m">Acima de R$ 1M</button></div>
+                    <button type="button" class="asset-back" onclick="cancelPick(event);">&larr; Voltar</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="pb-skip" style="text-align:center;margin-top:8px;">
+                  <button type="button" style="background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;text-decoration:underline;font-family:var(--font);" id="pb-skip-btn">Ainda n&atilde;o sei detalhar</button>
+                </div>
+
+                <input type="hidden" id="cf_carteira_detalhada" value="">
+              </div>
+
+              <div class="f-group">
+                <label class="f-label">E no mercado tradicional (Tesouro, CDI, a&ccedil;&otilde;es, fundos)?</label>
+                <div class="toggle-group" data-group="tradicional">
+                  <button type="button" class="toggle-btn" data-val="sim" onclick="setToggle(this,'tradicional')">Sim</button>
+                  <button type="button" class="toggle-btn" data-val="não" onclick="setToggle(this,'tradicional')">N&atilde;o</button>
+                </div>
+                <input type="hidden" id="f-tradicional" name="tradicional" value="">
+                <div class="conditional" id="cond-tradicional">
+                  <label class="f-label">Qual seu patrim&ocirc;nio no mercado tradicional?</label>
+                  <select id="f-patrimonio-tradicional">
+                    <option value="">Selecione</option>
+                    <option value="Até R$ 10 mil">At&eacute; R$ 10 mil</option>
+                    <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
+                    <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
+                    <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
+                    <option value="Acima de R$500 mil">Acima de R$500 mil</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Scenario C: No crypto + Has traditional (aparece DENTRO do bloco tradicional) -->
+              <div id="msg-trad-only" style="display:none;margin-top:16px;">
+                <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:12px;padding:20px;">
+                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:10px;">Vimos que voc&ecirc; investe no mercado tradicional, mas ainda n&atilde;o em cripto.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:14px;">Esse &eacute; o perfil de boa parte dos nossos clientes. Eles tinham as mesmas d&uacute;vidas: "faz sentido pra mim?", "quanto alocar?", "como come&ccedil;ar sem risco?"</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:0;">Na conversa com o Advisor, voc&ecirc; descobre <strong style="color:#fff;">se cripto faz sentido para o seu patrim&ocirc;nio</strong> e, se fizer, qual o percentual adequado. Sem compromisso.</p>
+                </div>
+              </div>
+
+              <!-- Scenario B: sem mensagem -->
+              <div id="msg-crypto-only" style="display:none;"></div>
+
+              <!-- Scenario D: No crypto + No traditional -->
+              <div id="msg-no-invest" style="display:none;margin-top:16px;">
+                <div style="background:rgba(25,198,181,0.04);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center;">
+                  <p style="font-size:14px;font-weight:600;color:#fff;margin-bottom:8px;">Parece que voc&ecirc; est&aacute; no come&ccedil;o da jornada.</p>
+                  <p style="font-size:13px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">Preparamos um material gratuito para te ajudar a dar os primeiros passos com seguran&ccedil;a.</p>
+                  <a href="https://elsonflorentino-afk.github.io/projetos-boost/ebook-portfolio/" style="display:inline-block;padding:10px 24px;background:var(--teal);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;">Acessar conte&uacute;dos gratuitos &rarr;</a>
+                </div>
+              </div>
+
+              <div class="f-group">
+                <label class="f-label">Qual seu maior desafio hoje?</label>
+                <div class="card-grid" id="desafio-grid" data-field="f-desafio">
+                  <div class="card-option" data-value="Não sei quando vender ou realizar lucro">N&atilde;o sei quando vender ou realizar lucro</div>
+                  <div class="card-option" data-value="Sem tempo para acompanhar o mercado">Sem tempo para acompanhar o mercado</div>
+                  <div class="card-option" data-value="Tenho receio de tomar decisões erradas">Tenho receio de tomar decis&otilde;es erradas</div>
+                  <div class="card-option" data-value="Quero diversificar mas não sei como">Quero diversificar mas n&atilde;o sei como</div>
+                  <div class="card-option" data-value="Sinto que estou preso no ciclo">Sinto que estou preso no ciclo</div>
+                  <div class="card-option" data-value="Não sei como declarar cripto no IR">N&atilde;o sei como declarar cripto no IR</div>
+                </div>
+                <input type="hidden" id="f-desafio" value="">
+              </div>
+
+              <button type="button" class="btn-primary" id="btn-step1" disabled onclick="goStep(2)">Continuar &rarr;</button>
+              <p class="trust-inline">Seus dados s&atilde;o protegidos e nunca compartilhados.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div id="step-2" style="display:none;">
+              <div class="step-label">2 / 2 - Seus dados de contato</div>
+
+              <div class="f-group">
+                <label class="f-label" for="f-nome">Nome completo</label>
+                <input type="text" id="f-nome" required autocomplete="name" placeholder="Seu nome completo">
+              </div>
+              <div class="f-group">
+                <label class="f-label" for="f-email">E-mail</label>
+                <input type="email" id="f-email" required autocomplete="email" placeholder="seu@email.com">
+              </div>
+              <div class="f-group">
+                <label class="f-label" for="f-whatsapp">WhatsApp</label>
+                <input type="tel" id="f-whatsapp" required autocomplete="tel" placeholder="(11) 99999-9999">
+              </div>
+
+              <input type="hidden" id="f-utm-source"><input type="hidden" id="f-utm-medium"><input type="hidden" id="f-utm-campaign"><input type="hidden" id="f-utm-content"><input type="hidden" id="f-utm-term">
+
+              <div class="consent">
+                <input type="checkbox" id="f-consent">
+                <label for="f-consent">Concordo em receber a an&aacute;lise por e-mail e WhatsApp. <a href="https://boostresearch.com.br/politica-de-privacidade" target="_blank" rel="noopener">Pol&iacute;tica de Privacidade</a>.</label>
+              </div>
+
+              <button type="submit" class="btn-primary" id="btn-submit">Enviar minha carteira para an&aacute;lise &rarr;</button>
+              <button type="button" class="btn-back" onclick="goStep(1)">&larr; Voltar</button>
+
+              <div class="trust">
+                <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Dados criptografados</span>
+                <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> LGPD</span>
+                <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/><path d="M9 21v-4h6v4"/></svg> CVM</span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Post-Submit -->
+        <div class="form-card" id="post-submit" style="margin-top:16px;">
+          <div style="text-align:center;margin-bottom:24px;">
+            <div style="width:56px;height:56px;background:rgba(25,198,181,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+            </div>
+            <h2 style="font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text);">Dados recebidos!</h2>
+            <p style="font-size:16px;color:var(--text-secondary);line-height:1.6;">Seu Advisor entra em contato em at&eacute; 48 horas pelo WhatsApp para agendar sua an&aacute;lise ao vivo.</p>
+          </div>
+
+          <div style="background:rgba(25,198,181,0.06);border:1px solid rgba(25,198,181,0.15);border-radius:16px;padding:24px;margin-bottom:24px;">
+            <p style="font-size:16px;font-weight:600;margin-bottom:14px;color:var(--text);">O que acontece agora:</p>
+            <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;">
+              <span style="color:var(--teal);font-weight:700;flex-shrink:0;">1.</span>
+              <span style="font-size:16px;color:var(--text-secondary);">Um Advisor analisa seu perfil e prepara recomenda&ccedil;&otilde;es espec&iacute;ficas</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;">
+              <span style="color:var(--teal);font-weight:700;flex-shrink:0;">2.</span>
+              <span style="font-size:16px;color:var(--text-secondary);">Entra em contato pelo WhatsApp para agendar a conversa</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;">
+              <span style="color:var(--teal);font-weight:700;flex-shrink:0;">3.</span>
+              <span style="font-size:16px;color:var(--text-secondary);">Na reuni&atilde;o (45 min), compara sua carteira com a do Andr&eacute; Franco</span>
+            </div>
+          </div>
+
+          <p style="font-size:16px;color:var(--text-secondary);text-align:center;margin-bottom:16px;">Quer adiantar? Envie detalhes da sua carteira pelo WhatsApp:</p>
+
+          <a href="https://wa.me/5521965622891" class="btn-wa" id="btn-wa-post" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'post_submit'});">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Conversar pelo WhatsApp &rarr;
+          </a>
+
+          <p class="post-note">O Advisor pede os detalhes na conversa. Sem pressa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY BAR -->
+<section class="section--alt" style="padding:48px 0;">
+  <div class="container">
+    <div class="cred-bar">
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        No mercado desde 2016
+      </div>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        2 ciclos completos de alta e baixa
+      </div>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Sem comiss&atilde;o de exchange
+      </div>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        Consultoria independente e regulamentada
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESPELHO DO PROBLEMA — 2x2 grid -->
+<section class="section--white" id="dores">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Voc&ecirc; se reconhece?</div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">Hold virou religi&atilde;o no mercado cripto. Voc&ecirc; compra, segura e repete &ldquo;no longo prazo vai subir&rdquo;. S&oacute; que no caminho, passa por quedas de 70%, 80%.</div>
+      <div class="pain-card">Uma queda de 80% exige uma alta de 400% s&oacute; para voltar ao zero. &Eacute; matem&aacute;tica, n&atilde;o opini&atilde;o. Sem regra, voc&ecirc; fica preso esperando.</div>
+      <div class="pain-card">Voc&ecirc; n&atilde;o vende porque acredita &mdash; n&atilde;o porque analisou. Existe uma diferen&ccedil;a enorme entre segurar com crit&eacute;rio e segurar por medo de tomar decis&atilde;o.</div>
+      <div class="pain-card">N&atilde;o &eacute; sobre virar trader. &Eacute; sobre ter alvos de realiza&ccedil;&atilde;o, stops definidos e um plano que funciona antes de o mercado se mexer.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA — 3 columns -->
+<section class="section--alt" id="como-funciona">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Na pr&aacute;tica funciona assim</div>
+      <h2>Sua regra de sa&iacute;da em 3 passos.</h2>
+      <p class="sub">Pare de decidir por impulso. Tenha um plano claro antes do pr&oacute;ximo ciclo.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Preencha seu portf&oacute;lio</h3>
+        <p>Informe o que voc&ecirc; tem hoje &mdash; ativos, valores e onde est&atilde;o. Leva menos de 2 minutos.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Advisor analisa seus riscos</h3>
+        <p>Identifica onde est&atilde;o os riscos, define alvo de pre&ccedil;o, stop e percentual de realiza&ccedil;&atilde;o por ativo.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Voc&ecirc; tem sua regra de sa&iacute;da</h3>
+        <p>Sabe exatamente quando vender, quanto realizar e at&eacute; onde segurar. Sem achismo, sem impulso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANDRÉ FRANCO — split layout -->
+<section class="section--white">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;"><div class="tag">Quem analisa o mercado por voc&ecirc;</div></div>
+    <div class="andre-grid">
+      <div class="andre-photo">
+        <img src="assets/andre-franco.jpg" alt="André Franco" width="600" height="800" loading="lazy">
+      </div>
+      <div class="andre-bio">
+        <h2>Andr&eacute; Franco</h2>
+        <p class="andre-role">Fundador da Boost Research</p>
+        <p>A maioria dos investidores que nos busca tem esse perfil: profissionais com patrim&ocirc;nio relevante que precisam de algu&eacute;m analisando o mercado por eles. &Eacute; isso que a gente faz desde 2016. Consultoria independente, sem v&iacute;nculo com banco ou corretora. Cada investidor tem um Advisor dedicado.</p>
+        <div class="cred-pills">
+          <span class="cred-pill">Desde 2016</span>
+          <span class="cred-pill">2 ciclos completos</span>
+          <span class="cred-pill">Consultoria independente</span>
+          <span class="cred-pill">Honor&aacute;rio fixo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É — 2-column profile cards -->
+<section class="section--alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">A an&aacute;lise &eacute; para voc&ecirc; se...</div>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <h3>Tem patrim&ocirc;nio em cripto, mas o dia n&atilde;o tem 24 horas.</h3>
+        <ul>
+          <li>Trabalha em tempo integral e n&atilde;o consegue acompanhar o mercado com a frequ&ecirc;ncia necess&aacute;ria</li>
+          <li>Sabe que precisa de estrat&eacute;gia, mas n&atilde;o tem tempo para montar uma</li>
+          <li>Quer tomar decis&otilde;es informadas sem virar analista de cripto</li>
+        </ul>
+        <div class="profile-quote">Voc&ecirc; n&atilde;o precisa acompanhar o mercado. Precisa de algu&eacute;m que acompanhe por voc&ecirc;.</div>
+      </div>
+      <div class="profile-card">
+        <h3>J&aacute; tem posi&ccedil;&atilde;o, mas n&atilde;o tem quem oriente.</h3>
+        <ul>
+          <li>Comprou cripto mas n&atilde;o sabe exatamente quando &eacute; hora de agir</li>
+          <li>J&aacute; perdeu movimentos importantes por estar ocupado com o trabalho</li>
+          <li>Quer um profissional dedicado que avise quando algo precisa da sua aten&ccedil;&atilde;o</li>
+        </ul>
+        <div class="profile-quote">A diferen&ccedil;a entre investir e acompanhar &eacute; ter algu&eacute;m cuidando enquanto voc&ecirc; trabalha.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAL — 2-column cards -->
+<section class="section--white" id="por-que-boost">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Por que a Boost</div>
+      <h2>Consultoria independente. Sem v&iacute;nculo com banco ou corretora.</h2>
+    </div>
+    <div class="dif-grid">
+      <div class="dif-card">
+        <h3>Advisor Dedicado</h3>
+        <p>Cada investidor tem um Advisor que conhece sua carteira, seu perfil e seus objetivos. N&atilde;o &eacute; um rob&ocirc;, n&atilde;o &eacute; um relat&oacute;rio gen&eacute;rico. &Eacute; um profissional que acompanha o mercado por voc&ecirc;.</p>
+      </div>
+      <div class="dif-card">
+        <h3>Direcionamentos Claros</h3>
+        <p>O que est&aacute; acontecendo, o que fazer e por qu&ecirc;. Voc&ecirc; entende em minutos e toma decis&otilde;es informadas. Sem jarg&atilde;o, sem enrola&ccedil;&atilde;o.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ — accordion -->
+<section class="section--alt">
+  <div class="container">
+    <div class="section-header"><h2>Perguntas frequentes</h2></div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">&Eacute; realmente gratuito?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>Sim. A an&aacute;lise inicial n&atilde;o tem custo. Se fizer sentido seguir, apresentamos como funciona a consultoria. Se n&atilde;o, a conversa j&aacute; foi &uacute;til.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">Quanto tempo leva a an&aacute;lise?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>Depois de preencher o formul&aacute;rio (menos de 2 minutos), um Advisor entra em contato pelo WhatsApp em at&eacute; 48 horas para agendar a conversa ao vivo.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">Preciso acompanhar o mercado depois?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>N&atilde;o. Esse &eacute; justamente o ponto. O Advisor acompanha o mercado por voc&ecirc; e envia direcionamentos claros quando algo precisa da sua aten&ccedil;&atilde;o.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">Voc&ecirc;s v&atilde;o me vender algo?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>N&atilde;o h&aacute; script de vendas. O objetivo da conversa &eacute; analisar sua carteira. Se a consultoria fizer sentido para seu perfil, explicamos como funciona. Se n&atilde;o fizer, dizemos isso com clareza.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section--cta">
+  <div class="container" style="max-width:680px;position:relative;z-index:1;">
+    <h2>Sem tempo para cripto? A gente cuida disso.</h2>
+    <p>Solicite sua an&aacute;lise gratuita. Um Advisor dedicado analisa o mercado por voc&ecirc; desde 2016.</p>
+    <a href="#formulario" class="btn-cta-large" onclick="dataLayer.push({event:'cta_click',cta_id:'final_cta'});">Quero minha an&aacute;lise gratuita &rarr;</a>
+  </div>
+</section>
+
+<!-- BRAND -->
+<section class="brand-section">
+  <div class="container">
+    <div style="width:3px;height:40px;background:var(--teal);margin:0 auto 24px;border-radius:2px;"></div>
+    <h2 style="margin-bottom:14px;">A consultoria de investimentos em cripto<br>com a maior <em>experi&ecirc;ncia de mercado</em></h2>
+    <p style="font-size:16px;line-height:1.7;max-width:560px;margin:0 auto;">
+      A maioria dos investidores que nos busca s&atilde;o profissionais que precisam de algu&eacute;m analisando o mercado por eles. &Eacute; isso que a Boost Research faz desde 2016. Consultoria independente. Mesmo m&eacute;todo, dois ciclos completos.
+    </p>
+    <div class="brand-stat">
+      <div class="brand-stat-item"><div class="num">+10</div><div class="label">anos de mercado</div></div>
+      <div class="brand-stat-item"><div class="num">2</div><div class="label">ciclos completos</div></div>
+      <div class="brand-stat-item"><div class="num">fixo</div><div class="label">honor&aacute;rio independente</div></div>
+      <div class="brand-stat-item"><div class="num">zero</div><div class="label">comiss&atilde;o de exchange</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" class="footer-logo" loading="lazy">
+    <p class="disclaimer">
+      Conte&uacute;do informativo. N&atilde;o constitui recomenda&ccedil;&atilde;o de investimento. As an&aacute;lises da Boost Research, consultoria de investimentos em criptoativos, t&ecirc;m car&aacute;ter educativo e informativo, em conformidade com as normas da CVM e ANBIMA, e n&atilde;o substituem a orienta&ccedil;&atilde;o de um profissional certificado para sua situa&ccedil;&atilde;o espec&iacute;fica. Rentabilidade passada n&atilde;o &eacute; garantia de rentabilidade futura. Investimentos em criptoativos envolvem riscos significativos, incluindo a possibilidade de perda total do capital investido. Boost Research &middot; 2026.
+    </p>
+  </div>
+</footer>
+
+<!-- Avatar flutuante WhatsApp -->
+<!-- Avatar flutuante — mascote sem circulo -->
+<a href="https://wa.me/5521965622891?text=Ol%C3%A1%2C%20vim%20pelo%20v%C3%ADdeo%20do%20YouTube%20sobre%20%22sem%20tempo%20pra%20cripto%22%20e%20gostaria%20de%20falar%20com%20um%20Advisor." class="avatar-float" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'avatar_float'});">
+  <div class="avatar-float-pill">
+    <span class="avatar-float-name">Fale com um Advisor</span>
+    <span class="avatar-float-wa">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+      <span>WhatsApp</span>
+    </span>
+  </div>
+  <div class="avatar-float-photo">
+    <img src="assets/avatar-andre.png" alt="Fale com a equipe" class="avatar-float-img" width="80" height="80">
+    <span class="avatar-float-dot"></span>
+  </div>
+</a>
+
+<script>
+(function(){
+'use strict';
+
+/* UTM Cookies */
+function setCookie(n,v,d){var e=new Date();e.setTime(e.getTime()+d*864e5);document.cookie=n+'='+encodeURIComponent(v)+';expires='+e.toUTCString()+';path=/;SameSite=Lax';}
+function getCookie(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?decodeURIComponent(m.pop()):'';}
+var params=new URLSearchParams(location.search);
+['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){var v=params.get(k);if(v)setCookie('boost_'+k,v,30);});
+function fillUTMs(){['source','medium','campaign','content','term'].forEach(function(k){var el=document.getElementById('f-utm-'+k);if(el)el.value=getCookie('boost_utm_'+k);});}
+
+/* Dynamic Headline — DISABLED for dedicated Tema 2 LP
+var headlines={
+  tema_01:{h:'Você viu o Bitcoin subir 300%,<br>não vendeu, e viu cair 80%?',s:'Sem regras de saída, decisões viram emoção. Descubra se seu portfólio tem estratégia.'},
+  tema_02:{h:'Você trabalha 12h por dia<br>e não tem tempo pra cripto?',s:'Investidor profissional precisa de análise curada, não de tela de exchange aberta.'},
+  tema_03:{h:'Você declarou cripto<br>no IR este ano?',s:'Se não, a Receita já sabe. Faça o diagnóstico e entenda sua situação.'},
+  tema_04:{h:'Hold não é estratégia.<br><em>É fé.</em>',s:'Segurar indefinidamente sem regras é aposta, não plano. Veja onde estão os riscos.'},
+  tema_05:{h:'Se a sua corretora fechar<br>amanhã, o que acontece?',s:'Sua cripto na corretora não é sua. Analise sua custódia em 2 minutos.'},
+  tema_06:{h:'Comprou altcoin a 42,<br>vendeu a 19?',s:'Não está sozinho. A maioria das altcoins falha. Veja como seu portfólio está posicionado.'},
+  tema_07:{h:'O ChatGPT te dá resposta.<br><em>O André te dá contexto.</em>',s:'IA não conhece seu patrimônio, seu risco, seu horizonte. Um Advisor humano conhece.'},
+  tema_08:{h:'Três erros com cripto.<br>A maioria comete dois.',s:'Sem regras de saída, sem monitoramento, altcoins sem critério. Descubra seu score.'},
+  tema_09:{h:'Em 2016 quase ninguém<br>falava de Bitcoin a sério.',s:'O André estava lá. Dois ciclos completos depois, ele analisa a sua carteira.'},
+  tema_10:{h:'93% dos aposentados<br>dependem do INSS.',s:'Dado ANBIMA 2026. Seu portfólio cripto pode mudar isso. Faça o diagnóstico.'},
+  tema_11:{h:'Sem vínculo com banco.<br><em>Sem vínculo com corretora.</em>',s:'Consultoria independente elimina conflito de interesse nas recomendações.'},
+  tema_12:{h:'Renda fixa digital:<br>você já ouviu mas não entende?',s:'Stablecoins com rendimento não são cripto volátil. Descubra o que falta no seu portfólio.'}
+};
+var utmContent=getCookie('boost_utm_content')||params.get('utm_content')||'';
+if(utmContent&&headlines[utmContent]){
+  document.getElementById('hero-headline').innerHTML=headlines[utmContent].h;
+  document.getElementById('hero-sub').textContent=headlines[utmContent].s;
+}
+*/
+
+/* Stored lead name for WA link */
+var leadName='';
+
+/* ===== ASSET PICKER JS (expand/collapse) ===== */
+var RANGE_LABELS={'ate_50k':'Até R$50k','50k_200k':'R$50-200k','200k_1m':'R$200k-1M','acima_1m':'+R$1M'};
+
+window.pickAsset=function(card){
+  if(card.classList.contains('picking'))return;
+  if(card.classList.contains('done')){
+    /* Re-open to change */
+    card.classList.remove('done');
+    card.removeAttribute('data-range');
+    card.querySelectorAll('.range-pill').forEach(function(p){p.classList.remove('active');});
+    var doneLabel=card.querySelector('.asset-done-label');if(doneLabel)doneLabel.textContent='';
+    updatePortfolioData();
+  }
+  /* Collapse any other open card (and clear its picking state) */
+  document.querySelectorAll('.asset-card.picking').forEach(function(c){c.classList.remove('picking');});
+  /* Clear "nao_sabe" skip if user starts picking */
+  var skip=document.getElementById('pb-skip');
+  if(skip&&skip.innerHTML.indexOf('Ok,')>-1){
+    skip.innerHTML='<button type="button" style="background:none;border:none;color:var(--text-muted);font-size:12px;cursor:pointer;text-decoration:underline;font-family:var(--font);" id="pb-skip-btn">Ainda n\u00e3o sei detalhar</button>';
+    document.getElementById('pb-skip-btn').addEventListener('click',function(){
+      document.getElementById('cf_carteira_detalhada').value=JSON.stringify([{asset:'nao_sabe',ticker:'',range:''}]);
+      skip.innerHTML='<span style="font-size:12px;color:var(--teal);">Ok, o Advisor pergunta na conversa.</span>';
+      checkStep1();
+    });
+  }
+  /* Expand this card */
+  card.classList.add('picking');
+  document.getElementById('asset-grid').classList.add('picking');
+  setTimeout(function(){card.scrollIntoView({behavior:'smooth',block:'nearest'});},100);
+};
+
+window.pickRange=function(pill,e){
+  e.stopPropagation();
+  var card=pill.closest('.asset-card');
+  var range=pill.getAttribute('data-range');
+  card.setAttribute('data-range',range);
+  card.querySelector('.asset-done-label').textContent=RANGE_LABELS[range]||range;
+  /* Mark done, collapse */
+  card.classList.remove('picking');
+  card.classList.add('done');
+  document.getElementById('asset-grid').classList.remove('picking');
+  updatePortfolioData();
+};
+
+window.cancelPick=function(e){
+  e.stopPropagation();
+  var card=e.target.closest('.asset-card');
+  card.classList.remove('picking');
+  document.getElementById('asset-grid').classList.remove('picking');
+  updatePortfolioData();
+  checkStep1();
+};
+
+function updatePortfolioData(){
+  var data=[];
+  document.querySelectorAll('.asset-card.done').forEach(function(card){
+    data.push({asset:card.getAttribute('data-asset'),ticker:card.getAttribute('data-ticker'),range:card.getAttribute('data-range')||''});
+  });
+  document.getElementById('cf_carteira_detalhada').value=data.length>0?JSON.stringify(data):'';
+  checkStep1();
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('pb-skip-btn').addEventListener('click',function(){
+    document.getElementById('cf_carteira_detalhada').value=JSON.stringify([{asset:'nao_sabe',ticker:'',range:''}]);
+    document.getElementById('pb-skip').innerHTML='<span style="font-size:12px;color:var(--teal);">Ok, o Advisor pergunta na conversa.</span>';
+    checkStep1();
+  });
+});
+
+/* Toggle Sim/Não */
+window.setToggle=function(btn,group){
+  var parent=btn.parentElement;
+  parent.querySelectorAll('.toggle-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var val=btn.getAttribute('data-val');
+  document.getElementById('f-'+group).value=val;
+  var cond=document.getElementById('cond-'+group);
+  if(val==='sim'){cond.classList.add('show');}else{cond.classList.remove('show');}
+  updateProfileMessages();
+  checkStep1();
+};
+
+function updateProfileMessages(){
+  var cripto=document.getElementById('f-cripto').value;
+  var trad=document.getElementById('f-tradicional').value;
+  /* Hide all contextual messages */
+  document.getElementById('msg-trad-only').style.display='none';
+  document.getElementById('msg-crypto-only').style.display='none';
+  document.getElementById('msg-no-invest').style.display='none';
+  var assetsSection=document.getElementById('crypto-assets-section');
+  /* Only evaluate when both toggles have been answered */
+  if(!cripto||!trad)return;
+  if(cripto==='sim'){
+    /* Scenario A or B: has crypto */
+    assetsSection.style.display='block';
+    if(trad==='não'){
+      document.getElementById('msg-crypto-only').style.display='block';
+    }
+  }else{
+    /* No crypto: hide asset picker, clear selections */
+    assetsSection.style.display='none';
+    document.querySelectorAll('.asset-card.done').forEach(function(c){c.classList.remove('done');c.removeAttribute('data-range');var lbl=c.querySelector('.asset-done-label');if(lbl)lbl.textContent='';});
+    document.getElementById('cf_carteira_detalhada').value='';
+    if(trad==='sim'){
+      /* Scenario C: msg appears when patrimony dropdown is filled (see listener below) */
+    }else{
+      /* Scenario D: no crypto + no traditional */
+      document.getElementById('msg-no-invest').style.display='block';
+    }
+  }
+}
+
+/* Card Select (desafio - single) */
+document.addEventListener('DOMContentLoaded',function(){
+  fillUTMs();
+
+  /* selectAlloc is global, called via onclick */
+
+  document.querySelectorAll('#desafio-grid .card-option').forEach(function(card){
+    card.addEventListener('click',function(){
+      document.querySelectorAll('#desafio-grid .card-option').forEach(function(c){c.classList.remove('selected');});
+      card.classList.add('selected');
+      document.getElementById('f-desafio').value=card.getAttribute('data-value');
+      checkStep1();
+    });
+  });
+
+  /* WhatsApp Mask */
+  var wpp=document.getElementById('f-whatsapp');
+  if(wpp)wpp.addEventListener('input',function(){
+    var r=this.value.replace(/\D/g,'').slice(0,11),f;
+    if(!r){this.value='';return;}
+    if(r.length<=2)f='('+r;
+    else if(r.length<=6)f='('+r.slice(0,2)+') '+r.slice(2);
+    else if(r.length<=10)f='('+r.slice(0,2)+') '+r.slice(2,6)+'-'+r.slice(6);
+    else f='('+r.slice(0,2)+') '+r.slice(2,7)+'-'+r.slice(7);
+    this.value=f;
+  });
+});
+
+/* Step 1 validation */
+function checkStep1(){
+  var cripto=document.getElementById('f-cripto').value;
+  var trad=document.getElementById('f-tradicional').value;
+  var desafio=document.getElementById('f-desafio').value;
+  var valid=cripto&&trad&&desafio;
+  if(cripto==='sim'&&!document.getElementById('f-patrimonio-cripto').value)valid=false;
+  if(trad==='sim'&&!document.getElementById('f-patrimonio-tradicional').value)valid=false;
+  /* Scenario D: no crypto + no traditional → block */
+  if(cripto==='não'&&trad==='não')valid=false;
+  /* If has crypto, MUST select at least 1 asset with range (or skip) */
+  if(cripto==='sim'){
+    var carteiraVal=document.getElementById('cf_carteira_detalhada').value;
+    if(!carteiraVal)valid=false;
+  }
+  document.getElementById('btn-step1').disabled=!valid;
+}
+
+/* Listen for dropdown changes */
+document.addEventListener('DOMContentLoaded',function(){
+  ['f-patrimonio-cripto','f-patrimonio-tradicional'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)el.addEventListener('change',function(){
+      checkStep1();
+      /* After selecting crypto patrimony, scroll to assets section */
+      if(id==='f-patrimonio-cripto'&&el.value){
+        var assets=document.getElementById('crypto-assets-section');
+        if(assets&&assets.style.display!=='none'){
+          setTimeout(function(){assets.scrollIntoView({behavior:'smooth',block:'nearest'});},200);
+          // Highlight the asset section
+          var section = document.getElementById('crypto-assets-section');
+          if(section) {
+            section.classList.add('highlight');
+            setTimeout(function(){ section.classList.remove('highlight'); }, 3000);
+          }
+        }
+      }
+      /* Scenario C: show msg after traditional patrimony selected + no crypto */
+      if(id==='f-patrimonio-tradicional'){
+        var cripto=document.getElementById('f-cripto').value;
+        var msg=document.getElementById('msg-trad-only');
+        if(cripto==='não'&&el.value){
+          msg.style.display='block';
+          document.getElementById('cond-tradicional').appendChild(msg);
+          msg.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }else{
+          msg.style.display='none';
+        }
+      }
+    });
+  });
+});
+
+/* Step navigation */
+window.goStep=function(step){
+  if(step===2){
+    document.getElementById('step-1').style.display='none';
+    document.getElementById('step-2').style.display='block';
+    document.getElementById('prog-2').classList.add('active');
+  }else{
+    document.getElementById('step-2').style.display='none';
+    document.getElementById('step-1').style.display='block';
+    document.getElementById('prog-2').classList.remove('active');
+  }
+};
+
+/* Form submit */
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('advisor-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var nome=document.getElementById('f-nome').value.trim();
+    var email=document.getElementById('f-email').value.trim();
+    var wpp=document.getElementById('f-whatsapp').value.replace(/\D/g,'');
+    var consent=document.getElementById('f-consent').checked;
+    var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var hasError=false;
+
+    [document.getElementById('f-nome'),document.getElementById('f-email'),document.getElementById('f-whatsapp')].forEach(function(el){el.classList.remove('f-error');});
+
+    if(!nome){document.getElementById('f-nome').classList.add('f-error');hasError=true;}
+    if(!emailRe.test(email)){document.getElementById('f-email').classList.add('f-error');hasError=true;}
+    if(wpp.length<10){document.getElementById('f-whatsapp').classList.add('f-error');hasError=true;}
+    if(!consent){hasError=true;}
+    if(hasError)return;
+
+    leadName=nome;
+
+    /* Collect ALL form data BEFORE hiding anything */
+    var criptoVal=document.getElementById('f-cripto').value||'';
+    var patCriptoVal=(document.getElementById('f-patrimonio-cripto')||{}).value||'';
+    var tradVal=document.getElementById('f-tradicional').value||'';
+    var patTradVal=(document.getElementById('f-patrimonio-tradicional')||{}).value||'';
+    var desafioVal=(document.getElementById('f-desafio')||{}).value||'';
+    var carteiraVal=(document.getElementById('cf_carteira_detalhada')||{}).value||'';
+
+    /* Hide form, show post-submit — replace wrapper content */
+    var wrapper=document.getElementById('form-wrapper');
+    var ps=document.getElementById('post-submit');
+    if(wrapper&&ps){
+      var psHtml=ps.outerHTML.replace('display:none','display:block').replace('id="post-submit"','id="post-submit" style="display:block;"');
+      wrapper.innerHTML=psHtml;
+      wrapper.querySelector('#post-submit').classList.add('show');
+      setTimeout(function(){wrapper.scrollIntoView({behavior:'smooth',block:'start'});},50);
+    }
+
+    var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+
+    /* Tracking (wrapped in try/catch — must never block UI) */
+    try{dataLayer.push({event:'generate_lead',event_id:eventId,lead_name:nome,lead_email:email});}catch(e){}
+    try{fbq('track','Lead',{},{eventID:eventId});}catch(e){}
+    try{gtag('event','conversion',{send_to:'AW-17899489316/8rrNCPjRpbEcEKSQktdC'});}catch(e){}
+    var waLink='https://wa.me/5521965622891?text='+encodeURIComponent('Olá, sou '+nome+'. Vim pelo vídeo do YouTube sobre "sem tempo pra cripto" e preenchi o formulário de análise. Gostaria de falar com um Advisor sobre meu portfólio.');
+    var waBtn=document.getElementById('btn-wa-post');if(waBtn)waBtn.href=waLink;
+
+    /* RD Station */
+    var phone='+55'+wpp;
+    /* Simplify carteira for RD (plain text, not JSON) */
+    var carteiraSimple='';
+    try{
+      var arr=JSON.parse(carteiraVal||'[]');
+      carteiraSimple=arr.map(function(a){return a.asset+(a.range?' ('+a.range+')':'');}).join(', ');
+    }catch(e){carteiraSimple=carteiraVal;}
+
+    var payload={
+      event_type:'CONVERSION',
+      event_family:'CDP',
+      payload:{
+        conversion_identifier:'lp_youtube_ads_tema4',
+        tags:['youtube-ads-tema4','regras-saida'],
+        name:nome,
+        email:email,
+        mobile_phone:phone,
+        cf_voce_ja_possui_investimentos_em_bitcoin_cripto:criptoVal,
+        cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho:patCriptoVal,
+        cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:tradVal,
+        cf_qual_seu_patrimonio_investido_no_mercado_tradicional:patTradVal,
+        cf_desafio_cripto:desafioVal,
+        cf_carteira_detalhada:carteiraSimple,
+        traffic_source:getCookie('boost_utm_source')||'direct',
+        traffic_medium:getCookie('boost_utm_medium')||'none',
+        traffic_campaign:getCookie('boost_utm_campaign')||undefined,
+        traffic_value:getCookie('boost_utm_content')||undefined,
+        traffic_term:getCookie('boost_utm_term')||undefined,
+        cf_utm_source:getCookie('boost_utm_source')||'direct',
+        cf_utm_medium:getCookie('boost_utm_medium')||'none',
+        cf_utm_campaign:getCookie('boost_utm_campaign')||undefined,
+        cf_utm_content:getCookie('boost_utm_content')||undefined,
+        cf_utm_term:getCookie('boost_utm_term')||undefined
+      }
+    };
+
+    fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea',{
+      method:'POST',headers:{'Content-Type':'application/json','accept':'application/json'},body:JSON.stringify(payload)
+    }).catch(function(err){console.error('RD error:',err);});
+  });
+});
+
+/* Navbar scroll shadow */
+window.addEventListener('scroll',function(){
+  var nav=document.querySelector('.navbar');
+  if(window.scrollY>10)nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+},{passive:true});
+
+/* Avatar float is always visible — no JS needed */
+
+})();
+</script>
+</body>
+</html>
