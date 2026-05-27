@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hold n&atilde;o &eacute; estrat&eacute;gia &mdash; Regras de sa&iacute;da para cripto | Boost Research</title>
+<meta name="description" content="Segurar cripto indefinidamente não é estratégia, é fé. Defina regras de saída com um Advisor dedicado da Boost Research. Consultoria desde 2016.">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+
+<!-- GTM -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-K2HT6HBX');</script>
+
+<!-- Google Ads gTag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17899489316"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-17899489316');gtag('config','G-CWXD04LK39');</script>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1062572485162288');fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1062572485162288&ev=PageView&noscript=1"></noscript>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0B0E13;--bg-alt:#111620;--teal:#19c6b5;--teal-dim:rgba(25,198,181,0.15);
+  --text:#FFFFFF;--text-secondary:rgba(255,255,255,0.7);--text-muted:rgba(255,255,255,0.4);
+  --border:rgba(255,255,255,0.1);--card-bg:rgba(255,255,255,0.04);
+  --font:Arial,'Helvetica Neue',Helvetica,sans-serif;--container:1100px;--radius:16px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:var(--container);margin:0 auto;padding:0 40px;}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(11,14,19,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
+.navbar.scrolled{box-shadow:0 1px 12px rgba(0,0,0,0.3);}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-logo img{height:48px;width:auto;}
+.nav-cta{background:var(--teal);color:#fff;font-weight:700;font-size:14px;padding:10px 24px;border-radius:8px;cursor:pointer;border:none;transition:filter 0.2s;display:inline-block;}
+.nav-cta:hover{filter:brightness(0.9);}
+
+/* TAG */
+.tag{display:inline-block;background:rgba(25,198,181,0.1);color:var(--teal);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:16px;}
+
+/* HERO */
+.hero{width:100%;min-height:100vh;display:flex;align-items:center;background:var(--bg);position:relative;padding:120px 0 80px;}
+.hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(25,198,181,0.05) 0%,transparent 65%);top:10%;right:5%;pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:start;}
+.hero-copy{padding-top:24px;}
+.hero-copy .h1{font-size:42px;font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:16px;}
+.hero-copy .h1 em{font-style:normal;color:var(--teal);}
+.hero-copy .sub{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:28px;max-width:500px;}
+.hero-proof{display:flex;align-items:center;gap:24px;margin-bottom:32px;font-size:14px;font-weight:600;color:rgba(255,255,255,0.7);}
+.hero-proof span{display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.hero-proof .div{width:1px;height:16px;background:rgba(255,255,255,0.12);flex-shrink:0;}
+
+/* FORM CARD */
+.form-card{background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;}
+.form-card h2{font-size:20px;font-weight:700;margin-bottom:4px;}
+.form-card .form-sub{font-size:13px;color:var(--text-muted);margin-bottom:20px;}
+.f-group{margin-bottom:16px;}
+.f-group label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;}
+.f-group input,.f-group select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:var(--text);font-size:15px;font-family:var(--font);transition:border-color 0.2s;}
+.f-group input:focus,.f-group select:focus{outline:none;border-color:var(--teal);}
+.f-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2319c6b5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.f-group select option{background:#111620;color:#fff;}
+.f-error{border-color:#EF4444 !important;box-shadow:0 0 0 2px rgba(239,68,68,0.15);}
+.btn-submit{width:100%;padding:16px;border:none;border-radius:10px;background:var(--teal);color:#fff;font-size:16px;font-weight:700;cursor:pointer;transition:filter 0.2s;font-family:var(--font);}
+.btn-submit:hover{filter:brightness(0.9);}
+.consent{display:flex;align-items:flex-start;gap:10px;margin:16px 0;}
+.consent input[type=checkbox]{margin-top:3px;accent-color:var(--teal);width:16px;height:16px;flex-shrink:0;}
+.consent label{font-size:12px;color:var(--text-muted);line-height:1.5;}
+.consent a{color:var(--teal);text-decoration:underline;}
+.micro{font-size:12px;color:var(--text-muted);margin-top:12px;text-align:center;}
+
+/* SECTIONS */
+section{padding:80px 0;}
+.section--alt{background:var(--bg-alt);}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-header h2{font-size:32px;font-weight:800;letter-spacing:-0.02em;line-height:1.2;}
+.section-header h2 em{font-style:normal;color:var(--teal);}
+.section-header .sub{font-size:16px;color:var(--text-secondary);margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;}
+
+/* DRAWDOWN CARD */
+.drawdown{max-width:700px;margin:0 auto;padding:40px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);}
+.drawdown-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;}
+.dd-item{text-align:center;padding:24px;background:rgba(255,255,255,0.03);border-radius:12px;border:1px solid var(--border);}
+.dd-item .dd-pct{font-size:36px;font-weight:800;color:#EF4444;line-height:1;}
+.dd-item .dd-label{font-size:13px;color:var(--text-muted);margin-top:8px;}
+.dd-item .dd-recover{font-size:20px;font-weight:700;color:var(--teal);margin-top:12px;}
+.dd-item .dd-recover-label{font-size:12px;color:var(--text-secondary);margin-top:4px;}
+.dd-note{text-align:center;margin-top:24px;font-size:15px;color:var(--text-secondary);font-style:italic;}
+
+/* EXIT RULES */
+.rules-card{max-width:700px;margin:0 auto;padding:40px;background:var(--card-bg);border:1px solid rgba(25,198,181,0.15);border-radius:var(--radius);}
+.rules-card h3{font-size:20px;font-weight:700;margin-bottom:24px;text-align:center;}
+.rule-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--border);}
+.rule-row:last-child{border-bottom:none;}
+.rule-label{font-size:15px;color:var(--text-secondary);}
+.rule-label strong{color:var(--text);font-weight:700;}
+.rule-value{font-size:17px;font-weight:700;color:var(--teal);white-space:nowrap;}
+.rule-value.red{color:#EF4444;}
+.rules-footer{text-align:center;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);font-size:14px;color:var(--text-secondary);}
+
+/* BENEFITS */
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:840px;margin:0 auto;}
+.benefit{background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);padding:28px;transition:border-color 0.2s;}
+.benefit:hover{border-color:rgba(25,198,181,0.2);}
+.benefit-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(25,198,181,0.12),rgba(25,198,181,0.04));border:1px solid rgba(25,198,181,0.15);border-radius:12px;margin-bottom:16px;}
+.benefit h3{font-size:17px;font-weight:700;margin-bottom:8px;}
+.benefit p{font-size:14px;color:var(--text-secondary);line-height:1.6;}
+
+/* ANDRE */
+.andre-grid{display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:center;max-width:700px;margin:0 auto;}
+.andre-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid rgba(25,198,181,0.2);}
+.andre-text h2{font-size:24px;font-weight:800;margin-bottom:8px;}
+.andre-text .andre-role{font-size:14px;color:var(--teal);font-weight:600;margin-bottom:12px;}
+.andre-text p{font-size:15px;color:var(--text-secondary);line-height:1.7;}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-size:16px;font-weight:600;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font);}
+.faq-q .arrow{font-size:12px;color:var(--text-muted);transition:transform 0.3s;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.faq-a p{padding:0 0 20px;font-size:15px;color:var(--text-secondary);line-height:1.7;}
+
+/* CTA SECTION */
+.section--cta{background:linear-gradient(135deg,rgba(25,198,181,0.06),rgba(25,198,181,0.02));border-top:1px solid rgba(25,198,181,0.1);border-bottom:1px solid rgba(25,198,181,0.1);}
+.cta-box{text-align:center;max-width:600px;margin:0 auto;}
+.cta-box h2{font-size:28px;font-weight:800;margin-bottom:12px;line-height:1.2;}
+.cta-box p{font-size:16px;color:var(--text-secondary);margin-bottom:24px;}
+.btn-cta{display:inline-block;background:var(--teal);color:#fff;font-weight:700;font-size:16px;padding:16px 48px;border-radius:10px;transition:filter 0.2s;}
+.btn-cta:hover{filter:brightness(0.9);}
+
+/* BRAND */
+.brand-section{padding:48px 0;text-align:center;}
+.brand-section p{font-size:13px;color:var(--text-muted);line-height:1.7;max-width:600px;margin:0 auto;}
+.brand-section .brand{font-size:14px;color:var(--text-secondary);font-weight:600;margin-top:12px;}
+
+/* POST SUBMIT */
+.post-submit{display:none;text-align:center;padding:32px;}
+.post-submit.show{display:block;}
+.post-submit h2{font-size:20px;font-weight:700;margin-bottom:8px;}
+.post-submit p{font-size:15px;color:var(--text-secondary);margin-bottom:20px;}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;font-weight:700;font-size:15px;padding:14px 28px;border-radius:10px;transition:filter 0.2s;}
+.btn-wa:hover{filter:brightness(0.9);}
+
+/* AVATAR FLOAT */
+.avatar-float{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;align-items:center;gap:12px;}
+.avatar-float-img{width:64px;height:64px;border-radius:50%;border:2px solid var(--teal);object-fit:cover;}
+.avatar-float-pill{background:var(--bg-alt);border:1px solid var(--border);border-radius:12px;padding:10px 16px;box-shadow:0 4px 16px rgba(0,0,0,0.3);}
+.avatar-float-name{font-size:13px;font-weight:700;color:var(--text);}
+.avatar-float-sub{font-size:12px;color:var(--teal);display:flex;align-items:center;gap:4px;margin-top:2px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .hero-copy{text-align:center;}
+  .hero-copy .sub{margin-left:auto;margin-right:auto;}
+  .hero-proof{justify-content:center;flex-wrap:wrap;gap:12px 20px;}
+  .hero-proof .div{display:none;}
+  .drawdown-grid{grid-template-columns:1fr;}
+  .andre-grid{grid-template-columns:1fr;text-align:center;justify-items:center;}
+  .benefits-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .container{padding:0 20px;}
+  .hero-copy .h1{font-size:30px;}
+  section{padding:60px 0;}
+  .section-header h2{font-size:24px;}
+  .avatar-float-pill{padding:8px 12px;}
+  .avatar-float-img{width:52px;height:52px;}
+}
+</style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K2HT6HBX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <a href="https://boostresearch.com.br" class="nav-logo"><img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" loading="lazy"></a>
+    <a href="#formulario" class="nav-cta">Falar com Advisor &rarr;</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="formulario">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="tag">Gest&atilde;o de carteira cripto</span>
+        <h1 class="h1">Hold n&atilde;o &eacute; estrat&eacute;gia.<br><em>Regras de sa&iacute;da</em> s&atilde;o.</h1>
+        <p class="sub">Voc&ecirc; j&aacute; viu o lucro sumir enquanto esperava &ldquo;s&oacute; mais um pouco&rdquo;. Hold sem crit&eacute;rio n&atilde;o &eacute; gest&atilde;o &mdash; &eacute; f&eacute;. Um Advisor dedicado define, junto com voc&ecirc;, regras de sa&iacute;da para cada posi&ccedil;&atilde;o da sua carteira. Antes do mercado se mexer.</p>
+        <div class="hero-proof">
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1H individual</span>
+          <span class="div"></span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Advisor dedicado</span>
+          <span class="div"></span>
+          <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h4"/></svg> Regras de sa&iacute;da sob medida</span>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="form-card" id="form-wrapper">
+        <h2>Fale com um Advisor</h2>
+        <p class="form-sub">Preencha abaixo. Um Advisor entrar&aacute; em contato em at&eacute; 24 horas.</p>
+        <form id="lead-form" novalidate>
+          <div class="f-group"><label for="f-nome">Nome completo</label><input type="text" id="f-nome" placeholder="Seu nome" required></div>
+          <div class="f-group"><label for="f-email">E-mail</label><input type="email" id="f-email" placeholder="seu@email.com" required></div>
+          <div class="f-group"><label for="f-whatsapp">WhatsApp</label><input type="tel" id="f-whatsapp" placeholder="(11) 99999-9999" required></div>
+          <div class="f-group"><label for="f-cripto">J&aacute; investe em cripto?</label>
+            <select id="f-cripto">
+              <option value="">Selecione</option>
+              <option value="Sim, mais de R$ 200 mil">Sim, mais de R$ 200 mil</option>
+              <option value="Sim, entre R$ 100 mil e R$ 200 mil">Sim, entre R$ 100 mil e R$ 200 mil</option>
+              <option value="Sim, entre R$ 50 mil e R$ 100 mil">Sim, entre R$ 50 mil e R$ 100 mil</option>
+              <option value="Sim, entre R$ 10 mil e R$ 50 mil">Sim, entre R$ 10 mil e R$ 50 mil</option>
+              <option value="Sim, menos de R$ 10 mil">Sim, menos de R$ 10 mil</option>
+              <option value="Ainda nao, mas tenho interesse">Ainda n&atilde;o, mas tenho interesse</option>
+            </select>
+          </div>
+          <div class="f-group"><label for="f-desafio">Maior desafio com sua carteira cripto</label>
+            <select id="f-desafio">
+              <option value="">Selecione</option>
+              <option value="Nao sei quando vender ou realizar">N&atilde;o sei quando vender ou realizar</option>
+              <option value="Perdi dinheiro segurando demais">Perdi dinheiro segurando demais</option>
+              <option value="Nao tenho tempo para acompanhar o mercado">N&atilde;o tenho tempo para acompanhar o mercado</option>
+              <option value="Medo de tomar decisao errada">Medo de tomar decis&atilde;o errada</option>
+              <option value="Prejuizo com altcoins">Preju&iacute;zo com altcoins</option>
+              <option value="Quero regras claras de saida">Quero regras claras de sa&iacute;da</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+          <div class="consent"><input type="checkbox" id="f-consent"><label for="f-consent">Concordo com a <a href="https://boostresearch.com.br/politica-de-privacidade/" target="_blank">pol&iacute;tica de privacidade</a> e autorizo o contato.</label></div>
+          <button type="submit" class="btn-submit" id="btn-submit">Falar com um Advisor</button>
+          <p class="micro">Seus dados est&atilde;o protegidos conforme nossa <a href="https://boostresearch.com.br/politica-de-privacidade/" target="_blank" style="color:var(--teal);">pol&iacute;tica de privacidade</a>.</p>
+        </form>
+
+        <!-- Post submit -->
+        <div class="post-submit" id="post-submit">
+          <h2>Dados recebidos!</h2>
+          <p>Um Advisor entrar&aacute; em contato em at&eacute; 24h.</p>
+          <a href="#" id="btn-wa" class="btn-wa" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.29 0-4.408-.763-6.104-2.05l-.427-.326-2.636.884.884-2.636-.326-.427A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Falar com Advisor no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRAWDOWN -->
+<section class="section--alt">
+  <div class="container">
+    <div class="section-header">
+      <h2>A matem&aacute;tica que o <em>hold ignora</em></h2>
+      <p class="sub">Uma queda de 80% exige uma alta de 400% s&oacute; para voltar ao zero. &Eacute; matem&aacute;tica, n&atilde;o opini&atilde;o.</p>
+    </div>
+    <div class="drawdown">
+      <div class="drawdown-grid">
+        <div class="dd-item">
+          <div class="dd-pct">&minus;50%</div>
+          <div class="dd-label">Queda na carteira</div>
+          <div class="dd-recover">+100%</div>
+          <div class="dd-recover-label">Necess&aacute;rio para recuperar</div>
+        </div>
+        <div class="dd-item">
+          <div class="dd-pct">&minus;80%</div>
+          <div class="dd-label">Queda na carteira</div>
+          <div class="dd-recover">+400%</div>
+          <div class="dd-recover-label">Necess&aacute;rio para recuperar</div>
+        </div>
+      </div>
+      <p class="dd-note">&ldquo;Hold sem regra &eacute; aposta. Com regra, &eacute; gest&atilde;o.&rdquo;</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXIT RULES EXAMPLE -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2>Como funcionam as <em>regras de sa&iacute;da</em></h2>
+      <p class="sub">Exemplo pr&aacute;tico: voc&ecirc; comprou Bitcoin a R$ 200 mil. Com regras definidas antes, as decis&otilde;es j&aacute; est&atilde;o tomadas.</p>
+    </div>
+    <div class="rules-card">
+      <h3>Regra de sa&iacute;da &mdash; exemplo</h3>
+      <div class="rule-row"><span class="rule-label"><strong>Compra</strong></span><span class="rule-value">R$ 200.000</span></div>
+      <div class="rule-row"><span class="rule-label">Alvo 1 <strong>(+50%)</strong> &mdash; realiza 30%</span><span class="rule-value">R$ 300.000</span></div>
+      <div class="rule-row"><span class="rule-label">Alvo 2 <strong>(+100%)</strong> &mdash; realiza 30%</span><span class="rule-value">R$ 400.000</span></div>
+      <div class="rule-row"><span class="rule-label">Restante <strong>(40%)</strong> &mdash; vende autom&aacute;tico se cair 20% do topo</span><span class="rule-value">Corre livre</span></div>
+      <div class="rule-row"><span class="rule-label">Stop loss <strong>(&minus;25%)</strong></span><span class="rule-value red">Sa&iacute;da total</span></div>
+      <p class="rules-footer">Tudo definido <strong>antes</strong> de entrar na posi&ccedil;&atilde;o. Quando o mercado se mexe, voc&ecirc; j&aacute; sabe o que fazer.<br><small style="color:var(--text-muted);font-weight:400;">*Exemplo hipot&eacute;tico para fins ilustrativos. N&atilde;o constitui promessa de resultado.</small></p>
+    </div>
+  </div>
+</section>
+
+<!-- ANDRE -->
+<section class="section--alt">
+  <div class="container">
+    <div class="andre-grid">
+      <img src="https://boostresearch.com.br/wp-content/uploads/2026/01/andre-franco-boost.jpg" alt="Andr&eacute; Franco" class="andre-photo" loading="lazy">
+      <div class="andre-text">
+        <h2>Andr&eacute; Franco</h2>
+        <p class="andre-role">Boost Research &mdash; Consultoria desde 2016</p>
+        <p>No mercado cripto desde 2016, Andr&eacute; viveu v&aacute;rios ciclos e multiplicou patrim&ocirc;nio 144 vezes. Criou a Boost com uma vis&atilde;o simples: cada investidor merece um Advisor dedicado que conhece o mercado por dentro &mdash; n&atilde;o um rob&ocirc;, n&atilde;o um algoritmo, n&atilde;o um relat&oacute;rio gen&eacute;rico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2>O que voc&ecirc; recebe na <em>an&aacute;lise</em></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M2 20c0-4 3.6-7 8-7"/><rect x="15" y="13" width="7" height="6" rx="2"/><path d="M18.5 16h-1"/></svg></div>
+        <h3>Consultoria 1 a 1</h3>
+        <p>1 hora ao vivo com Advisor certificado dedicado &agrave; sua carteira.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="M9 11l1.5 1.5L13 10"/><path d="M9 15.5l1.5 1.5L13 14.5"/></svg></div>
+        <h3>Regras de sa&iacute;da personalizadas</h3>
+        <p>Alvos de realiza&ccedil;&atilde;o, stops e crit&eacute;rios definidos para cada posi&ccedil;&atilde;o.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h3>Diagn&oacute;stico da carteira</h3>
+        <p>An&aacute;lise detalhada de cada ativo, pontos fracos e oportunidades.</p>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <h3>Plano de a&ccedil;&atilde;o</h3>
+        <p>100% adaptado para a sua carteira, seu perfil e seus objetivos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section--alt">
+  <div class="container">
+    <div class="section-header"><h2>Perguntas frequentes</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Isso &eacute; day trade?</span><span class="arrow">&#9660;</span></button>
+        <div class="faq-a"><p>N&atilde;o. Regras de sa&iacute;da s&atilde;o parte de gest&atilde;o de patrim&ocirc;nio, n&atilde;o de opera&ccedil;&otilde;es de curto prazo. O Advisor define alvos e stops para posi&ccedil;&otilde;es de m&eacute;dio e longo prazo.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Preciso ter um valor m&iacute;nimo investido?</span><span class="arrow">&#9660;</span></button>
+        <div class="faq-a"><p>A an&aacute;lise &eacute; mais relevante para investidores com mais de R$ 50 mil em cripto, mas n&atilde;o h&aacute; valor m&iacute;nimo obrigat&oacute;rio para solicitar.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>A Boost executa as opera&ccedil;&otilde;es por mim?</span><span class="arrow">&#9660;</span></button>
+        <div class="faq-a"><p>N&atilde;o. A Boost &eacute; uma Consultoria de Investimentos em Cripto, independente de bancos e corretoras. O Advisor define as regras junto com voc&ecirc;, e voc&ecirc; executa na sua corretora com total autonomia.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>Quanto custa a consultoria?</span><span class="arrow">&#9660;</span></button>
+        <div class="faq-a"><p>A consultoria de 1 hora custa R$ 600, que pode ser parcelado em at&eacute; 6x de R$ 100. O Advisor apresenta os detalhes na conversa inicial, ap&oacute;s entender seu perfil e seus objetivos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="section--cta">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Saia do &ldquo;hold e reza&rdquo;.<br>Entre na gest&atilde;o de verdade.</h2>
+      <p>Converse com um Advisor e defina regras de sa&iacute;da para cada posi&ccedil;&atilde;o da sua carteira.</p>
+      <a href="#formulario" class="btn-cta">Falar com um Advisor &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND -->
+<section class="brand-section">
+  <div class="container">
+    <div style="margin-bottom:16px;"><img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" style="height:32px;width:auto;"></div>
+    <p>Investimentos em criptoativos envolvem riscos. Retornos passados n&atilde;o s&atilde;o garantia de resultados futuros. Este material tem car&aacute;ter informativo. A consultoria individualizada &eacute; realizada exclusivamente pelo Advisor, ap&oacute;s an&aacute;lise do perfil do investidor. <a href="https://boostresearch.com.br/politica-de-privacidade/" style="color:var(--teal);text-decoration:underline;">Pol&iacute;tica de Privacidade</a></p>
+    <p class="brand">Boost Research &mdash; Consultoria de Investimentos em Cripto</p>
+  </div>
+</section>
+
+<!-- AVATAR FLOAT -->
+<a href="#formulario" class="avatar-float">
+  <div class="avatar-float-pill">
+    <div class="avatar-float-name">Solicitar an&aacute;lise</div>
+    <div class="avatar-float-sub"><svg width="14" height="14" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.29 0-4.408-.763-6.104-2.05l-.427-.326-2.636.884.884-2.636-.326-.427A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg> WhatsApp</div>
+  </div>
+  <img src="https://boostresearch.com.br/wp-content/uploads/2026/01/andre-franco-boost.jpg" alt="Andr&eacute; Franco" class="avatar-float-img" loading="lazy">
+</a>
+
+<script>
+(function(){
+'use strict';
+
+/* UTM cookies */
+var params=new URLSearchParams(window.location.search);
+function setCookie(n,v,d){var e=new Date();e.setTime(e.getTime()+d*864e5);document.cookie=n+'='+encodeURIComponent(v)+';expires='+e.toUTCString()+';path=/;SameSite=Lax';}
+function getCookie(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?decodeURIComponent(m.pop()):'';}
+['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){var v=params.get(k);if(v)setCookie('boost_'+k,v,30);});
+
+/* WhatsApp mask */
+var wpp=document.getElementById('f-whatsapp');
+if(wpp)wpp.addEventListener('input',function(){var v=this.value.replace(/\D/g,'').substring(0,11);var f='';if(v.length>0)f='('+v.substring(0,2);if(v.length>2)f+=') '+v.substring(2,7);if(v.length>7)f+='-'+v.substring(7,11);this.value=f;});
+
+/* FAQ toggle */
+window.toggleFaq=function(btn){
+  var a=btn.nextElementSibling;
+  var arrow=btn.querySelector('.arrow');
+  if(a.style.maxHeight){a.style.maxHeight=null;arrow.style.transform='rotate(0)';}
+  else{a.style.maxHeight=a.scrollHeight+'px';arrow.style.transform='rotate(180deg)';}
+};
+
+/* Navbar scroll */
+window.addEventListener('scroll',function(){
+  var nav=document.querySelector('.navbar');
+  if(window.scrollY>10)nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+},{passive:true});
+
+/* Form submit */
+document.getElementById('lead-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var nome=document.getElementById('f-nome').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  var wpp=document.getElementById('f-whatsapp').value.replace(/\D/g,'');
+  var consent=document.getElementById('f-consent').checked;
+  var hasError=false;
+
+  ['f-nome','f-email','f-whatsapp'].forEach(function(id){document.getElementById(id).classList.remove('f-error');});
+  document.getElementById('f-consent').parentElement.style.outline='none';
+  if(!nome){document.getElementById('f-nome').classList.add('f-error');hasError=true;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){document.getElementById('f-email').classList.add('f-error');hasError=true;}
+  if(wpp.length<10){document.getElementById('f-whatsapp').classList.add('f-error');hasError=true;}
+  if(!consent){document.getElementById('f-consent').parentElement.style.outline='2px solid #EF4444';document.getElementById('f-consent').parentElement.style.borderRadius='6px';hasError=true;}
+  if(hasError)return;
+
+  /* Prevent double submit */
+  var submitBtn=document.getElementById('btn-submit');
+  if(submitBtn.disabled)return;
+  submitBtn.disabled=true;submitBtn.textContent='Enviando...';
+
+  var criptoVal=document.getElementById('f-cripto').value||'';
+  var desafioVal=document.getElementById('f-desafio').value||'';
+
+  /* Show post-submit */
+  var wrapper=document.getElementById('form-wrapper');
+  var ps=document.getElementById('post-submit');
+  if(wrapper&&ps){ps.classList.add('show');wrapper.querySelector('form').style.display='none';wrapper.querySelector('h2').style.display='none';wrapper.querySelector('.form-sub').style.display='none';}
+
+  var eventId='ev_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
+
+  /* Tracking */
+  try{dataLayer.push({event:'generate_lead',event_id:eventId,lead_name:nome,lead_email:email});}catch(e){}
+  try{fbq('track','Lead',{},{eventID:eventId});}catch(e){}
+  try{gtag('event','conversion',{send_to:'AW-17899489316/lead_regras_saida'});}catch(e){}
+
+  /* WhatsApp link */
+  var waLink='https://wa.me/5521965622891?text='+encodeURIComponent('Olá, sou '+nome+'. Preenchi o formulário sobre regras de saída para cripto e gostaria de falar com um Advisor.');
+  var waBtn=document.getElementById('btn-wa');
+  if(waBtn){waBtn.href=waLink;waBtn.addEventListener('click',function(){try{dataLayer.push({event:'whatsapp_click',lead_name:nome});fbq('trackCustom','WhatsAppClick');gtag('event','whatsapp_click',{event_category:'engagement'});}catch(e){}});}
+
+  /* RD Station */
+  var payload={
+    event_type:'CONVERSION',
+    event_family:'CDP',
+    payload:{
+      conversion_identifier:'lp_regras_saida',
+      name:nome,
+      email:email,
+      mobile_phone:'+55'+wpp,
+      tags:['youtube-ads-tema4','regras-saida'],
+      cf_voce_ja_possui_investimentos_em_bitcoin_cripto:criptoVal,
+      cf_desafio_cripto:desafioVal,
+      traffic_source:getCookie('boost_utm_source')||'direct',
+      traffic_medium:getCookie('boost_utm_medium')||'none',
+      traffic_campaign:getCookie('boost_utm_campaign')||undefined,
+      traffic_value:getCookie('boost_utm_content')||undefined,
+      cf_utm_source:getCookie('boost_utm_source')||'direct',
+      cf_utm_medium:getCookie('boost_utm_medium')||'none',
+      cf_utm_campaign:getCookie('boost_utm_campaign')||undefined,
+      cf_utm_content:getCookie('boost_utm_content')||undefined,
+      cf_utm_term:getCookie('boost_utm_term')||undefined
+    }
+  };
+
+  fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea',{
+    method:'POST',headers:{'Content-Type':'application/json','accept':'application/json'},body:JSON.stringify(payload)
+  }).catch(function(err){console.error('RD error:',err);});
+});
+
+})();
+</script>
+</body>
+</html>
