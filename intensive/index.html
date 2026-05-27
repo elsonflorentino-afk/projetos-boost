@@ -136,24 +136,42 @@ img{max-width:100%;height:auto;}
   50%{opacity:0.4;transform:scale(0.8);}
 }
 
-/* ===== VACANCY COUNTER ===== */
-.vacancy-counter{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin:32px 0 0;
-  max-width:420px;
+/* ===== HERO PROOF BAR ===== */
+.hero-proof{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin-top:28px;
+  font-size:14px;
+  font-weight:600;
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.02em;
 }
-.vc-card{
-  text-align:center;
-  padding:20px 12px;
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  transition:border-color 0.2s;
+.hero-proof span{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  white-space:nowrap;
 }
-.vc-card:first-child{border-color:rgba(25,198,181,0.25);}
-.vc-card:hover{border-color:rgba(25,198,181,0.3);}
+.hero-proof .divider{
+  width:1px;
+  height:16px;
+  background:rgba(255,255,255,0.12);
+  flex-shrink:0;
+}
+/* ===== SCARCITY NOTE ===== */
+.scarcity-note{
+  font-size:13px;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:0.02em;
+  margin-top:12px;
+  font-weight:400;
+  max-width:400px;
+  line-height:1.5;
+}
+
+/* ===== LEGACY VACANCY (unused) ===== */
+.vc-card{display:none;}
 .vc-card .vc-icon{
   display:flex;
   align-items:center;
@@ -228,7 +246,7 @@ section:first-of-type{border-top:none;}
 .pain-bottom{text-align:center;margin-top:40px;font-size:16px;color:var(--teal);font-weight:500;}
 
 /* ===== CARDS GRID ===== */
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:840px;margin:0 auto;}
 .glass-card{
   background:var(--card-bg);
   border:1px solid var(--border);
@@ -241,38 +259,102 @@ section:first-of-type{border-top:none;}
   display:flex;
   align-items:center;
   justify-content:center;
-  width:48px;
-  height:48px;
-  background:rgba(25,198,181,0.08);
+  width:56px;
+  height:56px;
+  background:linear-gradient(135deg, rgba(25,198,181,0.12) 0%, rgba(25,198,181,0.04) 100%);
   border:1px solid rgba(25,198,181,0.15);
-  border-radius:50%;
+  border-radius:14px;
   margin-bottom:20px;
   color:var(--teal);
+  position:relative;
+  transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+.glass-card .card-icon::before{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:15px;
+  background:radial-gradient(circle at center, rgba(25,198,181,0.15) 0%, transparent 70%);
+  filter:blur(8px);
+  opacity:0;
+  transition:opacity 0.4s ease;
+  z-index:-1;
+}
+.glass-card:hover .card-icon::before{opacity:1;}
+.glass-card:hover .card-icon svg{filter:drop-shadow(0 0 6px rgba(25,198,181,0.4));}
 .glass-card h3{font-size:18px;font-weight:700;margin-bottom:12px;color:var(--text);}
 .glass-card p{font-size:15px;color:var(--text-secondary);line-height:1.7;}
 
-/* ===== BONUS ===== */
-.bonus-section{max-width:720px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:16px;}
+/* ===== QUANTO VALE ===== */
+.bonus-section{max-width:760px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:0;position:relative;}
 .bonus-item{
   display:flex;
-  align-items:flex-start;
+  align-items:center;
+  justify-content:space-between;
   gap:16px;
-  padding:24px;
-  font-size:17px;
+  padding:20px 28px;
+  font-size:16px;
   color:var(--text-secondary);
   line-height:1.5;
   background:var(--card-bg);
   border:1px solid var(--border);
-  border-radius:var(--radius);
-  transition:border-color 0.2s;
+  border-bottom:none;
+  transition:background 0.25s, border-color 0.25s;
+  position:relative;
 }
-.bonus-item:hover{border-color:rgba(25,198,181,0.2);}
-.bonus-item .check{flex-shrink:0;line-height:1;margin-top:2px;}
-.bonus-item .valor{color:var(--teal);font-size:14px;font-weight:600;display:block;margin-top:4px;}
-.bonus-total{text-align:center;margin-top:16px;padding:24px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius);}
-.bonus-total .old{font-size:18px;color:var(--text-muted);text-decoration:line-through;margin-bottom:4px;}
-.bonus-total .new{font-size:32px;font-weight:800;color:var(--teal);}
+.bonus-item:first-child{border-radius:var(--radius) var(--radius) 0 0;}
+.bonus-item:last-of-type{border-bottom:1px solid var(--border);}
+.bonus-item:hover{background:rgba(25,198,181,0.04);border-color:rgba(25,198,181,0.15);}
+.bonus-item:hover + .bonus-item{border-top-color:rgba(25,198,181,0.15);}
+.bonus-item .check{flex-shrink:0;line-height:1;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(25,198,181,0.08);border-radius:8px;}
+.bonus-item .item-label{flex:1;font-weight:500;}
+.bonus-item .valor{
+  color:var(--text);
+  font-size:17px;
+  font-weight:700;
+  white-space:nowrap;
+  text-align:right;
+  min-width:120px;
+  font-variant-numeric:tabular-nums;
+}
+.bonus-divider{
+  height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(25,198,181,0.3) 20%, rgba(25,198,181,0.3) 80%, transparent 100%);
+  margin:0;
+}
+.bonus-total{
+  text-align:center;
+  margin-top:0;
+  padding:36px 28px 32px;
+  background:linear-gradient(135deg, rgba(25,198,181,0.06) 0%, rgba(25,198,181,0.02) 100%);
+  border:1px solid rgba(25,198,181,0.2);
+  border-radius:0 0 var(--radius) var(--radius);
+  position:relative;
+  overflow:hidden;
+}
+.bonus-total::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg, transparent, var(--teal), transparent);
+}
+.bonus-total .subtitle{font-size:13px;color:var(--text-secondary);margin-bottom:12px;letter-spacing:0.5px;text-transform:uppercase;}
+.bonus-total .old{font-size:28px;color:var(--text-muted);text-decoration:line-through;margin-bottom:4px;font-weight:300;}
+.bonus-total .savings-badge{
+  display:inline-block;
+  background:rgba(25,198,181,0.12);
+  border:1px solid rgba(25,198,181,0.25);
+  color:var(--teal);
+  font-size:13px;
+  font-weight:700;
+  padding:4px 14px;
+  border-radius:20px;
+  margin:12px 0 8px;
+  letter-spacing:0.3px;
+}
+.bonus-total .new{font-size:36px;font-weight:800;color:var(--teal);margin-top:4px;}
+.bonus-total .new small{font-size:16px;font-weight:500;color:var(--text-secondary);display:block;margin-top:4px;}
 
 /* ===== FOR WHO / NOT FOR WHO ===== */
 .two-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
@@ -441,11 +523,20 @@ section:first-of-type{border-top:none;}
   .two-cols-divider::before{display:none;}
   .steps-row{grid-template-columns:1fr;gap:24px;}
   .bonus-section{padding:0 0;}
+  .bonus-item{padding:16px 18px;font-size:14px;flex-wrap:wrap;}
+  .bonus-item .check{width:28px;height:28px;}
+  .bonus-item .item-label{flex:1;min-width:0;}
+  .bonus-item .valor{font-size:15px;min-width:auto;margin-top:0;}
+  .bonus-total .old{font-size:22px;}
+  .bonus-total .new{font-size:28px;}
   .price-main{font-size:40px;}
   .nav-cta{padding:10px 16px;font-size:13px;}
   .checkout-box{padding:40px 24px;}
   .checkout-section{padding:80px 0;}
-  .vacancy-counter{grid-template-columns:repeat(3,1fr);gap:8px;max-width:100%;margin:24px auto 0;}
+  .hero-proof{justify-content:center;flex-wrap:wrap;gap:12px 20px;}
+  .hero-proof .divider{display:none;}
+  .hero-proof span{font-size:13px;}
+  .scarcity-note{text-align:center;max-width:100%;}
 }
 @media(max-width:480px){
   .hero-content .h1{font-size:32px;}
@@ -477,23 +568,14 @@ section:first-of-type{border-top:none;}
       <h1 class="h1">1H de consultoria que vale mais que meses de tentativa e erro</h1>
       <p class="sub">Sua carteira cripto n&atilde;o performa como esperava? A resposta pode estar a uma conversa de dist&acirc;ncia. Um Advisor com experi&ecirc;ncia real analisa suas posi&ccedil;&otilde;es e monta um plano sob medida.</p>
       <a href="#checkout" class="cta-btn cta-btn--large" onclick="dataLayer.push({event:'cta_click',cta_location:'hero'})">Quero minha consultoria</a>
-      <div class="vacancy-counter">
-        <div class="vc-card">
-          <div class="vc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <div class="vc-number" id="vacancyCount">7</div>
-          <div class="vc-label">Vagas restantes</div>
-        </div>
-        <div class="vc-card">
-          <div class="vc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <div class="vc-number">1H</div>
-          <div class="vc-label">Consultoria</div>
-        </div>
-        <div class="vc-card">
-          <div class="vc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-          <div class="vc-number">1:1</div>
-          <div class="vc-label">Exclusivo</div>
-        </div>
+      <div class="hero-proof">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1H individual</span>
+        <span class="divider"></span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Advisor dedicado</span>
+        <span class="divider"></span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/><path d="M9 11h6"/><path d="M9 15h4"/></svg> Plano sob medida</span>
       </div>
+      <p class="scarcity-note">Atendimento limitado para manter a qualidade da consultoria.</p>
     </div>
   </div>
 </section>
@@ -520,24 +602,28 @@ section:first-of-type{border-top:none;}
 <section>
   <div class="container">
     <div class="section-header reveal">
-      <h2>O que voc&ecirc; recebe em 1 hora</h2>
-      <p class="sub">Uma consultoria intensiva com um dos nossos Advisors especialistas. Tudo personalizado para a sua carteira:</p>
+      <h2>O que voc&ecirc; recebe no Boost Crypto Intensive</h2>
     </div>
     <div class="cards-grid reveal">
       <div class="glass-card">
-        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-        <h3>Diagn&oacute;stico Completo da Sua Carteira</h3>
-        <p>An&aacute;lise detalhada de cada ativo que voc&ecirc; possui<br>Identifica&ccedil;&atilde;o de pontos fracos e oportunidades perdidas<br>Avalia&ccedil;&atilde;o do seu perfil de risco vs. estrat&eacute;gia atual</p>
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="8" r="4"/><path d="M2 20c0-4 3.6-7 8-7"/><rect x="15" y="13" width="7" height="6" rx="2"/><path d="M18.5 16h-1"/></svg></div>
+        <h3>Consultoria 1 a 1 com analista</h3>
+        <p>1 hora ao vivo com especialista certificado dedicado &agrave; sua carteira.</p>
       </div>
       <div class="glass-card">
-        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
-        <h3>Realinhamento Estrat&eacute;gico</h3>
-        <p>Defini&ccedil;&atilde;o clara da sua estrat&eacute;gia personalizada<br>Ajustes na aloca&ccedil;&atilde;o baseados no momento do mercado<br>Pontos de entrada e sa&iacute;da para cada posi&ccedil;&atilde;o</p>
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="4" rx="1.5"/><rect x="14" y="11" width="7" height="10" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M5 17l2-2 2 2"/></svg></div>
+        <h3>Dashboard Boost</h3>
+        <p>Acesso completo a todas as m&eacute;tricas e alertas em tempo real.</p>
       </div>
       <div class="glass-card">
-        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h3>Leitura Profissional do Mercado</h3>
-        <p>An&aacute;lise do cen&aacute;rio atual macro e micro<br>Tend&ecirc;ncias que voc&ecirc; deve acompanhar<br>Sinais de alerta que podem proteger seu capital</p>
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4"/><path d="M16 3v4"/><path d="M12 14l1.5 1.5L12 17l-1.5-1.5z"/></svg></div>
+        <h3>15 dias de conte&uacute;do exclusivo</h3>
+        <p>2 newsletters mais 2 an&aacute;lises semanais com vis&atilde;o de mercado aprofundada.</p>
+      </div>
+      <div class="glass-card">
+        <div class="card-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3v2h6V3"/><path d="M9 11l1.5 1.5L13 10"/><path d="M9 15.5l1.5 1.5L13 14.5"/></svg></div>
+        <h3>Plano de a&ccedil;&atilde;o personalizado</h3>
+        <p>100% adaptado para a sua carteira, seu perfil e seus objetivos.</p>
       </div>
     </div>
   </div>
@@ -547,15 +633,50 @@ section:first-of-type{border-top:none;}
 <section>
   <div class="container">
     <div class="section-header reveal">
-      <h2>B&ocirc;nus exclusivos inclusos</h2>
+      <h2>Quanto isso vale (sem desconto)</h2>
     </div>
     <div class="bonus-section reveal">
-      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Dashboard BOOST liberado gratuitamente <span class="valor">(valor R$ 119,00)</span></span></div>
-      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>15 dias de conte&uacute;do exclusivo: 2 newsletters + 2 an&aacute;lises semanais <span class="valor">(valor R$ 5.000,00)</span></span></div>
-      <div class="bonus-item"><span class="check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><span>Plano de a&ccedil;&atilde;o personalizado para sua carteira <span class="valor">(valor R$ 9.000,00)</span></span></div>
+      <div class="bonus-item">
+        <span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="item-label">Consultoria 1 a 1 com analista certificado</span>
+        <span class="valor">R$ 600,00</span>
+      </div>
+      <div class="bonus-item">
+        <span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="item-label">Dashboard Boost (acesso completo por 30 dias)</span>
+        <span class="valor">R$ 19,90</span>
+      </div>
+      <div class="bonus-item">
+        <span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="item-label">15 dias de conte&uacute;do exclusivo</span>
+        <span class="valor">R$ 750,00</span>
+      </div>
+      <div class="bonus-item">
+        <span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="item-label">Plano de a&ccedil;&atilde;o personalizado</span>
+        <span class="valor">R$ 1.500,00</span>
+      </div>
+      <div class="bonus-item">
+        <span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="item-label">Diagn&oacute;stico da SUA carteira</span>
+        <span class="valor">R$ 2.000,00</span>
+      </div>
+      <div class="bonus-item">
+        <span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="item-label">Realinhamento estrat&eacute;gico personalizado</span>
+        <span class="valor">R$ 2.500,00</span>
+      </div>
+      <div class="bonus-item">
+        <span class="check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span class="item-label">Leitura profissional do mercado</span>
+        <span class="valor">R$ 3.000,00</span>
+      </div>
+      <div class="bonus-divider"></div>
       <div class="bonus-total">
-        <p class="old">Valor total: R$ 14.719,00</p>
-        <p class="new">6x R$ 100,00</p>
+        <p class="subtitle">Valor total de todos os componentes</p>
+        <p class="old">R$ 10.369,90</p>
+        <span class="savings-badge">Economia de 94%</span>
+        <p class="new">6x R$ 100,00<small>ou R$ 600,00 &agrave; vista</small></p>
       </div>
     </div>
   </div>
@@ -658,10 +779,6 @@ section:first-of-type{border-top:none;}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>Pagar.me certificado</span>
         </div>
-        <div class="trust-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          <span>7 dias de garantia</span>
-        </div>
       </div>
     </div>
   </div>
@@ -694,13 +811,6 @@ section:first-of-type{border-top:none;}
           <span class="arrow">&#9660;</span>
         </button>
         <div class="faq-answer"><p>Sim. 6x de R$ 100,00 no cart&atilde;o de cr&eacute;dito. Pagamento via PIX: R$ 600,00 &agrave; vista.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span>Tem garantia?</span>
-          <span class="arrow">&#9660;</span>
-        </button>
-        <div class="faq-answer"><p>Sim. 7 dias de garantia incondicional. Se n&atilde;o ficar satisfeito, devolvemos 100% do valor.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
