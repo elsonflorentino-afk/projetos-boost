@@ -17,8 +17,8 @@ except ImportError:
     sys.exit(1)
 
 OUTPUT_DIR = "/Users/user/Downloads"
-OUTPUT_HTML = os.path.join(OUTPUT_DIR, "EBOOK_4_STABLECOINS_v1.html")
-OUTPUT_PDF = os.path.join(OUTPUT_DIR, "EBOOK_4_STABLECOINS_v1.pdf")
+OUTPUT_HTML = os.path.join(OUTPUT_DIR, "EBOOK_4_STABLECOINS_v3.html")
+OUTPUT_PDF = os.path.join(OUTPUT_DIR, "EBOOK_4_STABLECOINS_v3.pdf")
 
 # ── Watermark SVG (Boost logo in green, very subtle) ─────────────────────
 import urllib.parse as _urlparse
@@ -526,36 +526,21 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </div>
 
 <!-- CONTEÚDO E-BOOK 4 -->
-<div class="content-page">
-<h1>Stablecoins</h1>
-</div>
 <div class="content-page" style="page-break-before:always">
 <h2>O Mecanismo de Dolarização de Portfólio que Você Precisa Conhecer</h2>
 <p><strong>André Franco</strong>, Fundador da Boost Research</p>
 <p>Boost Research, Consultoria de Investimentos em Cripto</p>
 <hr />
-<h2>Sumário</h2>
-<ol>
-<li><a href="#capítulo-1--o-que-são-stablecoins-e-por-que-importam-agora">O que são stablecoins e por que importam agora</a></li>
-<li><a href="#capítulo-2--usdt-vs-usdc-vs-outras-riscos-de-cada-modelo">USDT vs USDC vs outras: riscos de cada modelo</a></li>
-<li><a href="#capítulo-3--dolarização-via-stablecoins-como-funciona-na-prática">Dolarização via stablecoins: como funciona na prática</a></li>
-<li><a href="#capítulo-4--rendimento-em-stablecoins-lending-institucional-vs-defi">Rendimento em stablecoins: lending institucional vs DeFi</a></li>
-<li><a href="#capítulo-5--tributação-e-regulação-decripto-in-1888-bcb-e-mica">Tributação e regulação: DeCripto, IN 1888, BCB e MiCA</a></li>
-<li><a href="#capítulo-6--custódia-e-segurança-onde-guardar-como-proteger">Custódia e segurança: onde guardar, como proteger</a></li>
-<li><a href="#capítulo-7--stablecoins-no-contexto-do-seu-portfólio">Stablecoins no contexto do seu portfólio</a></li>
-<li><a href="#capítulo-8--a-diferença-entre-ter-dólares-digitais-e-saber-o-que-fazer-com-eles">A diferença entre ter dólares digitais e saber o que fazer com eles</a></li>
-</ol>
-<hr />
 </div>
 <div class="content-page" style="page-break-before:always">
 <h2>Capítulo 1 — O que são stablecoins e por que importam agora</h2>
-<p>Existe uma categoria de criptoativos que não aparece nas manchetes sobre volatilidade. Não dobra de valor em uma semana. Não desaba 40% em um dia. E, ainda assim, movimenta mais de 200 bilhões de dólares em capitalização de mercado e processa trilhões em volume transacionado por ano. São as stablecoins.</p>
+<p>Existe uma categoria de criptoativos que não aparece nas manchetes sobre volatilidade. Não dobra de valor em uma semana. Não desaba 40% em um dia. E, ainda assim, movimenta mais de 200 bilhões de dólares em capitalização de mercado (em mai/2026) e processa trilhões em volume transacionado por ano. São as stablecoins.</p>
 <p>Uma stablecoin é um criptoativo projetado para manter paridade com uma moeda fiduciária, geralmente o dólar americano. Cada unidade de uma stablecoin como USDC ou USDT busca valer exatamente 1 dólar, mantida por mecanismos de lastro ou colateralização. Na prática, é uma representação digital do dólar que opera em redes blockchain, 24 horas por dia, 7 dias por semana, sem depender de bancos ou horários comerciais.</p>
 <h3>Por que o investidor brasileiro deveria prestar atenção</h3>
-<p>O real é uma moeda que, historicamente, perde valor em relação ao dólar. Quem converteu R$1,00 em dólares há quinze anos e manteve a posição viu o poder de compra internacional crescer de forma significativa, simplesmente pela desvalorização da moeda brasileira. Esse não é um fenômeno pontual. É uma tendência estrutural em economias emergentes com inflação historicamente acima da dos países desenvolvidos.</p>
+<p>O real é uma moeda que, historicamente, sofre depreciação em relação ao dólar. Quem converteu R$1,00 em dólares há quinze anos e manteve a posição viu o poder de compra internacional crescer de forma significativa, simplesmente pela desvalorização da moeda brasileira. Esse não é um fenômeno pontual. É uma tendência estrutural em economias emergentes com inflação historicamente acima da dos países desenvolvidos.</p>
 <p>Para o investidor com patrimônio relevante, manter 100% dos ativos denominados em reais equivale a fazer uma aposta concentrada na estabilidade da moeda brasileira. É uma decisão de risco, mesmo que não pareça. Stablecoins oferecem uma via de acesso ao dólar digital que não exige conta no exterior, remessa internacional ou burocracia cambial.</p>
 <h3>O crescimento do mercado de stablecoins</h3>
-<p>O mercado de stablecoins ultrapassou a marca de 200 bilhões de dólares em capitalização total, com crescimento superior a 50% em período recente. Esse crescimento não foi impulsionado por especulação. Foi impulsionado por uso. Stablecoins se tornaram a infraestrutura de liquidação do mercado de criptoativos, a base para protocolos de empréstimo descentralizado e, cada vez mais, um mecanismo de transferência internacional de valor.</p>
+<p>O mercado de stablecoins ultrapassou a marca de 200 bilhões de dólares em capitalização total, com crescimento superior a 50% nos 12 meses anteriores a 2026. Esse crescimento não foi impulsionado por especulação. Foi impulsionado por uso. Stablecoins se tornaram a infraestrutura de liquidação do mercado de criptoativos, a base para protocolos de empréstimo descentralizado e, cada vez mais, um mecanismo de transferência internacional de valor.</p>
 <p>Grandes instituições financeiras passaram a emitir ou integrar stablecoins em suas operações. O que era um nicho técnico se transformou em uma camada de infraestrutura financeira com adoção institucional crescente.</p>
 <h3>Tipos de stablecoins: uma visão geral</h3>
 <p>Nem todas as stablecoins funcionam da mesma forma. Existem três categorias principais.</p>
@@ -582,11 +567,11 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <h2>Capítulo 2 — USDT vs USDC vs outras: riscos de cada modelo</h2>
 <p>Dizer que uma stablecoin "vale um dólar" é como dizer que um carro "tem quatro rodas". É verdade, mas não diz nada sobre a engenharia por trás, a confiabilidade do motor ou a probabilidade de o veículo parar no meio da estrada. No mercado de stablecoins, a engenharia por trás da paridade faz toda a diferença.</p>
 <h3>USDT (Tether): a maior e mais controversa</h3>
-<p>A Tether (USDT) é a stablecoin mais negociada do mundo, com capitalização superior a 140 bilhões de dólares. Está presente em praticamente todas as exchanges, funciona como par de negociação padrão e possui a maior liquidez do mercado.</p>
+<p>A Tether (USDT) é a stablecoin mais negociada do mundo, com capitalização superior a 140 bilhões de dólares (em mai/2026). Está presente em praticamente todas as exchanges, funciona como par de negociação padrão e possui a maior liquidez do mercado.</p>
 <p>A controvérsia reside nas reservas. A Tether demorou anos para divulgar a composição de seu lastro e enfrentou questionamentos regulatórios significativos. As attestations publicadas pela empresa (diferentes de auditorias completas) mostram que as reservas incluem títulos do Tesouro americano, depósitos bancários e outros ativos. A transparência melhorou, mas permanece abaixo do padrão exigido por reguladores de mercados desenvolvidos.</p>
 <p>Para o investidor, USDT oferece liquidez incomparável. Em contrapartida, carrega risco de governança corporativa e risco regulatório. Se um regulador importante restringir as operações da Tether, o impacto sobre a paridade pode ser imediato.</p>
 <h3>USDC (Circle): transparência como diferencial</h3>
-<p>A USDC, emitida pela Circle, posiciona-se como a alternativa regulada e transparente. Com capitalização na faixa de 60 bilhões de dólares, é a segunda maior stablecoin do mercado.</p>
+<p>A USDC, emitida pela Circle, posiciona-se como a alternativa regulada e transparente. Com capitalização na faixa de 60 bilhões de dólares (em mai/2026), é a segunda maior stablecoin do mercado.</p>
 <p>A Circle publica attestations mensais realizadas por uma das grandes firmas de auditoria. As reservas são compostas predominantemente por títulos do Tesouro americano de curto prazo e depósitos em instituições financeiras reguladas nos Estados Unidos. A empresa é registrada como transmissora de dinheiro (Money Services Business) e opera sob supervisão regulatória.</p>
 <p>O episódio mais relevante de risco ocorreu quando o Silicon Valley Bank (SVB) colapsou. A Circle mantinha parte de suas reservas no SVB, e a USDC chegou a perder temporariamente a paridade, negociando a US$0,87 antes de se recuperar após o Federal Reserve garantir os depósitos.</p>
 <p>Esse evento demonstrou um ponto fundamental: mesmo uma stablecoin bem gerida carrega riscos que vão além do seu controle direto.</p>
@@ -839,12 +824,12 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </table>
 <h3>Riscos que devem ser compreendidos antes de qualquer alocação</h3>
 <p>Este é o trecho mais importante do capítulo. Rendimento em stablecoins não é renda fixa. Não é garantido. Não é protegido por nenhum mecanismo equivalente ao FGC. Os riscos a seguir são reais e já se materializaram.</p>
-<p><strong>Risco de smart contract.</strong> Contratos inteligentes são código. Código pode ter vulnerabilidades. Hackers exploram essas vulnerabilidades para drenar fundos. Em período recente, o protocolo Euler Finance perdeu cerca de US$197 milhões em um único exploit. Parte dos fundos foi posteriormente recuperada, mas nem sempre isso acontece. O protocolo Curve sofreu exploit que comprometeu pools específicas. A lista de incidentes é extensa e contínua.</p>
+<p><strong>Risco de smart contract.</strong> Contratos inteligentes são código. Código pode ter vulnerabilidades. Hackers exploram essas vulnerabilidades para drenar fundos. Em 2023, o protocolo Euler Finance perdeu cerca de US$197 milhões em um único exploit. Parte dos fundos foi posteriormente recuperada, mas nem sempre isso acontece. O protocolo Curve sofreu exploit que comprometeu pools específicas. A lista de incidentes é extensa e contínua.</p>
 <p><strong>Risco de depeg.</strong> A stablecoin depositada pode perder paridade com o dólar. Se o investidor tem USDC alocada em um protocolo DeFi e a USDC sofre depeg (como ocorreu brevemente durante a crise do SVB), o valor da posição cai proporcionalmente, mesmo que o protocolo de empréstimo funcione corretamente.</p>
 <p><strong>Risco regulatório.</strong> Reguladores podem restringir ou proibir protocolos DeFi em jurisdições específicas. Mudanças regulatórias podem afetar a operação de exchanges que servem como ponte de acesso a esses protocolos.</p>
 <p><strong>Risco de liquidez.</strong> Em momentos de estresse no mercado, a liquidez em protocolos DeFi pode secar. Retirar grandes volumes pode resultar em slippage (diferença entre o preço esperado e o preço executado) ou, em cenários extremos, na impossibilidade temporária de saque.</p>
 <p><strong>Perda impermanente.</strong> Para investidores que fornecem liquidez em pools de pares (por exemplo, USDC/USDT), existe o risco de perda impermanente caso a relação de preço entre os ativos se desvie. Em pools de stablecoins, esse risco é menor, mas não é zero.</p>
-<p>Na Boost Research, a avaliação de protocolos DeFi segue critérios rigorosos. André Franco e a equipe de Advisors analisam histórico de auditoria, volume de liquidez e tempo de operação antes de considerar qualquer protocolo como opção para investidores.</p>
+<p>Na Boost Research, a avaliação de protocolos DeFi segue critérios rigorosos. André Franco e a equipe de Research analisam histórico de auditoria, volume de liquidez e tempo de operação antes de considerar qualquer protocolo como opção para investidores.</p>
 <h3>Esses rendimentos não são garantidos</h3>
 <p>Vale repetir de forma inequívoca: yields em stablecoins, seja em DeFi ou CeFi, podem cair a 0% e o capital investido pode ser perdido integralmente. Protocolos podem ser hackeados. Plataformas centralizadas podem colapsar. Stablecoins podem perder paridade. Esses não são cenários hipotéticos. São eventos que já ocorreram, mais de uma vez.</p>
 <p>O investidor que considera alocar patrimônio em protocolos de rendimento precisa tratar essa decisão com o mesmo rigor que aplicaria a qualquer investimento de risco. Percentual pequeno do portfólio. Diversificação entre protocolos. Preferência por protocolos com histórico longo e múltiplas auditorias. E disposição para perder 100% do valor alocado.</p>
@@ -925,12 +910,13 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <h3>Tributação sobre ganho de capital</h3>
 <p>Quando o investidor vende (aliena) criptoativos e o total das alienações no mês supera R$35.000, incide imposto de 15% sobre o ganho de capital. Atenção: o limite de R$35.000 refere-se ao total de alienações (vendas), não ao lucro.</p>
 <p>Na prática, vender stablecoins por reais configura alienação. Se o dólar se valorizou entre a compra e a venda, existe ganho de capital tributável. Por exemplo: o investidor comprou US$17.500 em USDC quando o dólar estava a R$5,70, pagando R$99.750. Meses depois, com o dólar a R$6,27 (+10%), vende a posição por R$109.725. O ganho de capital é de R$9.975, tributável a 15% se o total de alienações no mês excedeu R$35.000.</p>
-<h3>DeCripto: reporte automático a partir da data prevista para implementação do DeCripto</h3>
+<h3>DeCripto: reporte automático a partir de 1º de julho de 2026</h3>
 <p>O sistema DeCripto, segundo o Banco Central, representa uma evolução significativa na supervisão de criptoativos no Brasil. A partir de sua implementação, exchanges que operam no país passam a reportar automaticamente transações de criptoativos à Receita Federal e ao Banco Central.</p>
 <p>Para o investidor, isso significa que a Receita Federal terá acesso detalhado a todas as operações realizadas em exchanges nacionais. Operações não declaradas serão facilmente identificáveis por cruzamento de dados.</p>
 <h3>Instrução Normativa RFB 1888</h3>
 <p>A IN 1888 estabelece as obrigações de reporte para operações com criptoativos. As exchanges nacionais já reportam transações mensalmente. Para operações realizadas em exchanges internacionais, o investidor pessoa física é responsável por reportar operações que totalizem R$30.000 ou mais no mês.</p>
-<h3>Resolução BCB 521</h3>
+<h3>Resoluções BCB 519, 520 e 521</h3>
+<p>A Resolução BCB nº 519 disciplina os processos de autorização para funcionamento das PSAVs (Prestadoras de Serviços de Ativos Virtuais), estabelecendo os requisitos que exchanges e demais prestadores devem cumprir para operar no Brasil.</p>
 <p>A Resolução 521 do Banco Central regula aspectos relacionados a câmbio e capitais internacionais. A compra de stablecoins, por se tratar de aquisição de ativo denominado em moeda estrangeira, se insere no contexto de regulação cambial. O investidor deve estar atento às obrigações de declaração de Capitais Brasileiros no Exterior (CBE) caso mantenha ativos no exterior acima dos limites estabelecidos pelo Banco Central.</p>
 <h3>MiCA: o modelo europeu de referência</h3>
 <p>A regulação europeia Markets in Crypto-Assets (MiCA) criou um framework específico para stablecoins, classificando-as em duas categorias distintas.</p>
@@ -1022,28 +1008,28 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <td>Exchange (custodial)</td>
 <td>Baixa a média</td>
 <td>Alta</td>
-<td>Até R$50k</td>
+<td>Até R$50 mil</td>
 <td>Falência/hack da exchange</td>
 </tr>
 <tr>
 <td>Hot wallet</td>
 <td>Média</td>
 <td>Alta</td>
-<td>Até R$100k</td>
+<td>Até R$100 mil</td>
 <td>Malware, phishing</td>
 </tr>
 <tr>
 <td>Hardware wallet</td>
 <td>Alta</td>
 <td>Média</td>
-<td>Acima de R$100k</td>
+<td>Acima de R$100 mil</td>
 <td>Perda da seed phrase</td>
 </tr>
 <tr>
 <td>Multi-sig</td>
 <td>Muito alta</td>
 <td>Baixa</td>
-<td>Acima de R$500k</td>
+<td>Acima de R$500 mil</td>
 <td>Complexidade operacional</td>
 </tr>
 </tbody>
@@ -1051,7 +1037,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <h3>Boas práticas de segurança</h3>
 <p><strong>Seed phrase.</strong> A frase de recuperação (geralmente 12 ou 24 palavras) é a única forma de recuperar o acesso a uma carteira em caso de perda do dispositivo. Deve ser armazenada offline, em local seguro, preferencialmente em mais de uma cópia física. Nunca deve ser digitada em sites, enviada por e-mail ou armazenada em nuvem.</p>
 <p><strong>Autenticação em dois fatores (2FA).</strong> Toda exchange e toda plataforma de rendimento deve ter 2FA ativado, preferencialmente via aplicativo (Google Authenticator, Authy), nunca via SMS.</p>
-<p><strong>Endereço de saque verificado.</strong> Exchanges permitem cadastrar endereços de saque pré-aprovados. Ativar essa funcionalidade impede que um invasor envie fundos para um endereço desconhecido, mesmo que consiga acessar a conta.</p>
+<p><strong>Endereço de saque verificado.</strong> Exchanges permitem cadastrar endereços de saque pré-aprovados. Essa funcionalidade impede que um invasor envie fundos para um endereço desconhecido, mesmo que consiga acessar a conta.</p>
 <p><strong>Atualizações de firmware.</strong> Hardware wallets recebem atualizações de segurança. Manter o firmware atualizado é essencial.</p>
 <p><strong>Diversificação de custódia.</strong> Assim como não se coloca todo o patrimônio em um único banco, não se coloca todas as stablecoins em uma única carteira ou exchange. Distribuir entre diferentes métodos e plataformas reduz o impacto de qualquer falha individual.</p>
 <h3>O papel da Boost Research na custódia</h3>
@@ -1092,13 +1078,13 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </thead>
 <tbody>
 <tr>
-<td>Conservador (R$200k-500k)</td>
+<td>Conservador (R$200 mil-500 mil)</td>
 <td>5% a 8%</td>
 <td>0% a 3%</td>
 <td>Priorizar ETFs e fundos cambiais</td>
 </tr>
 <tr>
-<td>Moderado (R$500k-1M)</td>
+<td>Moderado (R$500 mil-1M)</td>
 <td>8% a 12%</td>
 <td>2% a 5%</td>
 <td>Combinação de ETF + stablecoins</td>
@@ -1143,7 +1129,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tr>
 <tr>
 <td>Tributação</td>
-<td>15% ganho capital (&gt;R$35k/mês)</td>
+<td>15% ganho capital (&gt;R$35 mil/mês)</td>
 <td>15% ganho capital (qualquer valor)</td>
 <td>15% ganho capital</td>
 </tr>
@@ -1208,7 +1194,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <p><a href="https://elsonflorentino-afk.github.io/projetos-boost/cta-wa-ebook4.html" class="cta-btn">Falar com um Advisor da Boost Research</a></p>
 <hr />
 <p><strong>Boost Research</strong>, Consultoria de Investimentos em Cripto</p>
-<p>Fundada por André Franco, a Boost Research atua na interseção entre o mercado financeiro tradicional e o universo de criptoativos. Com uma equipe de Advisors dedicados e um modelo de alocação proprietário, a consultoria auxilia investidores com patrimônio relevante a integrar criptoativos ao portfólio de forma estruturada, com método e acompanhamento contínuo.</p>
+<p>Fundada por André Franco, a Boost Research atua na interseção entre o mercado financeiro tradicional e o universo de criptoativos. Com uma equipe de Research dedicada e um modelo de alocação proprietário, a consultoria auxilia investidores com patrimônio relevante a integrar criptoativos ao portfólio de forma estruturada, com método e acompanhamento contínuo.</p>
 <hr />
 </div>
 <div class="content-page" style="page-break-before:always">
