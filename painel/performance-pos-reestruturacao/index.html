@@ -42,6 +42,9 @@ tbody td{padding:8px 10px;border-bottom:1px solid var(--border)}tbody tr:hover{b
 .bar-label{font-size:11px;color:var(--text);min-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bar-track{flex:1;height:22px;background:#1a1a1a;border-radius:4px;overflow:hidden}
 .bar-fill{height:100%;border-radius:4px;display:flex;align-items:center;padding-left:8px;font-size:10px;font-weight:700;color:#000;min-width:25px}
+thead th[onclick]:hover{color:var(--green);background:#1e1e1e}
+#sort-icon{font-size:9px;margin-left:4px;color:var(--dim)}
+input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(0.7)}
 @media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}.comp-grid{grid-template-columns:1fr}.proj-grid{grid-template-columns:repeat(3,1fr)}.creative-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}.proj-grid{grid-template-columns:repeat(2,1fr)}}
 </style></head><body>
@@ -352,9 +355,15 @@ tbody td{padding:8px 10px;border-bottom:1px solid var(--border)}tbody tr:hover{b
 
 <!-- Leads Qualificados -->
 <div class="panel">
-<h2>Leads Qualificados >= 50k (117 leads)</h2>
-<table>
-<thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th><th>Data Conversao</th></tr></thead>
+<h2>Leads Qualificados >= 50k (<span id="lead-count">117</span> leads)</h2>
+<div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
+<label style="font-size:12px;color:var(--dim)">De: <input type="date" id="filter-from" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:12px;font-family:inherit"></label>
+<label style="font-size:12px;color:var(--dim)">Ate: <input type="date" id="filter-to" style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text);font-size:12px;font-family:inherit"></label>
+<button onclick="filterDates()" style="background:var(--green);color:#000;border:none;border-radius:6px;padding:6px 16px;font-size:12px;font-weight:700;cursor:pointer">Filtrar</button>
+<button onclick="clearFilter()" style="background:transparent;color:var(--dim);border:1px solid var(--border);border-radius:6px;padding:6px 16px;font-size:12px;cursor:pointer">Limpar</button>
+</div>
+<table id="leads-table">
+<thead><tr><th>Nome</th><th>Telefone</th><th>Pat. Cripto</th><th>Pat. Tradicional</th><th>Fonte</th><th style="cursor:pointer;user-select:none" onclick="sortByDate()">Data Conversao <span id="sort-icon">&#x25B2;&#x25BC;</span></th></tr></thead>
 <tbody><tr>
 <td style="font-weight:600">Tales Cobra</td>
 <td style="font-size:11px">(35) 8464-4197</td>
@@ -1184,4 +1193,64 @@ Dados: Meta Ads API + RD Station Marketing (segmentacoes qualificados >= R$50k).
 Referencia de reestruturacao: 14/abr/2026 — C4 CONV e IR-LP pausadas, budget redistribuido.
 </div>
 
+<script>
+(function(){
+  var table=document.getElementById('leads-table');
+  var tbody=table.querySelector('tbody');
+  var rows=Array.from(tbody.querySelectorAll('tr'));
+  var sortAsc=null;
+
+  function parseDate(txt){
+    // Format: "20/04/2026 05:56" → Date
+    var m=txt.trim().match(/(\d{2})\/(\d{2})\/(\d{4})\s+(\d{2}):(\d{2})/);
+    if(!m)return new Date(0);
+    return new Date(parseInt(m[3]),parseInt(m[2])-1,parseInt(m[1]),parseInt(m[4]),parseInt(m[5]));
+  }
+
+  function getRowDate(row){
+    var cells=row.querySelectorAll('td');
+    if(cells.length<6)return new Date(0);
+    return parseDate(cells[5].textContent);
+  }
+
+  window.sortByDate=function(){
+    if(sortAsc===null||sortAsc===false) sortAsc=true;
+    else sortAsc=false;
+    var icon=document.getElementById('sort-icon');
+    icon.textContent=sortAsc?'\u25B2':'\u25BC';
+    var visible=rows.filter(function(r){return r.style.display!=='none';});
+    visible.sort(function(a,b){
+      var da=getRowDate(a),db=getRowDate(b);
+      return sortAsc?(da-db):(db-da);
+    });
+    visible.forEach(function(r){tbody.appendChild(r);});
+  };
+
+  window.filterDates=function(){
+    var fromVal=document.getElementById('filter-from').value;
+    var toVal=document.getElementById('filter-to').value;
+    var from=fromVal?new Date(fromVal+'T00:00:00'):null;
+    var to=toVal?new Date(toVal+'T23:59:59'):null;
+    var count=0;
+    rows.forEach(function(r){
+      var d=getRowDate(r);
+      var show=true;
+      if(from&&d<from)show=false;
+      if(to&&d>to)show=false;
+      r.style.display=show?'':'none';
+      if(show)count++;
+    });
+    document.getElementById('lead-count').textContent=count;
+  };
+
+  window.clearFilter=function(){
+    document.getElementById('filter-from').value='';
+    document.getElementById('filter-to').value='';
+    rows.forEach(function(r){r.style.display='';});
+    document.getElementById('lead-count').textContent=rows.length;
+    sortAsc=null;
+    document.getElementById('sort-icon').textContent='\u25B2\u25BC';
+  };
+})();
+</script>
 </body></html>
