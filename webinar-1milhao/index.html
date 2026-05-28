@@ -947,7 +947,12 @@ document.getElementById('form-main').addEventListener('submit', function(e) {
       traffic_medium: getUTM('medium'),
       traffic_campaign: getUTM('campaign') || undefined,
       traffic_value: getUTM('content') || undefined,
-      traffic_term: getUTM('term') || undefined
+      traffic_term: getUTM('term') || undefined,
+      cf_utm_source: getUTM('source'),
+      cf_utm_medium: getUTM('medium'),
+      cf_utm_campaign: getUTM('campaign') || undefined,
+      cf_utm_content: getUTM('content') || undefined,
+      cf_utm_term: getUTM('term') || undefined
     }
   };
 
