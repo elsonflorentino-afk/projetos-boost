@@ -372,14 +372,14 @@ section{padding:80px 0;}
               <div class="step-label">1 / 2 - Seu perfil de investidor</div>
 
               <div class="f-group">
-                <label class="f-label">Voc&ecirc; j&aacute; possui investimentos em Bitcoin/Cripto?</label>
+                <label class="f-label">Voc&ecirc; j&aacute; possui investimentos em ativos digitais?</label>
                 <div class="toggle-group" data-group="cripto">
                   <button type="button" class="toggle-btn" data-val="sim" onclick="setToggle(this,'cripto')">Sim</button>
                   <button type="button" class="toggle-btn" data-val="não" onclick="setToggle(this,'cripto')">N&atilde;o</button>
                 </div>
                 <input type="hidden" id="f-cripto" name="cripto" value="">
                 <div class="conditional" id="cond-cripto">
-                  <label class="f-label">Qual seu patrim&ocirc;nio hoje em cripto?</label>
+                  <label class="f-label">Qual seu patrim&ocirc;nio hoje em ativos digitais?</label>
                   <select id="f-patrimonio-cripto">
                     <option value="">Selecione</option>
                     <option value="Até R$ 10 mil">At&eacute; R$ 10 mil</option>
@@ -393,7 +393,7 @@ section{padding:80px 0;}
 
               <!-- Visual Asset Grid (only when has crypto) -->
               <div class="f-group" id="crypto-assets-section">
-                <label class="f-label">Quais criptoativos voc&ecirc; possui e quanto em cada?</label>
+                <label class="f-label">Quais ativos digitais voc&ecirc; possui e quanto em cada?</label>
                 <p style="font-size:11px;color:var(--text-muted);margin-bottom:12px;">Toque na moeda para informar o valor aproximado.</p>
 
                 <div class="asset-grid" id="asset-grid">
@@ -1163,6 +1163,25 @@ window.addEventListener('scroll',function(){
 
 /* Avatar float is always visible — no JS needed */
 
+})();
+</script>
+<script>
+/* Google Ads compliance: esconde seções de cripto para tráfego Google */
+(function(){
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('utm_source')==='google'){
+    var hide=['crypto-assets-section','cond-cripto','msg-trad-only','msg-crypto-only','msg-no-invest'];
+    hide.forEach(function(id){var el=document.getElementById(id);if(el)el.style.display='none';});
+    /* Esconde toggle cripto e label */
+    var tg=document.querySelector('[data-group="cripto"]');
+    if(tg){tg.parentElement.style.display='none';}
+    /* Esconde card "declarar ativos digitais no IR" */
+    document.querySelectorAll('.card-option').forEach(function(c){
+      if(c.textContent.indexOf('declarar ativos digitais')>-1)c.style.display='none';
+    });
+    /* Seta valor default pra não quebrar validação */
+    var fc=document.getElementById('f-cripto');if(fc)fc.value='não';
+  }
 })();
 </script>
 </body>
