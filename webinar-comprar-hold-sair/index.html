@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comprar, Hold ou Sair? Webinar gratuito com Andr&eacute; Franco | Boost Research</title>
-<meta name="description" content="Webinar gratuito ao vivo. Andr&eacute; Franco revela a m&eacute;trica que sinalizou sa&iacute;da nos R$120&nbsp;mil e volta nos R$60&nbsp;mil. 17/jun, 20h.">
+<title>Comprar, Hold ou Sair? Masterclass gratuita com Andr&eacute; Franco | Boost Research</title>
+<meta name="description" content="Masterclass gratuita ao vivo. Andr&eacute; Franco revela a m&eacute;trica que sinalizou sa&iacute;da nos R$120&nbsp;mil e volta nos R$60&nbsp;mil. 17/jun, 20h.">
 <meta name="robots" content="index, follow">
-<meta property="og:title" content="Comprar, Hold ou Sair? Webinar gratuito ao vivo">
-<meta property="og:description" content="Andr&eacute; Franco mostra ao vivo a m&eacute;trica que usa desde 2016 pra decidir quando comprar, manter e sair. 17/jun, 20h. Gratuito.">
+<meta property="og:title" content="Comprar, Hold ou Sair? Masterclass gratuita ao vivo">
+<meta property="og:description" content="Andr&eacute; Franco mostra ao vivo a m&eacute;trica que usa desde 2016 pra decidir quando comprar, manter e sair. 17/jun, 20h. Gratuita.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -27,7 +27,7 @@ fbq('init','1062572485162288');fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1062572485162288&ev=PageView&noscript=1"></noscript>
 
 <!-- DataLayer -->
-<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'page_view',page_type:'webinar_registration',product:'webinar_comprar_hold_sair'});</script>
+<script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'page_view',page_type:'masterclass_registration',product:'masterclass_comprar_hold_sair'});</script>
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -68,16 +68,31 @@ img{max-width:100%;height:auto;}
 .tag{display:inline-block;background:var(--teal-light);color:var(--teal);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:16px;}
 
 /* ===== HERO ===== */
-.hero{width:100%;min-height:100vh;display:flex;align-items:center;background:var(--bg);position:relative;padding:120px 0 80px;}
+.hero{width:100%;min-height:100vh;display:flex;align-items:center;background:var(--bg);position:relative;padding:120px 0 80px;overflow:hidden;}
 .hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(25,198,181,0.06) 0%,transparent 65%);top:15%;right:3%;pointer-events:none;}
-.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:start;}
-.hero-copy{text-align:left;padding-top:24px;}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:start;position:relative;}
+.hero-copy{text-align:left;padding-top:24px;position:relative;z-index:2;}
 .hero-copy .h1{font-size:42px;font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:16px;color:var(--text);}
 .hero-copy .h1 em{font-style:normal;color:var(--teal);}
 .hero-copy .sub{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:28px;max-width:480px;}
 .hero-checks{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px;}
 .hero-check{font-size:13px;color:var(--text-secondary);display:flex;align-items:center;gap:6px;}
 .hero-check svg{color:var(--teal);flex-shrink:0;}
+
+/* ===== HERO PHOTO ANDRÉ ===== */
+.hero-andre{position:absolute;left:42%;top:40px;width:320px;z-index:1;pointer-events:none;opacity:0.75;-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(to bottom,rgba(0,0,0,1) 50%,rgba(0,0,0,0) 100%);}
+.hero-andre img{width:100%;height:auto;display:block;}
+@media(max-width:1200px){.hero-andre{left:38%;width:280px;}}
+@media(max-width:880px){.hero-andre{display:none;}}
+/* Mobile circular */
+.hero-andre-mobile{display:none;width:100px;height:100px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid rgba(25,198,181,0.2);margin-bottom:16px;}
+@media(max-width:880px){.hero-andre-mobile{display:block;}}
+/* Presenter badge (desktop) */
+.presenter-badge{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.presenter-badge img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid rgba(25,198,181,0.25);}
+.presenter-badge-info{font-size:13px;color:var(--text-secondary);line-height:1.4;}
+.presenter-badge-info strong{color:var(--text);font-weight:700;}
+@media(max-width:880px){.presenter-badge{display:none;}}
 
 /* ===== COUNTDOWN ===== */
 .countdown{display:flex;gap:12px;margin-bottom:28px;}
@@ -237,9 +252,17 @@ section{padding:80px 0;}
 <section class="hero" id="formulario">
   <div class="container">
     <div class="hero-grid">
+      <!-- André background (desktop) -->
+      <div class="hero-andre"><img src="andre-hero.png" alt="" loading="eager"></div>
+
       <!-- Left: copy -->
       <div class="hero-copy">
-        <div class="tag">Webinar gratuito ao vivo &middot; 17 de junho, 20h</div>
+        <img src="andre-franco.jpg" alt="Andr&eacute; Franco" class="hero-andre-mobile" loading="eager">
+        <div class="presenter-badge">
+          <img src="andre-franco.jpg" alt="Andr&eacute; Franco" loading="eager">
+          <div class="presenter-badge-info"><strong>Andr&eacute; Franco</strong><br>Fundador da Boost Research &middot; Desde 2016</div>
+        </div>
+        <div class="tag">Masterclass gratuita ao vivo &middot; 17 de junho, 20h</div>
         <h1 class="h1">Comprar, hold ou sair?<br><em>O m&eacute;todo por tr&aacute;s da decis&atilde;o.</em></h1>
         <p class="sub">Andr&eacute; Franco revela ao vivo a m&eacute;trica que sinalizou sa&iacute;da perto dos R$120&nbsp;mil e volta &agrave;s compras abaixo dos R$60&nbsp;mil. E o que ela est&aacute; dizendo agora.</p>
 
@@ -295,7 +318,7 @@ section{padding:80px 0;}
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
           </div>
           <h2>Vaga confirmada!</h2>
-          <p>Voc&ecirc; vai receber o link de acesso no seu e-mail e WhatsApp antes do webinar.<br><br><strong>17 de junho, 20h.</strong> At&eacute; l&aacute;.</p>
+          <p>Voc&ecirc; vai receber o link de acesso no seu e-mail e WhatsApp antes da masterclass.<br><br><strong>17 de junho, 20h.</strong> At&eacute; l&aacute;.</p>
         </div>
       </div>
     </div>
@@ -330,7 +353,7 @@ section{padding:80px 0;}
 <section class="section--white">
   <div class="container">
     <div class="section-header">
-      <div class="tag">Neste webinar</div>
+      <div class="tag">Nesta masterclass</div>
       <h2>O que voc&ecirc; vai aprender em <em>1 hora ao vivo</em></h2>
       <p class="sub">Andr&eacute; mostra o dado na tela, explica o racional e diz o que faria no seu lugar.</p>
     </div>
@@ -348,7 +371,7 @@ section{padding:80px 0;}
   <div class="container">
     <div class="section-header">
       <div class="tag">Simples assim</div>
-      <h2>Como participar do webinar</h2>
+      <h2>Como participar da masterclass</h2>
     </div>
     <div class="steps-grid">
       <div class="step-card">
@@ -373,7 +396,7 @@ section{padding:80px 0;}
 <!-- ANDR&Eacute; FRANCO — split layout -->
 <section class="section--white" id="andre-franco">
   <div class="container">
-    <div style="text-align:center;margin-bottom:40px;"><div class="tag">Quem apresenta o webinar</div></div>
+    <div style="text-align:center;margin-bottom:40px;"><div class="tag">Quem apresenta a masterclass</div></div>
     <div class="andre-grid">
       <div class="andre-photo">
         <img src="andre-franco.jpg" alt="Andr&eacute; Franco" width="600" height="800" loading="lazy">
@@ -381,7 +404,7 @@ section{padding:80px 0;}
       <div class="andre-bio">
         <h2>Andr&eacute; Franco</h2>
         <p class="andre-role">Fundador da Boost Research</p>
-        <p>Analista de criptoativos desde 2016. Mesmo m&eacute;todo, dois ciclos completos. A m&eacute;trica que ele vai mostrar neste webinar sinalizou sa&iacute;da perto dos R$120 mil e volta abaixo dos R$60 mil. E ele seguiu os dois sinais.</p>
+        <p>Analista de criptoativos desde 2016. Mesmo m&eacute;todo, dois ciclos completos. A m&eacute;trica que ele vai mostrar nesta masterclass sinalizou sa&iacute;da perto dos R$120 mil e volta abaixo dos R$60 mil. E ele seguiu os dois sinais.</p>
         <p>Fundou a Boost Research, consultoria de investimentos em cripto. Independente, sem v&iacute;nculo com banco ou corretora. Cada investidor tem um Advisor dedicado.</p>
         <div class="cred-pills">
           <span class="cred-pill">Desde 2016</span>
@@ -405,19 +428,19 @@ section{padding:80px 0;}
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-question">Vai ter replay?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="faq-answer"><p>N&atilde;o. O webinar &eacute; exclusivo ao vivo. Se voc&ecirc; perder, n&atilde;o ter&aacute; acesso depois. Garanta sua vaga e esteja online &agrave;s 20h.</p></div>
+        <div class="faq-answer"><p>N&atilde;o. A masterclass &eacute; exclusiva ao vivo. Se voc&ecirc; perder, n&atilde;o ter&aacute; acesso depois. Garanta sua vaga e esteja online &agrave;s 20h.</p></div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-question">Preciso saber algo sobre cripto?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
         <div class="faq-answer"><p>N&atilde;o. O Andr&eacute; vai explicar o dado de forma visual e pr&aacute;tica. Se voc&ecirc; j&aacute; tem cripto ou est&aacute; pensando em investir, vai entender tudo.</p></div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-question">V&atilde;o vender algo no webinar?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="faq-answer"><p>O foco &eacute; o conte&uacute;do. No final, o Andr&eacute; apresenta uma oportunidade pra quem quiser ir al&eacute;m. Mas voc&ecirc; sai quando quiser.</p></div>
+        <div class="faq-question">V&atilde;o vender algo na masterclass?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>O foco &eacute; o conte&uacute;do. No final, o Andr&eacute; apresenta uma oportunidade pra quem quiser se aprofundar. Mas voc&ecirc; sai quando quiser.</p></div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-question">Como recebo o link de acesso?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="faq-answer"><p>Por e-mail e WhatsApp no dia do webinar, antes das 20h. Fique de olho na sua caixa de entrada.</p></div>
+        <div class="faq-answer"><p>Por e-mail e WhatsApp no dia da masterclass, antes das 20h. Fique de olho na sua caixa de entrada.</p></div>
       </div>
     </div>
   </div>
@@ -427,7 +450,7 @@ section{padding:80px 0;}
 <section class="section--cta">
   <div class="container" style="max-width:680px;position:relative;z-index:1;">
     <h2>Comprar, hold ou sair? Descubra o que o dado est&aacute; dizendo agora.</h2>
-    <p>Webinar gratuito ao vivo com Andr&eacute; Franco. 17 de junho, 20h.</p>
+    <p>Masterclass gratuita ao vivo com Andr&eacute; Franco. 17 de junho, 20h.</p>
     <a href="#formulario" class="btn-cta-large" onclick="dataLayer.push({event:'cta_click',cta_id:'final_cta'});">Garantir minha vaga gratuita &rarr;</a>
   </div>
 </section>
@@ -526,11 +549,11 @@ document.getElementById('webinar-form').addEventListener('submit',function(e){
     event_type:'CONVERSION',
     event_family:'CDP',
     payload:{
-      conversion_identifier:'lp_webinar_comprar_hold_sair',
+      conversion_identifier:'lp_masterclass_comprar_hold_sair',
       email:email,
       name:name,
       mobile_phone:phone,
-      tags:['webinar-comprar-hold-sair-jun2026'],
+      tags:['masterclass-comprar-hold-sair-jun2026'],
       cf_utm_source:    getUTM('source')   || 'direct',
       cf_utm_medium:    getUTM('medium')   || 'none',
       cf_utm_campaign:  getUTM('campaign') || undefined,
@@ -553,7 +576,7 @@ document.getElementById('webinar-form').addEventListener('submit',function(e){
   window.dataLayer.push({
     event:'generate_lead',
     event_id:eventId,
-    conversion_id:'lp_webinar_comprar_hold_sair',
+    conversion_id:'lp_masterclass_comprar_hold_sair',
     user_email:email,
     user_phone:phone,
     user_name:name,
@@ -565,15 +588,15 @@ document.getElementById('webinar-form').addEventListener('submit',function(e){
   /* ── Meta Pixel Lead ── */
   if(typeof fbq==='function'){
     fbq('track','Lead',{
-      content_name:'webinar_comprar_hold_sair',
-      content_category:'webinar_registration'
+      content_name:'masterclass_comprar_hold_sair',
+      content_category:'masterclass_registration'
     },{eventID:eventId});
   }
 
   /* ── GA4 ── */
   if(typeof gtag==='function'){
     gtag('event','generate_lead',{
-      event_category:'webinar',
+      event_category:'masterclass',
       event_label:'comprar_hold_sair',
       value:0,
       currency:'BRL'
