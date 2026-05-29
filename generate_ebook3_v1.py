@@ -17,8 +17,8 @@ except ImportError:
     sys.exit(1)
 
 OUTPUT_DIR = "/Users/user/Downloads"
-OUTPUT_HTML = os.path.join(OUTPUT_DIR, "EBOOK_3_QUANTO_RENDE_1M_2026_v1.html")
-OUTPUT_PDF = os.path.join(OUTPUT_DIR, "EBOOK_3_QUANTO_RENDE_1M_2026_v1.pdf")
+OUTPUT_HTML = os.path.join(OUTPUT_DIR, "EBOOK_3_QUANTO_RENDE_1M_2026_v2.html")
+OUTPUT_PDF = os.path.join(OUTPUT_DIR, "EBOOK_3_QUANTO_RENDE_1M_2026_v2.pdf")
 
 # ── Watermark SVG (Boost logo in green, very subtle) ─────────────────────
 import urllib.parse as _urlparse
@@ -516,53 +516,32 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <div class="toc content-page">
     <h2>Sumário</h2>
     <div class="toc-entry"><span class="toc-num">1</span><span class="toc-title">O paradoxo da Selic alta</span></div>
-    <div class="toc-entry"><span class="toc-num">2</span><span class="toc-title">Renda fixa: quanto R$1M rende</span></div>
+    <div class="toc-entry"><span class="toc-num">2</span><span class="toc-title">Renda fixa: quanto R$1 milhão rende</span></div>
     <div class="toc-entry"><span class="toc-num">3</span><span class="toc-title">Além da renda fixa: dividendos, FIIs, ETFs</span></div>
-    <div class="toc-entry"><span class="toc-num">4</span><span class="toc-title">Cripto no portfólio de R$1M</span></div>
+    <div class="toc-entry"><span class="toc-num">4</span><span class="toc-title">Cripto no portfólio de R$1 milhão</span></div>
     <div class="toc-entry"><span class="toc-num">5</span><span class="toc-title">Proteção cambial: stablecoins e câmbio</span></div>
-    <div class="toc-entry"><span class="toc-num">6</span><span class="toc-title">Comparativo: 6 cenários de R$1M</span></div>
+    <div class="toc-entry"><span class="toc-num">6</span><span class="toc-title">Comparativo: 6 cenários de R$1 milhão</span></div>
     <div class="toc-entry"><span class="toc-num">7</span><span class="toc-title">Inflação, impostos e custos</span></div>
     <div class="toc-entry"><span class="toc-num">8</span><span class="toc-title">A diferença entre ter e fazer trabalhar</span></div>
 </div>
 
 <!-- CONTEÚDO E-BOOK 3 -->
-<div class="content-page">
-<h1>Quanto Rende 1 Milhão em 2026</h1>
-</div>
-<div class="content-page" style="page-break-before:always">
-<h2>E Como Fazer Esse Dinheiro Trabalhar por Você</h2>
-<p><strong>André Franco</strong>, Fundador da Boost Research</p>
-<p>Boost Research, Consultoria de Investimentos em Cripto</p>
-<hr />
-<h2>Sumário</h2>
-<ol>
-<li><a href="#capítulo-1--o-paradoxo-da-selic-alta-seu-milhão-rende-mais-mas-você-ganha-menos-do-que-pensa">O paradoxo da Selic alta: seu milhão rende mais, mas você ganha menos do que pensa</a></li>
-<li><a href="#capítulo-2--renda-fixa-quanto-r1m-rende-em-cdb-tesouro-e-lcilca">Renda fixa: quanto R$1M rende em CDB, Tesouro e LCI/LCA</a></li>
-<li><a href="#capítulo-3--além-da-renda-fixa-como-dividendos-fiis-e-etfs-complementam-r1-milhão">Além da renda fixa: como dividendos, FIIs e ETFs complementam R$1 milhão</a></li>
-<li><a href="#capítulo-4--cripto-no-portfólio-de-r1m-quanto-alocar-e-por-quê">Cripto no portfólio de R$1M: quanto alocar e por quê</a></li>
-<li><a href="#capítulo-5--proteção-cambial-por-que-manter-100-em-reais-é-um-risco-que-poucos-medem">Proteção cambial: por que manter 100% em reais é um risco que poucos medem</a></li>
-<li><a href="#capítulo-6--comparativo-completo-6-cenários-de-r1m">Comparativo completo: 6 cenários de R$1M</a></li>
-<li><a href="#capítulo-7--inflação-impostos-e-custos-o-que-sobra-no-bolso">Inflação, impostos e custos: o que sobra no bolso</a></li>
-<li><a href="#capítulo-8--a-diferença-entre-ter-r1-milhão-e-fazer-r1-milhão-trabalhar-por-você">A diferença entre ter R$1 milhão e fazer R$1 milhão trabalhar por você</a></li>
-</ol>
-<hr />
-</div>
 <div class="content-page" style="page-break-before:always">
 <h2>Capítulo 1 — O paradoxo da Selic alta: seu milhão rende mais, mas você ganha menos do que pensa</h2>
 <p>Seu R$1 milhão rendeu algo próximo de 14% no último ano. Pelo menos é o que diz o extrato. O que ele não mostra é que, depois de inflação, impostos e custos, o ganho real ficou mais perto de 7%. Esse é o paradoxo que o investidor brasileiro enfrenta em 2026.</p>
 <p>Antes de calcular qualquer rendimento, é preciso entender o terreno onde o seu dinheiro está pisando.</p>
 <h3>A Selic e o CDI: motor da renda fixa brasileira</h3>
 <p>A taxa Selic é a referência para praticamente todos os investimentos de renda fixa no Brasil. O CDI (Certificado de Depósito Interbancário) acompanha a Selic com um spread mínimo, geralmente inferior a 0,10 ponto percentual. Na prática, quando alguém menciona "100% do CDI", está dizendo que o investimento rende praticamente a taxa Selic.</p>
-<p>Com a Selic em patamar elevado, acima de 14% ao ano, um CDB que paga 100% do CDI entrega rendimento bruto expressivo. Parece extraordinário. E, de fato, é um patamar historicamente elevado. Mas esse número sozinho não conta a história completa.</p>
+<p>Com a Selic em patamar elevado, na taxa vigente*, um CDB que paga 100% do CDI entrega rendimento bruto expressivo. Parece extraordinário. E, de fato, é um patamar historicamente elevado. Mas esse número sozinho não conta a história completa.</p>
 <h3>Inflação: a erosão invisível</h3>
-<p>O IPCA (Índice de Preços ao Consumidor Amplo) opera acima da meta definida pelo Banco Central, na faixa de 5% a 6% ao ano. Isso significa que R$1 milhão hoje terá poder de compra equivalente a algo entre R$940 mil e R$950 mil daqui a 12 meses, se não houver qualquer rendimento.</p>
+<p>O IPCA (Índice de Preços ao Consumidor Amplo) opera acima da meta definida pelo Banco Central, na faixa do IPCA vigente*. Isso significa que R$1 milhão hoje terá poder de compra equivalente a algo entre R$940 mil e R$950 mil daqui a 12 meses, se não houver qualquer rendimento.</p>
 <p>Essa conta muda a forma como você olha para seus investimentos. Um retorno nominal de 14% ao ano, descontada uma inflação de 5,5%, resulta em um ganho real de aproximadamente 8,5%. Ainda é robusto, mas está longe dos 14% que aparecem na propaganda do banco.</p>
 <h3>O que isso significa para quem tem R$1 milhão</h3>
 <p>Para o investidor com patrimônio relevante, o cenário atual apresenta uma janela de oportunidade real na renda fixa. Mas cria também uma armadilha sutil: a falsa sensação de que basta deixar o dinheiro "parado" no CDI.</p>
 <p>O problema é que juros altos são cíclicos. Quando a Selic começar a cair (e historicamente ela sempre cai após ciclos de alta), os investimentos pós-fixados perdem rendimento. Quem travou taxas prefixadas ou indexadas à inflação nos momentos certos captura prêmios que outros investidores não conseguem acessar depois.</p>
 <p>Além disso, um portfólio 100% em renda fixa brasileira carrega uma exposição total ao risco-país e à moeda local. Diversificação geográfica, cambial e entre classes de ativos não é sofisticação desnecessária. É gestão prudente de patrimônio.</p>
 <h3>O juro real brasileiro em perspectiva</h3>
-<p>O Brasil oferece um dos maiores juros reais do mundo. Com Selic na faixa vigente e inflação entre 5% e 6%, o juro real brasileiro supera 8% ao ano. Para efeito de comparação, o juro real nos Estados Unidos oscila em torno de 1,5% a 2%.</p>
+<p>O Brasil oferece um dos maiores juros reais do mundo. Com Selic na faixa vigente e IPCA vigente*, o juro real brasileiro se mantém entre os mais altos do mundo. Para efeito de comparação, o juro real nos Estados Unidos oscila em torno de 1,5% a 2%.</p>
 <p>Essa diferença atrai capital estrangeiro e sustenta o argumento de que a renda fixa brasileira merece espaço relevante em qualquer carteira. Porém, a mesma taxa de juros elevada que remunera o investidor reflete riscos fiscais, políticos e inflacionários que não devem ser ignorados.</p>
 <h3>O ciclo de juros e a janela de oportunidade</h3>
 <p>Ciclos de juros altos não duram para sempre. O Comitê de Política Monetária (Copom) ajusta a Selic de acordo com a dinâmica inflacionária e as expectativas de mercado. Quando a inflação recua e as expectativas se ancoram, o ciclo de queda começa.</p>
@@ -572,14 +551,14 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <ul>
 <li>[ ] A Selic em patamar elevado beneficia a renda fixa, mas é cíclica</li>
 <li>[ ] O CDI acompanha a Selic com spread mínimo</li>
-<li>[ ] A inflação entre 5% e 6% corrói ganhos nominais, mesmo quando o rendimento bruto parece alto</li>
+<li>[ ] A inflação vigente corrói ganhos nominais, mesmo quando o rendimento bruto parece alto</li>
 <li>[ ] Reconheço que o juro real brasileiro é um dos mais altos do mundo</li>
 <li>[ ] 100% CDI não significa 100% de ganho real?</li>
 </ul>
 <hr />
 </div>
 <div class="content-page" style="page-break-before:always">
-<h2>Capítulo 2 — Renda fixa: quanto R$1M rende em CDB, Tesouro e LCI/LCA</h2>
+<h2>Capítulo 2 — Renda fixa: quanto R$1 milhão rende em CDB, Tesouro e LCI/LCA</h2>
 <p>Vamos aos números. Este capítulo apresenta simulações detalhadas para as principais opções de renda fixa disponíveis ao investidor brasileiro com R$1 milhão. Cada cálculo considera o rendimento bruto, a tributação aplicável e o retorno real após inflação.</p>
 <div class="risk-box">
 <p><strong>Simulações baseadas em dados históricos e projeções. Rentabilidade passada não garante resultados futuros.</strong></p>
@@ -604,7 +583,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <p>Com R$1 milhão, se o IPCA for de 5,5% e o juro real de 7%, o rendimento bruto estimado é de aproximadamente R$128 mil ao ano. Líquido de IR (15%): R$109 mil. O diferencial é que esse retorno é inteiramente real, já descontada a inflação.</p>
 <p>Atenção: se resgatado antes do vencimento, o Tesouro IPCA+ pode apresentar volatilidade significativa (marcação a mercado). Ideal para quem tem horizonte de investimento compatível com o vencimento do título.</p>
 <h3>Tesouro Prefixado</h3>
-<p>Títulos prefixados na faixa de 14,5% ao ano travam a rentabilidade até o vencimento. R$1 milhão geraria rendimento bruto de R$145 mil, líquido de R$123 mil (após IR de 15%). Real: R$68 mil.</p>
+<p>Títulos prefixados na taxa vigente* travam a rentabilidade até o vencimento. R$1 milhão geraria rendimento bruto de R$145 mil, líquido de R$123 mil (após IR de 15%). Real: R$68 mil.</p>
 <p>O risco é que, se a Selic subir além do esperado, títulos prefixados perdem valor no mercado secundário. Em contrapartida, se a Selic cair, quem travou a taxa se beneficia. É uma aposta direcional na trajetória dos juros.</p>
 <h3>Tabela comparativa: R$1 milhão em renda fixa (estimativa 12 meses)</h3>
 <table class="data-table">
@@ -661,7 +640,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tr>
 <tr>
 <td>Tesouro Prefixado</td>
-<td>~14,5% a.a.</td>
+<td>Taxa vigente a.a.*</td>
 <td>145.000</td>
 <td>22.000</td>
 <td>123.000</td>
@@ -680,7 +659,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <li>[ ] Comparei rendimento bruto, líquido e real de cada produto</li>
 <li>[ ] Entendo que LCI/LCA isentas podem superar CDBs tributados</li>
 <li>[ ] Sei que Tesouro IPCA+ protege contra inflação, mas tem volatilidade antes do vencimento</li>
-<li>[ ] Compreendo a importância de diversificar entre instituições (limite FGC de R$250k)</li>
+<li>[ ] Compreendo a importância de diversificar entre instituições (limite FGC de R$250 mil)</li>
 <li>[ ] Reconheço que a alíquota de IR é regressiva: quanto maior o prazo, menor o imposto</li>
 </ul>
 <hr />
@@ -760,7 +739,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <tbody>
 <tr>
 <td>CDI (100%)</td>
-<td>~14,75%*</td>
+<td>Taxa vigente*</td>
 <td>15% IR</td>
 <td>~12,5%</td>
 <td>Muito baixa</td>
@@ -809,7 +788,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <hr />
 </div>
 <div class="content-page" style="page-break-before:always">
-<h2>Capítulo 4 — Cripto no portfólio de R$1M: quanto alocar e por quê</h2>
+<h2>Capítulo 4 — Cripto no portfólio de R$1 milhão: quanto alocar e por quê</h2>
 <p>Criptoativos deixaram de ser uma curiosidade tecnológica. Com a aprovação de ETFs regulados, a entrada de investidores institucionais e a consolidação do mercado, o debate não é mais "se" cripto merece espaço no portfólio. É "quanto" e "como".</p>
 <p>André Franco acompanha o mercado de criptoativos desde 2016. Nesse período, acompanhou ciclos completos de valorização e queda, e construiu junto à equipe da Boost Research um modelo de alocação que reflete essa experiência acumulada.</p>
 <p>Para o investidor com R$1 milhão, a questão exige análise cuidadosa. Os retornos potenciais são significativos, mas a volatilidade também.</p>
@@ -826,7 +805,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <p>O Ethereum, segundo maior criptoativo por capitalização, oferece uma funcionalidade adicional: staking. Ao participar da validação da rede, o investidor recebe rendimentos que giram na faixa de 3% a 5% ao ano em ETH. É uma forma de gerar renda passiva dentro do ecossistema cripto, embora com riscos específicos (penalidade por validação incorreta (slashing), período de travamento (lock-up), volatilidade do ativo base).</p>
 <h3>ETFs de criptoativos na B3</h3>
 <p>Para quem prefere exposição regulada, a B3 lista ETFs que acompanham cestas de criptoativos. São negociados em reais, com custódia institucional e dentro do arcabouço regulatório da CVM. As taxas de administração são maiores que as de ETFs tradicionais, mas eliminam a complexidade de custódia direta de criptoativos.</p>
-<h3>Cenários de alocação: impacto no portfólio de R$1M</h3>
+<h3>Cenários de alocação: impacto no portfólio de R$1 milhão</h3>
 <p>A tabela abaixo ilustra o retorno estimado do portfólio total em diferentes cenários de alocação cripto, considerando que a parcela em renda fixa rende 12% líquido ao ano e a parcela em cripto varia conforme o cenário de mercado.</p>
 <table class="data-table">
 <thead>
@@ -983,7 +962,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <hr />
 </div>
 <div class="content-page" style="page-break-before:always">
-<h2>Capítulo 6 — Comparativo completo: 6 cenários de R$1M</h2>
+<h2>Capítulo 6 — Comparativo completo: 6 cenários de R$1 milhão</h2>
 <p>Este é o capítulo central do e-book. Aqui reunimos todas as classes de ativos em seis portfólios distintos, do ultra-conservador ao arrojado, incluindo o Modelo de Alocação Boost. Cada cenário projeta o resultado de R$1 milhão em 12 meses.</p>
 <div class="risk-box">
 <p><strong>Todos os cenários abaixo são simulações com caráter educacional. Não constituem recomendação de investimento. Rentabilidade passada não garante resultados futuros.</strong></p>
@@ -1343,7 +1322,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <p>A maioria dos investidores olha para o rendimento bruto e assume que aquele número representa seu ganho. Não representa. Entre o rendimento bruto e o dinheiro que efetivamente aumenta seu poder de compra, existem três camadas de redução: inflação, impostos e custos operacionais.</p>
 <p>Este capítulo detalha cada uma delas e responde a uma pergunta que poucos fazem: quanto R$1 milhão precisa render apenas para não perder dinheiro?</p>
 <h3>Inflação: a primeira mordida</h3>
-<p>Com o IPCA na faixa de 5% a 6% ao ano, R$1 milhão perde entre R$50 mil e R$60 mil em poder de compra a cada 12 meses. Isso significa que, antes de comemorar qualquer rendimento, o investidor precisa recompor essa perda.</p>
+<p>Com o IPCA vigente*, R$1 milhão perde poder de compra significativo a cada 12 meses. Isso significa que, antes de comemorar qualquer rendimento, o investidor precisa recompor essa perda.</p>
 <p>Para manter o mesmo poder de compra, R$1 milhão precisa se transformar em pelo menos R$1.055.000 ao final de um ano (considerando IPCA de 5,5%). Qualquer rendimento abaixo desse patamar é, na prática, uma perda.</p>
 <h3>Impostos: a tabela que define o rendimento real</h3>
 <p>A tributação varia significativamente entre classes de ativos e impacta de maneira desproporcional investimentos de renda fixa:</p>
@@ -1442,7 +1421,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tbody>
 </table>
 <p>Qualquer retorno abaixo de 7,5% ao ano não está gerando riqueza. Está apenas tentando acompanhar a erosão.</p>
-<h3>O mesmo R$1M, estruturas de custo diferentes</h3>
+<h3>O mesmo R$1 milhão, estruturas de custo diferentes</h3>
 <p>A tabela abaixo ilustra como a estrutura de custos afeta o retorno final, mesmo quando o rendimento bruto é idêntico:</p>
 <table class="data-table">
 <thead>
@@ -1458,7 +1437,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 <tbody>
 <tr>
 <td>Investimento direto (ETF 0,3%)</td>
-<td>14,75%†</td>
+<td>Taxa vigente†</td>
 <td>0,3%</td>
 <td>2,2%*</td>
 <td>5,5%</td>
@@ -1466,7 +1445,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tr>
 <tr>
 <td>Fundo ativo (taxa 1,5%)</td>
-<td>14,75%†</td>
+<td>Taxa vigente†</td>
 <td>1,5%</td>
 <td>2,0%*</td>
 <td>5,5%</td>
@@ -1474,7 +1453,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tr>
 <tr>
 <td>Fundo premium (taxa 2,0% + perf.)</td>
-<td>14,75%†</td>
+<td>Taxa vigente†</td>
 <td>2,5%**</td>
 <td>1,8%*</td>
 <td>5,5%</td>
@@ -1482,7 +1461,7 @@ HTML_CONTENT = f"""<!DOCTYPE html>
 </tr>
 <tr>
 <td>Banco (produtos de prateleira)</td>
-<td>14,75%†</td>
+<td>Taxa vigente†</td>
 <td>1,0%</td>
 <td>2,2%*</td>
 <td>5,5%</td>

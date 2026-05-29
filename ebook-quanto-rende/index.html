@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="public, max-age=2592000">
+
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="dns-prefetch" href="https://sgtm.boostresearch.com.br">
+<link rel="preconnect" href="https://sgtm.boostresearch.com.br" crossorigin>
+<link rel="preconnect" href="https://api.rd.services" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-book Gratuito: Quanto Rende 1 Milhao em 2026 — Boost Research</title>
+<meta name="description" content="Descubra quanto R$1 milhao rende em CDB, Tesouro, FIIs, acoes e cripto em 2026. Simulacoes reais com impostos, inflacao e custos. E-book gratuito.">
+<meta property="og:title" content="E-book Gratuito: Quanto Rende 1 Milhao em 2026 | Boost Research">
+<meta property="og:description" content="Descubra quanto R$1 milhao rende em CDB, Tesouro, FIIs, acoes e cripto em 2026. Simulacoes reais com impostos, inflacao e custos. E-book gratuito.">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex, nofollow">
+
+<style>
+  /* ===== RESET & TOKENS ===== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --bg1: #060812; --bg2: #0D1020; --bg3: #13152A;
+    --white: #F5F5FA; --gray: #A0A0C0; --gray-dim: #2A2A45;
+    --green: #00B37E; --green-dim: rgba(0,179,126,0.25);
+    --red: #FF4D4D;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); background: var(--bg1); color: var(--white); -webkit-font-smoothing: antialiased; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 80px 0; }
+  .section--dark { background: var(--bg1); }
+  .section--mid  { background: var(--bg2); }
+  .section--deep { background: var(--bg3); }
+  .green { color: var(--green); }
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--green); background: rgba(0,179,126,0.08);
+    border: 1px solid var(--green-dim); padding: 6px 14px; border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .h1 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 900; line-height: 1.15; margin-bottom: 20px; }
+  .h2 { font-size: clamp(1.3rem, 2.8vw, 2rem); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+  .sub { font-size: 1.05rem; color: var(--gray); line-height: 1.7; margin-bottom: 20px; }
+  .divider-green { width: 48px; height: 3px; background: var(--green); border-radius: 2px; margin: 24px 0; }
+  .divider-full { width: 100%; height: 1px; background: var(--gray-dim); margin: 16px 0; }
+  .micro { font-size: 12px; color: var(--gray); }
+  .btn-primary {
+    display: inline-block; background: var(--green); color: #000; font-weight: 800;
+    font-size: 0.95rem; padding: 14px 28px; border-radius: 8px;
+    text-decoration: none; transition: opacity 0.2s; font-family: var(--font);
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    position: sticky; top: 0; z-index: 100; background: rgba(6,8,18,0.92);
+    backdrop-filter: blur(12px); border-bottom: 1px solid var(--gray-dim);
+    padding: 14px 0;
+  }
+  .navbar .container { display: flex; align-items: center; justify-content: space-between; }
+  .navbar-logo img { height: 36px; mix-blend-mode: screen; }
+  .navbar-cta {
+    background: var(--green); color: #000; font-weight: 700; font-size: 13px;
+    padding: 9px 18px; border-radius: 6px; text-decoration: none; transition: opacity 0.2s;
+  }
+  .navbar-cta:hover { opacity: 0.85; }
+
+  /* ===== HERO ===== */
+  .hero { padding: 72px 0 64px; background: var(--bg1); }
+  .hero .container { display: grid; grid-template-columns: 1fr 420px; gap: 56px; align-items: start; }
+  .hero-copy { display: flex; flex-direction: column; justify-content: center; }
+  .hero-body { font-size: 0.95rem; color: var(--gray); line-height: 1.75; margin-bottom: 24px; }
+  .hero-checks { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .hero-check {
+    font-size: 0.9rem; color: #d0d0e8; display: flex; align-items: flex-start; gap: 10px;
+  }
+  .hero-check span { color: var(--green); font-weight: 700; font-size: 1rem; flex-shrink: 0; }
+  .hero-steps-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 16px; }
+  .hero-steps { display: flex; flex-direction: column; gap: 16px; }
+  .hero-step { display: flex; gap: 14px; align-items: flex-start; }
+  .hero-step-num {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--green);
+    color: #000; font-weight: 800; font-size: 0.75rem; display: flex;
+    align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .hero-step-body { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+  .hero-step-body strong { color: var(--white); display: block; margin-bottom: 2px; }
+  .hero-step-body span { display: block; }
+
+  /* ===== FORM ===== */
+  .hero-form {
+    background: var(--bg2); border: 1px solid var(--gray-dim);
+    border-radius: 12px; padding: 32px 28px;
+  }
+  .hero-form h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+  .f-group { margin-bottom: 14px; }
+  .f-group label {
+    display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 6px;
+  }
+  .f-group input, .f-group select {
+    width: 100%; background: var(--bg3); border: 1px solid var(--gray-dim);
+    border-radius: 8px; padding: 12px 14px; color: var(--white);
+    font-size: 14px; font-family: var(--font); font-weight: 400;
+    outline: none; transition: border-color 0.15s; appearance: none;
+    -webkit-appearance: none;
+  }
+  .f-group input::placeholder { color: #555575; }
+  .f-group input:focus,
+  .f-group select:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(0,179,126,0.12); }
+  .f-group select option { background: #0D1020; color: var(--white); }
+  .f-select-wrap { position: relative; }
+  .f-select-wrap::after {
+    content: '\25BE'; position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%); color: var(--gray); pointer-events: none;
+    font-size: 13px;
+  }
+  .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .btn-submit {
+    display: block; width: 100%; background: var(--green); color: #000;
+    border: none; font-weight: 800; font-size: 15px; padding: 16px;
+    border-radius: 8px; cursor: pointer; font-family: var(--font);
+    transition: opacity 0.2s, transform 0.1s; letter-spacing: 0.3px;
+    margin-top: 8px;
+  }
+  .btn-submit:hover { opacity: 0.88; }
+  .btn-submit:active { transform: scale(0.99); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+  .hero-form .progress { display: flex; gap: 4px; margin-bottom: 20px; }
+  .hero-form .progress span { flex: 1; height: 3px; background: var(--green); border-radius: 2px; }
+
+  /* ===== TOGGLE SIM / NAO ===== */
+  .f-toggle { display: flex; gap: 8px; margin-top: 2px; }
+  .toggle-btn {
+    flex: 1; padding: 11px 8px; border-radius: 8px;
+    border: 1px solid var(--gray-dim); background: var(--bg3);
+    color: var(--gray); font-size: 14px; font-weight: 600;
+    cursor: pointer; font-family: var(--font);
+    transition: all 0.15s; letter-spacing: 0.2px;
+  }
+  .toggle-btn:hover { border-color: var(--green); color: var(--white); }
+  .toggle-btn.active { background: var(--green); color: #000; border-color: var(--green); }
+  .f-group label.label-q {
+    font-size: 13px; color: var(--white); font-weight: 600;
+    letter-spacing: 0; text-transform: none; margin-bottom: 10px; line-height: 1.4;
+  }
+  .f-group label.label-q small { font-size: 11px; color: var(--gray); font-weight: 400; }
+  .f-conditional { overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; }
+  .form-success {
+    display: none; text-align: center; padding: 32px 16px;
+  }
+  .form-success .check {
+    width: 56px; height: 56px; background: var(--green); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin: 0 auto 16px;
+  }
+  .form-success h3 { font-size: 1.2rem; margin-bottom: 8px; }
+  .form-success p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+  /* ===== FORM BADGE ===== */
+  .form-badge {
+    background: linear-gradient(135deg, #0A1810, #051008);
+    border: 1px solid var(--green-dim); border-radius: 8px;
+    padding: 12px 16px; display: flex; align-items: center;
+    gap: 12px; margin-bottom: 20px;
+  }
+  .form-badge .info { font-size: 12px; }
+  .form-badge .info strong { color: var(--green); display: block; font-size: 13px; margin-bottom: 2px; }
+  .form-badge .info span { color: var(--gray); }
+
+  /* ===== PROBLEMA / ESPELHO ===== */
+  .problem-list { margin-top: 40px; display: grid; gap: 16px; }
+  .problem-item {
+    background: var(--bg2); border: 1px solid var(--gray-dim); border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0; padding: 20px 24px;
+    font-size: 1rem; color: #d0d0e8; line-height: 1.7;
+  }
+
+  /* ===== ARGUMENTOS ===== */
+  .arg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+  .arg-card {
+    background: var(--bg2); border: 1px solid var(--gray-dim);
+    border-radius: 10px; padding: 28px 24px;
+  }
+  .arg-card .num {
+    font-size: 11px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--green); margin-bottom: 14px;
+  }
+  .arg-card .arg-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+  .arg-card .arg-body { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+  /* ===== AUTORIDADE ===== */
+  .authority {
+    display: grid; grid-template-columns: 380px 1fr;
+    gap: 64px; align-items: start;
+  }
+  .authority-photo { border-radius: 12px; overflow: hidden; position: relative; }
+  .authority-photo img { width: 100%; height: auto; display: block; }
+  .authority-photo .photo-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 24px 20px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+  }
+  .photo-label {
+    display: inline-block; background: rgba(0,179,126,0.15);
+    border: 1px solid var(--green-dim); border-radius: 4px;
+    padding: 5px 12px; color: var(--green); font-size: 11px;
+    font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .credencial { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .credencial-item {
+    background: var(--bg3); border: 1px solid var(--green-dim);
+    border-radius: 20px; padding: 6px 16px; font-size: 12px;
+    color: var(--green); font-weight: 600;
+  }
+
+  /* ===== STEPS ===== */
+  .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+  .step-card {
+    background: var(--bg2); border: 1px solid var(--gray-dim);
+    border-radius: 10px; padding: 28px 22px; position: relative;
+  }
+  .step-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--green); color: #000; font-weight: 800;
+    font-size: 0.85rem; display: flex; align-items: center;
+    justify-content: center; margin-bottom: 16px;
+  }
+  .step-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+  .step-body { font-size: 0.85rem; color: var(--gray); line-height: 1.6; }
+
+  /* ===== DIFERENCIAL ===== */
+  .dif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+  .dif-card {
+    background: var(--bg2); border: 1px solid var(--gray-dim); border-radius: 10px; padding: 36px 32px;
+  }
+  .dif-icon { font-size: 2rem; margin-bottom: 16px; }
+  .dif-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; }
+  .dif-body { font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+  .dif-body strong { color: var(--white); }
+
+  /* ===== PARA QUEM E ===== */
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+  .profile-card {
+    background: var(--bg2); border: 1px solid var(--gray-dim); border-radius: 10px;
+    padding: 36px 32px; border-top: 3px solid var(--green);
+  }
+  .profile-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; line-height: 1.3; }
+  .profile-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .profile-list li {
+    font-size: 0.9rem; color: #d0d0e8; line-height: 1.6;
+    padding-left: 22px; position: relative;
+  }
+  .profile-list li::before {
+    content: '\2192'; position: absolute; left: 0; color: var(--green); font-weight: 700;
+  }
+  .profile-validation {
+    background: var(--bg3); border-left: 3px solid var(--green);
+    padding: 14px 18px; border-radius: 0 6px 6px 0;
+    font-size: 0.88rem; color: var(--gray); line-height: 1.6; font-style: italic;
+  }
+
+  /* ===== BRAND SECTION ===== */
+  .brand-section {
+    background: var(--bg3); border-top: 1px solid var(--gray-dim);
+    border-bottom: 1px solid var(--gray-dim); padding: 80px 0; overflow: hidden; position: relative;
+  }
+  .brand-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .brand-logo img { width: 100%; max-width: 440px; height: auto; mix-blend-mode: screen; filter: contrast(1.1); }
+  .brand-stat { display: flex; gap: 36px; flex-wrap: wrap; margin-top: 28px; }
+  .brand-stat-item .num { font-size: 2.2rem; font-weight: 800; color: var(--green); line-height: 1; }
+  .brand-stat-item .label { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+  /* ===== FOOTER ===== */
+  .footer { padding: 48px 0; border-top: 1px solid var(--gray-dim); text-align: center; }
+  .disclaimer { font-size: 11px; color: var(--gray-dim); line-height: 1.7; max-width: 640px; margin: 16px auto 0; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px) {
+    .section                { padding: 60px 0; }
+    .hero                   { padding: 56px 0 48px; }
+    .hero .container        { grid-template-columns: 1fr; gap: 40px; align-items: start; }
+    .hero-copy              { justify-content: flex-start; }
+    .hero-form              { order: -1; }
+    .authority              { grid-template-columns: 1fr; }
+    .arg-grid               { grid-template-columns: 1fr; }
+    .steps-grid             { grid-template-columns: 1fr 1fr; }
+    .dif-grid               { grid-template-columns: 1fr; }
+    .profile-grid           { grid-template-columns: 1fr; }
+    .brand-grid             { grid-template-columns: 1fr; gap: 40px; }
+    .brand-logo img         { max-width: 300px; }
+    .brand-stat             { gap: 24px; }
+    .btn-primary            { display: block; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .steps-grid             { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://sgtm.boostresearch.com.br/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K2HT6HBX');</script>
+<!-- End Google Tag Manager -->
+<!-- Pixel Meta e UTMs gerenciados pelo GTM -->
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://sgtm.boostresearch.com.br/ns.html?id=GTM-K2HT6HBX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ============================================================ NAVBAR ============================================================ -->
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-logo">
+      <img src="../ebook-portfolio/boost-logo.png" alt="Boost Research" width="200" height="76" onerror="this.style.display='none'">
+    </div>
+    <a href="#formulario" class="navbar-cta" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'navbar_cta',cta_text:'E-book Gratuito'});return false;">E-book Gratuito &rarr;</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero" id="hero">
+  <div class="container">
+
+    <div class="hero-copy">
+
+      <!-- BLOCO SUPERIOR: headline + copy + bullets -->
+      <div class="hero-copy-top">
+        <div class="tag">E-BOOK GRATUITO</div>
+
+        <h1 class="h1">
+          Voce tem R$1 milhao investido e sabe exatamente <em class="green">quanto sobra no seu bolso?</em>
+        </h1>
+
+        <p class="sub">
+          Nao o rendimento bruto do extrato. O rendimento real: depois de inflacao, impostos e custos. Este e-book compara 6 cenarios reais &mdash; de renda fixa pura a portfolios com cripto e dolar &mdash; para que voce tome decisoes com numeros, nao com suposicoes.
+        </p>
+
+        <div class="divider-green"></div>
+
+        <p class="hero-body">
+          Um guia completo e pratico, escrito por Andre Franco e a equipe da Boost Research, com simulacoes reais de R$1 milhao em diferentes classes de ativos. Renda fixa, acoes, FIIs, cripto e protecao cambial &mdash; cada cenario com impostos, inflacao e custos reais descontados.
+        </p>
+
+        <div class="hero-checks">
+          <div class="hero-check"><span>&#10003;</span> Selic alta nao significa ganho real alto &mdash; veja quanto a inflacao corroi</div>
+          <div class="hero-check"><span>&#10003;</span> 6 cenarios comparativos: do ultra-conservador ao arrojado com cripto</div>
+          <div class="hero-check"><span>&#10003;</span> Simulacoes com impostos, taxas de administracao e come-cotas</div>
+          <div class="hero-check"><span>&#10003;</span> Cripto no portfolio de R$1 milhao: quanto alocar e por que</div>
+          <div class="hero-check"><span>&#10003;</span> Stablecoins e protecao cambial como componente do portfolio</div>
+        </div>
+
+        <!-- Como funciona: 3 passos -->
+        <p class="hero-steps-label">Como funciona</p>
+        <div class="hero-steps">
+          <div class="hero-step">
+            <div class="hero-step-num">1</div>
+            <div class="hero-step-body">
+              <strong>Preencha o formulario</strong>
+              <span>Leva menos de 1 minuto. Seus dados sao protegidos e usados exclusivamente para envio do material.</span>
+            </div>
+          </div>
+          <div class="hero-step">
+            <div class="hero-step-num">2</div>
+            <div class="hero-step-body">
+              <strong>Receba o e-book no seu e-mail</strong>
+              <span>O e-book completo em PDF chega na sua caixa de entrada em poucos minutos. Conteudo pratico e direto ao ponto.</span>
+            </div>
+          </div>
+          <div class="hero-step">
+            <div class="hero-step-num">3</div>
+            <div class="hero-step-body">
+              <strong>Fale com a equipe Boost</strong>
+              <span>Um Advisor da Boost Research entra em contato pelo WhatsApp para tirar duvidas sobre o conteudo do e-book.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="hero-form" id="formulario">
+      <div class="form-badge">
+        <span style="font-size:1.8rem;">&#9878;</span>
+        <div class="info">
+          <strong>Boost Research &middot; E-book Gratuito</strong>
+          <span>Quanto Rende 1 Milhao em 2026</span>
+        </div>
+      </div>
+
+      <div class="progress">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <h3>Baixe o e-book gratuito</h3>
+      <p style="font-size:12px;color:var(--gray);margin-bottom:20px;margin-top:6px;">
+        Preencha abaixo. Retorno em ate 48h por um Advisor dedicado.
+      </p>
+
+      <!-- Formulario Nativo com logica condicional -->
+      <form id="form-analise" novalidate>
+
+        <!-- Dados de contato -->
+        <div class="f-group">
+          <label for="f-nome">Nome completo</label>
+          <input type="text" id="f-nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+        </div>
+        <div class="f-group">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" name="email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+        <div class="f-group">
+          <label for="f-whatsapp">WhatsApp</label>
+          <input type="tel" id="f-whatsapp" name="whatsapp" placeholder="+55 (11) 99999-9999" required autocomplete="tel">
+        </div>
+
+        <!-- Instagram opcional -->
+        <div class="f-group">
+          <label for="f-instagram">
+            Instagram
+            <span style="font-size:10px;font-weight:500;color:var(--gray);text-transform:none;letter-spacing:0;margin-left:6px;background:var(--bg3);border:1px solid var(--gray-dim);border-radius:4px;padding:2px 7px;">opcional</span>
+          </label>
+          <input type="text" id="f-instagram" name="instagram" placeholder="@seuinstagram" autocomplete="off">
+        </div>
+
+        <!-- P1: Possui cripto? -->
+        <div class="f-group">
+          <label class="label-q">Voce ja possui investimentos em Bitcoin/Cripto?</label>
+          <div class="f-toggle">
+            <button type="button" class="toggle-btn" data-group="cripto" data-value="sim">Sim</button>
+            <button type="button" class="toggle-btn" data-group="cripto" data-value="nao">Nao</button>
+          </div>
+          <input type="hidden" id="f-tem-cripto" name="tem_cripto">
+        </div>
+
+        <!-- P1 condicional: patrimonio cripto -->
+        <div class="f-conditional" id="cond-cripto" style="display:none;">
+          <div class="f-group">
+            <label for="f-cripto">Qual seu patrimonio hoje em Bitcoin/Cripto?</label>
+            <div class="f-select-wrap">
+              <select id="f-cripto" name="patrimonio_cripto">
+                <option value="" disabled selected>Selecione uma faixa</option>
+                <option value="Ate R$ 10 mil">Ate R$ 10 mil</option>
+                <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
+                <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
+                <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
+                <option value="Acima de R$500 mil">Acima de R$500 mil</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2: Possui mercado tradicional? -->
+        <div class="f-group">
+          <label class="label-q">E voce possui investimentos no mercado tradicional?<br><small>(Tesouro, CDI, acoes, fundos)</small></label>
+          <div class="f-toggle">
+            <button type="button" class="toggle-btn" data-group="tradicional" data-value="sim">Sim</button>
+            <button type="button" class="toggle-btn" data-group="tradicional" data-value="nao">Nao</button>
+          </div>
+          <input type="hidden" id="f-tem-tradicional" name="tem_tradicional">
+        </div>
+
+        <!-- P2 condicional: patrimonio tradicional -->
+        <div class="f-conditional" id="cond-tradicional" style="display:none;">
+          <div class="f-group">
+            <label for="f-tradicional">Qual seu patrimonio investido no mercado tradicional?</label>
+            <div class="f-select-wrap">
+              <select id="f-tradicional" name="patrimonio_tradicional">
+                <option value="" disabled selected>Selecione uma faixa</option>
+                <option value="Ate R$ 10 mil">Ate R$ 10 mil</option>
+                <option value="Entre R$ 10 mil e R$ 50 mil">Entre R$ 10 mil e R$ 50 mil</option>
+                <option value="Entre R$ 50 mil a R$ 200 mil">Entre R$ 50 mil a R$ 200 mil</option>
+                <option value="Entre R$ 200 mil e R$500 mil">Entre R$ 200 mil e R$500 mil</option>
+                <option value="Acima de R$500 mil">Acima de R$500 mil</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- UTMs ocultos -->
+        <input type="hidden" id="f-utm-source"   name="utm_source">
+        <input type="hidden" id="f-utm-medium"   name="utm_medium">
+        <input type="hidden" id="f-utm-campaign" name="utm_campaign">
+        <input type="hidden" id="f-utm-content"  name="utm_content">
+        <input type="hidden" id="f-utm-term"     name="utm_term">
+
+        <button type="submit" class="btn-submit" id="btn-enviar">
+          QUERO O E-BOOK GRATUITO &rarr;
+        </button>
+        <p style="font-size:11px;color:var(--gray);text-align:center;margin-top:10px;">
+          Gratis. Sem compromisso. Direto no seu e-mail.
+        </p>
+
+        <div class="form-error" id="form-error" style="display:none;color:var(--red);font-size:12px;text-align:center;margin-top:10px;"></div>
+      </form>
+
+      <!-- Sucesso -->
+      <div class="form-success" id="form-success">
+        <div class="check">&#10003;</div>
+        <h3>E-book enviado!</h3>
+        <p>Confira seu e-mail. O e-book ja esta na sua caixa de entrada.</p>
+        <!-- Botao analise (so aparece para patrimonio >= R$50 mil) -->
+        <div id="bonus-analise" style="display:none;margin-top:24px;padding:20px;background:#0D1020;border:1px solid #00B37E;border-radius:12px;text-align:center;">
+          <p style="font-size:15px;color:#00B37E;font-weight:700;margin-bottom:4px;">Quer descobrir qual cenario e ideal para o seu perfil?</p>
+          <p style="font-size:13px;color:#A0A0C0;margin-bottom:16px;">Andre Franco e o time da Boost Research analisam seu portfolio e indicam o cenario mais adequado. Sem compromisso.</p>
+          <a href="https://elsonflorentino-afk.github.io/projetos-boost/cta-wa-ebook3.html" style="display:inline-block;background:#00B37E;color:#fff;padding:14px 32px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;letter-spacing:0.5px;">QUERO FALAR COM UM ADVISOR &rarr;</a>
+        </div>
+      </div>
+
+      <p class="micro" style="text-align:center;margin-top:14px;">
+        &#128274; Seus dados sao usados exclusivamente para envio do e-book e contato.
+      </p>
+
+      <div class="divider-full"></div>
+      <p style="font-size:11px;color:var(--gray-dim);text-align:center;line-height:1.5;">
+        Ao continuar, voce concorda com nossa politica de privacidade. Art. 7, II da LGPD.
+        Nao enviamos conteudo nao solicitado. Nao compartilhamos com terceiros.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ O QUE VOCE VAI ENCONTRAR ============================================================ -->
+<section class="section section--mid">
+  <div class="container">
+
+    <div class="tag">O que voce vai encontrar neste e-book</div>
+    <h2 class="h2">Seu milhao rende menos do que voce pensa. <em class="green">Veja os numeros reais.</em></h2>
+    <p class="sub" style="max-width:580px;">
+      Este e-book responde a pergunta que todo investidor com patrimonio relevante deveria fazer: quanto realmente sobra depois de inflacao, impostos e custos?
+    </p>
+
+    <div class="problem-list">
+      <div class="problem-item">
+        <strong>O paradoxo da Selic alta.</strong> Seu R$1 milhao rendeu 14% bruto? Depois de inflacao, impostos e custos, o ganho real ficou perto de 7%. Entenda por que o numero do extrato engana.
+      </div>
+      <div class="problem-item">
+        <strong>Renda fixa comparada.</strong> Tesouro Selic, CDB 100%, CDB 120%, LCI/LCA, IPCA+ e Prefixado. Cada produto simulado com R$1 milhao, mostrando bruto, liquido e real apos inflacao.
+      </div>
+      <div class="problem-item">
+        <strong>Alem da renda fixa.</strong> Dividendos, FIIs e ETFs. Quanto R$1 milhao gera em renda passiva, com os riscos reais de cada classe.
+      </div>
+      <div class="problem-item">
+        <strong>Cripto no portfolio.</strong> O consenso institucional de 2% a 10%. Bitcoin, Ethereum, staking, ETFs na B3. Cenarios de alocacao e impacto no retorno total.
+      </div>
+      <div class="problem-item">
+        <strong>Protecao cambial.</strong> Stablecoins vs remessa vs ETF dolarizado vs fundo cambial. Custos, burocracia e rendimento em USD.
+      </div>
+      <div class="problem-item">
+        <strong>6 cenarios lado a lado.</strong> Do ultra-conservador (100% renda fixa) ao arrojado (RF + acoes + cripto + dolar). Retorno estimado, risco e valor final em 12 meses.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ ARGUMENTOS / URGENCIA ============================================================ -->
+<section class="section section--dark">
+  <div class="container">
+
+    <div class="tag">Por que voce precisa ver esses numeros</div>
+    <h2 class="h2">O extrato do banco nao conta a <em class="green">historia completa.</em></h2>
+    <p class="sub" style="max-width:600px;">
+      O problema nao e falta de rendimento. E falta de clareza sobre o rendimento real.
+    </p>
+
+    <div class="arg-grid">
+      <div class="arg-card">
+        <div class="num">Argumento 01</div>
+        <div class="arg-title">O extrato mente.</div>
+        <div class="arg-body">Seu banco mostra 14% ao ano. Mas desconta inflacao de 5,5%, IR de 15% a 22,5% e taxas de custodia, e o ganho real cai para menos da metade. A maioria dos investidores nunca faz essa conta.</div>
+      </div>
+      <div class="arg-card">
+        <div class="num">Argumento 02</div>
+        <div class="arg-title">Diversificar nao e sofisticacao &mdash; e prudencia.</div>
+        <div class="arg-body">Um portfolio 100% em renda fixa brasileira concentra 100% do risco no Brasil. Moeda, risco fiscal, ciclo de juros. Investidores institucionais diversificam por uma razao: e a unica forma comprovada de proteger patrimonio no longo prazo.</div>
+      </div>
+      <div class="arg-card">
+        <div class="num">Argumento 03</div>
+        <div class="arg-title">O ciclo de juros vai mudar.</div>
+        <div class="arg-body">Juros altos nao duram para sempre. Quando a Selic comecar a cair, quem travou taxas prefixadas ou indexadas a inflacao captura premios que desaparecem. Este e-book mostra quando e como agir.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ AUTORIDADE ============================================================ -->
+<section class="section section--mid">
+  <div class="container">
+
+    <div class="authority">
+
+      <div>
+        <div class="authority-photo">
+          <img src="../ebook-portfolio/andre-franco.jpg" alt="Andre Franco, fundador da Boost Research" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <div class="photo-overlay">
+            <span class="photo-label">Fundador &middot; Boost Research</span>
+          </div>
+        </div>
+        <div class="credencial">
+          <span class="credencial-item">Cripto desde 2016</span>
+          <span class="credencial-item">2 ciclos completos</span>
+          <span class="credencial-item">+19k investidores</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="tag">Quem escreveu o e-book</div>
+        <h2 class="h2">Andre Franco e uma equipe de consultoria.<br><em class="green">Nao um influencer com canal.</em></h2>
+        <div class="divider-green"></div>
+
+        <p style="font-size:1rem;color:#e0e0f0;line-height:1.8;margin-bottom:20px;">
+          <strong>Andre Franco acompanha o mercado de cripto desde 2016 e o cenario macroeconomico brasileiro com profundidade. A Boost Research e uma Consultoria de Investimentos em Cripto, independente, nao vinculada a banco ou corretora.</strong>
+        </p>
+
+        <p style="font-size:0.95rem;color:var(--gray);line-height:1.8;margin-bottom:20px;">
+          Andre ja atravessou dois ciclos completos de alta e baixa, com posicao e com clientes. Nao e investidor de bull market. E profissional de ciclo. Quando o cenario muda, a equipe da Boost Research e a primeira a mapear os impactos para os clientes.
+        </p>
+
+        <p style="font-size:0.95rem;color:var(--gray);line-height:1.8;margin-bottom:28px;">
+          Nao tem fundo proprio, nao tem token proprio, nao recebe comissao de exchanges ou protocolos. Honorario fixo pelo servico de consultoria.
+        </p>
+
+        <div style="background:var(--bg3);border:1px solid var(--gray-dim);border-radius:8px;padding:24px 28px;">
+          <div style="font-size:12px;color:var(--green);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Estrutura da Consultoria</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="font-size:0.88rem;color:var(--gray);display:flex;align-items:flex-start;gap:10px;">
+              <span style="color:var(--green);font-weight:700;flex-shrink:0;">&#10003;</span>
+              Equipe dedicada com especializacao por segmento (L1, DeFi, macro cripto, alocacao)
+            </div>
+            <div style="font-size:0.88rem;color:var(--gray);display:flex;align-items:flex-start;gap:10px;">
+              <span style="color:var(--green);font-weight:700;flex-shrink:0;">&#10003;</span>
+              Acompanhamento macroeconomico permanente: Selic, inflacao, cambio, ciclos globais
+            </div>
+            <div style="font-size:0.88rem;color:var(--gray);display:flex;align-items:flex-start;gap:10px;">
+              <span style="color:var(--green);font-weight:700;flex-shrink:0;">&#10003;</span>
+              Processo de validacao cruzada antes de qualquer orientacao ao cliente
+            </div>
+            <div style="font-size:0.88rem;color:var(--gray);display:flex;align-items:flex-start;gap:10px;">
+              <span style="color:var(--green);font-weight:700;flex-shrink:0;">&#10003;</span>
+              Andre revisa e assina toda analise que vai ao cliente
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ CTA MEIO DE PAGINA ============================================================ -->
+<section style="background:var(--bg3);border-top:1px solid var(--gray-dim);border-bottom:1px solid var(--gray-dim);padding:48px 0;">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div>
+      <p style="font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:6px;">Seu milhao esta rendendo o que deveria?</p>
+      <p style="font-size:0.9rem;color:var(--gray);">Baixe o e-book gratuito e compare 6 cenarios reais com impostos, inflacao e custos.</p>
+    </div>
+    <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'mid_cta',cta_text:'Quero o e-book gratuito'});return false;"
+       style="flex-shrink:0;background:var(--green);color:#000;font-weight:800;font-size:0.95rem;
+              padding:14px 28px;border-radius:8px;text-decoration:none;white-space:nowrap;
+              transition:opacity 0.2s;font-family:var(--font);"
+       onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+      QUERO O E-BOOK GRATUITO &rarr;
+    </a>
+  </div>
+</section>
+
+<!-- ============================================================ COMO FUNCIONA ============================================================ -->
+<section class="section section--deep">
+  <div class="container">
+
+    <div class="tag">Processo simples</div>
+    <h2 class="h2">Como receber o e-book.</h2>
+    <p class="sub" style="max-width:560px;">
+      Tres passos. Sem surpresa, sem pressao.
+    </p>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-title">Preencha o formulario</div>
+        <div class="step-body">Leva menos de 1 minuto. Seus dados sao protegidos e usados exclusivamente para envio do material.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-title">Receba o e-book no seu e-mail</div>
+        <div class="step-body">O e-book completo em PDF chega na sua caixa de entrada em poucos minutos. Conteudo pratico sobre rendimento real.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-title">Fale com a equipe Boost</div>
+        <div class="step-body">Um Advisor da Boost Research entra em contato pelo WhatsApp para tirar duvidas sobre os cenarios do e-book.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-title">Analise personalizada</div>
+        <div class="step-body">Se fizer sentido, a equipe pode analisar seu portfolio a luz dos 6 cenarios. Sem compromisso e sem custo.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ DIFERENCIAL ============================================================ -->
+<section class="section section--mid">
+  <div class="container">
+
+    <div class="tag">Modelo sem conflito de interesse</div>
+    <h2 class="h2">Honorario fixo.<br><em class="green">Porque alinhamento de interesses<br>nao e detalhe.</em></h2>
+    <p class="sub" style="max-width:560px;">
+      A maioria dos advisors de cripto ganha comissao de exchanges, protocolos ou produtos que recomendam. Nos nao. E isso muda tudo.
+    </p>
+
+    <div class="dif-grid">
+      <div class="dif-card">
+        <div class="dif-icon">&#9878;</div>
+        <div class="dif-title">Honorario Fixo</div>
+        <div class="dif-body">
+          Quando o advisor ganha comissao por produto recomendado, o incentivo dele nao e necessariamente o seu melhor resultado. E o produto que paga mais. Isso nao e desonestidade. E estrutura. E estrutura errada produz conselhos errados, mesmo com boas intencoes.<br><br>
+          A Boost Research cobra <strong>honorario fixo pelo servico de consultoria</strong>. Nao importa se voce compra, vende, mantem ou nao faz nada. O nosso honorario nao muda. O unico criterio para a nossa orientacao e o que acreditamos ser correto para a sua carteira.
+        </div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">&#127963;</div>
+        <div class="dif-title">Consultoria de Investimentos, nao Advisor Individual</div>
+        <div class="dif-body">
+          Um advisor individual carrega vies de experiencia pessoal, limitacao de cobertura e risco de ausencia. Se ele muda de opiniao sobre o mercado, voce perde continuidade.<br><br>
+          Uma Consultoria de Investimentos em Cripto tem <strong>processo</strong>. Tem especializacao distribuida. Tem metodo de validacao que nao depende de uma unica pessoa. Quando Andre assina uma orientacao, ela passa por mais de uma camada de revisao.<br><br>
+          Voce nao esta contratando uma opiniao. Esta contratando um processo.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ PARA QUEM E ============================================================ -->
+<section class="section section--dark">
+  <div class="container">
+
+    <div class="tag">Dois perfis, um guia</div>
+    <h2 class="h2">Este e-book e para voce se...</h2>
+
+    <div class="profile-grid">
+
+      <div class="profile-card">
+        <div class="profile-title">Perfeito para voce se...</div>
+        <ul class="profile-list">
+          <li>Tem mais de R$100 mil investidos e quer saber se esta tirando o maximo</li>
+          <li>Concentra patrimonio em renda fixa e quer entender alternativas</li>
+          <li>Quer comparar cenarios com numeros reais, nao promessas</li>
+          <li>Considera incluir cripto ou dolar no portfolio mas quer entender riscos</li>
+          <li>Valoriza decisoes baseadas em dados, nao em opiniao de influenciador</li>
+        </ul>
+        <div class="profile-validation">
+          "Voce nao precisa mudar toda a estrategia. Voce precisa saber se a estrategia atual esta entregando o que deveria."
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-title">Nao e para voce se...</div>
+        <ul class="profile-list">
+          <li>Busca retorno rapido sem considerar riscos</li>
+          <li>Nao quer questionar a estrategia atual do banco ou assessor</li>
+          <li>Prefere opinioes ao inves de simulacoes com dados reais</li>
+        </ul>
+        <div class="profile-validation">
+          "Se voce esta satisfeito com o rendimento que o extrato mostra, sem querer saber quanto realmente sobra, este e-book nao e para voce."
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ BRAND BOOST RESEARCH ============================================================ -->
+<section class="brand-section">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(var(--gray-dim) 1px,transparent 1px),linear-gradient(90deg,var(--gray-dim) 1px,transparent 1px);background-size:80px 80px;opacity:0.15;pointer-events:none;"></div>
+  <div class="container">
+    <div class="brand-grid">
+      <div class="brand-logo">
+        <img src="../ebook-portfolio/boost-logo.png" alt="Boost Research" width="200" height="76" loading="lazy" style="mix-blend-mode:screen;filter:contrast(1.1);" onerror="this.style.display='none'">
+      </div>
+      <div>
+        <div style="width:3px;height:48px;background:var(--green);margin-bottom:28px;border-radius:2px;"></div>
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:800;line-height:1.2;margin-bottom:16px;">
+          A consultoria de investimentos em cripto com a maior<br>
+          <em style="font-style:normal;color:var(--green);">experiencia do Brasil em ciclos regulatorios.</em>
+        </h2>
+        <p style="font-size:1rem;color:var(--gray);line-height:1.75;margin-bottom:28px;">
+          Andre Franco acompanha cripto desde 2016 e o cenario regulatorio brasileiro desde a Lei 14.478/2022. A Boost Research nao nasceu no bull market. Nasceu dentro do mercado e permanece aqui, independente de onde o preco esta.
+        </p>
+        <div class="brand-stat">
+          <div class="brand-stat-item">
+            <div class="num">+10</div>
+            <div class="label">anos de mercado</div>
+          </div>
+          <div class="brand-stat-item">
+            <div class="num">+19k</div>
+            <div class="label">investidores</div>
+          </div>
+          <div class="brand-stat-item">
+            <div class="num">2</div>
+            <div class="label">ciclos completos</div>
+          </div>
+          <div class="brand-stat-item">
+            <div class="num">fixo</div>
+            <div class="label">honorario independente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ CTA FINAL ============================================================ -->
+<section class="section section--mid" id="cta-final">
+  <div class="container" style="max-width:640px;">
+
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="tag" style="margin:0 auto 24px;">E-book gratuito &middot; sem compromisso</div>
+      <h2 class="h2">Seu milhao esta rendendo <em class="green">o que deveria?</em></h2>
+      <p class="sub">
+        Baixe o e-book. Compare os 6 cenarios. Descubra se existe espaco para otimizacao.
+      </p>
+    </div>
+
+    <div class="hero-form">
+      <div class="progress">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <a href="#formulario" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'});window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'cta_click',cta_id:'final_cta',cta_text:'Quero o e-book gratuito'});return false;"
+         style="display:block;width:100%;background:var(--green);color:#000;font-weight:800;font-size:1.05rem;
+                padding:18px;border-radius:8px;text-align:center;text-decoration:none;letter-spacing:0.2px;
+                transition:opacity 0.2s;font-family:var(--font);"
+         onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+        QUERO O E-BOOK GRATUITO &rarr;
+      </a>
+      <p class="micro" style="text-align:center;margin-top:14px;">&#128274; Sem spam. Sem compromisso. Seus dados sao usados exclusivamente para envio do e-book e contato.</p>
+      <p style="font-size:11px;color:var(--gray-dim);text-align:center;margin-top:8px;line-height:1.5;">
+        Preencha em menos de 1 minuto. O e-book chega direto no seu e-mail.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ FOOTER ============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div style="margin-bottom:16px;">
+      <img src="../ebook-portfolio/boost-logo.png" alt="Logotipo Boost Research" width="120" height="46" loading="lazy" decoding="async" style="height:48px;mix-blend-mode:screen;opacity:0.65;" onerror="this.style.display='none'">
+    </div>
+    <p class="disclaimer">
+      Conteudo informativo. Nao e recomendacao de investimento. Este e-book tem carater educativo e informativo sobre rendimentos e alocacao de ativos, e nao substitui a orientacao de um profissional certificado para sua situacao especifica. A Boost Research nao presta servicos de contabilidade ou assessoria tributaria. Rentabilidade passada nao e garantia de resultados futuros. Boost Research &middot; 2026.
+    </p>
+  </div>
+</footer>
+
+<!-- ============================================================ FORMULARIO NATIVO: UTM + submit para RD Station ============================================================ -->
+<script>
+(function () {
+
+  /* -- UTM: salva em cookie 30 dias -- */
+  function setCookie(name, val, days) {
+    var d = new Date();
+    d.setTime(d.getTime() + days * 864e5);
+    document.cookie = name + '=' + encodeURIComponent(val) + '; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+  }
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? decodeURIComponent(v.pop()) : '';
+  }
+
+  var params = new URLSearchParams(window.location.search);
+  ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k) {
+    var v = params.get(k);
+    if (v) setCookie('boost_' + k, v, 30);
+  });
+
+  /* -- Preenche campos ocultos com UTMs ao carregar -- */
+  function fillUTMs() {
+    ['source','medium','campaign','content','term'].forEach(function(k) {
+      var el = document.getElementById('f-utm-' + k);
+      if (el) el.value = getCookie('boost_utm_' + k);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', fillUTMs);
+
+  /* -- Mascara WhatsApp -- */
+  document.addEventListener('DOMContentLoaded', function() {
+    var wppEl = document.getElementById('f-whatsapp');
+    if (wppEl) {
+      wppEl.addEventListener('input', function() {
+        var raw = this.value.replace(/\D/g, '').slice(0, 11);
+        if (raw.length === 0) { this.value = ''; return; }
+        var f;
+        if      (raw.length <= 2)  f = '(' + raw;
+        else if (raw.length <= 6)  f = '(' + raw.slice(0,2) + ') ' + raw.slice(2);
+        else if (raw.length <= 10) f = '(' + raw.slice(0,2) + ') ' + raw.slice(2,6) + '-' + raw.slice(6);
+        else                       f = '(' + raw.slice(0,2) + ') ' + raw.slice(2,7) + '-' + raw.slice(7);
+        this.value = f;
+      });
+    }
+  });
+
+  /* -- Toggle Sim/Nao — logica condicional -- */
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.toggle-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var group = this.dataset.group;
+        var value = this.dataset.value;
+
+        // Remove ativo dos irmaos e marca este
+        document.querySelectorAll('.toggle-btn[data-group="' + group + '"]').forEach(function(b) {
+          b.classList.remove('active');
+        });
+        this.classList.add('active');
+
+        // Grava no hidden input
+        var hidden = document.getElementById('f-tem-' + group);
+        if (hidden) hidden.value = value;
+
+        // Mostra/oculta a pergunta de patrimonio
+        var cond = document.getElementById('cond-' + group);
+        if (cond) {
+          if (value === 'sim') {
+            cond.style.display = 'block';
+          } else {
+            cond.style.display = 'none';
+            var sel = cond.querySelector('select');
+            if (sel) sel.value = '';
+          }
+        }
+      });
+    });
+  });
+
+  /* -- Submit -> envia para RD Station via Conversions API -- */
+  document.addEventListener('DOMContentLoaded', function() {
+    fillUTMs();
+    var form  = document.getElementById('form-analise');
+    var btnEl = document.getElementById('btn-enviar');
+    var errEl = document.getElementById('form-error');
+    var sucEl = document.getElementById('form-success');
+
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      errEl.style.display = 'none';
+
+      var nome      = document.getElementById('f-nome').value.trim();
+      var email     = document.getElementById('f-email').value.trim();
+      var wppDigits = document.getElementById('f-whatsapp').value.replace(/\D/g, '');
+      var wpp       = '+55' + wppDigits;
+      var temCripto = document.getElementById('f-tem-cripto').value;
+      var temTrad   = document.getElementById('f-tem-tradicional').value;
+
+      // Validacao campos obrigatorios
+      if (!nome || !email || wppDigits.length < 10) {
+        errEl.textContent = 'Por favor, preencha nome, e-mail e WhatsApp.';
+        errEl.style.display = 'block'; return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errEl.textContent = 'E-mail invalido.';
+        errEl.style.display = 'block'; return;
+      }
+      if (!temCripto) {
+        errEl.textContent = 'Informe se possui investimentos em Bitcoin/Cripto.';
+        errEl.style.display = 'block'; return;
+      }
+      if (temCripto === 'sim' && !document.getElementById('f-cripto').value) {
+        errEl.textContent = 'Selecione o patrimonio em cripto.';
+        errEl.style.display = 'block'; return;
+      }
+      if (!temTrad) {
+        errEl.textContent = 'Informe se possui investimentos no mercado tradicional.';
+        errEl.style.display = 'block'; return;
+      }
+      if (temTrad === 'sim' && !document.getElementById('f-tradicional').value) {
+        errEl.textContent = 'Selecione o patrimonio no mercado tradicional.';
+        errEl.style.display = 'block'; return;
+      }
+
+      btnEl.disabled = true;
+      btnEl.textContent = 'Enviando...';
+
+      /* RD Station Conversions API */
+      var payload = {
+        event_type: 'CONVERSION',
+        event_family: 'CDP',
+        payload: {
+          conversion_identifier: 'lp_ebook_quanto_rende',
+          name:         nome,
+          email:        email,
+          mobile_phone: wpp,
+          cf_instagram:                          document.getElementById('f-instagram').value.trim() || undefined,
+          cf_voce_ja_possui_investimentos_em_bitcoin_cripto:           temCripto,
+          cf_que_otimo_agora_preciso_entender_qual_seu_patrimonio_ho: document.getElementById('f-cripto').value || '',
+          cf_voce_ja_investe_no_mercado_tradicional_tesouro_cdi_a:    temTrad,
+          cf_qual_seu_patrimonio_investido_no_mercado_tradicional:     document.getElementById('f-tradicional').value || '',
+          traffic_source:   getCookie('boost_utm_source')   || 'direct',
+          traffic_medium:   getCookie('boost_utm_medium')   || 'none',
+          traffic_campaign: getCookie('boost_utm_campaign') || undefined,
+          traffic_value:    getCookie('boost_utm_content')  || undefined,
+          traffic_term:     getCookie('boost_utm_term')     || undefined,
+          cf_utm_source:    getCookie('boost_utm_source')   || 'direct',
+          cf_utm_medium:    getCookie('boost_utm_medium')   || 'none',
+          cf_utm_campaign:  getCookie('boost_utm_campaign') || undefined,
+          cf_utm_content:   getCookie('boost_utm_content')  || undefined,
+          cf_utm_term:      getCookie('boost_utm_term')     || undefined,
+          tags: ['ebook-quanto-rende-1m-2026']
+        }
+      };
+
+      fetch('https://api.rd.services/platform/conversions?api_key=bc2df20b157ec364568de6de25e33fea', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(r) {
+        return r.text().then(function(body) {
+          if (!r.ok) throw new Error('HTTP ' + r.status + ': ' + body);
+        });
+      })
+      .then(function() {
+        form.style.display = 'none';
+        sucEl.style.display = 'block';
+        // event_id unico para deduplicacao Pixel <-> CAPI no GTM server-side
+        var eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event:        'generate_lead',
+          form_id:      'lp_ebook_quanto_rende',
+          event_id:     eventId,
+          user_email:   email,
+          user_phone:   '55' + wppDigits,
+          user_name:    nome
+        });
+        // Mostrar botao de analise se patrimonio >= R$50 mil
+        var faixasCripto = document.getElementById('f-cripto').value || '';
+        var faixasTrad = document.getElementById('f-tradicional').value || '';
+        var faixasAltas = ['Entre R$ 50 mil a R$ 200 mil', 'Entre R$ 200 mil e R$500 mil', 'Acima de R$500 mil'];
+        var temPatrimonioAlto = faixasAltas.indexOf(faixasCripto) !== -1 || faixasAltas.indexOf(faixasTrad) !== -1;
+        if (temPatrimonioAlto) {
+          var bonusEl = document.getElementById('bonus-analise');
+          if (bonusEl) bonusEl.style.display = 'block';
+        }
+      })
+      .catch(function(err) {
+        console.error('Erro ao enviar formulario:', err.message);
+        errEl.textContent = 'Ocorreu um erro. Tente novamente ou entre em contato pelo WhatsApp.';
+        errEl.style.display = 'block';
+        btnEl.disabled = false;
+        btnEl.textContent = 'QUERO O E-BOOK GRATUITO \u2192';
+      });
+    });
+  });
+
+})();
+</script>
+
+<!-- ============================================================ WHATSAPP FLOATING BUTTON ============================================================ -->
+<style>
+.btn-wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: #000;
+  font-weight: 800;
+  font-size: 0.9rem;
+  font-family: var(--font);
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  opacity: 0;
+  pointer-events: none;
+}
+.btn-wa-float.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.btn-wa-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.55);
+}
+.btn-wa-float svg {
+  flex-shrink: 0;
+}
+@media (max-width: 600px) {
+  .btn-wa-float span.wa-label { display: none; }
+  .btn-wa-float { padding: 14px; border-radius: 50%; }
+}
+</style>
+
+<a href="https://elsonflorentino-afk.github.io/projetos-boost/cta-wa-ebook3.html"
+   target="_blank"
+   rel="noopener"
+   id="btn-wa-float"
+   class="btn-wa-float"
+   onclick="window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'whatsapp_click',cta_id:'floating_wa',section:'global'});">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#000"/>
+    <path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.773.467 3.476 1.354 4.977L2 22l5.178-1.354A10.003 10.003 0 0012.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.29a8.283 8.283 0 01-4.218-1.157l-.302-.18-3.073.805.82-2.994-.197-.31A8.286 8.286 0 013.71 12.004C3.71 7.42 7.42 3.71 12.004 3.71c4.58 0 8.286 3.71 8.286 8.294 0 4.584-3.706 8.286-8.286 8.286z" fill="#000"/>
+  </svg>
+  <span class="wa-label">Falar com a Boost Research</span>
+</a>
+
+<script>
+(function() {
+  var waBtn = document.getElementById('btn-wa-float');
+  if (!waBtn) return;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 400) {
+      waBtn.classList.add('visible');
+    } else {
+      waBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
