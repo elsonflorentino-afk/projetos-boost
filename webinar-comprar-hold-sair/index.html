@@ -72,8 +72,17 @@ img{max-width:100%;height:auto;}
 .container{max-width:900px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
 
 /* ===== LOGO BAR ===== */
-.logo-bar{text-align:center;padding:28px 0 0;}
+.logo-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 40px 0;max-width:1100px;margin:0 auto;}
 .logo-bar img{height:40px;width:auto;opacity:0.9;}
+.logo-bar-cta{font-size:13px;font-weight:600;color:var(--green);border:1px solid var(--green);padding:8px 20px;border-radius:8px;transition:all 0.2s;text-decoration:none;}
+.logo-bar-cta:hover{background:var(--green);color:#fff;}
+@media(max-width:768px){.logo-bar{justify-content:center;padding:16px 24px 0;}.logo-bar-cta{display:none;}}
+
+/* ===== PROOF BAR ===== */
+.proof-bar{display:flex;gap:24px;margin-top:16px;margin-bottom:8px;flex-wrap:wrap;}
+.proof-bar-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);font-weight:500;}
+.proof-bar-item svg{color:var(--green);flex-shrink:0;}
+@media(max-width:768px){.proof-bar{gap:12px;}.proof-bar-item{font-size:12px;}}
 
 /* ===== HERO ===== */
 /* hero styles moved to hero layout section below */
@@ -142,26 +151,27 @@ img{max-width:100%;height:auto;}
 .bullet strong{color:var(--text);}
 
 /* ===== HERO LAYOUT (mesmo padrão LP Intensive) ===== */
-.hero{width:100%;min-height:90vh;display:flex;align-items:flex-start;position:relative;padding:120px 0 60px;overflow:hidden;}
+.hero{width:100%;min-height:90vh;display:flex;align-items:flex-start;position:relative;padding:60px 0 60px;overflow:hidden;}
 .hero .container{max-width:1100px;}
 .hero-photo{position:absolute;right:5%;top:30px;width:38%;max-width:480px;z-index:0;pointer-events:none;}
 @media(max-width:1024px){.hero-photo{width:34%;right:1%;}}
 @media(max-width:768px){.hero-photo--desktop{display:none;}}
-.hero-photo--mobile{display:none;width:50%;max-width:220px;margin:0 auto 24px;border-radius:50%;border:2px solid rgba(0,179,126,0.2);object-fit:cover;object-position:top center;aspect-ratio:1/1;}
-@media(max-width:768px){.hero-photo--mobile{display:block;}}
-.hero-text{text-align:left;max-width:55%;margin:0;position:relative;z-index:1;}
-.hero-text .bullets{text-align:left;max-width:480px;}
+.hero-photo--mobile{display:none;width:50%;max-width:180px;margin:0 auto 20px;border-radius:50%;border:2px solid rgba(0,179,126,0.2);object-fit:cover;object-position:top center;aspect-ratio:1/1;}
+@media(max-width:768px){.hero-photo--mobile{display:block;}.hero{padding:24px 0 40px;min-height:auto;}}
+.hero-text{text-align:left;max-width:60%;margin:0;position:relative;z-index:1;}
+.hero-text .bullets{text-align:left;max-width:520px;}
 
 /* ===== FORM ===== */
 .form-card{
   background:var(--card-bg);
-  border:1px solid var(--border);
+  border:1px solid rgba(0,179,126,0.25);
   border-radius:var(--radius);
   padding:32px 28px;
   margin-bottom:24px;
   max-width:560px;
   margin-left:auto;
   margin-right:auto;
+  box-shadow:0 0 40px rgba(0,179,126,0.06);
 }
 .form-card h2{
   font-size:20px;
@@ -214,7 +224,7 @@ img{max-width:100%;height:auto;}
 
 /* ===== ANDRE SECTION ===== */
 .andre{
-  display:flex;
+  display:none;
   align-items:center;
   gap:20px;
   padding:28px;
@@ -226,6 +236,7 @@ img{max-width:100%;height:auto;}
   margin-left:auto;
   margin-right:auto;
 }
+@media(max-width:768px){.andre{display:flex;}}
 .andre img{
   width:80px;
   height:80px;
@@ -350,6 +361,7 @@ img{max-width:100%;height:auto;}
 <!-- Logo -->
 <div class="logo-bar">
   <img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" loading="eager">
+  <a href="#form-section" class="logo-bar-cta">Garantir vaga gratuita &rarr;</a>
 </div>
 
 <!-- Hero -->
@@ -390,6 +402,20 @@ img{max-width:100%;height:auto;}
         </div>
       </div>
       <a href="#form-section" class="hero-cta">Garantir minha vaga gratuita</a>
+      <div class="proof-bar">
+        <div class="proof-bar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Ao vivo &mdash; 17/jun, 20h
+        </div>
+        <div class="proof-bar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Com Andr&eacute; Franco
+        </div>
+        <div class="proof-bar-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          100% gratuito
+        </div>
+      </div>
     </div>
   </div>
 </section>
