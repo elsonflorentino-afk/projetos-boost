@@ -117,12 +117,12 @@ section{padding:80px 0;}
 
 /* ===== PAIN CARDS ===== */
 .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-.pain-card{border:1px solid var(--border);border-left:3px solid var(--teal);background:var(--card-bg);padding:24px 28px;border-radius:0 16px 16px 0;font-size:16px;color:var(--text-secondary);line-height:1.7;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:transform 0.2s;}
+.pain-card{border:1px solid var(--border);border-left:3px solid var(--teal);background:var(--card-bg);padding:24px 28px;border-radius:0 16px 16px 0;font-size:16px;color:var(--text-secondary);line-height:1.7;text-align:left;box-shadow:0 2px 12px rgba(0,0,0,0.3);transition:transform 0.2s;}
 .pain-card:hover{transform:translateY(-2px);}
 
 /* ===== STEPS ===== */
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-.step-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:border-color 0.25s,transform 0.2s;}
+.step-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:left;box-shadow:0 2px 12px rgba(0,0,0,0.3);transition:border-color 0.25s,transform 0.2s;}
 .step-card:hover{border-color:rgba(25,198,181,0.4);transform:translateY(-2px);}
 .step-num{width:40px;height:40px;border-radius:50%;background:rgba(25,198,181,0.12);color:var(--teal);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
 .step-card h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--text);}
@@ -152,6 +152,13 @@ section{padding:80px 0;}
 .btn-primary:disabled{opacity:0.4;cursor:not-allowed;}
 .trust{display:flex;justify-content:center;gap:16px;margin-top:16px;}
 .trust span{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px;}
+
+/* ===== VALIDATION ===== */
+.f-group input.valid{border-color:#4ADE80;box-shadow:0 0 0 3px rgba(74,222,128,0.12);}
+.f-group input.invalid{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,0.12);}
+.f-error{font-size:12px;color:var(--red);margin-top:4px;display:none;}
+.f-error.show{display:block;}
+@keyframes spin{to{transform:rotate(360deg);}}
 
 /* ===== FAQ ===== */
 .faq-list{max-width:var(--container-narrow);margin:0 auto;}
@@ -294,16 +301,19 @@ section{padding:80px 0;}
             <div class="f-group">
               <label class="f-label" for="f-name">Nome</label>
               <input type="text" id="f-name" name="name" placeholder="Seu nome" required autocomplete="given-name">
+              <div class="f-error" id="err-name">Informe seu nome</div>
             </div>
             <div class="f-group">
               <label class="f-label" for="f-email">E-mail</label>
               <input type="email" id="f-email" name="email" placeholder="seu@email.com" required autocomplete="email">
+              <div class="f-error" id="err-email">Informe um e-mail v&aacute;lido</div>
             </div>
             <div class="f-group">
               <label class="f-label" for="f-phone">WhatsApp</label>
               <input type="tel" id="f-phone" name="phone" placeholder="(11) 99999-9999" required autocomplete="tel">
+              <div class="f-error" id="err-phone">Informe seu WhatsApp com DDD</div>
             </div>
-            <button type="submit" class="btn-primary" id="btn-submit">Quero participar (gratuito)</button>
+            <button type="submit" class="btn-primary" id="btn-submit"><span id="btn-text">Garantir minha vaga</span><span id="btn-spinner" style="display:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" style="animation:spin 0.8s linear infinite;vertical-align:middle;"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 019.8 8" stroke-linecap="round"/></svg> Enviando...</span></button>
           </form>
 
           <div class="trust">
@@ -435,8 +445,8 @@ section{padding:80px 0;}
         <div class="faq-answer"><p>N&atilde;o. O Andr&eacute; vai explicar o dado de forma visual e pr&aacute;tica. Se voc&ecirc; j&aacute; tem cripto ou est&aacute; pensando em investir, vai entender tudo.</p></div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
-        <div class="faq-question">V&atilde;o vender algo na masterclass?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
-        <div class="faq-answer"><p>O foco &eacute; o conte&uacute;do. No final, o Andr&eacute; apresenta uma oportunidade pra quem quiser se aprofundar. Mas voc&ecirc; sai quando quiser.</p></div>
+        <div class="faq-question">Qual o foco da masterclass?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>Conte&uacute;do. 1 hora de m&eacute;trica, dados e leitura de mercado ao vivo. O Andr&eacute; mostra o mesmo m&eacute;todo que aplica com os clientes da Boost desde 2016.</p></div>
       </div>
       <div class="faq-item" onclick="this.classList.toggle('open')">
         <div class="faq-question">Como recebo o link de acesso?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
@@ -483,7 +493,7 @@ section{padding:80px 0;}
 
 <!-- Sticky CTA Mobile -->
 <div class="sticky-cta" id="sticky-cta">
-  <a href="#formulario">Quero participar (gratuito)</a>
+  <a href="#formulario">Garantir minha vaga gratuita</a>
 </div>
 
 <!-- ===== SCRIPTS ===== -->
@@ -531,16 +541,40 @@ document.getElementById('f-phone').addEventListener('input',function(e){
   setInterval(tick,1000);
 })();
 
+/* ── Inline validation ── */
+function validateField(input,errId,testFn){
+  var err=document.getElementById(errId);
+  input.addEventListener('blur',function(){
+    if(!input.value.trim()){input.classList.remove('valid','invalid');err.classList.remove('show');return;}
+    if(testFn(input.value)){input.classList.add('valid');input.classList.remove('invalid');err.classList.remove('show');}
+    else{input.classList.add('invalid');input.classList.remove('valid');err.classList.add('show');}
+  });
+  input.addEventListener('input',function(){
+    if(input.classList.contains('invalid')&&testFn(input.value)){input.classList.add('valid');input.classList.remove('invalid');err.classList.remove('show');}
+  });
+}
+validateField(document.getElementById('f-name'),'err-name',function(v){return v.trim().length>=2;});
+validateField(document.getElementById('f-email'),'err-email',function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);});
+validateField(document.getElementById('f-phone'),'err-phone',function(v){return v.replace(/\D/g,'').length>=10;});
+
 /* ── Form submit ── */
 document.getElementById('webinar-form').addEventListener('submit',function(e){
   e.preventDefault();
+
+  var nameEl=document.getElementById('f-name'),emailEl=document.getElementById('f-email'),phoneEl=document.getElementById('f-phone');
+  var name=nameEl.value.trim(),email=emailEl.value.trim(),phone=phoneEl.value.replace(/\D/g,'');
+
+  /* validate all */
+  var valid=true;
+  if(name.length<2){nameEl.classList.add('invalid');document.getElementById('err-name').classList.add('show');valid=false;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('invalid');document.getElementById('err-email').classList.add('show');valid=false;}
+  if(phone.length<10){phoneEl.classList.add('invalid');document.getElementById('err-phone').classList.add('show');valid=false;}
+  if(!valid)return false;
+
   var btn=document.getElementById('btn-submit');
   btn.disabled=true;
-  btn.textContent='Enviando...';
-
-  var name=document.getElementById('f-name').value.trim();
-  var email=document.getElementById('f-email').value.trim();
-  var phone=document.getElementById('f-phone').value.replace(/\D/g,'');
+  document.getElementById('btn-text').style.display='none';
+  document.getElementById('btn-spinner').style.display='inline';
 
   var eventId='evt_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);
 
