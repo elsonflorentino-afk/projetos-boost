@@ -29,327 +29,194 @@ fbq('init','1062572485162288');fbq('track','PageView');
 <!-- DataLayer -->
 <script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'page_view',page_type:'webinar_registration',product:'webinar_comprar_hold_sair'});</script>
 
-<!-- Inter Font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#0D1117;
-  --green:#00B37E;
-  --green-dim:rgba(0,179,126,0.12);
-  --green-bright:#00D195;
+  --bg:#0B0E13;
+  --bg-alt:#111620;
+  --bg-dark:#080A0F;
+  --teal:#19c6b5;
+  --teal-light:rgba(25,198,181,0.1);
+  --teal-dark:#14a89a;
+  --teal-dim:rgba(25,198,181,0.15);
   --text:#FFFFFF;
-  --text-secondary:rgba(255,255,255,0.65);
+  --text-secondary:rgba(255,255,255,0.7);
   --text-muted:rgba(255,255,255,0.4);
-  --border:rgba(255,255,255,0.06);
-  --card-bg:rgba(255,255,255,0.03);
-  --font:'Inter',system-ui,-apple-system,sans-serif;
-  --radius:16px;
+  --border:rgba(255,255,255,0.1);
+  --divider:rgba(255,255,255,0.06);
+  --card-bg:rgba(255,255,255,0.04);
+  --red:#EF4444;
+  --font:Arial,'Helvetica Neue',Helvetica,sans-serif;
+  --container:1200px;
+  --container-narrow:800px;
 }
 html{scroll-behavior:smooth;}
-body{
-  font-family:var(--font);
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
-  font-size:17px;
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;
-}
-body::before{
-  content:'';
-  position:fixed;
-  top:0;left:0;right:0;bottom:0;
-  background:radial-gradient(ellipse at 50% 0%, rgba(0,179,126,0.04) 0%, transparent 60%);
-  pointer-events:none;
-  z-index:0;
-}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;}
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;height:auto;}
-.container{max-width:900px;margin:0 auto;padding:0 24px;position:relative;z-index:1;}
+.container{max-width:var(--container);margin:0 auto;padding:0 40px;}
 
-/* ===== LOGO BAR ===== */
-.logo-bar{display:flex;align-items:center;justify-content:space-between;padding:20px 40px 0;max-width:1100px;margin:0 auto;}
-.logo-bar img{height:40px;width:auto;opacity:0.9;}
-.logo-bar-cta{font-size:13px;font-weight:600;color:var(--green);border:1px solid var(--green);padding:8px 20px;border-radius:8px;transition:all 0.2s;text-decoration:none;}
-.logo-bar-cta:hover{background:var(--green);color:#fff;}
-@media(max-width:768px){.logo-bar{justify-content:center;padding:16px 24px 0;}.logo-bar-cta{display:none;}}
+/* ===== NAVBAR ===== */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(11,14,19,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);transition:box-shadow 0.3s;}
+.navbar.scrolled{box-shadow:0 1px 12px rgba(0,0,0,0.3);}
+.navbar .container{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-logo img{height:48px;width:auto;}
+.nav-cta{background:var(--teal);color:#fff;font-weight:700;font-size:14px;padding:10px 24px;border-radius:8px;cursor:pointer;border:none;transition:filter 0.2s;text-decoration:none;display:inline-block;}
+.nav-cta:hover{filter:brightness(0.9);}
 
-/* ===== PROOF BAR ===== */
-.proof-bar{display:flex;gap:24px;margin-top:16px;margin-bottom:8px;flex-wrap:wrap;}
-.proof-bar-item{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-secondary);font-weight:500;}
-.proof-bar-item svg{color:var(--green);flex-shrink:0;}
-@media(max-width:768px){.proof-bar{gap:12px;}.proof-bar-item{font-size:12px;}}
+/* ===== TAG ===== */
+.tag{display:inline-block;background:var(--teal-light);color:var(--teal);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:16px;}
 
 /* ===== HERO ===== */
-/* hero styles moved to hero layout section below */
-.hero-eyebrow{
-  display:inline-block;
-  font-size:12px;
-  font-weight:700;
-  color:var(--green);
-  text-transform:uppercase;
-  letter-spacing:0.12em;
-  background:var(--green-dim);
-  padding:6px 16px;
-  border-radius:100px;
-  margin-bottom:24px;
-}
-.hero h1{
-  font-size:clamp(28px,5vw,42px);
-  font-weight:800;
-  line-height:1.1;
-  letter-spacing:-0.03em;
-  margin-bottom:16px;
-}
-.hero h1 em{font-style:normal;color:var(--green);}
-.hero .sub{
-  font-size:17px;
-  color:var(--text-secondary);
-  line-height:1.7;
-  max-width:480px;
-  margin:0 0 32px;
-}
+.hero{width:100%;min-height:100vh;display:flex;align-items:center;background:var(--bg);position:relative;padding:120px 0 80px;}
+.hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(25,198,181,0.06) 0%,transparent 65%);top:15%;right:3%;pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:start;}
+.hero-copy{text-align:left;padding-top:24px;}
+.hero-copy .h1{font-size:42px;font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:16px;color:var(--text);}
+.hero-copy .h1 em{font-style:normal;color:var(--teal);}
+.hero-copy .sub{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:28px;max-width:480px;}
+.hero-checks{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:32px;}
+.hero-check{font-size:13px;color:var(--text-secondary);display:flex;align-items:center;gap:6px;}
+.hero-check svg{color:var(--teal);flex-shrink:0;}
 
 /* ===== COUNTDOWN ===== */
-.countdown{
-  display:flex;
-  justify-content:flex-start;
-  gap:16px;
-  margin-bottom:36px;
-}
-.cd-block{
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:12px 16px;
-  min-width:64px;
-  text-align:center;
-}
-.cd-num{font-size:28px;font-weight:800;color:var(--green);line-height:1;}
+.countdown{display:flex;gap:12px;margin-bottom:28px;}
+.cd-block{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:10px 14px;min-width:60px;text-align:center;}
+.cd-num{font-size:24px;font-weight:800;color:var(--teal);line-height:1;}
 .cd-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;}
+.micro{font-size:13px;color:var(--text-muted);margin-top:14px;}
 
-/* ===== BULLETS ===== */
-.bullets{
-  text-align:left;
-  max-width:480px;
-  margin:0 auto 36px;
-}
-.bullet{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  padding:10px 0;
-  font-size:16px;
-  color:var(--text-secondary);
-  line-height:1.5;
-}
-.bullet svg{flex-shrink:0;margin-top:3px;color:var(--green);}
-.bullet strong{color:var(--text);}
+/* ===== SECTIONS ===== */
+section{padding:80px 0;}
+.section--white{background:var(--bg);}
+.section--alt{background:var(--bg-alt);}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-header h2{font-size:20px;font-weight:700;line-height:1.35;margin-bottom:12px;color:var(--text);}
+.section-header h2 em{font-style:normal;color:var(--teal);}
+.section-header .sub{color:var(--text-secondary);font-size:16px;line-height:1.7;margin-bottom:0;}
 
-/* ===== HERO LAYOUT (mesmo padrão LP Intensive) ===== */
-.hero{width:100%;min-height:90vh;display:flex;align-items:flex-start;position:relative;padding:60px 0 60px;overflow:hidden;}
-.hero .container{max-width:1100px;}
-.hero-photo{position:absolute;right:5%;top:30px;width:38%;max-width:480px;z-index:0;pointer-events:none;}
-@media(max-width:1024px){.hero-photo{width:34%;right:1%;}}
-@media(max-width:768px){.hero-photo--desktop{display:none;}}
-.hero-photo--mobile{display:none;width:120px;height:120px;margin:0 auto 16px;border-radius:50%;border:2px solid rgba(0,179,126,0.2);object-fit:cover;object-position:top center;}
-@media(max-width:768px){.hero-photo--mobile{display:block;}.hero{padding:24px 0 40px;min-height:auto;}}
-.hero-text{text-align:left;max-width:60%;margin:0;position:relative;z-index:1;}
-.hero-text .bullets{text-align:left;max-width:520px;}
+/* ===== CREDIBILITY BAR ===== */
+.cred-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:900px;margin:0 auto;}
+.cred-item{display:flex;align-items:center;gap:8px;background:var(--card-bg);border:1px solid var(--border);border-radius:50px;padding:10px 20px;font-size:13px;color:var(--text-secondary);}
+.cred-item svg{color:var(--teal);flex-shrink:0;}
 
-/* ===== FORM ===== */
-.form-card{
-  background:var(--card-bg);
-  border:1px solid rgba(0,179,126,0.25);
-  border-radius:var(--radius);
-  padding:32px 28px;
-  margin-bottom:24px;
-  max-width:560px;
-  margin-left:auto;
-  margin-right:auto;
-  box-shadow:0 0 40px rgba(0,179,126,0.06);
-}
-.form-card h2{
-  font-size:20px;
-  font-weight:700;
-  text-align:center;
-  margin-bottom:20px;
-}
-.f-group{margin-bottom:16px;}
-.f-label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;}
-.f-input{
-  width:100%;
-  padding:14px 16px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  background:rgba(255,255,255,0.04);
-  color:var(--text);
-  font-size:15px;
-  font-family:var(--font);
-  transition:border-color 0.2s;
-}
-.f-input:focus{outline:none;border-color:var(--green);}
-.f-input::placeholder{color:var(--text-muted);}
-.cta-btn{
-  display:block;
-  width:100%;
-  background:var(--green);
-  color:#fff;
-  font-weight:700;
-  font-size:16px;
-  padding:18px;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
-  transition:all 0.2s;
-  text-align:center;
-  margin-top:8px;
-}
-.cta-btn:hover{filter:brightness(0.9);transform:translateY(-1px);}
-.cta-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
-.form-note{
-  font-size:12px;
-  color:var(--text-muted);
-  text-align:center;
-  margin-top:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-}
+/* ===== PAIN CARDS ===== */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.pain-card{border:1px solid var(--border);border-left:3px solid var(--teal);background:var(--card-bg);padding:24px 28px;border-radius:0 16px 16px 0;font-size:16px;color:var(--text-secondary);line-height:1.7;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:transform 0.2s;}
+.pain-card:hover{transform:translateY(-2px);}
 
-/* ===== ANDRE SECTION ===== */
-.andre{
-  display:none;
-  align-items:center;
-  gap:20px;
-  padding:28px;
-  background:var(--card-bg);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  margin-bottom:24px;
-  max-width:560px;
-  margin-left:auto;
-  margin-right:auto;
-}
-@media(max-width:768px){.andre{display:flex;}}
-.andre img{
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  object-fit:cover;
-  border:2px solid rgba(0,179,126,0.2);
-  flex-shrink:0;
-}
-.andre-info h3{font-size:16px;font-weight:700;margin-bottom:4px;}
-.andre-info p{font-size:13px;color:var(--text-secondary);line-height:1.5;}
-.andre-info .tag{
-  display:inline-block;
-  font-size:11px;
-  font-weight:600;
-  color:var(--green);
-  background:var(--green-dim);
-  padding:3px 10px;
-  border-radius:100px;
-  margin-top:6px;
-}
+/* ===== STEPS ===== */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.step-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:28px 24px;text-align:left;box-shadow:0 1px 3px rgba(0,0,0,0.06);transition:border-color 0.25s,transform 0.2s;}
+.step-card:hover{border-color:rgba(25,198,181,0.4);transform:translateY(-2px);}
+.step-num{width:40px;height:40px;border-radius:50%;background:rgba(25,198,181,0.12);color:var(--teal);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.step-card h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--text);}
+.step-card p{font-size:16px;color:var(--text-secondary);line-height:1.6;}
 
-/* ===== PROOF ===== */
-.proof{
-  text-align:center;
-  padding:20px;
-  margin-bottom:24px;
-  font-size:14px;
-  color:var(--text-muted);
-  line-height:1.6;
-  max-width:560px;
-  margin-left:auto;
-  margin-right:auto;
-}
-.proof strong{color:var(--text-secondary);}
+/* ===== ANDR&Eacute; FRANCO ===== */
+.andre-grid{display:grid;grid-template-columns:400px 1fr;gap:56px;align-items:center;}
+.andre-photo{width:100%;aspect-ratio:3/4;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,0.12);border:1px solid var(--border);}
+.andre-photo img{width:100%;height:100%;object-fit:cover;}
+.andre-bio{text-align:left;}
+.andre-bio h2{font-size:36px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.andre-bio .andre-role{font-size:16px;color:var(--teal);margin-bottom:20px;font-weight:600;}
+.andre-bio p{font-size:16px;color:var(--text-secondary);line-height:1.7;margin-bottom:24px;}
+.cred-pills{display:flex;flex-wrap:wrap;gap:10px;}
+.cred-pill{font-size:11px;font-weight:600;color:var(--teal-dark);background:var(--teal-light);padding:6px 16px;border-radius:20px;}
+
+/* ===== FORM CARD ===== */
+.form-card{background:rgba(17,22,32,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(25,198,181,0.12);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.4),0 0 60px -20px rgba(25,198,181,0.1);padding:36px;position:relative;z-index:1;}
+.f-group{margin-bottom:20px;}
+.f-label{display:block;font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text);}
+.f-group input[type="text"],.f-group input[type="email"],.f-group input[type="tel"]{width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:8px;padding:12px 16px;color:var(--text);font-family:var(--font);font-size:16px;transition:border-color 0.2s,box-shadow 0.2s;outline:none;}
+.f-group input::placeholder{color:rgba(255,255,255,0.3);}
+.f-group input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(25,198,181,0.12);}
+.btn-primary{width:100%;padding:14px;background:var(--teal);color:#fff;font-family:var(--font);font-size:16px;font-weight:700;border:none;border-radius:8px;cursor:pointer;transition:filter 0.2s;margin-top:8px;}
+.btn-primary:not(:disabled):hover{filter:brightness(1.2);}
+.btn-primary:not(:disabled):active{transform:scale(0.98);}
+.btn-primary:disabled{opacity:0.4;cursor:not-allowed;}
+.trust{display:flex;justify-content:center;gap:16px;margin-top:16px;}
+.trust span{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px;}
+
+/* ===== FAQ ===== */
+.faq-list{max-width:var(--container-narrow);margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-question{padding:24px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:16px;color:var(--text);text-align:left;}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;}
+.faq-answer p{padding:0 0 24px;font-size:16px;color:var(--text-secondary);line-height:1.7;text-align:left;}
+.faq-item.open .faq-answer{max-height:300px;}
+.faq-chevron{transition:transform 0.3s;flex-shrink:0;margin-left:12px;color:var(--text-secondary);}
+.faq-item.open .faq-chevron{transform:rotate(180deg);}
+
+/* ===== CTA FINAL ===== */
+.section--cta{background:linear-gradient(135deg,#12191D 0%,#1a2744 100%);padding:80px 0;text-align:center;}
+.section--cta h2{color:#fff;font-size:20px;font-weight:700;margin-bottom:14px;}
+.section--cta p{font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7;margin-bottom:32px;}
+.btn-cta-large{display:inline-block;background:var(--teal);color:#fff;font-weight:700;font-size:16px;padding:16px 40px;border-radius:8px;transition:filter 0.2s;text-decoration:none;}
+.btn-cta-large:hover{filter:brightness(0.9);}
+
+/* ===== BRAND ===== */
+.brand-section{background:var(--bg-dark);padding:80px 0;text-align:center;}
+.brand-section h2{color:#fff;font-size:20px;font-weight:700;margin-bottom:14px;}
+.brand-section h2 em{font-style:normal;color:var(--teal);}
+.brand-section p{color:rgba(255,255,255,0.6);font-size:16px;line-height:1.7;}
+.brand-stat{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:24px;}
+.brand-stat-item .num{font-size:36px;font-weight:800;color:var(--teal);line-height:1;}
+.brand-stat-item .label{font-size:11px;font-weight:600;color:rgba(255,255,255,0.6);margin-top:6px;}
 
 /* ===== FOOTER ===== */
-.footer{
-  text-align:center;
-  padding:32px 24px;
-  border-top:1px solid var(--border);
-  margin-top:24px;
-}
-.footer p{font-size:11px;color:var(--text-muted);line-height:1.6;max-width:500px;margin:0 auto;}
-.footer .brand{margin-top:12px;font-weight:600;color:var(--text-secondary);font-size:12px;}
+.footer{padding:40px 0;background:var(--card-bg);border-top:1px solid var(--border);text-align:center;}
+.footer-logo{height:56px;width:auto;margin-bottom:16px;}
+.disclaimer{font-size:11px;color:var(--text-muted);line-height:1.7;max-width:600px;margin:0 auto;}
 
 /* ===== SUCCESS STATE ===== */
-.success-state{display:none;text-align:center;padding:48px 0;}
-.success-state .check-circle{
-  width:72px;height:72px;
-  background:var(--green-dim);
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 20px;
-}
-.success-state h2{font-size:24px;font-weight:700;margin-bottom:12px;}
-.success-state p{font-size:16px;color:var(--text-secondary);line-height:1.7;max-width:440px;margin:0 auto;}
-
-/* ===== HERO ANCHOR CTA ===== */
-.hero-cta{
-  display:inline-block;
-  background:var(--green);
-  color:#fff;
-  font-weight:700;
-  font-size:16px;
-  padding:16px 36px;
-  border-radius:12px;
-  border:none;
-  cursor:pointer;
-  transition:all 0.2s;
-  text-align:center;
-  margin-top:8px;
-}
-.hero-cta:hover{filter:brightness(0.9);transform:translateY(-1px);}
+.success-state{display:none;text-align:center;padding:32px 0;}
+.success-state .check-circle{width:56px;height:56px;background:rgba(25,198,181,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.success-state h2{font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text);}
+.success-state p{font-size:16px;color:var(--text-secondary);line-height:1.6;max-width:380px;margin:0 auto;}
 
 /* ===== STICKY CTA MOBILE ===== */
-.sticky-cta{
-  display:none;
-  position:fixed;
-  bottom:0;left:0;right:0;
-  z-index:999;
-  background:rgba(13,17,23,0.95);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  border-top:1px solid var(--border);
-  padding:12px 20px;
-  padding-bottom:max(12px,env(safe-area-inset-bottom));
-}
-.sticky-cta a{
-  display:block;
-  width:100%;
-  background:var(--green);
-  color:#fff;
-  font-weight:700;
-  font-size:15px;
-  padding:14px;
-  border-radius:10px;
-  text-align:center;
-  text-decoration:none;
-}
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(11,14,19,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:12px 20px;padding-bottom:max(12px,env(safe-area-inset-bottom));}
+.sticky-cta a{display:block;width:100%;background:var(--teal);color:#fff;font-weight:700;font-size:15px;padding:14px;border-radius:8px;text-align:center;text-decoration:none;}
 .sticky-cta a:hover{filter:brightness(0.9);}
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:480px){
-  .hero h1{font-size:26px;}
-  .countdown{gap:10px;}
-  .cd-block{min-width:56px;padding:10px 12px;}
-  .cd-num{font-size:24px;}
-  .andre{flex-direction:column;text-align:center;}
+@media(max-width:880px){
+  .container{padding:0 20px;}
+  .navbar .container{height:64px;}
+  .nav-logo img{height:36px;}
+  .nav-cta{font-size:13px;padding:8px 18px;}
+  .hero{min-height:auto;padding:100px 0 48px;}
+  .hero-grid{grid-template-columns:1fr;gap:32px;}
+  .hero-copy{padding-top:0;}
+  .hero-copy .h1{font-size:28px;}
+  .hero .form-card{max-width:500px;margin:0 auto;}
+  .pain-grid{grid-template-columns:1fr;}
+  .steps-grid{grid-template-columns:1fr;}
+  .andre-grid{grid-template-columns:1fr;text-align:center;gap:32px;}
+  .andre-photo{width:280px;aspect-ratio:3/4;margin:0 auto;}
+  .andre-bio{text-align:left;}
+  .andre-bio h2{text-align:center;font-size:28px;}
+  .andre-bio .andre-role{text-align:center;}
+  .cred-pills{justify-content:center;}
+  .cred-bar{gap:8px;}
+  .cred-item{font-size:12px;padding:8px 14px;}
   .form-card{padding:24px 20px;}
+  .brand-stat{gap:24px;}
+  section{padding:48px 0;}
+  .countdown{gap:8px;}
+  .cd-block{min-width:52px;padding:8px 10px;}
+  .cd-num{font-size:20px;}
 }
 @media(max-width:768px){
   .sticky-cta{display:block;}
-  #form-section{padding-bottom:80px;}
+  .hero-grid+.sticky-spacer{height:80px;}
+}
+@media(max-width:480px){
+  .hero-copy .h1{font-size:24px;}
+  .countdown{gap:6px;}
+  .cd-block{min-width:48px;}
+  .cd-num{font-size:18px;}
 }
 </style>
 </head>
@@ -358,131 +225,242 @@ img{max-width:100%;height:auto;}
 <!-- GTM noscript -->
 <noscript><iframe src="https://sgtm.boostresearch.com.br/ns.html?id=GTM-K2HT6HBX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- Logo -->
-<div class="logo-bar">
-  <img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" loading="eager">
-  <a href="#form-section" class="logo-bar-cta">Garantir vaga gratuita &rarr;</a>
-</div>
-
-<!-- Hero -->
-<section class="hero">
-  <img src="andre-hero.png" alt="Andr&eacute; Franco" class="hero-photo hero-photo--desktop" loading="eager">
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
   <div class="container">
-    <img src="andre-hero.png" alt="Andr&eacute; Franco" class="hero-photo--mobile" loading="eager">
-    <div class="hero-text">
-      <div class="hero-eyebrow">Webinar gratuito ao vivo</div>
-      <h1>Comprar, hold ou sair?<br><em>O m&eacute;todo por tr&aacute;s da decis&atilde;o.</em></h1>
-      <p class="sub">Andr&eacute; Franco revela ao vivo a m&eacute;trica que sinalizou sa&iacute;da perto dos R$120&nbsp;mil e volta &agrave;s compras abaixo dos R$60&nbsp;mil. E o que ela est&aacute; dizendo agora.</p>
+    <span class="nav-logo" style="cursor:default;"><img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" loading="eager"></span>
+    <a href="#formulario" class="nav-cta" onclick="dataLayer.push({event:'cta_click',cta_id:'navbar'});">Garantir vaga gratuita &rarr;</a>
+  </div>
+</nav>
 
-      <!-- Countdown -->
-      <div class="countdown" id="countdown">
-        <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Dias</div></div>
-        <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Horas</div></div>
-        <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Min</div></div>
-        <div class="cd-block"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Seg</div></div>
+<!-- HERO — split: copy left, form right -->
+<section class="hero" id="formulario">
+  <div class="container">
+    <div class="hero-grid">
+      <!-- Left: copy -->
+      <div class="hero-copy">
+        <div class="tag">Webinar gratuito ao vivo &middot; 17 de junho, 20h</div>
+        <h1 class="h1">Comprar, hold ou sair?<br><em>O m&eacute;todo por tr&aacute;s da decis&atilde;o.</em></h1>
+        <p class="sub">Andr&eacute; Franco revela ao vivo a m&eacute;trica que sinalizou sa&iacute;da perto dos R$120&nbsp;mil e volta &agrave;s compras abaixo dos R$60&nbsp;mil. E o que ela est&aacute; dizendo agora.</p>
+
+        <!-- Countdown -->
+        <div class="countdown" id="countdown">
+          <div class="cd-block"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Dias</div></div>
+          <div class="cd-block"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Horas</div></div>
+          <div class="cd-block"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Min</div></div>
+          <div class="cd-block"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Seg</div></div>
+        </div>
+
+        <div class="hero-checks">
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> M&eacute;trica que 74% dos bitcoins seguem</span>
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Racional da sa&iacute;da e da volta</span>
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> O que o dado mostra agora</span>
+          <span class="hero-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Algo especial pra quem ficar at&eacute; o final</span>
+        </div>
+        <p class="micro">100% gratuito. Ao vivo. Com espa&ccedil;o pra suas perguntas.</p>
       </div>
 
-      <!-- Bullets -->
-      <div class="bullets">
-        <div class="bullet">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>O dado que 74% dos bitcoins seguem</strong> &mdash; e que a maioria dos investidores ignora</span>
+      <!-- Right: form card -->
+      <div id="form-wrapper">
+        <div class="form-card" id="form-card">
+          <div class="tag" style="margin-bottom:12px;">Vagas limitadas</div>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:6px;color:var(--text);">Garanta sua vaga gratuita</h3>
+          <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;">Ter&ccedil;a, 17 de junho &mdash; 20h (hor&aacute;rio de Bras&iacute;lia)</p>
+
+          <form id="webinar-form" novalidate>
+            <div class="f-group">
+              <label class="f-label" for="f-name">Nome</label>
+              <input type="text" id="f-name" name="name" placeholder="Seu nome" required autocomplete="given-name">
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="f-email">E-mail</label>
+              <input type="email" id="f-email" name="email" placeholder="seu@email.com" required autocomplete="email">
+            </div>
+            <div class="f-group">
+              <label class="f-label" for="f-phone">WhatsApp</label>
+              <input type="tel" id="f-phone" name="phone" placeholder="(11) 99999-9999" required autocomplete="tel">
+            </div>
+            <button type="submit" class="btn-primary" id="btn-submit">Quero participar &mdash; &eacute; gratuito</button>
+          </form>
+
+          <div class="trust">
+            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Dados seguros</span>
+            <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Sem spam</span>
+          </div>
         </div>
-        <div class="bullet">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>O racional por tr&aacute;s da sa&iacute;da nos R$120&nbsp;mil</strong> e da volta nos R$60&nbsp;mil &mdash; com provas</span>
-        </div>
-        <div class="bullet">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>O que esse dado est&aacute; mostrando agora</strong> &mdash; e o que significa pra sua carteira cripto</span>
-        </div>
-        <div class="bullet">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span><strong>Algo especial pra quem ficar at&eacute; o final</strong></span>
-        </div>
-      </div>
-      <a href="#form-section" class="hero-cta">Garantir minha vaga gratuita</a>
-      <div class="proof-bar">
-        <div class="proof-bar-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Ao vivo &mdash; 17/jun, 20h
-        </div>
-        <div class="proof-bar-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          Com Andr&eacute; Franco
-        </div>
-        <div class="proof-bar-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          100% gratuito
+
+        <!-- Success State -->
+        <div class="success-state" id="success-state">
+          <div class="check-circle">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#19c6b5" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          </div>
+          <h2>Vaga confirmada!</h2>
+          <p>Voc&ecirc; vai receber o link de acesso no seu e-mail e WhatsApp antes do webinar.<br><br><strong>17 de junho, 20h.</strong> At&eacute; l&aacute;.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Form -->
-<section id="form-section">
+<!-- CREDIBILITY BAR -->
+<section class="section--alt" style="padding:48px 0;">
   <div class="container">
-    <div class="form-card" id="form-card">
-      <h2>Garanta sua vaga &mdash; gratuito</h2>
-      <form id="webinar-form" onsubmit="return submitForm(event)">
-        <div class="f-group">
-          <label class="f-label">Nome</label>
-          <input type="text" class="f-input" id="f-name" name="name" placeholder="Seu nome" required autocomplete="given-name">
-        </div>
-        <div class="f-group">
-          <label class="f-label">E-mail</label>
-          <input type="email" class="f-input" id="f-email" name="email" placeholder="seu@email.com" required autocomplete="email">
-        </div>
-        <div class="f-group">
-          <label class="f-label">WhatsApp</label>
-          <input type="tel" class="f-input" id="f-phone" name="phone" placeholder="(11) 99999-9999" required autocomplete="tel">
-        </div>
-        <button type="submit" class="cta-btn" id="btn-submit">Quero participar &mdash; &eacute; gratuito</button>
-      </form>
-      <p class="form-note">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        Seus dados est&atilde;o seguros. Sem spam.
-      </p>
-    </div>
-
-    <!-- Success -->
-    <div class="success-state" id="success-state">
-      <div class="check-circle">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00B37E" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <div class="cred-bar">
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        No mercado desde 2016
       </div>
-      <h2>Vaga confirmada!</h2>
-      <p>Voc&ecirc; vai receber o link de acesso no seu e-mail e WhatsApp antes do webinar.<br><br><strong>17 de junho, 20h.</strong> At&eacute; l&aacute;.</p>
-    </div>
-
-    <!-- Andre -->
-    <div class="andre">
-      <img src="andre-franco.jpg" alt="Andr&eacute; Franco" loading="lazy">
-      <div class="andre-info">
-        <h3>Andr&eacute; Franco</h3>
-        <p>Fundador da Boost Research &mdash; consultoria de investimentos em cripto. Analista desde 2016. Mesmo m&eacute;todo, dois ciclos completos.</p>
-        <span class="tag">Apresentador do webinar</span>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        2 ciclos completos de alta e baixa
       </div>
-    </div>
-
-    <!-- Proof -->
-    <div class="proof">
-      <strong>Ter&ccedil;a, 17 de junho &mdash; 20h (hor&aacute;rio de Bras&iacute;lia)</strong><br>
-      Ao vivo. Gratuito. Com espa&ccedil;o pra suas perguntas.<br><br>
-      Rentabilidade passada n&atilde;o &eacute; garantia de resultados futuros. Criptoativos envolvem riscos significativos, incluindo perda total do capital.
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Consultoria independente
+      </div>
+      <div class="cred-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        Mesmo m&eacute;todo, mesmos resultados
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
+<!-- O QUE VOC&Ecirc; VAI APRENDER -->
+<section class="section--white">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Neste webinar</div>
+      <h2>O que voc&ecirc; vai aprender em <em>1 hora ao vivo</em></h2>
+      <p class="sub">Sem teoria gen&eacute;rica. Andr&eacute; mostra o dado, o racional e o que fazer com ele.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card"><strong style="color:var(--text);">A m&eacute;trica LTH</strong> &mdash; o dado on-chain que 74% dos bitcoins em circula&ccedil;&atilde;o seguem e que a maioria dos investidores nunca viu.</div>
+      <div class="pain-card"><strong style="color:var(--text);">Sa&iacute;da nos R$120 mil</strong> &mdash; o racional exato que motivou a sa&iacute;da no topo, com provas de que n&atilde;o foi achismo.</div>
+      <div class="pain-card"><strong style="color:var(--text);">Volta nos R$60 mil</strong> &mdash; por que o dado sinalizou volta &agrave;s compras e como interpretar o ciclo de forma racional.</div>
+      <div class="pain-card"><strong style="color:var(--text);">O que o dado diz agora</strong> &mdash; leitura ao vivo do cen&aacute;rio atual e o que isso significa pra sua carteira cripto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA — 3 columns -->
+<section class="section--alt" id="como-funciona">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag">Simples assim</div>
+      <h2>Como participar do webinar</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Inscreva-se agora</h3>
+        <p>Preencha o formul&aacute;rio acima com nome, e-mail e WhatsApp. Leva 30 segundos.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Receba o link</h3>
+        <p>No dia 17/jun, voc&ecirc; recebe o link de acesso por e-mail e WhatsApp antes das 20h.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Assista ao vivo</h3>
+        <p>1 hora com Andr&eacute; Franco. Dado, racional e leitura do cen&aacute;rio atual. Com espa&ccedil;o pra perguntas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANDR&Eacute; FRANCO — split layout -->
+<section class="section--white" id="andre-franco">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;"><div class="tag">Quem apresenta o webinar</div></div>
+    <div class="andre-grid">
+      <div class="andre-photo">
+        <img src="andre-franco.jpg" alt="Andr&eacute; Franco" width="600" height="800" loading="lazy">
+      </div>
+      <div class="andre-bio">
+        <h2>Andr&eacute; Franco</h2>
+        <p class="andre-role">Fundador da Boost Research</p>
+        <p>Analista de criptoativos desde 2016. Mesmo m&eacute;todo, dois ciclos completos. A m&eacute;trica que ele vai mostrar neste webinar sinalizou sa&iacute;da perto dos R$120 mil e volta abaixo dos R$60 mil. E ele seguiu os dois sinais.</p>
+        <p>Fundou a Boost Research &mdash; consultoria de investimentos em cripto. Independente, sem v&iacute;nculo com banco ou corretora. Cada investidor tem um Advisor dedicado.</p>
+        <div class="cred-pills">
+          <span class="cred-pill">Desde 2016</span>
+          <span class="cred-pill">2 ciclos completos</span>
+          <span class="cred-pill">Consultoria independente</span>
+          <span class="cred-pill">Honor&aacute;rio fixo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section--alt" id="faq">
+  <div class="container">
+    <div class="section-header"><h2>Perguntas frequentes</h2></div>
+    <div class="faq-list">
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">&Eacute; realmente gratuito?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>Sim. O webinar &eacute; 100% gratuito. Sem cobran&ccedil;a, sem cart&atilde;o de cr&eacute;dito, sem pegadinha.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">Vai ter replay?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>N&atilde;o. O webinar &eacute; exclusivo ao vivo. Se voc&ecirc; perder, n&atilde;o ter&aacute; acesso depois. Garanta sua vaga e esteja online &agrave;s 20h.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">Preciso saber algo sobre cripto?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>N&atilde;o. O Andr&eacute; vai explicar o dado de forma visual e pr&aacute;tica. Se voc&ecirc; j&aacute; tem cripto ou est&aacute; pensando em investir, vai entender tudo.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">V&atilde;o vender algo no webinar?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>O foco do webinar &eacute; o conte&uacute;do. No final, apresentamos uma oportunidade para quem quiser se aprofundar. Nenhuma obriga&ccedil;&atilde;o.</p></div>
+      </div>
+      <div class="faq-item" onclick="this.classList.toggle('open')">
+        <div class="faq-question">Como recebo o link de acesso?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+        <div class="faq-answer"><p>Por e-mail e WhatsApp no dia do webinar, antes das 20h. Fique de olho na sua caixa de entrada.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section--cta">
+  <div class="container" style="max-width:680px;position:relative;z-index:1;">
+    <h2>Comprar, hold ou sair? Descubra o que o dado est&aacute; dizendo agora.</h2>
+    <p>Webinar gratuito ao vivo com Andr&eacute; Franco. 17 de junho, 20h.</p>
+    <a href="#formulario" class="btn-cta-large" onclick="dataLayer.push({event:'cta_click',cta_id:'final_cta'});">Garantir minha vaga gratuita &rarr;</a>
+  </div>
+</section>
+
+<!-- BRAND -->
+<section class="brand-section">
+  <div class="container">
+    <div style="width:3px;height:40px;background:var(--teal);margin:0 auto 24px;border-radius:2px;"></div>
+    <h2 style="margin-bottom:14px;">A consultoria de investimentos em cripto<br>com a maior <em>experi&ecirc;ncia de mercado</em></h2>
+    <p style="font-size:16px;line-height:1.7;max-width:560px;margin:0 auto;">
+      A Boost Research analisa o mercado cripto desde 2016. Consultoria independente. Mesmo m&eacute;todo, dois ciclos completos. Cada investidor tem um Advisor dedicado.
+    </p>
+    <div class="brand-stat">
+      <div class="brand-stat-item"><div class="num">+10</div><div class="label">anos de mercado</div></div>
+      <div class="brand-stat-item"><div class="num">2</div><div class="label">ciclos completos</div></div>
+      <div class="brand-stat-item"><div class="num">fixo</div><div class="label">honor&aacute;rio independente</div></div>
+      <div class="brand-stat-item"><div class="num">zero</div><div class="label">comiss&atilde;o de exchange</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer class="footer">
-  <p>Conte&uacute;do informativo. N&atilde;o constitui recomenda&ccedil;&atilde;o de investimento. Boost Research &middot; 2026.</p>
-  <p class="brand">Boost Research &mdash; Consultoria de Investimentos em Cripto</p>
+  <img src="https://boostresearch.com.br/wp-content/uploads/2026/01/logoboostresearch.png" alt="Boost Research" class="footer-logo" loading="lazy">
+  <p class="disclaimer">
+    Conte&uacute;do informativo. N&atilde;o constitui recomenda&ccedil;&atilde;o de investimento. Rentabilidade passada n&atilde;o &eacute; garantia de resultados futuros. Criptoativos envolvem riscos significativos, incluindo perda total do capital.<br><br>
+    Boost Research &mdash; Consultoria de Investimentos em Cripto &middot; 2026
+  </p>
 </footer>
 
 <!-- Sticky CTA Mobile -->
 <div class="sticky-cta" id="sticky-cta">
-  <a href="#form-section">Quero participar &mdash; &eacute; gratuito</a>
+  <a href="#formulario">Quero participar &mdash; &eacute; gratuito</a>
 </div>
 
 <!-- ===== SCRIPTS ===== -->
@@ -492,6 +470,12 @@ function getUTM(p){
   var u=new URLSearchParams(window.location.search);
   return u.get('utm_'+p)||u.get('UTM_'+p)||'';
 }
+
+/* ── Navbar scroll shadow ── */
+window.addEventListener('scroll',function(){
+  var n=document.getElementById('navbar');
+  if(n)n.classList.toggle('scrolled',window.scrollY>10);
+},{passive:true});
 
 /* ── Phone mask ── */
 document.getElementById('f-phone').addEventListener('input',function(e){
@@ -508,7 +492,7 @@ document.getElementById('f-phone').addEventListener('input',function(e){
   function tick(){
     var now=Date.now(),d=target-now;
     if(d<=0){
-      document.getElementById('countdown').innerHTML='<div style="color:var(--green);font-weight:700;font-size:18px;">Ao vivo agora!</div>';
+      document.getElementById('countdown').innerHTML='<div style="color:var(--teal);font-weight:700;font-size:18px;">Ao vivo agora!</div>';
       return;
     }
     var days=Math.floor(d/86400000);
@@ -525,7 +509,7 @@ document.getElementById('f-phone').addEventListener('input',function(e){
 })();
 
 /* ── Form submit ── */
-function submitForm(e){
+document.getElementById('webinar-form').addEventListener('submit',function(e){
   e.preventDefault();
   var btn=document.getElementById('btn-submit');
   btn.disabled=true;
@@ -600,25 +584,22 @@ function submitForm(e){
   setTimeout(function(){
     document.getElementById('form-card').style.display='none';
     document.getElementById('success-state').style.display='block';
-    window.scrollTo({top:0,behavior:'smooth'});
   },800);
 
   return false;
-}
+});
 
 /* ── Sticky CTA visibility ── */
 (function(){
   var sticky=document.getElementById('sticky-cta');
-  var formSection=document.getElementById('form-section');
+  var formSection=document.getElementById('formulario');
   var successState=document.getElementById('success-state');
   if(!sticky||!formSection)return;
   function checkSticky(){
-    // hide after form submitted
     if(successState&&successState.style.display==='block'){sticky.style.display='none';return;}
     var scrollY=window.scrollY||window.pageYOffset;
     var formRect=formSection.getBoundingClientRect();
-    // show after scrolling 200px, hide when form is in viewport
-    if(scrollY>200&&formRect.top>window.innerHeight){
+    if(scrollY>300&&formRect.bottom<0){
       sticky.style.opacity='1';sticky.style.pointerEvents='auto';
     }else{
       sticky.style.opacity='0';sticky.style.pointerEvents='none';
@@ -629,6 +610,14 @@ function submitForm(e){
   window.addEventListener('scroll',checkSticky,{passive:true});
   checkSticky();
 })();
+
+/* ── FAQ keyboard accessibility ── */
+document.querySelectorAll('.faq-item').forEach(function(item){
+  item.setAttribute('tabindex','0');
+  item.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();this.classList.toggle('open');}
+  });
+});
 </script>
 
 </body>
