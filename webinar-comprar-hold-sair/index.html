@@ -283,6 +283,50 @@ img{max-width:100%;height:auto;}
 .success-state h2{font-size:24px;font-weight:700;margin-bottom:12px;}
 .success-state p{font-size:16px;color:var(--text-secondary);line-height:1.7;max-width:440px;margin:0 auto;}
 
+/* ===== HERO ANCHOR CTA ===== */
+.hero-cta{
+  display:inline-block;
+  background:var(--green);
+  color:#fff;
+  font-weight:700;
+  font-size:16px;
+  padding:16px 36px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  transition:all 0.2s;
+  text-align:center;
+  margin-top:8px;
+}
+.hero-cta:hover{filter:brightness(0.9);transform:translateY(-1px);}
+
+/* ===== STICKY CTA MOBILE ===== */
+.sticky-cta{
+  display:none;
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:999;
+  background:rgba(13,17,23,0.95);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--border);
+  padding:12px 20px;
+  padding-bottom:max(12px,env(safe-area-inset-bottom));
+}
+.sticky-cta a{
+  display:block;
+  width:100%;
+  background:var(--green);
+  color:#fff;
+  font-weight:700;
+  font-size:15px;
+  padding:14px;
+  border-radius:10px;
+  text-align:center;
+  text-decoration:none;
+}
+.sticky-cta a:hover{filter:brightness(0.9);}
+
 /* ===== RESPONSIVE ===== */
 @media(max-width:480px){
   .hero h1{font-size:26px;}
@@ -291,6 +335,10 @@ img{max-width:100%;height:auto;}
   .cd-num{font-size:24px;}
   .andre{flex-direction:column;text-align:center;}
   .form-card{padding:24px 20px;}
+}
+@media(max-width:768px){
+  .sticky-cta{display:block;}
+  #form-section{padding-bottom:80px;}
 }
 </style>
 </head>
@@ -341,6 +389,7 @@ img{max-width:100%;height:auto;}
           <span><strong>Algo especial pra quem ficar at&eacute; o final</strong></span>
         </div>
       </div>
+      <a href="#form-section" class="hero-cta">Garantir minha vaga gratuita</a>
     </div>
   </div>
 </section>
@@ -404,6 +453,11 @@ img{max-width:100%;height:auto;}
   <p>Conte&uacute;do informativo. N&atilde;o constitui recomenda&ccedil;&atilde;o de investimento. Boost Research &middot; 2026.</p>
   <p class="brand">Boost Research &mdash; Consultoria de Investimentos em Cripto</p>
 </footer>
+
+<!-- Sticky CTA Mobile -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#form-section">Quero participar &mdash; &eacute; gratuito</a>
+</div>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
@@ -525,6 +579,30 @@ function submitForm(e){
 
   return false;
 }
+
+/* ── Sticky CTA visibility ── */
+(function(){
+  var sticky=document.getElementById('sticky-cta');
+  var formSection=document.getElementById('form-section');
+  var successState=document.getElementById('success-state');
+  if(!sticky||!formSection)return;
+  function checkSticky(){
+    // hide after form submitted
+    if(successState&&successState.style.display==='block'){sticky.style.display='none';return;}
+    var scrollY=window.scrollY||window.pageYOffset;
+    var formRect=formSection.getBoundingClientRect();
+    // show after scrolling 200px, hide when form is in viewport
+    if(scrollY>200&&formRect.top>window.innerHeight){
+      sticky.style.opacity='1';sticky.style.pointerEvents='auto';
+    }else{
+      sticky.style.opacity='0';sticky.style.pointerEvents='none';
+    }
+  }
+  sticky.style.transition='opacity 0.3s';
+  sticky.style.opacity='0';
+  window.addEventListener('scroll',checkSticky,{passive:true});
+  checkSticky();
+})();
 </script>
 
 </body>
