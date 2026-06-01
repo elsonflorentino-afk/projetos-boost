@@ -1316,10 +1316,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   border: none;
   box-shadow: 0 4px 20px rgba(37,211,102,0.45);
   transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-  opacity: 0;
-  pointer-events: none;
-}
-.btn-wa-float.visible {
   opacity: 1;
   pointer-events: auto;
 }
@@ -1565,15 +1561,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       gateCripto.value = this.dataset.value;
     });
   });
-
-  /* Show/hide on scroll */
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 400) {
-      waBtn.classList.add('visible');
-    } else {
-      waBtn.classList.remove('visible');
-    }
-  }, { passive: true });
 
   /* Open modal */
   waBtn.addEventListener('click', function() {
