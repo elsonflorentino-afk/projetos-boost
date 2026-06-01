@@ -1512,6 +1512,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="wa-gate-field">
+        <label for="wa-gate-whatsapp">WhatsApp</label>
+        <input type="tel" id="wa-gate-whatsapp" name="whatsapp" placeholder="(21) 99999-9999" required autocomplete="tel">
+      </div>
+
+      <div class="wa-gate-field">
         <label>Ja investe em cripto?</label>
         <div style="display:flex;gap:8px;margin-top:4px;">
           <button type="button" class="wa-gate-toggle" data-value="Sim" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--gray-dim,#2a2f38);background:var(--bg3,#0D1117);color:#fff;font-family:var(--font);font-size:0.9rem;font-weight:600;cursor:pointer;transition:border-color 0.2s,background 0.2s;">Sim</button>
@@ -1546,12 +1551,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var gateForm   = document.getElementById('wa-gate-form');
   var gateNome   = document.getElementById('wa-gate-nome');
   var gateEmail  = document.getElementById('wa-gate-email');
+  var gateWpp    = document.getElementById('wa-gate-whatsapp');
   var gateCripto = document.getElementById('wa-gate-cripto');
   var gateSubmit = document.getElementById('wa-gate-submit');
   var gateError  = document.getElementById('wa-gate-error');
   var toggleBtns = document.querySelectorAll('.wa-gate-toggle');
 
   if (!waBtn || !overlay) return;
+
+  /* Mascara WhatsApp (XX) XXXXX-XXXX */
+  if (gateWpp) {
+    gateWpp.addEventListener('input', function() {
+      var raw = this.value.replace(/\D/g, '').slice(0, 11);
+      if (raw.length === 0) { this.value = ''; return; }
+      var f;
+      if      (raw.length <= 2)  f = '(' + raw;
+      else if (raw.length <= 6)  f = '(' + raw.slice(0,2) + ') ' + raw.slice(2);
+      else if (raw.length <= 10) f = '(' + raw.slice(0,2) + ') ' + raw.slice(2,6) + '-' + raw.slice(6);
+      else                       f = '(' + raw.slice(0,2) + ') ' + raw.slice(2,7) + '-' + raw.slice(7);
+      this.value = f;
+    });
+  }
 
   /* Toggle Sim/Nao */
   toggleBtns.forEach(function(btn) {
@@ -1596,9 +1616,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     e.preventDefault();
     gateError.style.display = 'none';
 
-    var nome   = gateNome.value.trim();
-    var email  = gateEmail.value.trim();
-    var cripto = gateCripto.value;
+    var nome      = gateNome.value.trim();
+    var email     = gateEmail.value.trim();
+    var wppDigits = gateWpp.value.replace(/\D/g, '');
+    var cripto    = gateCripto.value;
 
     if (!nome) {
       gateError.textContent = 'Informe seu nome.';
@@ -1607,6 +1628,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       gateError.textContent = 'Informe um e-mail valido.';
+      gateError.style.display = 'block';
+      return;
+    }
+    if (wppDigits.length < 10) {
+      gateError.textContent = 'Informe seu WhatsApp com DDD.';
       gateError.style.display = 'block';
       return;
     }
@@ -1626,6 +1652,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         conversion_identifier: 'wa_gate_analise',
         name:  nome,
         email: email,
+        mobile_phone: '+55' + wppDigits,
         tags:  ['whatsapp-gate-analise'],
         cf_ja_investe_em_criptoativos: cripto,
         traffic_source:   getCookie('boost_utm_source')   || 'direct',
@@ -1657,6 +1684,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         form_id:    'wa_gate_analise',
         event_id:   eventId,
         user_email: email,
+        user_phone: '55' + wppDigits,
         user_name:  nome
       });
       closeModal();
