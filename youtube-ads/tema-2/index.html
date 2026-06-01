@@ -593,7 +593,7 @@ section{padding:80px 0;}
 
           <p style="font-size:16px;color:var(--text-secondary);text-align:center;margin-bottom:16px;">Quer adiantar? Envie detalhes da sua carteira pelo WhatsApp:</p>
 
-          <a href="https://wa.me/5521965622891" class="btn-wa" id="btn-wa-post" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'post_submit'});">
+          <a href="javascript:void(0)" class="btn-wa" id="btn-wa-post" onclick="openWaGate('post_submit');">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Conversar pelo WhatsApp &rarr;
           </a>
@@ -807,7 +807,7 @@ section{padding:80px 0;}
 
 <!-- Avatar flutuante WhatsApp -->
 <!-- Avatar flutuante — mascote sem circulo -->
-<a href="https://wa.me/5521965622891?text=Ol%C3%A1%2C%20vim%20pelo%20v%C3%ADdeo%20do%20YouTube%20sobre%20%22sem%20tempo%20pra%20acompanhar%20o%20mercado%22%20e%20gostaria%20de%20falar%20com%20um%20Advisor." class="avatar-float" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'avatar_float'});">
+<a href="javascript:void(0)" class="avatar-float" onclick="openWaGate('avatar_float');">
   <div class="avatar-float-pill">
     <span class="avatar-float-name">Fale com um Advisor</span>
     <span class="avatar-float-wa">
@@ -1184,5 +1184,365 @@ window.addEventListener('scroll',function(){
   }
 })();
 </script>
+<!-- ── WhatsApp Gate Modal ── -->
+<style>
+/* ── Modal WhatsApp Gate ── */
+.wa-gate-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.wa-gate-overlay.active { display: flex; }
+
+.wa-gate-modal {
+  background: #161B22;
+  border: 1px solid #2a2f38;
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+}
+.wa-gate-modal .wa-gate-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #8b949e;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+}
+.wa-gate-modal .wa-gate-close:hover { color: #fff; }
+.wa-gate-modal .wa-gate-icon {
+  width: 48px;
+  height: 48px;
+  background: #25D366;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.wa-gate-modal h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+.wa-gate-modal .wa-gate-sub {
+  color: #8b949e;
+  font-size: 0.85rem;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+.wa-gate-modal .wa-gate-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.wa-gate-modal .wa-gate-field label {
+  color: #8b949e;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+.wa-gate-modal .wa-gate-field input {
+  background: #0D1117;
+  border: 1px solid #2a2f38;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.wa-gate-modal .wa-gate-field input:focus {
+  border-color: #19c6b5;
+}
+.wa-gate-modal .wa-gate-field input::placeholder {
+  color: #555;
+}
+.wa-gate-modal .wa-gate-submit {
+  width: 100%;
+  background: #25D366;
+  color: #000;
+  font-weight: 800;
+  font-size: 0.95rem;
+  font-family: var(--font);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+.wa-gate-modal .wa-gate-submit:hover { opacity: 0.9; }
+.wa-gate-modal .wa-gate-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.wa-gate-modal .wa-gate-error {
+  color: #f85149;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 8px;
+  display: none;
+}
+.wa-gate-modal .wa-gate-skip {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  color: #8b949e;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font);
+}
+.wa-gate-modal .wa-gate-skip:hover { color: #fff; }
+.wa-gate-modal .wa-gate-toggle.active {
+  border-color: #19c6b5 !important;
+  background: rgba(25,198,181,0.12) !important;
+  color: #19c6b5 !important;
+}
+.wa-gate-modal .wa-gate-toggle:hover {
+  border-color: #8b949e !important;
+}
+.wa-gate-modal .wa-gate-lock {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.7rem;
+  color: #2a2f38;
+}
+</style>
+
+<!-- Modal Gate: captura lead antes de abrir WhatsApp -->
+<div class="wa-gate-overlay" id="wa-gate-overlay">
+  <div class="wa-gate-modal">
+    <button type="button" class="wa-gate-close" id="wa-gate-close">&times;</button>
+
+    <div class="wa-gate-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#fff"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.773.467 3.476 1.354 4.977L2 22l5.178-1.354A10.003 10.003 0 0012.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.29a8.283 8.283 0 01-4.218-1.157l-.302-.18-3.073.805.82-2.994-.197-.31A8.286 8.286 0 013.71 12.004C3.71 7.42 7.42 3.71 12.004 3.71c4.58 0 8.286 3.71 8.286 8.294 0 4.584-3.706 8.286-8.286 8.286z" fill="#fff"/></svg>
+    </div>
+
+    <h3>Fale com um Advisor</h3>
+    <p class="wa-gate-sub">Preencha para iniciar a conversa no WhatsApp com nosso time.</p>
+
+    <form id="wa-gate-form" novalidate>
+      <div class="wa-gate-field">
+        <label for="wa-gate-nome">Nome</label>
+        <input type="text" id="wa-gate-nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+      </div>
+
+      <div class="wa-gate-field">
+        <label for="wa-gate-email">E-mail</label>
+        <input type="email" id="wa-gate-email" name="email" placeholder="seu@email.com" required autocomplete="email">
+      </div>
+
+      <div class="wa-gate-field">
+        <label for="wa-gate-whatsapp">WhatsApp</label>
+        <input type="tel" id="wa-gate-whatsapp" name="whatsapp" placeholder="(21) 99999-9999" required autocomplete="tel">
+      </div>
+
+      <div class="wa-gate-field">
+        <label>Ja investe em cripto?</label>
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <button type="button" class="wa-gate-toggle" data-value="Sim" style="flex:1;padding:10px;border-radius:8px;border:1px solid #2a2f38;background:#0D1117;color:#fff;font-family:var(--font);font-size:0.9rem;font-weight:600;cursor:pointer;transition:border-color 0.2s,background 0.2s;">Sim</button>
+          <button type="button" class="wa-gate-toggle" data-value="N&atilde;o" style="flex:1;padding:10px;border-radius:8px;border:1px solid #2a2f38;background:#0D1117;color:#fff;font-family:var(--font);font-size:0.9rem;font-weight:600;cursor:pointer;transition:border-color 0.2s,background 0.2s;">N&atilde;o</button>
+        </div>
+        <input type="hidden" id="wa-gate-cripto" name="cripto" value="">
+      </div>
+
+      <button type="submit" class="wa-gate-submit" id="wa-gate-submit">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#000"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.773.467 3.476 1.354 4.977L2 22l5.178-1.354A10.003 10.003 0 0012.004 22C17.53 22 22 17.523 22 12.004 22 6.477 17.53 2 12.004 2zm0 18.29a8.283 8.283 0 01-4.218-1.157l-.302-.18-3.073.805.82-2.994-.197-.31A8.286 8.286 0 013.71 12.004C3.71 7.42 7.42 3.71 12.004 3.71c4.58 0 8.286 3.71 8.286 8.294 0 4.584-3.706 8.286-8.286 8.286z" fill="#000"/></svg>
+        Continuar para o WhatsApp
+      </button>
+
+      <p class="wa-gate-error" id="wa-gate-error"></p>
+    </form>
+
+    <button type="button" class="wa-gate-skip" id="wa-gate-skip">Prefiro ir direto</button>
+
+    <p class="wa-gate-lock">Seus dados sao usados exclusivamente para contato. Art. 7, II da LGPD.</p>
+  </div>
+</div>
+
+<script>
+/* ── WhatsApp Gate Logic ── */
+(function(){
+  var WA_URL = 'https://wa.me/5521965622891?text=Ol%C3%A1%2C%20vim%20pelo%20v%C3%ADdeo%20sobre%20%22sem%20tempo%20pra%20acompanhar%20o%20mercado%22%20e%20quero%20falar%20com%20um%20Advisor.';
+  var RD_API_KEY = 'bc2df20b157ec364568de6de25e33fea';
+
+  var overlay    = document.getElementById('wa-gate-overlay');
+  var closeBtn   = document.getElementById('wa-gate-close');
+  var skipBtn    = document.getElementById('wa-gate-skip');
+  var gateForm   = document.getElementById('wa-gate-form');
+  var gateNome   = document.getElementById('wa-gate-nome');
+  var gateEmail  = document.getElementById('wa-gate-email');
+  var gateWpp    = document.getElementById('wa-gate-whatsapp');
+  var gateCripto = document.getElementById('wa-gate-cripto');
+  var gateSubmit = document.getElementById('wa-gate-submit');
+  var gateError  = document.getElementById('wa-gate-error');
+  var toggleBtns = document.querySelectorAll('.wa-gate-toggle');
+
+  if (!overlay) return;
+
+  /* UTM helper */
+  function getCookie(name) {
+    var v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? decodeURIComponent(v.pop()) : '';
+  }
+
+  /* Mascara WhatsApp (XX) XXXXX-XXXX */
+  if (gateWpp) {
+    gateWpp.addEventListener('input', function() {
+      var raw = this.value.replace(/\D/g, '').slice(0, 11);
+      if (raw.length === 0) { this.value = ''; return; }
+      var f;
+      if      (raw.length <= 2)  f = '(' + raw;
+      else if (raw.length <= 6)  f = '(' + raw.slice(0,2) + ') ' + raw.slice(2);
+      else if (raw.length <= 10) f = '(' + raw.slice(0,2) + ') ' + raw.slice(2,6) + '-' + raw.slice(6);
+      else                       f = '(' + raw.slice(0,2) + ') ' + raw.slice(2,7) + '-' + raw.slice(7);
+      this.value = f;
+    });
+  }
+
+  /* Toggle Sim/Nao */
+  toggleBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      toggleBtns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      gateCripto.value = this.dataset.value;
+    });
+  });
+
+  /* Open modal — global function called by avatar-float and btn-wa-post */
+  window.openWaGate = function(ctaId) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'whatsapp_click', cta_id: ctaId, section: 'wa_gate' });
+    overlay.classList.add('active');
+    setTimeout(function() { gateNome.focus(); }, 200);
+  };
+
+  /* Close modal */
+  function closeModal() { overlay.classList.remove('active'); }
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  /* Skip — vai direto pro WA sem capturar */
+  skipBtn.addEventListener('click', function() {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'wa_gate_skip', cta_id: 'wa_gate_youtube_tema2' });
+    closeModal();
+    window.open(WA_URL, '_blank');
+  });
+
+  /* Submit — envia pro RD Marketing e depois abre WA */
+  gateForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    gateError.style.display = 'none';
+
+    var nome      = gateNome.value.trim();
+    var email     = gateEmail.value.trim();
+    var wppDigits = gateWpp.value.replace(/\D/g, '');
+    var cripto    = gateCripto.value;
+
+    if (!nome) {
+      gateError.textContent = 'Informe seu nome.';
+      gateError.style.display = 'block';
+      return;
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      gateError.textContent = 'Informe um e-mail valido.';
+      gateError.style.display = 'block';
+      return;
+    }
+    if (wppDigits.length < 10) {
+      gateError.textContent = 'Informe seu WhatsApp com DDD.';
+      gateError.style.display = 'block';
+      return;
+    }
+    if (!cripto) {
+      gateError.textContent = 'Informe se ja investe em cripto.';
+      gateError.style.display = 'block';
+      return;
+    }
+
+    gateSubmit.disabled = true;
+    gateSubmit.textContent = 'Enviando...';
+
+    var payload = {
+      event_type: 'CONVERSION',
+      event_family: 'CDP',
+      payload: {
+        conversion_identifier: 'wa_gate_youtube_tema2',
+        name:  nome,
+        email: email,
+        mobile_phone: '+55' + wppDigits,
+        tags:  ['whatsapp-gate-youtube-tema2'],
+        cf_ja_investe_em_criptoativos: cripto,
+        traffic_source:   getCookie('boost_utm_source')   || 'direct',
+        traffic_medium:   getCookie('boost_utm_medium')   || 'none',
+        traffic_campaign: getCookie('boost_utm_campaign') || undefined,
+        traffic_value:    getCookie('boost_utm_content')  || undefined,
+        cf_utm_source:    getCookie('boost_utm_source')   || 'direct',
+        cf_utm_medium:    getCookie('boost_utm_medium')   || 'none',
+        cf_utm_campaign:  getCookie('boost_utm_campaign') || undefined,
+        cf_utm_content:   getCookie('boost_utm_content')  || undefined
+      }
+    };
+
+    fetch('https://api.rd.services/platform/conversions?api_key=' + RD_API_KEY, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r) {
+      return r.text().then(function(body) {
+        if (!r.ok) throw new Error('HTTP ' + r.status + ': ' + body);
+      });
+    })
+    .then(function() {
+      var eventId = 'wa_gate_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event:      'wa_gate_lead',
+        form_id:    'wa_gate_youtube_tema2',
+        event_id:   eventId,
+        user_email: email,
+        user_phone: '55' + wppDigits,
+        user_name:  nome
+      });
+      closeModal();
+      window.open(WA_URL, '_blank');
+    })
+    .catch(function(err) {
+      console.error('Erro wa-gate:', err.message);
+      gateError.textContent = 'Erro ao enviar. Tente novamente.';
+      gateError.style.display = 'block';
+      gateSubmit.disabled = false;
+      gateSubmit.textContent = 'Continuar para o WhatsApp';
+    });
+  });
+})();
+</script>
+
 </body>
 </html>

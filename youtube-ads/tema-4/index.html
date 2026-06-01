@@ -593,7 +593,7 @@ section{padding:80px 0;}
 
           <p style="font-size:16px;color:var(--text-secondary);text-align:center;margin-bottom:16px;">Quer adiantar? Envie detalhes da sua carteira pelo WhatsApp:</p>
 
-          <a href="https://wa.me/5521965622891" class="btn-wa" id="btn-wa-post" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'post_submit'});">
+          <a href="javascript:void(0)" class="btn-wa" id="btn-wa-post" rel="noopener" onclick="openWaGate('post_submit');">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Conversar pelo WhatsApp &rarr;
           </a>
@@ -807,7 +807,7 @@ section{padding:80px 0;}
 
 <!-- Avatar flutuante WhatsApp -->
 <!-- Avatar flutuante — mascote sem circulo -->
-<a href="https://wa.me/5521965622891?text=Ol%C3%A1%2C%20vim%20pelo%20v%C3%ADdeo%20do%20YouTube%20sobre%20%22regras%20de%20sa%C3%ADda%22%20e%20gostaria%20de%20falar%20com%20um%20Advisor." class="avatar-float" target="_blank" rel="noopener" onclick="dataLayer.push({event:'whatsapp_click',cta_id:'avatar_float'});">
+<a href="javascript:void(0)" class="avatar-float" rel="noopener" onclick="openWaGate('avatar_float');">
   <div class="avatar-float-pill">
     <span class="avatar-float-name">Fale com um Advisor</span>
     <span class="avatar-float-wa">
@@ -1180,6 +1180,350 @@ window.addEventListener('scroll',function(){
     });
     var fc=document.getElementById('f-cripto');if(fc)fc.value='não';
   }
+})();
+</script>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<!-- WA Gate Modal — WhatsApp lead capture before redirect        -->
+<!-- ══════════════════════════════════════════════════════════════ -->
+<style>
+/* ── Modal WhatsApp Gate ── */
+.wa-gate-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.wa-gate-overlay.active { display: flex; }
+
+.wa-gate-modal {
+  background: #161B22;
+  border: 1px solid #2a2f38;
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+}
+.wa-gate-modal .wa-gate-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #8b949e;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+}
+.wa-gate-modal .wa-gate-close:hover { color: #fff; }
+.wa-gate-modal .wa-gate-icon {
+  width: 48px;
+  height: 48px;
+  background: #25D366;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.wa-gate-modal h3 {
+  color: #fff;
+  font-size: 1.25rem;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+.wa-gate-modal .wa-gate-sub {
+  color: #8b949e;
+  font-size: 0.85rem;
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+}
+.wa-gate-modal .wa-gate-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.wa-gate-modal .wa-gate-field label {
+  color: #8b949e;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+.wa-gate-modal .wa-gate-field input {
+  background: #0D1117;
+  border: 1px solid #2a2f38;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.wa-gate-modal .wa-gate-field input:focus {
+  border-color: #19c6b5;
+}
+.wa-gate-modal .wa-gate-field input::placeholder {
+  color: #555;
+}
+.wa-gate-modal .wa-gate-toggle-group {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.wa-gate-modal .wa-gate-toggle-group label {
+  color: #8b949e;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+.wa-gate-modal .wa-gate-toggle {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #2a2f38;
+  border-radius: 8px;
+  background: #0D1117;
+  color: #8b949e;
+  font-size: 0.9rem;
+  font-family: var(--font);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.wa-gate-modal .wa-gate-toggle.active {
+  border-color: #19c6b5 !important;
+  background: rgba(25,198,181,0.12) !important;
+  color: #19c6b5 !important;
+}
+.wa-gate-modal .wa-gate-toggle:hover {
+  border-color: #8b949e !important;
+}
+.wa-gate-modal .wa-gate-submit {
+  width: 100%;
+  background: #25D366;
+  color: #000;
+  font-weight: 800;
+  font-size: 0.95rem;
+  font-family: var(--font);
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+.wa-gate-modal .wa-gate-submit:hover { opacity: 0.9; }
+.wa-gate-modal .wa-gate-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.wa-gate-modal .wa-gate-error {
+  color: #f85149;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 8px;
+  display: none;
+}
+.wa-gate-modal .wa-gate-skip {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  color: #8b949e;
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font);
+}
+.wa-gate-modal .wa-gate-skip:hover { color: #fff; }
+.wa-gate-modal .wa-gate-lock {
+  text-align: center;
+  margin-top: 14px;
+  font-size: 0.7rem;
+  color: #2a2f38;
+}
+</style>
+
+<!-- WA Gate Modal HTML -->
+<div class="wa-gate-overlay" id="wa-gate-overlay">
+  <div class="wa-gate-modal">
+    <button class="wa-gate-close" onclick="closeWaGate();">&times;</button>
+    <div class="wa-gate-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+    </div>
+    <h3>Fale com um Advisor</h3>
+    <p class="wa-gate-sub">Preencha para o Advisor j&aacute; ter contexto antes de conversar com voc&ecirc;.</p>
+
+    <form id="wa-gate-form" onsubmit="return submitWaGate(event);">
+      <div class="wa-gate-field">
+        <label for="wg-nome">Nome</label>
+        <input type="text" id="wg-nome" name="name" placeholder="Seu nome" required autocomplete="given-name">
+      </div>
+      <div class="wa-gate-field">
+        <label for="wg-email">E-mail</label>
+        <input type="email" id="wg-email" name="email" placeholder="seu@email.com" required autocomplete="email">
+      </div>
+      <div class="wa-gate-field">
+        <label for="wg-whatsapp">WhatsApp</label>
+        <input type="tel" id="wg-whatsapp" name="mobile_phone" placeholder="(11) 99999-9999" required autocomplete="tel">
+      </div>
+      <div class="wa-gate-toggle-group">
+        <div style="width:100%;">
+          <label>J&aacute; investe em cripto?</label>
+          <div style="display:flex;gap:8px;" id="wg-cripto-toggles">
+            <button type="button" class="wa-gate-toggle" data-val="Sim" onclick="setWgToggle(this);">Sim</button>
+            <button type="button" class="wa-gate-toggle" data-val="N&atilde;o" onclick="setWgToggle(this);">N&atilde;o</button>
+          </div>
+          <input type="hidden" id="wg-cripto" name="cf_ja_investe_em_criptoativos" value="">
+        </div>
+      </div>
+      <button type="submit" class="wa-gate-submit" id="wg-submit" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        Abrir WhatsApp
+      </button>
+      <div class="wa-gate-error" id="wg-error">Erro ao enviar. Tente novamente.</div>
+    </form>
+    <button class="wa-gate-skip" onclick="skipWaGate();">Prefiro ir direto</button>
+    <div class="wa-gate-lock">Seus dados est&atilde;o seguros e n&atilde;o ser&atilde;o compartilhados.</div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+var WA_URL='https://wa.me/5521965622891?text=Ol%C3%A1%2C%20vim%20pelo%20v%C3%ADdeo%20sobre%20%22regras%20de%20sa%C3%ADda%22%20e%20quero%20falar%20com%20um%20Advisor.';
+var waGateCta='';
+
+/* Read boost_utm_* cookies */
+function gC(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?decodeURIComponent(m.pop()):'';}
+
+window.openWaGate=function(ctaId){
+  waGateCta=ctaId||'';
+  document.getElementById('wa-gate-overlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){document.getElementById('wg-nome').focus();},100);
+};
+
+window.closeWaGate=function(){
+  document.getElementById('wa-gate-overlay').classList.remove('active');
+  document.body.style.overflow='';
+};
+
+/* Close on overlay click */
+document.getElementById('wa-gate-overlay').addEventListener('click',function(e){
+  if(e.target===this)closeWaGate();
+});
+
+/* Close on Escape */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&document.getElementById('wa-gate-overlay').classList.contains('active'))closeWaGate();
+});
+
+/* Toggle Sim/Nao */
+window.setWgToggle=function(btn){
+  document.querySelectorAll('#wg-cripto-toggles .wa-gate-toggle').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  /* Decode HTML entity for proper value */
+  var raw=btn.getAttribute('data-val');
+  var tmp=document.createElement('span');tmp.innerHTML=raw;
+  document.getElementById('wg-cripto').value=tmp.textContent;
+  checkWgForm();
+};
+
+/* WhatsApp mask */
+var wgPhone=document.getElementById('wg-whatsapp');
+wgPhone.addEventListener('input',function(){
+  var r=this.value.replace(/\D/g,'').slice(0,11),f='';
+  if(!r){this.value='';checkWgForm();return;}
+  if(r.length<=2)f='('+r;
+  else if(r.length<=6)f='('+r.slice(0,2)+') '+r.slice(2);
+  else if(r.length<=10)f='('+r.slice(0,2)+') '+r.slice(2,6)+'-'+r.slice(6);
+  else f='('+r.slice(0,2)+') '+r.slice(2,7)+'-'+r.slice(7);
+  this.value=f;
+  checkWgForm();
+});
+
+/* Also check form on input for name/email */
+['wg-nome','wg-email'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',checkWgForm);
+});
+
+function checkWgForm(){
+  var nome=document.getElementById('wg-nome').value.trim();
+  var email=document.getElementById('wg-email').value.trim();
+  var phone=document.getElementById('wg-whatsapp').value.replace(/\D/g,'');
+  var cripto=document.getElementById('wg-cripto').value;
+  var valid=nome.length>1&&email.indexOf('@')>0&&phone.length>=10&&cripto!=='';
+  document.getElementById('wg-submit').disabled=!valid;
+}
+
+window.submitWaGate=function(e){
+  e.preventDefault();
+  var btn=document.getElementById('wg-submit');
+  var errEl=document.getElementById('wg-error');
+  errEl.style.display='none';
+  btn.disabled=true;
+  btn.textContent='Enviando...';
+
+  var nome=document.getElementById('wg-nome').value.trim();
+  var email=document.getElementById('wg-email').value.trim();
+  var phoneRaw=document.getElementById('wg-whatsapp').value.replace(/\D/g,'');
+  var cripto=document.getElementById('wg-cripto').value;
+
+  var payload={
+    api_key:'bc2df20b157ec364568de6de25e33fea',
+    conversion_identifier:'wa_gate_youtube_tema4',
+    name:nome,
+    email:email,
+    mobile_phone:'+55'+phoneRaw,
+    tags:['whatsapp-gate-youtube-tema4'],
+    cf_ja_investe_em_criptoativos:cripto,
+    traffic_source:gC('boost_utm_source')||'',
+    traffic_medium:gC('boost_utm_medium')||'',
+    traffic_campaign:gC('boost_utm_campaign')||'',
+    traffic_value:gC('boost_utm_content')||''
+  };
+
+  fetch('https://api.rd.services/platform/conversions',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({event_type:'CONVERSION',event_family:'CDP',payload:payload})
+  }).then(function(r){
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    dataLayer.push({event:'wa_gate_lead',cta_id:waGateCta,method:'form'});
+    closeWaGate();
+    window.open(WA_URL,'_blank');
+  }).catch(function(){
+    errEl.style.display='block';
+    btn.disabled=false;
+    btn.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="#000"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg> Abrir WhatsApp';
+  });
+
+  return false;
+};
+
+window.skipWaGate=function(){
+  dataLayer.push({event:'wa_gate_skip',cta_id:waGateCta,method:'skip'});
+  closeWaGate();
+  window.open(WA_URL,'_blank');
+};
+
 })();
 </script>
 </body>
