@@ -1494,10 +1494,14 @@ window.submitWaGate=function(e){
     mobile_phone:'+55'+phoneRaw,
     tags:['whatsapp-gate-youtube-tema4'],
     cf_ja_investe_em_criptoativos:cripto,
-    traffic_source:gC('boost_utm_source')||'',
-    traffic_medium:gC('boost_utm_medium')||'',
-    traffic_campaign:gC('boost_utm_campaign')||'',
-    traffic_value:gC('boost_utm_content')||''
+    traffic_source:gC('boost_utm_source')||'direct',
+    traffic_medium:gC('boost_utm_medium')||'none',
+    traffic_campaign:gC('boost_utm_campaign')||undefined,
+    traffic_value:gC('boost_utm_content')||undefined,
+    cf_utm_source:gC('boost_utm_source')||'direct',
+    cf_utm_medium:gC('boost_utm_medium')||'none',
+    cf_utm_campaign:gC('boost_utm_campaign')||undefined,
+    cf_utm_content:gC('boost_utm_content')||undefined
   };
 
   fetch('https://api.rd.services/platform/conversions',{
