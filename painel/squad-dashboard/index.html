@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boost Research — Painel Unificado de Agentes</title>
 <style>
-:root{--bg:#0a0a0a;--card:#141414;--border:#222;--green:#00C853;--teal:#03E4D0;--blue:#448AFF;--purple:#B388FF;--orange:#FF9100;--red:#FF5252;--gold:#FFD600;--text:#E0E0E0;--dim:#666;--white:#fff}
+:root{--bg:#0a0a0a;--card:#141414;--border:#222;--green:#00C853;--teal:#03E4D0;--blue:#448AFF;--purple:#B388FF;--orange:#FF9100;--red:#FF5252;--gold:#FFD600;--text:#E0E0E0;--dim:#666;--white:#fff;--pink:#FF4081}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);padding:24px;min-height:100vh}
 h1{font-size:22px;color:var(--white);margin-bottom:4px}
 .sub{color:var(--dim);font-size:13px;margin-bottom:20px}
 
 /* Stats */
-.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:24px}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:24px}
 .stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
 .sv{font-size:24px;font-weight:800}.sl{font-size:9px;color:var(--dim);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
 
@@ -62,6 +62,12 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 .gate{color:var(--red);font-weight:700}
 .validate{color:var(--orange);font-weight:600}
 
+/* Squad filter */
+.squad-filter{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.squad-chip{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--dim);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.5px}
+.squad-chip:hover{border-color:var(--teal);color:var(--teal)}
+.squad-chip.active{border-color:var(--teal);background:rgba(3,228,208,.1);color:var(--teal)}
+
 /* Agent grid */
 .agent-section-title{font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:2px;margin:24px 0 12px;display:none}
 .agent-section-title.visible{display:block}
@@ -84,6 +90,7 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 .tag-red{background:rgba(255,82,82,.12);color:var(--red)}
 .tag-gold{background:rgba(255,214,0,.12);color:var(--gold)}
 .tag-teal{background:rgba(3,228,208,.12);color:var(--teal)}
+.tag-pink{background:rgba(255,64,129,.12);color:var(--pink)}
 .step-badge{position:absolute;top:8px;right:8px;background:var(--teal);color:var(--bg);font-size:10px;font-weight:800;width:22px;height:22px;border-radius:50%;display:none;align-items:center;justify-content:center}
 .agent-card.highlight .step-badge{display:flex}
 .report-line{font-size:10px;color:var(--dim);margin-top:6px}
@@ -97,7 +104,7 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 .detail-section h3{font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
 .detail-section ul{list-style:none;padding:0}
 .detail-section li{font-size:13px;color:var(--text);padding:4px 0;border-bottom:1px solid rgba(255,255,255,.03)}
-.detail-section li:before{content:"→ ";color:var(--teal)}
+.detail-section li:before{content:"\2192 ";color:var(--teal)}
 
 /* Command */
 .cmd-box{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-family:'SF Mono',Monaco,monospace;font-size:12px;color:var(--teal);line-height:1.6;cursor:pointer;transition:border-color .2s;margin-top:8px}
@@ -116,14 +123,15 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 <body>
 
 <h1>Boost Research — Painel Unificado de Agentes</h1>
-<p class="sub">40 agentes (29 squad + 11 AIOX) | 10 fluxos de trabalho | Knowledge Base BOOST.md | Boost Research</p>
+<p class="sub">62 agentes | 8 squads | 12 fluxos de trabalho | Knowledge Base BOOST.md</p>
 
 <div class="stats">
-  <div class="stat"><div class="sv" style="color:var(--teal)">40</div><div class="sl">Agentes</div></div>
-  <div class="stat"><div class="sv" style="color:var(--green)">10</div><div class="sl">Fluxos</div></div>
-  <div class="stat"><div class="sv" style="color:var(--blue)">5</div><div class="sl">Squads</div></div>
+  <div class="stat"><div class="sv" style="color:var(--teal)">62</div><div class="sl">Agentes</div></div>
+  <div class="stat"><div class="sv" style="color:var(--green)">12</div><div class="sl">Fluxos</div></div>
+  <div class="stat"><div class="sv" style="color:var(--blue)">8</div><div class="sl">Squads</div></div>
   <div class="stat"><div class="sv" style="color:var(--red)">3</div><div class="sl">Gates</div></div>
   <div class="stat"><div class="sv" style="color:var(--gold)">2</div><div class="sl">Orquestradores</div></div>
+  <div class="stat"><div class="sv" style="color:var(--purple)">3</div><div class="sl">Novos Squads</div></div>
 </div>
 
 <!-- MANUAL RAPIDO -->
@@ -140,6 +148,8 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
         <li>Revisar criativos e compliance</li>
         <li>Configurar tracking (GTM, pixels, CAPI)</li>
         <li>E-mail marketing e nurturing (RD Station)</li>
+        <li>CRM, qualificacao e reativacao de leads</li>
+        <li>Producao de video (roteiro a pos)</li>
       </ul>
     </div>
     <div class="manual-col col-blue">
@@ -156,7 +166,7 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
     </div>
   </div>
   <div class="manual-rule">
-    Vai <strong>OPERAR</strong> marketing? → <strong>Squad Boost</strong> &nbsp;|&nbsp; Vai <strong>CONSTRUIR</strong> software? → <strong>AIOX</strong>
+    Vai <strong>OPERAR</strong> marketing? &rarr; <strong>Squad Boost</strong> &nbsp;|&nbsp; Vai <strong>CONSTRUIR</strong> software? &rarr; <strong>AIOX</strong> &nbsp;|&nbsp; Vai <strong>VENDER</strong> no CRM? &rarr; <strong>RD CRM Squad</strong>
   </div>
 </div>
 
@@ -172,45 +182,75 @@ h1{font-size:22px;color:var(--white);margin-bottom:4px}
 <!-- DETAIL PANEL -->
 <div class="detail-panel" id="detailPanel"></div>
 
+<!-- SQUAD FILTER -->
+<div class="squad-filter" id="squadFilter"></div>
+
 <!-- AGENT GRID -->
 <div id="agentContainer"></div>
 
 <div class="show-all"><button onclick="showAll()">Mostrar todos os agentes</button></div>
 
-<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Research v3.0 | 40 agentes (29 squad + 11 AIOX) | 10 fluxos | BOOST.md | 21/mai/2026</p>
+<p style="text-align:center;color:var(--dim);font-size:11px;margin-top:24px">Boost Research v4.0 | 62 agentes | 8 squads | 12 fluxos | 02/jun/2026</p>
 
 <script>
-const squadAgents = [
-  {id:"nexus",name:"Nexus",role:"Orquestrador Squad Boost",color:"var(--gold)",scope:"Orquestra demandas, delega, monitora status, sincroniza squads",tags:["orquestrador"],reports:"User",validates:"Todos Squad",responsibilities:["Recebe toda demanda do user","Decide qual agente executa","Garante validacao cruzada","Consolida status"],group:"squad"},
-  {id:"atlas-seo",name:"Atlas SEO",role:"SEO/GEO Strategist",color:"var(--teal)",scope:"SEO tecnico, GEO (AI Overviews), content strategy, schema, Core Web Vitals, 15 disciplinas",tags:["seo","geo","tecnico"],reports:"Nexus",validates:"Theo, Dev",responsibilities:["Auditoria tecnica completa","GEO (visibilidade em AI)","Schema markup","Content strategy (Hub & Spoke)","Core Web Vitals","Keyword research","Competitor analysis"],group:"squad"},
-  {id:"tati",name:"Tati",role:"CMO",color:"var(--blue)",scope:"Posicionamento, mix de canais, diretrizes de comunicacao",tags:["estrategia"],reports:"Nexus",validates:"Leo, Nina, Cris",responsibilities:["Visao macro de marketing","Posicionamento da marca","Mix de canais"],group:"squad"},
-  {id:"leo",name:"Leo",role:"Estrategista Comercial",color:"var(--blue)",scope:"Pricing, funil de venda, ofertas, posicionamento competitivo",tags:["estrategia","vendas"],reports:"Tati",validates:"Rick",responsibilities:["Estrategia de pricing","Design do funil","Unit economics"],group:"squad"},
-  {id:"nina",name:"Nina",role:"Pesquisa de Mercado",color:"var(--purple)",scope:"ICP, concorrentes, tendencias, validacao de hipoteses",tags:["pesquisa","icp"],reports:"Tati",validates:"",responsibilities:["Pesquisa de ICP","Analise de concorrentes","Tendencias de mercado"],group:"squad"},
-  {id:"gabi",name:"Gabi",role:"Product Manager",color:"var(--blue)",scope:"Roadmap produto digital, requisitos, Definition of Done",tags:["produto"],reports:"Nexus",validates:"Dev, Rafa",responsibilities:["Roadmap digital","Priorizacao","Definition of Done"],group:"squad"},
-  {id:"cris",name:"Cris",role:"Trafego / Media Buyer",color:"var(--green)",scope:"Media buying Meta/Google/LinkedIn, budget, lances, segmentacao, escala",tags:["midia","meta-ads"],reports:"Tati",validates:"",responsibilities:["Media buying","Gestao de budget","Segmentacao","Upload campanhas"],group:"squad"},
-  {id:"bruno",name:"Bruno",role:"Performance",color:"var(--green)",scope:"Atribuicao, incrementalidade, CPL/ROAS, analise de metricas",tags:["performance"],reports:"Tati",validates:"Rex, Dani",responsibilities:["Analise de metricas","Atribuicao","Otimizacao","Recomendacoes"],group:"squad"},
-  {id:"rex",name:"Rex",role:"Kill Rules",color:"var(--orange)",scope:"Regras kill/scale, alertas, framework de decisao (Mandali, Hubbard)",tags:["kill-rules"],reports:"Bruno",validates:"",responsibilities:["Kill rules automaticas","Alertas de corte","Decisao pausar/escalar"],group:"squad"},
-  {id:"zeca",name:"Zeca",role:"Hooks",color:"var(--orange)",scope:"Hooks video/copy, pattern interrupts, retencao 3s",tags:["hooks","criativo"],reports:"Helena",validates:"",responsibilities:["Hooks primeiros 3s","Pattern interrupts","A/B de aberturas"],group:"squad"},
-  {id:"helena",name:"Helena",role:"Diretora Criativa",color:"var(--purple)",scope:"Quality gate 15 pontos, brand consistency, validacao visual",tags:["brand","quality-gate"],reports:"Tati",validates:"Vera, Rafa, Zeca, Max",responsibilities:["Quality gate 15 pontos","Brand consistency","Validacao visual","Briefing pre-producao"],group:"squad"},
-  {id:"vera",name:"Vera",role:"Copywriter",color:"var(--purple)",scope:"Copy ads, LPs, e-mails, headlines, CTAs (4 livros + Icaro + Schwartz)",tags:["copy","ads"],reports:"Helena",validates:"",responsibilities:["Copy de ads","Copy de LPs e e-mails","Headlines e CTAs","Checklist 8 pontos"],group:"squad"},
-  {id:"max",name:"Max",role:"Redator Financeiro Elite",color:"var(--purple)",scope:"E-books, artigos, newsletters, whitepapers, analises, roteiros video",tags:["redacao","financas"],reports:"Helena",validates:"",responsibilities:["E-books e whitepapers","Artigos de mercado","Scripts de video","Conteudo regulatorio"],group:"squad"},
-  {id:"theo",name:"Theo",role:"Conteudo / SEO",color:"var(--purple)",scope:"Conteudo organico, blog, YouTube, SEO on-page",tags:["conteudo","seo"],reports:"Atlas SEO",validates:"",responsibilities:["Blog posts","YouTube content","SEO on-page"],group:"squad"},
-  {id:"otto",name:"Otto",role:"CRO",color:"var(--teal)",scope:"Testes A/B, analise funil, invalidacao de hipoteses",tags:["cro"],reports:"Gabi",validates:"",responsibilities:["Testes A/B","Analise de funil","Invalidacao de hipoteses"],group:"squad"},
-  {id:"rafa",name:"Rafa",role:"Designer UX/UI",color:"var(--teal)",scope:"UX de LPs, forms, quiz, dashboards, Track by Design",tags:["ux","design"],reports:"Gabi + Helena",validates:"",responsibilities:["Design de LPs","Diagramacao e-books","Track by Design"],group:"squad"},
-  {id:"tag",name:"Tag",role:"Rastreamento",color:"var(--red)",scope:"GTM web/SS, pixels, CAPI, GA4, cross-domain, UTMs",tags:["tracking","gtm"],reports:"Kai",validates:"",responsibilities:["GTM Server-Side","Meta Pixel + CAPI","UTMs","Prevencao Silent Deploys"],group:"squad"},
-  {id:"kai",name:"Kai",role:"Auditoria",color:"var(--red)",scope:"Auditoria tags, UTMs, taxonomia, QA eventos, PODER DE BLOQUEIO",tags:["auditoria","bloqueio"],reports:"Nexus",validates:"Tag, Enzo, Dev",responsibilities:["Checklist data quality","Auditoria UTMs","QA de tagueamento","PODER DE BLOQUEIO"],group:"squad"},
-  {id:"enzo",name:"Enzo",role:"Engenheiro de Dados",color:"var(--orange)",scope:"ETL, schema Supabase, pipelines, GitHub Actions, sync APIs",tags:["etl","pipeline"],reports:"Bruno",validates:"",responsibilities:["Schema Supabase","Pipelines ETL","GitHub Actions","Sync Meta/RD/LinkedIn"],group:"squad"},
-  {id:"dani",name:"Dani",role:"BI / Dados",color:"var(--blue)",scope:"Dashboards, SQL, cruzamento Meta+RD, relatorios, lead scoring",tags:["bi","dashboard"],reports:"Bruno",validates:"",responsibilities:["Dashboards","Queries SQL","Relatorios executivos","Lead scoring"],group:"squad"},
-  {id:"lia",name:"Lia",role:"Nutricao de Leads",color:"var(--green)",scope:"Estrategia nurturing, lead scoring, segmentacao, cadencia",tags:["nurturing"],reports:"Tati",validates:"Mel",responsibilities:["Estrategia de nurturing","Lead scoring","Regua de relacionamento"],group:"squad"},
-  {id:"mel",name:"Mel",role:"E-mail / Automacao",color:"var(--green)",scope:"E-mails RD Station, templates, deliverability, fluxos",tags:["e-mail","rd-station"],reports:"Lia",validates:"",responsibilities:["Templates de e-mail","Implementacao no RD","Fluxos de automacao"],group:"squad"},
-  {id:"rick",name:"Rick",role:"Closer / Sales",color:"var(--gold)",scope:"Scripts reuniao, objecoes, follow-up, playbook",tags:["vendas","closer"],reports:"Leo",validates:"",responsibilities:["Scripts de reuniao","Follow-up","Win/loss analysis"],group:"squad"},
-  {id:"juri",name:"Juri",role:"Compliance",color:"var(--red)",scope:"CVM/ANBIMA/LGPD, disclaimers, revisao claims, PODER DE VETO",tags:["compliance","veto"],reports:"Nexus",validates:"Vera, Max, Helena, Mel",responsibilities:["Revisao CVM/ANBIMA","LGPD","Disclaimers","PODER DE VETO"],group:"squad"},
-  {id:"dev",name:"Dev",role:"Desenvolvedor",color:"var(--teal)",scope:"HTML/CSS/JS, integracao RD, GTM tags, deploy Cloudflare/GitHub",tags:["dev","front-end"],reports:"Gabi",validates:"",responsibilities:["Implementacao de LPs","Integracao RD","Deploy"],group:"squad"},
-  {id:"aura",name:"Aura",role:"Brand Awareness",color:"var(--purple)",scope:"Mensuracao de marca, MMM, Share of Search, split brand/activation",tags:["brand","awareness"],reports:"Tati",validates:"Cris (split budget)",responsibilities:["Brand Score","Share of Search","Category Entry Points","Split brand vs activation"],group:"squad"},
-  {id:"greg",name:"Greg",role:"Google Ads + YouTube Ads",color:"var(--green)",scope:"Search, Display, YouTube, Performance Max, compliance Google",tags:["google-ads","youtube"],reports:"Cris",validates:"",responsibilities:["Campanhas Google Ads","YouTube Ads","Performance Max","Compliance Google"],group:"squad"},
-  {id:"cristiano",name:"Cristiano",role:"Creative Engine",color:"var(--orange)",scope:"Producao visual de criativos Meta Ads. Engine: PIL + HTML/CSS + Playwright. rembg, Depth Anything V2, rim light, color grading",tags:["criativo","producao","pil"],reports:"Helena",validates:"",responsibilities:["Gerar criativos pixel-perfect","Compositing foto + elementos","Screenshot HTML via Playwright","Validacao mobile-first (thumb test 200x200)"],group:"squad"},
-  {id:"lucas",name:"Lucas",role:"LinkedIn Ads",color:"var(--blue)",scope:"LinkedIn Ads, Conversation Ads, CAPI LinkedIn, segmentacao profissional",tags:["linkedin","ads"],reports:"Cris",validates:"",responsibilities:["Conversation Ads","LinkedIn CAPI","Segmentacao profissional","A/B flows"],group:"squad"},
-  // AIOX Framework Agents
+const agents = [
+  // ── SQUAD BOOST — GROWTH ────────────────────────────────────────────
+  {id:"nexus",name:"Nexus",role:"Orquestrador Squad Boost",color:"var(--gold)",scope:"Orquestra demandas, delega, monitora status, sincroniza squads",tags:["orquestrador"],reports:"User",validates:"Todos Squad",responsibilities:["Recebe toda demanda do user","Decide qual agente executa","Garante validacao cruzada","Consolida status"],group:"growth"},
+  {id:"atlas-seo",name:"Atlas SEO",role:"SEO/GEO Strategist",color:"var(--teal)",scope:"SEO tecnico, GEO (AI Overviews), content strategy, schema, Core Web Vitals, 15 disciplinas",tags:["seo","geo","tecnico"],reports:"Nexus",validates:"Theo, Dev",responsibilities:["Auditoria tecnica completa","GEO (visibilidade em AI)","Schema markup","Content strategy (Hub & Spoke)","Core Web Vitals","Keyword research"],group:"growth"},
+  {id:"tati",name:"Tati",role:"CMO",color:"var(--blue)",scope:"Posicionamento, mix de canais, diretrizes de comunicacao, Byron Sharp",tags:["estrategia"],reports:"Nexus",validates:"Leo, Nina, Cris",responsibilities:["Visao macro de marketing","Posicionamento da marca","Mix de canais"],group:"growth"},
+  {id:"leo",name:"Leo",role:"Estrategista Comercial",color:"var(--blue)",scope:"Pricing, funil de venda, ofertas, posicionamento competitivo, unit economics",tags:["estrategia","vendas"],reports:"Tati",validates:"Rick",responsibilities:["Estrategia de pricing","Design do funil","Unit economics"],group:"growth"},
+  {id:"nina",name:"Nina",role:"Pesquisa de Mercado",color:"var(--purple)",scope:"ICP, concorrentes, tendencias, validacao de hipoteses",tags:["pesquisa","icp"],reports:"Tati",validates:"",responsibilities:["Pesquisa de ICP","Analise de concorrentes","Tendencias de mercado"],group:"growth"},
+  {id:"gabi",name:"Gabi",role:"Product Manager",color:"var(--blue)",scope:"Roadmap produto digital, requisitos, Definition of Done",tags:["produto"],reports:"Nexus",validates:"Dev, Rafa",responsibilities:["Roadmap digital","Priorizacao","Definition of Done"],group:"growth"},
+  {id:"cris",name:"Cris",role:"Trafego / Media Buyer",color:"var(--green)",scope:"Media buying Meta/Google/LinkedIn, budget, lances, segmentacao, escala",tags:["midia","meta-ads"],reports:"Tati",validates:"",responsibilities:["Media buying","Gestao de budget","Segmentacao","Upload campanhas"],group:"growth"},
+  {id:"bruno",name:"Bruno",role:"Performance",color:"var(--green)",scope:"Atribuicao, incrementalidade, CPL/ROAS, analise de metricas",tags:["performance"],reports:"Tati",validates:"Rex, Dani",responsibilities:["Analise de metricas","Atribuicao","Otimizacao","Recomendacoes"],group:"growth"},
+  {id:"rex",name:"Rex",role:"Kill Rules",color:"var(--orange)",scope:"Regras kill/scale, alertas, framework de decisao (Mandali, Hubbard)",tags:["kill-rules"],reports:"Bruno",validates:"",responsibilities:["Kill rules automaticas","Alertas de corte","Decisao pausar/escalar"],group:"growth"},
+  {id:"otto",name:"Otto",role:"CRO",color:"var(--teal)",scope:"Testes A/B, analise funil, invalidacao de hipoteses",tags:["cro"],reports:"Gabi",validates:"",responsibilities:["Testes A/B","Analise de funil","Invalidacao de hipoteses"],group:"growth"},
+  {id:"rafa",name:"Rafa",role:"Designer UX/UI",color:"var(--teal)",scope:"UX de LPs, forms, quiz, dashboards, Track by Design",tags:["ux","design"],reports:"Gabi + Helena",validates:"",responsibilities:["Design de LPs","Diagramacao e-books","Track by Design"],group:"growth"},
+  {id:"tag",name:"Tag",role:"Rastreamento",color:"var(--red)",scope:"GTM web/SS, pixels, CAPI, GA4, cross-domain, UTMs",tags:["tracking","gtm"],reports:"Kai",validates:"",responsibilities:["GTM Server-Side","Meta Pixel + CAPI","UTMs","Prevencao Silent Deploys"],group:"growth"},
+  {id:"kai",name:"Kai",role:"Auditoria",color:"var(--red)",scope:"Auditoria tags, UTMs, taxonomia, QA eventos, PODER DE BLOQUEIO",tags:["auditoria","bloqueio"],reports:"Nexus",validates:"Tag, Enzo, Dev",responsibilities:["Checklist data quality","Auditoria UTMs","QA de tagueamento","PODER DE BLOQUEIO"],group:"growth"},
+  {id:"enzo",name:"Enzo",role:"Engenheiro de Dados",color:"var(--orange)",scope:"ETL, schema Supabase, pipelines, GitHub Actions, sync APIs",tags:["etl","pipeline"],reports:"Bruno",validates:"",responsibilities:["Schema Supabase","Pipelines ETL","GitHub Actions","Sync Meta/RD/LinkedIn"],group:"growth"},
+  {id:"dani",name:"Dani",role:"BI / Dados",color:"var(--blue)",scope:"Dashboards, SQL, cruzamento Meta+RD, relatorios, lead scoring",tags:["bi","dashboard"],reports:"Bruno",validates:"",responsibilities:["Dashboards","Queries SQL","Relatorios executivos","Lead scoring"],group:"growth"},
+  {id:"lia",name:"Lia",role:"Nutricao de Leads",color:"var(--green)",scope:"Estrategia nurturing, lead scoring, segmentacao, cadencia",tags:["nurturing"],reports:"Tati",validates:"Mel",responsibilities:["Estrategia de nurturing","Lead scoring","Regua de relacionamento"],group:"growth"},
+  {id:"mel",name:"Mel",role:"E-mail / Automacao",color:"var(--green)",scope:"E-mails RD Station, templates, deliverability, fluxos",tags:["e-mail","rd-station"],reports:"Lia",validates:"",responsibilities:["Templates de e-mail","Implementacao no RD","Fluxos de automacao"],group:"growth"},
+  {id:"rick",name:"Rick",role:"Closer / Sales",color:"var(--gold)",scope:"Scripts reuniao, objecoes, follow-up, playbook",tags:["vendas","closer"],reports:"Leo",validates:"",responsibilities:["Scripts de reuniao","Follow-up","Win/loss analysis"],group:"growth"},
+  {id:"juri",name:"Juri",role:"Compliance",color:"var(--red)",scope:"CVM/ANBIMA/LGPD, disclaimers, revisao claims, PODER DE VETO",tags:["compliance","veto"],reports:"Nexus",validates:"Vera, Max, Helena, Mel",responsibilities:["Revisao CVM/ANBIMA","LGPD","Disclaimers","PODER DE VETO"],group:"growth"},
+  {id:"dev",name:"Dev",role:"Desenvolvedor",color:"var(--teal)",scope:"HTML/CSS/JS, integracao RD, GTM tags, deploy Cloudflare/GitHub",tags:["dev","front-end"],reports:"Gabi",validates:"",responsibilities:["Implementacao de LPs","Integracao RD","Deploy"],group:"growth"},
+  {id:"aura",name:"Aura",role:"Brand Awareness",color:"var(--purple)",scope:"Mensuracao de marca, MMM, Share of Search, split brand/activation, Byron Sharp",tags:["brand","awareness"],reports:"Tati",validates:"Cris (split budget)",responsibilities:["Brand Score","Share of Search","Category Entry Points","Split brand vs activation"],group:"growth"},
+  {id:"greg",name:"Greg",role:"Google Ads + YouTube Ads",color:"var(--green)",scope:"Search, Display, YouTube, Performance Max, compliance Google",tags:["google-ads","youtube"],reports:"Cris",validates:"",responsibilities:["Campanhas Google Ads","YouTube Ads","Performance Max","Compliance Google"],group:"growth"},
+  {id:"lucas",name:"Lucas",role:"LinkedIn Ads",color:"var(--blue)",scope:"LinkedIn Ads, Conversation Ads, CAPI LinkedIn, segmentacao profissional",tags:["linkedin","ads"],reports:"Cris",validates:"",responsibilities:["Conversation Ads","LinkedIn CAPI","Segmentacao profissional","A/B flows"],group:"growth"},
+  {id:"rafa-rd",name:"Rafa RD",role:"Especialista RD Station",color:"var(--green)",scope:"RD Marketing + CRM + Conversas. Automacoes, integracao APIs, funil completo",tags:["rd-station","automacao"],reports:"Nexus",validates:"Mel, Lia",responsibilities:["RD Marketing completo","RD CRM integracao","RD Conversas / chatbot","Automacoes avancadas"],group:"growth"},
+
+  // ── SQUAD BOOST — CREATIVE ──────────────────────────────────────────
+  {id:"helena",name:"Helena",role:"Diretora Criativa",color:"var(--purple)",scope:"Quality gate 15 pontos, brand consistency, validacao visual",tags:["brand","quality-gate"],reports:"Tati",validates:"Vera, Rafa, Zeca, Max",responsibilities:["Quality gate 15 pontos","Brand consistency","Validacao visual","Briefing pre-producao"],group:"creative"},
+  {id:"vera",name:"Vera",role:"Copywriter",color:"var(--purple)",scope:"Copy ads, LPs, e-mails, headlines, CTAs (4 livros + Icaro + Schwartz)",tags:["copy","ads"],reports:"Helena",validates:"",responsibilities:["Copy de ads","Copy de LPs e e-mails","Headlines e CTAs","Checklist 8 pontos"],group:"creative"},
+  {id:"max",name:"Max",role:"Redator Financeiro Elite",color:"var(--purple)",scope:"E-books, artigos, newsletters, whitepapers, roteiros video, analises de mercado",tags:["redacao","financas"],reports:"Helena",validates:"",responsibilities:["E-books e whitepapers","Artigos de mercado","Scripts de video","Conteudo regulatorio"],group:"creative"},
+  {id:"theo",name:"Theo",role:"Conteudo / SEO",color:"var(--purple)",scope:"Conteudo organico, blog, YouTube, SEO on-page",tags:["conteudo","seo"],reports:"Atlas SEO",validates:"",responsibilities:["Blog posts","YouTube content","SEO on-page"],group:"creative"},
+  {id:"zeca",name:"Zeca",role:"Hooks",color:"var(--orange)",scope:"Hooks video/copy, pattern interrupts, retencao 3s",tags:["hooks","criativo"],reports:"Helena",validates:"",responsibilities:["Hooks primeiros 3s","Pattern interrupts","A/B de aberturas"],group:"creative"},
+  {id:"cristiano",name:"Cristiano",role:"Creative Engine",color:"var(--orange)",scope:"Producao visual de criativos Meta Ads. PIL + HTML/CSS + Playwright. rembg, color grading",tags:["criativo","producao","pil"],reports:"Helena",validates:"",responsibilities:["Gerar criativos pixel-perfect","Compositing foto + elementos","Screenshot HTML via Playwright","Validacao mobile-first"],group:"creative"},
+  {id:"diego",name:"Diego",role:"Diretor Criativo Video",color:"var(--purple)",scope:"Conceito criativo para video, estetica de marca, referencias visuais, anti-hype",tags:["video","direcao"],reports:"Helena",validates:"Caio, Marco",responsibilities:["Conceito criativo video","Estetica e referencias","Direcao de arte","Anti-hype visual"],group:"creative"},
+  {id:"caio",name:"Caio",role:"Diretor de Cena",color:"var(--orange)",scope:"Direcao de cena, enquadramento, iluminacao, estetica cinematografica",tags:["video","cena"],reports:"Diego",validates:"",responsibilities:["Direcao de cena","Enquadramento","Iluminacao","Estetica cinematografica"],group:"creative"},
+  {id:"marco",name:"Marco",role:"Roteirista",color:"var(--purple)",scope:"Roteiros video, storytelling, estrutura narrativa, teleprompter",tags:["roteiro","video"],reports:"Diego",validates:"",responsibilities:["Roteiros completos","Estrutura narrativa","Adaptacao teleprompter","Storytelling financeiro"],group:"creative"},
+  {id:"sam",name:"Sam",role:"Social Media",color:"var(--green)",scope:"Conteudo social, calendario editorial, stories, reels, engajamento",tags:["social","conteudo"],reports:"Tati",validates:"",responsibilities:["Calendario editorial","Stories e Reels","Engajamento","Trends e timing"],group:"creative"},
+
+  // ── PIXEL SQUAD ─────────────────────────────────────────────────────
+  {id:"pixel-analyst",name:"Pixel Analyst",role:"Analise de Referencia Visual",color:"var(--teal)",scope:"Specs pixel-perfect: extracao de coordenadas, cores, fontes, bounding boxes, hierarquia visual",tags:["pixel","analise"],reports:"Cristiano",validates:"",responsibilities:["Extracao de specs","Mapeamento de cores","Bounding boxes","Hierarquia visual (JSON)"],group:"pixel"},
+  {id:"pixel-composer",name:"Pixel Composer",role:"Composicao de Criativos",color:"var(--teal)",scope:"Render via Python/Pillow: monta criativos com assets reais, gradientes, tipografia",tags:["pixel","render"],reports:"Cristiano",validates:"",responsibilities:["Composicao PIL","Gradientes e tipografia","Formatos Feed/Story","Assets reais"],group:"pixel"},
+  {id:"pixel-qc",name:"Pixel QC",role:"Quality Check Criativos",color:"var(--red)",scope:"Checklist 12 pontos, comparacao lado a lado, aprovacao PASS/FAIL",tags:["pixel","qa"],reports:"Helena",validates:"Pixel Composer",responsibilities:["Checklist 12 pontos","Comparacao lado a lado","Aprovacao PASS/FAIL","Correcoes especificas"],group:"pixel"},
+
+  // ── RD CRM SQUAD ────────────────────────────────────────────────────
+  {id:"leo-crm",name:"Leo CRM",role:"Especialista RD CRM",color:"var(--pink)",scope:"Pipeline & sales operations, SPIN/Challenger, MEDDIC, arquitetura de pipelines",tags:["crm","pipeline"],reports:"Nexus",validates:"",responsibilities:["Arquitetura de pipelines","CRM operacional","SPIN/Challenger/MEDDIC","Automacao de vendas"],group:"rd-crm"},
+  {id:"bia",name:"Bia",role:"RD Conversas & Chatbot",color:"var(--pink)",scope:"Conversational marketing, NLP, fluxos de chatbot, handoff inteligente",tags:["chatbot","conversas"],reports:"Leo CRM",validates:"",responsibilities:["Fluxos de chatbot","Design conversacional","Atendimento automatico","Handoff inteligente"],group:"rd-crm"},
+  {id:"felipe",name:"Felipe",role:"Qualificacao & Segmentacao",color:"var(--pink)",scope:"Lead scoring comportamental, segmentacao, integracoes Meta+Google+LP, assertividade 94%",tags:["scoring","segmentacao"],reports:"Leo CRM",validates:"",responsibilities:["Lead scoring","Segmentacao avancada","Integracoes Meta+Google","Assertividade 94%"],group:"rd-crm"},
+  {id:"ana",name:"Ana",role:"Performance CRM",color:"var(--pink)",scope:"Revenue intelligence, dashboards de funil, metricas SaaS (MRR/Churn/LTV/CAC)",tags:["analytics","revenue"],reports:"Leo CRM",validates:"",responsibilities:["Dashboards de funil","Metricas SaaS","Diagnostico de gargalos","Revenue intelligence"],group:"rd-crm"},
+  {id:"gabi-crm",name:"Gabi CRM",role:"Email Marketing & Nurturing",color:"var(--pink)",scope:"3.000+ e-mails, automacao de nutricao, storytelling financeiro, CVM compliance",tags:["e-mail","nurturing"],reports:"Leo CRM",validates:"",responsibilities:["Templates de e-mail","Automacao de nutricao","Storytelling financeiro","CVM compliance"],group:"rd-crm"},
+  {id:"mari",name:"Mari",role:"Automacao RD Marketing",color:"var(--pink)",scope:"400+ fluxos, lead scoring, nutricao comportamental, integracoes RD+CRM+WhatsApp",tags:["automacao","fluxos"],reports:"Leo CRM",validates:"",responsibilities:["400+ fluxos implementados","Lead scoring automatico","Nutricao comportamental","Integracoes RD+CRM+WA"],group:"rd-crm"},
+  {id:"pedro",name:"Pedro",role:"Reativacao & Revenue Recovery",color:"var(--pink)",scope:"Win-back, recuperacao de leads perdidos, analise de motivo de saida, sequencias multicanal",tags:["reativacao","win-back"],reports:"Leo CRM",validates:"",responsibilities:["Recuperacao de leads","Analise de saida","Sequencias multicanal","Revenue recovery"],group:"rd-crm"},
+
+  // ── MARKETPLACE SQUAD ───────────────────────────────────────────────
+  {id:"hunter",name:"Hunter",role:"Pesquisador de Mercado",color:"var(--gold)",scope:"Validacao de nicho (ML/Shopee/TikTok Shop), Dream 100, Value Ladder, Russell Brunson/Hormozi",tags:["marketplace","pesquisa"],reports:"Nexus",validates:"",responsibilities:["Validacao de nicho com dados","Dream 100","Value Ladder","Starving Crowd"],group:"marketplace"},
+  {id:"stratego",name:"Stratego",role:"Go-to-Market Strategist",color:"var(--gold)",scope:"Roadmap 12 meses (validacao/tracao/escala), stack de produtos, Offer Design Hormozi/Brunson",tags:["marketplace","gtm"],reports:"Hunter",validates:"",responsibilities:["Roadmap 12 meses","Stack de produtos","Offer Design","Go-to-Market"],group:"marketplace"},
+
+  // ── AIOX FRAMEWORK ──────────────────────────────────────────────────
   {id:"dex",name:"Dex",role:"Dev (@dev)",color:"var(--blue)",scope:"Implementacao de codigo, HTML/CSS/JS, integracao APIs, scripts Python",tags:["aiox","dev"],reports:"AIOX Master",validates:"",responsibilities:["Implementar features","Scripts e automacoes","Integracoes API","Git commit"],group:"aiox"},
   {id:"quinn",name:"Quinn",role:"QA (@qa)",color:"var(--blue)",scope:"Testes, validacao, quality gates, bug reports",tags:["aiox","qa"],reports:"AIOX Master",validates:"Dex",responsibilities:["Testes unitarios","Validacao de tracking","Bug reports","Quality gates"],group:"aiox"},
   {id:"aria",name:"Aria",role:"Architect (@architect)",color:"var(--blue)",scope:"Arquitetura, decisoes tecnicas, design de sistema",tags:["aiox","arquitetura"],reports:"AIOX Master",validates:"Dex, Dara",responsibilities:["Decisoes de tecnologia","System design","Trade-offs arquiteturais"],group:"aiox"},
@@ -221,198 +261,97 @@ const squadAgents = [
   {id:"dara",name:"Dara",role:"Data Engineer (@data-engineer)",color:"var(--blue)",scope:"Database design, Supabase schema, migrations, RLS, queries",tags:["aiox","database"],reports:"Aria",validates:"",responsibilities:["Schema design","Migrations","RLS policies","Query optimization"],group:"aiox"},
   {id:"uma",name:"Uma",role:"UX Designer (@ux-design-expert)",color:"var(--blue)",scope:"UX/UI design, fluxos, wireframes, usabilidade",tags:["aiox","ux"],reports:"AIOX Master",validates:"",responsibilities:["UX flows","Wireframes","Usabilidade","Acessibilidade"],group:"aiox"},
   {id:"gage",name:"Gage",role:"DevOps (@devops)",color:"var(--blue)",scope:"CI/CD, git push, GitHub Actions, deploy Cloudflare, EXCLUSIVO para push",tags:["aiox","devops","exclusivo"],reports:"AIOX Master",validates:"",responsibilities:["Git push (EXCLUSIVO)","GitHub Actions","Deploy","CI/CD pipelines"],group:"aiox"},
-  {id:"aiox-master",name:"AIOX Master",role:"Orquestrador Framework (@aiox-master)",color:"var(--gold)",scope:"Governanca do framework AIOX, enforcement da Constitution, override de boundaries, mediacao entre agentes, executa qualquer task",tags:["aiox","orquestrador"],reports:"User",validates:"Todos AIOX",responsibilities:["Executa qualquer task diretamente","Enforcement constitucional","Override de boundaries","Mediacao de conflitos"],group:"aiox"}
+  {id:"aiox-master",name:"AIOX Master",role:"Orquestrador Framework (@aiox-master)",color:"var(--gold)",scope:"Governanca do framework AIOX, enforcement da Constitution, override de boundaries",tags:["aiox","orquestrador"],reports:"User",validates:"Todos AIOX",responsibilities:["Executa qualquer task","Enforcement constitucional","Override de boundaries","Mediacao de conflitos"],group:"aiox"}
 ];
 
-const agents = squadAgents;
+const groupLabels = {
+  growth: {label:"Squad Boost — Growth & Marketing",color:"var(--green)",count:0},
+  creative: {label:"Squad Boost — Creative & Content",color:"var(--purple)",count:0},
+  pixel: {label:"Pixel Squad — Producao Visual",color:"var(--teal)",count:0},
+  "rd-crm": {label:"RD CRM Squad — Vendas & Automacao",color:"var(--pink)",count:0},
+  marketplace: {label:"Marketplace Squad",color:"var(--gold)",count:0},
+  aiox: {label:"AIOX Framework — Desenvolvimento",color:"var(--blue)",count:0}
+};
+agents.forEach(a => { if(groupLabels[a.group]) groupLabels[a.group].count++; });
 
 const workflows = [
   {
-    id:"revisar-criativos",
-    icon:"\uD83C\uDFA8",
-    label:"Revisar Criativos",
-    desc:"Quais copys e criativos estao prontos?",
-    agents:["helena","vera","max","juri","rafa","zeca","orion"],
-    title:"Fluxo: Revisao de Criativos",
-    subdesc:"Helena lidera a revisao. Vera valida copy, Max valida conteudo financeiro, Juri checa compliance, Rafa valida visual, Zeca valida hooks.",
-    steps:[
-      {agent:"Helena",action:"Quality gate 15 pontos (brand + mensagem + craft)","gate":true},
-      {agent:"Vera",action:"Valida copy (Schwartz, Icaro, 4 livros, checklist 8 pontos)"},
-      {agent:"Max",action:"Valida dados financeiros, precisao tecnica, tom"},
-      {agent:"Juri",action:"Compliance CVM/ANBIMA, disclaimers","gate":true},
-      {agent:"Rafa",action:"Valida visual, safe zones, contraste, mobile-first"},
-      {agent:"Zeca",action:"Valida hooks (primeiros 3 segundos)"},
-      {agent:"Cristiano",action:"Produz criativo final (PIL + Playwright)"}
-    ]
+    id:"revisar-criativos",icon:"\uD83C\uDFA8",label:"Revisar Criativos",desc:"Copys, criativos, compliance",
+    agents:["helena","vera","max","juri","rafa","zeca","cristiano","pixel-qc"],
+    title:"Fluxo: Revisao de Criativos",subdesc:"Helena lidera. Vera valida copy, Max valida conteudo, Juri checa compliance, Rafa valida visual, Pixel QC checa producao.",
+    steps:[{agent:"Helena",action:"Quality gate 15 pontos",gate:true},{agent:"Vera",action:"Valida copy (Schwartz, Icaro, 4 livros)"},{agent:"Max",action:"Valida dados financeiros e tom"},{agent:"Juri",action:"Compliance CVM/ANBIMA",gate:true},{agent:"Rafa",action:"Valida visual, safe zones, mobile-first"},{agent:"Zeca",action:"Valida hooks (3 segundos)"},{agent:"Cristiano",action:"Produz criativo final (PIL + Playwright)"},{agent:"Pixel QC",action:"Checklist 12 pontos, PASS/FAIL",gate:true}]
   },
   {
-    id:"criar-campanha",
-    icon:"\uD83D\uDE80",
-    label:"Criar Campanha",
-    desc:"Do zero ao Meta Ads",
+    id:"criar-campanha",icon:"\uD83D\uDE80",label:"Criar Campanha",desc:"Do zero ao Meta Ads",
     agents:["nina","leo","vera","zeca","helena","juri","rafa","tag","kai","cris","rex","bruno"],
-    title:"Fluxo: Criar Campanha Nova",
-    subdesc:"12 etapas com validacao cruzada. Helena aprova criativo, Juri tem poder de veto, Kai pode bloquear se tracking estiver errado.",
-    steps:[
-      {agent:"Nina",action:"Pesquisa ICP e mercado"},
-      {agent:"Leo",action:"Estrategia comercial e posicionamento"},
-      {agent:"Vera",action:"Escreve copy"},
-      {agent:"Zeca",action:"Valida hooks (3 segundos)","validate":true},
-      {agent:"Helena",action:"Aprova criativo (quality gate 15 pontos)","gate":true},
-      {agent:"Juri",action:"Compliance check (PODER DE VETO)","gate":true},
-      {agent:"Rafa",action:"Design visual"},
-      {agent:"Tag",action:"Implementa tracking (GTM, UTMs, pixel)"},
-      {agent:"Kai",action:"Auditoria data quality (PODER DE BLOQUEIO)","gate":true},
-      {agent:"Cris",action:"Sobe campanha no Meta Ads"},
-      {agent:"Rex",action:"Configura kill rules"},
-      {agent:"Bruno",action:"Monitora performance"}
-    ]
+    title:"Fluxo: Criar Campanha Nova",subdesc:"12 etapas com validacao cruzada. Helena aprova criativo, Juri tem poder de veto, Kai pode bloquear.",
+    steps:[{agent:"Nina",action:"Pesquisa ICP e mercado"},{agent:"Leo",action:"Estrategia comercial"},{agent:"Vera",action:"Escreve copy"},{agent:"Zeca",action:"Valida hooks",validate:true},{agent:"Helena",action:"Aprova criativo (quality gate)",gate:true},{agent:"Juri",action:"Compliance (PODER DE VETO)",gate:true},{agent:"Rafa",action:"Design visual"},{agent:"Tag",action:"Tracking (GTM, UTMs, pixel)"},{agent:"Kai",action:"Auditoria data quality",gate:true},{agent:"Cris",action:"Sobe campanha no Meta Ads"},{agent:"Rex",action:"Configura kill rules"},{agent:"Bruno",action:"Monitora performance"}]
   },
   {
-    id:"analisar-performance",
-    icon:"\uD83D\uDCCA",
-    label:"Analisar Performance",
-    desc:"Metricas, CPL, qualificacao",
+    id:"analisar-performance",icon:"\uD83D\uDCCA",label:"Analisar Performance",desc:"Metricas, CPL, qualificacao",
     agents:["enzo","kai","dani","bruno","rex","cris"],
-    title:"Fluxo: Analise de Performance",
-    subdesc:"Enzo puxa dados, Kai valida qualidade, Dani monta dashboard, Bruno analisa e recomenda, Rex decide pausar/escalar.",
-    steps:[
-      {agent:"Enzo",action:"Puxa dados das APIs (Meta, RD, LinkedIn) e limpa"},
-      {agent:"Kai",action:"Valida qualidade dos dados","gate":true},
-      {agent:"Dani",action:"Monta dashboard / relatorio"},
-      {agent:"Bruno",action:"Analisa metricas e recomenda acoes"},
-      {agent:"Rex",action:"Aplica kill/scale rules"},
-      {agent:"Cris",action:"Executa ajustes no Meta Ads"}
-    ]
+    title:"Fluxo: Analise de Performance",subdesc:"Enzo puxa dados, Kai valida qualidade, Dani monta dashboard, Bruno analisa, Rex decide pausar/escalar.",
+    steps:[{agent:"Enzo",action:"Puxa dados APIs (Meta, RD, LinkedIn)"},{agent:"Kai",action:"Valida qualidade dos dados",gate:true},{agent:"Dani",action:"Monta dashboard / relatorio"},{agent:"Bruno",action:"Analisa metricas e recomenda"},{agent:"Rex",action:"Aplica kill/scale rules"},{agent:"Cris",action:"Executa ajustes no Meta Ads"}]
   },
   {
-    id:"produzir-conteudo",
-    icon:"\uD83D\uDCDD",
-    label:"Produzir Conteudo",
-    desc:"E-books, artigos, roteiros",
-    agents:["nina","max","vera","helena","juri","rafa","atlas-seo"],
-    title:"Fluxo: Producao de Conteudo",
-    subdesc:"Max escreve, Vera refina copy, Helena aprova, Juri checa compliance, Rafa diagrama, Atlas SEO otimiza para busca.",
-    steps:[
-      {agent:"Nina",action:"Pesquisa de tema e dados de mercado"},
-      {agent:"Max",action:"Escreve conteudo (e-book, artigo, roteiro)"},
-      {agent:"Vera",action:"Refina copy, headlines, CTAs"},
-      {agent:"Helena",action:"Aprova tom e brand consistency","gate":true},
-      {agent:"Juri",action:"Compliance CVM/ANBIMA, fontes, disclaimers","gate":true},
-      {agent:"Rafa",action:"Diagramacao visual (PDF, LP, thumbnail)"},
-      {agent:"Atlas SEO",action:"Otimiza para SEO e GEO (schema, keywords, citabilidade)"}
-    ]
+    id:"produzir-conteudo",icon:"\uD83D\uDCDD",label:"Produzir Conteudo",desc:"E-books, artigos, roteiros",
+    agents:["nina","max","vera","helena","juri","rafa","atlas-seo","diego","marco"],
+    title:"Fluxo: Producao de Conteudo",subdesc:"Max escreve, Vera refina, Helena aprova, Juri compliance, Rafa diagrama, Atlas SEO otimiza.",
+    steps:[{agent:"Nina",action:"Pesquisa de tema e dados"},{agent:"Max",action:"Escreve conteudo"},{agent:"Marco",action:"Roteiro video (se aplicavel)"},{agent:"Vera",action:"Refina copy, headlines, CTAs"},{agent:"Helena",action:"Aprova tom e brand",gate:true},{agent:"Juri",action:"Compliance CVM/ANBIMA",gate:true},{agent:"Rafa",action:"Diagramacao visual"},{agent:"Atlas SEO",action:"Otimiza para SEO e GEO"}]
   },
   {
-    id:"seo-organico",
-    icon:"\uD83D\uDD0D",
-    label:"SEO / Trafego Organico",
-    desc:"Site, blog, schema, GEO",
+    id:"produzir-video",icon:"\uD83C\uDFAC",label:"Produzir Video",desc:"Roteiro, cena, pos-producao",
+    agents:["diego","marco","caio","zeca","helena","juri","max"],
+    title:"Fluxo: Producao de Video",subdesc:"Diego lidera conceito, Marco escreve roteiro, Caio dirige cena, Zeca valida hooks, Helena aprova.",
+    steps:[{agent:"Diego",action:"Conceito criativo e referencias"},{agent:"Marco",action:"Escreve roteiro (ADUCATE + VSL)"},{agent:"Zeca",action:"Valida hooks primeiros 3s",validate:true},{agent:"Max",action:"Valida dados financeiros e precisao"},{agent:"Helena",action:"Aprova criativo e tom",gate:true},{agent:"Juri",action:"Compliance CVM/ANBIMA, disclaimers",gate:true},{agent:"Caio",action:"Direcao de cena, iluminacao, enquadramento"}]
+  },
+  {
+    id:"seo-organico",icon:"\uD83D\uDD0D",label:"SEO / Trafego Organico",desc:"Site, blog, schema, GEO",
     agents:["atlas-seo","theo","dev","tag","kai","max"],
-    title:"Fluxo: SEO e Trafego Organico",
-    subdesc:"Atlas SEO lidera a estrategia. Theo produz conteudo, Dev implementa tecnico, Tag configura tracking, Kai audita.",
-    steps:[
-      {agent:"Atlas SEO",action:"Auditoria tecnica + keyword research + content brief"},
-      {agent:"Max",action:"Escreve artigo otimizado para SEO + GEO"},
-      {agent:"Theo",action:"Publica no blog, configura on-page (title, meta, H-tags)"},
-      {agent:"Dev",action:"Implementa schema JSON-LD, robots.txt, performance"},
-      {agent:"Tag",action:"Configura tracking (GA4, events, Search Console)"},
-      {agent:"Kai",action:"Auditoria de indexacao e data quality","gate":true}
-    ]
+    title:"Fluxo: SEO e Trafego Organico",subdesc:"Atlas SEO lidera. Theo produz conteudo, Dev implementa tecnico, Tag tracking, Kai audita.",
+    steps:[{agent:"Atlas SEO",action:"Auditoria tecnica + keyword research"},{agent:"Max",action:"Escreve artigo otimizado"},{agent:"Theo",action:"Publica no blog, on-page"},{agent:"Dev",action:"Schema JSON-LD, performance"},{agent:"Tag",action:"Tracking (GA4, Search Console)"},{agent:"Kai",action:"Auditoria de indexacao",gate:true}]
   },
   {
-    id:"landing-pages",
-    icon:"\uD83D\uDDA5\uFE0F",
-    label:"Landing Pages",
-    desc:"Criar ou otimizar LPs",
+    id:"landing-pages",icon:"\uD83D\uDDA5\uFE0F",label:"Landing Pages",desc:"Criar ou otimizar LPs",
     agents:["vera","helena","rafa","dev","tag","kai","otto","juri"],
-    title:"Fluxo: Landing Pages",
-    subdesc:"Da copy ao deploy, com tracking e CRO.",
-    steps:[
-      {agent:"Vera",action:"Escreve copy da LP (headline, body, CTA)"},
-      {agent:"Helena",action:"Aprova copy e briefing visual","gate":true},
-      {agent:"Juri",action:"Compliance disclaimers","gate":true},
-      {agent:"Rafa",action:"Design UX/UI (Track by Design)"},
-      {agent:"Dev",action:"Implementa HTML/CSS/JS, integracao RD"},
-      {agent:"Tag",action:"Tracking (GTM, pixel, CAPI, UTMs)"},
-      {agent:"Kai",action:"Auditoria data quality","gate":true},
-      {agent:"Otto",action:"CRO: testes A/B, analise de funil"}
-    ]
+    title:"Fluxo: Landing Pages",subdesc:"Da copy ao deploy, com tracking e CRO.",
+    steps:[{agent:"Vera",action:"Escreve copy da LP"},{agent:"Helena",action:"Aprova copy e briefing",gate:true},{agent:"Juri",action:"Compliance disclaimers",gate:true},{agent:"Rafa",action:"Design UX/UI (Track by Design)"},{agent:"Dev",action:"Implementa HTML/CSS/JS, integracao RD"},{agent:"Tag",action:"Tracking (GTM, pixel, CAPI, UTMs)"},{agent:"Kai",action:"Auditoria data quality",gate:true},{agent:"Otto",action:"CRO: testes A/B"}]
   },
   {
-    id:"email-nurturing",
-    icon:"\uD83D\uDCE7",
-    label:"E-mail / Nurturing",
-    desc:"Fluxos, automacao, RD Station",
-    agents:["lia","vera","helena","mel","juri","dani","rick"],
-    title:"Fluxo: E-mail e Nurturing",
-    subdesc:"Lia define estrategia, Vera escreve, Mel implementa no RD, Juri valida LGPD.",
-    steps:[
-      {agent:"Lia",action:"Define estrategia e cadencia"},
-      {agent:"Vera",action:"Escreve copy do e-mail"},
-      {agent:"Helena",action:"Valida tom e brand","validate":true},
-      {agent:"Mel",action:"Implementa no RD Station (template, fluxo, automacao)"},
-      {agent:"Juri",action:"Valida LGPD e opt-out","gate":true},
-      {agent:"Dani",action:"Monitora metricas (open rate, CTR, conversao)"},
-      {agent:"Rick",action:"Follow-up dos leads quentes"}
-    ]
+    id:"email-nurturing",icon:"\uD83D\uDCE7",label:"E-mail / Nurturing",desc:"Fluxos, automacao, RD Station",
+    agents:["lia","vera","helena","mel","juri","dani","rick","rafa-rd","mari"],
+    title:"Fluxo: E-mail e Nurturing",subdesc:"Lia define estrategia, Vera escreve, Mel implementa, Rafa RD configura automacao, Juri valida LGPD.",
+    steps:[{agent:"Lia",action:"Define estrategia e cadencia"},{agent:"Vera",action:"Escreve copy do e-mail"},{agent:"Helena",action:"Valida tom e brand",validate:true},{agent:"Mel",action:"Implementa no RD Station"},{agent:"Rafa RD",action:"Configura automacao avancada"},{agent:"Mari",action:"Fluxos comportamentais"},{agent:"Juri",action:"Valida LGPD e opt-out",gate:true},{agent:"Dani",action:"Monitora metricas"},{agent:"Rick",action:"Follow-up leads quentes"}]
   },
   {
-    id:"dados-relatorios",
-    icon:"\uD83D\uDCC8",
-    label:"Dados / Relatorios",
-    desc:"Dashboards, SQL, exports",
+    id:"crm-vendas",icon:"\uD83D\uDCB0",label:"CRM / Pipeline",desc:"Qualificacao, pipeline, reativacao",
+    agents:["leo-crm","felipe","bia","ana","gabi-crm","mari","pedro","rick"],
+    title:"Fluxo: CRM e Pipeline de Vendas",subdesc:"Leo CRM lidera pipeline. Felipe qualifica, Bia conversa, Ana monitora, Pedro reativa.",
+    steps:[{agent:"Felipe",action:"Lead scoring e qualificacao"},{agent:"Bia",action:"Chatbot RD Conversas (primeiro contato)"},{agent:"Leo CRM",action:"Arquitetura de pipeline (SPIN/MEDDIC)"},{agent:"Mari",action:"Automacao de nurturing"},{agent:"Gabi CRM",action:"E-mail de nutricao"},{agent:"Rick",action:"Reuniao e fechamento"},{agent:"Ana",action:"Dashboard de performance CRM"},{agent:"Pedro",action:"Reativacao de leads perdidos"}]
+  },
+  {
+    id:"dados-relatorios",icon:"\uD83D\uDCC8",label:"Dados / Relatorios",desc:"Dashboards, SQL, exports",
     agents:["enzo","kai","dani","bruno"],
-    title:"Fluxo: Dados e Relatorios",
-    subdesc:"Pipeline de dados: Enzo puxa e limpa, Kai valida, Dani visualiza, Bruno analisa.",
-    steps:[
-      {agent:"Enzo",action:"Puxa dados APIs, ETL, sync Supabase"},
-      {agent:"Kai",action:"Valida qualidade e consistencia","gate":true},
-      {agent:"Dani",action:"Monta dashboard / relatorio HTML"},
-      {agent:"Bruno",action:"Analisa e gera recomendacoes"}
-    ]
+    title:"Fluxo: Dados e Relatorios",subdesc:"Pipeline de dados: Enzo puxa, Kai valida, Dani visualiza, Bruno analisa.",
+    steps:[{agent:"Enzo",action:"Puxa dados APIs, ETL, sync Supabase"},{agent:"Kai",action:"Valida qualidade",gate:true},{agent:"Dani",action:"Monta dashboard / relatorio HTML"},{agent:"Bruno",action:"Analisa e gera recomendacoes"}]
   },
   {
-    id:"vendas-reuniao",
-    icon:"\uD83E\uDD1D",
-    label:"Vendas / Reuniao",
-    desc:"Scripts, objecoes, follow-up",
+    id:"vendas-reuniao",icon:"\uD83E\uDD1D",label:"Vendas / Reuniao",desc:"Scripts, objecoes, follow-up",
     agents:["leo","rick","lia","nina"],
-    title:"Fluxo: Vendas e Reuniao",
-    subdesc:"Leo define estrategia, Rick executa, Lia faz follow-up.",
-    steps:[
-      {agent:"Nina",action:"Briefing do lead (perfil, patrimonio, historico)"},
-      {agent:"Leo",action:"Estrategia comercial e posicionamento da oferta"},
-      {agent:"Rick",action:"Conduz reuniao (script, objecoes, fechamento)"},
-      {agent:"Lia",action:"Follow-up pos-reuniao e nutricao"}
-    ]
+    title:"Fluxo: Vendas e Reuniao",subdesc:"Leo define estrategia, Rick executa, Lia faz follow-up.",
+    steps:[{agent:"Nina",action:"Briefing do lead (perfil, historico)"},{agent:"Leo",action:"Estrategia comercial"},{agent:"Rick",action:"Conduz reuniao (script, objecoes)"},{agent:"Lia",action:"Follow-up pos-reuniao"}]
   },
   {
-    id:"construir-feature",
-    icon:"\u26A1",
-    label:"Construir Feature / LP",
-    desc:"Do requisito ao deploy",
+    id:"construir-feature",icon:"\u26A1",label:"Construir Feature / LP",desc:"Do requisito ao deploy",
     agents:["morgan","pax","river","aria","dex","quinn","dara","gage","uma"],
-    title:"Fluxo: Desenvolvimento (AIOX)",
-    subdesc:"Morgan define requisitos, River cria stories, Aria decide arquitetura, Dex implementa, Quinn testa, Gage faz deploy.",
-    steps:[
-      {agent:"Morgan",action:"Define requisitos e PRD"},
-      {agent:"Pax",action:"Valida acceptance criteria"},
-      {agent:"River",action:"Cria stories e tasks"},
-      {agent:"Aria",action:"Decide arquitetura e tecnologia"},
-      {agent:"Uma",action:"Design UX/UI do fluxo"},
-      {agent:"Dara",action:"Schema e database (se necessario)"},
-      {agent:"Dex",action:"Implementa codigo"},
-      {agent:"Quinn",action:"Testa e valida qualidade","gate":true},
-      {agent:"Gage",action:"Deploy (git push EXCLUSIVO)"}
-    ]
+    title:"Fluxo: Desenvolvimento (AIOX)",subdesc:"Morgan define requisitos, River cria stories, Aria arquitetura, Dex implementa, Quinn testa, Gage deploy.",
+    steps:[{agent:"Morgan",action:"Define requisitos e PRD"},{agent:"Pax",action:"Valida acceptance criteria"},{agent:"River",action:"Cria stories e tasks"},{agent:"Aria",action:"Decide arquitetura"},{agent:"Uma",action:"Design UX/UI"},{agent:"Dara",action:"Schema e database"},{agent:"Dex",action:"Implementa codigo"},{agent:"Quinn",action:"Testa e valida",gate:true},{agent:"Gage",action:"Deploy (git push EXCLUSIVO)"}]
   }
 ];
 
-// ── RENDER TASKS ──────────────────────────────────────────────────────
+// ── RENDER ─────────────────────────────────────────────────────────────
 function renderTasks() {
-  const grid = document.getElementById('taskGrid');
-  grid.innerHTML = workflows.map(w => `
+  document.getElementById('taskGrid').innerHTML = workflows.map(w => `
     <button class="task-btn" data-wf="${w.id}" onclick="selectWorkflow('${w.id}')">
       <span class="task-icon">${w.icon}</span>
       <span class="task-label">${w.label}<small>${w.desc}</small></span>
@@ -421,16 +360,11 @@ function renderTasks() {
   `).join('');
 }
 
-// ── SELECT WORKFLOW ───────────────────────────────────────────────────
 function selectWorkflow(id) {
   const wf = workflows.find(w => w.id === id);
   if (!wf) return;
-
-  // Toggle buttons
   document.querySelectorAll('.task-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`[data-wf="${id}"]`)?.classList.add('active');
-
-  // Show workflow panel
   const panel = document.getElementById('workflowPanel');
   panel.className = 'workflow-panel visible';
   panel.innerHTML = `
@@ -447,60 +381,46 @@ function selectWorkflow(id) {
     </div>
     <div class="cmd-box" onclick="copyCmd(this)" style="margin-top:16px">
       <span class="cmd-comment"># Acionar este fluxo</span><br>
-      @nexus ${wf.label.toLowerCase()}: ${wf.steps.map(s => '@' + s.agent.toLowerCase().replace(' ','-')).join(' → ')}
+      @nexus ${wf.label.toLowerCase()}: ${wf.steps.map(s => '@' + s.agent.toLowerCase().replace(/ /g,'-')).join(' \u2192 ')}
     </div>
   `;
-
-  // Highlight agents
   renderAgentsForWorkflow(wf);
   document.getElementById('detailPanel').className = 'detail-panel';
 }
 
-// ── RENDER AGENTS ─────────────────────────────────────────────────────
 function renderAgentsForWorkflow(wf) {
   const container = document.getElementById('agentContainer');
-  const involvedIds = wf.agents;
   const stepMap = {};
   wf.steps.forEach((s, i) => {
-    const matchAgent = agents.find(a => a.name === s.agent || a.name === s.agent.replace('-',' '));
-    if (matchAgent) stepMap[matchAgent.id] = i + 1;
+    const m = agents.find(a => a.name === s.agent || a.name === s.agent.replace(/-/g,' '));
+    if (m) stepMap[m.id] = i + 1;
   });
+  const involved = agents.filter(a => wf.agents.includes(a.id));
+  const others = agents.filter(a => !wf.agents.includes(a.id));
+  const grouped = {};
+  others.forEach(a => { if(!grouped[a.group]) grouped[a.group]=[]; grouped[a.group].push(a); });
 
-  const involved = agents.filter(a => involvedIds.includes(a.id));
-  const others = agents.filter(a => !involvedIds.includes(a.id));
-
-  // Split others into squad and aiox
-  const othersSquad = others.filter(a => a.group === 'squad');
-  const othersAiox = others.filter(a => a.group === 'aiox');
-  const involvedSquad = involved.filter(a => a.group === 'squad');
-  const involvedAiox = involved.filter(a => a.group === 'aiox');
-
-  let html = '';
-  html += `<div class="agent-section-title visible">Agentes envolvidos neste fluxo (${involved.length})</div>`;
+  let html = `<div class="agent-section-title visible">Agentes envolvidos neste fluxo (${involved.length})</div>`;
   html += `<div class="agent-grid">${involved.map(a => renderCard(a, true, stepMap[a.id])).join('')}</div>`;
-
-  if (othersSquad.length > 0) {
-    html += `<div class="agent-section-title visible" style="color:var(--dim)">Demais agentes — Squad Boost</div>`;
-    html += `<div class="agent-grid">${othersSquad.map(a => renderCard(a, false)).join('')}</div>`;
+  for (const [grp, grpAgents] of Object.entries(grouped)) {
+    const info = groupLabels[grp] || {label:grp,color:'var(--dim)'};
+    html += `<div class="agent-section-title visible" style="color:var(--dim)">${info.label}</div>`;
+    html += `<div class="agent-grid">${grpAgents.map(a => renderCard(a, false)).join('')}</div>`;
   }
-  if (othersAiox.length > 0) {
-    html += `<div class="agent-section-title visible" style="color:var(--dim)">Demais agentes — AIOX Framework</div>`;
-    html += `<div class="agent-grid">${othersAiox.map(a => renderCard(a, false)).join('')}</div>`;
-  }
-
   container.innerHTML = html;
 }
 
 function renderAllAgents() {
   const container = document.getElementById('agentContainer');
-  const squad = agents.filter(a => a.group === 'squad');
-  const aiox = agents.filter(a => a.group === 'aiox');
-  container.innerHTML = `
-    <div class="agent-section-title visible" style="color:var(--green)">Squad Boost — Operacao & Marketing (${squad.length})</div>
-    <div class="agent-grid">${squad.map(a => renderCard(a, false)).join('')}</div>
-    <div class="agent-section-title visible" style="color:var(--blue)">AIOX Framework — Desenvolvimento & Produto (${aiox.length})</div>
-    <div class="agent-grid">${aiox.map(a => renderCard(a, false)).join('')}</div>
-  `;
+  const grouped = {};
+  agents.forEach(a => { if(!grouped[a.group]) grouped[a.group]=[]; grouped[a.group].push(a); });
+  let html = '';
+  for (const [grp, grpAgents] of Object.entries(grouped)) {
+    const info = groupLabels[grp] || {label:grp,color:'var(--dim)'};
+    html += `<div class="agent-section-title visible" style="color:${info.color}">${info.label} (${grpAgents.length})</div>`;
+    html += `<div class="agent-grid">${grpAgents.map(a => renderCard(a, false)).join('')}</div>`;
+  }
+  container.innerHTML = html;
 }
 
 function renderCard(a, highlight, step) {
@@ -519,27 +439,29 @@ function renderCard(a, highlight, step) {
         ${a.tags.map(t => {
           let cls = 'tag-blue';
           if(t==='veto'||t==='bloqueio'||t==='exclusivo') cls='tag-red';
-          if(t==='quality-gate') cls='tag-purple';
+          if(t==='quality-gate'||t==='qa') cls='tag-purple';
           if(t==='orquestrador') cls='tag-gold';
-          if(t==='seo'||t==='geo'||t==='cro') cls='tag-teal';
+          if(t==='seo'||t==='geo'||t==='cro'||t==='pixel') cls='tag-teal';
           if(t==='tracking'||t==='auditoria') cls='tag-red';
           if(t==='aiox') cls='tag-blue';
+          if(t==='crm'||t==='chatbot'||t==='scoring'||t==='reativacao'||t==='automacao'||t==='analytics'||t==='revenue') cls='tag-pink';
+          if(t==='marketplace'||t==='gtm') cls='tag-gold';
+          if(t==='video'||t==='roteiro'||t==='cena'||t==='direcao') cls='tag-orange';
           return `<span class="tag ${cls}">${t}</span>`;
         }).join('')}
       </div>
-      <div class="report-line">Reporta a: ${a.reports}${a.validates ? ' · Valida: '+a.validates : ''}</div>
+      <div class="report-line">Reporta a: ${a.reports}${a.validates ? ' \u00B7 Valida: '+a.validates : ''}</div>
     </div>
   `;
 }
 
-// ── DETAIL ─────────────────────────────────────────────────────────────
 function showDetail(id) {
   const a = agents.find(x => x.id === id);
   if (!a) return;
   const panel = document.getElementById('detailPanel');
   panel.className = 'detail-panel visible';
   panel.innerHTML = `
-    <h2>${a.name} — ${a.role}</h2>
+    <h2>${a.name} \u2014 ${a.role}</h2>
     <div class="role">${a.scope}</div>
     <div class="detail-section">
       <h3>Responsabilidades</h3>
@@ -551,11 +473,11 @@ function showDetail(id) {
     </div>
     <div class="detail-section">
       <h3>Participa dos fluxos</h3>
-      <ul>${workflows.filter(w => w.agents.includes(id)).map(w => `<li>${w.icon} ${w.label}`).join('')}</ul>
+      <ul>${workflows.filter(w => w.agents.includes(id)).map(w => `<li>${w.icon} ${w.label}</li>`).join('')}</ul>
     </div>
     <div class="detail-section">
       <h3>Como acionar</h3>
-      <div class="cmd-box" onclick="copyCmd(this)">${a.group === 'aiox' ? '@'+a.role.match(/\(@(\w[\w-]*)\)/)?.[1]+' [descreva a tarefa]' : '@nexus acione @'+a.id.replace('-orq','').replace('-seo','-seo')+' [descreva a tarefa]'}</div>
+      <div class="cmd-box" onclick="copyCmd(this)">${a.group === 'aiox' ? '@'+((a.role.match(/\(@(\w[\w-]*)\)/)||[])[1]||a.id)+' [tarefa]' : '@nexus acione @'+a.id+' [tarefa]'}</div>
     </div>
   `;
   panel.scrollIntoView({behavior:'smooth',block:'start'});
@@ -575,7 +497,6 @@ function copyCmd(el) {
   setTimeout(() => el.style.borderColor='',1000);
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────
 renderTasks();
 renderAllAgents();
 </script>
