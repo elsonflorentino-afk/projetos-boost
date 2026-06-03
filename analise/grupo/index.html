@@ -96,31 +96,13 @@
     padding: 28px 0 24px; 
     border-bottom: 1px solid var(--gray-dim); 
     position: relative;
-    overflow: hidden;
+    
   }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 20px; right: 4%;
-    width: 240px;
-    height: 260px;
-    background: url('assets/andre-hero.jpg') center top / cover no-repeat;
-    opacity: 0.85;
-    border-radius: 12px;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(0,220,130,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,220,130,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-  }
-  .hero .container { display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: stretch; position: relative; z-index: 2; }
+
+
+  .hero .container { display: grid; grid-template-columns: 220px 1fr 400px; gap: 32px; align-items: start; position: relative; z-index: 2; }
+  .hero-andre { display: flex; align-items: flex-start; justify-content: center; padding-top: 8px; }
+  .hero-andre img { width: 200px; height: auto; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4)); }
 
   /* Coluna de copy: alinhamento ao topo, espaçamento consistente */
   .hero-copy { display: flex; flex-direction: column; justify-content: center; }
@@ -350,12 +332,10 @@
   .disclaimer { font-size: 11px; color: var(--gray-dim); line-height: 1.7; max-width: 640px; margin: 16px auto 0; }
 
   /* ===== MOBILE ===== */
-  @media (min-width: 769px) {
-    .hero-andre-mobile img { display: none !important; }
-  }
   @media (max-width: 768px) {
-    .hero::before { display: none; }
-    .hero-andre-mobile img { display: inline-block !important; }
+    .hero .container { grid-template-columns: 1fr !important; gap: 20px !important; }
+    .hero-andre { justify-content: center; padding-top: 0; }
+    .hero-andre img { width: 150px; }
     .section                { padding: 60px 0; }
     .hero                   { padding: 56px 0 48px; }
     .hero .container        { grid-template-columns: 1fr; gap: 40px; align-items: start; }
@@ -408,6 +388,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="hero" id="hero">
   <div class="container">
 
+    <!-- ANDRÉ FRANCO -->
+    <div class="hero-andre">
+      <img src="assets/andre-hero.png" alt="André Franco">
+    </div>
+
     <div class="hero-copy">
 
       <!-- BLOCO SUPERIOR: headline + copy + bullets -->
@@ -444,11 +429,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       </div>
 
-    </div>
-
-    <!-- ANDRÉ FRANCO - visível em todas as telas -->
-    <div style="text-align:center;margin-bottom:24px;" class="hero-andre-mobile">
-      <img src="assets/andre-hero.jpg" alt="André Franco" style="width:140px;height:auto;border-radius:12px;border:2px solid var(--green);display:none;">
     </div>
 
     <!-- FORMULÁRIO -->
