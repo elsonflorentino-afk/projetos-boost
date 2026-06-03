@@ -93,7 +93,7 @@
   /* ===== HERO ===== */
   .hero { 
     background: var(--bg); 
-    padding: 48px 0 40px; 
+    padding: 28px 0 24px; 
     border-bottom: 1px solid var(--gray-dim); 
     position: relative;
     overflow: hidden;
@@ -101,14 +101,14 @@
   .hero::before {
     content: '';
     position: absolute;
-    top: 40px; right: 5%;
-    width: 280px;
-    height: 380px;
+    top: 20px; right: 4%;
+    width: 240px;
+    height: 260px;
     background: url('assets/andre-hero.jpg') center top / cover no-repeat;
-    opacity: 0.9;
-    border-radius: 16px;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+    opacity: 0.85;
+    border-radius: 12px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%);
   }
   .hero::after {
     content: '';
@@ -128,13 +128,13 @@
 
   /* Escala de espaçamento 8px dentro do bloco */
   .hero-copy-top .tag        { margin-bottom: 20px; }
-  .hero-copy-top .h1         { margin-bottom: 24px; }
-  .hero-copy-top .sub        { margin-top: 0; margin-bottom: 32px; }
-  .hero-copy-top .divider-green { margin: 0 0 24px; }
-  .hero-copy-top .hero-body  { font-size: 0.92rem; color: var(--gray); line-height: 1.8; max-width: 480px; margin-bottom: 28px; }
+  .hero-copy-top .h1         { margin-bottom: 12px; }
+  .hero-copy-top .sub        { margin-top: 0; margin-bottom: 16px; }
+  .hero-copy-top .divider-green { margin: 0 0 12px; }
+  .hero-copy-top .hero-body  { font-size: 0.88rem; color: var(--gray); line-height: 1.6; max-width: 480px; margin-bottom: 16px; }
 
   /* Bullets em grade 2×2 alinhados */
-  .hero-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 0; margin-bottom: 36px; }
+  .hero-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 0; margin-bottom: 16px; }
   .hero-check  { font-size: 12px; color: var(--gray); display: flex; align-items: center; gap: 7px; }
   .hero-check span { color: var(--green); font-weight: 700; flex-shrink: 0; }
 
@@ -164,7 +164,7 @@
     background: var(--bg2); border: 1px solid var(--gray-dim);
     border-radius: 12px; padding: 36px 32px;
   }
-  .hero-form h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; color: var(--white); }
+  .hero-form h3 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; color: var(--white); }
   .f-group { margin-bottom: 16px; }
   .f-group label {
     display: block; font-size: 11px; color: var(--gray); margin-bottom: 6px;
