@@ -100,9 +100,8 @@
   }
 
 
-  .hero .container { display: grid; grid-template-columns: 220px 1fr 400px; gap: 32px; align-items: start; position: relative; z-index: 2; }
-  .hero-andre { display: flex; align-items: flex-start; justify-content: center; padding-top: 8px; }
-  .hero-andre img { width: 200px; height: auto; filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4)); }
+  .hero .container { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: start; position: relative; z-index: 2; }
+
 
   /* Coluna de copy: alinhamento ao topo, espaçamento consistente */
   .hero-copy { display: flex; flex-direction: column; justify-content: center; }
@@ -334,8 +333,7 @@
   /* ===== MOBILE ===== */
   @media (max-width: 768px) {
     .hero .container { grid-template-columns: 1fr !important; gap: 20px !important; }
-    .hero-andre { justify-content: center; padding-top: 0; }
-    .hero-andre img { width: 150px; }
+
     .section                { padding: 60px 0; }
     .hero                   { padding: 56px 0 48px; }
     .hero .container        { grid-template-columns: 1fr; gap: 40px; align-items: start; }
@@ -387,11 +385,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============================================================ HERO ============================================================ -->
 <section class="hero" id="hero">
   <div class="container">
-
-    <!-- ANDRÉ FRANCO -->
-    <div class="hero-andre">
-      <img src="assets/andre-hero.png" alt="André Franco">
-    </div>
 
     <div class="hero-copy">
 
