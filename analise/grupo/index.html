@@ -93,7 +93,7 @@
   /* ===== HERO ===== */
   .hero { 
     background: var(--bg); 
-    padding: 88px 0 72px; 
+    padding: 48px 0 40px; 
     border-bottom: 1px solid var(--gray-dim); 
     position: relative;
     overflow: hidden;
@@ -101,13 +101,14 @@
   .hero::before {
     content: '';
     position: absolute;
-    top: 0; right: 0;
-    width: 45%;
-    height: 100%;
+    top: 40px; right: 5%;
+    width: 280px;
+    height: 380px;
     background: url('assets/andre-hero.jpg') center top / cover no-repeat;
-    opacity: 0.35;
-    mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 100%);
+    opacity: 0.9;
+    border-radius: 16px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
   }
   .hero::after {
     content: '';
@@ -428,11 +429,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="divider-green"></div>
 
         <p class="hero-body">
-          No encontro, o André mostrou como os investidores de longo prazo
-          sinalizam os melhores momentos de entrada e saída do mercado.
-          Mostrou a venda nos R$120 mil, a recompra nos $60 mil e o cenário
-          atual de acumulação. Cada carteira é diferente — deixa seus dados
-          que um Advisor da Boost entra em contato pelo WhatsApp.
+          O André mostrou ao vivo a métrica que guiou a venda nos R$120 mil 
+          e a recompra abaixo dos $60 mil. Cada carteira é diferente — 
+          deixa seus dados que um Advisor entra em contato pelo WhatsApp.
         </p>
 
         <div class="hero-checks">
@@ -442,38 +441,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="hero-check"><span>✓</span> Conversa individual com Advisor</div>
         </div>
 
-        <!-- Como funciona: 3 passos reais do serviço -->
-        <p class="hero-steps-label">Como funciona</p>
-        <div class="hero-steps">
-          <div class="hero-step">
-            <div class="hero-step-num">1</div>
-            <div class="hero-step-body">
-              <strong>Você preenche o formulário</strong>
-              <span>Leva menos de dois minutos. Sem dados bancários.</span>
-            </div>
-          </div>
-          <div class="hero-step">
-            <div class="hero-step-num">2</div>
-            <div class="hero-step-body">
-              <strong>Um analista sênior entra em contato</strong>
-              <span>Pelo WhatsApp, em até 48 horas úteis.</span>
-            </div>
-          </div>
-          <div class="hero-step">
-            <div class="hero-step-num">3</div>
-            <div class="hero-step-body">
-              <strong>Conversa com um especialista</strong>
-              <span>Ele analisa sua carteira ao vivo e compara com a carteira do André — o que está bem, o que expõe risco, onde há oportunidade.</span>
-            </div>
-          </div>
-        </div>
+
       </div>
 
     </div>
 
     <!-- ANDRÉ FRANCO - visível em todas as telas -->
     <div style="text-align:center;margin-bottom:24px;" class="hero-andre-mobile">
-      <img src="assets/andre-hero.jpg" alt="André Franco" style="width:200px;height:auto;border-radius:16px;border:2px solid var(--green);display:none;">
+      <img src="assets/andre-hero.jpg" alt="André Franco" style="width:140px;height:auto;border-radius:12px;border:2px solid var(--green);display:none;">
     </div>
 
     <!-- FORMULÁRIO -->
