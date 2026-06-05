@@ -313,6 +313,15 @@ section{padding:80px 0;}
               <input type="tel" id="f-phone" name="phone" placeholder="(11) 99999-9999" required autocomplete="tel">
               <div class="f-error" id="err-phone">Informe seu WhatsApp com DDD</div>
             </div>
+            <div class="f-group">
+              <label class="f-label">J&aacute; investe em cripto? <span style="color:var(--red);font-size:10px;">*obrigat&oacute;rio</span></label>
+              <div style="display:flex;gap:8px;margin-top:6px;">
+                <button type="button" class="cripto-toggle" data-value="sim" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text-secondary);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:var(--font);">Sim</button>
+                <button type="button" class="cripto-toggle" data-value="nao" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.06);color:var(--text-secondary);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:var(--font);">N&atilde;o</button>
+              </div>
+              <input type="hidden" id="f-cripto" name="cripto" value="">
+              <div class="f-error" id="err-cripto" style="display:none;">Selecione uma op&ccedil;&atilde;o</div>
+            </div>
             <button type="submit" class="btn-primary" id="btn-submit"><span id="btn-text">Garantir minha vaga</span><span id="btn-spinner" style="display:none;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" style="animation:spin 0.8s linear infinite;vertical-align:middle;"><circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 019.8 8" stroke-linecap="round"/></svg> Enviando...</span></button>
           </form>
 
@@ -557,18 +566,32 @@ validateField(document.getElementById('f-name'),'err-name',function(v){return v.
 validateField(document.getElementById('f-email'),'err-email',function(v){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);});
 validateField(document.getElementById('f-phone'),'err-phone',function(v){return v.replace(/\D/g,'').length>=10;});
 
+/* ── Toggle cripto ── */
+document.querySelectorAll('.cripto-toggle').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.cripto-toggle').forEach(function(b){
+      b.style.borderColor='var(--border)';b.style.background='rgba(255,255,255,0.06)';b.style.color='var(--text-secondary)';
+    });
+    btn.style.borderColor='var(--teal)';btn.style.background='rgba(25,198,181,0.12)';btn.style.color='var(--teal)';
+    document.getElementById('f-cripto').value=btn.getAttribute('data-value')==='sim'?'sim':'não';
+    document.getElementById('err-cripto').style.display='none';
+  });
+});
+
 /* ── Form submit ── */
 document.getElementById('webinar-form').addEventListener('submit',function(e){
   e.preventDefault();
 
   var nameEl=document.getElementById('f-name'),emailEl=document.getElementById('f-email'),phoneEl=document.getElementById('f-phone');
   var name=nameEl.value.trim(),email=emailEl.value.trim(),phone=phoneEl.value.replace(/\D/g,'');
+  var criptoVal=document.getElementById('f-cripto').value;
 
   /* validate all */
   var valid=true;
   if(name.length<2){nameEl.classList.add('invalid');document.getElementById('err-name').classList.add('show');valid=false;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emailEl.classList.add('invalid');document.getElementById('err-email').classList.add('show');valid=false;}
   if(phone.length<10){phoneEl.classList.add('invalid');document.getElementById('err-phone').classList.add('show');valid=false;}
+  if(!criptoVal){document.getElementById('err-cripto').style.display='block';valid=false;}
   if(!valid)return false;
 
   var btn=document.getElementById('btn-submit');
@@ -587,6 +610,7 @@ document.getElementById('webinar-form').addEventListener('submit',function(e){
       email:email,
       name:name,
       mobile_phone:phone,
+      cf_ja_investe_em_criptoativos:criptoVal,
       tags:['masterclass-comprar-hold-sair-jun2026'],
       cf_utm_source:    getUTM('source')   || 'direct',
       cf_utm_medium:    getUTM('medium')   || 'none',
