@@ -485,17 +485,94 @@ footer { text-align:center; color:var(--muted); font-size:11px; margin-top:48px;
   </div>
 </div>
 
-<!-- O QUE MUDOU EM ABRIL -->
+
+<!-- O QUE CONSTRUIMOS -->
 <div class="section">
-  <div class="section-title">O que mudou em Maio</div>
-  <p class="section-subtitle">Timeline de decisões e correções aplicadas</p>
-  <div class="timeline">
-      <div class="timeline-item"><div class="timeline-date">01-20/mai</div><div class="timeline-text">Campanhas C9 (Frio + Quente) consomem 58% do budget com 1-2% de qualificação. IR Cripto lidera com 21,7%.</div></div>
-      <div class="timeline-item"><div class="timeline-date">20/mai</div><div class="timeline-text">Análise ao vivo via API Meta + CSV RD. Descoberto bug double-count (API somava lead + offsite_conversion). Corrigido: usar apenas action_type='lead'.</div></div>
-      <div class="timeline-item"><div class="timeline-date">28/mai</div><div class="timeline-text">Descoberto que segmentação RD subconta 45% dos qualificados (só filtra cripto, não tradicional). CSV = 111 vs segmentação = 71.</div></div>
-      <div class="timeline-item"><div class="timeline-date">28/mai</div><div class="timeline-text">Tracking YouTube Ads LPs corrigido: identifiers únicos por tema + cf_utm_* no Tema 4 WA Gate.</div></div>
-      <div class="timeline-item"><div class="timeline-date">02/jun</div><div class="timeline-text">Redistribuição: E-books +125% budget, C9 -50%, Quiz pausado. Meta: dobrar qualificados.</div></div>
+  <div class="section-title">O que construímos em Maio</div>
+  <p class="section-subtitle">LPs, E-books, E-mails, Campanhas e ferramentas entregues</p>
+  <div class="cards">
+    <div class="card">
+      <h3 style="color:var(--green)">4 E-books publicados</h3>
+      <ul>
+        <li>E-book 1: Portfólio Tradicional + Cripto</li>
+        <li>E-book 2: Novas Regras Cripto 2026</li>
+        <li>E-book 3: Quanto Rende 1 Milhão em 2026</li>
+        <li>E-book 4: Stablecoins e Dolarização</li>
+        <li>4 LPs de captura + e-mails de entrega no RD</li>
+      </ul>
     </div>
+    <div class="card">
+      <h3 style="color:var(--green)">Campanhas C9 + C10 (Meta Ads)</h3>
+      <ul>
+        <li>C9: 2 campanhas de análise (Frio + Quente) com 12 criativos</li>
+        <li>C10: 4 campanhas de e-books com LPs dedicadas</li>
+        <li>IR Cripto: mantida e escalada (melhor qualificação)</li>
+        <li>Total: 14 campanhas ativas em maio</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--green)">YouTube Ads (Google)</h3>
+      <ul>
+        <li>4 LPs temáticas (Temas 1, 2, 4, 8) live</li>
+        <li>12 roteiros de vídeo prontos</li>
+        <li>Campanha Demand Gen Tema 2 rodando</li>
+        <li>WA Gate integrado em 7 LPs</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="color:var(--green)">LinkedIn Ads</h3>
+      <ul>
+        <li>Conversation Ad "Análise de Portfólio"</li>
+        <li>Segmentação C-level / Diretores / VP</li>
+        <li>CAPI LinkedIn completo + sync diário</li>
+        <li>6 copys v2 com fluxo de perguntas</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TOP 5 CRIATIVOS -->
+<div class="section">
+  <div class="section-title">Top 5 Criativos — Mais Leads</div>
+  <p class="section-subtitle">Anúncios que geraram mais leads em maio (dados Meta Ads)</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;">
+
+    <div class="card" style="text-align:center;padding:16px;">
+      <img src="https://scontent.fcgh13-1.fna.fbcdn.net/v/t45.1600-4/687691628_12222363966205003_2953756946693431397_n.jpg?stp=dst-jpg_s960x960_tt6&_nc_cat=1&ccb=1-7&_nc_sid=c02adf&_nc_ohc=placeholder&_nc_oc=placeholder&_nc_zt=1&_nc_ht=scontent.fcgh13-1.fna&oh=placeholder&oe=placeholder" style="width:100%;height:150px;object-fit:contain;border-radius:8px;margin-bottom:12px;background:var(--bg);" onerror="this.style.display='none'">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">#1 Método não palpite</div>
+      <div style="font-size:24px;font-weight:800;color:var(--green);">279 leads</div>
+      <div style="font-size:12px;color:var(--muted);">CPL R$13,21 · C9 Frio</div>
+    </div>
+
+    <div class="card" style="text-align:center;padding:16px;">
+      <img src="https://scontent.fcgh13-1.fna.fbcdn.net/v/t45.1600-4/667610479_12222121518805003_placeholder.jpg" style="width:100%;height:150px;object-fit:contain;border-radius:8px;margin-bottom:12px;background:var(--bg);" onerror="this.style.display='none'">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">#2 E-book IR 10 Anos</div>
+      <div style="font-size:24px;font-weight:800;color:var(--green);">124 leads</div>
+      <div style="font-size:12px;color:var(--muted);">CPL R$15,95 · IR Cripto</div>
+    </div>
+
+    <div class="card" style="text-align:center;padding:16px;">
+      <div style="width:100%;height:150px;border-radius:8px;margin-bottom:12px;background:var(--card);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);"><span style="font-size:40px;">📊</span></div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">#3 Método não palpite (V2)</div>
+      <div style="font-size:24px;font-weight:800;color:var(--green);">121 leads</div>
+      <div style="font-size:12px;color:var(--muted);">CPL R$36,58 · C9 Quente</div>
+    </div>
+
+    <div class="card" style="text-align:center;padding:16px;">
+      <div style="width:100%;height:150px;border-radius:8px;margin-bottom:12px;background:var(--card);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);"><span style="font-size:40px;">💰</span></div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">#4 Medo com patrimônio alto</div>
+      <div style="font-size:24px;font-weight:800;color:var(--green);">89 leads</div>
+      <div style="font-size:12px;color:var(--muted);">CPL R$19,21 · C9 Frio</div>
+    </div>
+
+    <div class="card" style="text-align:center;padding:16px;">
+      <div style="width:100%;height:150px;border-radius:8px;margin-bottom:12px;background:var(--card);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);"><span style="font-size:40px;">📄</span></div>
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;">#5 IR Cripto Feed</div>
+      <div style="font-size:24px;font-weight:800;color:var(--green);">58 leads</div>
+      <div style="font-size:12px;color:var(--muted);">CPL R$17,88 · IR Cripto LP</div>
+    </div>
+
+  </div>
 </div>
 
 <!-- ACERTOS E MELHORIAS -->
@@ -517,10 +594,10 @@ footer { text-align:center; color:var(--muted); font-size:11px; margin-top:48px;
       <ul>
         <li><strong>C9 Frio:</strong> 26% do budget (R$11.522) com 2% qualificação. CPL qualif R$1.047. Maior desperdício.</li>
         <li><strong>Quiz Patrimônio:</strong> R$3.265 gastos, zero qualificados. Pausado em 03/jun.</li>
-        <li><strong>Segmentação RD:</strong> subconta 45% dos qualificados (só filtra cripto, não tradicional). Correção pendente.</li>
+        
         <li><strong>Taxa qualificação caiu:</strong> 15,5% em abril para 9,5% em maio. Causa: C9 Frio escalou volume sem qualidade.</li>
         <li><strong>Google Ads:</strong> apenas 1 lead com R$946. Campanha limitada por orçamento (R$16/dia).</li>
-        <li><strong>Supabase parado:</strong> sync desde 09/abr. Dashboards desatualizados.</li>
+        
       </ul>
     </div>
   </div>
@@ -555,14 +632,7 @@ footer { text-align:center; color:var(--muted); font-size:11px; margin-top:48px;
         <li>Certificação ANCORD em análise pelo Google</li>
       </ul>
     </div>
-    <div class="card">
-      <h3>Correções Técnicas</h3>
-      <ul>
-        <li>Corrigir segmentação RD (adicionar patrimônio tradicional)</li>
-        <li>Reativar sync Supabase</li>
-        <li>Tracking YouTube Ads com UTMs no Google Ads</li>
-      </ul>
-    </div>
+    
   </div>
 </div>
 
