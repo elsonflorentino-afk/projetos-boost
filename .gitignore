@@ -2,3 +2,6 @@
 .claude/
 .wrangler/
 node_modules/
+
+# macOS AppleDouble (resource forks de backup/sync)
+._*
