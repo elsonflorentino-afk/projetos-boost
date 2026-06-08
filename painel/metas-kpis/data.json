@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-06 15:04 UTC",
+  "updated_at": "2026-06-08 08:10 UTC",
   "meta_weekly": {
     "Fev W1": {
       "spend": 7103.11,
@@ -148,7 +148,7 @@
       "vendas": 0
     },
     "Abr W3": {
-      "contatos": 21,
+      "contatos": 9,
       "reunioes": 0,
       "pedidos": 0,
       "vendas": 0
@@ -169,10 +169,10 @@
     "Mar W2": 26,
     "Mar W3": 12,
     "Mar W4": 5,
-    "Abr W1": 27,
-    "Abr W2": 28,
-    "Abr W3": 27,
-    "Abr W4": 30
+    "Abr W1": 25,
+    "Abr W2": 31,
+    "Abr W3": 25,
+    "Abr W4": 31
   },
   "campaign_breakdown": {
     "leads": [
@@ -721,7 +721,7 @@
     ]
   },
   "btc": {
-    "brl": 402828,
-    "usd": 81541
+    "brl": 326390,
+    "usd": 63091
   }
 }
