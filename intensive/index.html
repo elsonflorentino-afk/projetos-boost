@@ -29,6 +29,29 @@ fbq('init','1062572485162288');fbq('track','PageView');
 <!-- DataLayer page_view -->
 <script>window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'page_view',page_type:'sales_page',product:'boost_crypto_intensive'});</script>
 
+<!-- Captura fbc/fbp p/ CAPI: anexa ao link do Pagar.me como metadata; webhook v2 le order.metadata.* (sobe Event Match Quality da Compra) -->
+<script>
+(function(){
+  function gc(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?decodeURIComponent(m.pop()):'';}
+  var fbclid=new URLSearchParams(location.search).get('fbclid')||'';
+  var fbp=gc('_fbp'), fbc=gc('_fbc');
+  if(!fbc && fbclid){ fbc='fb.1.'+Date.now()+'.'+fbclid; }
+  window.__fbp=fbp; window.__fbc=fbc; window.__fbclid=fbclid;
+  window.__icEvent='ic.'+Date.now()+'.'+Math.floor(Math.random()*1e6); // event_id p/ dedup browser<->server
+  document.addEventListener('DOMContentLoaded',function(){
+    var l=document.querySelector('.checkout-btn'); if(!l)return;
+    try{
+      var u=new URL(l.href);
+      if(fbc)u.searchParams.set('metadata[fbc]',fbc);
+      if(fbp)u.searchParams.set('metadata[fbp]',fbp);
+      if(fbclid)u.searchParams.set('metadata[fbclid]',fbclid);
+      u.searchParams.set('metadata[ic_event_id]',window.__icEvent);
+      l.href=u.toString();
+    }catch(e){}
+  });
+})();
+</script>
+
 <!-- Inter Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -768,7 +791,7 @@ section:first-of-type{border-top:none;}
         <div class="price-main">6x R$ 100,00</div>
         <div class="price-installment">ou R$ 600,00 &agrave; vista</div>
       </div>
-      <a href="https://payment-link-v3.pagar.me/pl_Oq4lB1mKQZVNBQqIwLf6o8L9gv6p3ao2" class="checkout-btn" target="_blank" rel="noopener" onclick="fbq('track','InitiateCheckout',{content_name:'boost_crypto_intensive',value:600,currency:'BRL'});dataLayer.push({event:'checkout_initiated',product:'boost_crypto_intensive',value:600});">Agendar minha consultoria</a>
+      <a href="https://payment-link-v3.pagar.me/pl_Oq4lB1mKQZVNBQqIwLf6o8L9gv6p3ao2" class="checkout-btn" target="_blank" rel="noopener" onclick="fbq('track','InitiateCheckout',{content_name:'boost_crypto_intensive',value:600,currency:'BRL'},{eventID:window.__icEvent});dataLayer.push({event:'checkout_initiated',product:'boost_crypto_intensive',value:600});">Agendar minha consultoria</a>
       <p class="checkout-note">Pagamento seguro via Pagar.me</p>
       <div class="trust-badges">
         <div class="trust-badge">
