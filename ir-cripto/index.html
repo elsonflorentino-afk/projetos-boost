@@ -2009,8 +2009,16 @@ window.addEventListener('submit', function (e) {
     /* ── event_id para deduplicação CAPI ── */
     var eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
 
-    /* ── Meta Pixel ── */
+    /* ── Meta Pixel + Advanced Matching (sobe Event Match Quality do Lead) ── */
     if (typeof fbq === 'function') {
+      var nm = (nome || '').trim().toLowerCase().split(/\s+/).filter(Boolean);
+      fbq('init', '1062572485162288', {
+        em: (email || '').trim().toLowerCase(),
+        ph: '55' + wppDigits,
+        fn: nm[0] || '',
+        ln: nm.length > 1 ? nm[nm.length - 1] : '',
+        country: 'br'
+      });
       fbq('track', 'Lead', {}, { eventID: eventId });
     }
 
