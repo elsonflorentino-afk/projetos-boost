@@ -3,19 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crypto Intelligence Access — Invista em cripto com método | Boost Research</title>
-<meta name="description" content="A assinatura da Boost Research para quem quer investir em cripto com método, análise e apoio humano — sem achismo. Você não precisa adivinhar o mercado; precisa de critério.">
+<title>Crypto Intelligence Access | Boost Research</title>
+<meta name="description" content="A assinatura da Boost Research pra quem quer investir em cripto com método, análise e apoio humano. Você não precisa adivinhar o mercado. Precisa de critério.">
 <!--
-  ============================================================
-  COPY — CRYPTO INTELLIGENCE ACCESS (REESCRITA COM FRAMEWORK RMBC)
-  Por: Vera (RMBC Stefan Georgi + 10 perguntas Evaldo + escrita por blocos) · Uma (UX) · Helena (design) · Nexus
-  USO: este arquivo é a REFERÊNCIA da copy nova para ALTERAR a página existente
-       boostresearch.com.br/crypto-inteligence-access (NÃO é LP separada).
-  CTA: rola até o CHECKOUT EMBUTIDO no final da página (#assinar). Já existe na página atual.
-  ------------------------------------------------------------
-  BLOCOS RMBC: 1 Abertura · 2 Quebra crença · 3 Mecanismo · 4 Big Idea · 5 Método · 6 Prova · 7 Oferta · 8 Razões p/ agir
-  [CONFIRMAR]: preço mensal · garantia · ID do VSL · depoimentos reais · link/checkout.
-  ============================================================
+  COPY CRYPTO INTELLIGENCE ACCESS (RMBC + 10 perguntas, humanizada SEM travessao).
+  Referencia p/ ALTERAR a pagina existente boostresearch.com.br/crypto-inteligence-access (nao e LP nova).
+  CTA rola ate o checkout embutido no final (#assinar). [CONFIRMAR]: preco, garantia, ID VSL, depoimentos.
 -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -31,8 +24,7 @@
   .hero{background:linear-gradient(160deg,#0a0e13 0%,#102a22 62%,#0d3a2c 100%);color:#fff;position:relative;overflow:hidden;}
   .hero::after{content:"";position:absolute;right:-120px;top:-100px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(0,179,126,.25),transparent 68%);}
   .hero .container{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
-  .hero h1{font-size:40px;font-weight:800;margin:14px 0 16px;}
-  .hero h1 .g{color:var(--g);}
+  .hero h1{font-size:40px;font-weight:800;margin:14px 0 16px;} .hero h1 .g{color:var(--g);}
   .hero .sub{font-size:18px;color:#b9c4cb;margin-bottom:26px;}
   .hero .proof{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:#9fb0b8;font-size:13.5px;font-weight:500;}
   .vsl{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);}
@@ -41,8 +33,7 @@
   .vsl-note{padding:12px 16px;font-size:13px;color:var(--soft);text-align:center;background:#fbfcfc;}
   .center{text-align:center;}
   .section-head{max-width:760px;margin:0 auto 36px;text-align:center;}
-  .section-head h2{font-size:32px;font-weight:800;margin:10px 0 12px;}
-  .section-head p{color:var(--soft);font-size:17px;}
+  .section-head h2{font-size:32px;font-weight:800;margin:10px 0 12px;} .section-head p{color:var(--soft);font-size:17px;}
   .lead{max-width:760px;margin:0 auto;font-size:18px;color:#2a333b;}
   .dark{background:var(--ink2);color:#fff;} .dark .lead{color:#c8d2d8;} .dark .section-head p{color:#aebbc2;}
   .bigidea{background:linear-gradient(120deg,#00B37E,#019267);color:#fff;text-align:center;}
@@ -51,26 +42,20 @@
   .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:10px;}
   .pillar{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px;}
   .pillar .n{width:38px;height:38px;border-radius:10px;background:#e7f8f1;color:var(--gd);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
-  .pillar h3{font-size:18px;margin-bottom:8px;}
-  .pillar p{color:var(--soft);font-size:14.5px;}
+  .pillar h3{font-size:18px;margin-bottom:8px;} .pillar p{color:var(--soft);font-size:14.5px;}
   .pillar ul{margin:10px 0 0;padding-left:18px;font-size:13.5px;color:var(--soft);}
   .team{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:900px;margin:30px auto 0;}
-  .member{text-align:center;}
-  .member .av{width:78px;height:78px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,#0d3a2c,#102a22);display:flex;align-items:center;justify-content:center;color:var(--g);font-weight:800;font-size:23px;border:2px solid #1a4a3a;}
+  .member{text-align:center;} .member .av{width:78px;height:78px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,#0d3a2c,#102a22);display:flex;align-items:center;justify-content:center;color:var(--g);font-weight:800;font-size:23px;border:2px solid #1a4a3a;}
   .member .nm{font-weight:700;font-size:14.5px;} .member .role{color:var(--soft);font-size:12.5px;}
   .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;}
-  .tcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;}
-  .tcard .q{font-size:15px;color:#2a333b;font-style:italic;} .tcard .who{margin-top:14px;font-weight:700;font-size:14px;}
-  .tcard .badge{font-size:11px;color:var(--g);font-weight:700;text-transform:uppercase;}
+  .tcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;} .tcard .q{font-size:15px;color:#2a333b;font-style:italic;} .tcard .who{margin-top:14px;font-weight:700;font-size:14px;} .tcard .badge{font-size:11px;color:var(--g);font-weight:700;text-transform:uppercase;}
   .offer{background:linear-gradient(160deg,#0a0e13,#0d3328);color:#fff;}
   .offer-card{max-width:560px;margin:0 auto;background:#fff;color:var(--ink);border-radius:20px;padding:36px;box-shadow:0 30px 70px rgba(0,0,0,.4);}
   .offer-card .price{font-size:40px;font-weight:900;} .offer-card .price small{font-size:16px;font-weight:600;color:var(--soft);}
-  .offer-list{list-style:none;margin:22px 0;padding:0;}
-  .offer-list li{display:flex;gap:10px;padding:7px 0;font-size:15px;border-bottom:1px solid #f0f3f4;} .offer-list li .ck{color:var(--g);font-weight:800;}
+  .offer-list{list-style:none;margin:22px 0;padding:0;} .offer-list li{display:flex;gap:10px;padding:7px 0;font-size:15px;border-bottom:1px solid #f0f3f4;} .offer-list li .ck{color:var(--g);font-weight:800;}
   .guarantee{margin-top:18px;background:#e7f8f1;border-radius:12px;padding:14px;font-size:14px;text-align:center;color:var(--gd);font-weight:600;}
   .urgency{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:840px;margin:0 auto;}
-  .ucard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px 20px;}
-  .ucard h3{font-size:16px;color:#fff;margin-bottom:5px;} .ucard p{color:#aebbc2;font-size:14px;}
+  .ucard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px 20px;} .ucard h3{font-size:16px;color:#fff;margin-bottom:5px;} .ucard p{color:#aebbc2;font-size:14px;}
   .faq{max-width:760px;margin:0 auto;} .qa{border-bottom:1px solid var(--line);padding:18px 0;} .qa h3{font-size:17px;margin-bottom:6px;} .qa p{color:var(--soft);font-size:15px;}
   footer{background:#0a0e13;color:#8a97a0;font-size:13px;padding:40px 0;text-align:center;} footer a{color:#b9c4cb;}
   .mark{background:#fff3cd;color:#946c00;padding:1px 6px;border-radius:4px;font-size:.85em;font-weight:600;}
@@ -79,19 +64,15 @@
 </head>
 <body>
 
-<!-- ===== BLOCO 1 — ABERTURA (Q1 desejo, Q2 crença atual) ===== -->
+<!-- BLOCO 1 ABERTURA -->
 <section class="hero">
   <div class="container">
     <div>
       <span class="eyebrow">Crypto Intelligence Access</span>
       <h1>Você entrou em cripto pra crescer seu patrimônio. Mas hoje decide <span class="g">no escuro</span>.</h1>
-      <p class="sub">Compra na euforia, segura na queda, vende no medo — e repete. Não é falta de esforço: é que ninguém te deu um caminho com análise, contexto e apoio. O Access existe pra isso.</p>
+      <p class="sub">Compra na euforia, segura na queda, vende no medo. E repete. Não é falta de esforço. É que ninguém te mostrou um caminho com análise, contexto e apoio. O Access nasceu pra isso.</p>
       <a href="#assinar" class="cta">Quero investir com método</a>
-      <div class="proof">
-        <span>● Time que acompanha cripto desde 2016</span>
-        <span>● Método, não achismo</span>
-        <span>● Você no controle</span>
-      </div>
+      <div class="proof"><span>● Time que vive cripto desde 2016</span><span>● Método, não achismo</span><span>● Você no controle</span></div>
     </div>
     <div class="vsl">
       <div class="vsl-frame"><iframe src="https://www.youtube.com/embed/[VSL_YOUTUBE_ID]?rel=0" title="Crypto Intelligence Access" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
@@ -100,44 +81,44 @@
   </div>
 </section>
 
-<!-- ===== BLOCO 2 — QUEBRA DA CRENÇA ANTIGA (Q2, Q3) ===== -->
+<!-- BLOCO 2 QUEBRA DA CRENCA -->
 <section>
   <div class="container">
     <div class="section-head"><span class="eyebrow">A verdade que ninguém te conta</span><h2>O problema nunca foi você. Foi o caminho.</h2></div>
-    <p class="lead center">Te ensinaram que, pra ganhar em cripto, você precisa acertar o timing, correr atrás da próxima dica quente ou ter sorte na próxima alta. Foi exatamente isso que te fez comprar caro, vender no pânico e repetir o ciclo.<br><br>Seguir dica e reagir ao preço não é estratégia — é o que faz a maioria perder dinheiro. E enquanto você acreditar que o caminho é "adivinhar o mercado", vai continuar no escuro, por mais que se esforce.</p>
+    <p class="lead center">Te ensinaram que ganhar em cripto é questão de acertar o timing, achar a próxima dica quente ou ter sorte na alta. O resultado você conhece: comprou caro, vendeu no pânico e o ciclo se repetiu.<br><br>Seguir dica e correr atrás do preço não é estratégia. É o que faz a maioria perder dinheiro. E enquanto você achar que o jogo é adivinhar o mercado, vai seguir no escuro, por mais que se esforce.</p>
   </div>
 </section>
 
-<!-- ===== BLOCO 3 — MECANISMO (Q4 nova crença, Q5 prova, Q6 analogia) ===== -->
+<!-- BLOCO 3 MECANISMO -->
 <section class="dark">
   <div class="container">
-    <div class="section-head"><span class="eyebrow">A virada</span><h2>Quem vive de cripto não adivinha — lê o cenário.</h2></div>
-    <p class="lead center">A diferença entre quem constrói patrimônio e quem só reage não é ter mais informação. É ter <strong>método</strong>: entender o ciclo do mercado, ler o cenário e gerir risco com critério.<br><br>Investir sem isso é como dirigir no escuro. O <strong>Crypto Intelligence Access</strong> é o farol e o copiloto: te dá a análise pra enxergar o caminho e o apoio pra decidir — sem nunca tirar você do volante. É o método que a Boost aplica desde 2016, agora ao seu alcance.</p>
+    <div class="section-head"><span class="eyebrow">A virada</span><h2>Quem vive de cripto não adivinha. Lê o cenário.</h2></div>
+    <p class="lead center">A diferença entre construir patrimônio e só reagir não está em ter mais informação. Está no método: entender o ciclo, ler o cenário e cuidar do risco com critério.<br><br>Investir sem isso é dirigir no escuro. O <strong>Crypto Intelligence Access</strong> é o seu farol e o seu copiloto. A análise pra você enxergar o caminho, e o apoio pra você decidir. Sempre com você no volante. É o método que a Boost aplica desde 2016, agora ao seu alcance.</p>
   </div>
 </section>
 
-<!-- ===== BLOCO 4 — BIG IDEA (Q7) ===== -->
+<!-- BLOCO 4 BIG IDEA -->
 <section class="bigidea">
   <div class="container">
     <div class="tag">A ideia central</div>
-    <h2 style="margin-top:12px;">Você não precisa adivinhar o mercado nem correr atrás da próxima dica. Você precisa de método: análise, contexto e apoio para decidir com critério — e manter o controle.</h2>
+    <h2 style="margin-top:12px;">Você não precisa adivinhar o mercado nem caçar a próxima dica. Precisa de método: análise, contexto e apoio pra decidir com critério e manter o controle.</h2>
   </div>
 </section>
 
-<!-- ===== BLOCO 5 — MÉTODO / PILARES (Q5, Q6, Q8) ===== -->
+<!-- BLOCO 5 METODO -->
 <section>
   <div class="container">
-    <div class="section-head"><span class="eyebrow">Como funciona</span><h2>O método do Access em 3 pilares</h2><p>Direção, execução e apoio — pra você sair de "reagindo ao preço" para "decidindo com critério".</p></div>
+    <div class="section-head"><span class="eyebrow">Como funciona</span><h2>O método do Access em 3 pilares</h2><p>Direção, execução e apoio pra você sair de reagir ao preço e passar a decidir com critério.</p></div>
     <div class="pillars">
-      <div class="pillar"><div class="n">1</div><h3>Enxergar o cenário</h3><p>Você entende para onde aponta o mercado, sem se perder no ruído.</p><ul><li>Análises de cenário e ciclos</li><li>Newsletter diária + alertas</li><li>Vídeos semanais</li></ul></div>
+      <div class="pillar"><div class="n">1</div><h3>Enxergar o cenário</h3><p>Você entende pra onde aponta o mercado, sem se perder no ruído.</p><ul><li>Análises de cenário e ciclos</li><li>Newsletter diária e alertas</li><li>Vídeos semanais</li></ul></div>
       <div class="pillar"><div class="n">2</div><h3>Agir com critério</h3><p>Você monta e ajusta a carteira com método, não no achismo.</p><ul><li>Cesta de ativos com recomendação e rebalanceamento</li><li>Guia de Capital Protegido</li><li>Estratégia de Renda Passiva</li></ul></div>
-      <div class="pillar"><div class="n">3</div><h3>Não decidir sozinho</h3><p>Quando bate a dúvida, você tem apoio humano de quem vive o mercado.</p><ul><li>Q&amp;A mensais com especialistas</li><li>Encontros periódicos</li><li>Interação direta com os researchers</li></ul></div>
+      <div class="pillar"><div class="n">3</div><h3>Não decidir sozinho</h3><p>Quando bate a dúvida, você tem apoio de quem vive o mercado.</p><ul><li>Q&amp;A mensais com especialistas</li><li>Encontros periódicos</li><li>Interação direta com os researchers</li></ul></div>
     </div>
-    <p class="lead center" style="margin-top:34px;">O que muda na prática: você deixa de reagir ao preço e passa a decidir com clareza — no seu ritmo, com a Boost ao seu lado.</p>
+    <p class="lead center" style="margin-top:34px;">Na prática, você para de reagir ao preço e começa a decidir com clareza. No seu ritmo, com a Boost do seu lado.</p>
   </div>
 </section>
 
-<!-- ===== BLOCO 6 — PROVA / AUTORIDADE (Q5, Q8) ===== -->
+<!-- BLOCO 6 PROVA -->
 <section style="background:var(--bg);">
   <div class="container">
     <div class="section-head"><span class="eyebrow">Por que confiar na Boost</span><h2>Um time que vive o mercado cripto desde 2016</h2><p>Researchers e Advisors que acompanham o mercado de perto, com leitura de cenário e gestão de risco como base.</p></div>
@@ -149,58 +130,58 @@
       <div class="member"><div class="av">AA</div><div class="nm">Arthur Aleixo</div><div class="role">Advisor</div></div>
     </div>
     <div class="tgrid">
-      <div class="tcard"><div class="q">"Comecei comprando no impulso. Com o Access passei a entender o cenário e a decidir com critério." <span class="mark">[depoimento real]</span></div><div class="who">Cliente Access <span class="badge">· verificado</span></div></div>
-      <div class="tcard"><div class="q">"O que mais me ajudou foi o apoio humano. Não é só conteúdo — é poder tirar dúvida com quem entende." <span class="mark">[depoimento real]</span></div><div class="who">Cliente Access <span class="badge">· verificado</span></div></div>
-      <div class="tcard"><div class="q">"A cesta com rebalanceamento me deu método. Parei de ficar reagindo ao preço." <span class="mark">[depoimento real]</span></div><div class="who">Cliente Access <span class="badge">· verificado</span></div></div>
+      <div class="tcard"><div class="q">"Comecei comprando no impulso. Com o Access passei a entender o cenário e a decidir com critério." <span class="mark">[depoimento real]</span></div><div class="who">Cliente Access <span class="badge">verificado</span></div></div>
+      <div class="tcard"><div class="q">"O que mais me ajudou foi o apoio humano. Não é só conteúdo. Dá pra tirar dúvida com quem entende de verdade." <span class="mark">[depoimento real]</span></div><div class="who">Cliente Access <span class="badge">verificado</span></div></div>
+      <div class="tcard"><div class="q">"A cesta com rebalanceamento me deu método. Parei de ficar reagindo ao preço." <span class="mark">[depoimento real]</span></div><div class="who">Cliente Access <span class="badge">verificado</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== BLOCO 7 — OFERTA (Q8, Q10) ===== -->
+<!-- BLOCO 7 OFERTA -->
 <section class="offer" id="assinar">
   <div class="container">
     <div class="section-head"><span class="eyebrow">Foi por isso que criamos</span><h2 style="color:#fff;">Crypto Intelligence Access</h2><p>Não é mais um curso, nem mais um grupo de sinais. É o método da Boost, na prática, pra você aplicar com autonomia.</p></div>
     <div class="offer-card">
       <div class="price"><span class="mark">[CONFIRMAR PREÇO]</span> <small>/mês</small></div>
-      <p style="color:var(--soft);margin-top:6px;font-size:14px;">Assinatura mensal · cancele quando quiser</p>
+      <p style="color:var(--soft);margin-top:6px;font-size:14px;">Assinatura mensal. Cancele quando quiser.</p>
       <ul class="offer-list">
         <li><span class="ck">✓</span> Análises de cenário e ciclos</li>
         <li><span class="ck">✓</span> Newsletter diária, alertas e vídeos semanais</li>
         <li><span class="ck">✓</span> Cesta de ativos com recomendação e rebalanceamento</li>
         <li><span class="ck">✓</span> Q&amp;A mensais e encontros periódicos com especialistas</li>
-        <li><span class="ck">✓</span> Guia de Capital Protegido + Estratégia de Renda Passiva</li>
+        <li><span class="ck">✓</span> Guia de Capital Protegido e Estratégia de Renda Passiva</li>
         <li><span class="ck">✓</span> Webinars, materiais e interação com os researchers</li>
       </ul>
       <a href="#assinar" class="cta" style="width:100%;text-align:center;">Assinar o Access</a>
-      <div class="guarantee"><span class="mark">[CONFIRMAR GARANTIA]</span> — ex.: 7 dias de garantia. Se não fizer sentido, você cancela.</div>
-      <p style="font-size:12px;color:var(--soft);text-align:center;margin-top:14px;">Investir em cripto envolve risco e volatilidade. O Access oferece método, análise e apoio — não promessa de retorno.</p>
+      <div class="guarantee"><span class="mark">[CONFIRMAR GARANTIA]</span>. Ex.: 7 dias de garantia. Se não fizer sentido, você cancela.</div>
+      <p style="font-size:12px;color:var(--soft);text-align:center;margin-top:14px;">Investir em cripto envolve risco e volatilidade. O Access entrega método, análise e apoio. Não é promessa de retorno.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== BLOCO 8 — RAZÕES PARA AGIR AGORA (Q9, Q10) ===== -->
+<!-- BLOCO 8 RAZOES PARA AGIR -->
 <section class="dark center">
   <div class="container">
     <div class="section-head"><span class="eyebrow">Por que agora</span><h2 style="color:#fff;">Cada ciclo no escuro custa caro</h2></div>
     <div class="urgency">
-      <div class="ucard"><h3>O custo de esperar</h3><p>Toda semana sem método é mais uma decisão no impulso — mais uma chance de comprar caro e vender no medo.</p></div>
-      <div class="ucard"><h3>O mercado não espera</h3><p>Os ciclos acontecem com ou sem você preparado. Quem tem critério aproveita; quem reage, paga a conta.</p></div>
+      <div class="ucard"><h3>O custo de esperar</h3><p>Toda semana sem método é mais uma decisão no impulso. Mais uma chance de comprar caro e vender no medo.</p></div>
+      <div class="ucard"><h3>O mercado não espera</h3><p>Os ciclos acontecem com ou sem você preparado. Quem tem critério aproveita. Quem reage, paga a conta.</p></div>
     </div>
     <p class="lead center" style="margin:28px auto 26px;color:#c8d2d8;">Quanto antes você troca o achismo por método, antes para de perder por falta de estratégia. A decisão é simples.</p>
     <a href="#assinar" class="cta">Quero começar com método</a>
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
+<!-- FAQ -->
 <section>
   <div class="container">
     <div class="section-head"><span class="eyebrow">Dúvidas</span><h2>Perguntas frequentes</h2></div>
     <div class="faq">
-      <div class="qa"><h3>Preciso já saber investir em cripto?</h3><p>Não. O Access foi pensado para quem está começando ou investe pequenas quantias e quer aprender com método e apoio.</p></div>
-      <div class="qa"><h3>O Access decide por mim?</h3><p>Não. Você mantém a autonomia das suas decisões — o Access te dá análise, direção e apoio para você decidir melhor.</p></div>
-      <div class="qa"><h3>Qual a diferença pro restante das consultorias da Boost?</h3><p>O Access é o ponto de entrada, com método e apoio em escala. As consultorias Essencial, Pro e Premium são para quem quer acompanhamento mais individual e patrimônios maiores.</p></div>
-      <div class="qa"><h3>Como funciona a assinatura?</h3><p>É mensal e você acessa todos os conteúdos e encontros enquanto estiver ativa. <span class="mark">[CONFIRMAR cobrança/cancelamento]</span></p></div>
-      <div class="qa"><h3>A Boost garante retorno?</h3><p>Não. Investir em cripto envolve risco e volatilidade, e ninguém garante retorno. O papel do Access é trazer método e contexto para você decidir com mais clareza.</p></div>
+      <div class="qa"><h3>Preciso já saber investir em cripto?</h3><p>Não. O Access foi pensado pra quem está começando ou investe pequenas quantias e quer aprender com método e apoio.</p></div>
+      <div class="qa"><h3>O Access decide por mim?</h3><p>Não. Você mantém a autonomia das suas decisões. O Access te dá análise, direção e apoio pra você decidir melhor.</p></div>
+      <div class="qa"><h3>Qual a diferença pras outras consultorias da Boost?</h3><p>O Access é o ponto de entrada, com método e apoio em escala. As consultorias Essencial, Pro e Premium são pra quem quer acompanhamento mais individual e patrimônios maiores.</p></div>
+      <div class="qa"><h3>Como funciona a assinatura?</h3><p>É mensal e você acessa todos os conteúdos e encontros enquanto estiver ativa. <span class="mark">[CONFIRMAR cobrança e cancelamento]</span></p></div>
+      <div class="qa"><h3>A Boost garante retorno?</h3><p>Não. Investir em cripto envolve risco e volatilidade, e ninguém garante retorno. O papel do Access é trazer método e contexto pra você decidir com mais clareza.</p></div>
     </div>
   </div>
 </section>
